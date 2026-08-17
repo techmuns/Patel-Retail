@@ -4,12 +4,14 @@
  * Wires the view tabs, the estimate-highlight toggle, and lazily inits
  * each view's module on first show.
  */
-import { qs, qsa, refreshIcons } from "./ui.js";
+import { qs, qsa, refreshIcons, toast } from "./ui.js";
 import { initMap, invalidateMapSize } from "./map.js";
 import { initEconomics } from "./economics.js";
 import { initScreener } from "./screener.js";
 import { initEstate } from "./estate.js";
 import { initPeers } from "./peers.js";
+import { exportPatelReportPdf } from "./patel-report.js";
+import { exportPatelXlsx } from "./patel-export-xlsx.js";
 
 const VIEW_INITIALIZERS = {
   map: { init: initMap, started: false },
@@ -64,10 +66,48 @@ function wireHighlightToggle() {
   });
 }
 
+/** Shared busy-state handler for the two export buttons: disable + swap the
+ *  icon for the donor's existing .btn-spin, restore on completion either way,
+ *  and report success/failure via the existing toast system rather than
+ *  silently failing if a CDN lib (jsPDF/html2canvas/ExcelJS) didn't load. */
+function wireExportButton(buttonId, iconName, run) {
+  const btn = qs(buttonId);
+  if (!btn) return;
+  const label = btn.querySelector("span");
+  const icon = btn.querySelector("i");
+  const originalLabel = label?.textContent || "";
+  btn.addEventListener("click", async () => {
+    if (btn.disabled) return;
+    btn.disabled = true;
+    if (icon) icon.outerHTML = '<span class="btn-spin"></span>';
+    try {
+      await run((stage) => {
+        if (label) label.textContent = stage || originalLabel;
+      });
+      toast("ok", "Export ready", `${originalLabel} downloaded.`);
+    } catch (err) {
+      toast("err", `${originalLabel} failed`, err.message || "See console for details.");
+      console.error(err);
+    } finally {
+      btn.disabled = false;
+      if (label) label.textContent = originalLabel;
+      const spin = btn.querySelector(".btn-spin");
+      if (spin) spin.outerHTML = `<i data-lucide="${iconName}" class="i16"></i>`;
+      refreshIcons();
+    }
+  });
+}
+
+function wireExports() {
+  wireExportButton("#exportPdfBtn", "file-down", (onStage) => exportPatelReportPdf({ onStage }));
+  wireExportButton("#exportXlsxBtn", "table", () => exportPatelXlsx());
+}
+
 function init() {
   refreshIcons();
   wireTabs();
   wireHighlightToggle();
+  wireExports();
   showView("map"); // default tab, already active in the markup
 }
 

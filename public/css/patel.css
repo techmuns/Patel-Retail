@@ -37,6 +37,15 @@
 .topbar .highlight-toggle {
   flex-shrink: 0;
 }
+.export-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.export-actions .btn .btn-spin {
+  border-color: rgba(99, 102, 241, 0.35);
+  border-top-color: var(--brand-indigo);
+}
 
 /* ---- Map ---- */
 .map-card .card-body {

@@ -150,6 +150,7 @@ function renderPeerScaleCard(metrics) {
         <h4 style="font-size:15px">${gap.companies.map(escapeHtml).join(" · ")}</h4>
         <p>${escapeHtml(gap.note)}</p>
         ${gap.verified_against_primary_source ? `<p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(gap.verified_against_primary_source)}</p>` : ""}
+        ${gap.where_to_get_it ? `<p style="font-size:11.5px;color:var(--text-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--hairline)"><strong style="color:var(--text-2)">Where to get it:</strong> ${escapeHtml(gap.where_to_get_it)}</p>` : ""}
       </div>
     </div>
   `;

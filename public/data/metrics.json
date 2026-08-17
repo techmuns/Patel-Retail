@@ -109,7 +109,8 @@
     "note": "Osia Hyper Retail and V2 Retail are the only peers near Patel's own scale (52 operational stores) — every other peer in the model is 120+ stores. No financial data for either is available in this handoff or anywhere else this session could reach, so no figures are shown for them. Adding real numbers here (revenue, store count, area, EBITDA) is the next step, not a placeholder to fill with an estimate.",
     "companies": ["Osia Hyper Retail", "V2 Retail"],
     "status": "not_supplied",
-    "verified_against_primary_source": "Confirmed directly against Peer_Model.xlsx — checked all 47 rows of the primary source file, not just the handoff's prose summary. Neither company is mentioned anywhere in it."
+    "verified_against_primary_source": "Confirmed directly against Peer_Model.xlsx — checked all 47 rows of the primary source file, not just the handoff's prose summary. Neither company is mentioned anywhere in it.",
+    "where_to_get_it": "Both are publicly listed companies, so revenue, store count, area and EBITDA should be available from their own annual reports, exchange filings, and financial aggregators (e.g. Screener.in) — not something Patel or its peer model would ever hold. This session's sandbox has no live internet access to pull and verify those figures directly, which is why they're still shown as not supplied rather than filled in. Whoever adds them next should cite the primary filing, not re-derive from anything else in this dashboard."
   },
   "store_pnl_reconciliation": {
     "revenue_l": 864,

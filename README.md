@@ -62,12 +62,25 @@ the facts already established from the client's files (§9 especially).
   identical at B2C or total-company level; confirmed Osia/V2 are genuinely
   absent from the peer model, not an omission on our end. See
   PATEL-HANDOFF.md §19.
+- **PDF & Excel export**: live — the "Export PDF" / "Export Excel" buttons
+  in the topbar. PDF reuses `report.js`'s donor pagination engine unchanged
+  (measurement/split/pack + html2canvas→jsPDF) with new content
+  (`public/js/patel-report.js`): cover, the full store table with a
+  colour-coded precision badge, Estate & Vintage findings, the Peer
+  Benchmark with corrections, and Unit Economics with both contested
+  figures side by side — every reported/derived/estimate label survives
+  into print. Excel (`public/js/patel-export-xlsx.js`) is three sheets —
+  Store Master, Proximity (nulls shown as "Unavailable" + reason, never
+  blank), and Unit Economics (the derived store P&L as **live formula
+  cells**, not a frozen snapshot). See PATEL-HANDOFF.md §20.
 - **Not built**: a dedicated pair-distance table (screen 2 in handoff §8 —
   the map's cluster table and per-store risk score cover much of this
-  already), reviews, export/B2B — see handoff §8 for the full build order.
+  already), reviews, B2B export — see handoff §8 for the full build order.
   Also not built by design: maturity curve, same-store sales growth, a
   store league table — these need monthly sales per store, which isn't
-  available and isn't coming.
+  available and isn't coming. Osia Hyper Retail / V2 Retail financials are
+  still "not supplied" everywhere (including both exports) — they're
+  public data this sandbox can't reach; see PATEL-HANDOFF.md §20.
 
 ## Local development
 

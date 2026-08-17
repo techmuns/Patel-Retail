@@ -12,15 +12,17 @@
  */
 import { escapeHtml, fmtDate } from "./ui.js";
 
-/* A4 @ ~96dpi, and the usable content box inside the margins. */
-const PAGE_W = 794;
-const PAGE_H = 1123;
-const PAD_X = 54;
-const HEAD_TOP = 82; // where content starts (below the running header)
-const FOOT_ZONE = 74; // reserved at the bottom for the footer
-const CONTENT_W = PAGE_W - PAD_X * 2;
-const CONTENT_H = PAGE_H - HEAD_TOP - FOOT_ZONE;
-const BLOCK_GAP = 15;
+/* A4 @ ~96dpi, and the usable content box inside the margins. Exported so a
+   second content builder (e.g. patel-report.js) can size its own page shells
+   to match this exact pagination geometry without redefining it. */
+export const PAGE_W = 794;
+export const PAGE_H = 1123;
+export const PAD_X = 54;
+export const HEAD_TOP = 82; // where content starts (below the running header)
+export const FOOT_ZONE = 74; // reserved at the bottom for the footer
+export const CONTENT_W = PAGE_W - PAD_X * 2;
+export const CONTENT_H = PAGE_H - HEAD_TOP - FOOT_ZONE;
+export const BLOCK_GAP = 15;
 
 const SECTION_TITLE = {
   FIN: "Financial Performance", ORD: "Order Book & Demand",
@@ -173,8 +175,12 @@ export function explainerSubsections(section, seen = new Set()) {
   return out;
 }
 
-/* ------------------------------------------------------------------ entry -- */
-export async function exportReportPdf(model, { onStage } = {}) {
+/* ------------------------------------------------------------------ entry --
+   `composePagesFn`/`getFileName` let a second content builder (patel-report.js)
+   reuse this exact rasterisation/batching/jsPDF-assembly engine for a
+   differently-shaped model — the defaults preserve the original concall
+   tear-sheet behaviour unchanged. */
+export async function exportReportPdf(model, { onStage, composePagesFn = composePages, getFileName } = {}) {
   if (typeof window.jspdf === "undefined" || typeof window.html2canvas === "undefined") {
     throw new Error("PDF libraries unavailable");
   }
@@ -187,7 +193,7 @@ export async function exportReportPdf(model, { onStage } = {}) {
   document.body.appendChild(root);
 
   try {
-    const pageEls = composePages(model, logo, root);
+    const pageEls = composePagesFn(model, logo, root);
     const N = pageEls.length;
     root.style.width = PAGE_W + "px"; // stacked pages, no gaps
 
@@ -237,15 +243,26 @@ export async function exportReportPdf(model, { onStage } = {}) {
       }
     }
     pageEls.forEach((p) => (p.style.display = ""));
-    pdf.save(fileName(model, "pdf"));
+    pdf.save((getFileName || ((m) => fileName(m, "pdf")))(model));
   } finally {
     document.body.removeChild(root);
   }
 }
 
-/** Build cover + paginated body pages into `root` and return the page elements.
- *  Pagination separated from rasterisation so it can be previewed/tested. */
-function composePages(model, logo, root) {
+/** THE PAGINATION ENGINE. Measures each raw block against the page content
+ *  box, splits anything taller than one page by MEASURED height (lists by
+ *  item, text by word — see splitToFit) so nothing is ever silently clipped,
+ *  then greedy-packs the (possibly split) blocks into pages. A ".rpt-keep"
+ *  heading uses keep-with-next: it won't be left orphaned at the bottom of a
+ *  page — if its following block wouldn't also fit, break first.
+ *
+ *  `rawBlocks` is a content builder's raw output — an array of `{el}` DOM
+ *  nodes not yet measured, sized, or split (e.g. bodyBlocks(model), or a
+ *  second content builder's equivalent). Returns an array of arrays of DOM
+ *  elements, one inner array per page's worth of content — genuinely generic
+ *  over what those elements contain, so a differently-shaped report model
+ *  can reuse this exact algorithm instead of reimplementing it. */
+export function packBlocksIntoPages(root, rawBlocks) {
   const meas = document.createElement("div");
   meas.style.cssText = `position:absolute;left:0;top:0;width:${CONTENT_W}px;visibility:hidden;`;
   root.appendChild(meas);
@@ -256,10 +273,8 @@ function composePages(model, logo, root) {
     return h;
   };
 
-  // Measure each block; any block taller than a page is split by MEASURED height
-  // (lists by item, text by word) so nothing is ever clipped by overflow:hidden.
   const blocks = [];
-  for (const b of bodyBlocks(model)) {
+  for (const b of rawBlocks) {
     const h = measure(b.el);
     if (h <= CONTENT_H) {
       blocks.push({ el: b.el, h, keep: b.el.classList?.contains("rpt-keep") });
@@ -271,9 +286,6 @@ function composePages(model, logo, root) {
   }
   root.removeChild(meas);
 
-  // Greedy-pack blocks into pages. A ".rpt-keep" heading uses keep-with-next: it
-  // won't be left orphaned at the bottom of a page — if its following block
-  // wouldn't also fit, break first.
   const pagesBlocks = [];
   let cur = [];
   let runH = 0;
@@ -290,7 +302,13 @@ function composePages(model, logo, root) {
     runH += b.h + BLOCK_GAP;
   }
   if (cur.length) pagesBlocks.push(cur);
+  return pagesBlocks;
+}
 
+/** Build cover + paginated body pages into `root` and return the page elements.
+ *  Pagination separated from rasterisation so it can be previewed/tested. */
+function composePages(model, logo, root) {
+  const pagesBlocks = packBlocksIntoPages(root, bodyBlocks(model));
   const totalPages = pagesBlocks.length + 2; // cover + body pages + thank-you
   const pageEls = [coverPage(model, logo, totalPages)];
   pagesBlocks.forEach((bl, i) => pageEls.push(bodyPage(model, logo, bl, i + 2, totalPages)));
@@ -667,7 +685,7 @@ const MONOGRAM = `<svg viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.or
   <path d="M56 29 V77 A17 17 0 0 0 90 77 V29" stroke="url(#rmgGold)" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
 
-function loadLogo() {
+export function loadLogo() {
   // Prefer a real PNG if the user dropped one in; else use the inline monogram.
   return new Promise((resolve) => {
     const img = new Image();
@@ -677,7 +695,7 @@ function loadLogo() {
   });
 }
 /** Logo mark at a given pixel height — PNG if present, else the inline SVG. */
-function logoMark(logo, px, cls = "") {
+export function logoMark(logo, px, cls = "") {
   return logo && logo.png
     ? `<img src="${logo.png}" class="${cls}" style="height:${px}px;width:${px}px;object-fit:cover;display:block;border-radius:${Math.max(3, Math.round(px * 0.2))}px" alt="Munshot"/>`
     : `<span class="rpt-mono ${cls}" style="width:${px}px;height:${px}px">${MONOGRAM}</span>`;
@@ -685,7 +703,7 @@ function logoMark(logo, px, cls = "") {
 
 /* --------------------------------------------------------------- styles ---- */
 let stylesInjected = false;
-function injectStyles() {
+export function injectStyles() {
   if (stylesInjected) return;
   stylesInjected = true;
   const css = `
