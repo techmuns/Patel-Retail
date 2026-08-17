@@ -67,6 +67,12 @@
           <button class="vtab" data-view="screener">
             <i data-lucide="search-check" class="i16"></i><span>Site Screener</span>
           </button>
+          <button class="vtab" data-view="estate">
+            <i data-lucide="trending-up" class="i16"></i><span>Estate &amp; Vintage</span>
+          </button>
+          <button class="vtab" data-view="peers">
+            <i data-lucide="scale" class="i16"></i><span>Peer Benchmark</span>
+          </button>
         </div>
 
         <label class="highlight-toggle" title="Dim everything except figures labelled 'estimate'">
@@ -287,6 +293,153 @@
             <section id="screenerEmpty" class="fade-up d2"></section>
           </div>
           <!-- /viewScreener -->
+
+          <!-- ---------------- Estate & Vintage view ---------------- -->
+          <div id="viewEstate" class="view hidden">
+            <section class="kpi-grid fade-up d1" id="estateKpis"></section>
+
+            <section class="fade-up d2" id="rollingVsFixedNote" style="margin-top:0"></section>
+
+            <section class="layout-main fade-up d3" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="bar-chart-3" class="i16"></i></span>
+                      Openings by Year
+                    </h3>
+                    <div class="sub">Years before 2020 grouped into one bar — one store a year isn't the story</div>
+                  </div>
+                </div>
+                <div class="card-body" id="openingsChart"></div>
+              </div>
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="trending-up" class="i16"></i></span>
+                      Age Distribution
+                    </h3>
+                    <div class="sub">Same buckets as the map legend</div>
+                  </div>
+                </div>
+                <div class="card-body" id="ageDistribution"></div>
+              </div>
+            </section>
+
+            <section class="fade-up d4" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="activity" class="i16"></i></span>
+                      Cumulative Store Count
+                    </h3>
+                    <div class="sub">1990 → today, all 53 stores</div>
+                  </div>
+                </div>
+                <div class="card-body" id="cumulativeChart"></div>
+              </div>
+            </section>
+
+            <section class="fade-up d4" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="layers" class="i16"></i></span>
+                      Town Saturation Over Time
+                    </h3>
+                    <div class="sub">Every town with 2+ stores — how fast each cluster formed, not just how big it is</div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table">
+                      <thead>
+                        <tr><th>Town</th><th>Stores</th><th>First Opened</th><th>Most Recent</th><th>Read</th></tr>
+                      </thead>
+                      <tbody id="saturationTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /viewEstate -->
+
+          <!-- ---------------- Peer Benchmark view ---------------- -->
+          <div id="viewPeers" class="view hidden">
+            <section class="fade-up d1">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>
+                      Known bugs in the client's peer model
+                    </h3>
+                    <div class="sub">PATEL-HANDOFF.md §10 — every row below is documented there</div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table">
+                      <thead>
+                        <tr><th>Issue</th><th>Effect</th><th>Status</th></tr>
+                      </thead>
+                      <tbody id="peerBugsTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="layout-main fade-up d2" style="margin-top:20px">
+              <div class="stack">
+                <div class="card lift" id="trentFixCard"></div>
+                <div class="card lift" id="spencersFixCard"></div>
+              </div>
+              <div class="stack">
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="tags" class="i16"></i></span>
+                        Private label % — the one clean cross-peer figure
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="card-body" id="peerPrivateLabelBlock"></div>
+                </div>
+                <div class="card lift" id="peerScaleCard"></div>
+              </div>
+            </section>
+
+            <section class="fade-up d3" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="table" class="i16"></i></span>
+                      Peer comparison — Patel's own contested figures
+                    </h3>
+                    <div class="sub">Shown side by side, same as the Store Economics screen — not averaged, not picked silently</div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table">
+                      <thead>
+                        <tr><th>Metric</th><th>Peer model</th><th>Store file</th></tr>
+                      </thead>
+                      <tbody id="peerContradictionsTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /viewPeers -->
         </div>
       </main>
 

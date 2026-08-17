@@ -8,36 +8,18 @@
  * truth — nothing here calls a live API.
  */
 import { qs, escapeHtml, fmtDate, refreshIcons, toast } from "./ui.js";
+import { VINTAGE_BUCKETS, yearsSince, vintageBucketFor } from "./vintage.js";
 
 const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png";
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const CENTER_FALLBACK = [19.22, 73.15]; // roughly the Thane–Raigad belt, used only if nothing is geocoded
 
-const VINTAGE_BUCKETS = [
-  { maxYears: 2, color: "var(--brand-teal)", label: "< 2 yrs" },
-  { maxYears: 5, color: "var(--brand-sky)", label: "2–5 yrs" },
-  { maxYears: 10, color: "var(--brand-indigo)", label: "5–10 yrs" },
-  { maxYears: Infinity, color: "var(--brand-violet)", label: "10+ yrs" },
-];
 const CLOSED_COLOR = "var(--text-4)";
 const LOW_CONFIDENCE_COLOR = "var(--warn)";
 
 let map = null;
 let storesById = new Map();
 let proximityByStoreId = new Map();
-
-function yearsSince(dateStr) {
-  if (!dateStr) return null;
-  const opened = new Date(dateStr);
-  if (isNaN(opened)) return null;
-  return (Date.now() - opened.getTime()) / (365.25 * 24 * 3600 * 1000);
-}
-
-function vintageBucketFor(store) {
-  const yrs = yearsSince(store.opened);
-  if (yrs == null) return VINTAGE_BUCKETS[VINTAGE_BUCKETS.length - 1];
-  return VINTAGE_BUCKETS.find((b) => yrs <= b.maxYears) || VINTAGE_BUCKETS[VINTAGE_BUCKETS.length - 1];
-}
 
 function resolveCssVar(varExpr) {
   // "var(--brand-teal)" -> the computed colour, so Leaflet (which wants a

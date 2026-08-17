@@ -1,10 +1,42 @@
+@charset "UTF-8";
+/* Must be the literal first bytes of the file (no comment may precede it) —
+   found live in this session: this repo's local test server
+   (python3 -m http.server) sends `Content-Type: text/css` with NO charset,
+   so without this, Chromium guessed an encoding that mangled this file's
+   em-dashes and silently corrupted CSS parsing FROM that point onward —
+   the .topbar .viewtabs flexbox fix a few lines down disappeared from
+   cssRules entirely, with no console error, until this was added. Cheap
+   insurance regardless of what the real host (Cloudflare) sends. */
+
 /* =============================================================================
    Patel Retail Dashboard — page-specific additions on top of the copied
    design system (styles.css, kept unchanged — see PATEL-HANDOFF.md §3).
-   Every colour below reuses the existing --brand-*/--text-*/--ok/--warn/etc.
-   tokens rather than introducing new hardcoded colours, so a rebrand still
+   Every colour below reuses the existing --brand-*, --text-*, --ok, --warn
+   etc. tokens rather than introducing new hardcoded colours, so a rebrand still
    only touches styles.css :root.
    ========================================================================== */
+
+/* ---- Header tab strip: 5 tabs (the donor only ever had 2) overflows the
+   topbar at typical desktop widths, since styles.css's .viewtabs has
+   flex-shrink:0 (fine for 2 tabs, not for 5) and .topbar never wraps —
+   the highlight-estimates toggle was getting pushed off-screen. Make the
+   tab strip the one flexible element: it shrinks first and scrolls
+   internally rather than pushing its neighbours out of the header. ---- */
+.topbar .viewtabs {
+  flex-shrink: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.topbar .viewtabs::-webkit-scrollbar {
+  display: none;
+}
+.topbar .viewtabs .vtab {
+  flex-shrink: 0;
+}
+.topbar .highlight-toggle {
+  flex-shrink: 0;
+}
 
 /* ---- Map ---- */
 .map-card .card-body {

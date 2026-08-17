@@ -8,13 +8,23 @@ import { qs, qsa, refreshIcons } from "./ui.js";
 import { initMap, invalidateMapSize } from "./map.js";
 import { initEconomics } from "./economics.js";
 import { initScreener } from "./screener.js";
+import { initEstate } from "./estate.js";
+import { initPeers } from "./peers.js";
 
 const VIEW_INITIALIZERS = {
   map: { init: initMap, started: false },
   economics: { init: initEconomics, started: false },
   screener: { init: initScreener, started: false },
+  estate: { init: initEstate, started: false },
+  peers: { init: initPeers, started: false },
 };
-const FOOT_STATUS_LABEL = { map: "Network map", economics: "Store economics", screener: "Site screener" };
+const FOOT_STATUS_LABEL = {
+  map: "Network map",
+  economics: "Store economics",
+  screener: "Site screener",
+  estate: "Estate & vintage",
+  peers: "Peer benchmark",
+};
 
 function showView(view) {
   qsa(".view").forEach((el) => el.classList.add("hidden"));

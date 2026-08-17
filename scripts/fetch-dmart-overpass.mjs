@@ -20,20 +20,30 @@
  * is wider than just Patel's towns) — some results may be outside Patel's
  * actual catchment.
  *
- * ⚠️ KNOWN FALSE POSITIVE in the exact query below: the name regex
- * "DMart|D-Mart|D Mart" is a case-insensitive SUBSTRING match, and at least
- * one real OSM node — a "food mart" in Navi Mumbai — matches "D Mart" as a
- * substring of "foo(D MART)" ("...d mart" spans the word boundary). Rather
- * than silently changing the query, every result here is tagged
- * `brand_tag_confirms_dmart` (true when the OSM `brand` tag is literally
- * "DMart") so a human can filter false positives without the script having
- * guessed which ones to drop.
+ * ⚠️ FIXED FALSE POSITIVE (was present in the first run of this script):
+ * the original name regex "DMart|D-Mart|D Mart" was a case-insensitive
+ * SUBSTRING match with no anchor, so a real OSM node — a "food mart" in
+ * Navi Mumbai — matched "D Mart" as a substring of "foo(D MART)" ("...d
+ * mart" spans the word boundary). Fixed by anchoring the pattern to the
+ * START of the name: "^[Dd][- ]?[Mm]art" matches DMart / D-Mart / D Mart /
+ * d mart at position 0 and excludes "food mart" (the match would have to
+ * start at index 0, and "food mart" doesn't start with d/D). Every result
+ * still carries `brand_tag_confirms_dmart` (true when the OSM `brand` tag
+ * is literally "DMart") as a second, independent signal — belt and braces,
+ * not a reason to skip the anchor fix.
  *
- * Query (verbatim, as specified):
+ * Query (current):
  *   [out:json];
- *   node["shop"="supermarket"]["name"~"DMart|D-Mart|D Mart",i]
+ *   node["shop"="supermarket"]["name"~"^[Dd][- ]?[Mm]art"]
  *     (18.6,72.7,19.8,73.6);
  *   out;
+ *
+ * ⚠️ COMPLETENESS: OpenStreetMap is community-maintained and this count
+ * (see the run this script actually produced, in PATEL-HANDOFF.md) is
+ * plausible for the region but almost certainly incomplete. Cross-check
+ * against Avenue Supermarts' own annual report store count for Maharashtra
+ * the next time this is touched — that's an authoritative total this
+ * script has no way to reach on its own.
  *
  * This is NOT wired into build-proximity.mjs / the risk score yet — see
  * PATEL-HANDOFF.md for why (scope discipline: land this data, don't also
@@ -53,7 +63,7 @@ const OUT_PATH = path.join(__dirname, "..", "public", "data", "competitors.json"
 // a 504 "server busy" is common and worth one retry, not a real failure.
 const OVERPASS_URL = "https://overpass-api.de/api/interpreter";
 const QUERY = `[out:json][timeout:60];
-node["shop"="supermarket"]["name"~"DMart|D-Mart|D Mart",i]
+node["shop"="supermarket"]["name"~"^[Dd][- ]?[Mm]art"]
   (18.6,72.7,19.8,73.6);
 out;`;
 
@@ -112,6 +122,7 @@ async function main() {
     competitor_id: `DMART-${String(i + 1).padStart(3, "0")}`,
     banner: "DMart",
     name: el.tags?.name || null,
+    branch: el.tags?.branch || null, // OSM's own branch/locality label when mappers set one — e.g. "Ambernath"
     lat: el.lat,
     lng: el.lon,
     osm_id: el.id,
@@ -131,7 +142,7 @@ async function main() {
     source_url: OVERPASS_URL,
     query: QUERY,
     caveat:
-      "OpenStreetMap coverage is community-maintained and likely incomplete — absence of a DMart here does not mean one doesn't exist; treat this as a lower bound, not an authoritative count. The name-match query is a case-insensitive substring match and has at least one known false positive (a 'food mart' matched 'D Mart' as a substring of '...d mart'); every entry carries brand_tag_confirms_dmart so false positives can be filtered without the script silently guessing which ones to drop. Not yet wired into build-proximity.mjs or the risk score.",
+      "OpenStreetMap coverage is community-maintained and likely incomplete — absence of a DMart here does not mean one doesn't exist; treat this as a lower bound, not an authoritative count, and cross-check against Avenue Supermarts' own annual report store count for Maharashtra the next time this is touched. The name-match pattern is anchored (^[Dd][- ]?[Mm]art) specifically to exclude substring false positives like a 'food mart' matching an earlier, unanchored version of this query; every entry still carries brand_tag_confirms_dmart as a second, independent confirmation signal.",
     scraped_at: new Date().toISOString(),
     banner: "DMart",
     stores,

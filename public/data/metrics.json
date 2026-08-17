@@ -54,6 +54,54 @@
     "avg_store_size_sqft": { "peer_model": 4359, "store_file": 5000 },
     "avg_bill_size": { "peer_model": 907, "store_file": 800 }
   },
+  "peer_model_bugs": {
+    "note": "All 10 documented in PATEL-HANDOFF.md §10, from the client's Peer_Model.xlsx. Status is honest per bug: 'fixed' means this dashboard shows the corrected figure below; 'not_applicable' means the bug doesn't carry over because this dashboard doesn't build that metric at all; 'needs_source_file' means the correct value was never given anywhere in the handoff — only that the current one is wrong — and re-opening the original spreadsheet is the only way to fix it.",
+    "items": [
+      { "issue": "Avenue Supermarts mislabelled \"Avenue supermarket (Reliance)\" (cell B2)", "effect": "Wrong company association implied — DMart has no Reliance link", "status": "fixed" },
+      { "issue": "Trent: revenue (₹20,074cr) and area (13mn sq ft) are ALL of Trent (Westside + Zudio + Star Bazaar), while store count (84) is Star Bazaar only", "effect": "Avg store size (154,762 sq ft) and revenue/store (₹239cr) are both impossible for a supermarket format", "status": "partially_fixed" },
+      { "issue": "Spencer's gross profit (cell F15) uses private-label sales × margin, where every other column uses revenue × margin", "effect": "Understated 73% — ₹99.6cr instead of ₹369cr — flows into rows 25 and 31", "status": "fixed" },
+      { "issue": "Cell C28 is a live #VALUE! error because row 32 holds the text \"NA\"", "effect": "Breaks any calculation reading C28", "status": "needs_source_file" },
+      { "issue": "Patel's own cities/states swapped and wrong (rows 7-8: \"1 city, 17 states\")", "effect": "Wildly wrong footprint description for the subject company itself", "status": "fixed" },
+      { "issue": "Vishal's private label % hardcoded as =78385.79/10 with no stated meaning", "effect": "Unexplained, unverifiable number feeding the peer comparison", "status": "not_applicable" },
+      { "issue": "Patel's same-store sales growth (row 47) hardcoded at 8% with no quarterly backup, while peers average real quarters", "effect": "Overstates confidence in a number with no supporting data", "status": "not_applicable" },
+      { "issue": "Rows 26 and 29 duplicate", "effect": "Data hygiene issue, possible double-count downstream", "status": "needs_source_file" },
+      { "issue": "\"EBIDTA\" misspelled throughout", "effect": "Cosmetic, but signals the model wasn't proofread", "status": "fixed" },
+      { "issue": "Patel's private-label % and gross-margin % both hardcoded at 0.17 (identical — a copy-paste error)", "effect": "Silently wrong inputs to every downstream calculation using either figure", "status": "fixed" }
+    ]
+  },
+  "peer_model_corrections": {
+    "trent": {
+      "wrong_revenue_cr": 20074,
+      "wrong_note": "All of Trent combined (Westside + Zudio + Star Bazaar) — not just the supermarket format being compared against",
+      "corrected_revenue_cr": 3400,
+      "corrected_note": "Star Bazaar only — the model's own row 12 already had this figure; it was simply never used",
+      "still_needs_source_file": "Star Bazaar's own store area and store count. The model's 13mn sq ft and 84 stores are still Trent-wide, not Star-Bazaar-specific, so no corrected avg-store-size or revenue/store can be shown — that needs the original spreadsheet re-opened, not guessed here.",
+      "kind": "derived",
+      "source": "PATEL-HANDOFF.md §10"
+    },
+    "spencers": {
+      "wrong_gross_profit_cr": 99.6,
+      "wrong_formula": "private-label sales × margin (cell F15)",
+      "corrected_gross_profit_cr": 369,
+      "corrected_formula": "revenue × margin — matching every other column in the model",
+      "understated_pct": 0.73,
+      "still_needs_source_file": "rows 25 and 31, which flow from this figure and weren't independently re-derived here",
+      "kind": "derived",
+      "source": "PATEL-HANDOFF.md §10"
+    },
+    "patel_footprint": {
+      "wrong": "\"1 city, 17 states\" (rows 7-8)",
+      "corrected": "31 towns, 1 state (Maharashtra), 3 districts (Thane, Raigad, Palghar)",
+      "verified_against": "public/data/stores.json — computed directly from all 53 stores, not just quoted from the handoff",
+      "kind": "reported",
+      "source": "PATEL-HANDOFF.md §9"
+    }
+  },
+  "peer_scale_gap": {
+    "note": "Osia Hyper Retail and V2 Retail are the only peers near Patel's own scale (52 operational stores) — every other peer in the model is 120+ stores. No financial data for either is available in this handoff or anywhere else this session could reach, so no figures are shown for them. Adding real numbers here (revenue, store count, area, EBITDA) is the next step, not a placeholder to fill with an estimate.",
+    "companies": ["Osia Hyper Retail", "V2 Retail"],
+    "status": "not_supplied"
+  },
   "store_pnl_reconciliation": {
     "revenue_l": 864,
     "gross_margin_pct": 0.165,

@@ -25,21 +25,38 @@ the facts already established from the client's files (§9 especially).
   computed against precisely-located ones), counts within 1/3/5km, and a
   go/no-go read using the identical risk formula as the map. Nearest-DMart
   is live too, now that `competitors.json` exists.
-- **Competitors** (`public/data/competitors.json`): live — 19 DMart
+- **Competitors** (`public/data/competitors.json`): live — 18 DMart
   locations from OpenStreetMap's Overpass API (free, no key, no browser;
   see PATEL-HANDOFF.md §15.3 for why Overpass replaced an earlier Playwright
-  draft, and the one known false-positive it flags rather than hides). Not
-  yet joined into the map's precomputed risk score — the Screener picks it
-  up live, the map doesn't yet.
-- **Getting the remaining ~24 store locations right**: not more automated
-  geocoding — see PATEL-HANDOFF.md §15.2. Paste a Google Maps link (or a
-  bare `lat, lng`) into a store's `gmaps_link` field in `stores.json` and
-  run `node scripts/apply-client-coords.mjs`.
-- **Not built**: estate & vintage screen, peer benchmark rebuild, reviews,
-  export/B2B — see handoff §8 for the rest of the build order. Also not
-  built by design: maturity curve, same-store sales growth, a store league
-  table — these need monthly sales per store, which isn't available and
-  isn't coming.
+  draft — the query is anchored to exclude a "food mart" false-positive
+  found and fixed this round). Not yet joined into the map's precomputed
+  risk score — the Screener picks it up live, the map doesn't yet.
+- **Getting the remaining 25 store locations right — the critical path
+  right now**: [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) is the actual
+  client ask, grouped by cluster (densest first). Don't run more geocoding
+  passes until it comes back — see PATEL-HANDOFF.md §16. Once it does:
+  paste each link into the matching store's `gmaps_link` field and run
+  `node scripts/apply-client-coords.mjs`.
+- **Estate & Vintage** (`public/js/estate.js`): live — openings by year,
+  cumulative growth, age distribution, and a town-saturation table labelling
+  each cluster "Fast-forming," "Still growing," or "Established" from its
+  own opened-date spread. Surfaces a real discrepancy rather than hiding
+  it: the handoff's "42% under 2 years" is a fixed calendar-year fact
+  (22/53 opened 2024+); read as an actual rolling 2-year window as of
+  today it's 28% (15/53) — both shown, with the reason for the gap stated
+  on screen. See PATEL-HANDOFF.md §17.
+- **Peer Benchmark** (`public/js/peers.js`): live — all 10 bugs from
+  handoff §10 with an honest status each (fixed / partially fixed / not
+  applicable / needs the source file re-opened). Trent's revenue and
+  Spencer's gross profit are corrected with real numbers; Osia Hyper Retail
+  and V2 Retail get an explicit "not supplied" card, not invented figures.
+  See PATEL-HANDOFF.md §17.
+- **Not built**: a dedicated pair-distance table (screen 2 in handoff §8 —
+  the map's cluster table and per-store risk score cover much of this
+  already), reviews, export/B2B — see handoff §8 for the full build order.
+  Also not built by design: maturity curve, same-store sales growth, a
+  store league table — these need monthly sales per store, which isn't
+  available and isn't coming.
 
 ## Local development
 
