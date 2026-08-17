@@ -46,11 +46,22 @@ the facts already established from the client's files (§9 especially).
   today it's 28% (15/53) — both shown, with the reason for the gap stated
   on screen. See PATEL-HANDOFF.md §17.
 - **Peer Benchmark** (`public/js/peers.js`): live — all 10 bugs from
-  handoff §10 with an honest status each (fixed / partially fixed / not
-  applicable / needs the source file re-opened). Trent's revenue and
-  Spencer's gross profit are corrected with real numbers; Osia Hyper Retail
-  and V2 Retail get an explicit "not supplied" card, not invented figures.
-  See PATEL-HANDOFF.md §17.
+  handoff §10 with an honest status each (fixed / partially fixed /
+  confirmed harmless / not applicable / needs the source file re-opened).
+  Trent's revenue **and now revenue/store** are corrected with real
+  numbers; Spencer's gross profit is corrected; Osia Hyper Retail and V2
+  Retail get an explicit "not supplied" card, not invented figures. See
+  PATEL-HANDOFF.md §17.
+- **Primary source files cross-verified** (`Patel_Retail_data_Munshot.xlsx`,
+  `Peer_Model.xlsx`, the client's own spreadsheets, not the handoff's
+  paraphrase of them): confirmed all 53 store codes match exactly; upgraded
+  three unit-economics figures (margins, non-food/merchandise mix) to
+  explicitly label them as range midpoints; tightened Vishal's private-label
+  % to its exact value (60.7%, was rounded to 61%); added Patel's
+  total-company revenue/EBITDA/PAT and showed the 7.9% EBITDA figure is
+  identical at B2C or total-company level; confirmed Osia/V2 are genuinely
+  absent from the peer model, not an omission on our end. See
+  PATEL-HANDOFF.md §19.
 - **Not built**: a dedicated pair-distance table (screen 2 in handoff §8 —
   the map's cluster table and per-store risk score cover much of this
   already), reviews, export/B2B — see handoff §8 for the full build order.

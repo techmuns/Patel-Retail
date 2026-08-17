@@ -15,6 +15,7 @@ const STATUS_META = {
   partially_fixed: { label: "Partially fixed", tone: "warn" },
   needs_source_file: { label: "Needs source file", tone: "err" },
   not_applicable: { label: "Not applicable here", tone: "muted" },
+  confirmed_harmless: { label: "Confirmed harmless", tone: "ok" },
 };
 
 async function loadMetrics() {
@@ -32,6 +33,9 @@ async function loadStores() {
 function fmtCr(value) {
   return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 1 })} cr`;
 }
+function fmtLakh(value) {
+  return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 0 })} L`;
+}
 function fmtPct(value, digits = 1) {
   return `${(value * 100).toFixed(digits)}%`;
 }
@@ -46,7 +50,8 @@ function renderPeerBugsTable(metrics) {
       <td style="max-width:340px">${escapeHtml(item.issue)}</td>
       <td style="max-width:280px;color:var(--text-3);font-size:12.5px">${escapeHtml(item.effect)}</td>
       <td><span class="chip ${meta.tone === "ok" ? "done" : meta.tone === "warn" ? "queued" : meta.tone === "err" ? "failed" : "src-none"}"><span class="cdot"></span>${escapeHtml(meta.label)}</span></td>
-    </tr>`;
+    </tr>
+    ${item.verified_note ? `<tr><td colspan="3" style="color:var(--text-4);font-size:11.5px;padding-top:0"><strong style="color:var(--text-3)">Verified against primary source:</strong> ${escapeHtml(item.verified_note)}</td></tr>` : ""}`;
     })
     .join("");
 }
@@ -72,6 +77,20 @@ function renderTrentFixCard(metrics) {
           <div class="cb-value">${fmtCr(t.corrected_revenue_cr)}</div>
           <div class="cb-source">${escapeHtml(t.corrected_note)}</div>
         </div>
+      </div>
+      <div class="compare-row">
+        <div class="compare-box" data-kind="derived">
+          <div class="cb-label">Revenue/store (old, wrong)</div>
+          <div class="cb-value">${fmtLakh(t.wrong_revenue_per_store_lakh)}</div>
+        </div>
+        <div class="compare-box used" data-kind="derived">
+          <div class="cb-label">Revenue/store (corrected)</div>
+          <div class="cb-value">${fmtLakh(t.corrected_revenue_per_store_lakh)}</div>
+        </div>
+      </div>
+      <div class="flag-card" data-kind="derived">
+        <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
+        <div><p>${escapeHtml(t.revenue_per_store_note)}</p></div>
       </div>
       <div class="flag-card">
         <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
@@ -130,6 +149,7 @@ function renderPeerScaleCard(metrics) {
         <div class="empty-ico" style="width:52px;height:52px;font-size:22px"><i data-lucide="scale"></i></div>
         <h4 style="font-size:15px">${gap.companies.map(escapeHtml).join(" · ")}</h4>
         <p>${escapeHtml(gap.note)}</p>
+        ${gap.verified_against_primary_source ? `<p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(gap.verified_against_primary_source)}</p>` : ""}
       </div>
     </div>
   `;
