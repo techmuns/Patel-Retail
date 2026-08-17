@@ -1,0 +1,70 @@
+{
+  "note": "Every number here traces to PATEL-HANDOFF.md §6/§9, itself sourced from the client's Patel_Retail_data_Munshot.xlsx and Peer_Model.xlsx. Nothing in this file was estimated or invented — derived figures (store EBITDA) are computed at runtime in public/js/economics.js from the reported inputs below, not hardcoded, so the arithmetic stays visible.",
+  "unit_economics": {
+    "sqft_per_store": 5000,
+    "sqft_per_store_kind": "estimate",
+    "sqft_per_store_note": "The same 5,000 sq ft blended average applied to all 53 stores uniformly — not a per-store measurement (per-store sq ft was not supplied and isn't coming). Anything derived from this figure inherits the estimate label.",
+    "revenue_per_sqft_year": 17280,
+    "revenue_per_sqft_year_kind": "reported",
+    "revenue_per_sqft_year_source": "store file (Patel_Retail_data_Munshot.xlsx)",
+    "bills_per_day": 300,
+    "avg_order_value": 800,
+    "rent_per_sqft_month": 50,
+    "utility_per_sqft_month": 35,
+    "employees_per_store": 25,
+    "avg_salary_month": 15000,
+    "gross_margin_pct": 0.165,
+    "private_label_pct": 0.175,
+    "kind": "reported",
+    "source": "client file Patel_Retail_data_Munshot.xlsx (Aug 2026)"
+  },
+  "revenue_mix": {
+    "food": 0.70,
+    "non_food": 0.205,
+    "merchandise": 0.095,
+    "kind": "reported"
+  },
+  "own_brand": {
+    "indian_chaska_annual_cr": 2.2,
+    "in_own_stores_cr": 1.2,
+    "outside_own_stores_cr": 1.0,
+    "note": "₹2.2cr on ~₹449cr retail revenue (~0.5%) — small, but ₹1cr of it sells outside Patel's own stores, which reads as brand behaviour rather than shelf-filling.",
+    "kind": "reported"
+  },
+  "peer_comparison": {
+    "private_label_pct": {
+      "patel": 0.175,
+      "dmart": 0.08,
+      "vishal_mega_mart": 0.61,
+      "trent": 0.74,
+      "note": "Patel's private label is ~2x DMart's, but far below Vishal/Trent — 'very high own-brand' doesn't survive peer context.",
+      "kind": "reported"
+    }
+  },
+  "cross_file_contradictions": {
+    "revenue_per_sqft_year": {
+      "store_file": 17280,
+      "peer_model": 22079,
+      "gap_pct": 0.278,
+      "used_in_this_dashboard": "store_file",
+      "resolution_note": "The two client files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation, per instruction — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
+      "kind": "reported"
+    },
+    "store_count": { "peer_model": 49, "store_file_operational": 52, "store_file_operational_plus_closed": 53, "note": "The client's own call cited 53." },
+    "avg_store_size_sqft": { "peer_model": 4359, "store_file": 5000 },
+    "avg_bill_size": { "peer_model": 907, "store_file": 800 }
+  },
+  "store_pnl_reconciliation": {
+    "revenue_l": 864,
+    "gross_margin_pct": 0.165,
+    "rent_l": 30,
+    "utilities_l": 21,
+    "staff_l": 45,
+    "peer_model_b2c_ebitda_pct": 0.079,
+    "peer_model_b2c_ebitda_kind": "reported",
+    "peer_model_source": "Peer_Model.xlsx",
+    "flag_note": "Building store EBITDA from the client's own per-store unit metrics gives ~5.4% of sales, BEFORE any head-office cost. The peer model claims 7.9% EBITDA at company level for the B2C business — company-level margin cannot exceed store-level once overhead is added. That's backwards as given. Not resolved here (likely causes per the handoff: the 45/55 revenue-based EBITDA split may be the wrong allocation — export probably carries more margin — or the unit-economics inputs are conservative). Surfaced as a flag, not silently fixed.",
+    "kind": "derived",
+    "note": "store_ebitda_l / store_ebitda_pct are computed at runtime from the reported inputs above (see public/js/economics.js) rather than stored pre-computed, so the arithmetic stays auditable on screen."
+  }
+}

@@ -1,0 +1,680 @@
+{
+  "generated_at": "2026-08-17T08:56:07.090Z",
+  "metadata": {
+    "total_stores": 53,
+    "geocoded_count": 0,
+    "pending_geocode_count": 53,
+    "total_possible_pairs": 1378,
+    "pairs_computed": 0,
+    "note": "No stores are geocoded yet — run scripts/geocode.mjs with GOOGLE_MAPS_API_KEY set, then re-run this script. Town clusters below don't need geocoding and are already real."
+  },
+  "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\".",
+  "pairs": [],
+  "per_store": [
+    {
+      "store_id": "KBG",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "RCM",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "THE",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "TGR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "NSR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "NWM",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KUD",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DNE",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KYD",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DAG/DOEMIDC",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AVB",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KBR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DSR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "NKR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KET",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BBVR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KMR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DOW",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "SHD",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BHAR",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "Bap",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "PAD",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "VGW",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "VAS",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BES",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BKHE",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BLEB",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BLEK",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BLWB",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "BWM",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AMSN",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AMCH",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AME",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AML",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AMPL",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "AMW",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DOWSMT",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DWK",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DOF",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DOM",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KKW",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KLE",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KLK",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KLT",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KLW",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "DOE/DER",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "MUBD",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "SHAP",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "TTL",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "ULN",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "ULN4",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "KHP",
+      "status": "operational",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    },
+    {
+      "store_id": "PRCAME/PRCAMEN",
+      "status": "closed",
+      "geocoded": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null
+    }
+  ],
+  "clusters": [
+    {
+      "town": "Kalyan West",
+      "stores": 5,
+      "store_ids": [
+        "KYD",
+        "KKW",
+        "KLK",
+        "KLT",
+        "KLW"
+      ]
+    },
+    {
+      "town": "Ambernath East",
+      "stores": 4,
+      "store_ids": [
+        "AMSN",
+        "AME",
+        "AML",
+        "AMPL"
+      ]
+    },
+    {
+      "town": "Badlapur East",
+      "stores": 4,
+      "store_ids": [
+        "BES",
+        "BKHE",
+        "BLEB",
+        "BLEK"
+      ]
+    },
+    {
+      "town": "Dombivali East",
+      "stores": 4,
+      "store_ids": [
+        "DNE",
+        "DAG/DOEMIDC",
+        "DOF",
+        "DOM"
+      ]
+    },
+    {
+      "town": "Bhiwandi",
+      "stores": 3,
+      "store_ids": [
+        "AVB",
+        "BBVR",
+        "BHAR"
+      ]
+    },
+    {
+      "town": "Dombivali West",
+      "stores": 3,
+      "store_ids": [
+        "DOW",
+        "DOWSMT",
+        "DWK"
+      ]
+    },
+    {
+      "town": "Ambernath West",
+      "stores": 2,
+      "store_ids": [
+        "AMCH",
+        "AMW"
+      ]
+    },
+    {
+      "town": "Badlapur West",
+      "stores": 2,
+      "store_ids": [
+        "BLWB",
+        "BWM"
+      ]
+    },
+    {
+      "town": "Kalyan East",
+      "stores": 2,
+      "store_ids": [
+        "KET",
+        "KLE"
+      ]
+    },
+    {
+      "town": "Titwala",
+      "stores": 2,
+      "store_ids": [
+        "TGR",
+        "TTL"
+      ]
+    },
+    {
+      "town": "Ulhasnagar",
+      "stores": 2,
+      "store_ids": [
+        "ULN",
+        "ULN4"
+      ]
+    },
+    {
+      "town": "Ambernath",
+      "stores": 1,
+      "store_ids": [
+        "PRCAME/PRCAMEN"
+      ]
+    },
+    {
+      "town": "Bhiwandi (Anjur)",
+      "stores": 1,
+      "store_ids": [
+        "Bap"
+      ]
+    },
+    {
+      "town": "Bhiwandi-Kalyan belt",
+      "stores": 1,
+      "store_ids": [
+        "KBG"
+      ]
+    },
+    {
+      "town": "Diva / Dombivali",
+      "stores": 1,
+      "store_ids": [
+        "DSR"
+      ]
+    },
+    {
+      "town": "Kalyan-Bhiwandi Rd",
+      "stores": 1,
+      "store_ids": [
+        "KBR"
+      ]
+    },
+    {
+      "town": "Khapoli",
+      "stores": 1,
+      "store_ids": [
+        "KHP"
+      ]
+    },
+    {
+      "town": "Khoni (MIDC)",
+      "stores": 1,
+      "store_ids": [
+        "KMR"
+      ]
+    },
+    {
+      "town": "Kudus (Wada)",
+      "stores": 1,
+      "store_ids": [
+        "KUD"
+      ]
+    },
+    {
+      "town": "Mumbra (Kausa)",
+      "stores": 1,
+      "store_ids": [
+        "NWM"
+      ]
+    },
+    {
+      "town": "Murbad",
+      "stores": 1,
+      "store_ids": [
+        "MUBD"
+      ]
+    },
+    {
+      "town": "Neral",
+      "stores": 1,
+      "store_ids": [
+        "NKR"
+      ]
+    },
+    {
+      "town": "Nilje / Diva",
+      "stores": 1,
+      "store_ids": [
+        "NSR"
+      ]
+    },
+    {
+      "town": "Padgha",
+      "stores": 1,
+      "store_ids": [
+        "PAD"
+      ]
+    },
+    {
+      "town": "Rasayani",
+      "stores": 1,
+      "store_ids": [
+        "RCM"
+      ]
+    },
+    {
+      "town": "Shahad",
+      "stores": 1,
+      "store_ids": [
+        "SHD"
+      ]
+    },
+    {
+      "town": "Shahapur",
+      "stores": 1,
+      "store_ids": [
+        "SHAP"
+      ]
+    },
+    {
+      "town": "Shilphata",
+      "stores": 1,
+      "store_ids": [
+        "DOE/DER"
+      ]
+    },
+    {
+      "town": "Thakurli / Dombivali",
+      "stores": 1,
+      "store_ids": [
+        "THE"
+      ]
+    },
+    {
+      "town": "Vangani",
+      "stores": 1,
+      "store_ids": [
+        "VGW"
+      ]
+    },
+    {
+      "town": "Vasind",
+      "stores": 1,
+      "store_ids": [
+        "VAS"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patel Retail Dashboard</title>
+    <meta
+      name="description"
+      content="Patel Retail Ltd — store network map, proximity/cannibalisation risk, and unit economics, built for investment-diligence review."
+    />
+
+    <!--
+      Libraries via CDN (no build step), same discipline as the donor: every
+      lib is `typeof`-guarded in JS and the page degrades instead of breaking
+      if a CDN is blocked.
+    -->
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide icons (pinned, matches the donor's version) -->
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+
+    <!-- Leaflet (map) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- PDF / Excel export (used later by report.js / export-xlsx.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/patel.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='%237c3aed'/><stop offset='1' stop-color='%2306b6d4'/></linearGradient></defs><rect width='100' height='100' rx='24' fill='url(%23g)'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>P</text></svg>"
+    />
+  </head>
+  <body>
+    <!-- Gradient-mesh background -->
+    <div class="mesh" aria-hidden="true"></div>
+    <div class="mesh-veil" aria-hidden="true"></div>
+
+    <div class="app" id="app">
+      <!-- ============================ ZONE 1: HEADER ======================= -->
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">◆</div>
+          <div class="brand-text">
+            <span class="brand-name">Patel Retail</span>
+            <span class="brand-sub">Store Network &amp; Diligence</span>
+          </div>
+        </div>
+
+        <div class="viewtabs" id="viewtabs">
+          <button class="vtab active" data-view="map">
+            <i data-lucide="map" class="i16"></i><span>Network Map</span>
+          </button>
+          <button class="vtab" data-view="economics">
+            <i data-lucide="calculator" class="i16"></i><span>Store Economics</span>
+          </button>
+        </div>
+
+        <label class="highlight-toggle" title="Dim everything except figures labelled 'estimate'">
+          <input type="checkbox" id="highlightEstimates" />
+          <i data-lucide="flag" class="i16"></i>
+          <span>Highlight estimates</span>
+        </label>
+      </header>
+
+      <!-- ============================ ZONE 2: CONTENT ====================== -->
+      <main class="content">
+        <div class="content-inner">
+          <!-- ---------------- Network Map view ---------------- -->
+          <div id="viewMap" class="view">
+            <section class="kpi-grid fade-up d1" id="mapKpis">
+              <!-- populated by map.js -->
+            </section>
+
+            <section class="fade-up d2">
+              <div class="card lift map-card">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-primary)">
+                        <i data-lucide="map-pin" class="i16"></i>
+                      </span>
+                      53-Store Network
+                    </h3>
+                    <div class="sub">Coloured by vintage · low-confidence addresses shown as an uncertainty circle, not a pin</div>
+                  </div>
+                  <span class="badge analytics">Diligence view</span>
+                </div>
+                <div class="card-body pad0">
+                  <div id="mapContainer" class="map-container"></div>
+                  <div class="map-legend" id="mapLegend"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-up d3" style="margin-top: 20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-cool)">
+                        <i data-lucide="layers" class="i16"></i>
+                      </span>
+                      Town Clusters
+                    </h3>
+                    <div class="sub">Towns with 2+ stores — where cannibalisation is visible without any sales data</div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table" id="clusterTable">
+                      <thead>
+                        <tr>
+                          <th>Town</th>
+                          <th>Stores</th>
+                          <th>Store IDs</th>
+                        </tr>
+                      </thead>
+                      <tbody id="clusterTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /viewMap -->
+
+          <!-- ---------------- Store Economics view ---------------- -->
+          <div id="viewEconomics" class="view hidden">
+            <section class="kpi-grid fade-up d1" id="econKpis"></section>
+
+            <section class="layout-main fade-up d2">
+              <div class="stack">
+                <!-- Revenue/sq ft discrepancy -->
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-warm)">
+                          <i data-lucide="git-compare" class="i16"></i>
+                        </span>
+                        Revenue per sq ft — the two client files disagree
+                      </h3>
+                      <div class="sub">Not averaged, not picked silently — shown side by side</div>
+                    </div>
+                  </div>
+                  <div class="card-body" id="revSqftCompare"></div>
+                </div>
+
+                <!-- Store P&L reconciliation -->
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-primary)">
+                          <i data-lucide="receipt" class="i16"></i>
+                        </span>
+                        Store P&amp;L — built from reported unit economics
+                      </h3>
+                      <div class="sub">Every input below is <span class="kind-pill kind-reported">reported</span> · the EBITDA line is computed here, not stored pre-baked</div>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <table class="metric-table" id="pnlTable"></table>
+                  </div>
+                </div>
+
+                <div class="card lift" id="reconciliationFlagCard"></div>
+              </div>
+
+              <div class="stack">
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-cool)">
+                          <i data-lucide="ruler" class="i16"></i>
+                        </span>
+                        Area per store
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="card-body" id="areaEstimateBlock"></div>
+                </div>
+
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-warm)">
+                          <i data-lucide="tags" class="i16"></i>
+                        </span>
+                        Private label vs peers
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="card-body" id="peerCompareBlock"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <!-- /viewEconomics -->
+        </div>
+      </main>
+
+      <!-- ============================ ZONE 3: FOOTER ======================= -->
+      <footer class="footer">
+        <div class="f-left">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>Patel Retail Dashboard</span>
+          <span class="hide-sm" style="color: var(--text-4)">— built for investment-diligence review, not the company</span>
+        </div>
+        <div class="f-right">
+          <span class="hide-sm" id="footStatus">Loading…</span>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ============================ STORE SLIDE-OVER ===================== -->
+    <div class="modal-scrim" id="sheetModal">
+      <div class="sheet" id="sheetEl">
+        <div class="sheet-hero">
+          <div class="sh-top">
+            <div>
+              <h2 id="sheetName">Store</h2>
+              <div class="sh-meta" id="sheetMeta"><!-- pills injected --></div>
+            </div>
+            <button class="sheet-close" id="sheetClose" aria-label="Close">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+        </div>
+        <div class="sheet-scroll" id="sheetScroll"><!-- body injected --></div>
+      </div>
+    </div>
+
+    <!-- Toasts -->
+    <div class="toast-wrap" id="toastWrap"></div>
+
+    <!-- App logic (ES modules) -->
+    <script type="module" src="./js/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,242 @@
+/* =============================================================================
+   Patel Retail Dashboard — page-specific additions on top of the copied
+   design system (styles.css, kept unchanged — see PATEL-HANDOFF.md §3).
+   Every colour below reuses the existing --brand-*/--text-*/--ok/--warn/etc.
+   tokens rather than introducing new hardcoded colours, so a rebrand still
+   only touches styles.css :root.
+   ========================================================================== */
+
+/* ---- Map ---- */
+.map-card .card-body {
+  padding: 0;
+}
+.map-container {
+  height: min(70vh, 640px);
+  width: 100%;
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  background: var(--bg-base);
+}
+/* Leaflet's own CSS sets a lower z-index baseline that clashes with the
+   glassy header/sheet stack — keep the map's stacking local to its card. */
+.map-container.leaflet-container {
+  font-family: var(--font-body);
+  z-index: 0;
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--hairline);
+  font-size: 12px;
+  color: var(--text-3);
+}
+.map-legend .lg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.map-legend .lg-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.map-legend .lg-ring {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px dashed var(--text-4);
+  flex-shrink: 0;
+}
+
+/* Leaflet popup, restyled to match the glass-card look instead of its default. */
+.leaflet-popup-content-wrapper {
+  background: var(--surface-solid);
+  border-radius: var(--r-md);
+  box-shadow: var(--shadow-md);
+}
+.leaflet-popup-content {
+  margin: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-1);
+}
+.leaflet-popup-content strong {
+  font-family: var(--font-display);
+}
+
+/* ---- Provenance / kind pills (reported | derived | estimate) ---- */
+.kind-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.kind-pill.kind-reported { color: var(--ok); background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.24); }
+.kind-pill.kind-derived  { color: var(--busy); background: rgba(99, 102, 241, 0.12); border-color: rgba(99, 102, 241, 0.24); }
+.kind-pill.kind-estimate { color: var(--warn); background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.24); }
+
+/* ---- Reconciliation / discrepancy callouts ---- */
+.flag-card {
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.06);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.flag-card .flag-ico {
+  color: var(--warn);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.flag-card p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.flag-card p + p {
+  margin-top: 8px;
+}
+.flag-card .flag-title {
+  font-weight: 700;
+  color: var(--text-1);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 14px 0;
+}
+.compare-box {
+  border-radius: var(--r-sm);
+  padding: 14px 16px;
+  border: 1px solid var(--hairline);
+  background: var(--surface-hover);
+}
+.compare-box.used {
+  border-color: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.06);
+}
+.compare-box .cb-label {
+  font-size: 11px;
+  color: var(--text-3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.compare-box .cb-value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-1);
+  margin-top: 4px;
+}
+.compare-box .cb-source {
+  font-size: 11.5px;
+  color: var(--text-4);
+  margin-top: 4px;
+}
+
+.metric-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.metric-table td {
+  padding: 8px 4px;
+  border-bottom: 1px solid var(--hairline);
+}
+.metric-table td:first-child {
+  color: var(--text-3);
+}
+.metric-table td:last-child {
+  text-align: right;
+  font-family: var(--font-mono);
+  color: var(--text-1);
+  font-weight: 600;
+}
+.metric-table tr.total td {
+  border-top: 2px solid var(--hairline-strong);
+  border-bottom: none;
+  font-weight: 700;
+  padding-top: 12px;
+}
+.metric-table tr.total td:last-child {
+  color: var(--busy);
+}
+
+/* ---- Estimate-highlight toggle: dims everything except [data-kind="estimate"] ---- */
+.app.highlight-estimates [data-kind="estimate"] {
+  outline: 2px solid var(--warn);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+.app.highlight-estimates [data-kind]:not([data-kind="estimate"]) {
+  opacity: 0.45;
+}
+
+.highlight-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: pointer;
+  user-select: none;
+}
+.highlight-toggle input {
+  accent-color: var(--warn);
+}
+
+/* ---- Store slide-over extras ---- */
+.sheet-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+.sheet-stat {
+  border-radius: var(--r-sm);
+  padding: 12px;
+  background: var(--surface-hover);
+  border: 1px solid var(--hairline);
+  text-align: center;
+}
+.sheet-stat .ss-value {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+.sheet-stat .ss-label {
+  font-size: 10.5px;
+  color: var(--text-3);
+  margin-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 640px) {
+  .compare-row {
+    grid-template-columns: 1fr;
+  }
+  .sheet-stat-row {
+    grid-template-columns: 1fr;
+  }
+}
