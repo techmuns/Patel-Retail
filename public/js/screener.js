@@ -11,7 +11,7 @@
  * exist, not building a parallel system.
  */
 import { qs, qsa, escapeHtml, refreshIcons, toast } from "./ui.js";
-import { haversineKm, round2, overlapRisk, RISK_DENSITY_SATURATION, RISK_PROXIMITY_HORIZON_KM } from "./geo.js";
+import { haversineKm, round2, overlapRisk, isLocatable, RISK_DENSITY_SATURATION, RISK_PROXIMITY_HORIZON_KM } from "./geo.js";
 
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 // Same bounding box as scripts/geocode.mjs — Thane–Raigad–Palghar belt.
@@ -26,15 +26,16 @@ async function loadJson(path) {
   return res.json();
 }
 
+/** ALL 53 stores, not just geocoded ones — "distance to every own store" is a literal promise; unlocatable ones show as such rather than being silently dropped. */
 async function getStores() {
   if (!storesCache) {
     const data = await loadJson("./data/stores.json");
-    storesCache = data.stores.filter((s) => s.lat != null && s.lng != null);
+    storesCache = data.stores;
   }
   return storesCache;
 }
 
-/** null if the file doesn't exist yet (scripts/scrape-dmart.mjs hasn't run) — a fetch 404 is expected, not an error. */
+/** null if the file doesn't exist yet (scripts/fetch-dmart-overpass.mjs hasn't run) — a fetch 404 is expected, not an error. */
 async function getCompetitors() {
   if (competitorsCache !== null) return competitorsCache;
   try {
@@ -69,24 +70,23 @@ async function geocodeAddress(address) {
   return { lat: parseFloat(top.lat), lng: parseFloat(top.lon), formatted_address: top.display_name };
 }
 
-function renderKpis(candidate, ranked, within, nearestCompetitor) {
+function renderKpis(candidate, nearest, within, nearestCompetitor, locatableCount, totalOperational) {
   const el = qs("#screenerKpis");
-  const nearest = ranked[0];
   el.innerHTML = `
     <div class="kpi k1">
       <div class="kpi-top"><span class="kpi-label">Nearest Own Store</span><span class="kpi-ico"><i data-lucide="building-2"></i></span></div>
       <div class="kpi-value" style="font-size:22px">${nearest ? nearest.km + " km" : "—"}</div>
-      <div class="kpi-delta">${nearest ? escapeHtml(nearest.store.name) : "—"}</div>
+      <div class="kpi-delta">${nearest ? escapeHtml(nearest.store.name) : `Unavailable — 0 of ${totalOperational} own stores precisely located`}</div>
     </div>
     <div class="kpi k2">
       <div class="kpi-top"><span class="kpi-label">Own Stores Within 3km</span><span class="kpi-ico"><i data-lucide="circle-dot"></i></span></div>
       <div class="kpi-value">${within["3km"]}</div>
-      <div class="kpi-delta"><i data-lucide="crosshair" class="i16"></i> ${within["1km"]} within 1km · ${within["5km"]} within 5km</div>
+      <div class="kpi-delta"><i data-lucide="crosshair" class="i16"></i> ${within["1km"]} within 1km · ${within["5km"]} within 5km <span style="color:var(--text-4)">(of ${locatableCount} of ${totalOperational} locatable)</span></div>
     </div>
     <div class="kpi k3">
       <div class="kpi-top"><span class="kpi-label">Nearest DMart</span><span class="kpi-ico"><i data-lucide="store"></i></span></div>
       <div class="kpi-value" style="font-size:${nearestCompetitor ? "22px" : "15px"}">${nearestCompetitor ? nearestCompetitor.km + " km" : "Not available yet"}</div>
-      <div class="kpi-delta">${nearestCompetitor ? "" : `<i data-lucide="info" class="i16"></i> Run scripts/scrape-dmart.mjs first`}</div>
+      <div class="kpi-delta">${nearestCompetitor ? "<i data-lucide=\"info\" class=\"i16\"></i> OpenStreetMap — coverage may be incomplete" : `<i data-lucide="info" class="i16"></i> No competitor data available`}</div>
     </div>
     <div class="kpi k4">
       <div class="kpi-top"><span class="kpi-label">Candidate Site</span><span class="kpi-ico"><i data-lucide="map-pin"></i></span></div>
@@ -100,14 +100,18 @@ function renderKpis(candidate, ranked, within, nearestCompetitor) {
 function renderTable(ranked) {
   const body = qs("#screenerTableBody");
   body.innerHTML = ranked
-    .map(
-      (r) => `
-    <tr>
-      <td>${escapeHtml(r.store.name)} <span class="mono" style="color:var(--text-4); font-size:11px">${escapeHtml(r.store.store_id)}</span></td>
+    .map((r) => {
+      const distanceCell =
+        r.km != null
+          ? `<td class="mono">${r.km} km</td>`
+          : `<td class="mono" style="color:var(--text-4)" title="${escapeHtml(r.store.geocode_match_tier === "town" || r.store.geocode_match_tier === "town_base" ? "Only geocoded to its town centre, not its own address" : "Not geocoded yet")}">Unavailable</td>`;
+      return `
+    <tr${r.km == null ? ' style="opacity:0.55"' : ""}>
+      <td>${escapeHtml(r.store.name)} <span class="mono" style="color:var(--text-4); font-size:11px">${escapeHtml(r.store.store_id)}</span>${r.store.status === "closed" ? ' <span class="chip failed" style="padding:2px 7px;font-size:10px">closed</span>' : ""}</td>
       <td>${escapeHtml(r.store.town)}</td>
-      <td class="mono">${r.km} km</td>
-    </tr>`
-    )
+      ${distanceCell}
+    </tr>`;
+    })
     .join("");
 }
 
@@ -118,10 +122,16 @@ function goNoGoRead(risk) {
   return { label: "Low overlap at the geography level", tone: "ok" };
 }
 
-function renderRiskCard(risk, nearest, within) {
+function renderRiskCard(risk, nearest, within, locatableCount, totalOperational) {
   const el = qs("#screenerRiskCard");
   const read = goNoGoRead(risk);
   const toneColor = { ok: "var(--ok)", warn: "var(--warn)", err: "var(--err)", muted: "var(--text-4)" }[read.tone];
+
+  const unavailableNote =
+    risk == null
+      ? `<p class="risk-sentence"><strong>Distance unavailable.</strong> None of Patel's ${totalOperational} operational stores are precisely located yet (${locatableCount} locatable right now) — nothing to compare this site against.</p>`
+      : "";
+
   el.innerHTML = `
     <div class="card-head">
       <div>
@@ -141,22 +151,25 @@ function renderRiskCard(risk, nearest, within) {
           <span class="kind-pill kind-derived">derived</span>
           <span class="risk-block-title">Same formula as the network map</span>
         </div>
-        <p class="risk-sentence">
+        ${
+          unavailableNote ||
+          `<p class="risk-sentence">
           One 0–1 number blending how close the nearest own store is (closer&nbsp;=&nbsp;higher, reaches 0 at ${RISK_PROXIMITY_HORIZON_KM}&nbsp;km)
           with how many own stores sit within 3&nbsp;km (more&nbsp;=&nbsp;higher, saturates at ${RISK_DENSITY_SATURATION}) —
           geography only. This is a screening signal for a candidate site, computed with the identical components used
           for existing stores, not a separate metric.
         </p>
         <div class="risk-inputs">
-          <div class="risk-input"><span class="ri-label">Nearest own store</span><span class="ri-value">${nearest ? `${nearest.km} km (${escapeHtml(nearest.store.store_id)})` : "—"}</span></div>
-          <div class="risk-input"><span class="ri-label">Own stores within 3 km</span><span class="ri-value">${within["3km"]}</span></div>
-          <div class="risk-input muted"><span class="ri-label">Nearest competitor</span><span class="ri-value">Not available yet</span></div>
+          <div class="risk-input"><span class="ri-label">Nearest own store</span><span class="ri-value">${nearest.km} km (${escapeHtml(nearest.store.store_id)})</span></div>
+          <div class="risk-input"><span class="ri-label">Own stores within 3 km</span><span class="ri-value">${within["3km"]} <span style="color:var(--text-4);font-weight:400">(of ${locatableCount} of ${totalOperational} locatable)</span></span></div>
+          <div class="risk-input muted"><span class="ri-label">Nearest competitor</span><span class="ri-value">Shown above (KPI) — not a factor in this composite</span></div>
         </div>
         <div class="risk-score-row">
           <span>Composite score</span>
-          <span class="risk-score-value">${risk != null ? risk.toFixed(2) : "—"}</span>
+          <span class="risk-score-value">${risk.toFixed(2)}</span>
         </div>
-        <p class="risk-caveat">Not a go/no-go decision by itself — a screening signal built only from Patel's own store geography, to be read alongside everything else the client already knows about a site.</p>
+        <p class="risk-caveat">Not a go/no-go decision by itself — a screening signal built only from Patel's own store geography, to be read alongside everything else the client already knows about a site. Only ever computed between two precisely-located points — never from a town-centroid coordinate.</p>`
+        }
       </div>
     </div>
   `;
@@ -178,17 +191,35 @@ async function runScreen(address) {
     }
 
     const [stores, competitors] = await Promise.all([getStores(), getCompetitors()]);
+
+    // Distance to every own store — but a store that's only geocoded to its
+    // town centroid can't honestly report one (its real position could be
+    // anywhere in town), so it gets `km: null` instead of a number computed
+    // from a centroid. Same rule build-proximity.mjs applies store-to-store.
     const ranked = stores
-      .map((store) => ({ store, km: round2(haversineKm(candidate, store)) }))
-      .sort((a, b) => a.km - b.km);
+      .map((store) => ({
+        store,
+        km: isLocatable(store) ? round2(haversineKm(candidate, store)) : null,
+      }))
+      .sort((a, b) => {
+        if (a.km == null && b.km == null) return a.store.name.localeCompare(b.store.name);
+        if (a.km == null) return 1; // unavailable rows sink to the bottom, not mixed into "nearest first"
+        if (b.km == null) return -1;
+        return a.km - b.km;
+      });
+
+    // Risk/nearest/within are about live cannibalisation threat, so — same
+    // as map.js/build-proximity.mjs — only OPERATIONAL, LOCATABLE stores count.
+    const operationalLocatable = ranked.filter((r) => r.store.status === "operational" && r.km != null);
+    const totalOperational = stores.filter((s) => s.status === "operational").length;
 
     const within = { "1km": 0, "3km": 0, "5km": 0 };
-    for (const r of ranked) {
+    for (const r of operationalLocatable) {
       if (r.km <= 1) within["1km"]++;
       if (r.km <= 3) within["3km"]++;
       if (r.km <= 5) within["5km"]++;
     }
-    const nearest = ranked[0] || null;
+    const nearest = operationalLocatable[0] || null;
     const risk = nearest ? overlapRisk(nearest.km, within["3km"]) : null;
 
     let nearestCompetitor = null;
@@ -200,9 +231,9 @@ async function runScreen(address) {
       nearestCompetitor = compRanked[0] || null;
     }
 
-    renderKpis(candidate, ranked, within, nearestCompetitor);
+    renderKpis(candidate, nearest, within, nearestCompetitor, operationalLocatable.length, totalOperational);
     renderTable(ranked);
-    renderRiskCard(risk, nearest, within);
+    renderRiskCard(risk, nearest, within, operationalLocatable.length, totalOperational);
 
     qs("#screenerResults").style.display = "";
     qs("#screenerEmpty").innerHTML = "";

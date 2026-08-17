@@ -1,0 +1,219 @@
+{
+  "source": "openstreetmap_overpass",
+  "source_url": "https://overpass-api.de/api/interpreter",
+  "query": "[out:json][timeout:60];\nnode[\"shop\"=\"supermarket\"][\"name\"~\"DMart|D-Mart|D Mart\",i]\n  (18.6,72.7,19.8,73.6);\nout;",
+  "caveat": "OpenStreetMap coverage is community-maintained and likely incomplete — absence of a DMart here does not mean one doesn't exist; treat this as a lower bound, not an authoritative count. The name-match query is a case-insensitive substring match and has at least one known false positive (a 'food mart' matched 'D Mart' as a substring of '...d mart'); every entry carries brand_tag_confirms_dmart so false positives can be filtered without the script silently guessing which ones to drop. Not yet wired into build-proximity.mjs or the risk score.",
+  "scraped_at": "2026-08-17T11:31:52.000Z",
+  "banner": "DMart",
+  "stores": [
+    {
+      "competitor_id": "DMART-001",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.2131555,
+      "lng": 72.8422201,
+      "osm_id": 1416514757,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": "Boraspada Road, Mumbai, Maharashtra"
+    },
+    {
+      "competitor_id": "DMART-002",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.209009,
+      "lng": 72.8739023,
+      "osm_id": 2097757617,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-003",
+      "banner": "DMart",
+      "name": "food mart",
+      "lat": 19.0191704,
+      "lng": 73.0877987,
+      "osm_id": 3217172641,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": "sec 35, kamothe, navi mumbai"
+    },
+    {
+      "competitor_id": "DMART-004",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1108399,
+      "lng": 72.8975037,
+      "osm_id": 3602880296,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-005",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.0420768,
+      "lng": 73.0768214,
+      "osm_id": 3761150243,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": "Sector 15, Kharghar"
+    },
+    {
+      "competitor_id": "DMART-006",
+      "banner": "DMart",
+      "name": "Dmart",
+      "lat": 19.2322176,
+      "lng": 72.9688757,
+      "osm_id": 4154086789,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": "Gladys Alwares Road, mumbai"
+    },
+    {
+      "competitor_id": "DMART-007",
+      "banner": "DMart",
+      "name": "D Mart",
+      "lat": 18.9309697,
+      "lng": 73.3214464,
+      "osm_id": 5249888957,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-008",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.7816386,
+      "lng": 72.788857,
+      "osm_id": 5604960273,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-009",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.4595659,
+      "lng": 72.8014383,
+      "osm_id": 7194917432,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": "Ram Mandir Road, Palghar"
+    },
+    {
+      "competitor_id": "DMART-010",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1859626,
+      "lng": 72.8356655,
+      "osm_id": 8170851537,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": "Link Road"
+    },
+    {
+      "competitor_id": "DMART-011",
+      "banner": "DMart",
+      "name": "d-mart",
+      "lat": 19.2994717,
+      "lng": 72.8350723,
+      "osm_id": 8428886633,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-012",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.2813986,
+      "lng": 72.8763736,
+      "osm_id": 8464424453,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-013",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.163755,
+      "lng": 72.9401689,
+      "osm_id": 9887550804,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-014",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.081222,
+      "lng": 72.8923176,
+      "osm_id": 11400865995,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-015",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1833648,
+      "lng": 73.165036,
+      "osm_id": 11499744620,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-016",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1167001,
+      "lng": 72.9103497,
+      "osm_id": 11697857176,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-017",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.0388723,
+      "lng": 73.0201099,
+      "osm_id": 12307075697,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-018",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1118525,
+      "lng": 72.8751802,
+      "osm_id": 12960843831,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-019",
+      "banner": "DMart",
+      "name": "DMart",
+      "lat": 19.1222675,
+      "lng": 72.9995105,
+      "osm_id": 13375392095,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": true,
+      "address": null
+    }
+  ]
+}

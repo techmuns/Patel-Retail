@@ -16,6 +16,10 @@
  *      — a town centroid, not the store, even for a store that happens not
  *      to collide with a sibling (e.g. the only Patel store in its town).
  *
+ * geo_source: "client" stores (pasted by the client via a Google Maps link
+ * — see scripts/apply-client-coords.mjs) are EXCLUDED from all four checks.
+ * That's authoritative input, not an inference to second-guess.
+ *
  * This script only READS and REPORTS — it never edits stores.json. Corrections
  * belong in stores.json by hand, with geo_source set to "manual" so the
  * provenance stays honest about what's geocoded vs. eyeballed.
@@ -53,8 +57,10 @@ function coordKey(store) {
 async function main() {
   const raw = await readFile(STORES_PATH, "utf8");
   const data = JSON.parse(raw);
-  const geocoded = data.stores.filter((s) => s.lat != null && s.lng != null);
-  const notGeocoded = data.stores.length - geocoded.length;
+  const allGeocoded = data.stores.filter((s) => s.lat != null && s.lng != null);
+  const clientTrusted = allGeocoded.filter((s) => s.geo_source === "client");
+  const geocoded = allGeocoded.filter((s) => s.geo_source !== "client"); // checked below
+  const notGeocoded = data.stores.length - allGeocoded.length;
 
   const flags = []; // { store_id, reasons: [...] }
   const flagFor = (store, reason) => {
@@ -101,7 +107,9 @@ async function main() {
     }
   }
 
-  console.log(`${geocoded.length}/${data.stores.length} stores geocoded (${notGeocoded} pending).`);
+  console.log(
+    `${allGeocoded.length}/${data.stores.length} stores geocoded (${notGeocoded} pending) — ${clientTrusted.length} client-supplied and trusted without checks, ${geocoded.length} checked below.`
+  );
   console.log(`${flags.length} store(s) flagged for manual review:\n`);
 
   flags.sort((a, b) => a.store_id.localeCompare(b.store_id));

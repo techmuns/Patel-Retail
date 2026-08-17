@@ -25,7 +25,8 @@
       "geo_source": null,
       "geocode_query": "Bapgav (nr Kohinoor Developer), Bhiwandi-Kalyan belt, Thane, Maharashtra, India",
       "area_sqft": 5000,
-      "area_kind": "estimate"
+      "area_kind": "estimate",
+      "gmaps_link": null
     },
     {
       "store_id": "RCM",
@@ -47,7 +48,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Rasayani, Khalapur Taluka, Raigad, Maharashtra, 410222, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Rasayani, Raigad, Maharashtra, India"
+      "geocode_query_used": "Rasayani, Raigad, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "THE",
@@ -69,7 +71,8 @@
       "geocode_match_tier": "structured",
       "geocode_formatted_address": "90ft Road, Thakurli, Dombivli, Dombivali, Kalyan Subdistrict, Thane, Maharashtra, 421201, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "street=90ft Rd, Thakurli; city=Thakurli / Dombivali"
+      "geocode_query_used": "street=90ft Rd, Thakurli; city=Thakurli / Dombivali",
+      "gmaps_link": null
     },
     {
       "store_id": "TGR",
@@ -91,7 +94,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Titwala Road, Titwala, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421103, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Titwala-Goveli Rd, Titwala, Thane, Maharashtra, India"
+      "geocode_query_used": "Titwala-Goveli Rd, Titwala, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "NSR",
@@ -109,7 +113,8 @@
       "geo_source": null,
       "geocode_query": "Nileje Station Rd, Nilje / Diva, Thane, Maharashtra, India",
       "area_sqft": 5000,
-      "area_kind": "estimate"
+      "area_kind": "estimate",
+      "gmaps_link": null
     },
     {
       "store_id": "NWM",
@@ -132,7 +137,8 @@
       "geocode_formatted_address": "Kausa Talav Pali Road, Amrut Nagar, Shill Gaon, Thane, Thane Subdistrict, Thane, Maharashtra, 400708, India",
       "geocode_location_type": "road",
       "geocode_query_used": "Kausa Talav",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "KUD",
@@ -154,7 +160,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "PHC Kudus, SH 35, Kudus, Wada Subdistrict, Palghar, Maharashtra, 421312, India",
       "geocode_location_type": "healthcare",
-      "geocode_query_used": "Kudus, Kudus (Wada), Palghar, Maharashtra, India"
+      "geocode_query_used": "Kudus, Kudus (Wada), Palghar, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DNE",
@@ -176,7 +183,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Cross Nandivali Road, Sagaon, Dombivli, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421203, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Nandivali, Dombivli (E), Dombivali East, Thane, Maharashtra, India"
+      "geocode_query_used": "Nandivali, Dombivli (E), Dombivali East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KYD",
@@ -198,7 +206,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Shopen India, 304 Phase 2 Bldg No 4, Khadakpada, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421301, India",
       "geocode_location_type": "retail",
-      "geocode_query_used": "Kalyan (West), Kalyan West, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan (West), Kalyan West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DAG/DOEMIDC",
@@ -220,7 +229,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "State Bank of India, Tilak Road, Dombivli East, Dombivli, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421201, India",
       "geocode_location_type": "amenity",
-      "geocode_query_used": "Dombivli (E), Dombivali East, Thane, Maharashtra, India"
+      "geocode_query_used": "Dombivli (E), Dombivali East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "AVB",
@@ -242,7 +252,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Rural Hospital, Ambadi Naka, NH848, Umberpada, Bhiwandi Subdistrict, Thane, Maharashtra, 421302, India",
       "geocode_location_type": "amenity",
-      "geocode_query_used": "Ambadi Naka, Bhiwandi, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambadi Naka, Bhiwandi, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KBR",
@@ -264,7 +275,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Kalyan Bypass, Kalyan Bhiwandi Road, Kon, Bhiwandi Subdistrict, Thane, Maharashtra, 421311, India",
       "geocode_location_type": "highway",
-      "geocode_query_used": "Kalyan-Bhiwandi Road, Kalyan-Bhiwandi Rd, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan-Bhiwandi Road, Kalyan-Bhiwandi Rd, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DSR",
@@ -287,7 +299,8 @@
       "geocode_formatted_address": "Sudama Regency, Diva, Thane, Thane Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "railway",
       "geocode_query_used": "Sudama Regency",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "NKR",
@@ -309,7 +322,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Neral, Karjat Taluka, Raigad, Maharashtra, 410101, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Neral, Raigad, Maharashtra, India"
+      "geocode_query_used": "Neral, Raigad, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KET",
@@ -331,7 +345,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Vijay Nagar Road, Kalyan East, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Vijay Nagar, Kalyan (East), Kalyan East, Thane, Maharashtra, India"
+      "geocode_query_used": "Vijay Nagar, Kalyan (East), Kalyan East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "BBVR",
@@ -353,7 +368,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Bhiwandi, Bhiwandi Subdistrict, Thane, Maharashtra, 421302, India",
       "geocode_location_type": "city",
-      "geocode_query_used": "Bhiwandi, Bhiwandi, Thane, Maharashtra, India"
+      "geocode_query_used": "Bhiwandi, Bhiwandi, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KMR",
@@ -371,7 +387,8 @@
       "geo_source": null,
       "geocode_query": "Khoni MIDC, Khoni (MIDC), Thane, Maharashtra, India",
       "area_sqft": 5000,
-      "area_kind": "estimate"
+      "area_kind": "estimate",
+      "gmaps_link": null
     },
     {
       "store_id": "DOW",
@@ -393,7 +410,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Kopar Road, Dombivli West, Dombivli, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421202, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Kopar Road, Dombivali (W), Dombivali West, Thane, Maharashtra, India"
+      "geocode_query_used": "Kopar Road, Dombivali (W), Dombivali West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "SHD",
@@ -415,7 +433,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Kalyan Station Road, Shahad, Ambivali, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Station Road, Shahad, Shahad, Thane, Maharashtra, India"
+      "geocode_query_used": "Station Road, Shahad, Shahad, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "BHAR",
@@ -437,7 +456,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Kalyan Naka, Agra Road, Kaneri, Bhiwandi, Bhiwandi Subdistrict, Thane, Maharashtra, 421302, India",
       "geocode_location_type": "junction",
-      "geocode_query_used": "Kalyan Naka, Bhiwandi, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan Naka, Bhiwandi, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "Bap",
@@ -459,7 +479,8 @@
       "geocode_match_tier": "locality",
       "geocode_formatted_address": "Anjur Phata, NH848, Narpoli, Kalher, Bhiwandi Subdistrict, Thane, Maharashtra, 400607, India",
       "geocode_location_type": "highway",
-      "geocode_query_used": "Anjur Phata, Bhiwandi, Thane, Maharashtra, India"
+      "geocode_query_used": "Anjur Phata, Bhiwandi, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "PAD",
@@ -481,7 +502,8 @@
       "geocode_match_tier": "locality",
       "geocode_formatted_address": "PHC, Padgha, Mumbai Agra National Highway, Padagha, Bhiwandi Subdistrict, Thane, Maharashtra, 421101, India",
       "geocode_location_type": "healthcare",
-      "geocode_query_used": "Padgha, Bhiwandi, Thane, Maharashtra, India"
+      "geocode_query_used": "Padgha, Bhiwandi, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "VGW",
@@ -503,7 +525,8 @@
       "geocode_match_tier": "locality",
       "geocode_formatted_address": "Vangani, Ambernath Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "village",
-      "geocode_query_used": "Vangani (E), Thane, Maharashtra, India"
+      "geocode_query_used": "Vangani (E), Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "VAS",
@@ -525,7 +548,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Vasind, Bhatsa Road, Vasind, Shahapur Subdistrict, Thane, Maharashtra, 421604, India",
       "geocode_location_type": "railway",
-      "geocode_query_used": "Vasind, Thane, Maharashtra, India"
+      "geocode_query_used": "Vasind, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "BES",
@@ -547,7 +571,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "BSNL Badlapur (East), MIDC Road, Badlapur MIDC, Badlapur, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
-      "geocode_query_used": "Badlapur East, Thane, Maharashtra, India"
+      "geocode_query_used": "Badlapur East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "BKHE",
@@ -570,7 +595,8 @@
       "geocode_formatted_address": "Kharvai, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
       "geocode_query_used": "Kharvai",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "BLEB",
@@ -593,7 +619,8 @@
       "geocode_formatted_address": "Gandhi Chowk, Badlapur, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
       "geocode_query_used": "Gandhi Chowk, Badlapur",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "BLEK",
@@ -616,7 +643,8 @@
       "geocode_formatted_address": "Katrap, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
       "geocode_query_used": "Katrap",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "BLWB",
@@ -638,7 +666,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Badlapur west Smashan Bhumi, kk road, Badlapur, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
-      "geocode_query_used": "Badlapur West, Thane, Maharashtra, India"
+      "geocode_query_used": "Badlapur West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "BWM",
@@ -661,7 +690,8 @@
       "geocode_formatted_address": "Manjarli, Kulgaon Badlapur, Ambernath Subdistrict, Thane, Maharashtra, 421503, India",
       "geocode_location_type": "amenity",
       "geocode_query_used": "Manjarli",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "AMSN",
@@ -683,7 +713,8 @@
       "geocode_match_tier": "town_base",
       "geocode_formatted_address": "Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "AMCH",
@@ -705,7 +736,8 @@
       "geocode_match_tier": "town_base",
       "geocode_formatted_address": "Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "AME",
@@ -728,7 +760,8 @@
       "geocode_formatted_address": "Shivaji Chowk, plot no 1, Ambarnath Station Road, Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, 421501, India",
       "geocode_location_type": "town",
       "geocode_query_used": "Shivaji Chowk, Ambernath",
-      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting."
+      "geocode_review_note": "Automatic fallback ladder landed on a town/town_base centroid shared with other stores; manually re-queried Nominatim with a narrower locality-only string, cross-checked district match and plausible distance from the town centroid before accepting.",
+      "gmaps_link": null
     },
     {
       "store_id": "AML",
@@ -750,7 +783,8 @@
       "geocode_match_tier": "town_base",
       "geocode_formatted_address": "Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "AMPL",
@@ -772,7 +806,8 @@
       "geocode_match_tier": "town_base",
       "geocode_formatted_address": "Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "AMW",
@@ -794,7 +829,8 @@
       "geocode_match_tier": "town_base",
       "geocode_formatted_address": "Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DOWSMT",
@@ -816,7 +852,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Shopen India, 304 Phase 2 Bldg No 4, Khadakpada, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421301, India",
       "geocode_location_type": "retail",
-      "geocode_query_used": "Dombivali West, Thane, Maharashtra, India"
+      "geocode_query_used": "Dombivali West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DWK",
@@ -838,7 +875,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Shopen India, 304 Phase 2 Bldg No 4, Khadakpada, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421301, India",
       "geocode_location_type": "retail",
-      "geocode_query_used": "Dombivali West, Thane, Maharashtra, India"
+      "geocode_query_used": "Dombivali West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DOF",
@@ -860,7 +898,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Phadke Road, Railway Colony, Thakurli, Dombivli, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421201, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Phadke Road, Dombivli (E), Dombivali East, Thane, Maharashtra, India"
+      "geocode_query_used": "Phadke Road, Dombivli (E), Dombivali East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DOM",
@@ -882,7 +921,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Manpada Road, Dombivli East, Dombivli, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421203, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Manpada Road, Dombivali (E), Dombivali East, Thane, Maharashtra, India"
+      "geocode_query_used": "Manpada Road, Dombivali (E), Dombivali East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KKW",
@@ -904,7 +944,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Kalyan West, Kalyan, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "suburb",
-      "geocode_query_used": "Kalyan West, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KLE",
@@ -926,7 +967,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Kalyan East, Kalyan, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "suburb",
-      "geocode_query_used": "Kalyan East, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan East, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KLK",
@@ -948,7 +990,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Khadakpada Road, Khadakpada, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Khadakpada, Kalyan (W), Kalyan West, Thane, Maharashtra, India"
+      "geocode_query_used": "Khadakpada, Kalyan (W), Kalyan West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KLT",
@@ -970,7 +1013,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Kalyan West, Kalyan, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "suburb",
-      "geocode_query_used": "Kalyan West, Thane, Maharashtra, India"
+      "geocode_query_used": "Kalyan West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KLW",
@@ -992,7 +1036,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Rambaug Lane Number 2, Khadakpada, Ambivali, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421306, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Rambaug, Kalyan (W), Kalyan West, Thane, Maharashtra, India"
+      "geocode_query_used": "Rambaug, Kalyan (W), Kalyan West, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "DOE/DER",
@@ -1014,7 +1059,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Shilphata, Shill Phata, Shill Gaon, Thane, Thane Subdistrict, Thane, Maharashtra, 410701, India",
       "geocode_location_type": "road",
-      "geocode_query_used": "Shilphata, Thane, Maharashtra, India"
+      "geocode_query_used": "Shilphata, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "MUBD",
@@ -1036,7 +1082,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Murbad, Murbad Subdistrict, Thane, Maharashtra, 421401, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Murbad, Thane, Maharashtra, India"
+      "geocode_query_used": "Murbad, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "SHAP",
@@ -1058,7 +1105,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Shahapur, Shahapur Subdistrict, Thane, Maharashtra, 421601, India",
       "geocode_location_type": "town",
-      "geocode_query_used": "Shahapur, Thane, Maharashtra, India"
+      "geocode_query_used": "Shahapur, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "TTL",
@@ -1080,7 +1128,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Titwala, Titwala - Ambivli Road, Titwala, Kalyan-Dombivli, Kalyan Subdistrict, Thane, Maharashtra, 421605, India",
       "geocode_location_type": "railway",
-      "geocode_query_used": "Titwala, Thane, Maharashtra, India"
+      "geocode_query_used": "Titwala, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "ULN",
@@ -1102,7 +1151,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Ulhasnagar, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "city",
-      "geocode_query_used": "Ulhasnagar, Thane, Maharashtra, India"
+      "geocode_query_used": "Ulhasnagar, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "ULN4",
@@ -1124,7 +1174,8 @@
       "geocode_match_tier": "town",
       "geocode_formatted_address": "Ulhasnagar, Ulhasnagar Subdistrict, Thane, Maharashtra, India",
       "geocode_location_type": "city",
-      "geocode_query_used": "Ulhasnagar, Thane, Maharashtra, India"
+      "geocode_query_used": "Ulhasnagar, Thane, Maharashtra, India",
+      "gmaps_link": null
     },
     {
       "store_id": "KHP",
@@ -1142,7 +1193,8 @@
       "geo_source": null,
       "geocode_query": "Khapoli, Khapoli, Raigad, Maharashtra, India",
       "area_sqft": 5000,
-      "area_kind": "estimate"
+      "area_kind": "estimate",
+      "gmaps_link": null
     },
     {
       "store_id": "PRCAME/PRCAMEN",
@@ -1164,7 +1216,8 @@
       "geocode_match_tier": "exact",
       "geocode_formatted_address": "Ambarnath, Ambarnath Station Rd., Ambernath, Ulhasnagar Subdistrict, Thane, Maharashtra, 421501, India",
       "geocode_location_type": "railway",
-      "geocode_query_used": "Ambernath, Ambernath, Thane, Maharashtra, India"
+      "geocode_query_used": "Ambernath, Ambernath, Thane, Maharashtra, India",
+      "gmaps_link": null
     }
   ]
 }

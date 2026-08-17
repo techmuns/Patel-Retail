@@ -11,6 +11,26 @@ function clamp(v, lo, hi) {
   return Math.min(hi, Math.max(lo, v));
 }
 
+/**
+ * A "coarse" geocode_match_tier means the point is a TOWN CENTROID, not the
+ * store's own address — every store that fell back to the same town lands
+ * on the identical coordinate. Any distance computed to/from a coarse-tier
+ * store is fabricated precision (a town can be several km across), so
+ * nothing in this app may report a number derived from one. Single source
+ * of truth for that classification — used by scripts/build-proximity.mjs,
+ * map.js, and screener.js so the rule can't drift between them.
+ */
+export const COARSE_MATCH_TIERS = new Set(["town", "town_base"]);
+
+export function isCoarseTier(matchTier) {
+  return COARSE_MATCH_TIERS.has(matchTier);
+}
+
+/** A store's own position is trustworthy enough to compute distances from/to. */
+export function isLocatable(store) {
+  return store.lat != null && store.lng != null && !isCoarseTier(store.geocode_match_tier);
+}
+
 export function haversineKm(a, b) {
   const toRad = (d) => (d * Math.PI) / 180;
   const dLat = toRad(b.lat - a.lat);

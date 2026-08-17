@@ -70,14 +70,19 @@ function renderKpis(stores, proximity) {
   }).length;
   const under2yrPct = Math.round((under2yr / stores.length) * 100);
 
-  const geocoded = proximity?.metadata?.geocoded_count ?? 0;
+  // Headline the LOCATABLE count, not the raw geocoded count — a town-centroid
+  // match technically "has coordinates" but isn't a precise location, and this
+  // KPI is the first number anyone sees, so it shouldn't overstate confidence.
+  const locatable = proximity?.metadata?.locatable_count ?? 0;
+  const coarse = proximity?.metadata?.coarse_count ?? 0;
   const total = proximity?.metadata?.total_stores ?? stores.length;
+  const pending = total - locatable - coarse;
   const geocodeDelta =
-    geocoded === 0
+    locatable === 0
       ? `<i data-lucide="alert-triangle" class="i16"></i> Run scripts/geocode.mjs`
-      : geocoded === total
-      ? `<i data-lucide="check" class="i16"></i> Fully geocoded`
-      : `<i data-lucide="loader" class="i16"></i> ${total - geocoded} pending`;
+      : locatable === total
+      ? `<i data-lucide="check" class="i16"></i> All precisely located`
+      : `<i data-lucide="info" class="i16"></i> ${coarse} town-centroid only · ${pending} pending`;
 
   el.innerHTML = `
     <div class="kpi k1">
@@ -96,8 +101,8 @@ function renderKpis(stores, proximity) {
       <div class="kpi-delta"><i data-lucide="info" class="i16"></i> Blended metrics mix mature + ramping stores</div>
     </div>
     <div class="kpi k4">
-      <div class="kpi-top"><span class="kpi-label">Geocoded</span><span class="kpi-ico"><i data-lucide="crosshair"></i></span></div>
-      <div class="kpi-value">${geocoded}<span class="unit">/ ${total}</span></div>
+      <div class="kpi-top"><span class="kpi-label">Precisely Located</span><span class="kpi-ico"><i data-lucide="crosshair"></i></span></div>
+      <div class="kpi-value">${locatable}<span class="unit">/ ${total}</span></div>
       <div class="kpi-delta">${geocodeDelta}</div>
     </div>
   `;
@@ -159,10 +164,29 @@ function openStoreSheet(store) {
   const nearest = prox?.nearest_own;
   const within = prox?.own_within;
   const risk = prox?.overlap_risk;
+  const locatableOthers = prox?.locatable_others;
+  const totalOtherOperational = prox?.total_other_operational;
 
-  const riskBlock = store.lat == null
-    ? `<p style="font-size:12.5px;color:var(--text-3)">Not computed — this store isn't geocoded yet.</p>`
-    : `
+  const UNAVAILABLE_REASON_TEXT = {
+    not_geocoded: "This store isn't geocoded yet.",
+    town_centroid:
+      "This store is only located to its town centre, not its own address — a distance computed from it would be fabricated precision, not a measurement.",
+    no_locatable_neighbors: "No other Patel stores are precisely geocoded yet to compare against.",
+  };
+
+  const riskBlock =
+    nearest == null
+      ? `
+    <div class="risk-block" data-kind="derived">
+      <div class="risk-block-head">
+        <span class="kind-pill kind-derived">derived</span>
+        <span class="risk-block-title">Cannibalisation risk score</span>
+      </div>
+      <p class="risk-sentence">
+        <strong>Distance unavailable.</strong> ${escapeHtml(UNAVAILABLE_REASON_TEXT[prox?.unavailable_reason] || "Not computed.")}
+      </p>
+    </div>`
+      : `
     <div class="risk-block" data-kind="derived">
       <div class="risk-block-head">
         <span class="kind-pill kind-derived">derived</span>
@@ -176,22 +200,22 @@ function openStoreSheet(store) {
       <div class="risk-inputs">
         <div class="risk-input">
           <span class="ri-label">Nearest own store</span>
-          <span class="ri-value">${nearest ? `${nearest.km} km (${escapeHtml(nearest.store_id)})` : "—"}</span>
+          <span class="ri-value">${nearest.km} km (${escapeHtml(nearest.store_id)})</span>
         </div>
         <div class="risk-input">
           <span class="ri-label">Own stores within 3 km</span>
-          <span class="ri-value">${within ? within["3km"] : "—"}</span>
+          <span class="ri-value">${within["3km"]} <span style="color:var(--text-4);font-weight:400">(of ${locatableOthers} of ${totalOtherOperational} other stores precisely located)</span></span>
         </div>
         <div class="risk-input muted">
           <span class="ri-label">Nearest competitor</span>
-          <span class="ri-value">Not available yet — competitor data hasn't been scraped</span>
+          <span class="ri-value">Known (OpenStreetMap) but not joined into this map yet — see Site Screener</span>
         </div>
       </div>
       <div class="risk-score-row">
         <span>Composite score</span>
         <span class="risk-score-value">${risk != null ? risk.toFixed(2) : "—"}</span>
       </div>
-      <p class="risk-caveat">Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against.</p>
+      <p class="risk-caveat">Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against. Only ever computed between two precisely-located stores — never from a town-centroid coordinate.</p>
     </div>`;
 
   qs("#sheetScroll").innerHTML = `

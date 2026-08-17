@@ -347,8 +347,54 @@ Ran `scripts/geocode.mjs` for real, Nominatim (no key). Ladder result:
 
 **What this fixed concretely:** the worst collision — 6 different Ambernath stores (`AMSN`, `AMCH`, `AME`, `AML`, `AMPL`, `AMW`) all landing on the exact same point — is down to 5 (only `AME` extracted; no confident independent match was found for the other 5, including `AMW`, despite trying). The Badlapur East 4-way collision (`BES`, `BKHE`, `BLEB`, `BLEK`) is down to 1 (`BES` still coarse).
 
-**Still open — genuinely needs either a human with local knowledge, a site visit, or a paid geocoder:**
-- 21 stores still at a town/town_base centroid (see `scripts/verify-geocode.mjs` output for the current list — re-run it, this list will have shrunk further if anyone does more manual passes).
+**Still open — genuinely needs either a human with local knowledge, a site visit, or the client:**
+- ~21 stores still at a town/town_base centroid (see `scripts/verify-geocode.mjs` output for the current, authoritative list — it shrinks as more corrections land).
 - 4 stores (`KBG`, `NSR`, `KMR`, `KHP`) have no coordinates at all yet.
 - `map.js` renders every coarse-tier match as a dashed uncertainty circle (not a pin) regardless of the store's own `geo_confidence`, specifically so this imprecision is visible on screen rather than silently plotted as if precise.
-- A `GOOGLE_MAPS_API_KEY` would very likely do better on the addresses that failed here (per the original §7 decision) — `scripts/geocode.mjs` picks it up automatically and only re-tries stores still missing `lat`/`lng`, so setting the key and re-running is non-destructive to what's already been manually verified.
+- **Superseded recommendation, kept for history:** this section used to suggest a `GOOGLE_MAPS_API_KEY` as the next step. §15 below changes that — asking the client for the ~24 remaining pins directly is cheaper and more authoritative than another automated pass, so that's the actual next step now, not a paid API key.
+
+## 15. Distance suppression, client-supplied coordinates, and DMart via Overpass
+
+Three fixes/changes from a review of the first geocoding pass — read this before touching `scripts/build-proximity.mjs`, `map.js`, or `screener.js`'s distance logic.
+
+### 15.1 Fabricated distances were a real bug, now fixed
+
+The first geocoding pass computed haversine distance between town-centroid coordinates same as any other pair. Consequence: the 5-way Ambernath collision (`AMSN`/`AMCH`/`AME`†/`AML`/`AMPL`/`AMW`, † `AME` since manually corrected) reported **"0.0 km apart, overlap_risk 1.00"** between stores whose real distance from each other is unknown — a confident-looking number with nothing behind it, in exactly the intra-town question (cannibalisation) this dashboard exists to answer. An uncertainty circle on the map doesn't fix this: people read the number in the slide-over, not the circle's presence.
+
+**Fixed in `scripts/build-proximity.mjs`, `public/js/geo.js`, `map.js`, `screener.js`:**
+- `public/js/geo.js` now exports `isLocatable(store)` / `isCoarseTier(tier)` — the single source of truth for "is this store's own position trustworthy enough to measure to/from." A tier of `"town"` or `"town_base"` is not; everything else (`exact`, `locality`, `structured`, `manual`, `client`) is.
+- `proximity.json` `pairs[]`: any pair where **either** store isn't locatable gets `km: null, precision: "town_centroid"` instead of a computed number. Pair count metadata now reports `pairs_with_real_distance` vs `pairs_suppressed_town_centroid` separately.
+- `proximity.json` `per_store[]`: `nearest_own` / `own_within` are computed **only** against other locatable, operational stores — never against a coarse one, and never at all if the store itself isn't locatable. Each entry now also carries `locatable_others` and `total_other_operational`, so "N of M stores locatable" can be shown honestly instead of a bare count with no denominator. `overlap_risk` is `null` (not a low number, not zero — `null`) whenever its inputs are unavailable.
+- The map's KPI strip headlines **"Precisely Located"** (the locatable count), not the raw geocoded count, since a town-centroid match technically "has coordinates" but isn't a location — the first number on screen shouldn't overstate confidence.
+- The store slide-over and the Site Screener both show **"Distance unavailable"** with the specific reason (not geocoded yet / only located to town centre / no locatable neighbours to compare against) wherever a figure would otherwise appear, instead of silently showing "—".
+- The Site Screener's own distance table lists every store (locatable or not — "distance to every own store" is a literal promise), sorts locatable ones nearest-first, and sinks unavailable ones to the bottom rather than mixing them in.
+
+Verified with a synthetic-coordinate test before touching real data: 3 clustered precise stores got real, distinct risk scores (0.96/0.93/0.93); 3 coincidentally-coplaced coarse stores got `locatable: false, overlap_risk: null` — not a fabricated 1.00. Re-ran against the real (58% coarse) dataset afterward: **28/53 stores are now correctly reported as precisely located** (down from a misleadingly-inflated 49/53 "geocoded" figure last round — geocoded and precisely-located are not the same thing, and the KPI strip now says so).
+
+### 15.2 Client-supplied coordinates (the cheap, authoritative fix)
+
+Query-ladder geocoding has hit its ceiling — more automated passes were not attempted after this review, per instruction. Instead: **the client can drop a pin on Google Maps for the ~24 still-approximate stores and paste the link** — minutes of his time, and authoritative rather than inferred.
+
+- Every store in `stores.json` now has an optional `gmaps_link` field (`null` by default).
+- **To use it:** paste a Google Maps link (long share link, the address-bar URL after opening a pin, or a `maps.app.goo.gl` short link — all handled) or a bare `"lat, lng"` string into a store's `gmaps_link`, then run `node scripts/apply-client-coords.mjs`. It sets `lat`/`lng`, `geo_source: "client"`, `geocode_match_tier: "client"`, and is safe to re-run (a corrected link overwrites the old point — client input always wins, unlike `geocode.mjs`'s ladder which skips anything already filled in).
+- Short-link resolution (`maps.app.goo.gl/...`) works over a plain HTTP redirect fetch — no browser needed. **Verified against a real live short link** during this session (not just the long-URL regex patterns): it resolved to a `.../search/lat,+lng` URL shape that the first version of the parser didn't handle, which is exactly why that pattern is now in the list — found by testing against something real, not assumed to work.
+- `scripts/verify-geocode.mjs` now excludes `geo_source: "client"` stores from all four checks entirely — that's authoritative input, not an inference to second-guess. It reports how many were trusted-without-checking in its summary line.
+- A parsed coordinate outside the Thane–Raigad–Palghar box still prints a loud warning (a mis-paste is possible even from a trusted source) but is applied anyway — the check is a nudge to double-check, not a veto over client input.
+
+### 15.3 DMart via Overpass, not Playwright
+
+`scripts/scrape-dmart.mjs` (the Playwright draft) is **deleted**. Confirmed this session: DMart has no public locator for its physical stores — only a "DMart Ready" pickup-point finder, a different thing (same finding as before, now acted on instead of hedged around). Replaced with `scripts/fetch-dmart-overpass.mjs`, which queries OpenStreetMap's Overpass API — free, no key, no browser, plain HTTP (which this sandbox can already do, unlike a headless browser reaching arbitrary sites).
+
+Query, run verbatim as specified:
+```
+[out:json];
+node["shop"="supermarket"]["name"~"DMart|D-Mart|D Mart",i]
+  (18.6,72.7,19.8,73.6);
+out;
+```
+
+**Run for real this session** (the public Overpass instance is shared infrastructure and flaky — took 2–3 retries via the script's built-in backoff, not a config problem). Result: `public/data/competitors.json`, **19 locations**, 13 confirmed by an OSM `brand="DMart"` tag. The other 6 matched the name pattern but lack that tag — including one genuine false positive found by inspecting the output: a "food mart" in Navi Mumbai matches `"D Mart"` as a case-insensitive substring of "foo**d mart**". Rather than silently tweaking the query, every result carries `brand_tag_confirms_dmart` so the false positive (and the 5 other unconfirmed ones) can be filtered by a human without the script guessing which to drop. One result — DMART-015 — has OSM `branch: "Ambernath"`, i.e. a real DMart sitting close to Patel's densest cluster.
+
+**Caveat, stated in `competitors.json` itself, not hidden:** OSM coverage is community-maintained and incomplete — absence of a DMart here doesn't mean one doesn't exist; treat this as a lower bound.
+
+**Deliberately not done this round** (scope discipline — the ask was to fix the distance bug first and land this data, not build a new feature on top of it): `nearest_competitor` / `competitors_within` are still not joined into `build-proximity.mjs` or the risk score. The Site Screener's live view *does* pick up `competitors.json` automatically (it already had the code to, from before this data existed) and shows a real "Nearest DMart" figure now — but the composite risk score itself still only blends the two own-store components, and says so on screen.

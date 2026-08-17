@@ -1,5894 +1,7074 @@
 {
-  "generated_at": "2026-08-17T09:39:06.173Z",
+  "generated_at": "2026-08-17T11:33:14.951Z",
   "metadata": {
     "total_stores": 53,
     "geocoded_count": 49,
+    "locatable_count": 28,
+    "coarse_count": 21,
     "pending_geocode_count": 4,
     "total_possible_pairs": 1378,
-    "pairs_computed": 1176,
-    "note": "4 store(s) still ungeocoded — pairs/nearest-own involving them are absent, not zero."
+    "pairs_emitted": 1176,
+    "pairs_with_real_distance": 378,
+    "pairs_suppressed_town_centroid": 798,
+    "note": "28/53 stores are precisely located; 21 more are geocoded only to a town centroid (distances suppressed, not fabricated) and 4 have no coordinates at all."
   },
-  "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\".",
+  "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
   "pairs": [
     {
       "a": "RCM",
       "b": "THE",
-      "km": 36.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "TGR",
-      "km": 43.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "NWM",
-      "km": 33.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KUD",
-      "km": 71.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DNE",
-      "km": 34.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KYD",
-      "km": 40.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DAG/DOEMIDC",
-      "km": 36.47
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AVB",
-      "km": 64.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KBR",
-      "km": 42.61
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DSR",
-      "km": 33.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "NKR",
-      "km": 20.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KET",
-      "km": 36.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BBVR",
-      "km": 46.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DOW",
-      "km": 36.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "SHD",
-      "km": 37.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BHAR",
-      "km": 47.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "Bap",
-      "km": 44.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "PAD",
-      "km": 51.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "VGW",
-      "km": 24.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "VAS",
-      "km": 57.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BES",
-      "km": 29.11
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BKHE",
-      "km": 28.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BLEB",
-      "km": 30.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BLEK",
-      "km": 30.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BLWB",
-      "km": 30.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "BWM",
-      "km": 31.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AMSN",
-      "km": 33.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AMCH",
-      "km": 33.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AME",
-      "km": 33.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AML",
-      "km": 33.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AMPL",
-      "km": 33.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "AMW",
-      "km": 33.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DOWSMT",
-      "km": 40.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DWK",
-      "km": 40.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DOF",
-      "km": 37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DOM",
-      "km": 35.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KKW",
-      "km": 38.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KLE",
-      "km": 37.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KLK",
-      "km": 39.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KLT",
-      "km": 38.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "KLW",
-      "km": 38.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "DOE/DER",
-      "km": 30.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "MUBD",
-      "km": 45.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "SHAP",
-      "km": 63.48
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "TTL",
-      "km": 44.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "ULN",
-      "km": 36.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "ULN4",
-      "km": 36.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "RCM",
       "b": "PRCAME/PRCAMEN",
-      "km": 34.72
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "TGR",
-      "km": 15.32
+      "km": 15.32,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "NWM",
-      "km": 9.9
+      "km": 9.9,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "KUD",
-      "km": 34.81
+      "km": 34.81,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DNE",
-      "km": 3.17
+      "km": 3.17,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "KYD",
-      "km": 5.09
+      "km": 5.09,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DAG/DOEMIDC",
-      "km": 1.19
+      "km": 1.19,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "AVB",
-      "km": 27.77
+      "km": 27.77,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "KBR",
-      "km": 5.92
+      "km": 5.92,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DSR",
-      "km": 8.35
+      "km": 8.35,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "NKR",
-      "km": 31.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "KET",
-      "km": 2.77
+      "km": 2.77,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "BBVR",
-      "km": 10.28
+      "km": 10.28,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DOW",
-      "km": 2.04
+      "km": 2.04,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "SHD",
-      "km": 3.72
+      "km": 3.72,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "BHAR",
-      "km": 10.54
+      "km": 10.54,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "Bap",
-      "km": 8.77
+      "km": 8.77,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "PAD",
-      "km": 17.7
+      "km": 17.7,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "VGW",
-      "km": 24.66
+      "km": 24.66,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "VAS",
-      "km": 26.9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "BES",
-      "km": 16.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "BKHE",
-      "km": 16.95
+      "km": 16.95,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "BLEB",
-      "km": 15.68
+      "km": 15.68,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "BLEK",
-      "km": 14.21
+      "km": 14.21,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "BLWB",
-      "km": 17.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "BWM",
-      "km": 14.96
+      "km": 14.96,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "AMSN",
-      "km": 10.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "AMCH",
-      "km": 10.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "AME",
-      "km": 9.26
+      "km": 9.26,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "AML",
-      "km": 10.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "AMPL",
-      "km": 10.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "AMW",
-      "km": 10.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "DOWSMT",
-      "km": 5.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "DWK",
-      "km": 5.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "DOF",
-      "km": 1.32
+      "km": 1.32,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DOM",
-      "km": 2.17
+      "km": 2.17,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "KKW",
-      "km": 3.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "KLE",
-      "km": 3.12
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "KLK",
-      "km": 4.24
+      "km": 4.24,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "KLT",
-      "km": 3.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "KLW",
-      "km": 4.19
+      "km": 4.19,
+      "precision": "geocoded"
     },
     {
       "a": "THE",
       "b": "DOE/DER",
-      "km": 10.47
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "MUBD",
-      "km": 30.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "SHAP",
-      "km": 34.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "TTL",
-      "km": 13.43
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "ULN",
-      "km": 6.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "ULN4",
-      "km": 6.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "THE",
       "b": "PRCAME/PRCAMEN",
-      "km": 8.59
+      "km": 8.59,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "NWM",
-      "km": 25.09
+      "km": 25.09,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "KUD",
-      "km": 31.35
+      "km": 31.35,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DNE",
-      "km": 18.24
+      "km": 18.24,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "KYD",
-      "km": 11.01
+      "km": 11.01,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DAG/DOEMIDC",
-      "km": 16.51
+      "km": 16.51,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "AVB",
-      "km": 26.17
+      "km": 26.17,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "KBR",
-      "km": 15.96
+      "km": 15.96,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DSR",
-      "km": 23.45
+      "km": 23.45,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "NKR",
-      "km": 29.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "KET",
-      "km": 12.68
+      "km": 12.68,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "BBVR",
-      "km": 18.58
+      "km": 18.58,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DOW",
-      "km": 17.28
+      "km": 17.28,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "SHD",
-      "km": 11.68
+      "km": 11.68,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "BHAR",
-      "km": 18.01
+      "km": 18.01,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "Bap",
-      "km": 20.3
+      "km": 20.3,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "PAD",
-      "km": 11.08
+      "km": 11.08,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "VGW",
-      "km": 22.26
+      "km": 22.26,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "VAS",
-      "km": 14.32
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "BES",
-      "km": 14.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "BKHE",
-      "km": 14.86
+      "km": 14.86,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "BLEB",
-      "km": 13.23
+      "km": 13.23,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "BLEK",
-      "km": 12.59
+      "km": 12.59,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "BLWB",
-      "km": 13.46
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "BWM",
-      "km": 11.9
+      "km": 11.9,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "AMSN",
-      "km": 9.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "AMCH",
-      "km": 9.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "AME",
-      "km": 10.05
+      "km": 10.05,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "AML",
-      "km": 9.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "AMPL",
-      "km": 9.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "AMW",
-      "km": 9.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "DOWSMT",
-      "km": 11.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "DWK",
-      "km": 11.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "DOF",
-      "km": 16.54
+      "km": 16.54,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DOM",
-      "km": 17.05
+      "km": 17.05,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "KKW",
-      "km": 12.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "KLE",
-      "km": 12.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "KLK",
-      "km": 11.49
+      "km": 11.49,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "KLT",
-      "km": 12.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "KLW",
-      "km": 11.23
+      "km": 11.23,
+      "precision": "geocoded"
     },
     {
       "a": "TGR",
       "b": "DOE/DER",
-      "km": 25.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "MUBD",
-      "km": 16.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "SHAP",
-      "km": 21.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "TTL",
-      "km": 3.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "ULN",
-      "km": 9.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "ULN4",
-      "km": 9.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TGR",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.51
+      "km": 9.51,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "KUD",
-      "km": 41.61
+      "km": 41.61,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DNE",
-      "km": 6.85
+      "km": 6.85,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "KYD",
-      "km": 14.88
+      "km": 14.88,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DAG/DOEMIDC",
-      "km": 8.74
+      "km": 8.74,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "AVB",
-      "km": 34.32
+      "km": 34.32,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "KBR",
-      "km": 12.91
+      "km": 12.91,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DSR",
-      "km": 1.7
+      "km": 1.7,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "NKR",
-      "km": 34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "KET",
-      "km": 12.42
+      "km": 12.42,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "BBVR",
-      "km": 15.58
+      "km": 15.58,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DOW",
-      "km": 8.18
+      "km": 8.18,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "SHD",
-      "km": 13.42
+      "km": 13.42,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "BHAR",
-      "km": 16.3
+      "km": 16.3,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "Bap",
-      "km": 12.03
+      "km": 12.03,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "PAD",
-      "km": 26.93
+      "km": 26.93,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "VGW",
-      "km": 28.91
+      "km": 28.91,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "VAS",
-      "km": 36.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "BES",
-      "km": 22.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "BKHE",
-      "km": 22.78
+      "km": 22.78,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "BLEB",
-      "km": 22.08
+      "km": 22.08,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "BLEK",
-      "km": 20.76
+      "km": 20.76,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "BLWB",
-      "km": 23.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "BWM",
-      "km": 21.85
+      "km": 21.85,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "AMSN",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "AMCH",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "AME",
-      "km": 17.28
+      "km": 17.28,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "AML",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "AMPL",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "AMW",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "DOWSMT",
-      "km": 14.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "DWK",
-      "km": 14.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "DOF",
-      "km": 8.86
+      "km": 8.86,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DOM",
-      "km": 8.04
+      "km": 8.04,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "KKW",
-      "km": 13.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "KLE",
-      "km": 12.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "KLK",
-      "km": 14.1
+      "km": 14.1,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "KLT",
-      "km": 13.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "KLW",
-      "km": 14.09
+      "km": 14.09,
+      "precision": "geocoded"
     },
     {
       "a": "NWM",
       "b": "DOE/DER",
-      "km": 3.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "MUBD",
-      "km": 39.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "SHAP",
-      "km": 44.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "TTL",
-      "km": 23.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "ULN",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "ULN4",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NWM",
       "b": "PRCAME/PRCAMEN",
-      "km": 17.03
+      "km": 17.03,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DNE",
-      "km": 37.32
+      "km": 37.32,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "KYD",
-      "km": 30.94
+      "km": 30.94,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DAG/DOEMIDC",
-      "km": 35.36
+      "km": 35.36,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "AVB",
-      "km": 7.3
+      "km": 7.3,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "KBR",
-      "km": 29.37
+      "km": 29.37,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DSR",
-      "km": 40.88
+      "km": 40.88,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "NKR",
-      "km": 60.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "KET",
-      "km": 34.45
+      "km": 34.45,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "BBVR",
-      "km": 26.03
+      "km": 26.03,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DOW",
-      "km": 35.18
+      "km": 35.18,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "SHD",
-      "km": 34
+      "km": 34,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "BHAR",
-      "km": 25.35
+      "km": 25.35,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "Bap",
-      "km": 29.63
+      "km": 29.63,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "PAD",
-      "km": 20.41
+      "km": 20.41,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "VGW",
-      "km": 53.38
+      "km": 53.38,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "VAS",
-      "km": 22.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "BES",
-      "km": 44.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "BKHE",
-      "km": 45.47
+      "km": 45.47,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "BLEB",
-      "km": 43.76
+      "km": 43.76,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "BLEK",
-      "km": 42.71
+      "km": 42.71,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "BLWB",
-      "km": 44.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "BWM",
-      "km": 42.43
+      "km": 42.43,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "AMSN",
-      "km": 38.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "AMCH",
-      "km": 38.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "AME",
-      "km": 38.06
+      "km": 38.06,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "AML",
-      "km": 38.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "AMPL",
-      "km": 38.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "AMW",
-      "km": 38.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "DOWSMT",
-      "km": 30.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "DWK",
-      "km": 30.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "DOF",
-      "km": 34.89
+      "km": 34.89,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DOM",
-      "km": 36.79
+      "km": 36.79,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "KKW",
-      "km": 32.7
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "KLE",
-      "km": 34.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "KLK",
-      "km": 31.81
+      "km": 31.81,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "KLT",
-      "km": 32.7
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "KLW",
-      "km": 32.48
+      "km": 32.48,
+      "precision": "geocoded"
     },
     {
       "a": "KUD",
       "b": "DOE/DER",
-      "km": 43.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "MUBD",
-      "km": 43.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "SHAP",
-      "km": 25.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "TTL",
-      "km": 28.48
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "ULN",
-      "km": 35.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "ULN4",
-      "km": 35.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KUD",
       "b": "PRCAME/PRCAMEN",
-      "km": 37.04
+      "km": 37.04,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "KYD",
-      "km": 8.25
+      "km": 8.25,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "DAG/DOEMIDC",
-      "km": 2.14
+      "km": 2.14,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "AVB",
-      "km": 30.17
+      "km": 30.17,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "KBR",
-      "km": 7.97
+      "km": 7.97,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "DSR",
-      "km": 5.24
+      "km": 5.24,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "NKR",
-      "km": 31.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "KET",
-      "km": 5.56
+      "km": 5.56,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "BBVR",
-      "km": 11.93
+      "km": 11.93,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "DOW",
-      "km": 2.14
+      "km": 2.14,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "SHD",
-      "km": 6.57
+      "km": 6.57,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "BHAR",
-      "km": 12.38
+      "km": 12.38,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "Bap",
-      "km": 9.48
+      "km": 9.48,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "PAD",
-      "km": 20.79
+      "km": 20.79,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "VGW",
-      "km": 24.99
+      "km": 24.99,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "VAS",
-      "km": 30.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "BES",
-      "km": 17.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "BKHE",
-      "km": 17.79
+      "km": 17.79,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "BLEB",
-      "km": 16.76
+      "km": 16.76,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "BLEK",
-      "km": 15.32
+      "km": 15.32,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "BLWB",
-      "km": 18.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "BWM",
-      "km": 16.25
+      "km": 16.25,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "AMSN",
-      "km": 12.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "AMCH",
-      "km": 12.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "AME",
-      "km": 11.01
+      "km": 11.01,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "AML",
-      "km": 12.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "AMPL",
-      "km": 12.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "AMW",
-      "km": 12.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "DOWSMT",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "DWK",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "DOF",
-      "km": 2.49
+      "km": 2.49,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "DOM",
-      "km": 1.19
+      "km": 1.19,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "KKW",
-      "km": 6.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "KLE",
-      "km": 5.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "KLK",
-      "km": 7.4
+      "km": 7.4,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "KLT",
-      "km": 6.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "KLW",
-      "km": 7.3
+      "km": 7.3,
+      "precision": "geocoded"
     },
     {
       "a": "DNE",
       "b": "DOE/DER",
-      "km": 7.31
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "MUBD",
-      "km": 32.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "SHAP",
-      "km": 37.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "TTL",
-      "km": 16.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "ULN",
-      "km": 9.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "ULN4",
-      "km": 9.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DNE",
       "b": "PRCAME/PRCAMEN",
-      "km": 10.57
+      "km": 10.57,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "DAG/DOEMIDC",
-      "km": 6.18
+      "km": 6.18,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "AVB",
-      "km": 24.18
+      "km": 24.18,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "KBR",
-      "km": 5.45
+      "km": 5.45,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "DSR",
-      "km": 13.39
+      "km": 13.39,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "NKR",
-      "km": 32.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "KET",
-      "km": 3.58
+      "km": 3.58,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "BBVR",
-      "km": 9.29
+      "km": 9.29,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "DOW",
-      "km": 6.72
+      "km": 6.72,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "SHD",
-      "km": 3.06
+      "km": 3.06,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "BHAR",
-      "km": 9.1
+      "km": 9.1,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "Bap",
-      "km": 9.78
+      "km": 9.78,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "PAD",
-      "km": 12.76
+      "km": 12.76,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "VGW",
-      "km": 25.11
+      "km": 25.11,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "VAS",
-      "km": 21.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "BES",
-      "km": 16.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "BKHE",
-      "km": 16.93
+      "km": 16.93,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "BLEB",
-      "km": 15.37
+      "km": 15.37,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "BLEK",
-      "km": 13.96
+      "km": 13.96,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "BLWB",
-      "km": 16.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "BWM",
-      "km": 14.3
+      "km": 14.3,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "AMSN",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "AMCH",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "AME",
-      "km": 8.55
+      "km": 8.55,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "AML",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "AMPL",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "AMW",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "DOWSMT",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "DWK",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "DOF",
-      "km": 6.03
+      "km": 6.03,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "DOM",
-      "km": 7.22
+      "km": 7.22,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "KKW",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "KLE",
-      "km": 3.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "KLK",
-      "km": 0.93
+      "km": 0.93,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "KLT",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "KLW",
-      "km": 1.55
+      "km": 1.55,
+      "precision": "geocoded"
     },
     {
       "a": "KYD",
       "b": "DOE/DER",
-      "km": 15.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "MUBD",
-      "km": 27.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "SHAP",
-      "km": 29.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "TTL",
-      "km": 8.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "ULN",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "ULN4",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KYD",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.53
+      "km": 7.53,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AVB",
-      "km": 28.26
+      "km": 28.26,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KBR",
-      "km": 6.15
+      "km": 6.15,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DSR",
-      "km": 7.21
+      "km": 7.21,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "NKR",
-      "km": 31.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KET",
-      "km": 3.92
+      "km": 3.92,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BBVR",
-      "km": 10.35
+      "km": 10.35,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DOW",
-      "km": 0.98
+      "km": 0.98,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "SHD",
-      "km": 4.89
+      "km": 4.89,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BHAR",
-      "km": 10.7
+      "km": 10.7,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "Bap",
-      "km": 8.41
+      "km": 8.41,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "PAD",
-      "km": 18.66
+      "km": 18.66,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "VGW",
-      "km": 25.21
+      "km": 25.21,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "VAS",
-      "km": 28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BES",
-      "km": 16.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BKHE",
-      "km": 17.65
+      "km": 17.65,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BLEB",
-      "km": 16.45
+      "km": 16.45,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BLEK",
-      "km": 14.98
+      "km": 14.98,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BLWB",
-      "km": 18.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "BWM",
-      "km": 15.79
+      "km": 15.79,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AMSN",
-      "km": 11.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AMCH",
-      "km": 11.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AME",
-      "km": 10.19
+      "km": 10.19,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AML",
-      "km": 11.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AMPL",
-      "km": 11.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "AMW",
-      "km": 11.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DOWSMT",
-      "km": 6.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DWK",
-      "km": 6.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DOF",
-      "km": 0.55
+      "km": 0.55,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DOM",
-      "km": 1.45
+      "km": 1.45,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KKW",
-      "km": 4.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KLE",
-      "km": 4.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KLK",
-      "km": 5.37
+      "km": 5.37,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KLT",
-      "km": 4.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "KLW",
-      "km": 5.37
+      "km": 5.37,
+      "precision": "geocoded"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "DOE/DER",
-      "km": 9.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "MUBD",
-      "km": 31.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "SHAP",
-      "km": 35.89
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "TTL",
-      "km": 14.59
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "ULN",
-      "km": 7.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "ULN4",
-      "km": 7.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DAG/DOEMIDC",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.58
+      "km": 9.58,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "KBR",
-      "km": 22.2
+      "km": 22.2,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "DSR",
-      "km": 33.61
+      "km": 33.61,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "NKR",
-      "km": 55.02
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "KET",
-      "km": 27.62
+      "km": 27.62,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "BBVR",
-      "km": 18.75
+      "km": 18.75,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "DOW",
-      "km": 28.03
+      "km": 28.03,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "SHD",
-      "km": 27.24
+      "km": 27.24,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "BHAR",
-      "km": 18.08
+      "km": 18.08,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "Bap",
-      "km": 22.33
+      "km": 22.33,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "PAD",
-      "km": 15.12
+      "km": 15.12,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "VGW",
-      "km": 47.62
+      "km": 47.62,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "VAS",
-      "km": 20.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "BES",
-      "km": 38.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "BKHE",
-      "km": 39.53
+      "km": 39.53,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "BLEB",
-      "km": 37.82
+      "km": 37.82,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "BLEK",
-      "km": 36.67
+      "km": 36.67,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "BLWB",
-      "km": 38.61
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "BWM",
-      "km": 36.52
+      "km": 36.52,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "AMSN",
-      "km": 32.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "AMCH",
-      "km": 32.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "AME",
-      "km": 31.76
+      "km": 31.76,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "AML",
-      "km": 32.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "AMPL",
-      "km": 32.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "AMW",
-      "km": 32.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "DOWSMT",
-      "km": 24.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "DWK",
-      "km": 24.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "DOF",
-      "km": 27.78
+      "km": 27.78,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "DOM",
-      "km": 29.7
+      "km": 29.7,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "KKW",
-      "km": 25.84
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "KLE",
-      "km": 27.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "KLK",
-      "km": 25.01
+      "km": 25.01,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "KLT",
-      "km": 25.84
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "KLW",
-      "km": 25.72
+      "km": 25.72,
+      "precision": "geocoded"
     },
     {
       "a": "AVB",
       "b": "DOE/DER",
-      "km": 36.51
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "MUBD",
-      "km": 39.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "SHAP",
-      "km": 25.47
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "TTL",
-      "km": 22.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "ULN",
-      "km": 28.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "ULN4",
-      "km": 28.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AVB",
       "b": "PRCAME/PRCAMEN",
-      "km": 30.71
+      "km": 30.71,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "DSR",
-      "km": 11.84
+      "km": 11.84,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "NKR",
-      "km": 36.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "KET",
-      "km": 7.01
+      "km": 7.01,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "BBVR",
-      "km": 4.43
+      "km": 4.43,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "DOW",
-      "km": 5.84
+      "km": 5.84,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "SHD",
-      "km": 7.28
+      "km": 7.28,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "BHAR",
-      "km": 4.62
+      "km": 4.62,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "Bap",
-      "km": 4.37
+      "km": 4.37,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "PAD",
-      "km": 14.33
+      "km": 14.33,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "VGW",
-      "km": 29.84
+      "km": 29.84,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "VAS",
-      "km": 24.62
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "BES",
-      "km": 21.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "BKHE",
-      "km": 21.81
+      "km": 21.81,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "BLEB",
-      "km": 20.35
+      "km": 20.35,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "BLEK",
-      "km": 18.89
+      "km": 18.89,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "BLWB",
-      "km": 21.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "BWM",
-      "km": 19.39
+      "km": 19.39,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "AMSN",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "AMCH",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "AME",
-      "km": 13.53
+      "km": 13.53,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "AML",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "AMPL",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "AMW",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "DOWSMT",
-      "km": 5.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "DWK",
-      "km": 5.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "DOF",
-      "km": 5.63
+      "km": 5.63,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "DOM",
-      "km": 7.59
+      "km": 7.59,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "KKW",
-      "km": 5.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "KLE",
-      "km": 6.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "KLK",
-      "km": 5.53
+      "km": 5.53,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "KLT",
-      "km": 5.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "KLW",
-      "km": 6.27
+      "km": 6.27,
+      "precision": "geocoded"
     },
     {
       "a": "KBR",
       "b": "DOE/DER",
-      "km": 14.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "MUBD",
-      "km": 32.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "SHAP",
-      "km": 32.61
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "TTL",
-      "km": 12.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "ULN",
-      "km": 10.24
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "ULN4",
-      "km": 10.24
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KBR",
       "b": "PRCAME/PRCAMEN",
-      "km": 12.59
+      "km": 12.59,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "NKR",
-      "km": 32.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "KET",
-      "km": 10.79
+      "km": 10.79,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "BBVR",
-      "km": 14.87
+      "km": 14.87,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "DOW",
-      "km": 6.74
+      "km": 6.74,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "SHD",
-      "km": 11.8
+      "km": 11.8,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "BHAR",
-      "km": 15.53
+      "km": 15.53,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "Bap",
-      "km": 11.5
+      "km": 11.5,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "PAD",
-      "km": 25.63
+      "km": 25.63,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "VGW",
-      "km": 27.51
+      "km": 27.51,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "VAS",
-      "km": 35.2
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "BES",
-      "km": 20.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "BKHE",
-      "km": 21.2
+      "km": 21.2,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "BLEB",
-      "km": 20.46
+      "km": 20.46,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "BLEK",
-      "km": 19.12
+      "km": 19.12,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "BLWB",
-      "km": 22.13
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "BWM",
-      "km": 20.21
+      "km": 20.21,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "AMSN",
-      "km": 16.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "AMCH",
-      "km": 16.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "AME",
-      "km": 15.58
+      "km": 15.58,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "AML",
-      "km": 16.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "AMPL",
-      "km": 16.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "AMW",
-      "km": 16.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "DOWSMT",
-      "km": 13.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "DWK",
-      "km": 13.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "DOF",
-      "km": 7.38
+      "km": 7.38,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "DOM",
-      "km": 6.41
+      "km": 6.41,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "KKW",
-      "km": 11.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "KLE",
-      "km": 11.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "KLK",
-      "km": 12.58
+      "km": 12.58,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "KLT",
-      "km": 11.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "KLW",
-      "km": 12.53
+      "km": 12.53,
+      "precision": "geocoded"
     },
     {
       "a": "DSR",
       "b": "DOE/DER",
-      "km": 2.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "MUBD",
-      "km": 37.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "SHAP",
-      "km": 43.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "TTL",
-      "km": 21.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "ULN",
-      "km": 14.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "ULN4",
-      "km": 14.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DSR",
       "b": "PRCAME/PRCAMEN",
-      "km": 15.33
+      "km": 15.33,
+      "precision": "geocoded"
     },
     {
       "a": "NKR",
       "b": "KET",
-      "km": 29.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BBVR",
-      "km": 41.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DOW",
-      "km": 32.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "SHD",
-      "km": 29.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BHAR",
-      "km": 41.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "Bap",
-      "km": 39.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "PAD",
-      "km": 40.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "VGW",
-      "km": 7.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "VAS",
-      "km": 42.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BES",
-      "km": 16.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BKHE",
-      "km": 15.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BLEB",
-      "km": 17.21
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BLEK",
-      "km": 18.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BLWB",
-      "km": 16.43
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "BWM",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AMSN",
-      "km": 23.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AMCH",
-      "km": 23.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AME",
-      "km": 23.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AML",
-      "km": 23.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AMPL",
-      "km": 23.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "AMW",
-      "km": 23.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DOWSMT",
-      "km": 32.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DWK",
-      "km": 32.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DOF",
-      "km": 32.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DOM",
-      "km": 30.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "KKW",
-      "km": 31.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "KLE",
-      "km": 29.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "KLK",
-      "km": 31.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "KLT",
-      "km": 31.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "KLW",
-      "km": 30.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "DOE/DER",
-      "km": 31.31
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "MUBD",
-      "km": 26.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "SHAP",
-      "km": 47.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "TTL",
-      "km": 32.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "ULN",
-      "km": 27.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "ULN4",
-      "km": 27.04
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "NKR",
       "b": "PRCAME/PRCAMEN",
-      "km": 24.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "BBVR",
-      "km": 11.4
+      "km": 11.4,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "DOW",
-      "km": 4.81
+      "km": 4.81,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "SHD",
-      "km": 1
+      "km": 1,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "BHAR",
-      "km": 11.46
+      "km": 11.46,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "Bap",
-      "km": 10.7
+      "km": 10.7,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "PAD",
-      "km": 16.25
+      "km": 16.25,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "VGW",
-      "km": 22.84
+      "km": 22.84,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "VAS",
-      "km": 24.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "BES",
-      "km": 14.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "BKHE",
-      "km": 14.88
+      "km": 14.88,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "BLEB",
-      "km": 13.49
+      "km": 13.49,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "BLEK",
-      "km": 12.01
+      "km": 12.01,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "BLWB",
-      "km": 14.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "BWM",
-      "km": 12.64
+      "km": 12.64,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "AMSN",
-      "km": 7.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "AMCH",
-      "km": 7.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "AME",
-      "km": 6.8
+      "km": 6.8,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "AML",
-      "km": 7.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "AMPL",
-      "km": 7.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "AMW",
-      "km": 7.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "DOWSMT",
-      "km": 3.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "DWK",
-      "km": 3.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "DOF",
-      "km": 4.09
+      "km": 4.09,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "DOM",
-      "km": 4.38
+      "km": 4.38,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "KKW",
-      "km": 1.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "KLE",
-      "km": 0.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "KLK",
-      "km": 2.67
+      "km": 2.67,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "KLT",
-      "km": 1.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "KLW",
-      "km": 2.13
+      "km": 2.13,
+      "precision": "geocoded"
     },
     {
       "a": "KET",
       "b": "DOE/DER",
-      "km": 12.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "MUBD",
-      "km": 27.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "SHAP",
-      "km": 32.62
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "TTL",
-      "km": 11.08
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "ULN",
-      "km": 3.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "ULN4",
-      "km": 3.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KET",
       "b": "PRCAME/PRCAMEN",
-      "km": 6.01
+      "km": 6.01,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "DOW",
-      "km": 9.85
+      "km": 9.85,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "SHD",
-      "km": 11.58
+      "km": 11.58,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "BHAR",
-      "km": 0.89
+      "km": 0.89,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "Bap",
-      "km": 3.78
+      "km": 3.78,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "PAD",
-      "km": 14.06
+      "km": 14.06,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "VGW",
-      "km": 34.17
+      "km": 34.17,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "VAS",
-      "km": 24.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "BES",
-      "km": 25.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "BKHE",
-      "km": 26.07
+      "km": 26.07,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "BLEB",
-      "km": 24.57
+      "km": 24.57,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "BLEK",
-      "km": 23.13
+      "km": 23.13,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "BLWB",
-      "km": 25.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "BWM",
-      "km": 23.55
+      "km": 23.55,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "AMSN",
-      "km": 18.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "AMCH",
-      "km": 18.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "AME",
-      "km": 17.73
+      "km": 17.73,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "AML",
-      "km": 18.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "AMPL",
-      "km": 18.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "AMW",
-      "km": 18.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "DOWSMT",
-      "km": 9.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "DWK",
-      "km": 9.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "DOF",
-      "km": 9.81
+      "km": 9.81,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "DOM",
-      "km": 11.76
+      "km": 11.76,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "KKW",
-      "km": 9.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "KLE",
-      "km": 11.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "KLK",
-      "km": 9.62
+      "km": 9.62,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "KLT",
-      "km": 9.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "KLW",
-      "km": 10.4
+      "km": 10.4,
+      "precision": "geocoded"
     },
     {
       "a": "BBVR",
       "b": "DOE/DER",
-      "km": 17.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "MUBD",
-      "km": 35.2
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "SHAP",
-      "km": 32.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "TTL",
-      "km": 15.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "ULN",
-      "km": 14.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "ULN4",
-      "km": 14.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BBVR",
       "b": "PRCAME/PRCAMEN",
-      "km": 16.75
+      "km": 16.75,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "SHD",
-      "km": 5.75
+      "km": 5.75,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "BHAR",
-      "km": 10.27
+      "km": 10.27,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "Bap",
-      "km": 7.65
+      "km": 7.65,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "PAD",
-      "km": 18.94
+      "km": 18.94,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "VGW",
-      "km": 26.12
+      "km": 26.12,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "VAS",
-      "km": 28.48
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "BES",
-      "km": 17.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "BKHE",
-      "km": 18.6
+      "km": 18.6,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "BLEB",
-      "km": 17.42
+      "km": 17.42,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "BLEK",
-      "km": 15.95
+      "km": 15.95,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "BLWB",
-      "km": 19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "BWM",
-      "km": 16.76
+      "km": 16.76,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "AMSN",
-      "km": 12.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "AMCH",
-      "km": 12.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "AME",
-      "km": 11.17
+      "km": 11.17,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "AML",
-      "km": 12.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "AMPL",
-      "km": 12.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "AMW",
-      "km": 12.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "DOWSMT",
-      "km": 6.72
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "DWK",
-      "km": 6.72
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "DOF",
-      "km": 0.74
+      "km": 0.74,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "DOM",
-      "km": 1.99
+      "km": 1.99,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "KKW",
-      "km": 4.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "KLE",
-      "km": 5.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "KLK",
-      "km": 5.97
+      "km": 5.97,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "KLT",
-      "km": 4.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "KLW",
-      "km": 6.07
+      "km": 6.07,
+      "precision": "geocoded"
     },
     {
       "a": "DOW",
       "b": "DOE/DER",
-      "km": 9.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "MUBD",
-      "km": 32.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "SHAP",
-      "km": 36.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "TTL",
-      "km": 15.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "ULN",
-      "km": 8.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "ULN4",
-      "km": 8.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOW",
       "b": "PRCAME/PRCAMEN",
-      "km": 10.55
+      "km": 10.55,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "BHAR",
-      "km": 11.56
+      "km": 11.56,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "Bap",
-      "km": 11.19
+      "km": 11.19,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "PAD",
-      "km": 15.49
+      "km": 15.49,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "VGW",
-      "km": 22.59
+      "km": 22.59,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "VAS",
-      "km": 23.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "BES",
-      "km": 13.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "BKHE",
-      "km": 14.53
+      "km": 14.53,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "BLEB",
-      "km": 13.08
+      "km": 13.08,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "BLEK",
-      "km": 11.61
+      "km": 11.61,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "BLWB",
-      "km": 14.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "BWM",
-      "km": 12.15
+      "km": 12.15,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "AMSN",
-      "km": 7.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "AMCH",
-      "km": 7.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "AME",
-      "km": 6.28
+      "km": 6.28,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "AML",
-      "km": 7.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "AMPL",
-      "km": 7.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "AMW",
-      "km": 7.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "DOWSMT",
-      "km": 3.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "DWK",
-      "km": 3.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "DOF",
-      "km": 5.02
+      "km": 5.02,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "DOM",
-      "km": 5.39
+      "km": 5.39,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "KKW",
-      "km": 1.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "KLE",
-      "km": 0.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "KLK",
-      "km": 2.25
+      "km": 2.25,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "KLT",
-      "km": 1.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "KLW",
-      "km": 1.52
+      "km": 1.52,
+      "precision": "geocoded"
     },
     {
       "a": "SHD",
       "b": "DOE/DER",
-      "km": 13.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "MUBD",
-      "km": 26.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "SHAP",
-      "km": 31.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "TTL",
-      "km": 10.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "ULN",
-      "km": 3.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "ULN4",
-      "km": 3.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHD",
       "b": "PRCAME/PRCAMEN",
-      "km": 5.4
+      "km": 5.4,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "Bap",
-      "km": 4.63
+      "km": 4.63,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "PAD",
-      "km": 13.2
+      "km": 13.2,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "VGW",
-      "km": 34.12
+      "km": 34.12,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "VAS",
-      "km": 23.9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "BES",
-      "km": 25.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "BKHE",
-      "km": 25.98
+      "km": 25.98,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "BLEB",
-      "km": 24.45
+      "km": 24.45,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "BLEK",
-      "km": 23.03
+      "km": 23.03,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "BLWB",
-      "km": 25.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "BWM",
-      "km": 23.4
+      "km": 23.4,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "AMSN",
-      "km": 18.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "AMCH",
-      "km": 18.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "AME",
-      "km": 17.61
+      "km": 17.61,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "AML",
-      "km": 18.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "AMPL",
-      "km": 18.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "AMW",
-      "km": 18.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "DOWSMT",
-      "km": 9.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "DWK",
-      "km": 9.1
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "DOF",
-      "km": 10.17
+      "km": 10.17,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "DOM",
-      "km": 12.13
+      "km": 12.13,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "KKW",
-      "km": 9.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "KLE",
-      "km": 11.36
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "KLK",
-      "km": 9.51
+      "km": 9.51,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "KLT",
-      "km": 9.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "KLW",
-      "km": 10.31
+      "km": 10.31,
+      "precision": "geocoded"
     },
     {
       "a": "BHAR",
       "b": "DOE/DER",
-      "km": 18.43
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "MUBD",
-      "km": 34.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "SHAP",
-      "km": 31.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "TTL",
-      "km": 14.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "ULN",
-      "km": 14.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "ULN4",
-      "km": 14.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BHAR",
       "b": "PRCAME/PRCAMEN",
-      "km": 16.61
+      "km": 16.61,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "PAD",
-      "km": 17.39
+      "km": 17.39,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "VGW",
-      "km": 33.4
+      "km": 33.4,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "VAS",
-      "km": 28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "BES",
-      "km": 24.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "BKHE",
-      "km": 25.55
+      "km": 25.55,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "BLEB",
-      "km": 24.19
+      "km": 24.19,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "BLEK",
-      "km": 22.71
+      "km": 22.71,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "BLWB",
-      "km": 25.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "BWM",
-      "km": 23.32
+      "km": 23.32,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "AMSN",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "AMCH",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "AME",
-      "km": 17.46
+      "km": 17.46,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "AML",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "AMPL",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "AMW",
-      "km": 18.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "DOWSMT",
-      "km": 9.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "DWK",
-      "km": 9.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "DOF",
-      "km": 7.88
+      "km": 7.88,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "DOM",
-      "km": 9.65
+      "km": 9.65,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "KKW",
-      "km": 9.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "KLE",
-      "km": 10.78
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "KLK",
-      "km": 9.75
+      "km": 9.75,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "KLT",
-      "km": 9.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "KLW",
-      "km": 10.42
+      "km": 10.42,
+      "precision": "geocoded"
     },
     {
       "a": "Bap",
       "b": "DOE/DER",
-      "km": 14.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "MUBD",
-      "km": 36.72
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "SHAP",
-      "km": 35.94
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "TTL",
-      "km": 17.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "ULN",
-      "km": 14.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "ULN4",
-      "km": 14.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "Bap",
       "b": "PRCAME/PRCAMEN",
-      "km": 16.59
+      "km": 16.59,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "VGW",
-      "km": 32.98
+      "km": 32.98,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "VAS",
-      "km": 10.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "BES",
-      "km": 24.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "BKHE",
-      "km": 25.12
+      "km": 25.12,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "BLEB",
-      "km": 23.42
+      "km": 23.42,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "BLEK",
-      "km": 22.43
+      "km": 22.43,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "BLWB",
-      "km": 24
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "BWM",
-      "km": 22.08
+      "km": 22.08,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "AMSN",
-      "km": 18.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "AMCH",
-      "km": 18.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "AME",
-      "km": 18.14
+      "km": 18.14,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "AML",
-      "km": 18.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "AMPL",
-      "km": 18.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "AMW",
-      "km": 18.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "DOWSMT",
-      "km": 12.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "DWK",
-      "km": 12.76
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "DOF",
-      "km": 18.37
+      "km": 18.37,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "DOM",
-      "km": 19.87
+      "km": 19.87,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "KKW",
-      "km": 14.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "KLE",
-      "km": 15.84
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "KLK",
-      "km": 13.69
+      "km": 13.69,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "KLT",
-      "km": 14.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "KLW",
-      "km": 14.11
+      "km": 14.11,
+      "precision": "geocoded"
     },
     {
       "a": "PAD",
       "b": "DOE/DER",
-      "km": 28.08
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "MUBD",
-      "km": 25.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "SHAP",
-      "km": 18.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "TTL",
-      "km": 8.08
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "ULN",
-      "km": 15.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "ULN4",
-      "km": 15.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "PAD",
       "b": "PRCAME/PRCAMEN",
-      "km": 17.18
+      "km": 17.18,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "VAS",
-      "km": 35.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "BES",
-      "km": 8.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "BKHE",
-      "km": 8.23
+      "km": 8.23,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "BLEB",
-      "km": 9.89
+      "km": 9.89,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "BLEK",
-      "km": 11.2
+      "km": 11.2,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "BLWB",
-      "km": 9.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "BWM",
-      "km": 11.14
+      "km": 11.14,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "AMSN",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "AMCH",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "AME",
-      "km": 16.57
+      "km": 16.57,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "AML",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "AMPL",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "AMW",
-      "km": 15.83
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "DOWSMT",
-      "km": 25.11
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "DWK",
-      "km": 25.11
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "DOF",
-      "km": 25.7
+      "km": 25.7,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "DOM",
-      "km": 24.3
+      "km": 24.3,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "KKW",
-      "km": 24.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "KLE",
-      "km": 22.86
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "KLK",
-      "km": 24.61
+      "km": 24.61,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "KLT",
-      "km": 24.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "KLW",
-      "km": 23.81
+      "km": 23.81,
+      "precision": "geocoded"
     },
     {
       "a": "VGW",
       "b": "DOE/DER",
-      "km": 26.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "MUBD",
-      "km": 21.32
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "SHAP",
-      "km": 40.48
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "TTL",
-      "km": 24.9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "ULN",
-      "km": 19.95
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "ULN4",
-      "km": 19.95
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VGW",
       "b": "PRCAME/PRCAMEN",
-      "km": 17.61
+      "km": 17.61,
+      "precision": "geocoded"
     },
     {
       "a": "VAS",
       "b": "BES",
-      "km": 28.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "BKHE",
-      "km": 28.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "BLEB",
-      "km": 27.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "BLEK",
-      "km": 26.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "BLWB",
-      "km": 27.2
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "BWM",
-      "km": 25.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AMSN",
-      "km": 23.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AMCH",
-      "km": 23.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AME",
-      "km": 24.2
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AML",
-      "km": 23.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AMPL",
-      "km": 23.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "AMW",
-      "km": 23.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "DOWSMT",
-      "km": 21.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "DWK",
-      "km": 21.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "DOF",
-      "km": 27.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "DOM",
-      "km": 29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "KKW",
-      "km": 23.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "KLE",
-      "km": 24.41
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "KLK",
-      "km": 22.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "KLT",
-      "km": 23.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "KLW",
-      "km": 22.84
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "DOE/DER",
-      "km": 37.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "MUBD",
-      "km": 21.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "SHAP",
-      "km": 7.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "TTL",
-      "km": 13.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "ULN",
-      "km": 22.9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "ULN4",
-      "km": 22.9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "VAS",
       "b": "PRCAME/PRCAMEN",
-      "km": 23.51
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "BKHE",
-      "km": 0.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "BLEB",
-      "km": 1.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "BLEK",
-      "km": 2.24
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "BLWB",
-      "km": 1.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "BWM",
-      "km": 2.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AMSN",
-      "km": 6.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AMCH",
-      "km": 6.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AME",
-      "km": 7.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AML",
-      "km": 6.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AMPL",
-      "km": 6.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "AMW",
-      "km": 6.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "DOWSMT",
-      "km": 16.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "DWK",
-      "km": 16.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "DOF",
-      "km": 17.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "DOM",
-      "km": 16.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "KKW",
-      "km": 15.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "KLE",
-      "km": 14.13
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "KLK",
-      "km": 15.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "KLT",
-      "km": 15.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "KLW",
-      "km": 14.95
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "DOE/DER",
-      "km": 20.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "MUBD",
-      "km": 19.49
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "SHAP",
-      "km": 34.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "TTL",
-      "km": 16.41
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "ULN",
-      "km": 11.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "ULN4",
-      "km": 11.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BES",
       "b": "PRCAME/PRCAMEN",
-      "km": 8.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "BLEB",
-      "km": 1.71
+      "km": 1.71,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "BLEK",
-      "km": 2.98
+      "km": 2.98,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "BLWB",
-      "km": 1.86
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "BWM",
-      "km": 3.05
+      "km": 3.05,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "AMSN",
-      "km": 7.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "AMCH",
-      "km": 7.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "AME",
-      "km": 8.37
+      "km": 8.37,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "AML",
-      "km": 7.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "AMPL",
-      "km": 7.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "AMW",
-      "km": 7.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "DOWSMT",
-      "km": 16.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "DWK",
-      "km": 16.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "DOF",
-      "km": 18.09
+      "km": 18.09,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "DOM",
-      "km": 16.93
+      "km": 16.93,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "KKW",
-      "km": 16.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "KLE",
-      "km": 14.84
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "KLK",
-      "km": 16.47
+      "km": 16.47,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "KLT",
-      "km": 16.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "KLW",
-      "km": 15.68
+      "km": 15.68,
+      "precision": "geocoded"
     },
     {
       "a": "BKHE",
       "b": "DOE/DER",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "MUBD",
-      "km": 19.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "SHAP",
-      "km": 34.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "TTL",
-      "km": 17.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "ULN",
-      "km": 11.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "ULN4",
-      "km": 11.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BKHE",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.4
+      "km": 9.4,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "BLEK",
-      "km": 1.48
+      "km": 1.48,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "BLWB",
-      "km": 1.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "BWM",
-      "km": 1.35
+      "km": 1.35,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "AMSN",
-      "km": 5.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "AMCH",
-      "km": 5.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "AME",
-      "km": 6.84
+      "km": 6.84,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "AML",
-      "km": 5.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "AMPL",
-      "km": 5.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "AMW",
-      "km": 5.99
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "DOWSMT",
-      "km": 15.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "DWK",
-      "km": 15.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "DOF",
-      "km": 16.87
+      "km": 16.87,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "DOM",
-      "km": 15.83
+      "km": 15.83,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "KKW",
-      "km": 14.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "KLE",
-      "km": 13.43
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "KLK",
-      "km": 14.95
+      "km": 14.95,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "KLT",
-      "km": 14.82
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "KLW",
-      "km": 14.16
+      "km": 14.16,
+      "precision": "geocoded"
     },
     {
       "a": "BLEB",
       "b": "DOE/DER",
-      "km": 20.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "MUBD",
-      "km": 19.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "SHAP",
-      "km": 33.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "TTL",
-      "km": 15.37
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "ULN",
-      "km": 10.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "ULN4",
-      "km": 10.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEB",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.84
+      "km": 7.84,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "BLWB",
-      "km": 3.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "BWM",
-      "km": 1.27
+      "km": 1.27,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "AMSN",
-      "km": 4.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "AMCH",
-      "km": 4.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "AME",
-      "km": 5.41
+      "km": 5.41,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "AML",
-      "km": 4.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "AMPL",
-      "km": 4.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "AMW",
-      "km": 4.63
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "DOWSMT",
-      "km": 13.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "DWK",
-      "km": 13.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "DOF",
-      "km": 15.4
+      "km": 15.4,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "DOM",
-      "km": 14.38
+      "km": 14.38,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "KKW",
-      "km": 13.36
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "KLE",
-      "km": 11.96
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "KLK",
-      "km": 13.52
+      "km": 13.52,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "KLT",
-      "km": 13.36
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "KLW",
-      "km": 12.73
+      "km": 12.73,
+      "precision": "geocoded"
     },
     {
       "a": "BLEK",
       "b": "DOE/DER",
-      "km": 19.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "MUBD",
-      "km": 19.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "SHAP",
-      "km": 33.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "TTL",
-      "km": 14.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "ULN",
-      "km": 8.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "ULN4",
-      "km": 8.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLEK",
       "b": "PRCAME/PRCAMEN",
-      "km": 6.43
+      "km": 6.43,
+      "precision": "geocoded"
     },
     {
       "a": "BLWB",
       "b": "BWM",
-      "km": 2.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AMSN",
-      "km": 7.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AMCH",
-      "km": 7.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AME",
-      "km": 8.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AML",
-      "km": 7.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AMPL",
-      "km": 7.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "AMW",
-      "km": 7.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "DOWSMT",
-      "km": 16.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "DWK",
-      "km": 16.65
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "DOF",
-      "km": 18.44
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "DOM",
-      "km": 17.45
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "KKW",
-      "km": 16.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "KLE",
-      "km": 14.88
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "KLK",
-      "km": 16.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "KLT",
-      "km": 16.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "KLW",
-      "km": 15.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "DOE/DER",
-      "km": 22.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "MUBD",
-      "km": 17.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "SHAP",
-      "km": 33.05
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "TTL",
-      "km": 15.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "ULN",
-      "km": 11.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "ULN4",
-      "km": 11.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BLWB",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.17
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "AMSN",
-      "km": 4.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "AMCH",
-      "km": 4.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "AME",
-      "km": 5.87
+      "km": 5.87,
+      "precision": "geocoded"
     },
     {
       "a": "BWM",
       "b": "AML",
-      "km": 4.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "AMPL",
-      "km": 4.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "AMW",
-      "km": 4.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "DOWSMT",
-      "km": 14.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "DWK",
-      "km": 14.3
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "DOF",
-      "km": 16.18
+      "km": 16.18,
+      "precision": "geocoded"
     },
     {
       "a": "BWM",
       "b": "DOM",
-      "km": 15.27
+      "km": 15.27,
+      "precision": "geocoded"
     },
     {
       "a": "BWM",
       "b": "KKW",
-      "km": 13.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "KLE",
-      "km": 12.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "KLK",
-      "km": 13.94
+      "km": 13.94,
+      "precision": "geocoded"
     },
     {
       "a": "BWM",
       "b": "KLT",
-      "km": 13.87
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "KLW",
-      "km": 13.16
+      "km": 13.16,
+      "precision": "geocoded"
     },
     {
       "a": "BWM",
       "b": "DOE/DER",
-      "km": 20.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "MUBD",
-      "km": 18.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "SHAP",
-      "km": 32.21
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "TTL",
-      "km": 14.02
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "ULN",
-      "km": 9.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "ULN4",
-      "km": 9.19
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "BWM",
       "b": "PRCAME/PRCAMEN",
-      "km": 6.81
+      "km": 6.81,
+      "precision": "geocoded"
     },
     {
       "a": "AMSN",
       "b": "AMCH",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "AME",
-      "km": 1.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "AML",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "AMPL",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "AMW",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "DOWSMT",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "DWK",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "DOF",
-      "km": 11.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "DOM",
-      "km": 11.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "KKW",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "KLE",
-      "km": 7.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "KLK",
-      "km": 9.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "KLT",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "KLW",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "DOE/DER",
-      "km": 17.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "MUBD",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "SHAP",
-      "km": 30.81
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "TTL",
-      "km": 10.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "ULN",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "ULN4",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMSN",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "AME",
-      "km": 1.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "AML",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "AMPL",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "AMW",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "DOWSMT",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "DWK",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "DOF",
-      "km": 11.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "DOM",
-      "km": 11.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "KKW",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "KLE",
-      "km": 7.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "KLK",
-      "km": 9.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "KLT",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "KLW",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "DOE/DER",
-      "km": 17.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "MUBD",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "SHAP",
-      "km": 30.81
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "TTL",
-      "km": 10.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "ULN",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "ULN4",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMCH",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "AML",
-      "km": 1.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "AMPL",
-      "km": 1.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "AMW",
-      "km": 1.15
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "DOWSMT",
-      "km": 8.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "DWK",
-      "km": 8.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "DOF",
-      "km": 10.54
+      "km": 10.54,
+      "precision": "geocoded"
     },
     {
       "a": "AME",
       "b": "DOM",
-      "km": 9.91
+      "km": 9.91,
+      "precision": "geocoded"
     },
     {
       "a": "AME",
       "b": "KKW",
-      "km": 8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "KLE",
-      "km": 6.68
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "KLK",
-      "km": 8.11
+      "km": 8.11,
+      "precision": "geocoded"
     },
     {
       "a": "AME",
       "b": "KLT",
-      "km": 8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "KLW",
-      "km": 7.32
+      "km": 7.32,
+      "precision": "geocoded"
     },
     {
       "a": "AME",
       "b": "DOE/DER",
-      "km": 16.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "MUBD",
-      "km": 22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "SHAP",
-      "km": 31.31
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "TTL",
-      "km": 10.62
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "ULN",
-      "km": 3.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "ULN4",
-      "km": 3.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AME",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.06
+      "km": 1.06,
+      "precision": "geocoded"
     },
     {
       "a": "AML",
       "b": "AMPL",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "AMW",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "DOWSMT",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "DWK",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "DOF",
-      "km": 11.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "DOM",
-      "km": 11.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "KKW",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "KLE",
-      "km": 7.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "KLK",
-      "km": 9.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "KLT",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "KLW",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "DOE/DER",
-      "km": 17.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "MUBD",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "SHAP",
-      "km": 30.81
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "TTL",
-      "km": 10.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "ULN",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "ULN4",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AML",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "AMW",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "DOWSMT",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "DWK",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "DOF",
-      "km": 11.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "DOM",
-      "km": 11.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "KKW",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "KLE",
-      "km": 7.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "KLK",
-      "km": 9.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "KLT",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "KLW",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "DOE/DER",
-      "km": 17.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "MUBD",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "SHAP",
-      "km": 30.81
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "TTL",
-      "km": 10.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "ULN",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "ULN4",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMPL",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "DOWSMT",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "DWK",
-      "km": 9.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "DOF",
-      "km": 11.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "DOM",
-      "km": 11.06
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "KKW",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "KLE",
-      "km": 7.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "KLK",
-      "km": 9.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "KLT",
-      "km": 9
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "KLW",
-      "km": 8.25
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "DOE/DER",
-      "km": 17.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "MUBD",
-      "km": 20.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "SHAP",
-      "km": 30.81
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "TTL",
-      "km": 10.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "ULN",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "ULN4",
-      "km": 4.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "AMW",
       "b": "PRCAME/PRCAMEN",
-      "km": 1.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "DWK",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "DOF",
-      "km": 6.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "DOM",
-      "km": 7.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "KKW",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "KLE",
-      "km": 3.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "KLK",
-      "km": 0.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "KLT",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "KLW",
-      "km": 1.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "DOE/DER",
-      "km": 15.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "MUBD",
-      "km": 27.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "SHAP",
-      "km": 29.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "TTL",
-      "km": 8.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "ULN",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "ULN4",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOWSMT",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "DOF",
-      "km": 6.03
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "DOM",
-      "km": 7.22
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "KKW",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "KLE",
-      "km": 3.23
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "KLK",
-      "km": 0.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "KLT",
-      "km": 2.01
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "KLW",
-      "km": 1.55
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "DOE/DER",
-      "km": 15.56
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "MUBD",
-      "km": 27.07
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "SHAP",
-      "km": 29.71
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "TTL",
-      "km": 8.58
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "ULN",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "ULN4",
-      "km": 5.16
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DWK",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.53
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "DOM",
-      "km": 1.96
+      "km": 1.96,
+      "precision": "geocoded"
     },
     {
       "a": "DOF",
       "b": "KKW",
-      "km": 4.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "KLE",
-      "km": 4.42
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "KLK",
-      "km": 5.26
+      "km": 5.26,
+      "precision": "geocoded"
     },
     {
       "a": "DOF",
       "b": "KLT",
-      "km": 4.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "KLW",
-      "km": 5.34
+      "km": 5.34,
+      "precision": "geocoded"
     },
     {
       "a": "DOF",
       "b": "DOE/DER",
-      "km": 9.72
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "MUBD",
-      "km": 31.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "SHAP",
-      "km": 35.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "TTL",
-      "km": 14.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "ULN",
-      "km": 8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "ULN4",
-      "km": 8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOF",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.89
+      "km": 9.89,
+      "precision": "geocoded"
     },
     {
       "a": "DOM",
       "b": "KKW",
-      "km": 5.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "KLE",
-      "km": 4.8
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "KLK",
-      "km": 6.34
+      "km": 6.34,
+      "precision": "geocoded"
     },
     {
       "a": "DOM",
       "b": "KLT",
-      "km": 5.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "KLW",
-      "km": 6.19
+      "km": 6.19,
+      "precision": "geocoded"
     },
     {
       "a": "DOM",
       "b": "DOE/DER",
-      "km": 8.35
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "MUBD",
-      "km": 31.62
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "SHAP",
-      "km": 36.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "TTL",
-      "km": 15.4
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "ULN",
-      "km": 7.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "ULN4",
-      "km": 7.91
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOM",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.43
+      "km": 9.43,
+      "precision": "geocoded"
     },
     {
       "a": "KKW",
       "b": "KLE",
-      "km": 1.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "KLK",
-      "km": 1.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "KLT",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "KLW",
-      "km": 1.11
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "DOE/DER",
-      "km": 13.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "MUBD",
-      "km": 27.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "SHAP",
-      "km": 31.61
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "TTL",
-      "km": 10.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "ULN",
-      "km": 4.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "ULN4",
-      "km": 4.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KKW",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "KLK",
-      "km": 2.34
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "KLT",
-      "km": 1.57
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "KLW",
-      "km": 1.74
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "DOE/DER",
-      "km": 13.02
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "MUBD",
-      "km": 27.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "SHAP",
-      "km": 32.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "TTL",
-      "km": 10.64
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "ULN",
-      "km": 3.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "ULN4",
-      "km": 3.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLE",
       "b": "PRCAME/PRCAMEN",
-      "km": 5.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "KLT",
-      "km": 1.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "KLW",
-      "km": 0.81
+      "km": 0.81,
+      "precision": "geocoded"
     },
     {
       "a": "KLK",
       "b": "DOE/DER",
-      "km": 14.69
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "MUBD",
-      "km": 27.33
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "SHAP",
-      "km": 30.54
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "TTL",
-      "km": 9.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "ULN",
-      "km": 4.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "ULN4",
-      "km": 4.75
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLK",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.13
+      "km": 7.13,
+      "precision": "geocoded"
     },
     {
       "a": "KLT",
       "b": "KLW",
-      "km": 1.11
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "DOE/DER",
-      "km": 13.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "MUBD",
-      "km": 27.93
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "SHAP",
-      "km": 31.61
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "TTL",
-      "km": 10.27
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "ULN",
-      "km": 4.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "ULN4",
-      "km": 4.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLT",
       "b": "PRCAME/PRCAMEN",
-      "km": 7.09
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "DOE/DER",
-      "km": 14.52
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "MUBD",
-      "km": 26.85
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "SHAP",
-      "km": 30.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "TTL",
-      "km": 9.24
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "ULN",
-      "km": 3.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "ULN4",
-      "km": 3.98
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "KLW",
       "b": "PRCAME/PRCAMEN",
-      "km": 6.35
+      "km": 6.35,
+      "precision": "geocoded"
     },
     {
       "a": "DOE/DER",
       "b": "MUBD",
-      "km": 38.28
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOE/DER",
       "b": "SHAP",
-      "km": 45.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOE/DER",
       "b": "TTL",
-      "km": 23.66
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOE/DER",
       "b": "ULN",
-      "km": 15.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOE/DER",
       "b": "ULN4",
-      "km": 15.5
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "DOE/DER",
       "b": "PRCAME/PRCAMEN",
-      "km": 16.29
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "MUBD",
       "b": "SHAP",
-      "km": 22.67
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "MUBD",
       "b": "TTL",
-      "km": 20.18
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "MUBD",
       "b": "ULN",
-      "km": 23.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "MUBD",
       "b": "ULN4",
-      "km": 23.77
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "MUBD",
       "b": "PRCAME/PRCAMEN",
-      "km": 22.26
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHAP",
       "b": "TTL",
-      "km": 21.6
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHAP",
       "b": "ULN",
-      "km": 30.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHAP",
       "b": "ULN4",
-      "km": 30.39
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "SHAP",
       "b": "PRCAME/PRCAMEN",
-      "km": 30.73
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TTL",
       "b": "ULN",
-      "km": 8.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TTL",
       "b": "ULN4",
-      "km": 8.92
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "TTL",
       "b": "PRCAME/PRCAMEN",
-      "km": 9.79
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "ULN",
       "b": "ULN4",
-      "km": 0
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "ULN",
       "b": "PRCAME/PRCAMEN",
-      "km": 2.38
+      "km": null,
+      "precision": "town_centroid"
     },
     {
       "a": "ULN4",
       "b": "PRCAME/PRCAMEN",
-      "km": 2.38
+      "km": null,
+      "precision": "town_centroid"
     }
   ],
   "per_store": [
@@ -5896,30 +7076,31 @@
       "store_id": "KBG",
       "status": "operational",
       "geocoded": false,
+      "locatable": false,
       "nearest_own": null,
       "own_within": null,
-      "overlap_risk": null
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "not_geocoded"
     },
     {
       "store_id": "RCM",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "NKR",
-        "km": 20.37
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 0
-      },
-      "overlap_risk": 0,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "THE",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DAG/DOEMIDC",
         "km": 1.19
@@ -5927,8 +7108,10 @@
       "own_within": {
         "1km": 0,
         "3km": 5,
-        "5km": 12
+        "5km": 9
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.86,
       "kind": "derived"
     },
@@ -5936,30 +7119,38 @@
       "store_id": "TGR",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "TTL",
-        "km": 3.68
+        "store_id": "AME",
+        "km": 10.05
       },
       "own_within": {
         "1km": 0,
         "3km": 0,
-        "5km": 1
+        "5km": 0
       },
-      "overlap_risk": 0.16,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0,
       "kind": "derived"
     },
     {
       "store_id": "NSR",
       "status": "operational",
       "geocoded": false,
+      "locatable": false,
       "nearest_own": null,
       "own_within": null,
-      "overlap_risk": null
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "not_geocoded"
     },
     {
       "store_id": "NWM",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DSR",
         "km": 1.7
@@ -5967,8 +7158,10 @@
       "own_within": {
         "1km": 0,
         "3km": 1,
-        "5km": 2
+        "5km": 1
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.5,
       "kind": "derived"
     },
@@ -5976,6 +7169,7 @@
       "store_id": "KUD",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "AVB",
         "km": 7.3
@@ -5985,6 +7179,8 @@
         "3km": 0,
         "5km": 0
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0,
       "kind": "derived"
     },
@@ -5992,6 +7188,7 @@
       "store_id": "DNE",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DOM",
         "km": 1.19
@@ -6001,6 +7198,8 @@
         "3km": 4,
         "5km": 5
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.86,
       "kind": "derived"
     },
@@ -6008,22 +7207,26 @@
       "store_id": "KYD",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "DOWSMT",
-        "km": 0
+        "store_id": "KLK",
+        "km": 0.93
       },
       "own_within": {
-        "1km": 3,
-        "3km": 6,
-        "5km": 9
+        "1km": 1,
+        "3km": 2,
+        "5km": 4
       },
-      "overlap_risk": 1,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.69,
       "kind": "derived"
     },
     {
       "store_id": "DAG/DOEMIDC",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DOF",
         "km": 0.55
@@ -6031,8 +7234,10 @@
       "own_within": {
         "1km": 2,
         "3km": 5,
-        "5km": 10
+        "5km": 7
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.93,
       "kind": "derived"
     },
@@ -6040,6 +7245,7 @@
       "store_id": "AVB",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "KUD",
         "km": 7.3
@@ -6049,6 +7255,8 @@
         "3km": 0,
         "5km": 0
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0,
       "kind": "derived"
     },
@@ -6056,6 +7264,7 @@
       "store_id": "KBR",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "Bap",
         "km": 4.37
@@ -6065,6 +7274,8 @@
         "3km": 0,
         "5km": 3
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.08,
       "kind": "derived"
     },
@@ -6072,54 +7283,57 @@
       "store_id": "DSR",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "NWM",
         "km": 1.7
       },
       "own_within": {
         "1km": 0,
-        "3km": 2,
-        "5km": 2
+        "3km": 1,
+        "5km": 1
       },
-      "overlap_risk": 0.6,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.5,
       "kind": "derived"
     },
     {
       "store_id": "NKR",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "VGW",
-        "km": 7.44
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 0
-      },
-      "overlap_risk": 0,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "KET",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "KLE",
-        "km": 0.44
+        "store_id": "SHD",
+        "km": 1
       },
       "own_within": {
-        "1km": 1,
-        "3km": 7,
-        "5km": 16
+        "1km": 0,
+        "3km": 4,
+        "5km": 9
       },
-      "overlap_risk": 0.95,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.88,
       "kind": "derived"
     },
     {
       "store_id": "BBVR",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "BHAR",
         "km": 0.89
@@ -6129,6 +7343,8 @@
         "3km": 1,
         "5km": 3
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.59,
       "kind": "derived"
     },
@@ -6136,14 +7352,19 @@
       "store_id": "KMR",
       "status": "operational",
       "geocoded": false,
+      "locatable": false,
       "nearest_own": null,
       "own_within": null,
-      "overlap_risk": null
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "not_geocoded"
     },
     {
       "store_id": "DOW",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DOF",
         "km": 0.74
@@ -6151,8 +7372,10 @@
       "own_within": {
         "1km": 2,
         "3km": 5,
-        "5km": 8
+        "5km": 6
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.91,
       "kind": "derived"
     },
@@ -6160,22 +7383,26 @@
       "store_id": "SHD",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "KLE",
-        "km": 0.6
+        "store_id": "KET",
+        "km": 1
       },
       "own_within": {
-        "1km": 1,
-        "3km": 6,
-        "5km": 13
+        "1km": 0,
+        "3km": 3,
+        "5km": 6
       },
-      "overlap_risk": 0.93,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.78,
       "kind": "derived"
     },
     {
       "store_id": "BHAR",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "BBVR",
         "km": 0.89
@@ -6185,6 +7412,8 @@
         "3km": 1,
         "5km": 3
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.59,
       "kind": "derived"
     },
@@ -6192,6 +7421,7 @@
       "store_id": "Bap",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "BBVR",
         "km": 3.78
@@ -6201,6 +7431,8 @@
         "3km": 0,
         "5km": 3
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.15,
       "kind": "derived"
     },
@@ -6208,15 +7440,18 @@
       "store_id": "PAD",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "TTL",
-        "km": 8.08
+        "store_id": "TGR",
+        "km": 11.08
       },
       "own_within": {
         "1km": 0,
         "3km": 0,
         "5km": 0
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0,
       "kind": "derived"
     },
@@ -6224,15 +7459,18 @@
       "store_id": "VGW",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "NKR",
-        "km": 7.44
+        "store_id": "BKHE",
+        "km": 8.23
       },
       "own_within": {
         "1km": 0,
         "3km": 0,
         "5km": 0
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0,
       "kind": "derived"
     },
@@ -6240,246 +7478,222 @@
       "store_id": "VAS",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "SHAP",
-        "km": 7.99
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 0
-      },
-      "overlap_risk": 0,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "BES",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "BKHE",
-        "km": 0.73
-      },
-      "own_within": {
-        "1km": 1,
-        "3km": 5,
-        "5km": 5
-      },
-      "overlap_risk": 0.91,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "BKHE",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "BES",
-        "km": 0.73
+        "store_id": "BLEB",
+        "km": 1.71
       },
       "own_within": {
-        "1km": 1,
-        "3km": 4,
-        "5km": 5
+        "1km": 0,
+        "3km": 2,
+        "5km": 3
       },
-      "overlap_risk": 0.91,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.59,
       "kind": "derived"
     },
     {
       "store_id": "BLEB",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "BES",
-        "km": 1.05
+        "store_id": "BWM",
+        "km": 1.35
       },
       "own_within": {
         "1km": 0,
-        "3km": 5,
-        "5km": 5
+        "3km": 3,
+        "5km": 3
       },
-      "overlap_risk": 0.87,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.74,
       "kind": "derived"
     },
     {
       "store_id": "BLEK",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "BWM",
         "km": 1.27
       },
       "own_within": {
         "1km": 0,
-        "3km": 4,
-        "5km": 10
+        "3km": 3,
+        "5km": 3
       },
-      "overlap_risk": 0.85,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.75,
       "kind": "derived"
     },
     {
       "store_id": "BLWB",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "BLEB",
-        "km": 1.66
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 4,
-        "5km": 5
-      },
-      "overlap_risk": 0.8,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "BWM",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "BLEK",
         "km": 1.27
       },
       "own_within": {
         "1km": 0,
-        "3km": 4,
-        "5km": 10
+        "3km": 2,
+        "5km": 3
       },
-      "overlap_risk": 0.85,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0.65,
       "kind": "derived"
     },
     {
       "store_id": "AMSN",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "AMCH",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 4,
-        "3km": 5,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "AMCH",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "AMSN",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 4,
-        "3km": 5,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "AME",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
-        "store_id": "AMW",
-        "km": 1.15
+        "store_id": "BLEK",
+        "km": 5.41
       },
       "own_within": {
         "1km": 0,
-        "3km": 5,
-        "5km": 7
+        "3km": 0,
+        "5km": 0
       },
-      "overlap_risk": 0.86,
+      "locatable_others": 26,
+      "total_other_operational": 51,
+      "overlap_risk": 0,
       "kind": "derived"
     },
     {
       "store_id": "AML",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "AMSN",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 4,
-        "3km": 5,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "AMPL",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "AMSN",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 4,
-        "3km": 5,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "AMW",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "AMSN",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 4,
-        "3km": 5,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "DOWSMT",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "KYD",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 3,
-        "3km": 6,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "DWK",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "KYD",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 3,
-        "3km": 6,
-        "5km": 9
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "DOF",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DAG/DOEMIDC",
         "km": 0.55
@@ -6487,8 +7701,10 @@
       "own_within": {
         "1km": 2,
         "3km": 5,
-        "5km": 9
+        "5km": 6
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.93,
       "kind": "derived"
     },
@@ -6496,6 +7712,7 @@
       "store_id": "DOM",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "DNE",
         "km": 1.19
@@ -6503,8 +7720,10 @@
       "own_within": {
         "1km": 0,
         "3km": 5,
-        "5km": 7
+        "5km": 6
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.86,
       "kind": "derived"
     },
@@ -6512,47 +7731,42 @@
       "store_id": "KKW",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "KLT",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 1,
-        "3km": 9,
-        "5km": 15
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "KLE",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "KET",
-        "km": 0.44
-      },
-      "own_within": {
-        "1km": 2,
-        "3km": 6,
-        "5km": 15
-      },
-      "overlap_risk": 0.95,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "KLK",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "KLW",
         "km": 0.81
       },
       "own_within": {
-        "1km": 4,
-        "3km": 9,
-        "5km": 12
+        "1km": 2,
+        "3km": 4,
+        "5km": 5
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.9,
       "kind": "derived"
     },
@@ -6560,31 +7774,30 @@
       "store_id": "KLT",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "KKW",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 1,
-        "3km": 9,
-        "5km": 15
-      },
-      "overlap_risk": 1,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "KLW",
       "status": "operational",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "KLK",
         "km": 0.81
       },
       "own_within": {
         "1km": 1,
-        "3km": 9,
-        "5km": 12
+        "3km": 4,
+        "5km": 5
       },
+      "locatable_others": 26,
+      "total_other_operational": 51,
       "overlap_risk": 0.9,
       "kind": "derived"
     },
@@ -6592,119 +7805,102 @@
       "store_id": "DOE/DER",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "DSR",
-        "km": 2.94
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 1,
-        "5km": 2
-      },
-      "overlap_risk": 0.35,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "MUBD",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "TGR",
-        "km": 16.63
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 0
-      },
-      "overlap_risk": 0,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "SHAP",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "VAS",
-        "km": 7.99
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 0
-      },
-      "overlap_risk": 0,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "TTL",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "TGR",
-        "km": 3.68
-      },
-      "own_within": {
-        "1km": 0,
-        "3km": 0,
-        "5km": 1
-      },
-      "overlap_risk": 0.16,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "ULN",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "ULN4",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 1,
-        "3km": 1,
-        "5km": 14
-      },
-      "overlap_risk": 0.7,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "ULN4",
       "status": "operational",
       "geocoded": true,
-      "nearest_own": {
-        "store_id": "ULN",
-        "km": 0
-      },
-      "own_within": {
-        "1km": 1,
-        "3km": 1,
-        "5km": 14
-      },
-      "overlap_risk": 0.7,
-      "kind": "derived"
+      "locatable": false,
+      "nearest_own": null,
+      "own_within": null,
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "town_centroid"
     },
     {
       "store_id": "KHP",
       "status": "operational",
       "geocoded": false,
+      "locatable": false,
       "nearest_own": null,
       "own_within": null,
-      "overlap_risk": null
+      "overlap_risk": null,
+      "locatable_others": 0,
+      "total_other_operational": 51,
+      "unavailable_reason": "not_geocoded"
     },
     {
       "store_id": "PRCAME/PRCAMEN",
       "status": "closed",
       "geocoded": true,
+      "locatable": true,
       "nearest_own": {
         "store_id": "AME",
         "km": 1.06
       },
       "own_within": {
         "1km": 0,
-        "3km": 8,
-        "5km": 8
+        "3km": 1,
+        "5km": 1
       },
+      "locatable_others": 27,
+      "total_other_operational": 52,
       "overlap_risk": null
     }
   ],
