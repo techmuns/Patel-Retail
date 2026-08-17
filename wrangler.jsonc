@@ -1,0 +1,45 @@
+{
+  // Patel Retail Dashboard — Cloudflare Worker config.
+  //
+  // Copied from the Daksham Concall Tracker repo (donor). The Worker
+  // (worker/index.js) still has its ORIGINAL concall-tracker routes
+  // (/api/search, /api/analyze) — those need to be reworked for this
+  // project before deploying; only the hosting shell (serve ./public via
+  // ASSETS + the GitHub Contents API write helpers) is meant to carry over
+  // unchanged.
+  //
+  // NO build step: plain HTML/CSS/vanilla JS is served as-is.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "patel-retail-dashboard",
+  "main": "worker/index.js",
+  "compatibility_date": "2025-01-01",
+
+  // Serve ./public and expose it to the Worker as `env.ASSETS`.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    // Single static entry point; unknown non-API paths return index.html
+    // so deep links / refreshes never 404.
+    "not_found_handling": "single-page-application"
+  },
+
+  "observability": {
+    "enabled": true
+  }
+
+  // ---------------------------------------------------------------------------
+  // SECRETS / ENV — set these in the Cloudflare dashboard (Workers > Settings >
+  // Variables) or via `wrangler secret put <NAME>`. NEVER hardcode them here.
+  //
+  //   MUNS_TOKEN        Bearer token for the Muns stock-search API (search
+  //                     works as soon as this is set).
+  //   GITHUB_TOKEN      Fine-grained PAT for THIS repo: Contents read/write +
+  //                     Actions read/write. Enables the Analyze action.
+  //   GITHUB_REPO       "owner/repo" (e.g. "techmuns/Patel-Retail").
+  //   GITHUB_BRANCH     Branch to read/commit data on (e.g. "main").
+  //   ANALYZE_PASSCODE  Shared passcode that gates the Analyze action.
+  //
+  // Search needs only MUNS_TOKEN. If the GitHub vars / passcode are missing the
+  // Worker degrades gracefully with a friendly message — it never 500s the page.
+  // ---------------------------------------------------------------------------
+}
