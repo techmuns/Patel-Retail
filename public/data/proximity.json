@@ -1,15 +1,5896 @@
 {
-  "generated_at": "2026-08-17T08:56:07.090Z",
+  "generated_at": "2026-08-17T09:39:06.173Z",
   "metadata": {
     "total_stores": 53,
-    "geocoded_count": 0,
-    "pending_geocode_count": 53,
+    "geocoded_count": 49,
+    "pending_geocode_count": 4,
     "total_possible_pairs": 1378,
-    "pairs_computed": 0,
-    "note": "No stores are geocoded yet — run scripts/geocode.mjs with GOOGLE_MAPS_API_KEY set, then re-run this script. Town clusters below don't need geocoding and are already real."
+    "pairs_computed": 1176,
+    "note": "4 store(s) still ungeocoded — pairs/nearest-own involving them are absent, not zero."
   },
   "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\".",
-  "pairs": [],
+  "pairs": [
+    {
+      "a": "RCM",
+      "b": "THE",
+      "km": 36.76
+    },
+    {
+      "a": "RCM",
+      "b": "TGR",
+      "km": 43.03
+    },
+    {
+      "a": "RCM",
+      "b": "NWM",
+      "km": 33.68
+    },
+    {
+      "a": "RCM",
+      "b": "KUD",
+      "km": 71.17
+    },
+    {
+      "a": "RCM",
+      "b": "DNE",
+      "km": 34.87
+    },
+    {
+      "a": "RCM",
+      "b": "KYD",
+      "km": 40.23
+    },
+    {
+      "a": "RCM",
+      "b": "DAG/DOEMIDC",
+      "km": 36.47
+    },
+    {
+      "a": "RCM",
+      "b": "AVB",
+      "km": 64.35
+    },
+    {
+      "a": "RCM",
+      "b": "KBR",
+      "km": 42.61
+    },
+    {
+      "a": "RCM",
+      "b": "DSR",
+      "km": 33.37
+    },
+    {
+      "a": "RCM",
+      "b": "NKR",
+      "km": 20.37
+    },
+    {
+      "a": "RCM",
+      "b": "KET",
+      "km": 36.74
+    },
+    {
+      "a": "RCM",
+      "b": "BBVR",
+      "km": 46.78
+    },
+    {
+      "a": "RCM",
+      "b": "DOW",
+      "km": 36.93
+    },
+    {
+      "a": "RCM",
+      "b": "SHD",
+      "km": 37.17
+    },
+    {
+      "a": "RCM",
+      "b": "BHAR",
+      "km": 47.17
+    },
+    {
+      "a": "RCM",
+      "b": "Bap",
+      "km": 44.18
+    },
+    {
+      "a": "RCM",
+      "b": "PAD",
+      "km": 51.87
+    },
+    {
+      "a": "RCM",
+      "b": "VGW",
+      "km": 24.34
+    },
+    {
+      "a": "RCM",
+      "b": "VAS",
+      "km": 57.29
+    },
+    {
+      "a": "RCM",
+      "b": "BES",
+      "km": 29.11
+    },
+    {
+      "a": "RCM",
+      "b": "BKHE",
+      "km": 28.68
+    },
+    {
+      "a": "RCM",
+      "b": "BLEB",
+      "km": 30.1
+    },
+    {
+      "a": "RCM",
+      "b": "BLEK",
+      "km": 30.5
+    },
+    {
+      "a": "RCM",
+      "b": "BLWB",
+      "km": 30.44
+    },
+    {
+      "a": "RCM",
+      "b": "BWM",
+      "km": 31.35
+    },
+    {
+      "a": "RCM",
+      "b": "AMSN",
+      "km": 33.83
+    },
+    {
+      "a": "RCM",
+      "b": "AMCH",
+      "km": 33.83
+    },
+    {
+      "a": "RCM",
+      "b": "AME",
+      "km": 33.8
+    },
+    {
+      "a": "RCM",
+      "b": "AML",
+      "km": 33.83
+    },
+    {
+      "a": "RCM",
+      "b": "AMPL",
+      "km": 33.83
+    },
+    {
+      "a": "RCM",
+      "b": "AMW",
+      "km": 33.83
+    },
+    {
+      "a": "RCM",
+      "b": "DOWSMT",
+      "km": 40.23
+    },
+    {
+      "a": "RCM",
+      "b": "DWK",
+      "km": 40.23
+    },
+    {
+      "a": "RCM",
+      "b": "DOF",
+      "km": 37
+    },
+    {
+      "a": "RCM",
+      "b": "DOM",
+      "km": 35.04
+    },
+    {
+      "a": "RCM",
+      "b": "KKW",
+      "km": 38.52
+    },
+    {
+      "a": "RCM",
+      "b": "KLE",
+      "km": 37.04
+    },
+    {
+      "a": "RCM",
+      "b": "KLK",
+      "km": 39.37
+    },
+    {
+      "a": "RCM",
+      "b": "KLT",
+      "km": 38.52
+    },
+    {
+      "a": "RCM",
+      "b": "KLW",
+      "km": 38.69
+    },
+    {
+      "a": "RCM",
+      "b": "DOE/DER",
+      "km": 30.66
+    },
+    {
+      "a": "RCM",
+      "b": "MUBD",
+      "km": 45.66
+    },
+    {
+      "a": "RCM",
+      "b": "SHAP",
+      "km": 63.48
+    },
+    {
+      "a": "RCM",
+      "b": "TTL",
+      "km": 44.38
+    },
+    {
+      "a": "RCM",
+      "b": "ULN",
+      "km": 36.25
+    },
+    {
+      "a": "RCM",
+      "b": "ULN4",
+      "km": 36.25
+    },
+    {
+      "a": "RCM",
+      "b": "PRCAME/PRCAMEN",
+      "km": 34.72
+    },
+    {
+      "a": "THE",
+      "b": "TGR",
+      "km": 15.32
+    },
+    {
+      "a": "THE",
+      "b": "NWM",
+      "km": 9.9
+    },
+    {
+      "a": "THE",
+      "b": "KUD",
+      "km": 34.81
+    },
+    {
+      "a": "THE",
+      "b": "DNE",
+      "km": 3.17
+    },
+    {
+      "a": "THE",
+      "b": "KYD",
+      "km": 5.09
+    },
+    {
+      "a": "THE",
+      "b": "DAG/DOEMIDC",
+      "km": 1.19
+    },
+    {
+      "a": "THE",
+      "b": "AVB",
+      "km": 27.77
+    },
+    {
+      "a": "THE",
+      "b": "KBR",
+      "km": 5.92
+    },
+    {
+      "a": "THE",
+      "b": "DSR",
+      "km": 8.35
+    },
+    {
+      "a": "THE",
+      "b": "NKR",
+      "km": 31.18
+    },
+    {
+      "a": "THE",
+      "b": "KET",
+      "km": 2.77
+    },
+    {
+      "a": "THE",
+      "b": "BBVR",
+      "km": 10.28
+    },
+    {
+      "a": "THE",
+      "b": "DOW",
+      "km": 2.04
+    },
+    {
+      "a": "THE",
+      "b": "SHD",
+      "km": 3.72
+    },
+    {
+      "a": "THE",
+      "b": "BHAR",
+      "km": 10.54
+    },
+    {
+      "a": "THE",
+      "b": "Bap",
+      "km": 8.77
+    },
+    {
+      "a": "THE",
+      "b": "PAD",
+      "km": 17.7
+    },
+    {
+      "a": "THE",
+      "b": "VGW",
+      "km": 24.66
+    },
+    {
+      "a": "THE",
+      "b": "VAS",
+      "km": 26.9
+    },
+    {
+      "a": "THE",
+      "b": "BES",
+      "km": 16.26
+    },
+    {
+      "a": "THE",
+      "b": "BKHE",
+      "km": 16.95
+    },
+    {
+      "a": "THE",
+      "b": "BLEB",
+      "km": 15.68
+    },
+    {
+      "a": "THE",
+      "b": "BLEK",
+      "km": 14.21
+    },
+    {
+      "a": "THE",
+      "b": "BLWB",
+      "km": 17.23
+    },
+    {
+      "a": "THE",
+      "b": "BWM",
+      "km": 14.96
+    },
+    {
+      "a": "THE",
+      "b": "AMSN",
+      "km": 10.38
+    },
+    {
+      "a": "THE",
+      "b": "AMCH",
+      "km": 10.38
+    },
+    {
+      "a": "THE",
+      "b": "AME",
+      "km": 9.26
+    },
+    {
+      "a": "THE",
+      "b": "AML",
+      "km": 10.38
+    },
+    {
+      "a": "THE",
+      "b": "AMPL",
+      "km": 10.38
+    },
+    {
+      "a": "THE",
+      "b": "AMW",
+      "km": 10.38
+    },
+    {
+      "a": "THE",
+      "b": "DOWSMT",
+      "km": 5.09
+    },
+    {
+      "a": "THE",
+      "b": "DWK",
+      "km": 5.09
+    },
+    {
+      "a": "THE",
+      "b": "DOF",
+      "km": 1.32
+    },
+    {
+      "a": "THE",
+      "b": "DOM",
+      "km": 2.17
+    },
+    {
+      "a": "THE",
+      "b": "KKW",
+      "km": 3.18
+    },
+    {
+      "a": "THE",
+      "b": "KLE",
+      "km": 3.12
+    },
+    {
+      "a": "THE",
+      "b": "KLK",
+      "km": 4.24
+    },
+    {
+      "a": "THE",
+      "b": "KLT",
+      "km": 3.18
+    },
+    {
+      "a": "THE",
+      "b": "KLW",
+      "km": 4.19
+    },
+    {
+      "a": "THE",
+      "b": "DOE/DER",
+      "km": 10.47
+    },
+    {
+      "a": "THE",
+      "b": "MUBD",
+      "km": 30.42
+    },
+    {
+      "a": "THE",
+      "b": "SHAP",
+      "km": 34.77
+    },
+    {
+      "a": "THE",
+      "b": "TTL",
+      "km": 13.43
+    },
+    {
+      "a": "THE",
+      "b": "ULN",
+      "km": 6.68
+    },
+    {
+      "a": "THE",
+      "b": "ULN4",
+      "km": 6.68
+    },
+    {
+      "a": "THE",
+      "b": "PRCAME/PRCAMEN",
+      "km": 8.59
+    },
+    {
+      "a": "TGR",
+      "b": "NWM",
+      "km": 25.09
+    },
+    {
+      "a": "TGR",
+      "b": "KUD",
+      "km": 31.35
+    },
+    {
+      "a": "TGR",
+      "b": "DNE",
+      "km": 18.24
+    },
+    {
+      "a": "TGR",
+      "b": "KYD",
+      "km": 11.01
+    },
+    {
+      "a": "TGR",
+      "b": "DAG/DOEMIDC",
+      "km": 16.51
+    },
+    {
+      "a": "TGR",
+      "b": "AVB",
+      "km": 26.17
+    },
+    {
+      "a": "TGR",
+      "b": "KBR",
+      "km": 15.96
+    },
+    {
+      "a": "TGR",
+      "b": "DSR",
+      "km": 23.45
+    },
+    {
+      "a": "TGR",
+      "b": "NKR",
+      "km": 29.67
+    },
+    {
+      "a": "TGR",
+      "b": "KET",
+      "km": 12.68
+    },
+    {
+      "a": "TGR",
+      "b": "BBVR",
+      "km": 18.58
+    },
+    {
+      "a": "TGR",
+      "b": "DOW",
+      "km": 17.28
+    },
+    {
+      "a": "TGR",
+      "b": "SHD",
+      "km": 11.68
+    },
+    {
+      "a": "TGR",
+      "b": "BHAR",
+      "km": 18.01
+    },
+    {
+      "a": "TGR",
+      "b": "Bap",
+      "km": 20.3
+    },
+    {
+      "a": "TGR",
+      "b": "PAD",
+      "km": 11.08
+    },
+    {
+      "a": "TGR",
+      "b": "VGW",
+      "km": 22.26
+    },
+    {
+      "a": "TGR",
+      "b": "VAS",
+      "km": 14.32
+    },
+    {
+      "a": "TGR",
+      "b": "BES",
+      "km": 14.28
+    },
+    {
+      "a": "TGR",
+      "b": "BKHE",
+      "km": 14.86
+    },
+    {
+      "a": "TGR",
+      "b": "BLEB",
+      "km": 13.23
+    },
+    {
+      "a": "TGR",
+      "b": "BLEK",
+      "km": 12.59
+    },
+    {
+      "a": "TGR",
+      "b": "BLWB",
+      "km": 13.46
+    },
+    {
+      "a": "TGR",
+      "b": "BWM",
+      "km": 11.9
+    },
+    {
+      "a": "TGR",
+      "b": "AMSN",
+      "km": 9.58
+    },
+    {
+      "a": "TGR",
+      "b": "AMCH",
+      "km": 9.58
+    },
+    {
+      "a": "TGR",
+      "b": "AME",
+      "km": 10.05
+    },
+    {
+      "a": "TGR",
+      "b": "AML",
+      "km": 9.58
+    },
+    {
+      "a": "TGR",
+      "b": "AMPL",
+      "km": 9.58
+    },
+    {
+      "a": "TGR",
+      "b": "AMW",
+      "km": 9.58
+    },
+    {
+      "a": "TGR",
+      "b": "DOWSMT",
+      "km": 11.01
+    },
+    {
+      "a": "TGR",
+      "b": "DWK",
+      "km": 11.01
+    },
+    {
+      "a": "TGR",
+      "b": "DOF",
+      "km": 16.54
+    },
+    {
+      "a": "TGR",
+      "b": "DOM",
+      "km": 17.05
+    },
+    {
+      "a": "TGR",
+      "b": "KKW",
+      "km": 12.34
+    },
+    {
+      "a": "TGR",
+      "b": "KLE",
+      "km": 12.27
+    },
+    {
+      "a": "TGR",
+      "b": "KLK",
+      "km": 11.49
+    },
+    {
+      "a": "TGR",
+      "b": "KLT",
+      "km": 12.34
+    },
+    {
+      "a": "TGR",
+      "b": "KLW",
+      "km": 11.23
+    },
+    {
+      "a": "TGR",
+      "b": "DOE/DER",
+      "km": 25.01
+    },
+    {
+      "a": "TGR",
+      "b": "MUBD",
+      "km": 16.63
+    },
+    {
+      "a": "TGR",
+      "b": "SHAP",
+      "km": 21.26
+    },
+    {
+      "a": "TGR",
+      "b": "TTL",
+      "km": 3.68
+    },
+    {
+      "a": "TGR",
+      "b": "ULN",
+      "km": 9.56
+    },
+    {
+      "a": "TGR",
+      "b": "ULN4",
+      "km": 9.56
+    },
+    {
+      "a": "TGR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.51
+    },
+    {
+      "a": "NWM",
+      "b": "KUD",
+      "km": 41.61
+    },
+    {
+      "a": "NWM",
+      "b": "DNE",
+      "km": 6.85
+    },
+    {
+      "a": "NWM",
+      "b": "KYD",
+      "km": 14.88
+    },
+    {
+      "a": "NWM",
+      "b": "DAG/DOEMIDC",
+      "km": 8.74
+    },
+    {
+      "a": "NWM",
+      "b": "AVB",
+      "km": 34.32
+    },
+    {
+      "a": "NWM",
+      "b": "KBR",
+      "km": 12.91
+    },
+    {
+      "a": "NWM",
+      "b": "DSR",
+      "km": 1.7
+    },
+    {
+      "a": "NWM",
+      "b": "NKR",
+      "km": 34
+    },
+    {
+      "a": "NWM",
+      "b": "KET",
+      "km": 12.42
+    },
+    {
+      "a": "NWM",
+      "b": "BBVR",
+      "km": 15.58
+    },
+    {
+      "a": "NWM",
+      "b": "DOW",
+      "km": 8.18
+    },
+    {
+      "a": "NWM",
+      "b": "SHD",
+      "km": 13.42
+    },
+    {
+      "a": "NWM",
+      "b": "BHAR",
+      "km": 16.3
+    },
+    {
+      "a": "NWM",
+      "b": "Bap",
+      "km": 12.03
+    },
+    {
+      "a": "NWM",
+      "b": "PAD",
+      "km": 26.93
+    },
+    {
+      "a": "NWM",
+      "b": "VGW",
+      "km": 28.91
+    },
+    {
+      "a": "NWM",
+      "b": "VAS",
+      "km": 36.65
+    },
+    {
+      "a": "NWM",
+      "b": "BES",
+      "km": 22.26
+    },
+    {
+      "a": "NWM",
+      "b": "BKHE",
+      "km": 22.78
+    },
+    {
+      "a": "NWM",
+      "b": "BLEB",
+      "km": 22.08
+    },
+    {
+      "a": "NWM",
+      "b": "BLEK",
+      "km": 20.76
+    },
+    {
+      "a": "NWM",
+      "b": "BLWB",
+      "km": 23.74
+    },
+    {
+      "a": "NWM",
+      "b": "BWM",
+      "km": 21.85
+    },
+    {
+      "a": "NWM",
+      "b": "AMSN",
+      "km": 18.39
+    },
+    {
+      "a": "NWM",
+      "b": "AMCH",
+      "km": 18.39
+    },
+    {
+      "a": "NWM",
+      "b": "AME",
+      "km": 17.28
+    },
+    {
+      "a": "NWM",
+      "b": "AML",
+      "km": 18.39
+    },
+    {
+      "a": "NWM",
+      "b": "AMPL",
+      "km": 18.39
+    },
+    {
+      "a": "NWM",
+      "b": "AMW",
+      "km": 18.39
+    },
+    {
+      "a": "NWM",
+      "b": "DOWSMT",
+      "km": 14.88
+    },
+    {
+      "a": "NWM",
+      "b": "DWK",
+      "km": 14.88
+    },
+    {
+      "a": "NWM",
+      "b": "DOF",
+      "km": 8.86
+    },
+    {
+      "a": "NWM",
+      "b": "DOM",
+      "km": 8.04
+    },
+    {
+      "a": "NWM",
+      "b": "KKW",
+      "km": 13.06
+    },
+    {
+      "a": "NWM",
+      "b": "KLE",
+      "km": 12.83
+    },
+    {
+      "a": "NWM",
+      "b": "KLK",
+      "km": 14.1
+    },
+    {
+      "a": "NWM",
+      "b": "KLT",
+      "km": 13.06
+    },
+    {
+      "a": "NWM",
+      "b": "KLW",
+      "km": 14.09
+    },
+    {
+      "a": "NWM",
+      "b": "DOE/DER",
+      "km": 3.04
+    },
+    {
+      "a": "NWM",
+      "b": "MUBD",
+      "km": 39.27
+    },
+    {
+      "a": "NWM",
+      "b": "SHAP",
+      "km": 44.57
+    },
+    {
+      "a": "NWM",
+      "b": "TTL",
+      "km": 23.33
+    },
+    {
+      "a": "NWM",
+      "b": "ULN",
+      "km": 15.83
+    },
+    {
+      "a": "NWM",
+      "b": "ULN4",
+      "km": 15.83
+    },
+    {
+      "a": "NWM",
+      "b": "PRCAME/PRCAMEN",
+      "km": 17.03
+    },
+    {
+      "a": "KUD",
+      "b": "DNE",
+      "km": 37.32
+    },
+    {
+      "a": "KUD",
+      "b": "KYD",
+      "km": 30.94
+    },
+    {
+      "a": "KUD",
+      "b": "DAG/DOEMIDC",
+      "km": 35.36
+    },
+    {
+      "a": "KUD",
+      "b": "AVB",
+      "km": 7.3
+    },
+    {
+      "a": "KUD",
+      "b": "KBR",
+      "km": 29.37
+    },
+    {
+      "a": "KUD",
+      "b": "DSR",
+      "km": 40.88
+    },
+    {
+      "a": "KUD",
+      "b": "NKR",
+      "km": 60.82
+    },
+    {
+      "a": "KUD",
+      "b": "KET",
+      "km": 34.45
+    },
+    {
+      "a": "KUD",
+      "b": "BBVR",
+      "km": 26.03
+    },
+    {
+      "a": "KUD",
+      "b": "DOW",
+      "km": 35.18
+    },
+    {
+      "a": "KUD",
+      "b": "SHD",
+      "km": 34
+    },
+    {
+      "a": "KUD",
+      "b": "BHAR",
+      "km": 25.35
+    },
+    {
+      "a": "KUD",
+      "b": "Bap",
+      "km": 29.63
+    },
+    {
+      "a": "KUD",
+      "b": "PAD",
+      "km": 20.41
+    },
+    {
+      "a": "KUD",
+      "b": "VGW",
+      "km": 53.38
+    },
+    {
+      "a": "KUD",
+      "b": "VAS",
+      "km": 22.52
+    },
+    {
+      "a": "KUD",
+      "b": "BES",
+      "km": 44.79
+    },
+    {
+      "a": "KUD",
+      "b": "BKHE",
+      "km": 45.47
+    },
+    {
+      "a": "KUD",
+      "b": "BLEB",
+      "km": 43.76
+    },
+    {
+      "a": "KUD",
+      "b": "BLEK",
+      "km": 42.71
+    },
+    {
+      "a": "KUD",
+      "b": "BLWB",
+      "km": 44.39
+    },
+    {
+      "a": "KUD",
+      "b": "BWM",
+      "km": 42.43
+    },
+    {
+      "a": "KUD",
+      "b": "AMSN",
+      "km": 38.37
+    },
+    {
+      "a": "KUD",
+      "b": "AMCH",
+      "km": 38.37
+    },
+    {
+      "a": "KUD",
+      "b": "AME",
+      "km": 38.06
+    },
+    {
+      "a": "KUD",
+      "b": "AML",
+      "km": 38.37
+    },
+    {
+      "a": "KUD",
+      "b": "AMPL",
+      "km": 38.37
+    },
+    {
+      "a": "KUD",
+      "b": "AMW",
+      "km": 38.37
+    },
+    {
+      "a": "KUD",
+      "b": "DOWSMT",
+      "km": 30.94
+    },
+    {
+      "a": "KUD",
+      "b": "DWK",
+      "km": 30.94
+    },
+    {
+      "a": "KUD",
+      "b": "DOF",
+      "km": 34.89
+    },
+    {
+      "a": "KUD",
+      "b": "DOM",
+      "km": 36.79
+    },
+    {
+      "a": "KUD",
+      "b": "KKW",
+      "km": 32.7
+    },
+    {
+      "a": "KUD",
+      "b": "KLE",
+      "km": 34.15
+    },
+    {
+      "a": "KUD",
+      "b": "KLK",
+      "km": 31.81
+    },
+    {
+      "a": "KUD",
+      "b": "KLT",
+      "km": 32.7
+    },
+    {
+      "a": "KUD",
+      "b": "KLW",
+      "km": 32.48
+    },
+    {
+      "a": "KUD",
+      "b": "DOE/DER",
+      "km": 43.77
+    },
+    {
+      "a": "KUD",
+      "b": "MUBD",
+      "km": 43.28
+    },
+    {
+      "a": "KUD",
+      "b": "SHAP",
+      "km": 25.42
+    },
+    {
+      "a": "KUD",
+      "b": "TTL",
+      "km": 28.48
+    },
+    {
+      "a": "KUD",
+      "b": "ULN",
+      "km": 35.16
+    },
+    {
+      "a": "KUD",
+      "b": "ULN4",
+      "km": 35.16
+    },
+    {
+      "a": "KUD",
+      "b": "PRCAME/PRCAMEN",
+      "km": 37.04
+    },
+    {
+      "a": "DNE",
+      "b": "KYD",
+      "km": 8.25
+    },
+    {
+      "a": "DNE",
+      "b": "DAG/DOEMIDC",
+      "km": 2.14
+    },
+    {
+      "a": "DNE",
+      "b": "AVB",
+      "km": 30.17
+    },
+    {
+      "a": "DNE",
+      "b": "KBR",
+      "km": 7.97
+    },
+    {
+      "a": "DNE",
+      "b": "DSR",
+      "km": 5.24
+    },
+    {
+      "a": "DNE",
+      "b": "NKR",
+      "km": 31.06
+    },
+    {
+      "a": "DNE",
+      "b": "KET",
+      "km": 5.56
+    },
+    {
+      "a": "DNE",
+      "b": "BBVR",
+      "km": 11.93
+    },
+    {
+      "a": "DNE",
+      "b": "DOW",
+      "km": 2.14
+    },
+    {
+      "a": "DNE",
+      "b": "SHD",
+      "km": 6.57
+    },
+    {
+      "a": "DNE",
+      "b": "BHAR",
+      "km": 12.38
+    },
+    {
+      "a": "DNE",
+      "b": "Bap",
+      "km": 9.48
+    },
+    {
+      "a": "DNE",
+      "b": "PAD",
+      "km": 20.79
+    },
+    {
+      "a": "DNE",
+      "b": "VGW",
+      "km": 24.99
+    },
+    {
+      "a": "DNE",
+      "b": "VAS",
+      "km": 30.07
+    },
+    {
+      "a": "DNE",
+      "b": "BES",
+      "km": 17.17
+    },
+    {
+      "a": "DNE",
+      "b": "BKHE",
+      "km": 17.79
+    },
+    {
+      "a": "DNE",
+      "b": "BLEB",
+      "km": 16.76
+    },
+    {
+      "a": "DNE",
+      "b": "BLEK",
+      "km": 15.32
+    },
+    {
+      "a": "DNE",
+      "b": "BLWB",
+      "km": 18.39
+    },
+    {
+      "a": "DNE",
+      "b": "BWM",
+      "km": 16.25
+    },
+    {
+      "a": "DNE",
+      "b": "AMSN",
+      "km": 12.15
+    },
+    {
+      "a": "DNE",
+      "b": "AMCH",
+      "km": 12.15
+    },
+    {
+      "a": "DNE",
+      "b": "AME",
+      "km": 11.01
+    },
+    {
+      "a": "DNE",
+      "b": "AML",
+      "km": 12.15
+    },
+    {
+      "a": "DNE",
+      "b": "AMPL",
+      "km": 12.15
+    },
+    {
+      "a": "DNE",
+      "b": "AMW",
+      "km": 12.15
+    },
+    {
+      "a": "DNE",
+      "b": "DOWSMT",
+      "km": 8.25
+    },
+    {
+      "a": "DNE",
+      "b": "DWK",
+      "km": 8.25
+    },
+    {
+      "a": "DNE",
+      "b": "DOF",
+      "km": 2.49
+    },
+    {
+      "a": "DNE",
+      "b": "DOM",
+      "km": 1.19
+    },
+    {
+      "a": "DNE",
+      "b": "KKW",
+      "km": 6.33
+    },
+    {
+      "a": "DNE",
+      "b": "KLE",
+      "km": 5.98
+    },
+    {
+      "a": "DNE",
+      "b": "KLK",
+      "km": 7.4
+    },
+    {
+      "a": "DNE",
+      "b": "KLT",
+      "km": 6.33
+    },
+    {
+      "a": "DNE",
+      "b": "KLW",
+      "km": 7.3
+    },
+    {
+      "a": "DNE",
+      "b": "DOE/DER",
+      "km": 7.31
+    },
+    {
+      "a": "DNE",
+      "b": "MUBD",
+      "km": 32.78
+    },
+    {
+      "a": "DNE",
+      "b": "SHAP",
+      "km": 37.94
+    },
+    {
+      "a": "DNE",
+      "b": "TTL",
+      "km": 16.53
+    },
+    {
+      "a": "DNE",
+      "b": "ULN",
+      "km": 9.1
+    },
+    {
+      "a": "DNE",
+      "b": "ULN4",
+      "km": 9.1
+    },
+    {
+      "a": "DNE",
+      "b": "PRCAME/PRCAMEN",
+      "km": 10.57
+    },
+    {
+      "a": "KYD",
+      "b": "DAG/DOEMIDC",
+      "km": 6.18
+    },
+    {
+      "a": "KYD",
+      "b": "AVB",
+      "km": 24.18
+    },
+    {
+      "a": "KYD",
+      "b": "KBR",
+      "km": 5.45
+    },
+    {
+      "a": "KYD",
+      "b": "DSR",
+      "km": 13.39
+    },
+    {
+      "a": "KYD",
+      "b": "NKR",
+      "km": 32.16
+    },
+    {
+      "a": "KYD",
+      "b": "KET",
+      "km": 3.58
+    },
+    {
+      "a": "KYD",
+      "b": "BBVR",
+      "km": 9.29
+    },
+    {
+      "a": "KYD",
+      "b": "DOW",
+      "km": 6.72
+    },
+    {
+      "a": "KYD",
+      "b": "SHD",
+      "km": 3.06
+    },
+    {
+      "a": "KYD",
+      "b": "BHAR",
+      "km": 9.1
+    },
+    {
+      "a": "KYD",
+      "b": "Bap",
+      "km": 9.78
+    },
+    {
+      "a": "KYD",
+      "b": "PAD",
+      "km": 12.76
+    },
+    {
+      "a": "KYD",
+      "b": "VGW",
+      "km": 25.11
+    },
+    {
+      "a": "KYD",
+      "b": "VAS",
+      "km": 21.82
+    },
+    {
+      "a": "KYD",
+      "b": "BES",
+      "km": 16.19
+    },
+    {
+      "a": "KYD",
+      "b": "BKHE",
+      "km": 16.93
+    },
+    {
+      "a": "KYD",
+      "b": "BLEB",
+      "km": 15.37
+    },
+    {
+      "a": "KYD",
+      "b": "BLEK",
+      "km": 13.96
+    },
+    {
+      "a": "KYD",
+      "b": "BLWB",
+      "km": 16.65
+    },
+    {
+      "a": "KYD",
+      "b": "BWM",
+      "km": 14.3
+    },
+    {
+      "a": "KYD",
+      "b": "AMSN",
+      "km": 9.39
+    },
+    {
+      "a": "KYD",
+      "b": "AMCH",
+      "km": 9.39
+    },
+    {
+      "a": "KYD",
+      "b": "AME",
+      "km": 8.55
+    },
+    {
+      "a": "KYD",
+      "b": "AML",
+      "km": 9.39
+    },
+    {
+      "a": "KYD",
+      "b": "AMPL",
+      "km": 9.39
+    },
+    {
+      "a": "KYD",
+      "b": "AMW",
+      "km": 9.39
+    },
+    {
+      "a": "KYD",
+      "b": "DOWSMT",
+      "km": 0
+    },
+    {
+      "a": "KYD",
+      "b": "DWK",
+      "km": 0
+    },
+    {
+      "a": "KYD",
+      "b": "DOF",
+      "km": 6.03
+    },
+    {
+      "a": "KYD",
+      "b": "DOM",
+      "km": 7.22
+    },
+    {
+      "a": "KYD",
+      "b": "KKW",
+      "km": 2.01
+    },
+    {
+      "a": "KYD",
+      "b": "KLE",
+      "km": 3.23
+    },
+    {
+      "a": "KYD",
+      "b": "KLK",
+      "km": 0.93
+    },
+    {
+      "a": "KYD",
+      "b": "KLT",
+      "km": 2.01
+    },
+    {
+      "a": "KYD",
+      "b": "KLW",
+      "km": 1.55
+    },
+    {
+      "a": "KYD",
+      "b": "DOE/DER",
+      "km": 15.56
+    },
+    {
+      "a": "KYD",
+      "b": "MUBD",
+      "km": 27.07
+    },
+    {
+      "a": "KYD",
+      "b": "SHAP",
+      "km": 29.71
+    },
+    {
+      "a": "KYD",
+      "b": "TTL",
+      "km": 8.58
+    },
+    {
+      "a": "KYD",
+      "b": "ULN",
+      "km": 5.16
+    },
+    {
+      "a": "KYD",
+      "b": "ULN4",
+      "km": 5.16
+    },
+    {
+      "a": "KYD",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.53
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AVB",
+      "km": 28.26
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KBR",
+      "km": 6.15
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DSR",
+      "km": 7.21
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "NKR",
+      "km": 31.58
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KET",
+      "km": 3.92
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BBVR",
+      "km": 10.35
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DOW",
+      "km": 0.98
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "SHD",
+      "km": 4.89
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BHAR",
+      "km": 10.7
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "Bap",
+      "km": 8.41
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "PAD",
+      "km": 18.66
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "VGW",
+      "km": 25.21
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "VAS",
+      "km": 28
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BES",
+      "km": 16.98
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BKHE",
+      "km": 17.65
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BLEB",
+      "km": 16.45
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BLEK",
+      "km": 14.98
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BLWB",
+      "km": 18.03
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "BWM",
+      "km": 15.79
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AMSN",
+      "km": 11.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AMCH",
+      "km": 11.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AME",
+      "km": 10.19
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AML",
+      "km": 11.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AMPL",
+      "km": 11.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "AMW",
+      "km": 11.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DOWSMT",
+      "km": 6.18
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DWK",
+      "km": 6.18
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DOF",
+      "km": 0.55
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DOM",
+      "km": 1.45
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KKW",
+      "km": 4.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KLE",
+      "km": 4.29
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KLK",
+      "km": 5.37
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KLT",
+      "km": 4.33
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "KLW",
+      "km": 5.37
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "DOE/DER",
+      "km": 9.44
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "MUBD",
+      "km": 31.54
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "SHAP",
+      "km": 35.89
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "TTL",
+      "km": 14.59
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "ULN",
+      "km": 7.78
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "ULN4",
+      "km": 7.78
+    },
+    {
+      "a": "DAG/DOEMIDC",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.58
+    },
+    {
+      "a": "AVB",
+      "b": "KBR",
+      "km": 22.2
+    },
+    {
+      "a": "AVB",
+      "b": "DSR",
+      "km": 33.61
+    },
+    {
+      "a": "AVB",
+      "b": "NKR",
+      "km": 55.02
+    },
+    {
+      "a": "AVB",
+      "b": "KET",
+      "km": 27.62
+    },
+    {
+      "a": "AVB",
+      "b": "BBVR",
+      "km": 18.75
+    },
+    {
+      "a": "AVB",
+      "b": "DOW",
+      "km": 28.03
+    },
+    {
+      "a": "AVB",
+      "b": "SHD",
+      "km": 27.24
+    },
+    {
+      "a": "AVB",
+      "b": "BHAR",
+      "km": 18.08
+    },
+    {
+      "a": "AVB",
+      "b": "Bap",
+      "km": 22.33
+    },
+    {
+      "a": "AVB",
+      "b": "PAD",
+      "km": 15.12
+    },
+    {
+      "a": "AVB",
+      "b": "VGW",
+      "km": 47.62
+    },
+    {
+      "a": "AVB",
+      "b": "VAS",
+      "km": 20.44
+    },
+    {
+      "a": "AVB",
+      "b": "BES",
+      "km": 38.82
+    },
+    {
+      "a": "AVB",
+      "b": "BKHE",
+      "km": 39.53
+    },
+    {
+      "a": "AVB",
+      "b": "BLEB",
+      "km": 37.82
+    },
+    {
+      "a": "AVB",
+      "b": "BLEK",
+      "km": 36.67
+    },
+    {
+      "a": "AVB",
+      "b": "BLWB",
+      "km": 38.61
+    },
+    {
+      "a": "AVB",
+      "b": "BWM",
+      "km": 36.52
+    },
+    {
+      "a": "AVB",
+      "b": "AMSN",
+      "km": 32.19
+    },
+    {
+      "a": "AVB",
+      "b": "AMCH",
+      "km": 32.19
+    },
+    {
+      "a": "AVB",
+      "b": "AME",
+      "km": 31.76
+    },
+    {
+      "a": "AVB",
+      "b": "AML",
+      "km": 32.19
+    },
+    {
+      "a": "AVB",
+      "b": "AMPL",
+      "km": 32.19
+    },
+    {
+      "a": "AVB",
+      "b": "AMW",
+      "km": 32.19
+    },
+    {
+      "a": "AVB",
+      "b": "DOWSMT",
+      "km": 24.18
+    },
+    {
+      "a": "AVB",
+      "b": "DWK",
+      "km": 24.18
+    },
+    {
+      "a": "AVB",
+      "b": "DOF",
+      "km": 27.78
+    },
+    {
+      "a": "AVB",
+      "b": "DOM",
+      "km": 29.7
+    },
+    {
+      "a": "AVB",
+      "b": "KKW",
+      "km": 25.84
+    },
+    {
+      "a": "AVB",
+      "b": "KLE",
+      "km": 27.33
+    },
+    {
+      "a": "AVB",
+      "b": "KLK",
+      "km": 25.01
+    },
+    {
+      "a": "AVB",
+      "b": "KLT",
+      "km": 25.84
+    },
+    {
+      "a": "AVB",
+      "b": "KLW",
+      "km": 25.72
+    },
+    {
+      "a": "AVB",
+      "b": "DOE/DER",
+      "km": 36.51
+    },
+    {
+      "a": "AVB",
+      "b": "MUBD",
+      "km": 39.88
+    },
+    {
+      "a": "AVB",
+      "b": "SHAP",
+      "km": 25.47
+    },
+    {
+      "a": "AVB",
+      "b": "TTL",
+      "km": 22.92
+    },
+    {
+      "a": "AVB",
+      "b": "ULN",
+      "km": 28.68
+    },
+    {
+      "a": "AVB",
+      "b": "ULN4",
+      "km": 28.68
+    },
+    {
+      "a": "AVB",
+      "b": "PRCAME/PRCAMEN",
+      "km": 30.71
+    },
+    {
+      "a": "KBR",
+      "b": "DSR",
+      "km": 11.84
+    },
+    {
+      "a": "KBR",
+      "b": "NKR",
+      "km": 36.64
+    },
+    {
+      "a": "KBR",
+      "b": "KET",
+      "km": 7.01
+    },
+    {
+      "a": "KBR",
+      "b": "BBVR",
+      "km": 4.43
+    },
+    {
+      "a": "KBR",
+      "b": "DOW",
+      "km": 5.84
+    },
+    {
+      "a": "KBR",
+      "b": "SHD",
+      "km": 7.28
+    },
+    {
+      "a": "KBR",
+      "b": "BHAR",
+      "km": 4.62
+    },
+    {
+      "a": "KBR",
+      "b": "Bap",
+      "km": 4.37
+    },
+    {
+      "a": "KBR",
+      "b": "PAD",
+      "km": 14.33
+    },
+    {
+      "a": "KBR",
+      "b": "VGW",
+      "km": 29.84
+    },
+    {
+      "a": "KBR",
+      "b": "VAS",
+      "km": 24.62
+    },
+    {
+      "a": "KBR",
+      "b": "BES",
+      "km": 21.09
+    },
+    {
+      "a": "KBR",
+      "b": "BKHE",
+      "km": 21.81
+    },
+    {
+      "a": "KBR",
+      "b": "BLEB",
+      "km": 20.35
+    },
+    {
+      "a": "KBR",
+      "b": "BLEK",
+      "km": 18.89
+    },
+    {
+      "a": "KBR",
+      "b": "BLWB",
+      "km": 21.75
+    },
+    {
+      "a": "KBR",
+      "b": "BWM",
+      "km": 19.39
+    },
+    {
+      "a": "KBR",
+      "b": "AMSN",
+      "km": 14.5
+    },
+    {
+      "a": "KBR",
+      "b": "AMCH",
+      "km": 14.5
+    },
+    {
+      "a": "KBR",
+      "b": "AME",
+      "km": 13.53
+    },
+    {
+      "a": "KBR",
+      "b": "AML",
+      "km": 14.5
+    },
+    {
+      "a": "KBR",
+      "b": "AMPL",
+      "km": 14.5
+    },
+    {
+      "a": "KBR",
+      "b": "AMW",
+      "km": 14.5
+    },
+    {
+      "a": "KBR",
+      "b": "DOWSMT",
+      "km": 5.45
+    },
+    {
+      "a": "KBR",
+      "b": "DWK",
+      "km": 5.45
+    },
+    {
+      "a": "KBR",
+      "b": "DOF",
+      "km": 5.63
+    },
+    {
+      "a": "KBR",
+      "b": "DOM",
+      "km": 7.59
+    },
+    {
+      "a": "KBR",
+      "b": "KKW",
+      "km": 5.53
+    },
+    {
+      "a": "KBR",
+      "b": "KLE",
+      "km": 6.98
+    },
+    {
+      "a": "KBR",
+      "b": "KLK",
+      "km": 5.53
+    },
+    {
+      "a": "KBR",
+      "b": "KLT",
+      "km": 5.53
+    },
+    {
+      "a": "KBR",
+      "b": "KLW",
+      "km": 6.27
+    },
+    {
+      "a": "KBR",
+      "b": "DOE/DER",
+      "km": 14.6
+    },
+    {
+      "a": "KBR",
+      "b": "MUBD",
+      "km": 32.35
+    },
+    {
+      "a": "KBR",
+      "b": "SHAP",
+      "km": 32.61
+    },
+    {
+      "a": "KBR",
+      "b": "TTL",
+      "km": 12.96
+    },
+    {
+      "a": "KBR",
+      "b": "ULN",
+      "km": 10.24
+    },
+    {
+      "a": "KBR",
+      "b": "ULN4",
+      "km": 10.24
+    },
+    {
+      "a": "KBR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 12.59
+    },
+    {
+      "a": "DSR",
+      "b": "NKR",
+      "km": 32.78
+    },
+    {
+      "a": "DSR",
+      "b": "KET",
+      "km": 10.79
+    },
+    {
+      "a": "DSR",
+      "b": "BBVR",
+      "km": 14.87
+    },
+    {
+      "a": "DSR",
+      "b": "DOW",
+      "km": 6.74
+    },
+    {
+      "a": "DSR",
+      "b": "SHD",
+      "km": 11.8
+    },
+    {
+      "a": "DSR",
+      "b": "BHAR",
+      "km": 15.53
+    },
+    {
+      "a": "DSR",
+      "b": "Bap",
+      "km": 11.5
+    },
+    {
+      "a": "DSR",
+      "b": "PAD",
+      "km": 25.63
+    },
+    {
+      "a": "DSR",
+      "b": "VGW",
+      "km": 27.51
+    },
+    {
+      "a": "DSR",
+      "b": "VAS",
+      "km": 35.2
+    },
+    {
+      "a": "DSR",
+      "b": "BES",
+      "km": 20.67
+    },
+    {
+      "a": "DSR",
+      "b": "BKHE",
+      "km": 21.2
+    },
+    {
+      "a": "DSR",
+      "b": "BLEB",
+      "km": 20.46
+    },
+    {
+      "a": "DSR",
+      "b": "BLEK",
+      "km": 19.12
+    },
+    {
+      "a": "DSR",
+      "b": "BLWB",
+      "km": 22.13
+    },
+    {
+      "a": "DSR",
+      "b": "BWM",
+      "km": 20.21
+    },
+    {
+      "a": "DSR",
+      "b": "AMSN",
+      "km": 16.69
+    },
+    {
+      "a": "DSR",
+      "b": "AMCH",
+      "km": 16.69
+    },
+    {
+      "a": "DSR",
+      "b": "AME",
+      "km": 15.58
+    },
+    {
+      "a": "DSR",
+      "b": "AML",
+      "km": 16.69
+    },
+    {
+      "a": "DSR",
+      "b": "AMPL",
+      "km": 16.69
+    },
+    {
+      "a": "DSR",
+      "b": "AMW",
+      "km": 16.69
+    },
+    {
+      "a": "DSR",
+      "b": "DOWSMT",
+      "km": 13.39
+    },
+    {
+      "a": "DSR",
+      "b": "DWK",
+      "km": 13.39
+    },
+    {
+      "a": "DSR",
+      "b": "DOF",
+      "km": 7.38
+    },
+    {
+      "a": "DSR",
+      "b": "DOM",
+      "km": 6.41
+    },
+    {
+      "a": "DSR",
+      "b": "KKW",
+      "km": 11.53
+    },
+    {
+      "a": "DSR",
+      "b": "KLE",
+      "km": 11.22
+    },
+    {
+      "a": "DSR",
+      "b": "KLK",
+      "km": 12.58
+    },
+    {
+      "a": "DSR",
+      "b": "KLT",
+      "km": 11.53
+    },
+    {
+      "a": "DSR",
+      "b": "KLW",
+      "km": 12.53
+    },
+    {
+      "a": "DSR",
+      "b": "DOE/DER",
+      "km": 2.94
+    },
+    {
+      "a": "DSR",
+      "b": "MUBD",
+      "km": 37.57
+    },
+    {
+      "a": "DSR",
+      "b": "SHAP",
+      "km": 43.1
+    },
+    {
+      "a": "DSR",
+      "b": "TTL",
+      "km": 21.77
+    },
+    {
+      "a": "DSR",
+      "b": "ULN",
+      "km": 14.15
+    },
+    {
+      "a": "DSR",
+      "b": "ULN4",
+      "km": 14.15
+    },
+    {
+      "a": "DSR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 15.33
+    },
+    {
+      "a": "NKR",
+      "b": "KET",
+      "km": 29.63
+    },
+    {
+      "a": "NKR",
+      "b": "BBVR",
+      "km": 41.03
+    },
+    {
+      "a": "NKR",
+      "b": "DOW",
+      "km": 32.44
+    },
+    {
+      "a": "NKR",
+      "b": "SHD",
+      "km": 29.49
+    },
+    {
+      "a": "NKR",
+      "b": "BHAR",
+      "km": 41.04
+    },
+    {
+      "a": "NKR",
+      "b": "Bap",
+      "km": 39.94
+    },
+    {
+      "a": "NKR",
+      "b": "PAD",
+      "km": 40.42
+    },
+    {
+      "a": "NKR",
+      "b": "VGW",
+      "km": 7.44
+    },
+    {
+      "a": "NKR",
+      "b": "VAS",
+      "km": 42.57
+    },
+    {
+      "a": "NKR",
+      "b": "BES",
+      "km": 16.23
+    },
+    {
+      "a": "NKR",
+      "b": "BKHE",
+      "km": 15.52
+    },
+    {
+      "a": "NKR",
+      "b": "BLEB",
+      "km": 17.21
+    },
+    {
+      "a": "NKR",
+      "b": "BLEK",
+      "km": 18.44
+    },
+    {
+      "a": "NKR",
+      "b": "BLWB",
+      "km": 16.43
+    },
+    {
+      "a": "NKR",
+      "b": "BWM",
+      "km": 18.5
+    },
+    {
+      "a": "NKR",
+      "b": "AMSN",
+      "km": 23.05
+    },
+    {
+      "a": "NKR",
+      "b": "AMCH",
+      "km": 23.05
+    },
+    {
+      "a": "NKR",
+      "b": "AME",
+      "km": 23.69
+    },
+    {
+      "a": "NKR",
+      "b": "AML",
+      "km": 23.05
+    },
+    {
+      "a": "NKR",
+      "b": "AMPL",
+      "km": 23.05
+    },
+    {
+      "a": "NKR",
+      "b": "AMW",
+      "km": 23.05
+    },
+    {
+      "a": "NKR",
+      "b": "DOWSMT",
+      "km": 32.16
+    },
+    {
+      "a": "NKR",
+      "b": "DWK",
+      "km": 32.16
+    },
+    {
+      "a": "NKR",
+      "b": "DOF",
+      "km": 32.1
+    },
+    {
+      "a": "NKR",
+      "b": "DOM",
+      "km": 30.52
+    },
+    {
+      "a": "NKR",
+      "b": "KKW",
+      "km": 31.23
+    },
+    {
+      "a": "NKR",
+      "b": "KLE",
+      "km": 29.69
+    },
+    {
+      "a": "NKR",
+      "b": "KLK",
+      "km": 31.6
+    },
+    {
+      "a": "NKR",
+      "b": "KLT",
+      "km": 31.23
+    },
+    {
+      "a": "NKR",
+      "b": "KLW",
+      "km": 30.79
+    },
+    {
+      "a": "NKR",
+      "b": "DOE/DER",
+      "km": 31.31
+    },
+    {
+      "a": "NKR",
+      "b": "MUBD",
+      "km": 26.74
+    },
+    {
+      "a": "NKR",
+      "b": "SHAP",
+      "km": 47.28
+    },
+    {
+      "a": "NKR",
+      "b": "TTL",
+      "km": 32.34
+    },
+    {
+      "a": "NKR",
+      "b": "ULN",
+      "km": 27.04
+    },
+    {
+      "a": "NKR",
+      "b": "ULN4",
+      "km": 27.04
+    },
+    {
+      "a": "NKR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 24.75
+    },
+    {
+      "a": "KET",
+      "b": "BBVR",
+      "km": 11.4
+    },
+    {
+      "a": "KET",
+      "b": "DOW",
+      "km": 4.81
+    },
+    {
+      "a": "KET",
+      "b": "SHD",
+      "km": 1
+    },
+    {
+      "a": "KET",
+      "b": "BHAR",
+      "km": 11.46
+    },
+    {
+      "a": "KET",
+      "b": "Bap",
+      "km": 10.7
+    },
+    {
+      "a": "KET",
+      "b": "PAD",
+      "km": 16.25
+    },
+    {
+      "a": "KET",
+      "b": "VGW",
+      "km": 22.84
+    },
+    {
+      "a": "KET",
+      "b": "VAS",
+      "km": 24.85
+    },
+    {
+      "a": "KET",
+      "b": "BES",
+      "km": 14.16
+    },
+    {
+      "a": "KET",
+      "b": "BKHE",
+      "km": 14.88
+    },
+    {
+      "a": "KET",
+      "b": "BLEB",
+      "km": 13.49
+    },
+    {
+      "a": "KET",
+      "b": "BLEK",
+      "km": 12.01
+    },
+    {
+      "a": "KET",
+      "b": "BLWB",
+      "km": 14.96
+    },
+    {
+      "a": "KET",
+      "b": "BWM",
+      "km": 12.64
+    },
+    {
+      "a": "KET",
+      "b": "AMSN",
+      "km": 7.88
+    },
+    {
+      "a": "KET",
+      "b": "AMCH",
+      "km": 7.88
+    },
+    {
+      "a": "KET",
+      "b": "AME",
+      "km": 6.8
+    },
+    {
+      "a": "KET",
+      "b": "AML",
+      "km": 7.88
+    },
+    {
+      "a": "KET",
+      "b": "AMPL",
+      "km": 7.88
+    },
+    {
+      "a": "KET",
+      "b": "AMW",
+      "km": 7.88
+    },
+    {
+      "a": "KET",
+      "b": "DOWSMT",
+      "km": 3.58
+    },
+    {
+      "a": "KET",
+      "b": "DWK",
+      "km": 3.58
+    },
+    {
+      "a": "KET",
+      "b": "DOF",
+      "km": 4.09
+    },
+    {
+      "a": "KET",
+      "b": "DOM",
+      "km": 4.38
+    },
+    {
+      "a": "KET",
+      "b": "KKW",
+      "km": 1.79
+    },
+    {
+      "a": "KET",
+      "b": "KLE",
+      "km": 0.44
+    },
+    {
+      "a": "KET",
+      "b": "KLK",
+      "km": 2.67
+    },
+    {
+      "a": "KET",
+      "b": "KLT",
+      "km": 1.79
+    },
+    {
+      "a": "KET",
+      "b": "KLW",
+      "km": 2.13
+    },
+    {
+      "a": "KET",
+      "b": "DOE/DER",
+      "km": 12.58
+    },
+    {
+      "a": "KET",
+      "b": "MUBD",
+      "km": 27.65
+    },
+    {
+      "a": "KET",
+      "b": "SHAP",
+      "km": 32.62
+    },
+    {
+      "a": "KET",
+      "b": "TTL",
+      "km": 11.08
+    },
+    {
+      "a": "KET",
+      "b": "ULN",
+      "km": 3.94
+    },
+    {
+      "a": "KET",
+      "b": "ULN4",
+      "km": 3.94
+    },
+    {
+      "a": "KET",
+      "b": "PRCAME/PRCAMEN",
+      "km": 6.01
+    },
+    {
+      "a": "BBVR",
+      "b": "DOW",
+      "km": 9.85
+    },
+    {
+      "a": "BBVR",
+      "b": "SHD",
+      "km": 11.58
+    },
+    {
+      "a": "BBVR",
+      "b": "BHAR",
+      "km": 0.89
+    },
+    {
+      "a": "BBVR",
+      "b": "Bap",
+      "km": 3.78
+    },
+    {
+      "a": "BBVR",
+      "b": "PAD",
+      "km": 14.06
+    },
+    {
+      "a": "BBVR",
+      "b": "VGW",
+      "km": 34.17
+    },
+    {
+      "a": "BBVR",
+      "b": "VAS",
+      "km": 24.76
+    },
+    {
+      "a": "BBVR",
+      "b": "BES",
+      "km": 25.34
+    },
+    {
+      "a": "BBVR",
+      "b": "BKHE",
+      "km": 26.07
+    },
+    {
+      "a": "BBVR",
+      "b": "BLEB",
+      "km": 24.57
+    },
+    {
+      "a": "BBVR",
+      "b": "BLEK",
+      "km": 23.13
+    },
+    {
+      "a": "BBVR",
+      "b": "BLWB",
+      "km": 25.91
+    },
+    {
+      "a": "BBVR",
+      "b": "BWM",
+      "km": 23.55
+    },
+    {
+      "a": "BBVR",
+      "b": "AMSN",
+      "km": 18.64
+    },
+    {
+      "a": "BBVR",
+      "b": "AMCH",
+      "km": 18.64
+    },
+    {
+      "a": "BBVR",
+      "b": "AME",
+      "km": 17.73
+    },
+    {
+      "a": "BBVR",
+      "b": "AML",
+      "km": 18.64
+    },
+    {
+      "a": "BBVR",
+      "b": "AMPL",
+      "km": 18.64
+    },
+    {
+      "a": "BBVR",
+      "b": "AMW",
+      "km": 18.64
+    },
+    {
+      "a": "BBVR",
+      "b": "DOWSMT",
+      "km": 9.29
+    },
+    {
+      "a": "BBVR",
+      "b": "DWK",
+      "km": 9.29
+    },
+    {
+      "a": "BBVR",
+      "b": "DOF",
+      "km": 9.81
+    },
+    {
+      "a": "BBVR",
+      "b": "DOM",
+      "km": 11.76
+    },
+    {
+      "a": "BBVR",
+      "b": "KKW",
+      "km": 9.82
+    },
+    {
+      "a": "BBVR",
+      "b": "KLE",
+      "km": 11.34
+    },
+    {
+      "a": "BBVR",
+      "b": "KLK",
+      "km": 9.62
+    },
+    {
+      "a": "BBVR",
+      "b": "KLT",
+      "km": 9.82
+    },
+    {
+      "a": "BBVR",
+      "b": "KLW",
+      "km": 10.4
+    },
+    {
+      "a": "BBVR",
+      "b": "DOE/DER",
+      "km": 17.78
+    },
+    {
+      "a": "BBVR",
+      "b": "MUBD",
+      "km": 35.2
+    },
+    {
+      "a": "BBVR",
+      "b": "SHAP",
+      "km": 32.63
+    },
+    {
+      "a": "BBVR",
+      "b": "TTL",
+      "km": 15.15
+    },
+    {
+      "a": "BBVR",
+      "b": "ULN",
+      "km": 14.37
+    },
+    {
+      "a": "BBVR",
+      "b": "ULN4",
+      "km": 14.37
+    },
+    {
+      "a": "BBVR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 16.75
+    },
+    {
+      "a": "DOW",
+      "b": "SHD",
+      "km": 5.75
+    },
+    {
+      "a": "DOW",
+      "b": "BHAR",
+      "km": 10.27
+    },
+    {
+      "a": "DOW",
+      "b": "Bap",
+      "km": 7.65
+    },
+    {
+      "a": "DOW",
+      "b": "PAD",
+      "km": 18.94
+    },
+    {
+      "a": "DOW",
+      "b": "VGW",
+      "km": 26.12
+    },
+    {
+      "a": "DOW",
+      "b": "VAS",
+      "km": 28.48
+    },
+    {
+      "a": "DOW",
+      "b": "BES",
+      "km": 17.93
+    },
+    {
+      "a": "DOW",
+      "b": "BKHE",
+      "km": 18.6
+    },
+    {
+      "a": "DOW",
+      "b": "BLEB",
+      "km": 17.42
+    },
+    {
+      "a": "DOW",
+      "b": "BLEK",
+      "km": 15.95
+    },
+    {
+      "a": "DOW",
+      "b": "BLWB",
+      "km": 19
+    },
+    {
+      "a": "DOW",
+      "b": "BWM",
+      "km": 16.76
+    },
+    {
+      "a": "DOW",
+      "b": "AMSN",
+      "km": 12.3
+    },
+    {
+      "a": "DOW",
+      "b": "AMCH",
+      "km": 12.3
+    },
+    {
+      "a": "DOW",
+      "b": "AME",
+      "km": 11.17
+    },
+    {
+      "a": "DOW",
+      "b": "AML",
+      "km": 12.3
+    },
+    {
+      "a": "DOW",
+      "b": "AMPL",
+      "km": 12.3
+    },
+    {
+      "a": "DOW",
+      "b": "AMW",
+      "km": 12.3
+    },
+    {
+      "a": "DOW",
+      "b": "DOWSMT",
+      "km": 6.72
+    },
+    {
+      "a": "DOW",
+      "b": "DWK",
+      "km": 6.72
+    },
+    {
+      "a": "DOW",
+      "b": "DOF",
+      "km": 0.74
+    },
+    {
+      "a": "DOW",
+      "b": "DOM",
+      "km": 1.99
+    },
+    {
+      "a": "DOW",
+      "b": "KKW",
+      "km": 4.99
+    },
+    {
+      "a": "DOW",
+      "b": "KLE",
+      "km": 5.15
+    },
+    {
+      "a": "DOW",
+      "b": "KLK",
+      "km": 5.97
+    },
+    {
+      "a": "DOW",
+      "b": "KLT",
+      "km": 4.99
+    },
+    {
+      "a": "DOW",
+      "b": "KLW",
+      "km": 6.07
+    },
+    {
+      "a": "DOW",
+      "b": "DOE/DER",
+      "km": 9.17
+    },
+    {
+      "a": "DOW",
+      "b": "MUBD",
+      "km": 32.45
+    },
+    {
+      "a": "DOW",
+      "b": "SHAP",
+      "km": 36.4
+    },
+    {
+      "a": "DOW",
+      "b": "TTL",
+      "km": 15.23
+    },
+    {
+      "a": "DOW",
+      "b": "ULN",
+      "km": 8.71
+    },
+    {
+      "a": "DOW",
+      "b": "ULN4",
+      "km": 8.71
+    },
+    {
+      "a": "DOW",
+      "b": "PRCAME/PRCAMEN",
+      "km": 10.55
+    },
+    {
+      "a": "SHD",
+      "b": "BHAR",
+      "km": 11.56
+    },
+    {
+      "a": "SHD",
+      "b": "Bap",
+      "km": 11.19
+    },
+    {
+      "a": "SHD",
+      "b": "PAD",
+      "km": 15.49
+    },
+    {
+      "a": "SHD",
+      "b": "VGW",
+      "km": 22.59
+    },
+    {
+      "a": "SHD",
+      "b": "VAS",
+      "km": 23.92
+    },
+    {
+      "a": "SHD",
+      "b": "BES",
+      "km": 13.8
+    },
+    {
+      "a": "SHD",
+      "b": "BKHE",
+      "km": 14.53
+    },
+    {
+      "a": "SHD",
+      "b": "BLEB",
+      "km": 13.08
+    },
+    {
+      "a": "SHD",
+      "b": "BLEK",
+      "km": 11.61
+    },
+    {
+      "a": "SHD",
+      "b": "BLWB",
+      "km": 14.5
+    },
+    {
+      "a": "SHD",
+      "b": "BWM",
+      "km": 12.15
+    },
+    {
+      "a": "SHD",
+      "b": "AMSN",
+      "km": 7.3
+    },
+    {
+      "a": "SHD",
+      "b": "AMCH",
+      "km": 7.3
+    },
+    {
+      "a": "SHD",
+      "b": "AME",
+      "km": 6.28
+    },
+    {
+      "a": "SHD",
+      "b": "AML",
+      "km": 7.3
+    },
+    {
+      "a": "SHD",
+      "b": "AMPL",
+      "km": 7.3
+    },
+    {
+      "a": "SHD",
+      "b": "AMW",
+      "km": 7.3
+    },
+    {
+      "a": "SHD",
+      "b": "DOWSMT",
+      "km": 3.06
+    },
+    {
+      "a": "SHD",
+      "b": "DWK",
+      "km": 3.06
+    },
+    {
+      "a": "SHD",
+      "b": "DOF",
+      "km": 5.02
+    },
+    {
+      "a": "SHD",
+      "b": "DOM",
+      "km": 5.39
+    },
+    {
+      "a": "SHD",
+      "b": "KKW",
+      "km": 1.76
+    },
+    {
+      "a": "SHD",
+      "b": "KLE",
+      "km": 0.6
+    },
+    {
+      "a": "SHD",
+      "b": "KLK",
+      "km": 2.25
+    },
+    {
+      "a": "SHD",
+      "b": "KLT",
+      "km": 1.76
+    },
+    {
+      "a": "SHD",
+      "b": "KLW",
+      "km": 1.52
+    },
+    {
+      "a": "SHD",
+      "b": "DOE/DER",
+      "km": 13.56
+    },
+    {
+      "a": "SHD",
+      "b": "MUBD",
+      "km": 26.74
+    },
+    {
+      "a": "SHD",
+      "b": "SHAP",
+      "km": 31.67
+    },
+    {
+      "a": "SHD",
+      "b": "TTL",
+      "km": 10.1
+    },
+    {
+      "a": "SHD",
+      "b": "ULN",
+      "km": 3.17
+    },
+    {
+      "a": "SHD",
+      "b": "ULN4",
+      "km": 3.17
+    },
+    {
+      "a": "SHD",
+      "b": "PRCAME/PRCAMEN",
+      "km": 5.4
+    },
+    {
+      "a": "BHAR",
+      "b": "Bap",
+      "km": 4.63
+    },
+    {
+      "a": "BHAR",
+      "b": "PAD",
+      "km": 13.2
+    },
+    {
+      "a": "BHAR",
+      "b": "VGW",
+      "km": 34.12
+    },
+    {
+      "a": "BHAR",
+      "b": "VAS",
+      "km": 23.9
+    },
+    {
+      "a": "BHAR",
+      "b": "BES",
+      "km": 25.25
+    },
+    {
+      "a": "BHAR",
+      "b": "BKHE",
+      "km": 25.98
+    },
+    {
+      "a": "BHAR",
+      "b": "BLEB",
+      "km": 24.45
+    },
+    {
+      "a": "BHAR",
+      "b": "BLEK",
+      "km": 23.03
+    },
+    {
+      "a": "BHAR",
+      "b": "BLWB",
+      "km": 25.75
+    },
+    {
+      "a": "BHAR",
+      "b": "BWM",
+      "km": 23.4
+    },
+    {
+      "a": "BHAR",
+      "b": "AMSN",
+      "km": 18.49
+    },
+    {
+      "a": "BHAR",
+      "b": "AMCH",
+      "km": 18.49
+    },
+    {
+      "a": "BHAR",
+      "b": "AME",
+      "km": 17.61
+    },
+    {
+      "a": "BHAR",
+      "b": "AML",
+      "km": 18.49
+    },
+    {
+      "a": "BHAR",
+      "b": "AMPL",
+      "km": 18.49
+    },
+    {
+      "a": "BHAR",
+      "b": "AMW",
+      "km": 18.49
+    },
+    {
+      "a": "BHAR",
+      "b": "DOWSMT",
+      "km": 9.1
+    },
+    {
+      "a": "BHAR",
+      "b": "DWK",
+      "km": 9.1
+    },
+    {
+      "a": "BHAR",
+      "b": "DOF",
+      "km": 10.17
+    },
+    {
+      "a": "BHAR",
+      "b": "DOM",
+      "km": 12.13
+    },
+    {
+      "a": "BHAR",
+      "b": "KKW",
+      "km": 9.82
+    },
+    {
+      "a": "BHAR",
+      "b": "KLE",
+      "km": 11.36
+    },
+    {
+      "a": "BHAR",
+      "b": "KLK",
+      "km": 9.51
+    },
+    {
+      "a": "BHAR",
+      "b": "KLT",
+      "km": 9.82
+    },
+    {
+      "a": "BHAR",
+      "b": "KLW",
+      "km": 10.31
+    },
+    {
+      "a": "BHAR",
+      "b": "DOE/DER",
+      "km": 18.43
+    },
+    {
+      "a": "BHAR",
+      "b": "MUBD",
+      "km": 34.65
+    },
+    {
+      "a": "BHAR",
+      "b": "SHAP",
+      "km": 31.76
+    },
+    {
+      "a": "BHAR",
+      "b": "TTL",
+      "km": 14.54
+    },
+    {
+      "a": "BHAR",
+      "b": "ULN",
+      "km": 14.23
+    },
+    {
+      "a": "BHAR",
+      "b": "ULN4",
+      "km": 14.23
+    },
+    {
+      "a": "BHAR",
+      "b": "PRCAME/PRCAMEN",
+      "km": 16.61
+    },
+    {
+      "a": "Bap",
+      "b": "PAD",
+      "km": 17.39
+    },
+    {
+      "a": "Bap",
+      "b": "VGW",
+      "km": 33.4
+    },
+    {
+      "a": "Bap",
+      "b": "VAS",
+      "km": 28
+    },
+    {
+      "a": "Bap",
+      "b": "BES",
+      "km": 24.85
+    },
+    {
+      "a": "Bap",
+      "b": "BKHE",
+      "km": 25.55
+    },
+    {
+      "a": "Bap",
+      "b": "BLEB",
+      "km": 24.19
+    },
+    {
+      "a": "Bap",
+      "b": "BLEK",
+      "km": 22.71
+    },
+    {
+      "a": "Bap",
+      "b": "BLWB",
+      "km": 25.66
+    },
+    {
+      "a": "Bap",
+      "b": "BWM",
+      "km": 23.32
+    },
+    {
+      "a": "Bap",
+      "b": "AMSN",
+      "km": 18.5
+    },
+    {
+      "a": "Bap",
+      "b": "AMCH",
+      "km": 18.5
+    },
+    {
+      "a": "Bap",
+      "b": "AME",
+      "km": 17.46
+    },
+    {
+      "a": "Bap",
+      "b": "AML",
+      "km": 18.5
+    },
+    {
+      "a": "Bap",
+      "b": "AMPL",
+      "km": 18.5
+    },
+    {
+      "a": "Bap",
+      "b": "AMW",
+      "km": 18.5
+    },
+    {
+      "a": "Bap",
+      "b": "DOWSMT",
+      "km": 9.78
+    },
+    {
+      "a": "Bap",
+      "b": "DWK",
+      "km": 9.78
+    },
+    {
+      "a": "Bap",
+      "b": "DOF",
+      "km": 7.88
+    },
+    {
+      "a": "Bap",
+      "b": "DOM",
+      "km": 9.65
+    },
+    {
+      "a": "Bap",
+      "b": "KKW",
+      "km": 9.53
+    },
+    {
+      "a": "Bap",
+      "b": "KLE",
+      "km": 10.78
+    },
+    {
+      "a": "Bap",
+      "b": "KLK",
+      "km": 9.75
+    },
+    {
+      "a": "Bap",
+      "b": "KLT",
+      "km": 9.53
+    },
+    {
+      "a": "Bap",
+      "b": "KLW",
+      "km": 10.42
+    },
+    {
+      "a": "Bap",
+      "b": "DOE/DER",
+      "km": 14.44
+    },
+    {
+      "a": "Bap",
+      "b": "MUBD",
+      "km": 36.72
+    },
+    {
+      "a": "Bap",
+      "b": "SHAP",
+      "km": 35.94
+    },
+    {
+      "a": "Bap",
+      "b": "TTL",
+      "km": 17.18
+    },
+    {
+      "a": "Bap",
+      "b": "ULN",
+      "km": 14.3
+    },
+    {
+      "a": "Bap",
+      "b": "ULN4",
+      "km": 14.3
+    },
+    {
+      "a": "Bap",
+      "b": "PRCAME/PRCAMEN",
+      "km": 16.59
+    },
+    {
+      "a": "PAD",
+      "b": "VGW",
+      "km": 32.98
+    },
+    {
+      "a": "PAD",
+      "b": "VAS",
+      "km": 10.71
+    },
+    {
+      "a": "PAD",
+      "b": "BES",
+      "km": 24.45
+    },
+    {
+      "a": "PAD",
+      "b": "BKHE",
+      "km": 25.12
+    },
+    {
+      "a": "PAD",
+      "b": "BLEB",
+      "km": 23.42
+    },
+    {
+      "a": "PAD",
+      "b": "BLEK",
+      "km": 22.43
+    },
+    {
+      "a": "PAD",
+      "b": "BLWB",
+      "km": 24
+    },
+    {
+      "a": "PAD",
+      "b": "BWM",
+      "km": 22.08
+    },
+    {
+      "a": "PAD",
+      "b": "AMSN",
+      "km": 18.28
+    },
+    {
+      "a": "PAD",
+      "b": "AMCH",
+      "km": 18.28
+    },
+    {
+      "a": "PAD",
+      "b": "AME",
+      "km": 18.14
+    },
+    {
+      "a": "PAD",
+      "b": "AML",
+      "km": 18.28
+    },
+    {
+      "a": "PAD",
+      "b": "AMPL",
+      "km": 18.28
+    },
+    {
+      "a": "PAD",
+      "b": "AMW",
+      "km": 18.28
+    },
+    {
+      "a": "PAD",
+      "b": "DOWSMT",
+      "km": 12.76
+    },
+    {
+      "a": "PAD",
+      "b": "DWK",
+      "km": 12.76
+    },
+    {
+      "a": "PAD",
+      "b": "DOF",
+      "km": 18.37
+    },
+    {
+      "a": "PAD",
+      "b": "DOM",
+      "km": 19.87
+    },
+    {
+      "a": "PAD",
+      "b": "KKW",
+      "km": 14.77
+    },
+    {
+      "a": "PAD",
+      "b": "KLE",
+      "km": 15.84
+    },
+    {
+      "a": "PAD",
+      "b": "KLK",
+      "km": 13.69
+    },
+    {
+      "a": "PAD",
+      "b": "KLT",
+      "km": 14.77
+    },
+    {
+      "a": "PAD",
+      "b": "KLW",
+      "km": 14.11
+    },
+    {
+      "a": "PAD",
+      "b": "DOE/DER",
+      "km": 28.08
+    },
+    {
+      "a": "PAD",
+      "b": "MUBD",
+      "km": 25.52
+    },
+    {
+      "a": "PAD",
+      "b": "SHAP",
+      "km": 18.57
+    },
+    {
+      "a": "PAD",
+      "b": "TTL",
+      "km": 8.08
+    },
+    {
+      "a": "PAD",
+      "b": "ULN",
+      "km": 15.67
+    },
+    {
+      "a": "PAD",
+      "b": "ULN4",
+      "km": 15.67
+    },
+    {
+      "a": "PAD",
+      "b": "PRCAME/PRCAMEN",
+      "km": 17.18
+    },
+    {
+      "a": "VGW",
+      "b": "VAS",
+      "km": 35.39
+    },
+    {
+      "a": "VGW",
+      "b": "BES",
+      "km": 8.96
+    },
+    {
+      "a": "VGW",
+      "b": "BKHE",
+      "km": 8.23
+    },
+    {
+      "a": "VGW",
+      "b": "BLEB",
+      "km": 9.89
+    },
+    {
+      "a": "VGW",
+      "b": "BLEK",
+      "km": 11.2
+    },
+    {
+      "a": "VGW",
+      "b": "BLWB",
+      "km": 9.01
+    },
+    {
+      "a": "VGW",
+      "b": "BWM",
+      "km": 11.14
+    },
+    {
+      "a": "VGW",
+      "b": "AMSN",
+      "km": 15.83
+    },
+    {
+      "a": "VGW",
+      "b": "AMCH",
+      "km": 15.83
+    },
+    {
+      "a": "VGW",
+      "b": "AME",
+      "km": 16.57
+    },
+    {
+      "a": "VGW",
+      "b": "AML",
+      "km": 15.83
+    },
+    {
+      "a": "VGW",
+      "b": "AMPL",
+      "km": 15.83
+    },
+    {
+      "a": "VGW",
+      "b": "AMW",
+      "km": 15.83
+    },
+    {
+      "a": "VGW",
+      "b": "DOWSMT",
+      "km": 25.11
+    },
+    {
+      "a": "VGW",
+      "b": "DWK",
+      "km": 25.11
+    },
+    {
+      "a": "VGW",
+      "b": "DOF",
+      "km": 25.7
+    },
+    {
+      "a": "VGW",
+      "b": "DOM",
+      "km": 24.3
+    },
+    {
+      "a": "VGW",
+      "b": "KKW",
+      "km": 24.34
+    },
+    {
+      "a": "VGW",
+      "b": "KLE",
+      "km": 22.86
+    },
+    {
+      "a": "VGW",
+      "b": "KLK",
+      "km": 24.61
+    },
+    {
+      "a": "VGW",
+      "b": "KLT",
+      "km": 24.34
+    },
+    {
+      "a": "VGW",
+      "b": "KLW",
+      "km": 23.81
+    },
+    {
+      "a": "VGW",
+      "b": "DOE/DER",
+      "km": 26.54
+    },
+    {
+      "a": "VGW",
+      "b": "MUBD",
+      "km": 21.32
+    },
+    {
+      "a": "VGW",
+      "b": "SHAP",
+      "km": 40.48
+    },
+    {
+      "a": "VGW",
+      "b": "TTL",
+      "km": 24.9
+    },
+    {
+      "a": "VGW",
+      "b": "ULN",
+      "km": 19.95
+    },
+    {
+      "a": "VGW",
+      "b": "ULN4",
+      "km": 19.95
+    },
+    {
+      "a": "VGW",
+      "b": "PRCAME/PRCAMEN",
+      "km": 17.61
+    },
+    {
+      "a": "VAS",
+      "b": "BES",
+      "km": 28.29
+    },
+    {
+      "a": "VAS",
+      "b": "BKHE",
+      "km": 28.8
+    },
+    {
+      "a": "VAS",
+      "b": "BLEB",
+      "km": 27.27
+    },
+    {
+      "a": "VAS",
+      "b": "BLEK",
+      "km": 26.8
+    },
+    {
+      "a": "VAS",
+      "b": "BLWB",
+      "km": 27.2
+    },
+    {
+      "a": "VAS",
+      "b": "BWM",
+      "km": 25.98
+    },
+    {
+      "a": "VAS",
+      "b": "AMSN",
+      "km": 23.85
+    },
+    {
+      "a": "VAS",
+      "b": "AMCH",
+      "km": 23.85
+    },
+    {
+      "a": "VAS",
+      "b": "AME",
+      "km": 24.2
+    },
+    {
+      "a": "VAS",
+      "b": "AML",
+      "km": 23.85
+    },
+    {
+      "a": "VAS",
+      "b": "AMPL",
+      "km": 23.85
+    },
+    {
+      "a": "VAS",
+      "b": "AMW",
+      "km": 23.85
+    },
+    {
+      "a": "VAS",
+      "b": "DOWSMT",
+      "km": 21.82
+    },
+    {
+      "a": "VAS",
+      "b": "DWK",
+      "km": 21.82
+    },
+    {
+      "a": "VAS",
+      "b": "DOF",
+      "km": 27.82
+    },
+    {
+      "a": "VAS",
+      "b": "DOM",
+      "km": 29
+    },
+    {
+      "a": "VAS",
+      "b": "KKW",
+      "km": 23.75
+    },
+    {
+      "a": "VAS",
+      "b": "KLE",
+      "km": 24.41
+    },
+    {
+      "a": "VAS",
+      "b": "KLK",
+      "km": 22.67
+    },
+    {
+      "a": "VAS",
+      "b": "KLT",
+      "km": 23.75
+    },
+    {
+      "a": "VAS",
+      "b": "KLW",
+      "km": 22.84
+    },
+    {
+      "a": "VAS",
+      "b": "DOE/DER",
+      "km": 37.35
+    },
+    {
+      "a": "VAS",
+      "b": "MUBD",
+      "km": 21.05
+    },
+    {
+      "a": "VAS",
+      "b": "SHAP",
+      "km": 7.99
+    },
+    {
+      "a": "VAS",
+      "b": "TTL",
+      "km": 13.99
+    },
+    {
+      "a": "VAS",
+      "b": "ULN",
+      "km": 22.9
+    },
+    {
+      "a": "VAS",
+      "b": "ULN4",
+      "km": 22.9
+    },
+    {
+      "a": "VAS",
+      "b": "PRCAME/PRCAMEN",
+      "km": 23.51
+    },
+    {
+      "a": "BES",
+      "b": "BKHE",
+      "km": 0.73
+    },
+    {
+      "a": "BES",
+      "b": "BLEB",
+      "km": 1.05
+    },
+    {
+      "a": "BES",
+      "b": "BLEK",
+      "km": 2.24
+    },
+    {
+      "a": "BES",
+      "b": "BLWB",
+      "km": 1.82
+    },
+    {
+      "a": "BES",
+      "b": "BWM",
+      "km": 2.4
+    },
+    {
+      "a": "BES",
+      "b": "AMSN",
+      "km": 6.87
+    },
+    {
+      "a": "BES",
+      "b": "AMCH",
+      "km": 6.87
+    },
+    {
+      "a": "BES",
+      "b": "AME",
+      "km": 7.64
+    },
+    {
+      "a": "BES",
+      "b": "AML",
+      "km": 6.87
+    },
+    {
+      "a": "BES",
+      "b": "AMPL",
+      "km": 6.87
+    },
+    {
+      "a": "BES",
+      "b": "AMW",
+      "km": 6.87
+    },
+    {
+      "a": "BES",
+      "b": "DOWSMT",
+      "km": 16.19
+    },
+    {
+      "a": "BES",
+      "b": "DWK",
+      "km": 16.19
+    },
+    {
+      "a": "BES",
+      "b": "DOF",
+      "km": 17.42
+    },
+    {
+      "a": "BES",
+      "b": "DOM",
+      "km": 16.29
+    },
+    {
+      "a": "BES",
+      "b": "KKW",
+      "km": 15.56
+    },
+    {
+      "a": "BES",
+      "b": "KLE",
+      "km": 14.13
+    },
+    {
+      "a": "BES",
+      "b": "KLK",
+      "km": 15.74
+    },
+    {
+      "a": "BES",
+      "b": "KLT",
+      "km": 15.56
+    },
+    {
+      "a": "BES",
+      "b": "KLW",
+      "km": 14.95
+    },
+    {
+      "a": "BES",
+      "b": "DOE/DER",
+      "km": 20.45
+    },
+    {
+      "a": "BES",
+      "b": "MUBD",
+      "km": 19.49
+    },
+    {
+      "a": "BES",
+      "b": "SHAP",
+      "km": 34.38
+    },
+    {
+      "a": "BES",
+      "b": "TTL",
+      "km": 16.41
+    },
+    {
+      "a": "BES",
+      "b": "ULN",
+      "km": 11.03
+    },
+    {
+      "a": "BES",
+      "b": "ULN4",
+      "km": 11.03
+    },
+    {
+      "a": "BES",
+      "b": "PRCAME/PRCAMEN",
+      "km": 8.67
+    },
+    {
+      "a": "BKHE",
+      "b": "BLEB",
+      "km": 1.71
+    },
+    {
+      "a": "BKHE",
+      "b": "BLEK",
+      "km": 2.98
+    },
+    {
+      "a": "BKHE",
+      "b": "BLWB",
+      "km": 1.86
+    },
+    {
+      "a": "BKHE",
+      "b": "BWM",
+      "km": 3.05
+    },
+    {
+      "a": "BKHE",
+      "b": "AMSN",
+      "km": 7.6
+    },
+    {
+      "a": "BKHE",
+      "b": "AMCH",
+      "km": 7.6
+    },
+    {
+      "a": "BKHE",
+      "b": "AME",
+      "km": 8.37
+    },
+    {
+      "a": "BKHE",
+      "b": "AML",
+      "km": 7.6
+    },
+    {
+      "a": "BKHE",
+      "b": "AMPL",
+      "km": 7.6
+    },
+    {
+      "a": "BKHE",
+      "b": "AMW",
+      "km": 7.6
+    },
+    {
+      "a": "BKHE",
+      "b": "DOWSMT",
+      "km": 16.93
+    },
+    {
+      "a": "BKHE",
+      "b": "DWK",
+      "km": 16.93
+    },
+    {
+      "a": "BKHE",
+      "b": "DOF",
+      "km": 18.09
+    },
+    {
+      "a": "BKHE",
+      "b": "DOM",
+      "km": 16.93
+    },
+    {
+      "a": "BKHE",
+      "b": "KKW",
+      "km": 16.28
+    },
+    {
+      "a": "BKHE",
+      "b": "KLE",
+      "km": 14.84
+    },
+    {
+      "a": "BKHE",
+      "b": "KLK",
+      "km": 16.47
+    },
+    {
+      "a": "BKHE",
+      "b": "KLT",
+      "km": 16.28
+    },
+    {
+      "a": "BKHE",
+      "b": "KLW",
+      "km": 15.68
+    },
+    {
+      "a": "BKHE",
+      "b": "DOE/DER",
+      "km": 20.91
+    },
+    {
+      "a": "BKHE",
+      "b": "MUBD",
+      "km": 19.45
+    },
+    {
+      "a": "BKHE",
+      "b": "SHAP",
+      "km": 34.8
+    },
+    {
+      "a": "BKHE",
+      "b": "TTL",
+      "km": 17.07
+    },
+    {
+      "a": "BKHE",
+      "b": "ULN",
+      "km": 11.77
+    },
+    {
+      "a": "BKHE",
+      "b": "ULN4",
+      "km": 11.77
+    },
+    {
+      "a": "BKHE",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.4
+    },
+    {
+      "a": "BLEB",
+      "b": "BLEK",
+      "km": 1.48
+    },
+    {
+      "a": "BLEB",
+      "b": "BLWB",
+      "km": 1.66
+    },
+    {
+      "a": "BLEB",
+      "b": "BWM",
+      "km": 1.35
+    },
+    {
+      "a": "BLEB",
+      "b": "AMSN",
+      "km": 5.99
+    },
+    {
+      "a": "BLEB",
+      "b": "AMCH",
+      "km": 5.99
+    },
+    {
+      "a": "BLEB",
+      "b": "AME",
+      "km": 6.84
+    },
+    {
+      "a": "BLEB",
+      "b": "AML",
+      "km": 5.99
+    },
+    {
+      "a": "BLEB",
+      "b": "AMPL",
+      "km": 5.99
+    },
+    {
+      "a": "BLEB",
+      "b": "AMW",
+      "km": 5.99
+    },
+    {
+      "a": "BLEB",
+      "b": "DOWSMT",
+      "km": 15.37
+    },
+    {
+      "a": "BLEB",
+      "b": "DWK",
+      "km": 15.37
+    },
+    {
+      "a": "BLEB",
+      "b": "DOF",
+      "km": 16.87
+    },
+    {
+      "a": "BLEB",
+      "b": "DOM",
+      "km": 15.83
+    },
+    {
+      "a": "BLEB",
+      "b": "KKW",
+      "km": 14.82
+    },
+    {
+      "a": "BLEB",
+      "b": "KLE",
+      "km": 13.43
+    },
+    {
+      "a": "BLEB",
+      "b": "KLK",
+      "km": 14.95
+    },
+    {
+      "a": "BLEB",
+      "b": "KLT",
+      "km": 14.82
+    },
+    {
+      "a": "BLEB",
+      "b": "KLW",
+      "km": 14.16
+    },
+    {
+      "a": "BLEB",
+      "b": "DOE/DER",
+      "km": 20.4
+    },
+    {
+      "a": "BLEB",
+      "b": "MUBD",
+      "km": 19.01
+    },
+    {
+      "a": "BLEB",
+      "b": "SHAP",
+      "km": 33.42
+    },
+    {
+      "a": "BLEB",
+      "b": "TTL",
+      "km": 15.37
+    },
+    {
+      "a": "BLEB",
+      "b": "ULN",
+      "km": 10.22
+    },
+    {
+      "a": "BLEB",
+      "b": "ULN4",
+      "km": 10.22
+    },
+    {
+      "a": "BLEB",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.84
+    },
+    {
+      "a": "BLEK",
+      "b": "BLWB",
+      "km": 3.07
+    },
+    {
+      "a": "BLEK",
+      "b": "BWM",
+      "km": 1.27
+    },
+    {
+      "a": "BLEK",
+      "b": "AMSN",
+      "km": 4.63
+    },
+    {
+      "a": "BLEK",
+      "b": "AMCH",
+      "km": 4.63
+    },
+    {
+      "a": "BLEK",
+      "b": "AME",
+      "km": 5.41
+    },
+    {
+      "a": "BLEK",
+      "b": "AML",
+      "km": 4.63
+    },
+    {
+      "a": "BLEK",
+      "b": "AMPL",
+      "km": 4.63
+    },
+    {
+      "a": "BLEK",
+      "b": "AMW",
+      "km": 4.63
+    },
+    {
+      "a": "BLEK",
+      "b": "DOWSMT",
+      "km": 13.96
+    },
+    {
+      "a": "BLEK",
+      "b": "DWK",
+      "km": 13.96
+    },
+    {
+      "a": "BLEK",
+      "b": "DOF",
+      "km": 15.4
+    },
+    {
+      "a": "BLEK",
+      "b": "DOM",
+      "km": 14.38
+    },
+    {
+      "a": "BLEK",
+      "b": "KKW",
+      "km": 13.36
+    },
+    {
+      "a": "BLEK",
+      "b": "KLE",
+      "km": 11.96
+    },
+    {
+      "a": "BLEK",
+      "b": "KLK",
+      "km": 13.52
+    },
+    {
+      "a": "BLEK",
+      "b": "KLT",
+      "km": 13.36
+    },
+    {
+      "a": "BLEK",
+      "b": "KLW",
+      "km": 12.73
+    },
+    {
+      "a": "BLEK",
+      "b": "DOE/DER",
+      "km": 19.17
+    },
+    {
+      "a": "BLEK",
+      "b": "MUBD",
+      "km": 19.79
+    },
+    {
+      "a": "BLEK",
+      "b": "SHAP",
+      "km": 33.18
+    },
+    {
+      "a": "BLEK",
+      "b": "TTL",
+      "km": 14.44
+    },
+    {
+      "a": "BLEK",
+      "b": "ULN",
+      "km": 8.8
+    },
+    {
+      "a": "BLEK",
+      "b": "ULN4",
+      "km": 8.8
+    },
+    {
+      "a": "BLEK",
+      "b": "PRCAME/PRCAMEN",
+      "km": 6.43
+    },
+    {
+      "a": "BLWB",
+      "b": "BWM",
+      "km": 2.35
+    },
+    {
+      "a": "BLWB",
+      "b": "AMSN",
+      "km": 7.27
+    },
+    {
+      "a": "BLWB",
+      "b": "AMCH",
+      "km": 7.27
+    },
+    {
+      "a": "BLWB",
+      "b": "AME",
+      "km": 8.22
+    },
+    {
+      "a": "BLWB",
+      "b": "AML",
+      "km": 7.27
+    },
+    {
+      "a": "BLWB",
+      "b": "AMPL",
+      "km": 7.27
+    },
+    {
+      "a": "BLWB",
+      "b": "AMW",
+      "km": 7.27
+    },
+    {
+      "a": "BLWB",
+      "b": "DOWSMT",
+      "km": 16.65
+    },
+    {
+      "a": "BLWB",
+      "b": "DWK",
+      "km": 16.65
+    },
+    {
+      "a": "BLWB",
+      "b": "DOF",
+      "km": 18.44
+    },
+    {
+      "a": "BLWB",
+      "b": "DOM",
+      "km": 17.45
+    },
+    {
+      "a": "BLWB",
+      "b": "KKW",
+      "km": 16.22
+    },
+    {
+      "a": "BLWB",
+      "b": "KLE",
+      "km": 14.88
+    },
+    {
+      "a": "BLWB",
+      "b": "KLK",
+      "km": 16.29
+    },
+    {
+      "a": "BLWB",
+      "b": "KLT",
+      "km": 16.22
+    },
+    {
+      "a": "BLWB",
+      "b": "KLW",
+      "km": 15.52
+    },
+    {
+      "a": "BLWB",
+      "b": "DOE/DER",
+      "km": 22.05
+    },
+    {
+      "a": "BLWB",
+      "b": "MUBD",
+      "km": 17.68
+    },
+    {
+      "a": "BLWB",
+      "b": "SHAP",
+      "km": 33.05
+    },
+    {
+      "a": "BLWB",
+      "b": "TTL",
+      "km": 15.92
+    },
+    {
+      "a": "BLWB",
+      "b": "ULN",
+      "km": 11.54
+    },
+    {
+      "a": "BLWB",
+      "b": "ULN4",
+      "km": 11.54
+    },
+    {
+      "a": "BLWB",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.17
+    },
+    {
+      "a": "BWM",
+      "b": "AMSN",
+      "km": 4.92
+    },
+    {
+      "a": "BWM",
+      "b": "AMCH",
+      "km": 4.92
+    },
+    {
+      "a": "BWM",
+      "b": "AME",
+      "km": 5.87
+    },
+    {
+      "a": "BWM",
+      "b": "AML",
+      "km": 4.92
+    },
+    {
+      "a": "BWM",
+      "b": "AMPL",
+      "km": 4.92
+    },
+    {
+      "a": "BWM",
+      "b": "AMW",
+      "km": 4.92
+    },
+    {
+      "a": "BWM",
+      "b": "DOWSMT",
+      "km": 14.3
+    },
+    {
+      "a": "BWM",
+      "b": "DWK",
+      "km": 14.3
+    },
+    {
+      "a": "BWM",
+      "b": "DOF",
+      "km": 16.18
+    },
+    {
+      "a": "BWM",
+      "b": "DOM",
+      "km": 15.27
+    },
+    {
+      "a": "BWM",
+      "b": "KKW",
+      "km": 13.87
+    },
+    {
+      "a": "BWM",
+      "b": "KLE",
+      "km": 12.54
+    },
+    {
+      "a": "BWM",
+      "b": "KLK",
+      "km": 13.94
+    },
+    {
+      "a": "BWM",
+      "b": "KLT",
+      "km": 13.87
+    },
+    {
+      "a": "BWM",
+      "b": "KLW",
+      "km": 13.16
+    },
+    {
+      "a": "BWM",
+      "b": "DOE/DER",
+      "km": 20.34
+    },
+    {
+      "a": "BWM",
+      "b": "MUBD",
+      "km": 18.52
+    },
+    {
+      "a": "BWM",
+      "b": "SHAP",
+      "km": 32.21
+    },
+    {
+      "a": "BWM",
+      "b": "TTL",
+      "km": 14.02
+    },
+    {
+      "a": "BWM",
+      "b": "ULN",
+      "km": 9.19
+    },
+    {
+      "a": "BWM",
+      "b": "ULN4",
+      "km": 9.19
+    },
+    {
+      "a": "BWM",
+      "b": "PRCAME/PRCAMEN",
+      "km": 6.81
+    },
+    {
+      "a": "AMSN",
+      "b": "AMCH",
+      "km": 0
+    },
+    {
+      "a": "AMSN",
+      "b": "AME",
+      "km": 1.15
+    },
+    {
+      "a": "AMSN",
+      "b": "AML",
+      "km": 0
+    },
+    {
+      "a": "AMSN",
+      "b": "AMPL",
+      "km": 0
+    },
+    {
+      "a": "AMSN",
+      "b": "AMW",
+      "km": 0
+    },
+    {
+      "a": "AMSN",
+      "b": "DOWSMT",
+      "km": 9.39
+    },
+    {
+      "a": "AMSN",
+      "b": "DWK",
+      "km": 9.39
+    },
+    {
+      "a": "AMSN",
+      "b": "DOF",
+      "km": 11.67
+    },
+    {
+      "a": "AMSN",
+      "b": "DOM",
+      "km": 11.06
+    },
+    {
+      "a": "AMSN",
+      "b": "KKW",
+      "km": 9
+    },
+    {
+      "a": "AMSN",
+      "b": "KLE",
+      "km": 7.73
+    },
+    {
+      "a": "AMSN",
+      "b": "KLK",
+      "km": 9.03
+    },
+    {
+      "a": "AMSN",
+      "b": "KLT",
+      "km": 9
+    },
+    {
+      "a": "AMSN",
+      "b": "KLW",
+      "km": 8.25
+    },
+    {
+      "a": "AMSN",
+      "b": "DOE/DER",
+      "km": 17.4
+    },
+    {
+      "a": "AMSN",
+      "b": "MUBD",
+      "km": 20.91
+    },
+    {
+      "a": "AMSN",
+      "b": "SHAP",
+      "km": 30.81
+    },
+    {
+      "a": "AMSN",
+      "b": "TTL",
+      "km": 10.55
+    },
+    {
+      "a": "AMSN",
+      "b": "ULN",
+      "km": 4.27
+    },
+    {
+      "a": "AMSN",
+      "b": "ULN4",
+      "km": 4.27
+    },
+    {
+      "a": "AMSN",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.91
+    },
+    {
+      "a": "AMCH",
+      "b": "AME",
+      "km": 1.15
+    },
+    {
+      "a": "AMCH",
+      "b": "AML",
+      "km": 0
+    },
+    {
+      "a": "AMCH",
+      "b": "AMPL",
+      "km": 0
+    },
+    {
+      "a": "AMCH",
+      "b": "AMW",
+      "km": 0
+    },
+    {
+      "a": "AMCH",
+      "b": "DOWSMT",
+      "km": 9.39
+    },
+    {
+      "a": "AMCH",
+      "b": "DWK",
+      "km": 9.39
+    },
+    {
+      "a": "AMCH",
+      "b": "DOF",
+      "km": 11.67
+    },
+    {
+      "a": "AMCH",
+      "b": "DOM",
+      "km": 11.06
+    },
+    {
+      "a": "AMCH",
+      "b": "KKW",
+      "km": 9
+    },
+    {
+      "a": "AMCH",
+      "b": "KLE",
+      "km": 7.73
+    },
+    {
+      "a": "AMCH",
+      "b": "KLK",
+      "km": 9.03
+    },
+    {
+      "a": "AMCH",
+      "b": "KLT",
+      "km": 9
+    },
+    {
+      "a": "AMCH",
+      "b": "KLW",
+      "km": 8.25
+    },
+    {
+      "a": "AMCH",
+      "b": "DOE/DER",
+      "km": 17.4
+    },
+    {
+      "a": "AMCH",
+      "b": "MUBD",
+      "km": 20.91
+    },
+    {
+      "a": "AMCH",
+      "b": "SHAP",
+      "km": 30.81
+    },
+    {
+      "a": "AMCH",
+      "b": "TTL",
+      "km": 10.55
+    },
+    {
+      "a": "AMCH",
+      "b": "ULN",
+      "km": 4.27
+    },
+    {
+      "a": "AMCH",
+      "b": "ULN4",
+      "km": 4.27
+    },
+    {
+      "a": "AMCH",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.91
+    },
+    {
+      "a": "AME",
+      "b": "AML",
+      "km": 1.15
+    },
+    {
+      "a": "AME",
+      "b": "AMPL",
+      "km": 1.15
+    },
+    {
+      "a": "AME",
+      "b": "AMW",
+      "km": 1.15
+    },
+    {
+      "a": "AME",
+      "b": "DOWSMT",
+      "km": 8.55
+    },
+    {
+      "a": "AME",
+      "b": "DWK",
+      "km": 8.55
+    },
+    {
+      "a": "AME",
+      "b": "DOF",
+      "km": 10.54
+    },
+    {
+      "a": "AME",
+      "b": "DOM",
+      "km": 9.91
+    },
+    {
+      "a": "AME",
+      "b": "KKW",
+      "km": 8
+    },
+    {
+      "a": "AME",
+      "b": "KLE",
+      "km": 6.68
+    },
+    {
+      "a": "AME",
+      "b": "KLK",
+      "km": 8.11
+    },
+    {
+      "a": "AME",
+      "b": "KLT",
+      "km": 8
+    },
+    {
+      "a": "AME",
+      "b": "KLW",
+      "km": 7.32
+    },
+    {
+      "a": "AME",
+      "b": "DOE/DER",
+      "km": 16.35
+    },
+    {
+      "a": "AME",
+      "b": "MUBD",
+      "km": 22
+    },
+    {
+      "a": "AME",
+      "b": "SHAP",
+      "km": 31.31
+    },
+    {
+      "a": "AME",
+      "b": "TTL",
+      "km": 10.62
+    },
+    {
+      "a": "AME",
+      "b": "ULN",
+      "km": 3.39
+    },
+    {
+      "a": "AME",
+      "b": "ULN4",
+      "km": 3.39
+    },
+    {
+      "a": "AME",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.06
+    },
+    {
+      "a": "AML",
+      "b": "AMPL",
+      "km": 0
+    },
+    {
+      "a": "AML",
+      "b": "AMW",
+      "km": 0
+    },
+    {
+      "a": "AML",
+      "b": "DOWSMT",
+      "km": 9.39
+    },
+    {
+      "a": "AML",
+      "b": "DWK",
+      "km": 9.39
+    },
+    {
+      "a": "AML",
+      "b": "DOF",
+      "km": 11.67
+    },
+    {
+      "a": "AML",
+      "b": "DOM",
+      "km": 11.06
+    },
+    {
+      "a": "AML",
+      "b": "KKW",
+      "km": 9
+    },
+    {
+      "a": "AML",
+      "b": "KLE",
+      "km": 7.73
+    },
+    {
+      "a": "AML",
+      "b": "KLK",
+      "km": 9.03
+    },
+    {
+      "a": "AML",
+      "b": "KLT",
+      "km": 9
+    },
+    {
+      "a": "AML",
+      "b": "KLW",
+      "km": 8.25
+    },
+    {
+      "a": "AML",
+      "b": "DOE/DER",
+      "km": 17.4
+    },
+    {
+      "a": "AML",
+      "b": "MUBD",
+      "km": 20.91
+    },
+    {
+      "a": "AML",
+      "b": "SHAP",
+      "km": 30.81
+    },
+    {
+      "a": "AML",
+      "b": "TTL",
+      "km": 10.55
+    },
+    {
+      "a": "AML",
+      "b": "ULN",
+      "km": 4.27
+    },
+    {
+      "a": "AML",
+      "b": "ULN4",
+      "km": 4.27
+    },
+    {
+      "a": "AML",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.91
+    },
+    {
+      "a": "AMPL",
+      "b": "AMW",
+      "km": 0
+    },
+    {
+      "a": "AMPL",
+      "b": "DOWSMT",
+      "km": 9.39
+    },
+    {
+      "a": "AMPL",
+      "b": "DWK",
+      "km": 9.39
+    },
+    {
+      "a": "AMPL",
+      "b": "DOF",
+      "km": 11.67
+    },
+    {
+      "a": "AMPL",
+      "b": "DOM",
+      "km": 11.06
+    },
+    {
+      "a": "AMPL",
+      "b": "KKW",
+      "km": 9
+    },
+    {
+      "a": "AMPL",
+      "b": "KLE",
+      "km": 7.73
+    },
+    {
+      "a": "AMPL",
+      "b": "KLK",
+      "km": 9.03
+    },
+    {
+      "a": "AMPL",
+      "b": "KLT",
+      "km": 9
+    },
+    {
+      "a": "AMPL",
+      "b": "KLW",
+      "km": 8.25
+    },
+    {
+      "a": "AMPL",
+      "b": "DOE/DER",
+      "km": 17.4
+    },
+    {
+      "a": "AMPL",
+      "b": "MUBD",
+      "km": 20.91
+    },
+    {
+      "a": "AMPL",
+      "b": "SHAP",
+      "km": 30.81
+    },
+    {
+      "a": "AMPL",
+      "b": "TTL",
+      "km": 10.55
+    },
+    {
+      "a": "AMPL",
+      "b": "ULN",
+      "km": 4.27
+    },
+    {
+      "a": "AMPL",
+      "b": "ULN4",
+      "km": 4.27
+    },
+    {
+      "a": "AMPL",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.91
+    },
+    {
+      "a": "AMW",
+      "b": "DOWSMT",
+      "km": 9.39
+    },
+    {
+      "a": "AMW",
+      "b": "DWK",
+      "km": 9.39
+    },
+    {
+      "a": "AMW",
+      "b": "DOF",
+      "km": 11.67
+    },
+    {
+      "a": "AMW",
+      "b": "DOM",
+      "km": 11.06
+    },
+    {
+      "a": "AMW",
+      "b": "KKW",
+      "km": 9
+    },
+    {
+      "a": "AMW",
+      "b": "KLE",
+      "km": 7.73
+    },
+    {
+      "a": "AMW",
+      "b": "KLK",
+      "km": 9.03
+    },
+    {
+      "a": "AMW",
+      "b": "KLT",
+      "km": 9
+    },
+    {
+      "a": "AMW",
+      "b": "KLW",
+      "km": 8.25
+    },
+    {
+      "a": "AMW",
+      "b": "DOE/DER",
+      "km": 17.4
+    },
+    {
+      "a": "AMW",
+      "b": "MUBD",
+      "km": 20.91
+    },
+    {
+      "a": "AMW",
+      "b": "SHAP",
+      "km": 30.81
+    },
+    {
+      "a": "AMW",
+      "b": "TTL",
+      "km": 10.55
+    },
+    {
+      "a": "AMW",
+      "b": "ULN",
+      "km": 4.27
+    },
+    {
+      "a": "AMW",
+      "b": "ULN4",
+      "km": 4.27
+    },
+    {
+      "a": "AMW",
+      "b": "PRCAME/PRCAMEN",
+      "km": 1.91
+    },
+    {
+      "a": "DOWSMT",
+      "b": "DWK",
+      "km": 0
+    },
+    {
+      "a": "DOWSMT",
+      "b": "DOF",
+      "km": 6.03
+    },
+    {
+      "a": "DOWSMT",
+      "b": "DOM",
+      "km": 7.22
+    },
+    {
+      "a": "DOWSMT",
+      "b": "KKW",
+      "km": 2.01
+    },
+    {
+      "a": "DOWSMT",
+      "b": "KLE",
+      "km": 3.23
+    },
+    {
+      "a": "DOWSMT",
+      "b": "KLK",
+      "km": 0.93
+    },
+    {
+      "a": "DOWSMT",
+      "b": "KLT",
+      "km": 2.01
+    },
+    {
+      "a": "DOWSMT",
+      "b": "KLW",
+      "km": 1.55
+    },
+    {
+      "a": "DOWSMT",
+      "b": "DOE/DER",
+      "km": 15.56
+    },
+    {
+      "a": "DOWSMT",
+      "b": "MUBD",
+      "km": 27.07
+    },
+    {
+      "a": "DOWSMT",
+      "b": "SHAP",
+      "km": 29.71
+    },
+    {
+      "a": "DOWSMT",
+      "b": "TTL",
+      "km": 8.58
+    },
+    {
+      "a": "DOWSMT",
+      "b": "ULN",
+      "km": 5.16
+    },
+    {
+      "a": "DOWSMT",
+      "b": "ULN4",
+      "km": 5.16
+    },
+    {
+      "a": "DOWSMT",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.53
+    },
+    {
+      "a": "DWK",
+      "b": "DOF",
+      "km": 6.03
+    },
+    {
+      "a": "DWK",
+      "b": "DOM",
+      "km": 7.22
+    },
+    {
+      "a": "DWK",
+      "b": "KKW",
+      "km": 2.01
+    },
+    {
+      "a": "DWK",
+      "b": "KLE",
+      "km": 3.23
+    },
+    {
+      "a": "DWK",
+      "b": "KLK",
+      "km": 0.93
+    },
+    {
+      "a": "DWK",
+      "b": "KLT",
+      "km": 2.01
+    },
+    {
+      "a": "DWK",
+      "b": "KLW",
+      "km": 1.55
+    },
+    {
+      "a": "DWK",
+      "b": "DOE/DER",
+      "km": 15.56
+    },
+    {
+      "a": "DWK",
+      "b": "MUBD",
+      "km": 27.07
+    },
+    {
+      "a": "DWK",
+      "b": "SHAP",
+      "km": 29.71
+    },
+    {
+      "a": "DWK",
+      "b": "TTL",
+      "km": 8.58
+    },
+    {
+      "a": "DWK",
+      "b": "ULN",
+      "km": 5.16
+    },
+    {
+      "a": "DWK",
+      "b": "ULN4",
+      "km": 5.16
+    },
+    {
+      "a": "DWK",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.53
+    },
+    {
+      "a": "DOF",
+      "b": "DOM",
+      "km": 1.96
+    },
+    {
+      "a": "DOF",
+      "b": "KKW",
+      "km": 4.26
+    },
+    {
+      "a": "DOF",
+      "b": "KLE",
+      "km": 4.42
+    },
+    {
+      "a": "DOF",
+      "b": "KLK",
+      "km": 5.26
+    },
+    {
+      "a": "DOF",
+      "b": "KLT",
+      "km": 4.26
+    },
+    {
+      "a": "DOF",
+      "b": "KLW",
+      "km": 5.34
+    },
+    {
+      "a": "DOF",
+      "b": "DOE/DER",
+      "km": 9.72
+    },
+    {
+      "a": "DOF",
+      "b": "MUBD",
+      "km": 31.74
+    },
+    {
+      "a": "DOF",
+      "b": "SHAP",
+      "km": 35.73
+    },
+    {
+      "a": "DOF",
+      "b": "TTL",
+      "km": 14.52
+    },
+    {
+      "a": "DOF",
+      "b": "ULN",
+      "km": 8
+    },
+    {
+      "a": "DOF",
+      "b": "ULN4",
+      "km": 8
+    },
+    {
+      "a": "DOF",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.89
+    },
+    {
+      "a": "DOM",
+      "b": "KKW",
+      "km": 5.26
+    },
+    {
+      "a": "DOM",
+      "b": "KLE",
+      "km": 4.8
+    },
+    {
+      "a": "DOM",
+      "b": "KLK",
+      "km": 6.34
+    },
+    {
+      "a": "DOM",
+      "b": "KLT",
+      "km": 5.26
+    },
+    {
+      "a": "DOM",
+      "b": "KLW",
+      "km": 6.19
+    },
+    {
+      "a": "DOM",
+      "b": "DOE/DER",
+      "km": 8.35
+    },
+    {
+      "a": "DOM",
+      "b": "MUBD",
+      "km": 31.62
+    },
+    {
+      "a": "DOM",
+      "b": "SHAP",
+      "km": 36.85
+    },
+    {
+      "a": "DOM",
+      "b": "TTL",
+      "km": 15.4
+    },
+    {
+      "a": "DOM",
+      "b": "ULN",
+      "km": 7.91
+    },
+    {
+      "a": "DOM",
+      "b": "ULN4",
+      "km": 7.91
+    },
+    {
+      "a": "DOM",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.43
+    },
+    {
+      "a": "KKW",
+      "b": "KLE",
+      "km": 1.57
+    },
+    {
+      "a": "KKW",
+      "b": "KLK",
+      "km": 1.09
+    },
+    {
+      "a": "KKW",
+      "b": "KLT",
+      "km": 0
+    },
+    {
+      "a": "KKW",
+      "b": "KLW",
+      "km": 1.11
+    },
+    {
+      "a": "KKW",
+      "b": "DOE/DER",
+      "km": 13.6
+    },
+    {
+      "a": "KKW",
+      "b": "MUBD",
+      "km": 27.93
+    },
+    {
+      "a": "KKW",
+      "b": "SHAP",
+      "km": 31.61
+    },
+    {
+      "a": "KKW",
+      "b": "TTL",
+      "km": 10.27
+    },
+    {
+      "a": "KKW",
+      "b": "ULN",
+      "km": 4.77
+    },
+    {
+      "a": "KKW",
+      "b": "ULN4",
+      "km": 4.77
+    },
+    {
+      "a": "KKW",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.09
+    },
+    {
+      "a": "KLE",
+      "b": "KLK",
+      "km": 2.34
+    },
+    {
+      "a": "KLE",
+      "b": "KLT",
+      "km": 1.57
+    },
+    {
+      "a": "KLE",
+      "b": "KLW",
+      "km": 1.74
+    },
+    {
+      "a": "KLE",
+      "b": "DOE/DER",
+      "km": 13.02
+    },
+    {
+      "a": "KLE",
+      "b": "MUBD",
+      "km": 27.33
+    },
+    {
+      "a": "KLE",
+      "b": "SHAP",
+      "km": 32.18
+    },
+    {
+      "a": "KLE",
+      "b": "TTL",
+      "km": 10.64
+    },
+    {
+      "a": "KLE",
+      "b": "ULN",
+      "km": 3.69
+    },
+    {
+      "a": "KLE",
+      "b": "ULN4",
+      "km": 3.69
+    },
+    {
+      "a": "KLE",
+      "b": "PRCAME/PRCAMEN",
+      "km": 5.85
+    },
+    {
+      "a": "KLK",
+      "b": "KLT",
+      "km": 1.09
+    },
+    {
+      "a": "KLK",
+      "b": "KLW",
+      "km": 0.81
+    },
+    {
+      "a": "KLK",
+      "b": "DOE/DER",
+      "km": 14.69
+    },
+    {
+      "a": "KLK",
+      "b": "MUBD",
+      "km": 27.33
+    },
+    {
+      "a": "KLK",
+      "b": "SHAP",
+      "km": 30.54
+    },
+    {
+      "a": "KLK",
+      "b": "TTL",
+      "km": 9.27
+    },
+    {
+      "a": "KLK",
+      "b": "ULN",
+      "km": 4.75
+    },
+    {
+      "a": "KLK",
+      "b": "ULN4",
+      "km": 4.75
+    },
+    {
+      "a": "KLK",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.13
+    },
+    {
+      "a": "KLT",
+      "b": "KLW",
+      "km": 1.11
+    },
+    {
+      "a": "KLT",
+      "b": "DOE/DER",
+      "km": 13.6
+    },
+    {
+      "a": "KLT",
+      "b": "MUBD",
+      "km": 27.93
+    },
+    {
+      "a": "KLT",
+      "b": "SHAP",
+      "km": 31.61
+    },
+    {
+      "a": "KLT",
+      "b": "TTL",
+      "km": 10.27
+    },
+    {
+      "a": "KLT",
+      "b": "ULN",
+      "km": 4.77
+    },
+    {
+      "a": "KLT",
+      "b": "ULN4",
+      "km": 4.77
+    },
+    {
+      "a": "KLT",
+      "b": "PRCAME/PRCAMEN",
+      "km": 7.09
+    },
+    {
+      "a": "KLW",
+      "b": "DOE/DER",
+      "km": 14.52
+    },
+    {
+      "a": "KLW",
+      "b": "MUBD",
+      "km": 26.85
+    },
+    {
+      "a": "KLW",
+      "b": "SHAP",
+      "km": 30.66
+    },
+    {
+      "a": "KLW",
+      "b": "TTL",
+      "km": 9.24
+    },
+    {
+      "a": "KLW",
+      "b": "ULN",
+      "km": 3.98
+    },
+    {
+      "a": "KLW",
+      "b": "ULN4",
+      "km": 3.98
+    },
+    {
+      "a": "KLW",
+      "b": "PRCAME/PRCAMEN",
+      "km": 6.35
+    },
+    {
+      "a": "DOE/DER",
+      "b": "MUBD",
+      "km": 38.28
+    },
+    {
+      "a": "DOE/DER",
+      "b": "SHAP",
+      "km": 45.18
+    },
+    {
+      "a": "DOE/DER",
+      "b": "TTL",
+      "km": 23.66
+    },
+    {
+      "a": "DOE/DER",
+      "b": "ULN",
+      "km": 15.5
+    },
+    {
+      "a": "DOE/DER",
+      "b": "ULN4",
+      "km": 15.5
+    },
+    {
+      "a": "DOE/DER",
+      "b": "PRCAME/PRCAMEN",
+      "km": 16.29
+    },
+    {
+      "a": "MUBD",
+      "b": "SHAP",
+      "km": 22.67
+    },
+    {
+      "a": "MUBD",
+      "b": "TTL",
+      "km": 20.18
+    },
+    {
+      "a": "MUBD",
+      "b": "ULN",
+      "km": 23.77
+    },
+    {
+      "a": "MUBD",
+      "b": "ULN4",
+      "km": 23.77
+    },
+    {
+      "a": "MUBD",
+      "b": "PRCAME/PRCAMEN",
+      "km": 22.26
+    },
+    {
+      "a": "SHAP",
+      "b": "TTL",
+      "km": 21.6
+    },
+    {
+      "a": "SHAP",
+      "b": "ULN",
+      "km": 30.39
+    },
+    {
+      "a": "SHAP",
+      "b": "ULN4",
+      "km": 30.39
+    },
+    {
+      "a": "SHAP",
+      "b": "PRCAME/PRCAMEN",
+      "km": 30.73
+    },
+    {
+      "a": "TTL",
+      "b": "ULN",
+      "km": 8.92
+    },
+    {
+      "a": "TTL",
+      "b": "ULN4",
+      "km": 8.92
+    },
+    {
+      "a": "TTL",
+      "b": "PRCAME/PRCAMEN",
+      "km": 9.79
+    },
+    {
+      "a": "ULN",
+      "b": "ULN4",
+      "km": 0
+    },
+    {
+      "a": "ULN",
+      "b": "PRCAME/PRCAMEN",
+      "km": 2.38
+    },
+    {
+      "a": "ULN4",
+      "b": "PRCAME/PRCAMEN",
+      "km": 2.38
+    }
+  ],
   "per_store": [
     {
       "store_id": "KBG",
@@ -22,26 +5903,50 @@
     {
       "store_id": "RCM",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "NKR",
+        "km": 20.37
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "THE",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DAG/DOEMIDC",
+        "km": 1.19
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 5,
+        "5km": 12
+      },
+      "overlap_risk": 0.86,
+      "kind": "derived"
     },
     {
       "store_id": "TGR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "TTL",
+        "km": 3.68
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 1
+      },
+      "overlap_risk": 0.16,
+      "kind": "derived"
     },
     {
       "store_id": "NSR",
@@ -54,90 +5959,178 @@
     {
       "store_id": "NWM",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DSR",
+        "km": 1.7
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 1,
+        "5km": 2
+      },
+      "overlap_risk": 0.5,
+      "kind": "derived"
     },
     {
       "store_id": "KUD",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AVB",
+        "km": 7.3
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "DNE",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DOM",
+        "km": 1.19
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 4,
+        "5km": 5
+      },
+      "overlap_risk": 0.86,
+      "kind": "derived"
     },
     {
       "store_id": "KYD",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DOWSMT",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 3,
+        "3km": 6,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "DAG/DOEMIDC",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DOF",
+        "km": 0.55
+      },
+      "own_within": {
+        "1km": 2,
+        "3km": 5,
+        "5km": 10
+      },
+      "overlap_risk": 0.93,
+      "kind": "derived"
     },
     {
       "store_id": "AVB",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KUD",
+        "km": 7.3
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "KBR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "Bap",
+        "km": 4.37
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 3
+      },
+      "overlap_risk": 0.08,
+      "kind": "derived"
     },
     {
       "store_id": "DSR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "NWM",
+        "km": 1.7
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 2,
+        "5km": 2
+      },
+      "overlap_risk": 0.6,
+      "kind": "derived"
     },
     {
       "store_id": "NKR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "VGW",
+        "km": 7.44
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "KET",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KLE",
+        "km": 0.44
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 7,
+        "5km": 16
+      },
+      "overlap_risk": 0.95,
+      "kind": "derived"
     },
     {
       "store_id": "BBVR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BHAR",
+        "km": 0.89
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 1,
+        "5km": 3
+      },
+      "overlap_risk": 0.59,
+      "kind": "derived"
     },
     {
       "store_id": "KMR",
@@ -150,274 +6143,546 @@
     {
       "store_id": "DOW",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DOF",
+        "km": 0.74
+      },
+      "own_within": {
+        "1km": 2,
+        "3km": 5,
+        "5km": 8
+      },
+      "overlap_risk": 0.91,
+      "kind": "derived"
     },
     {
       "store_id": "SHD",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KLE",
+        "km": 0.6
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 6,
+        "5km": 13
+      },
+      "overlap_risk": 0.93,
+      "kind": "derived"
     },
     {
       "store_id": "BHAR",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BBVR",
+        "km": 0.89
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 1,
+        "5km": 3
+      },
+      "overlap_risk": 0.59,
+      "kind": "derived"
     },
     {
       "store_id": "Bap",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BBVR",
+        "km": 3.78
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 3
+      },
+      "overlap_risk": 0.15,
+      "kind": "derived"
     },
     {
       "store_id": "PAD",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "TTL",
+        "km": 8.08
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "VGW",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "NKR",
+        "km": 7.44
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "VAS",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "SHAP",
+        "km": 7.99
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "BES",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BKHE",
+        "km": 0.73
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 5,
+        "5km": 5
+      },
+      "overlap_risk": 0.91,
+      "kind": "derived"
     },
     {
       "store_id": "BKHE",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BES",
+        "km": 0.73
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 4,
+        "5km": 5
+      },
+      "overlap_risk": 0.91,
+      "kind": "derived"
     },
     {
       "store_id": "BLEB",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BES",
+        "km": 1.05
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 5,
+        "5km": 5
+      },
+      "overlap_risk": 0.87,
+      "kind": "derived"
     },
     {
       "store_id": "BLEK",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BWM",
+        "km": 1.27
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 4,
+        "5km": 10
+      },
+      "overlap_risk": 0.85,
+      "kind": "derived"
     },
     {
       "store_id": "BLWB",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BLEB",
+        "km": 1.66
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 4,
+        "5km": 5
+      },
+      "overlap_risk": 0.8,
+      "kind": "derived"
     },
     {
       "store_id": "BWM",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "BLEK",
+        "km": 1.27
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 4,
+        "5km": 10
+      },
+      "overlap_risk": 0.85,
+      "kind": "derived"
     },
     {
       "store_id": "AMSN",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMCH",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "AMCH",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMSN",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "AME",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMW",
+        "km": 1.15
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 5,
+        "5km": 7
+      },
+      "overlap_risk": 0.86,
+      "kind": "derived"
     },
     {
       "store_id": "AML",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMSN",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "AMPL",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMSN",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "AMW",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AMSN",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "DOWSMT",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KYD",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 3,
+        "3km": 6,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "DWK",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KYD",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 3,
+        "3km": 6,
+        "5km": 9
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "DOF",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DAG/DOEMIDC",
+        "km": 0.55
+      },
+      "own_within": {
+        "1km": 2,
+        "3km": 5,
+        "5km": 9
+      },
+      "overlap_risk": 0.93,
+      "kind": "derived"
     },
     {
       "store_id": "DOM",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DNE",
+        "km": 1.19
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 5,
+        "5km": 7
+      },
+      "overlap_risk": 0.86,
+      "kind": "derived"
     },
     {
       "store_id": "KKW",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KLT",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 9,
+        "5km": 15
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "KLE",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KET",
+        "km": 0.44
+      },
+      "own_within": {
+        "1km": 2,
+        "3km": 6,
+        "5km": 15
+      },
+      "overlap_risk": 0.95,
+      "kind": "derived"
     },
     {
       "store_id": "KLK",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KLW",
+        "km": 0.81
+      },
+      "own_within": {
+        "1km": 4,
+        "3km": 9,
+        "5km": 12
+      },
+      "overlap_risk": 0.9,
+      "kind": "derived"
     },
     {
       "store_id": "KLT",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KKW",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 9,
+        "5km": 15
+      },
+      "overlap_risk": 1,
+      "kind": "derived"
     },
     {
       "store_id": "KLW",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "KLK",
+        "km": 0.81
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 9,
+        "5km": 12
+      },
+      "overlap_risk": 0.9,
+      "kind": "derived"
     },
     {
       "store_id": "DOE/DER",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "DSR",
+        "km": 2.94
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 1,
+        "5km": 2
+      },
+      "overlap_risk": 0.35,
+      "kind": "derived"
     },
     {
       "store_id": "MUBD",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "TGR",
+        "km": 16.63
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "SHAP",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "VAS",
+        "km": 7.99
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "overlap_risk": 0,
+      "kind": "derived"
     },
     {
       "store_id": "TTL",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "TGR",
+        "km": 3.68
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 1
+      },
+      "overlap_risk": 0.16,
+      "kind": "derived"
     },
     {
       "store_id": "ULN",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "ULN4",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 1,
+        "5km": 14
+      },
+      "overlap_risk": 0.7,
+      "kind": "derived"
     },
     {
       "store_id": "ULN4",
       "status": "operational",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
-      "overlap_risk": null
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "ULN",
+        "km": 0
+      },
+      "own_within": {
+        "1km": 1,
+        "3km": 1,
+        "5km": 14
+      },
+      "overlap_risk": 0.7,
+      "kind": "derived"
     },
     {
       "store_id": "KHP",
@@ -430,9 +6695,16 @@
     {
       "store_id": "PRCAME/PRCAMEN",
       "status": "closed",
-      "geocoded": false,
-      "nearest_own": null,
-      "own_within": null,
+      "geocoded": true,
+      "nearest_own": {
+        "store_id": "AME",
+        "km": 1.06
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 8,
+        "5km": 8
+      },
       "overlap_risk": null
     }
   ],

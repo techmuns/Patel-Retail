@@ -24,12 +24,20 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import {
+  haversineKm,
+  round2,
+  overlapRisk,
+  RISK_PROXIMITY_WEIGHT,
+  RISK_DENSITY_WEIGHT,
+  RISK_PROXIMITY_HORIZON_KM,
+  RISK_DENSITY_SATURATION,
+} from "../public/js/geo.js"; // single source of truth — also imported client-side by map.js/screener.js
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STORES_PATH = path.join(__dirname, "..", "public", "data", "stores.json");
 const OUT_PATH = path.join(__dirname, "..", "public", "data", "proximity.json");
 
-const EARTH_KM = 6371;
 const RADII_KM = [1, 3, 5];
 
 // Cannibalisation-risk heuristic. Documented and simple on purpose: this is
@@ -37,35 +45,11 @@ const RADII_KM = [1, 3, 5];
 // prediction of actual sales overlap — there is no store-level sales data
 // to validate it against (see PATEL-HANDOFF.md §9, "not supplied, and not
 // coming"). Treat high values as "worth a closer look", not as fact.
-const RISK_PROXIMITY_WEIGHT = 0.6;
-const RISK_DENSITY_WEIGHT = 0.4;
-const RISK_PROXIMITY_HORIZON_KM = 5; // proximity component reaches 0 at this distance
-const RISK_DENSITY_SATURATION = 4; // density component saturates at this many nearby stores
 const RISK_METHOD_NOTE =
   `overlap_risk = ${RISK_PROXIMITY_WEIGHT}×clamp(1 − nearest_own_km/${RISK_PROXIMITY_HORIZON_KM}, 0, 1) ` +
   `+ ${RISK_DENSITY_WEIGHT}×clamp(own_within[\"3km\"]/${RISK_DENSITY_SATURATION}, 0, 1). ` +
   `Geography-only heuristic (no sales data exists to calibrate against) — a relative screening ` +
   `signal, not a measurement. kind: "derived".`;
-
-function clamp(v, lo, hi) {
-  return Math.min(hi, Math.max(lo, v));
-}
-
-function round2(v) {
-  return Math.round(v * 100) / 100;
-}
-
-function haversineKm(a, b) {
-  const toRad = (d) => (d * Math.PI) / 180;
-  const dLat = toRad(b.lat - a.lat);
-  const dLng = toRad(b.lng - a.lng);
-  const lat1 = toRad(a.lat);
-  const lat2 = toRad(b.lat);
-  const h =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLng / 2) ** 2;
-  return EARTH_KM * 2 * Math.asin(Math.sqrt(clamp(h, 0, 1)));
-}
 
 function nCk2(n) {
   return (n * (n - 1)) / 2;
@@ -119,11 +103,9 @@ async function main() {
       }
     }
 
-    const proximityComponent = clamp(1 - nearest.km / RISK_PROXIMITY_HORIZON_KM, 0, 1);
-    const densityComponent = clamp(within["3km"] / RISK_DENSITY_SATURATION, 0, 1);
     const overlap_risk =
       store.status === "operational"
-        ? round2(RISK_PROXIMITY_WEIGHT * proximityComponent + RISK_DENSITY_WEIGHT * densityComponent)
+        ? overlapRisk(nearest.km, within["3km"])
         : null; // don't score risk for the closed store itself — nothing to protect there anymore
 
     return {
@@ -155,7 +137,7 @@ async function main() {
       pairs_computed: pairs.length,
       note:
         geocoded.length === 0
-          ? "No stores are geocoded yet — run scripts/geocode.mjs with GOOGLE_MAPS_API_KEY set, then re-run this script. Town clusters below don't need geocoding and are already real."
+          ? "No stores are geocoded yet — run scripts/geocode.mjs (Nominatim by default, no key needed), then re-run this script. Town clusters below don't need geocoding and are already real."
           : geocoded.length < stores.length
           ? `${stores.length - geocoded.length} store(s) still ungeocoded — pairs/nearest-own involving them are absent, not zero.`
           : "All stores geocoded.",

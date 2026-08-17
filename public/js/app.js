@@ -7,11 +7,14 @@
 import { qs, qsa, refreshIcons } from "./ui.js";
 import { initMap, invalidateMapSize } from "./map.js";
 import { initEconomics } from "./economics.js";
+import { initScreener } from "./screener.js";
 
 const VIEW_INITIALIZERS = {
   map: { init: initMap, started: false },
   economics: { init: initEconomics, started: false },
+  screener: { init: initScreener, started: false },
 };
+const FOOT_STATUS_LABEL = { map: "Network map", economics: "Store economics", screener: "Site screener" };
 
 function showView(view) {
   qsa(".view").forEach((el) => el.classList.add("hidden"));
@@ -32,7 +35,7 @@ function showView(view) {
 
   const footStatus = qs("#footStatus");
   if (footStatus) {
-    footStatus.textContent = view === "map" ? "Network map" : "Store economics";
+    footStatus.textContent = FOOT_STATUS_LABEL[view] || view;
   }
 }
 

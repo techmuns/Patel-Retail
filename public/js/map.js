@@ -137,10 +137,6 @@ function renderLegend() {
   `;
 }
 
-function sheetStatBlock(value, label) {
-  return `<div class="sheet-stat"><div class="ss-value">${value}</div><div class="ss-label">${escapeHtml(label)}</div></div>`;
-}
-
 function openStoreSheet(store) {
   const prox = proximityByStoreId.get(store.store_id);
   qs("#sheetName").textContent = store.name;
@@ -150,31 +146,53 @@ function openStoreSheet(store) {
       ? `<span class="chip done"><span class="cdot"></span>Operational</span>`
       : `<span class="chip failed"><span class="cdot"></span>Closed ${store.closed ? fmtDate(store.closed) : ""}</span>`;
   const confChip = `<span class="chip ${store.geo_confidence === "low" ? "queued" : store.geo_confidence === "medium" ? "src-transcript" : "src-ai"}">${escapeHtml(store.geo_confidence)} confidence</span>`;
+  const isCoarseMatch = store.geocode_match_tier === "town" || store.geocode_match_tier === "town_base";
+  const coarseChip = isCoarseMatch ? `<span class="chip queued">town-centroid pin</span>` : "";
 
   qs("#sheetMeta").innerHTML = `
     <span class="sh-pill">${escapeHtml(store.store_id)}</span>
     ${statusChip}
     ${confChip}
+    ${coarseChip}
   `;
 
   const nearest = prox?.nearest_own;
   const within = prox?.own_within;
   const risk = prox?.overlap_risk;
 
-  const statRow = `
-    <div class="sheet-stat-row">
-      ${sheetStatBlock(nearest ? `${nearest.km} km` : "—", nearest ? `Nearest: ${nearest.store_id}` : "Nearest own store")}
-      ${sheetStatBlock(within ? within["3km"] : "—", "Own stores within 3km")}
-      ${sheetStatBlock(risk != null ? risk.toFixed(2) : "—", "Overlap risk (derived)")}
+  const riskBlock = store.lat == null
+    ? `<p style="font-size:12.5px;color:var(--text-3)">Not computed — this store isn't geocoded yet.</p>`
+    : `
+    <div class="risk-block" data-kind="derived">
+      <div class="risk-block-head">
+        <span class="kind-pill kind-derived">derived</span>
+        <span class="risk-block-title">Cannibalisation risk score</span>
+      </div>
+      <p class="risk-sentence">
+        One 0–1 number blending how close the nearest <em>other</em> Patel store is (closer&nbsp;=&nbsp;higher)
+        with how many Patel stores sit within 3&nbsp;km (more&nbsp;=&nbsp;higher) — geography only,
+        no sales data went into it. Formula and every input are shown below so it can be checked by hand.
+      </p>
+      <div class="risk-inputs">
+        <div class="risk-input">
+          <span class="ri-label">Nearest own store</span>
+          <span class="ri-value">${nearest ? `${nearest.km} km (${escapeHtml(nearest.store_id)})` : "—"}</span>
+        </div>
+        <div class="risk-input">
+          <span class="ri-label">Own stores within 3 km</span>
+          <span class="ri-value">${within ? within["3km"] : "—"}</span>
+        </div>
+        <div class="risk-input muted">
+          <span class="ri-label">Nearest competitor</span>
+          <span class="ri-value">Not available yet — competitor data hasn't been scraped</span>
+        </div>
+      </div>
+      <div class="risk-score-row">
+        <span>Composite score</span>
+        <span class="risk-score-value">${risk != null ? risk.toFixed(2) : "—"}</span>
+      </div>
+      <p class="risk-caveat">Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against.</p>
     </div>`;
-
-  const riskNote =
-    risk != null
-      ? `<p style="font-size:12.5px;color:var(--text-3);line-height:1.6">
-           <span class="kind-pill kind-derived">derived</span>
-           Geography-only heuristic — a screening signal, not a validated prediction (no store-level sales data exists to calibrate it against).
-         </p>`
-      : `<p style="font-size:12.5px;color:var(--text-3)">Not computed — this store isn't geocoded yet.</p>`;
 
   qs("#sheetScroll").innerHTML = `
     <div style="padding: 4px 26px 26px">
@@ -185,8 +203,17 @@ function openStoreSheet(store) {
         <tr><td>Opened</td><td style="text-align:left;font-family:inherit;font-weight:400;color:var(--text-2)">${store.opened ? fmtDate(store.opened) : "—"}</td></tr>
         <tr><td>Area</td><td style="text-align:left;font-family:inherit;font-weight:400;color:var(--text-2)">${store.area_sqft.toLocaleString("en-IN")} sq ft <span class="kind-pill kind-estimate" data-kind="estimate">estimate</span></td></tr>
       </table>
-      ${statRow}
-      ${riskNote}
+      ${
+        isCoarseMatch
+          ? `<p class="risk-caveat" style="margin-top:10px">
+               <i data-lucide="map-pin-off" class="i16" style="vertical-align:-3px"></i>
+               This pin is a <strong>${escapeHtml(store.town)} town centroid</strong>, not this store's own address —
+               the geocoder couldn't resolve "${escapeHtml(store.locality)}" directly. Shown as an uncertainty circle
+               on the map; distances/risk below inherit that imprecision.
+             </p>`
+          : ""
+      }
+      ${riskBlock}
     </div>
   `;
   qs("#sheetModal").classList.add("open");
@@ -210,8 +237,9 @@ function renderEmptyMap(container, pendingCount, total) {
       <h4>${pendingCount === total ? "Not geocoded yet" : "Partially geocoded"}</h4>
       <p>
         ${pendingCount} of ${total} stores don't have coordinates yet. Run
-        <code>scripts/geocode.mjs</code> with a <code>GOOGLE_MAPS_API_KEY</code>,
-        then re-run <code>scripts/build-proximity.mjs</code> to see them here.
+        <code>node scripts/geocode.mjs</code> (Nominatim, no key needed) or set
+        <code>GOOGLE_MAPS_API_KEY</code> for the more precise provider, then
+        re-run <code>scripts/build-proximity.mjs</code> to see them here.
       </p>
     </div>
   `;
@@ -226,15 +254,24 @@ function initLeafletMap(container, geocodedStores) {
   const bounds = [];
   for (const store of geocodedStores) {
     const isClosed = store.status === "closed";
+    // Two independent reasons a pin isn't trustworthy: the client's own
+    // address-quality read (geo_confidence), or the geocoder having fallen
+    // back to a town-level centroid (geocode_match_tier) — a coarse match
+    // is just as imprecise regardless of what geo_confidence says, since
+    // several stores in the same town land on the literal same point.
+    const isCoarseMatch = store.geocode_match_tier === "town" || store.geocode_match_tier === "town_base";
     const isLowConfidence = store.geo_confidence === "low";
+    const isUncertain = isCoarseMatch || isLowConfidence;
     const bucket = vintageBucketFor(store);
-    const color = isClosed ? resolveCssVar(CLOSED_COLOR) : isLowConfidence ? resolveCssVar(LOW_CONFIDENCE_COLOR) : resolveCssVar(bucket.color);
+    const color = isClosed ? resolveCssVar(CLOSED_COLOR) : isUncertain ? resolveCssVar(LOW_CONFIDENCE_COLOR) : resolveCssVar(bucket.color);
 
     let layer;
-    if (isLowConfidence) {
-      // Uncertainty circle, not a precise pin — the address quality doesn't support one.
+    if (isUncertain) {
+      // Uncertainty circle, not a precise pin. A town-centroid fallback can
+      // be off by the width of the whole town, so it gets a bigger radius
+      // than a merely low-confidence address (~street-level uncertainty).
       layer = window.L.circle([store.lat, store.lng], {
-        radius: 1200,
+        radius: isCoarseMatch ? 2200 : 1200,
         color,
         weight: 2,
         dashArray: "5,5",

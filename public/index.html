@@ -64,6 +64,9 @@
           <button class="vtab" data-view="economics">
             <i data-lucide="calculator" class="i16"></i><span>Store Economics</span>
           </button>
+          <button class="vtab" data-view="screener">
+            <i data-lucide="search-check" class="i16"></i><span>Site Screener</span>
+          </button>
         </div>
 
         <label class="highlight-toggle" title="Dim everything except figures labelled 'estimate'">
@@ -210,6 +213,80 @@
             </section>
           </div>
           <!-- /viewEconomics -->
+
+          <!-- ---------------- Site Screener view ---------------- -->
+          <div id="viewScreener" class="view hidden">
+            <section class="fade-up d1">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-primary)">
+                        <i data-lucide="search-check" class="i16"></i>
+                      </span>
+                      Site Screener
+                    </h3>
+                    <div class="sub">Enter a candidate address — distance to every own store, catchment density, and a geography-only go/no-go read. This is what the client currently does by hand.</div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form id="screenerForm" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+                    <input
+                      id="screenerAddress"
+                      type="text"
+                      placeholder="e.g. Manpada Road, Dombivali East, Thane, Maharashtra"
+                      autocomplete="off"
+                      style="flex:1; min-width:260px; padding:11px 14px; border-radius:var(--r-sm); border:1px solid var(--hairline-strong); font:inherit; font-size:13.5px; background:var(--surface-solid); color:var(--text-1)"
+                    />
+                    <button class="btn" type="submit" id="screenerSubmit">
+                      <i data-lucide="search" class="i16"></i>
+                      <span>Check site</span>
+                    </button>
+                  </form>
+                  <p style="font-size:11.5px; color:var(--text-4); margin: 10px 0 0">
+                    Geocoded client-side via Nominatim (OpenStreetMap) — no server round-trip, no key needed.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-up d2" id="screenerResults" style="display:none; margin-top:20px">
+              <div class="kpi-grid" id="screenerKpis"></div>
+
+              <div class="layout-main" style="margin-top:20px">
+                <div class="card lift">
+                  <div class="card-head">
+                    <div>
+                      <h3>
+                        <span class="card-ico" style="background: var(--grad-cool)">
+                          <i data-lucide="list-ordered" class="i16"></i>
+                        </span>
+                        Distance to every own store
+                      </h3>
+                      <div class="sub">Nearest first</div>
+                    </div>
+                  </div>
+                  <div class="card-body pad0">
+                    <div class="table-scroll" style="max-height: 420px; overflow-y: auto">
+                      <table class="feed-table" id="screenerTable">
+                        <thead>
+                          <tr><th>Store</th><th>Town</th><th>Distance</th></tr>
+                        </thead>
+                        <tbody id="screenerTableBody"></tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stack">
+                  <div class="card lift" id="screenerRiskCard"></div>
+                </div>
+              </div>
+            </section>
+
+            <section id="screenerEmpty" class="fade-up d2"></section>
+          </div>
+          <!-- /viewScreener -->
         </div>
       </main>
 
