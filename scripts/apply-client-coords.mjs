@@ -39,6 +39,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import { tryParseRawLatLng, tryParseMapsUrl, isShortLink, resolveShortLink } from "./lib/gmaps-url.mjs"; // shared with fetch-official-stores.mjs — see that file's header
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STORES_PATH = path.join(__dirname, "..", "public", "data", "stores.json");
@@ -48,68 +49,6 @@ const DRY_RUN = process.argv.includes("--dry-run");
 // outside this is almost certainly a mis-paste (wrong pin, wrong city),
 // worth a loud warning even though client input is otherwise trusted.
 const REGION_VIEWBOX = { minLon: 72.7, minLat: 18.6, maxLon: 73.6, maxLat: 19.8 };
-
-const SHORT_LINK_HOSTS = ["goo.gl", "maps.app.goo.gl"];
-
-function tryParseRawLatLng(input) {
-  const m = input.trim().match(/^(-?\d{1,3}\.\d+)\s*,\s*(-?\d{1,3}\.\d+)$/);
-  if (!m) return null;
-  return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
-}
-
-/**
- * Extract lat/lng from a (resolved, long-form) Google Maps URL. Tries every
- * known pattern — verified live against a real maps.app.goo.gl short link
- * (see scripts/apply-client-coords.mjs's own test notes / PATEL-HANDOFF.md
- * §15), which resolved to the .../search/lat,+lng form, not the more
- * commonly-documented @lat,lng one — a reminder that Google's URL shapes
- * vary and this list may need another pattern added if a real client link
- * doesn't match any of these.
- */
-function tryParseMapsUrl(url) {
-  // .../@19.2017,73.1896,17z/...  — "you're looking at this point on the map"
-  let m = url.match(/@(-?\d{1,3}\.\d+),(-?\d{1,3}\.\d+)/);
-  if (m) return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
-
-  // ...!3d19.2017!4d73.1896... — embedded in the data blob of a "place" URL
-  m = url.match(/!3d(-?\d{1,3}\.\d+)!4d(-?\d{1,3}\.\d+)/);
-  if (m) return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
-
-  // .../search/19.2017,+73.1896... — what a maps.app.goo.gl "dropped pin" short link resolves to
-  m = url.match(/\/search\/(-?\d{1,3}\.\d+),\+?(-?\d{1,3}\.\d+)/);
-  if (m) return { lat: parseFloat(m[1]), lng: parseFloat(m[2]) };
-
-  // ?q=19.2017,73.1896 or ?query=19.2017,73.1896 — older / simple share form
-  try {
-    const u = new URL(url);
-    const q = u.searchParams.get("q") || u.searchParams.get("query");
-    if (q) {
-      const parsed = tryParseRawLatLng(q);
-      if (parsed) return parsed;
-    }
-  } catch {
-    /* not a valid URL at all — fall through to null */
-  }
-  return null;
-}
-
-function isShortLink(input) {
-  try {
-    const u = new URL(input);
-    return SHORT_LINK_HOSTS.some((h) => u.hostname === h || u.hostname.endsWith(`.${h}`));
-  } catch {
-    return false;
-  }
-}
-
-/** Short links carry no coordinates in the URL itself — resolve the redirect to get the real one. */
-async function resolveShortLink(url) {
-  const res = await fetch(url, {
-    redirect: "follow",
-    headers: { "User-Agent": "Mozilla/5.0 (compatible; PatelRetailDashboard/1.0)" },
-  });
-  return res.url; // final URL after following every redirect
-}
 
 async function parseGmapsLink(input) {
   const trimmed = input.trim();
