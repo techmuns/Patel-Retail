@@ -191,6 +191,14 @@
   padding: 14px 16px;
   border: 1px solid var(--hairline);
   background: var(--surface-hover);
+  /* Grid items default to min-width:auto, which refuses to shrink below the
+     content's natural width — a value+pill combo (or the metric-table the
+     Osia/V2 peer cards put inside this box) then blows out of its grid
+     track and off the right edge of the page instead of wrapping, exactly
+     as reported live. min-width:0 is the standard fix: it lets the box
+     shrink to its grid track's actual width, which is what makes the
+     content wrap normally instead. */
+  min-width: 0;
 }
 .compare-box.used {
   border-color: rgba(16, 185, 129, 0.35);

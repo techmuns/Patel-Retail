@@ -834,6 +834,19 @@ button {
 .feed-table:not(.sector-table) th:nth-child(3), .feed-table:not(.sector-table) td:nth-child(3) { width: 12%; }
 .feed-table:not(.sector-table) th:nth-child(4), .feed-table:not(.sector-table) td:nth-child(4) { width: 30%; }
 .feed-table:not(.sector-table) th:nth-child(5), .feed-table:not(.sector-table) td:nth-child(5) { width: 10%; }
+/* Peer comparison table (Peer Benchmark screen) — also 5 columns, but its
+   content shape is nothing like the overview feed the rule above was tuned
+   for: the EBITDA-margin column carries two figures, two kind-pills, and a
+   caption, not one short value. Reusing the 12%-wide 3rd-column rule above
+   forced that column to wrap onto many lines and overflow into the row
+   below it under table-layout:fixed — same specificity as the rule above,
+   placed after it so source order decides the winner, rather than an
+   !important escape hatch. */
+.feed-table.peer-compare-table th:nth-child(1), .feed-table.peer-compare-table td:nth-child(1) { width: 20%; }
+.feed-table.peer-compare-table th:nth-child(2), .feed-table.peer-compare-table td:nth-child(2) { width: 22%; }
+.feed-table.peer-compare-table th:nth-child(3), .feed-table.peer-compare-table td:nth-child(3) { width: 30%; }
+.feed-table.peer-compare-table th:nth-child(4), .feed-table.peer-compare-table td:nth-child(4) { width: 12%; }
+.feed-table.peer-compare-table th:nth-child(5), .feed-table.peer-compare-table td:nth-child(5) { width: 16%; }
 .feed-table thead th {
   position: sticky;
   top: 0;
