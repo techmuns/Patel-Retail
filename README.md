@@ -73,6 +73,19 @@ the facts already established from the client's files (§9 especially).
   Store Master, Proximity (nulls shown as "Unavailable" + reason, never
   blank), and Unit Economics (the derived store P&L as **live formula
   cells**, not a frozen snapshot). See PATEL-HANDOFF.md §20.
+- **Peer concall pipeline** (`screener-test/`, `.github/workflows/analyze.yml`
+  + `check-llm.yml`): ported from the donor, unmodified except identity text
+  — the logic is company-agnostic, takes a ticker in and writes a tear sheet
+  out. **Built and verified structurally, not run for real** — this sandbox
+  can't reach Screener (Playwright has no outbound access here, as
+  throughout this project) or call an LLM (no key available). What's
+  actually verified — preflight fails closed, the pipeline reaches the
+  Screener-login boundary cleanly with no earlier crash, and the pure
+  scheduling/classification logic is confirmed correct against synthetic
+  data — plus what a real run needs (secrets, and confirming Patel Retail
+  even has a Screener page, since it's privately held) is all in
+  PATEL-HANDOFF.md §21. No cron trigger on purpose: this is a curated pull
+  for five named peers, not the donor's auto-discovered board.
 - **Not built**: a dedicated pair-distance table (screen 2 in handoff §8 —
   the map's cluster table and per-store risk score cover much of this
   already), reviews, B2B export — see handoff §8 for the full build order.
@@ -80,7 +93,9 @@ the facts already established from the client's files (§9 especially).
   store league table — these need monthly sales per store, which isn't
   available and isn't coming. Osia Hyper Retail / V2 Retail financials are
   still "not supplied" everywhere (including both exports) — they're
-  public data this sandbox can't reach; see PATEL-HANDOFF.md §20.
+  public data this sandbox can't reach; see PATEL-HANDOFF.md §20. A
+  dashboard screen for the concall pipeline's output isn't built either —
+  no real data exists yet to show.
 
 ## Local development
 
@@ -91,4 +106,9 @@ node scripts/apply-client-coords.mjs                   # apply pasted gmaps_link
 node scripts/verify-geocode.mjs                        # flags anything that needs a human look
 node scripts/build-proximity.mjs                        # rebuild after any geocoding change
 node scripts/fetch-dmart-overpass.mjs                    # refresh competitors.json
+
+# Peer concall pipeline (needs real secrets — see PATEL-HANDOFF.md §21):
+npm install --no-save playwright pdfjs-dist            # ad-hoc deps, matches the CI step; not committed
+node screener-test/check-llm.mjs                        # preflight — run this first, always
+TICKER=DMART node screener-test/analyze-company.mjs      # one company; TICKER must be the exact Screener slug
 ```

@@ -1,23 +1,26 @@
 # =============================================================================
-# COPIED AS A TEMPLATE from the Daksham Concall Tracker repo (donor) — kept
-# here for its pipeline SHAPE (checkout → set up Node → install Playwright +
-# Chromium → run a scraper script → commit JSON back → Cloudflare auto-
-# deploys), not its content. Every step below still refers to the donor's
-# Screener/OpenAI concall scraper (screener-test/*.mjs) and secrets, which do
-# NOT exist in this repo. Rework this workflow (script paths, env/secrets,
-# schedule) to run this project's own store-list scraper before using it.
+# Patel Retail Diligence — Analyze pipeline (peer concall intelligence)
 #
-# Original description, unchanged below:
-# Daksham Capital · Concall Tracker — Analyze pipeline (Step 2)
+# Ported unchanged from ceekay-munshot/dakshamconcall's analyze.yml — see
+# PATEL-HANDOFF.md §21 for what changed (this header, the bot identity, and
+# the removed nightly cron) versus what didn't (everything else, including
+# the pipeline scripts themselves).
 #
-# Dispatched by the Worker's /api/analyze route (or manually from the Actions
-# tab) with a `ticker`. It logs into Screener, fetches the latest concall AI
-# summary (transcript-PDF fallback), classifies it into the fixed 11-section
-# tear sheet with OpenAI, and commits the JSON back to the branch it ran on so
-# Cloudflare auto-deploys and the dashboard lights up.
+# Dispatch manually from the Actions tab with a `ticker` to fetch that
+# company's latest concall, classify it into the fixed 11-section tear
+# sheet, and commit the JSON back to this branch. Peers of interest for
+# this diligence: Avenue Supermarts (DMART), Vishal Mega Mart, Trent,
+# Spencer's Retail — Patel Retail itself is privately held and very
+# likely has no Screener.in page to fetch; confirm before spending a run
+# on it (§21).
 #
-# Also runs daily in "refresh mode" (empty ticker) to re-analyze tracked
-# companies whose latest quarter has gone stale.
+# UNLIKE the donor, there is no nightly "refresh mode" cron here on
+# purpose: this repo's use of the pipeline is a curated, one-off pull for
+# five named companies, not an ongoing board that should auto-discover
+# and track every listed company on BSE. Leave `ticker` blank only if you
+# deliberately want refresh-mode behaviour (re-analyze every ticker
+# already in public/data/tracked.json) — see analyze-company.mjs's own
+# docs for what that does.
 # =============================================================================
 
 name: Analyze Concall
@@ -26,7 +29,7 @@ on:
   workflow_dispatch:
     inputs:
       ticker:
-        description: "Ticker / symbol to analyze (leave blank to refresh ALL tracked companies)"
+        description: "Ticker / symbol to analyze (leave blank to refresh ALL tracked companies — see the file header before doing that here)"
         required: false
         type: string
       industry:
@@ -46,9 +49,6 @@ on:
         required: false
         type: boolean
         default: false
-  schedule:
-    # Daily refresh of stale tracked companies (03:30 IST ≈ 22:00 UTC).
-    - cron: "0 22 * * *"
 
 # The commit back to the repo uses the built-in Actions token.
 permissions:
@@ -80,7 +80,7 @@ jobs:
 
       - name: Configure git identity
         run: |
-          git config user.name "daksham-bot"
+          git config user.name "patel-retail-diligence-bot"
           git config user.email "actions@github.com"
 
       # Prove an LLM answers BEFORE we touch Screener. One tiny call, a fraction
@@ -123,11 +123,9 @@ jobs:
           FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
           TICKER: ${{ github.event.inputs.ticker }}
           INDUSTRY: ${{ github.event.inputs.industry }} # optional search-API backfill
-          EVENT_NAME: ${{ github.event_name }} # workflow_dispatch = force ALL; schedule = stale only
-          # Blank on the nightly cron so DAILY_COMPANY_CAP (20 delivered/day)
-          # governs, which is the client's actual target. It used to force 4 here,
-          # from before there was a daily cap — leaving it would silently hold the
-          # board to 4 companies a night. Set the input to cap a manual run.
+          EVENT_NAME: ${{ github.event_name }} # always workflow_dispatch here — no cron trigger, see file header
+          # No cron in this repo, so this only matters if `ticker` is left blank
+          # for a deliberate refresh-mode run. Set the input to cap it.
           MAX_PER_RUN: ${{ github.event.inputs.max_per_run }}
           TARGET_BRANCH: ${{ github.ref_name }}
         run: node screener-test/analyze-company.mjs

@@ -319,7 +319,7 @@ Status as of the scaffolding session, kept here instead of a separate doc so pro
 | `wrangler.jsonc` | `wrangler.jsonc` | Copied, then `name` changed to `patel-retail-dashboard` (was `daksham-concall-tracker`) so a deploy can't collide with the donor's live Cloudflare Worker. |
 | `worker/index.js` | `worker/index.js` | Copied; only cosmetic identifiers renamed (`User-Agent`, health-check `service` string) so far. **`/api/search` and `/api/analyze` are still the donor's concall routes and have not been dropped/replaced yet** — do that before deploying (§3 says drop them; not done). |
 | `.github/workflows/analyze.yml` | `.github/workflows/analyze.yml` | Copied as a shape template only, with a header comment flagging that every step still references the donor's Screener/OpenAI scraper and secrets. Not reworked into `refresh.yml` yet. |
-| `screener-test/` (6 files) | `screener-test/` | **Not copied.** Optional per §3; skipped for v1 since the map doesn't need it. |
+| `screener-test/` (6 files) | `screener-test/` | Copied, byte-identical except one header comment, once the coordinate work went client-blocked and this became the largest remaining unblocked value — see §21. |
 | `public/js/app.js`, `sectors.js`, `progress.js` | same | **Not copied**, per §3 (concall-specific; `progress.js` only needed if a refresh button gets added later). |
 
 **Data landed this session:**
@@ -462,3 +462,43 @@ One real bug found and fixed in this round, worth recording: a table-only block 
 **Where they're wired:** two buttons in the topbar (`#exportPdfBtn`, `#exportXlsxBtn`), styled with the donor's existing `.btn.ghost.sm`, disabled + spinner while running, reporting success/failure via the existing toast system rather than failing silently if a CDN library didn't load.
 
 **Not done, on purpose:** Osia Hyper Retail and V2 Retail still show "not supplied" everywhere, including in both exports — this round added a `where_to_get_it` note (they're publicly listed; annual reports / exchange filings / Screener.in) rather than inventing figures, since this sandbox has no live internet access to pull and verify them. That is the one remaining action item the client's earlier message named directly ("I'll get them").
+
+## 21. The concall pipeline, ported — built and verified structurally, NOT run
+
+The coordinate work is now client-blocked (docs/PINS-NEEDED.md, still outstanding). This was the largest remaining piece of value that wasn't, so `screener-test/` (6 modules, ~148 KB) plus `analyze.yml`/`check-llm.yml` are copied in from `ceekay-munshot/dakshamconcall`, unmodified except identity/branding text — the pipeline logic itself needed **zero changes** to point at different companies, because it already takes a ticker in and writes a tear sheet out with nothing Daksham-specific baked into the logic (confirmed by grepping all 6 files for "daksham": exactly one hit, a docstring comment, now reworded).
+
+**What changed, and why:**
+- The one docstring comment in `analyze-company.mjs` and the workflow file headers — cosmetic, but also used to record where this came from and what to watch for (see below).
+- `git config user.name` in `analyze.yml`: `daksham-bot` → `patel-retail-diligence-bot` (it's the commit author for automated commits; leaving the old name would misattribute them).
+- **The nightly cron trigger is removed, on purpose.** The donor's schedule exists so "the board fills itself" across every BSE-listed company via `discover.mjs`'s announcement-feed scan — a different product goal than this repo's, which is a curated pull for five named peers for one diligence engagement. Leaving the cron in would silently turn this repo into a miniature version of the donor's whole tracked-company product, spending Screener/LLM quota on companies nobody asked about. `workflow_dispatch` (manual, one ticker at a time) is the only trigger now. `discover.mjs` itself is still copied and untouched — it's harmless to have, and available if a future round genuinely wants auto-discovery — it's just not wired to run on its own.
+
+**What this unlocks, precisely** (the client's characterization was close but not exact — worth being precise since this dashboard's whole discipline is precision): `classify.mjs`'s fixed 11-section schema (`SECTIONS`, unchanged) gives `MFG` (capacity/utilization — the plant data the client said outright he doesn't have) and `guidance_ledger` (guidance vs. delivery, finalized deterministically in code via `diffGuidance`, not left to the model) exactly as described. The domestic/export split lives in **`GEO`** ("domestic/export split, regions, channels, new markets"), not `SEG` — `SEG` is segment/brand/division revenue and mix, which is where a B2B-vs-B2C split would land if the source discusses it. Worth knowing which section to read once real data lands, rather than searching the wrong one.
+
+**Verified in this sandbox (evidence, not assertion):**
+- All 6 `.mjs` files and both workflow YAMLs parse cleanly (`node --check`, `yaml.safe_load`).
+- `check-llm.mjs` fails closed with no key set, printing which providers it checked — exactly the preflight behaviour the workflow depends on:
+  ```
+  [llm] no provider key set
+  keys present: BEDROCK_API_KEY=no OPENAI_API_KEY=no (preferred: openai)
+  FAIL — No LLM key set — provide BEDROCK_API_KEY or OPENAI_API_KEY
+  ```
+- `analyze-company.mjs` runs end-to-end up to the real boundary and stops there cleanly, both with `TICKER=TRENT` set and in refresh mode — no earlier crash, no silent swallow:
+  ```
+  [analyze] [llm] no provider key set
+  [analyze] browser/login init failed: No Screener credentials set (need SCREENER_PREMIUM_EMAIL/SCREENER_PREMIUM_PASSWORD or SCREENER_EMAIL/SCREENER_PASSWORD)
+  ```
+- The pure, network-free logic was exercised against synthetic data, not just imported: `isConcallFiling`/`candidatesFrom` (discovery filtering + de-dup, newest-filing-wins), `planDay` (daily-cap pacing, carries yesterday's pending forward), `cycleKey`/`currentCycle`/`isCurrent` (the forward-running-cycle math) — all produced the expected output against hand-built fixtures.
+- Unexpected but real: `discoverConcalls()`'s plain `fetch()` call to BSE's public announcements API actually reached the internet from this sandbox and returned live data (14 real filings) — this sandbox's network restriction is specifically on Playwright's browser process (confirmed repeatedly all session), not on Node's own `fetch`. Doesn't change anything decided above (the cron is still off, for product-scope reasons, not because discovery can't run) — just worth recording accurately.
+- Local testing needed `npm install --no-save playwright pdfjs-dist` first (matching the CI step exactly) since this repo, like the rest of it, commits no `package.json`/`node_modules` — done in an isolated scratch copy, never inside this repo, and cleaned up after.
+
+**NOT verified — needs a real CI run with real secrets, and this is not asserted as working:**
+- Screener login and scraping (`launchAndLogin`, `scrapeCompany`) — this sandbox's Playwright cannot reach any outbound site (established all session; confirmed again here).
+- The LLM structured-output call itself (`llmStructured`) — no `BEDROCK_API_KEY`/`OPENAI_API_KEY` available here.
+- Classification quality on real transcripts/summaries — entirely unexercised.
+- **Whether Patel Retail itself has a Screener.in page at all.** Screener indexes exchange-listed companies; every fact established in this handoff says Patel Retail is privately held (the entire premise of this dashboard — an investment firm's diligence on a company that isn't public). `resolveTicker()` calls Screener's own `/api/company/search/`, which would very likely return nothing for it — but that's an inference, not a checked fact, since resolving anything needs a logged-in session this sandbox can't establish. **Confirm this before spending a run on `TICKER=` (whatever Patel's slug would be)** — if there's truly no page, that's useful information for the client (something to ask about directly), not a pipeline bug.
+- Exact Screener ticker slugs for the four listed peers. Reasonably confident from general knowledge, **not checked against the live site**: `DMART` (Avenue Supermarts), `TRENT` (Trent Ltd). Genuinely uncertain: Vishal Mega Mart (IPO'd Dec 2024 — slug not confirmed) and Spencer's Retail (commonly `SPENCERSRETAIL` or similar — not confirmed). `resolveTicker(context, companyName)` is already exported from `scrape-screener.mjs` for exactly this — whoever runs this with real credentials should resolve names to slugs first rather than guess from this list.
+- Whether Osia Hyper Retail or V2 Retail have Screener.in concall coverage — plausible, unverified. If either does, this pipeline may close the "not supplied" gap in §17/§19 without a separate manual pull.
+
+**Secrets needed for a real run** (`workflow_dispatch` inputs plus repo secrets, same names as the donor): `SCREENER_EMAIL`/`SCREENER_PASSWORD` (or the `_PREMIUM_` pair), and one of `BEDROCK_API_KEY`/`OPENAI_API_KEY`. Run `check-llm.yml` first — it is the preflight, cheap, and tells you which provider answered before any Screener quota is spent.
+
+**Not built this round, deliberately:** a dashboard screen to display `tearsheets.json` once it exists. There's no real data yet — building a UI now would mean either an empty state or something invented to fill it, and the whole point of this pipeline is real, sourced concall data. Once a real run lands data for the five companies, wiring a Peer Concalls view is the natural next step, not started here. Still not started, per standing instruction: the reviews layer (needs a Places key not available) and the B2B/export screen (needs the RHP).
