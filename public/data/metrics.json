@@ -75,6 +75,8 @@
   },
   "peer_model_corrections": {
     "trent": {
+      "store_count": 84,
+      "store_count_note": "Row 38 of Peer_Model.xlsx — already Star-Bazaar-specific per the model's own row 39 (\"*only for star bazaar\"), so this figure needs no correction.",
       "wrong_revenue_cr": 20074,
       "wrong_note": "All of Trent combined (Westside + Zudio + Star Bazaar) — not just the supermarket format being compared against",
       "corrected_revenue_cr": 3400,

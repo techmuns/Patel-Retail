@@ -387,19 +387,19 @@
                 <div class="card-head">
                   <div>
                     <h3>
-                      <span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>
-                      Known bugs in the client's peer model
+                      <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="scale" class="i16"></i></span>
+                      Peer comparison — Patel Retail vs. its named peer set
                     </h3>
-                    <div class="sub">PATEL-HANDOFF.md §10 — every row below is documented there</div>
+                    <div class="sub">Every figure sourced or computed live · "Not available" where the primary source genuinely doesn't disclose it, never estimated</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
                   <div class="table-scroll">
                     <table class="feed-table">
                       <thead>
-                        <tr><th>Issue</th><th>Effect</th><th>Status</th></tr>
+                        <tr><th>Company</th><th>Revenue</th><th>EBITDA margin</th><th>Stores</th><th>Private label %</th></tr>
                       </thead>
-                      <tbody id="peerBugsTableBody"></tbody>
+                      <tbody id="peerTableBody"></tbody>
                     </table>
                   </div>
                 </div>
@@ -433,9 +433,9 @@
                   <div>
                     <h3>
                       <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="table" class="i16"></i></span>
-                      Peer comparison — Patel's own contested figures
+                      Patel's own contested figures — peer model vs. store file
                     </h3>
-                    <div class="sub">Shown side by side, same as the Store Economics screen — not averaged, not picked silently</div>
+                    <div class="sub">Where Patel's two client documents disagree about Patel itself — shown side by side, not averaged, not picked silently</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
@@ -445,6 +445,30 @@
                         <tr><th>Metric</th><th>Peer model</th><th>Store file</th></tr>
                       </thead>
                       <tbody id="peerContradictionsTableBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-up d4" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="wrench" class="i16"></i></span>
+                      Methodology — corrections applied to the client's peer model
+                    </h3>
+                    <div class="sub">PATEL-HANDOFF.md §10 — how the figures above were checked and, where wrong, fixed. Full detail for whoever wants to audit the work, not required reading to use the numbers above.</div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table">
+                      <thead>
+                        <tr><th>Issue</th><th>Effect</th><th>Status</th></tr>
+                      </thead>
+                      <tbody id="peerBugsTableBody"></tbody>
                     </table>
                   </div>
                 </div>

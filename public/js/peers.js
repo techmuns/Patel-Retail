@@ -40,6 +40,102 @@ function fmtPct(value, digits = 1) {
   return `${(value * 100).toFixed(digits)}%`;
 }
 
+function cellOrNA(value, fmt, kind = "reported") {
+  if (value == null) return `<span class="cb-na">Not available</span>`;
+  return `${fmt(value)} <span class="kind-pill kind-${kind}">${kind}</span>`;
+}
+
+/**
+ * The real, cross-company peer table — every figure sourced or computed
+ * live, nothing invented to fill a gap. Deliberately sparse for Avenue
+ * Supermarts/DMart, Vishal Mega Mart and Spencer's Retail: this project has
+ * never had more than isolated bug-fix figures for them (private label %,
+ * one corrected line item each), not full financials — "Not available" is
+ * the honest state, not a placeholder waiting to be filled with a guess.
+ */
+function renderGenuinePeerTable(metrics, patelStoreCount) {
+  const body = qs("#peerTableBody");
+  if (!body) return;
+  const pl = metrics.peer_comparison.private_label_pct;
+  const trent = metrics.peer_model_corrections.trent;
+  const rec = metrics.store_pnl_reconciliation;
+  const osia = metrics.osia_hyper_retail;
+  const v2 = metrics.v2_retail;
+  // Same formula as computePnl() in economics.js — recomputed here rather
+  // than imported to keep this file's only dependency on economics.js at
+  // zero, but the arithmetic itself must stay identical, not re-derived
+  // independently (see PATEL-HANDOFF.md's note on unifying this).
+  const grossProfitL = rec.revenue_l * rec.gross_margin_pct;
+  const ebitdaL = grossProfitL - rec.rent_l - rec.utilities_l - rec.staff_l;
+  const storeEbitdaPct = ebitdaL / rec.revenue_l;
+
+  const rows = [
+    {
+      name: "Patel Retail",
+      highlight: true,
+      revenue: `${fmtCr(rec.total_company_revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">total company, 45% B2C</div>`,
+      ebitda: `${fmtPct(storeEbitdaPct)} <span class="kind-pill kind-derived">derived</span> / ${fmtPct(rec.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">store build-up vs peer model — contested, see Store Economics</div>`,
+      stores: `${patelStoreCount} <span class="kind-pill kind-reported">reported</span>`,
+      privateLabel: cellOrNA(pl.patel, (v) => fmtPct(v)),
+    },
+    {
+      name: "Avenue Supermarts (DMart)",
+      revenue: `<span class="cb-na">Not available</span>`,
+      ebitda: `<span class="cb-na">Not available</span>`,
+      stores: `<span class="cb-na">Not available</span>`,
+      privateLabel: cellOrNA(pl.dmart, (v) => fmtPct(v)),
+    },
+    {
+      name: "Vishal Mega Mart",
+      revenue: `<span class="cb-na">Not available</span>`,
+      ebitda: `<span class="cb-na">Not available</span>`,
+      stores: `<span class="cb-na">Not available</span>`,
+      privateLabel: cellOrNA(pl.vishal_mega_mart, (v) => fmtPct(v)),
+    },
+    {
+      name: "Trent (Star Bazaar)",
+      revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">corrected from the model's own unused row — see below</div>`,
+      ebitda: `<span class="cb-na">Not available</span>`,
+      stores: `${trent.store_count} <span class="kind-pill kind-reported">reported</span>`,
+      privateLabel: cellOrNA(pl.trent, (v) => fmtPct(v)),
+    },
+    {
+      name: "Spencer's Retail",
+      revenue: `<span class="cb-na">Not available</span>`,
+      ebitda: `<span class="cb-na">Not available</span>`,
+      stores: `<span class="cb-na">Not available</span>`,
+      privateLabel: `<span class="cb-na">Not available</span>`,
+    },
+    {
+      name: "Osia Hyper Retail",
+      revenue: `${fmtCr(osia.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(osia.fiscal_year)}</div>`,
+      ebitda: `${fmtPct(osia.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span>`,
+      stores: cellOrNA(osia.total_stores, (v) => v.toLocaleString("en-IN")),
+      privateLabel: cellOrNA(osia.private_label_pct, (v) => fmtPct(v)),
+    },
+    {
+      name: "V2 Retail",
+      revenue: `${fmtCr(v2.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(v2.fiscal_year)}</div>`,
+      ebitda: `${fmtPct(v2.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">apparel-led, not a grocery margin comp</div>`,
+      stores: cellOrNA(v2.total_stores, (v) => v.toLocaleString("en-IN")),
+      privateLabel: cellOrNA(v2.private_label_pct, (v) => fmtPct(v)),
+    },
+  ];
+
+  body.innerHTML = rows
+    .map(
+      (r) => `
+    <tr${r.highlight ? ' style="background:var(--surface-hover)"' : ""}>
+      <td style="font-weight:${r.highlight ? 700 : 500}">${escapeHtml(r.name)}</td>
+      <td>${r.revenue}</td>
+      <td>${r.ebitda}</td>
+      <td>${r.stores}</td>
+      <td>${r.privateLabel}</td>
+    </tr>`
+    )
+    .join("");
+}
+
 function renderPeerBugsTable(metrics) {
   const body = qs("#peerBugsTableBody");
   body.innerHTML = metrics.peer_model_bugs.items
@@ -254,6 +350,8 @@ export async function initPeers() {
   const container = qs("#viewPeers");
   try {
     const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
+    const operationalCount = stores.filter((s) => s.status === "operational").length;
+    renderGenuinePeerTable(metrics, operationalCount);
     renderPeerBugsTable(metrics);
     renderTrentFixCard(metrics);
     renderSpencersFixCard(metrics);
