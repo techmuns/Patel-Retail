@@ -10,7 +10,7 @@
 import { qs, escapeHtml, fmtDate, refreshIcons, toast } from "./ui.js";
 import { VINTAGE_BUCKETS, yearsSince, vintageBucketFor } from "./vintage.js";
 
-const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{y}/{x}.png";
+const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const CENTER_FALLBACK = [19.22, 73.15]; // roughly the Thane–Raigad belt, used only if nothing is geocoded
 
