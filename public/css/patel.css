@@ -64,6 +64,21 @@
   z-index: 0;
 }
 
+.map-hint {
+  padding: 10px 20px;
+  border-top: 1px solid var(--hairline);
+  font-size: 12px;
+  color: var(--text-3);
+}
+
+/* The reset-view control (⤢), added programmatically by map.js as a
+   Leaflet control so it sits inline with the +/− zoom buttons. */
+.map-reset-control a {
+  font-size: 16px;
+  line-height: 26px;
+  text-align: center;
+}
+
 .map-legend {
   display: flex;
   flex-wrap: wrap;

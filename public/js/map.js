@@ -261,7 +261,17 @@ function renderEmptyMap(container, pendingCount, total) {
 }
 
 function initLeafletMap(container, geocodedStores) {
-  map = window.L.map(container, { scrollWheelZoom: true });
+  // scrollWheelZoom is deliberately OFF, permanently — not just disabled
+  // until the first click. With it on, a normal mouse-wheel scroll down the
+  // page zooms the map out instead whenever the cursor happens to be over
+  // it, and enough of that lands on a whole-world view with no obvious way
+  // back (found via a live report on the deployed dashboard). Turning it
+  // back on after the user's first click into the map — e.g. to open a
+  // store's popup, the primary way to interact with it — would silently
+  // reintroduce the exact same trap on the very next scroll past the map.
+  // The +/− buttons and double-click zoom are enabled by default and are
+  // enough to navigate; nothing here needs the wheel.
+  map = window.L.map(container, { scrollWheelZoom: false });
 
   window.L.tileLayer(OSM_TILE_URL, { attribution: OSM_ATTRIBUTION, maxZoom: 19 }).addTo(map);
 
@@ -312,9 +322,33 @@ function initLeafletMap(container, geocodedStores) {
 
   if (bounds.length) {
     map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
+    addResetViewControl(map, bounds);
   } else {
     map.setView(CENTER_FALLBACK, 10);
   }
+}
+
+/**
+ * A one-click way back to "all 53 stores" after zooming/panning around —
+ * without it, the only way back is a page refresh, which loses whatever
+ * else the user was looking at elsewhere on the page.
+ */
+function addResetViewControl(mapInstance, bounds) {
+  const ResetControl = window.L.Control.extend({
+    options: { position: "topleft" },
+    onAdd() {
+      const el = window.L.DomUtil.create("div", "leaflet-bar map-reset-control");
+      el.innerHTML = `<a href="#" title="Reset to all 53 stores" role="button" aria-label="Reset map view">⤢</a>`;
+      window.L.DomEvent.on(el, "click", (e) => {
+        window.L.DomEvent.preventDefault(e);
+        window.L.DomEvent.stopPropagation(e);
+        mapInstance.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
+      });
+      window.L.DomEvent.disableClickPropagation(el);
+      return el;
+    },
+  });
+  new ResetControl().addTo(mapInstance);
 }
 
 /** Called when the map tab becomes visible after being hidden — Leaflet needs this or the tiles render half-grey. */
