@@ -356,7 +356,7 @@ function localityScore(label, store) {
   return { score, matched };
 }
 
-function proposeMatches(officialListings, stores) {
+export function proposeMatches(officialListings, stores) {
   const proposals = [];
   const matchedStoreIds = new Set();
 
@@ -544,7 +544,14 @@ async function main() {
   log("Done. Nothing in stores.json was changed — review docs/OFFICIAL-STORES-REVIEW.md before applying anything.");
 }
 
-main().catch((err) => {
-  console.error(err.stack || err.message);
-  process.exitCode = 1;
-});
+// Guarded so validate-official-matches.mjs can import proposeMatches()
+// without re-triggering a live scrape + file overwrite as an import
+// side-effect — found the hard way: the first version of that script's
+// import ran this whole file's main(), re-fetching all 4 pages and every
+// short link before the validation logic even started.
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((err) => {
+    console.error(err.stack || err.message);
+    process.exitCode = 1;
+  });
+}

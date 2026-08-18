@@ -10,35 +10,38 @@ the facts already established from the client's files (§9 especially).
 ## Status
 
 - **Network map** (`public/index.html`, `public/js/map.js`): live. 49/53
-  stores have coordinates, but only **28/53 are precisely located** — the
-  other 21 resolved only to a town centroid and correctly show as an
-  uncertainty circle with "Distance unavailable," never a fabricated
-  number (see PATEL-HANDOFF.md §15.1 — this was a real bug, now fixed).
-  4 stores have no coordinates at all. KPI strip, town-cluster table, and
-  the store slide-over's risk-score explainer are all live. A closed
-  store's slide-over now says why its risk score is blank ("closed, not
-  scored") instead of a bare dash; `proximity.json` emits all 1,378
-  possible pairs with a stated `unavailable_reason` on every suppressed
-  one, not just the 1,176 that had a real distance. See PATEL-HANDOFF.md
-  §22.
-- **Official store locations from the client's own website**
-  (`scripts/fetch-official-stores.mjs` → `public/data/stores-official.json`
-  → `docs/OFFICIAL-STORES-REVIEW.md`): built and run — patelrpl.in lists
-  all 53 stores with a map link each. Of those 53 links: **11 resolved to
-  an unambiguous coordinate, 35 resolved but only at low confidence** (the
-  link is a generic "Patel's R Mart" business-name search, which risks
-  matching a nearby branch rather than the right one — see the review doc
-  for why), and **7 didn't resolve at all** (2 cards had no link, 2 use an
-  unresolved Plus Code, 3 short links failed to resolve). 52 of the 53
-  listings got a proposed match against an existing `stores.json` store
-  code; the one unmatched listing (Uran) looks like a warehouse, not a
-  store, and is flagged as such rather than silently added. Three
-  discrepancies between the site and the client's file are reconciled with
-  computed evidence in the review doc rather than asserted. **Nothing has
-  been applied to `stores.json` yet** — the proposed matches need a human
-  read of `docs/OFFICIAL-STORES-REVIEW.md` first, especially the
-  low-confidence and tied ones, before `apply-client-coords.mjs`-style
-  logic writes them in and `build-proximity.mjs` regenerates.
+  stores have coordinates, and **40/53 are precisely located** (up from 28
+  this round — see the official-stores-website bullet below) — the other 9
+  resolved only to a town centroid and correctly show as an uncertainty
+  circle with "Distance unavailable," never a fabricated number (see
+  PATEL-HANDOFF.md §15.1 — this was a real bug, now fixed). 4 stores have
+  no coordinates at all. KPI strip, town-cluster table, and the store
+  slide-over's risk-score explainer are all live. A closed store's
+  slide-over now says why its risk score is blank ("closed, not scored")
+  instead of a bare dash; `proximity.json` emits all 1,378 possible pairs
+  with a stated `unavailable_reason` on every suppressed one, not just the
+  ones with a real distance. See PATEL-HANDOFF.md §22 and §24.
+- **Official store locations from the client's own website** — built, run,
+  mechanically validated, and applied. `scripts/fetch-official-stores.mjs`
+  pulls all 53 stores from patelrpl.in and proposes matches against
+  `stores.json` (`docs/OFFICIAL-STORES-REVIEW.md`); `scripts/validate-official-matches.mjs`
+  then checks the 35 low-confidence coordinates and the weakly-matched
+  `resolved` ones against three mechanical tests — containment against the
+  store's own known location, cross-listing duplicate detection, and
+  independent cross-validation of the site's own (richer) address text —
+  instead of asking a human to eyeball 35 rows (`docs/OFFICIAL-STORES-VALIDATION.md`).
+  **29 of 53 cleared automatically and were applied**: 5 needed no checks,
+  21 passed validation, 3 ties were broken mechanically. **16 need a human**
+  — genuine disagreements the checks surfaced rather than resolved
+  silently, including a live instance of the exact brand-collision risk the
+  low-confidence flag was warning about (two different stores' listings
+  briefly resolving to the same point) and one case where the site
+  contradicts a coordinate this project had already trusted. **7 never
+  resolved to a coordinate** at all and need a link opened by hand; **1**
+  (Uran) reads as a warehouse, not a store, and was never added.
+  **Precisely-located stores: 28/53 → 40/53** — the real number, not
+  rounded up. See PATEL-HANDOFF.md §23–24 for the full mechanism and every
+  check's actual distance.
 - **Store economics** (`public/js/economics.js`): live — surfaces the
   area/sq ft estimate label, the ₹17,280-vs-₹22,079 revenue/sq ft
   discrepancy, and the 5.4%-vs-7.9% store/peer EBITDA reconciliation flag,
@@ -54,14 +57,14 @@ the facts already established from the client's files (§9 especially).
   draft — the query is anchored to exclude a "food mart" false-positive
   found and fixed this round). Not yet joined into the map's precomputed
   risk score — the Screener picks it up live, the map doesn't yet.
-- **Getting the remaining store locations right — the critical path right
-  now**: superseded, for most of the gap, by the official-stores-website
-  scrape above — review `docs/OFFICIAL-STORES-REVIEW.md` and apply what
-  checks out. [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier
-  client ask, grouped by cluster) is still the fallback for whatever the
-  site scrape can't resolve — its 7 unresolved listings and any store the
-  review doc leaves unmatched or low-confidence. See PATEL-HANDOFF.md §16
-  and §23.
+- **Getting the remaining 13 store locations right**: down from 25 this
+  round. Review `docs/OFFICIAL-STORES-VALIDATION.md`'s 16 human-review rows
+  (13 single-match disagreements + 3 unresolved ties) — every one has both
+  checks' actual distances shown, not just a verdict.
+  [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier client ask)
+  is the fallback for the 7 listings that never resolved to a coordinate at
+  all — `docs/OFFICIAL-STORES-VALIDATION.md` lists their website address
+  and map link for opening by hand. See PATEL-HANDOFF.md §16 and §23–24.
 - **Estate & Vintage** (`public/js/estate.js`): live — openings by year,
   cumulative growth, age distribution, and a town-saturation table labelling
   each cluster "Fast-forming," "Still growing," or "Established" from its
