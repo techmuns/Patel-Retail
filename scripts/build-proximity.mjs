@@ -19,12 +19,21 @@
  * looking number (e.g. "0.0 km apart, risk 1.00") with nothing real behind
  * it, in exactly the place — intra-town cannibalisation — this dashboard
  * is supposed to answer. So: any pair involving a coarse-tier store gets
- * `km: null, precision: "town_centroid"` instead of a computed distance,
- * and per-store nearest/within-radius figures are computed ONLY against
- * other LOCATABLE (non-coarse, geocoded) stores — never against a coarse
- * one — with an honest "N of M locatable" denominator alongside. See
+ * `km: null, unavailable_reason: "town_centroid"` instead of a computed
+ * distance, and per-store nearest/within-radius figures are computed ONLY
+ * against other LOCATABLE (non-coarse, geocoded) stores — never against a
+ * coarse one — with an honest "N of M locatable" denominator alongside. See
  * public/js/geo.js `isLocatable`/`isCoarseTier`, the single source of
  * truth for this rule (also used by map.js and screener.js).
+ *
+ * EVERY possible pair is emitted, including ones touching a store with no
+ * coordinates at all — an absent row is worse than a null one, since
+ * nothing then tells a reader the pair should exist. `unavailable_reason`
+ * is `"not_geocoded"` for those (checked first) and `"town_centroid"` for
+ * everything else that isn't a real measurement — never both, never
+ * neither, whenever `km` is null. (Earlier drafts of this file only looped
+ * over already-geocoded stores, so pairs touching an ungeocoded store were
+ * missing entirely rather than shown as unavailable — fixed.)
  *
  * No competitor data wired in yet — see scripts/fetch-dmart-overpass.mjs /
  * public/data/competitors.json, which exists but isn't joined into
@@ -82,25 +91,29 @@ async function main() {
   const locatable = stores.filter(isLocatable);
   const locatableOperational = locatable.filter((s) => s.status === "operational");
 
-  // ---- pairs: every geocoded-vs-geocoded pair (up to 1,378 for 53 stores).
-  // Distance is null, precision "town_centroid", whenever EITHER side isn't
-  // locatable — the pair still gets an entry (so pair counts stay legible),
-  // just no fabricated number. ----
+  // ---- pairs: EVERY pair of the 53 stores (1,378 total) — including pairs
+  // touching a store with no coordinates at all. km is null, with a stated
+  // unavailable_reason, whenever either side isn't locatable — never a
+  // missing row. ----
   const pairs = [];
-  for (let i = 0; i < geocoded.length; i++) {
-    for (let j = i + 1; j < geocoded.length; j++) {
-      const a = geocoded[i];
-      const b = geocoded[j];
+  for (let i = 0; i < stores.length; i++) {
+    for (let j = i + 1; j < stores.length; j++) {
+      const a = stores[i];
+      const b = stores[j];
       const bothLocatable = isLocatable(a) && isLocatable(b);
+      const bothGeocoded = a.lat != null && a.lng != null && b.lat != null && b.lng != null;
       pairs.push({
         a: a.store_id,
         b: b.store_id,
         km: bothLocatable ? round2(haversineKm(a, b)) : null,
-        precision: bothLocatable ? "geocoded" : "town_centroid",
+        precision: bothLocatable ? "geocoded" : null,
+        unavailable_reason: bothLocatable ? null : bothGeocoded ? "town_centroid" : "not_geocoded",
       });
     }
   }
   const pairsWithRealDistance = pairs.filter((p) => p.km != null).length;
+  const pairsSuppressedTownCentroid = pairs.filter((p) => p.unavailable_reason === "town_centroid").length;
+  const pairsSuppressedNotGeocoded = pairs.filter((p) => p.unavailable_reason === "not_geocoded").length;
 
   // ---- per_store: nearest OPERATIONAL, LOCATABLE own store + within-radius
   // counts + risk. A store that is itself only a town centroid can't
@@ -125,6 +138,7 @@ async function main() {
         nearest_own: null,
         own_within: null,
         overlap_risk: null,
+        risk_unavailable_reason: null, // the whole entry is unavailable — see unavailable_reason instead
         locatable_others: 0,
         total_other_operational: totalOtherOperational,
         unavailable_reason: base.geocoded ? "town_centroid" : "not_geocoded",
@@ -144,6 +158,7 @@ async function main() {
         nearest_own: null,
         own_within: null,
         overlap_risk: null,
+        risk_unavailable_reason: null, // the whole entry is unavailable — see unavailable_reason instead
         locatable_others: 0,
         total_other_operational: totalOtherOperational,
         unavailable_reason: "no_locatable_neighbors",
@@ -172,6 +187,12 @@ async function main() {
       locatable_others: others.length,
       total_other_operational: totalOtherOperational,
       overlap_risk,
+      // Distinct from `unavailable_reason` above: nearest_own/own_within ARE
+      // real here (a closed store's distance to the nearest live store is a
+      // valid data point), only the risk score itself is withheld. Carried
+      // as data, not just a code comment, so the UI can state why rather
+      // than showing a bare "—".
+      risk_unavailable_reason: store.status === "operational" ? null : "closed",
       kind: overlap_risk == null ? undefined : "derived",
     };
   });
@@ -195,9 +216,10 @@ async function main() {
       coarse_count: geocoded.length - locatable.length,
       pending_geocode_count: stores.length - geocoded.length,
       total_possible_pairs: nCk2(stores.length),
-      pairs_emitted: pairs.length,
+      pairs_emitted: pairs.length, // now always equals total_possible_pairs — every pair gets a row
       pairs_with_real_distance: pairsWithRealDistance,
-      pairs_suppressed_town_centroid: pairs.length - pairsWithRealDistance,
+      pairs_suppressed_town_centroid: pairsSuppressedTownCentroid,
+      pairs_suppressed_not_geocoded: pairsSuppressedNotGeocoded,
       note:
         geocoded.length === 0
           ? "No stores are geocoded yet — run scripts/geocode.mjs (Nominatim by default, no key needed), then re-run this script. Town clusters below don't need geocoding and are already real."
@@ -211,7 +233,9 @@ async function main() {
 
   await writeFile(OUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
   console.log(
-    `Wrote ${OUT_PATH} — ${pairsWithRealDistance}/${nCk2(stores.length)} pairs have a real distance (${pairs.length - pairsWithRealDistance} suppressed as town-centroid), ${locatable.length}/${stores.length} stores precisely located, ${clusters.length} towns.`
+    `Wrote ${OUT_PATH} — ${pairs.length}/${nCk2(stores.length)} pairs emitted (every pair, none missing); ` +
+      `${pairsWithRealDistance} have a real distance, ${pairsSuppressedTownCentroid} suppressed as town-centroid, ` +
+      `${pairsSuppressedNotGeocoded} suppressed as not-geocoded; ${locatable.length}/${stores.length} stores precisely located, ${clusters.length} towns.`
   );
 }
 

@@ -430,6 +430,13 @@ function unitEconomicsSection(push, model, n) {
   );
 
   push(
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Area per store ${kindBadge("estimate")}</div>
+      <div class="rpt-cbox used" style="max-width:260px"><div class="cl">Applied uniformly to all ${model.stores.length} stores</div><div class="cv">${ue.sqft_per_store.toLocaleString("en-IN")} sq ft</div></div>
+      <p class="rpt-note">${escapeHtml(ue.sqft_per_store_note)} The store P&amp;L below is built on this figure — every line in it inherits the estimate label.</p>
+    </div>`)
+  );
+
+  push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Store P&amp;L — built from reported unit economics ${kindBadge("reported")}</div>
       <table class="rpt-pk">
         <tbody>

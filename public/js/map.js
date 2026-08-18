@@ -155,6 +155,10 @@ function openStoreSheet(store) {
       "This store is only located to its town centre, not its own address — a distance computed from it would be fabricated precision, not a measurement.",
     no_locatable_neighbors: "No other Patel stores are precisely geocoded yet to compare against.",
   };
+  const RISK_UNAVAILABLE_REASON_TEXT = {
+    closed: `No risk score — this store is closed${store.closed ? ` (${fmtDate(store.closed)})` : ""}. There's nothing left here for another store to cannibalise, so a score isn't computed.`,
+  };
+  const riskUnavailableText = risk == null ? RISK_UNAVAILABLE_REASON_TEXT[prox?.risk_unavailable_reason] : null;
 
   const riskBlock =
     nearest == null
@@ -195,9 +199,13 @@ function openStoreSheet(store) {
       </div>
       <div class="risk-score-row">
         <span>Composite score</span>
-        <span class="risk-score-value">${risk != null ? risk.toFixed(2) : "—"}</span>
+        <span class="risk-score-value">${risk != null ? risk.toFixed(2) : "Not scored"}</span>
       </div>
-      <p class="risk-caveat">Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against. Only ever computed between two precisely-located stores — never from a town-centroid coordinate.</p>
+      <p class="risk-caveat">${
+        riskUnavailableText
+          ? escapeHtml(riskUnavailableText)
+          : "Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against. Only ever computed between two precisely-located stores — never from a town-centroid coordinate."
+      }</p>
     </div>`;
 
   qs("#sheetScroll").innerHTML = `

@@ -128,6 +128,15 @@ function renderCumulativeChart(stores) {
     .slice()
     .sort((a, b) => a.opened.localeCompare(b.opened));
 
+  const caption = qs("#cumulativeChartCaption");
+  if (caption) {
+    const excluded = stores.length - withDates.length;
+    caption.textContent =
+      excluded > 0
+        ? `1990 → today, ${withDates.length} of ${stores.length} stores — ${excluded} excluded (no recorded opening date)`
+        : `1990 → today, all ${stores.length} stores`;
+  }
+
   const byYear = new Map();
   for (const s of withDates) {
     const y = openedYear(s);

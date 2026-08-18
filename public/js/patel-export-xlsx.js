@@ -116,8 +116,18 @@ function buildProximity(wb, { stores, proximity }) {
   const ws = wb.addWorksheet("Proximity", { views: [{ showGridLines: false, state: "frozen", ySplit: 2 }] });
   ws.columns = widths.map((w) => ({ width: w }));
 
+  const UNAVAILABLE_STATUS = {
+    town_centroid: "Unavailable — one or both stores resolved only to a town centroid; a distance from that would fabricate precision, not measure it",
+    not_geocoded: "Unavailable — one or both stores have no coordinates at all yet (pending client pins — see docs/PINS-NEEDED.md)",
+  };
+
   let r = 1;
-  headerBand(ws, `MUNSHOT  ·  Store-Pair Proximity — ${proximity.metadata.pairs_with_real_distance} of ${proximity.metadata.pairs_emitted} pairs have a real distance`, head.length, r++);
+  headerBand(
+    ws,
+    `MUNSHOT  ·  Store-Pair Proximity — ${proximity.metadata.pairs_with_real_distance} of ${proximity.metadata.total_possible_pairs} possible pairs have a real distance (${proximity.metadata.pairs_suppressed_town_centroid} town-centroid, ${proximity.metadata.pairs_suppressed_not_geocoded} not yet geocoded — every pair is a row, none omitted)`,
+    head.length,
+    r++
+  );
   const headRowN = r++;
   styleHeaderRow(setRowValues(ws, headRowN, head), head.length);
 
@@ -127,7 +137,7 @@ function buildProximity(wb, { stores, proximity }) {
     const available = p.km != null;
     const status = available
       ? "Real distance — both stores precisely geocoded"
-      : "Unavailable — one or both stores resolved only to a town centroid; a distance from that would fabricate precision, not measure it";
+      : UNAVAILABLE_STATUS[p.unavailable_reason] || "Unavailable — not computed";
     const row = setRowValues(ws, r++, [
       p.a, a?.name || "", a?.town || "",
       p.b, b?.name || "", b?.town || "",
