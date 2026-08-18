@@ -82,10 +82,11 @@ the facts already established from the client's files (§9 especially).
   actually verified — preflight fails closed, the pipeline reaches the
   Screener-login boundary cleanly with no earlier crash, and the pure
   scheduling/classification logic is confirmed correct against synthetic
-  data — plus what a real run needs (secrets, and confirming Patel Retail
-  even has a Screener page, since it's privately held) is all in
-  PATEL-HANDOFF.md §21. No cron trigger on purpose: this is a curated pull
-  for five named peers, not the donor's auto-discovered board.
+  data — plus what a real run needs (secrets, and whether Patel Retail
+  itself has a Screener page — genuinely unresolved, not assumed either
+  way) is all in PATEL-HANDOFF.md §21. No cron trigger on purpose: this
+  is a curated pull for five named peers, not the donor's auto-discovered
+  board.
 - **Not built**: a dedicated pair-distance table (screen 2 in handoff §8 —
   the map's cluster table and per-store risk score cover much of this
   already), reviews, B2B export — see handoff §8 for the full build order.

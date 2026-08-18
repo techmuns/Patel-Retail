@@ -4,10 +4,10 @@
  * Ported unchanged from ceekay-munshot/dakshamconcall's screener-test/ (see
  * PATEL-HANDOFF.md §21) — the pipeline logic is genuinely company-agnostic
  * (a TICKER in, a tear sheet out), so nothing here needed to change to point
- * it at Avenue Supermarts / Vishal Mega Mart / Trent / Spencer's Retail
- * instead of the donor's tracked list. Patel Retail itself is privately held
- * and very likely has no Screener.in page at all — see §21 before assuming
- * TICKER=PATEL (or similar) will resolve to anything.
+ * it at Avenue Supermarts / Vishal Mega Mart / Trent / Spencer's Retail —
+ * or at Patel Retail itself, which belongs in the same run; whether it has
+ * a Screener.in page is genuinely unresolved, not assumed either way — use
+ * resolveTicker() to find out rather than guessing a TICKER value (§21).
  *
  * Take a TICKER (env TICKER) — or loop over tracked.json when TICKER is empty
  * (refresh mode) — and for each company:

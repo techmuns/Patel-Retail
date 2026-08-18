@@ -8,11 +8,13 @@
 #
 # Dispatch manually from the Actions tab with a `ticker` to fetch that
 # company's latest concall, classify it into the fixed 11-section tear
-# sheet, and commit the JSON back to this branch. Peers of interest for
-# this diligence: Avenue Supermarts (DMART), Vishal Mega Mart, Trent,
-# Spencer's Retail — Patel Retail itself is privately held and very
-# likely has no Screener.in page to fetch; confirm before spending a run
-# on it (§21).
+# sheet, and commit the JSON back to this branch. Companies of interest
+# for this diligence: Avenue Supermarts (DMART), Vishal Mega Mart, Trent,
+# Spencer's Retail, and Patel Retail itself — whether Patel has a
+# Screener.in page is genuinely unresolved (not assumed either way);
+# resolve it with resolveTicker() from scrape-screener.mjs rather than
+# guessing, and if it has none, that's a finding to report, not a reason
+# to skip trying (§21).
 #
 # UNLIKE the donor, there is no nightly "refresh mode" cron here on
 # purpose: this repo's use of the pipeline is a curated, one-off pull for
