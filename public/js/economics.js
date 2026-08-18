@@ -111,10 +111,27 @@ function renderPnlTable(pnl) {
   `;
 }
 
-function renderReconciliationFlag(pnl) {
+function renderReconciliationFlag(pnl, osia) {
   const el = qs("#reconciliationFlagCard");
   if (!el) return;
   el.innerHTML = `
+    <div class="compare-row cols-3">
+      <div class="compare-box used" data-kind="derived">
+        <div class="cb-label">Patel — store build-up</div>
+        <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
+        <div class="cb-source">Derived from the client's own reported unit metrics, before head-office cost</div>
+      </div>
+      <div class="compare-box" data-kind="reported">
+        <div class="cb-label">Patel — peer model claim</div>
+        <div class="cb-value">${fmtPct(pnl.peer_model_b2c_ebitda_pct)}</div>
+        <div class="cb-source">Peer_Model.xlsx, company level</div>
+      </div>
+      <div class="compare-box" data-kind="reported">
+        <div class="cb-label">Osia Hyper Retail — comp</div>
+        <div class="cb-value">${fmtPct(osia.ebitda_margin_pct)}</div>
+        <div class="cb-source">${escapeHtml(osia.source)}, ${escapeHtml(osia.fiscal_year)}</div>
+      </div>
+    </div>
     <div class="flag-card" data-kind="derived">
       <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
       <div>
@@ -122,6 +139,13 @@ function renderReconciliationFlag(pnl) {
         <p>${escapeHtml(pnl.flag_note)}</p>
         ${pnl.total_company_note ? `<p style="color:var(--text-3);font-size:12px;margin-top:8px">${escapeHtml(pnl.total_company_note)}</p>` : ""}
         <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — flagged for follow-up with the client, per instruction.</p>
+      </div>
+    </div>
+    <div class="flag-card" data-kind="reported" style="margin-top:12px">
+      <span class="flag-ico"><i data-lucide="scale" class="i16"></i></span>
+      <div>
+        <span class="flag-title">Independent evidence, not a resolution</span>
+        <p>Osia is the closest structural comp Patel has — a regionally-concentrated value grocery chain at roughly Patel's own order of magnitude (₹${osia.revenue_cr.toLocaleString("en-IN")} cr revenue) — and it runs a ${fmtPct(osia.ebitda_margin_pct)} operating margin. A comparable regional grocer earning ${fmtPct(osia.ebitda_margin_pct)} corroborates the ${fmtPct(pnl.ebitdaPct)} store build-up above and makes the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level claim look generous. This doesn't resolve the contradiction — it's evidence for the reader to weigh, not a verdict.</p>
       </div>
     </div>
   `;
@@ -181,7 +205,7 @@ export async function initEconomics() {
     renderKpis(metrics, pnl.ebitdaPct);
     renderRevSqftCompare(metrics);
     renderPnlTable(pnl);
-    renderReconciliationFlag(pnl);
+    renderReconciliationFlag(pnl, metrics.osia_hyper_retail);
     renderAreaEstimate(metrics);
     renderPeerCompare(metrics);
   } catch (err) {

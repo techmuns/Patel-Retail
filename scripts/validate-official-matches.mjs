@@ -418,6 +418,36 @@ async function main() {
   );
   lines.push("");
 
+  // ---- Cross-reference the review backlog against the CANONICAL precision
+  // split (stores.json's own precise/coarse/no-coordinate counts, the only
+  // numbers that ever sum to 53) so this worklist is never mistaken for a
+  // fourth, additive bucket — found necessary after exactly that confusion
+  // came up in review: "44 precise + 9 disagreements + 3 no-coordinate"
+  // does not equal 53 because the 9 and the 3 are different axes measuring
+  // the SAME 53 stores, not disjoint groups of them.
+  const reviewStoreIds = new Set();
+  for (const r of needsReview) reviewStoreIds.add(r.store.store_id);
+  for (const s of stillTied) for (const r of s.results) reviewStoreIds.add(r.store.store_id);
+  let reviewPrecise = 0,
+    reviewCoarse = 0,
+    reviewNoCoord = 0;
+  for (const id of reviewStoreIds) {
+    const b = before.get(id);
+    if (!b || b.lat == null) reviewNoCoord++;
+    else if (isCoarseTier(b.tier)) reviewCoarse++;
+    else reviewPrecise++;
+  }
+  const canonicalNoCoord = stores.filter((s) => before.get(s.store_id)?.lat == null).length;
+  const canonicalCoarse = stores.filter((s) => before.get(s.store_id)?.lat != null && isCoarseTier(before.get(s.store_id)?.tier)).length;
+  const canonicalPrecise = stores.length - canonicalNoCoord - canonicalCoarse;
+  lines.push(
+    `**Read the review backlog against this split, not as a fourth bucket added to it.** stores.json's own precision split (the only numbers that sum to ${stores.length}) is ` +
+      `**${canonicalPrecise} precise / ${canonicalCoarse} coarse (town-centroid only) / ${canonicalNoCoord} no coordinate at all**. The ${reviewStoreIds.size} distinct store(s) named below in "Needs a human" are a ` +
+      `**worklist about the website source specifically** — it overlaps that split, it doesn't extend it: ${reviewPrecise} of them already have a precise coordinate from another source (the website just couldn't confirm it), ` +
+      `${reviewCoarse} are already coarse for the same reason, and only **${reviewNoCoord} have no coordinate at all** — those are the only ones where resolving this backlog can actually move the precise count.`
+  );
+  lines.push("");
+
   lines.push("## Duplicate-coordinate check");
   lines.push("");
   if (dupClusters.length === 0) {
@@ -550,14 +580,15 @@ async function main() {
     `${totalTrusted} of ${official.listings.length} site listings are trusted well enough to apply: ${autoTrusted.length} needed no checks, ${validatedTrusted.length} cleared the sanity check (or its cross-validation fallback), ${tieBroken.length} had their tie broken mechanically. ` +
       `${overrides.length} of those replace a meaningfully different prior coordinate — see the override ledger above. ` +
       `${needsReview.length + stillTied.length} still need a human read. ${noCoordinate.length} never resolved to a coordinate — those need the link opened by hand. ` +
-      (APPLY ? "Applied to stores.json this run — see the git diff." : "Not applied — re-run with `--apply` once this looks right.")
+      (APPLY ? "Applied to stores.json this run — see the git diff." : "Not applied — re-run with `--apply` once this looks right.") +
+      ` **The precision split stays ${canonicalPrecise}/${canonicalCoarse}/${canonicalNoCoord} either way** — see the note above the duplicate-coordinate check for why these listing counts don't subtract from it directly.`
   );
   lines.push("");
 
   lines.push("## Final short list for hand review");
   lines.push("");
   const totalToHandle = finalListRows.length + noCoordinate.length;
-  lines.push(`${totalToHandle} listing(s) total: ${finalListRows.length} same-tier disagreement(s) or unresolved tie(s) above, plus the ${noCoordinate.length} that never resolved to a coordinate at all. Each with its website address and map link to open directly.`);
+  lines.push(`${totalToHandle} listing(s) total: ${finalListRows.length} same-tier disagreement(s) or unresolved tie(s) above, plus the ${noCoordinate.length} that never resolved to a coordinate at all. Each with its website address and map link to open directly. This is a worklist of LISTINGS, not a count of unlocated STORES — see the split above.`);
   lines.push("");
   lines.push("| # | Proposed store(s) | Website address | Map link |");
   lines.push("|---|---|---|---|");

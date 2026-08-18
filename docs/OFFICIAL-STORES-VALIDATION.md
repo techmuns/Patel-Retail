@@ -4,6 +4,8 @@ Ran against 53 listings from `stores-official.json` (fetched 2026-08-18). 5 need
 
 **Provenance hierarchy applied:** (1) company website coordinate → (2) client-supplied pin → (3) our geocode of the website's own address → (4) our geocode of the client's locality string → (5) town centroid. A higher tier overrides a lower one once it clears a loose town-containment sanity check (5km) — that check is against the store's OWN town, never against whatever lower-tier value happened to be there first. Two listings at the SAME tier disagreeing (the duplicate check below) always goes to a human, regardless of what any sanity check says.
 
+**Read the review backlog against this split, not as a fourth bucket added to it.** stores.json's own precision split (the only numbers that sum to 53) is **44 precise / 6 coarse (town-centroid only) / 3 no coordinate at all**. The 16 distinct store(s) named below in "Needs a human" are a **worklist about the website source specifically** — it overlaps that split, it doesn't extend it: 9 of them already have a precise coordinate from another source (the website just couldn't confirm it), 4 are already coarse for the same reason, and only **3 have no coordinate at all** — those are the only ones where resolving this backlog can actually move the precise count.
+
 ## Duplicate-coordinate check
 
 1 cluster(s) of listings share a coordinate within 300m — flagged for review regardless of what the sanity check says, since this is a same-tier conflict, not a tier-ranking question:
@@ -31,7 +33,7 @@ Ran against 53 listings from `stores-official.json` (fetched 2026-08-18). 5 need
 | #24 Lalchakki Road, Ulhasnagar | **ULN4** — Lalchakki Road | 19.2120338, 73.1627263 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #25 Neharu Chowk, Ulhasnagar | **ULN** — Neharu Chowk | 19.2328767, 73.1599533 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #26 Ganesh Mandir Road, Titwala | **TTL** — Ganesh Mandir Rd | 19.2973684, 73.2128216 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
-| #27 Station Road, Shahad | **SHD** — Station Rd Shahad | 19.2426153, 73.1559273 | ✅ 2.39km from its own existing precise coordinate | _not needed — town check passed_ |
+| #27 Station Road, Shahad | **SHD** — Station Rd Shahad | 19.2426153, 73.1559273 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #28 Cherpoli, Shahapur | **SHAP** — Cherpoli | 19.4573979, 73.3311053 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #29 Sonarpada, Murbad | **MUBD** — Sonarpada | 19.2579114, 73.3849734 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #30 Rambuag, Kalyan West | **KLW** — Rambaug | 19.2423646, 73.1401159 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
@@ -45,30 +47,21 @@ Ran against 53 listings from `stores-official.json` (fetched 2026-08-18). 5 need
 | #45 Gandhi Chowk, Badlapur East | **BLEB** — Gandhi Chowk | 19.1645321, 73.2387458 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #46 Kharvai Naka, Badlapur East | **BKHE** — Kharvai Naka | 19.1454507, 73.2471086 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #47 Shirgaon, Badlapur East | **BES** — Shirgaon | 19.1546231, 73.2345491 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
-| #49 Palegaon, Ambernath East | **AMPL** — Palegaon | 19.1896178, 73.1769552 | ✅ 2.8km from its own existing (coarse) coordinate | _not needed — town check passed_ |
+| #49 Palegaon, Ambernath East | **AMPL** — Palegaon | 19.1896178, 73.1769552 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 | #51 Chh.Shiwaji Chowk, Ambernath East | **AME** — Chh Shivaji Chowk | 19.2084515, 73.1855975 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
-| #52 Chokhloli, Ambernath West | **AMCH** — Chokhloli | 19.18354, 73.2199944 | ✅ 2.87km from its own existing (coarse) coordinate | _not needed — town check passed_ |
-| #53 Shivganga Nagar, Ambernath East | **AMSN** — Shivganga Nagar | 19.2030029, 73.1803269 | ✅ 2.12km from its own existing (coarse) coordinate | _not needed — town check passed_ |
+| #52 Chokhloli, Ambernath West | **AMCH** — Chokhloli | 19.18354, 73.2199944 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
+| #53 Shivganga Nagar, Ambernath East | **AMSN** — Shivganga Nagar | 19.2030029, 73.1803269 | ✅ 0km from its own existing precise coordinate | _not needed — town check passed_ |
 
 ## Overridden coordinates — every meaningful before/after change, for audit
 
-4 store(s) had an existing coordinate that this run's higher-tier data replaced (>100m difference — smaller differences aren't logged as they're rounding noise, not a real change):
-
-| Store | Prior coordinate (tier) | New coordinate (company website) | Distance |
-|---|---|---|---|
-| **SHD** — Station Rd Shahad | 19.2297339, 73.1376504 (exact / nominatim) | 19.2426153, 73.1559273 | 2.39km |
-| **AMPL** — Palegaon | 19.2015607, 73.2004771 (town_base / nominatim) | 19.1896178, 73.1769552 | 2.8km |
-| **AMCH** — Chokhloli | 19.2015607, 73.2004771 (town_base / nominatim) | 19.18354, 73.2199944 | 2.87km |
-| **AMSN** — Shivganga Nagar | 19.2015607, 73.2004771 (town_base / nominatim) | 19.2030029, 73.1803269 | 2.12km |
-
-Separately, 1 store(s) had no coordinate at all before this run and were filled in for the first time: KHP.
+_None yet — either no prior coordinate existed for the applied stores, or every applied coordinate already agreed with what was there._
 
 ## Ties broken mechanically
 
 | Listing | Winning store | Why | Other candidates ruled out |
 |---|---|---|---|
-| #14 Vijay Nagar Kalyan (East) | **KET** — KET | within 1km of its own precise point (0km) — the only candidate that was | BHAR (12.23km away), AMSN (no containment), AML (no containment) |
-| #35 Shilphata, Khopoli | **KHP** — Khapoli | within 5km of its town centroid (2.13km) — the only candidate that was | DOE/DER (48.32km away) |
+| #14 Vijay Nagar Kalyan (East) | **KET** — KET | within 1km of its own precise point (0km) — the only candidate that was | BHAR (12.23km away), AMSN (4.93km away), AML (no containment) |
+| #35 Shilphata, Khopoli | **KHP** — Khapoli | within 1km of its own precise point (0km) — the only candidate that was | DOE/DER (48.32km away) |
 | #39 Manpada Road, Dombivali East | **DOM** — Manpada Road | within 1km of its own precise point (0km) — the only candidate that was | DWK (6.81km away) |
 | #48 Station Road, Ambernath West | **PRCAME/PRCAMEN** — Ambernath | within 1km of its own precise point (0km) — the only candidate that was | AMW (no containment) |
 
@@ -86,7 +79,7 @@ Separately, 1 store(s) had no coordinate at all before this run and were filled 
 | #38 Kopar Road, Dombivali West | **DOW** — Kopar Road | 19.2165573, 73.0833311 | ✅ 0.15km from its own existing precise coordinate | — | shares a coordinate with another listing at the same tier — a real conflict, not resolved by ranking |
 | #41 Rajaji Path, Dombivali East | **DOE/DER** — Shilphata | 19.2153234, 73.0847615 | ❌ 8.97km from its own existing (coarse) coordinate | — | shares a coordinate with another listing at the same tier — a real conflict, not resolved by ranking |
 | #18 Adarsh park road Bhiwandi | KBG (inconclusive) / AVB (18.25km away) / KBR (5.13km away) / BBVR (passed containment too) / BHAR (passed containment too) / Bap (4.19km away) / PAD (13.7km away) — still tied | 19.3080716, 73.05551 | — | — | containment didn't isolate a single winner |
-| #50 Luxminagar, Ambernath East | AMSN (inconclusive) / AML (inconclusive) — still tied | 19.1994975, 73.1931952 | — | — | containment didn't isolate a single winner |
+| #50 Luxminagar, Ambernath East | AMSN (1.41km away) / AML (inconclusive) — still tied | 19.1994975, 73.1931952 | — | — | containment didn't isolate a single winner |
 
 ## No coordinate at all — the 7 that need a human to open the link directly
 
@@ -108,11 +101,11 @@ Separately, 1 store(s) had no coordinate at all before this run and were filled 
 
 ## Bottom line
 
-34 of 53 site listings are trusted well enough to apply: 5 needed no checks, 25 cleared the sanity check (or its cross-validation fallback), 4 had their tie broken mechanically. 4 of those replace a meaningfully different prior coordinate — see the override ledger above. 11 still need a human read. 7 never resolved to a coordinate — those need the link opened by hand. Applied to stores.json this run — see the git diff.
+34 of 53 site listings are trusted well enough to apply: 5 needed no checks, 25 cleared the sanity check (or its cross-validation fallback), 4 had their tie broken mechanically. 0 of those replace a meaningfully different prior coordinate — see the override ledger above. 11 still need a human read. 7 never resolved to a coordinate — those need the link opened by hand. Not applied — re-run with `--apply` once this looks right. **The precision split stays 44/6/3 either way** — see the note above the duplicate-coordinate check for why these listing counts don't subtract from it directly.
 
 ## Final short list for hand review
 
-18 listing(s) total: 11 same-tier disagreement(s) or unresolved tie(s) above, plus the 7 that never resolved to a coordinate at all. Each with its website address and map link to open directly.
+18 listing(s) total: 11 same-tier disagreement(s) or unresolved tie(s) above, plus the 7 that never resolved to a coordinate at all. Each with its website address and map link to open directly. This is a worklist of LISTINGS, not a count of unlocated STORES — see the split above.
 
 | # | Proposed store(s) | Website address | Map link |
 |---|---|---|---|
@@ -126,7 +119,7 @@ Separately, 1 store(s) had no coordinate at all before this run and were filled 
 | #38 | DOW — Kopar Road | Kopar Road, Dombivali West | https://maps.app.goo.gl/ZNgWy3LSzV19zZcY9 |
 | #41 | DOE/DER — Shilphata | Rajaji Path, Dombivali East | https://maps.app.goo.gl/Qh1phjdAqcfrz4Jd7 |
 | #18 | KBG (inconclusive) / AVB (18.25km away) / KBR (5.13km away) / BBVR (passed containment too) / BHAR (passed containment too) / Bap (4.19km away) / PAD (13.7km away) — still tied | Adarsh park road Bhiwandi | https://maps.app.goo.gl/Jyh3oZuxxmVSjWFE8 |
-| #50 | AMSN (inconclusive) / AML (inconclusive) — still tied | Luxminagar, Ambernath East | https://maps.app.goo.gl/J4itbQvksJRviySS6 |
+| #50 | AMSN (1.41km away) / AML (inconclusive) — still tied | Luxminagar, Ambernath East | https://maps.app.goo.gl/J4itbQvksJRviySS6 |
 | #2 | KBG — KBG - Patel Mart | KBG,Patel mart bapgav near kohinoor developer | _no link on the site_ |
 | #11 | DNE — Patel's R Mart | Nandivali, Dombivili East | https://www.google.com/maps/dir/'19.29489,72.8638323'/Patel's+R+Mart,+Dharmadhikari+Hall,+Near,+Gaondevi+Mandir+Road,+Nandivali+East,+Dombivli+East,+Dombivli,+Maharashtra+421201/@19.1565381,72.9674073,46231m/data=!3m2!1e3!4b1!4m22!1m8!3m7!1s0x3be7bf472a0974af:0xd92ba38c5c776156!2sPatel's+R+Mart!8m2!3d19.1996124!4d73.0851615!15sClRQYXRlbCdzIFIgTWFydCBOZWFyIERoYXJtYWRoaWthcmkgSGFsbCAsR2FvbmRldmkgbWFuZGlyIFJvYWQgLE5ldGl2YWxpIERvbWJpdmxpIEVhc3RaVCJScGF0ZWwncyByIG1hcnQgbmVhciBkaGFybWFkaGlrYXJpIGhhbGwgZ2FvbmRldmkgbWFuZGlyIHJvYWQgbmV0aXZhbGkgZG9tYml2bGkgZWFzdJIBC3N1cGVybWFya2V0qgGPARABKhIiDnBhdGVsJ3MgciBtYXJ0KAAyHxABIhvc3PJUr7UPXJGzdVRsZEW8fQs6IlOH7aLpQdEyVhACIlJwYXRlbCdzIHIgbWFydCBuZWFyIGRoYXJtYWRoaWthcmkgaGFsbCBnYW9uZGV2aSBtYW5kaXIgcm9hZCBuZXRpdmFsaSBkb21iaXZsaSBlYXN04AEA!16s%2Fg%2F11xkg3qmn8!4m12!1m5!1m1!1s0x3be7b11eb3739e33:0x881dd0d92870f0ed!2m2!1d72.8638537!2d19.2949167!1m5!1m1!1s0x3be7bf472a0974af:0xd92ba38c5c776156!2m2!1d73.0851615!2d19.1996124?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D |
 | #12 | NWM — Nice World | Kausa Talav Road, Mumbra | http://528M+983%20Nice%20world,%20Kausa,%20Mumbra,%20Thane,%20Maharashtra%20400612 |

@@ -178,6 +178,14 @@
   gap: 14px;
   margin: 14px 0;
 }
+.compare-row.cols-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.cb-na {
+  color: var(--text-4);
+  font-style: italic;
+  font-weight: 400;
+}
 .compare-box {
   border-radius: var(--r-sm);
   padding: 14px 16px;
@@ -341,7 +349,8 @@
 }
 
 @media (max-width: 640px) {
-  .compare-row {
+  .compare-row,
+  .compare-row.cols-3 {
     grid-template-columns: 1fr;
   }
 }

@@ -105,12 +105,39 @@
       "source": "PATEL-HANDOFF.md §9"
     }
   },
-  "peer_scale_gap": {
-    "note": "Osia Hyper Retail and V2 Retail are the only peers near Patel's own scale (52 operational stores) — every other peer in the model is 120+ stores. No financial data for either is available in this handoff or anywhere else this session could reach, so no figures are shown for them. Adding real numbers here (revenue, store count, area, EBITDA) is the next step, not a placeholder to fill with an estimate.",
-    "companies": ["Osia Hyper Retail", "V2 Retail"],
-    "status": "not_supplied",
-    "verified_against_primary_source": "Confirmed directly against Peer_Model.xlsx — checked all 47 rows of the primary source file, not just the handoff's prose summary. Neither company is mentioned anywhere in it.",
-    "where_to_get_it": "Both are publicly listed companies, so revenue, store count, area and EBITDA should be available from their own annual reports, exchange filings, and financial aggregators (e.g. Screener.in) — not something Patel or its peer model would ever hold. This session's sandbox has no live internet access to pull and verify those figures directly, which is why they're still shown as not supplied rather than filled in. Whoever adds them next should cite the primary filing, not re-derive from anything else in this dashboard."
+  "osia_hyper_retail": {
+    "name": "Osia Hyper Retail Ltd",
+    "ticker": "OSIAHYPER",
+    "fiscal_year": "FY2025 (Mar 2025)",
+    "revenue_cr": 1427,
+    "revenue_prev_year_cr": 1143,
+    "ebitda_cr": 72,
+    "ebitda_margin_pct": 0.05,
+    "pat_cr": 20,
+    "total_stores": null,
+    "retail_area_mn_sqft": null,
+    "private_label_pct": null,
+    "kind": "reported",
+    "source": "Screener.in/company/OSIAHYPER/",
+    "note": "Store count unresolved - sources disagree (~35 vs 43). FY25 is the latest filed year, one year behind the other peers.",
+    "period_offset_flag": "FY2025 — one fiscal year behind every other peer in this comparison, which is on FY2026 (or later trailing) numbers. Growth-rate and scale comparisons against Osia should account for that gap, not read it as like-for-like."
+  },
+  "v2_retail": {
+    "name": "V2 Retail Ltd",
+    "ticker": "V2RETAIL",
+    "fiscal_year": "FY2026 (Mar 2026)",
+    "revenue_cr": 3067,
+    "revenue_prev_year_cr": 1884,
+    "ebitda_cr": 472,
+    "ebitda_margin_pct": 0.15,
+    "pat_cr": 162,
+    "total_stores": null,
+    "retail_area_mn_sqft": null,
+    "private_label_pct": null,
+    "kind": "reported",
+    "source": "Screener.in/company/V2RETAIL/consolidated/",
+    "note": "160 stores / 17.22 lakh sqft is a Dec-2024 figure, stale against FY26 revenue up 63% - left null rather than misstated.",
+    "category_flag": "V2 Retail is an apparel-led value retailer, not a grocer — its 15% EBITDA margin reflects a structurally different, higher-margin category mix and isn't comparable to Patel's grocery margins. Useful here as a store-expansion/scale comp, not a margin comp."
   },
   "store_pnl_reconciliation": {
     "revenue_l": 864,

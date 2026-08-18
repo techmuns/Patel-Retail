@@ -135,23 +135,61 @@ function renderSpencersFixCard(metrics) {
   refreshIcons();
 }
 
+function fmtCrOrNA(value) {
+  return value == null ? `<span class="cb-na">Not available</span>` : fmtCr(value);
+}
+function fmtNumOrNA(value, unit = "") {
+  return value == null ? `<span class="cb-na">Not available</span>` : `${value.toLocaleString("en-IN")}${unit}`;
+}
+function fmtPctOrNA(value, digits = 1) {
+  return value == null ? `<span class="cb-na">Not available</span>` : fmtPct(value, digits);
+}
+
+function renderPeerCompanyBlock(p) {
+  const growthPct = (p.revenue_cr - p.revenue_prev_year_cr) / p.revenue_prev_year_cr;
+  return `
+    <div class="compare-box" data-kind="reported" style="text-align:left">
+      <div class="cb-label">${escapeHtml(p.name)} <span style="font-weight:400;text-transform:none;color:var(--text-4)">(${escapeHtml(p.ticker)})</span></div>
+      <div style="font-size:11px;color:var(--text-4);margin-top:2px">${escapeHtml(p.fiscal_year)}</div>
+      <table class="metric-table" style="margin-top:10px">
+        <tr><td>Revenue</td><td class="mono">${fmtCr(p.revenue_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>
+        <tr><td>Revenue growth YoY</td><td class="mono">${fmtPct(growthPct, 1)} <span class="kind-pill kind-derived">derived</span></td></tr>
+        <tr><td>EBITDA</td><td class="mono">${fmtCr(p.ebitda_cr)} (${fmtPct(p.ebitda_margin_pct, 1)} margin) <span class="kind-pill kind-reported">reported</span></td></tr>
+        <tr><td>PAT</td><td class="mono">${fmtCr(p.pat_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>
+        <tr><td>Total stores</td><td class="mono">${fmtNumOrNA(p.total_stores)}</td></tr>
+        <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}</td></tr>
+        <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}</td></tr>
+      </table>
+      <p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(p.note)} — <span style="color:var(--text-3)">${escapeHtml(p.source)}</span></p>
+      ${
+        p.period_offset_flag
+          ? `<div class="flag-card" style="margin-top:10px"><span class="flag-ico"><i data-lucide="clock" class="i16"></i></span><div><p>${escapeHtml(p.period_offset_flag)}</p></div></div>`
+          : ""
+      }
+      ${
+        p.category_flag
+          ? `<div class="flag-card" style="margin-top:10px"><span class="flag-ico"><i data-lucide="info" class="i16"></i></span><div><p>${escapeHtml(p.category_flag)}</p></div></div>`
+          : ""
+      }
+    </div>
+  `;
+}
+
 function renderPeerScaleCard(metrics) {
-  const gap = metrics.peer_scale_gap;
   const el = qs("#peerScaleCard");
   el.innerHTML = `
     <div class="card-head">
       <div>
-        <h3><span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="scale" class="i16"></i></span>Missing peers near Patel's scale</h3>
+        <h3><span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="scale" class="i16"></i></span>Osia Hyper Retail &amp; V2 Retail — the closest scale peers</h3>
+        <div class="sub">Patel's own scale (52 operational stores) — every other peer in the model is 120+ stores</div>
       </div>
     </div>
     <div class="card-body">
-      <div class="empty" style="padding:24px 16px; min-height:auto">
-        <div class="empty-ico" style="width:52px;height:52px;font-size:22px"><i data-lucide="scale"></i></div>
-        <h4 style="font-size:15px">${gap.companies.map(escapeHtml).join(" · ")}</h4>
-        <p>${escapeHtml(gap.note)}</p>
-        ${gap.verified_against_primary_source ? `<p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(gap.verified_against_primary_source)}</p>` : ""}
-        ${gap.where_to_get_it ? `<p style="font-size:11.5px;color:var(--text-3);margin-top:8px;padding-top:8px;border-top:1px solid var(--hairline)"><strong style="color:var(--text-2)">Where to get it:</strong> ${escapeHtml(gap.where_to_get_it)}</p>` : ""}
+      <div class="compare-row">
+        ${renderPeerCompanyBlock(metrics.osia_hyper_retail)}
+        ${renderPeerCompanyBlock(metrics.v2_retail)}
       </div>
+      <p style="font-size:11.5px;color:var(--text-4);margin-top:4px">Store count, retail area, and private label % are genuinely not disclosed by either company on Screener — shown as "Not available," not estimated.</p>
     </div>
   `;
   refreshIcons();
@@ -184,7 +222,7 @@ function renderPrivateLabelBlock(metrics) {
         )
         .join("")}
       <p style="font-size:12px;color:var(--text-4);margin:8px 0 0">${escapeHtml(pl.note)}</p>
-      <p style="font-size:11px;color:var(--text-4);margin:4px 0 0">Osia Hyper Retail / V2 Retail private label % not supplied either — same gap as above.</p>
+      <p style="font-size:11px;color:var(--text-4);margin:4px 0 0">Osia Hyper Retail's private label % is ${metrics.osia_hyper_retail.private_label_pct == null ? "not disclosed on Screener" : fmtPct(metrics.osia_hyper_retail.private_label_pct, 1)}; V2 Retail's is ${metrics.v2_retail.private_label_pct == null ? "not disclosed on Screener" : fmtPct(metrics.v2_retail.private_label_pct, 1)} — same gap as above, not filled in.</p>
     </div>
   `;
 }

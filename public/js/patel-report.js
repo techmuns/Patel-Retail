@@ -385,11 +385,27 @@ function peerBenchmarkSection(push, model, n) {
     </div>`)
   );
 
-  const gap = m.peer_scale_gap;
+  const osia = m.osia_hyper_retail;
+  const v2 = m.v2_retail;
+  const naOr = (v, fmt) => (v == null ? "Not available" : fmt(v));
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">${gap.companies.map(escapeHtml).join(" · ")} — not supplied</div>
-      <p class="rpt-note">${escapeHtml(gap.note)}</p>
-      ${gap.where_to_get_it ? `<p class="rpt-note"><b>Where to get it:</b> ${escapeHtml(gap.where_to_get_it)}</p>` : ""}
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Osia Hyper Retail &amp; V2 Retail — the closest scale peers (Patel's own scale is 52 operational stores; every other peer in the model is 120+)</div>
+      <table class="rpt-pk">
+        <thead><tr><th style="width:22%">Figure</th><th style="width:39%">Osia Hyper Retail (${escapeHtml(osia.fiscal_year)})</th><th style="width:39%">V2 Retail (${escapeHtml(v2.fiscal_year)})</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue</td><td class="mono">${fmtCr(osia.revenue_cr)}</td><td class="mono">${fmtCr(v2.revenue_cr)}</td></tr>
+          <tr><td>Revenue growth YoY</td><td class="mono">${fmtPct((osia.revenue_cr - osia.revenue_prev_year_cr) / osia.revenue_prev_year_cr)}</td><td class="mono">${fmtPct((v2.revenue_cr - v2.revenue_prev_year_cr) / v2.revenue_prev_year_cr)}</td></tr>
+          <tr><td>EBITDA (margin)</td><td class="mono">${fmtCr(osia.ebitda_cr)} (${fmtPct(osia.ebitda_margin_pct)})</td><td class="mono">${fmtCr(v2.ebitda_cr)} (${fmtPct(v2.ebitda_margin_pct)})</td></tr>
+          <tr><td>PAT</td><td class="mono">${fmtCr(osia.pat_cr)}</td><td class="mono">${fmtCr(v2.pat_cr)}</td></tr>
+          <tr><td>Total stores</td><td class="mono">${naOr(osia.total_stores, (v) => v.toLocaleString("en-IN"))}</td><td class="mono">${naOr(v2.total_stores, (v) => v.toLocaleString("en-IN"))}</td></tr>
+          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
+          <tr><td>Private label %</td><td class="mono">${naOr(osia.private_label_pct, (v) => fmtPct(v))}</td><td class="mono">${naOr(v2.private_label_pct, (v) => fmtPct(v))}</td></tr>
+        </tbody>
+      </table>
+      <p class="rpt-note">${escapeHtml(osia.name)}: ${escapeHtml(osia.note)} — ${escapeHtml(osia.source)}</p>
+      <p class="rpt-note">${escapeHtml(osia.period_offset_flag)}</p>
+      <p class="rpt-note">${escapeHtml(v2.name)}: ${escapeHtml(v2.note)} — ${escapeHtml(v2.source)}</p>
+      <p class="rpt-note">${escapeHtml(v2.category_flag)}</p>
     </div>`)
   );
 

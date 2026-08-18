@@ -66,18 +66,28 @@ the facts already established from the client's files (§9 especially).
   draft — the query is anchored to exclude a "food mart" false-positive
   found and fixed this round). Not yet joined into the map's precomputed
   risk score — the Screener picks it up live, the map doesn't yet.
-- **Getting the remaining 9 store locations right**: down from 25 at the
-  start of this round. `docs/OFFICIAL-STORES-VALIDATION.md`'s "Final short
-  list for hand review" is the single place to work from — 18 rows total
-  (9 single-match disagreements + 2 unresolved ties + 7 that never resolved
-  to a coordinate), each with its website address and map link to open
-  directly, no re-deriving needed. Two of the 9 disagreements are really
-  one story worth a specific look: `BHAR` was proposed — and failed its
-  sanity check — on two unrelated listings ("Kalyan Bhiwandi Road" and
-  "Kalyan Naka, Bhiwandi"), a weak `locality_token_overlap` match both
-  times. [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier client
-  ask) is the fallback if any of these links themselves turn out to be
-  wrong. See PATEL-HANDOFF.md §16 and §23–25.
+- **Getting the remaining store locations right — read this against the
+  44/6/3 split above, not as a fourth bucket added to it.** The 18-row
+  "Final short list for hand review" in `docs/OFFICIAL-STORES-VALIDATION.md`
+  (9 single-match disagreements + 2 unresolved ties + 7 listings that never
+  resolved to a coordinate at all) is a **worklist about the website source
+  specifically** — it overlaps with the 44/6/3 precision split, it doesn't
+  extend it. Most of those 18 rows are stores that already have *some*
+  coordinate in `stores.json` from an older source (Nominatim, a manual
+  review, a client pin); the website-sourced candidate for that same store
+  just failed its sanity check or duplicated another listing, so nothing
+  changed for it. Only `NSR` and `KMR` are simultaneously "no coordinate at
+  all" AND on this worklist — those are the only two where resolving the
+  worklist item can actually move the 44/6/3 numbers (best case: 44 → 46).
+  `TGR`, `BHAR` (on two separate listings), and `DOW` are already counted
+  in the 44 via an existing precise coordinate — the website flag on them
+  is a "the site couldn't confirm this" note, not a "this store is
+  unlocated" one. `DWK`, `DOWSMT`, and `DOE/DER` are already counted in the
+  6 coarse ones for the same reason. `KBG` is the one store with literally
+  nothing to go on from either source — no coordinate in `stores.json` and
+  no link at all on the client's website.
+  [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier client ask)
+  is the fallback for any of these. See PATEL-HANDOFF.md §16 and §23–26.
 - **Estate & Vintage** (`public/js/estate.js`): live — openings by year,
   cumulative growth, age distribution, and a town-saturation table labelling
   each cluster "Fast-forming," "Still growing," or "Established" from its
