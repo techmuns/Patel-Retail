@@ -9,39 +9,48 @@ the facts already established from the client's files (§9 especially).
 
 ## Status
 
-- **Network map** (`public/index.html`, `public/js/map.js`): live. 49/53
-  stores have coordinates, and **40/53 are precisely located** (up from 28
-  this round — see the official-stores-website bullet below) — the other 9
-  resolved only to a town centroid and correctly show as an uncertainty
-  circle with "Distance unavailable," never a fabricated number (see
-  PATEL-HANDOFF.md §15.1 — this was a real bug, now fixed). 4 stores have
-  no coordinates at all. KPI strip, town-cluster table, and the store
-  slide-over's risk-score explainer are all live. A closed store's
+- **Network map** (`public/index.html`, `public/js/map.js`): live. 50/53
+  stores have coordinates, and **44/53 are precisely located** (up from 28
+  before this round of work — see the official-stores-website bullet below)
+  — the other 6 resolved only to a town centroid and correctly show as an
+  uncertainty circle with "Distance unavailable," never a fabricated
+  number (see PATEL-HANDOFF.md §15.1 — this was a real bug, now fixed). 3
+  stores have no coordinates at all. KPI strip, town-cluster table, and the
+  store slide-over's risk-score explainer are all live. A closed store's
   slide-over now says why its risk score is blank ("closed, not scored")
   instead of a bare dash; `proximity.json` emits all 1,378 possible pairs
   with a stated `unavailable_reason` on every suppressed one, not just the
-  ones with a real distance. See PATEL-HANDOFF.md §22 and §24.
+  ones with a real distance. See PATEL-HANDOFF.md §22 and §24–25.
 - **Official store locations from the client's own website** — built, run,
-  mechanically validated, and applied. `scripts/fetch-official-stores.mjs`
-  pulls all 53 stores from patelrpl.in and proposes matches against
-  `stores.json` (`docs/OFFICIAL-STORES-REVIEW.md`); `scripts/validate-official-matches.mjs`
-  then checks the 35 low-confidence coordinates and the weakly-matched
-  `resolved` ones against three mechanical tests — containment against the
-  store's own known location, cross-listing duplicate detection, and
-  independent cross-validation of the site's own (richer) address text —
-  instead of asking a human to eyeball 35 rows (`docs/OFFICIAL-STORES-VALIDATION.md`).
-  **29 of 53 cleared automatically and were applied**: 5 needed no checks,
-  21 passed validation, 3 ties were broken mechanically. **16 need a human**
-  — genuine disagreements the checks surfaced rather than resolved
-  silently, including a live instance of the exact brand-collision risk the
-  low-confidence flag was warning about (two different stores' listings
-  briefly resolving to the same point) and one case where the site
-  contradicts a coordinate this project had already trusted. **7 never
+  mechanically validated against an explicit provenance hierarchy, and
+  applied. `scripts/fetch-official-stores.mjs` pulls all 53 stores from
+  patelrpl.in and proposes matches against `stores.json`
+  (`docs/OFFICIAL-STORES-REVIEW.md`); `scripts/validate-official-matches.mjs`
+  ranks every coordinate source (company website > client-supplied pin >
+  our geocode of the website's address > our geocode of the client's
+  locality string > town centroid) and lets a higher tier override a lower
+  one once it clears a loose town-containment sanity check — checked
+  against the store's own best available reference (its existing
+  coordinate if it has one, precise or coarse, never a worse fresh town
+  geocode), not against whichever value happened to be applied first
+  (`docs/OFFICIAL-STORES-VALIDATION.md`).
+  **34 of 53 cleared automatically and were applied**: 5 needed no checks,
+  25 passed validation, 4 ties were broken mechanically (one via an
+  explicit, human-confirmed town-spelling correction for `KHP`). **11
+  single-match disagreements plus 2 unresolved ties need a human** —
+  genuine conflicts the checks surfaced rather than resolved silently,
+  including a real instance of the brand-collision risk the low-confidence
+  flag was warning about (two different stores' listings briefly resolving
+  to the same point, deliberately left untouched even though one of them
+  passes its own sanity check) and one store (`BHAR`) proposed — and
+  failing — on two different listings, worth a specific look. **7 never
   resolved to a coordinate** at all and need a link opened by hand; **1**
   (Uran) reads as a warehouse, not a store, and was never added.
-  **Precisely-located stores: 28/53 → 40/53** — the real number, not
-  rounded up. See PATEL-HANDOFF.md §23–24 for the full mechanism and every
-  check's actual distance.
+  **Precisely-located stores: 28/53 → 44/53** — the real number, not
+  rounded up. `docs/OFFICIAL-STORES-VALIDATION.md` ends with an 18-row
+  final list — every remaining listing with its website address and map
+  link, ready to open directly. See PATEL-HANDOFF.md §23–25 for the full
+  mechanism and every check's actual distance.
 - **Store economics** (`public/js/economics.js`): live — surfaces the
   area/sq ft estimate label, the ₹17,280-vs-₹22,079 revenue/sq ft
   discrepancy, and the 5.4%-vs-7.9% store/peer EBITDA reconciliation flag,
@@ -57,14 +66,18 @@ the facts already established from the client's files (§9 especially).
   draft — the query is anchored to exclude a "food mart" false-positive
   found and fixed this round). Not yet joined into the map's precomputed
   risk score — the Screener picks it up live, the map doesn't yet.
-- **Getting the remaining 13 store locations right**: down from 25 this
-  round. Review `docs/OFFICIAL-STORES-VALIDATION.md`'s 16 human-review rows
-  (13 single-match disagreements + 3 unresolved ties) — every one has both
-  checks' actual distances shown, not just a verdict.
-  [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier client ask)
-  is the fallback for the 7 listings that never resolved to a coordinate at
-  all — `docs/OFFICIAL-STORES-VALIDATION.md` lists their website address
-  and map link for opening by hand. See PATEL-HANDOFF.md §16 and §23–24.
+- **Getting the remaining 9 store locations right**: down from 25 at the
+  start of this round. `docs/OFFICIAL-STORES-VALIDATION.md`'s "Final short
+  list for hand review" is the single place to work from — 18 rows total
+  (9 single-match disagreements + 2 unresolved ties + 7 that never resolved
+  to a coordinate), each with its website address and map link to open
+  directly, no re-deriving needed. Two of the 9 disagreements are really
+  one story worth a specific look: `BHAR` was proposed — and failed its
+  sanity check — on two unrelated listings ("Kalyan Bhiwandi Road" and
+  "Kalyan Naka, Bhiwandi"), a weak `locality_token_overlap` match both
+  times. [`docs/PINS-NEEDED.md`](./docs/PINS-NEEDED.md) (the earlier client
+  ask) is the fallback if any of these links themselves turn out to be
+  wrong. See PATEL-HANDOFF.md §16 and §23–25.
 - **Estate & Vintage** (`public/js/estate.js`): live — openings by year,
   cumulative growth, age distribution, and a town-saturation table labelling
   each cluster "Fast-forming," "Still growing," or "Established" from its
