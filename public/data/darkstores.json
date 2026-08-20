@@ -1,0 +1,3202 @@
+{
+  "source_repo": "https://github.com/jatin-dot-py/darkstores",
+  "source_writeup": "https://jatin-dot-py.medium.com/how-i-scraped-most-dark-stores-in-india-blinkit-zepto-swiggy-instamart-ad939ff17af9",
+  "note": "Third-party public data, not from Patel Retail or this dashboard's own pipeline. Static snapshot from mid-March 2026 (see scraped_at_upstream per brand below) — NOT live, does not self-update. No explicit license on the source repo; used here as attributed, cited research data for internal diligence, not represented as authoritative or exhaustive. Region-filtered to the same Thane–Raigad–Palghar box as every other script in this project — not filtered to Patel's own towns specifically, so some points may be outside Patel's actual catchment. NOT wired into the existing overlap_risk score — that's reserved for the fund's own methodology once supplied.",
+  "fetched_at": "2026-08-20T08:49:42.954Z",
+  "scraped_at_upstream": {
+    "Blinkit": "2026-03-15–17",
+    "Zepto": "2026-03-14–15",
+    "Swiggy Instamart": "2026-03-18–19"
+  },
+  "region_box": {
+    "minLat": 18.6,
+    "maxLat": 19.8,
+    "minLng": 72.7,
+    "maxLng": 73.6
+  },
+  "counts": {
+    "Blinkit": {
+      "total_india": 1954,
+      "in_region": 148
+    },
+    "Zepto": {
+      "total_india": 1089,
+      "in_region": 118
+    },
+    "Swiggy Instamart": {
+      "total_india": 1038,
+      "in_region": 86
+    }
+  },
+  "total_in_region": 352,
+  "darkstores": [
+    {
+      "darkstore_id": "BLINKIT-39568",
+      "brand": "Blinkit",
+      "source_id": "39568",
+      "lat": 18.652520721164212,
+      "lng": 72.8815083412738,
+      "label": null,
+      "accuracy_m": 25
+    },
+    {
+      "darkstore_id": "BLINKIT-37076",
+      "brand": "Blinkit",
+      "source_id": "37076",
+      "lat": 18.755077158102768,
+      "lng": 73.40496269152968,
+      "label": null,
+      "accuracy_m": 22
+    },
+    {
+      "darkstore_id": "BLINKIT-38840",
+      "brand": "Blinkit",
+      "source_id": "38840",
+      "lat": 18.914562159540065,
+      "lng": 72.82600956243566,
+      "label": null,
+      "accuracy_m": 22
+    },
+    {
+      "darkstore_id": "BLINKIT-31102",
+      "brand": "Blinkit",
+      "source_id": "31102",
+      "lat": 18.943224566295363,
+      "lng": 72.82618751343058,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34750",
+      "brand": "Blinkit",
+      "source_id": "34750",
+      "lat": 18.962324612648217,
+      "lng": 72.81173370352954,
+      "label": null,
+      "accuracy_m": 43
+    },
+    {
+      "darkstore_id": "BLINKIT-30024",
+      "brand": "Blinkit",
+      "source_id": "30024",
+      "lat": 18.964049370104203,
+      "lng": 72.84004308476601,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-40146",
+      "brand": "Blinkit",
+      "source_id": "40146",
+      "lat": 18.957004645436577,
+      "lng": 72.81490493175784,
+      "label": null,
+      "accuracy_m": 49
+    },
+    {
+      "darkstore_id": "BLINKIT-45748",
+      "brand": "Blinkit",
+      "source_id": "45748",
+      "lat": 18.96959644160977,
+      "lng": 73.01649206546834,
+      "label": null,
+      "accuracy_m": 50
+    },
+    {
+      "darkstore_id": "BLINKIT-37918",
+      "brand": "Blinkit",
+      "source_id": "37918",
+      "lat": 18.984938504850877,
+      "lng": 73.02753936185348,
+      "label": null,
+      "accuracy_m": 35
+    },
+    {
+      "darkstore_id": "BLINKIT-37122",
+      "brand": "Blinkit",
+      "source_id": "37122",
+      "lat": 18.96981319044197,
+      "lng": 72.81838088326022,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-37070",
+      "brand": "Blinkit",
+      "source_id": "37070",
+      "lat": 18.976674042040962,
+      "lng": 72.82382002710213,
+      "label": null,
+      "accuracy_m": 33
+    },
+    {
+      "darkstore_id": "BLINKIT-41717",
+      "brand": "Blinkit",
+      "source_id": "41717",
+      "lat": 18.98085808048868,
+      "lng": 73.10485908893281,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-32783",
+      "brand": "Blinkit",
+      "source_id": "32783",
+      "lat": 19.005048508803448,
+      "lng": 73.1167696083978,
+      "label": null,
+      "accuracy_m": 22
+    },
+    {
+      "darkstore_id": "BLINKIT-44123",
+      "brand": "Blinkit",
+      "source_id": "44123",
+      "lat": 18.98807151922386,
+      "lng": 72.84187202070753,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-41163",
+      "brand": "Blinkit",
+      "source_id": "41163",
+      "lat": 19.00269942508085,
+      "lng": 72.82230572742797,
+      "label": null,
+      "accuracy_m": 33
+    },
+    {
+      "darkstore_id": "BLINKIT-34878",
+      "brand": "Blinkit",
+      "source_id": "34878",
+      "lat": 18.997120912684153,
+      "lng": 72.8508930520528,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-34138",
+      "brand": "Blinkit",
+      "source_id": "34138",
+      "lat": 19.012404585698885,
+      "lng": 73.09053186314448,
+      "label": null,
+      "accuracy_m": 36
+    },
+    {
+      "darkstore_id": "BLINKIT-40670",
+      "brand": "Blinkit",
+      "source_id": "40670",
+      "lat": 19.035292616960117,
+      "lng": 72.89599185860877,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-43559",
+      "brand": "Blinkit",
+      "source_id": "43559",
+      "lat": 19.01963149910169,
+      "lng": 72.83265579987969,
+      "label": null,
+      "accuracy_m": 48
+    },
+    {
+      "darkstore_id": "BLINKIT-37472",
+      "brand": "Blinkit",
+      "source_id": "37472",
+      "lat": 19.012310263025512,
+      "lng": 72.85056980760557,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-31038",
+      "brand": "Blinkit",
+      "source_id": "31038",
+      "lat": 19.02250759647862,
+      "lng": 73.0149376495373,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34529",
+      "brand": "Blinkit",
+      "source_id": "34529",
+      "lat": 19.015925965504852,
+      "lng": 73.04273172466475,
+      "label": null,
+      "accuracy_m": 34
+    },
+    {
+      "darkstore_id": "BLINKIT-45474",
+      "brand": "Blinkit",
+      "source_id": "45474",
+      "lat": 19.02138336004312,
+      "lng": 73.02383568732319,
+      "label": null,
+      "accuracy_m": 50
+    },
+    {
+      "darkstore_id": "BLINKIT-34268",
+      "brand": "Blinkit",
+      "source_id": "34268",
+      "lat": 19.03067863492634,
+      "lng": 72.84376854417118,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-39972",
+      "brand": "Blinkit",
+      "source_id": "39972",
+      "lat": 19.033472218109953,
+      "lng": 72.86133481489914,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-36465",
+      "brand": "Blinkit",
+      "source_id": "36465",
+      "lat": 19.03717682464966,
+      "lng": 73.06382691827392,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-37432",
+      "brand": "Blinkit",
+      "source_id": "37432",
+      "lat": 19.04385999029824,
+      "lng": 73.10207768023837,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-30673",
+      "brand": "Blinkit",
+      "source_id": "30673",
+      "lat": 19.047087596837947,
+      "lng": 72.91763144354739,
+      "label": null,
+      "accuracy_m": 28
+    },
+    {
+      "darkstore_id": "BLINKIT-43045",
+      "brand": "Blinkit",
+      "source_id": "43045",
+      "lat": 19.045306903341718,
+      "lng": 72.92532513381917,
+      "label": null,
+      "accuracy_m": 11
+    },
+    {
+      "darkstore_id": "BLINKIT-34394",
+      "brand": "Blinkit",
+      "source_id": "34394",
+      "lat": 19.049501653970534,
+      "lng": 73.02067271536616,
+      "label": null,
+      "accuracy_m": 49
+    },
+    {
+      "darkstore_id": "BLINKIT-34679",
+      "brand": "Blinkit",
+      "source_id": "34679",
+      "lat": 19.04741997197269,
+      "lng": 72.82534514104,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-44031",
+      "brand": "Blinkit",
+      "source_id": "44031",
+      "lat": 19.066548416816385,
+      "lng": 72.84814045669067,
+      "label": null,
+      "accuracy_m": 27
+    },
+    {
+      "darkstore_id": "BLINKIT-35002",
+      "brand": "Blinkit",
+      "source_id": "35002",
+      "lat": 19.05989189974847,
+      "lng": 72.89190608267192,
+      "label": null,
+      "accuracy_m": 256
+    },
+    {
+      "darkstore_id": "BLINKIT-31267",
+      "brand": "Blinkit",
+      "source_id": "31267",
+      "lat": 19.052181021200145,
+      "lng": 73.0811516728471,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-38409",
+      "brand": "Blinkit",
+      "source_id": "38409",
+      "lat": 19.07217184477183,
+      "lng": 73.09597423653094,
+      "label": null,
+      "accuracy_m": 19
+    },
+    {
+      "darkstore_id": "BLINKIT-42526",
+      "brand": "Blinkit",
+      "source_id": "42526",
+      "lat": 19.055982031620555,
+      "lng": 72.8330238557562,
+      "label": null,
+      "accuracy_m": 285
+    },
+    {
+      "darkstore_id": "BLINKIT-34556",
+      "brand": "Blinkit",
+      "source_id": "34556",
+      "lat": 19.07003161839741,
+      "lng": 72.90325671651901,
+      "label": null,
+      "accuracy_m": 27
+    },
+    {
+      "darkstore_id": "BLINKIT-41649",
+      "brand": "Blinkit",
+      "source_id": "41649",
+      "lat": 19.081081,
+      "lng": 72.8797519170449,
+      "label": null,
+      "accuracy_m": 34
+    },
+    {
+      "darkstore_id": "BLINKIT-38026",
+      "brand": "Blinkit",
+      "source_id": "38026",
+      "lat": 19.069319706791234,
+      "lng": 73.07646192542673,
+      "label": null,
+      "accuracy_m": 26
+    },
+    {
+      "darkstore_id": "BLINKIT-33918",
+      "brand": "Blinkit",
+      "source_id": "33918",
+      "lat": 19.086381035932448,
+      "lng": 72.838832,
+      "label": null,
+      "accuracy_m": 43
+    },
+    {
+      "darkstore_id": "BLINKIT-39094",
+      "brand": "Blinkit",
+      "source_id": "39094",
+      "lat": 19.081736767157743,
+      "lng": 72.85577283439031,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-36044",
+      "brand": "Blinkit",
+      "source_id": "36044",
+      "lat": 19.09003157923105,
+      "lng": 73.0060316666373,
+      "label": null,
+      "accuracy_m": 49
+    },
+    {
+      "darkstore_id": "BLINKIT-30860",
+      "brand": "Blinkit",
+      "source_id": "30860",
+      "lat": 19.085078484728708,
+      "lng": 72.88974534699955,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-33503",
+      "brand": "Blinkit",
+      "source_id": "33503",
+      "lat": 19.083070759252607,
+      "lng": 72.90996652219484,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-36329",
+      "brand": "Blinkit",
+      "source_id": "36329",
+      "lat": 19.100973009342436,
+      "lng": 72.853406,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-41219",
+      "brand": "Blinkit",
+      "source_id": "41219",
+      "lat": 19.099311133668703,
+      "lng": 72.88473296851112,
+      "label": null,
+      "accuracy_m": 17
+    },
+    {
+      "darkstore_id": "BLINKIT-35654",
+      "brand": "Blinkit",
+      "source_id": "35654",
+      "lat": 19.10082388968739,
+      "lng": 72.91374987679134,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-34764",
+      "brand": "Blinkit",
+      "source_id": "34764",
+      "lat": 19.104424025871364,
+      "lng": 72.838832,
+      "label": null,
+      "accuracy_m": 4
+    },
+    {
+      "darkstore_id": "BLINKIT-37480",
+      "brand": "Blinkit",
+      "source_id": "37480",
+      "lat": 19.11404474523895,
+      "lng": 72.85814531800342,
+      "label": null,
+      "accuracy_m": 29
+    },
+    {
+      "darkstore_id": "BLINKIT-43041",
+      "brand": "Blinkit",
+      "source_id": "43041",
+      "lat": 19.12200378224937,
+      "lng": 72.86890324645498,
+      "label": null,
+      "accuracy_m": 32
+    },
+    {
+      "darkstore_id": "BLINKIT-43507",
+      "brand": "Blinkit",
+      "source_id": "43507",
+      "lat": 19.139921700503052,
+      "lng": 72.81225278603146,
+      "label": null,
+      "accuracy_m": 50
+    },
+    {
+      "darkstore_id": "BLINKIT-38202",
+      "brand": "Blinkit",
+      "source_id": "38202",
+      "lat": 19.11890460869565,
+      "lng": 72.93868728108798,
+      "label": null,
+      "accuracy_m": 31
+    },
+    {
+      "darkstore_id": "BLINKIT-35030",
+      "brand": "Blinkit",
+      "source_id": "35030",
+      "lat": 19.111911256198347,
+      "lng": 72.88440038455875,
+      "label": null,
+      "accuracy_m": 33
+    },
+    {
+      "darkstore_id": "BLINKIT-31225",
+      "brand": "Blinkit",
+      "source_id": "31225",
+      "lat": 19.118493419331653,
+      "lng": 72.90517204824128,
+      "label": null,
+      "accuracy_m": 7
+    },
+    {
+      "darkstore_id": "BLINKIT-34272",
+      "brand": "Blinkit",
+      "source_id": "34272",
+      "lat": 19.124404518864534,
+      "lng": 72.92478014009167,
+      "label": null,
+      "accuracy_m": 6
+    },
+    {
+      "darkstore_id": "BLINKIT-36912",
+      "brand": "Blinkit",
+      "source_id": "36912",
+      "lat": 19.120142203018325,
+      "lng": 72.99110816374517,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-37478",
+      "brand": "Blinkit",
+      "source_id": "37478",
+      "lat": 19.115666196909807,
+      "lng": 72.88808955747236,
+      "label": null,
+      "accuracy_m": 5
+    },
+    {
+      "darkstore_id": "BLINKIT-36517",
+      "brand": "Blinkit",
+      "source_id": "36517",
+      "lat": 19.119380713618394,
+      "lng": 72.84370469389869,
+      "label": null,
+      "accuracy_m": 40
+    },
+    {
+      "darkstore_id": "BLINKIT-39346",
+      "brand": "Blinkit",
+      "source_id": "39346",
+      "lat": 19.143099682716493,
+      "lng": 73.04764430380897,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-41542",
+      "brand": "Blinkit",
+      "source_id": "41542",
+      "lat": 19.15819146460654,
+      "lng": 72.85669885555093,
+      "label": null,
+      "accuracy_m": 30
+    },
+    {
+      "darkstore_id": "BLINKIT-30710",
+      "brand": "Blinkit",
+      "source_id": "30710",
+      "lat": 19.130971327703914,
+      "lng": 72.87158458268624,
+      "label": null,
+      "accuracy_m": 40
+    },
+    {
+      "darkstore_id": "BLINKIT-37814",
+      "brand": "Blinkit",
+      "source_id": "37814",
+      "lat": 19.134531649299316,
+      "lng": 72.82599766517082,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-33684",
+      "brand": "Blinkit",
+      "source_id": "33684",
+      "lat": 19.134339994610134,
+      "lng": 72.83670210200924,
+      "label": null,
+      "accuracy_m": 37
+    },
+    {
+      "darkstore_id": "BLINKIT-34652",
+      "brand": "Blinkit",
+      "source_id": "34652",
+      "lat": 19.141256616960113,
+      "lng": 72.9915046158197,
+      "label": null,
+      "accuracy_m": 61
+    },
+    {
+      "darkstore_id": "BLINKIT-39567",
+      "brand": "Blinkit",
+      "source_id": "39567",
+      "lat": 19.14213175242544,
+      "lng": 72.79658087363597,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34292",
+      "brand": "Blinkit",
+      "source_id": "34292",
+      "lat": 19.14204192130794,
+      "lng": 72.83586998000487,
+      "label": null,
+      "accuracy_m": 30
+    },
+    {
+      "darkstore_id": "BLINKIT-34410",
+      "brand": "Blinkit",
+      "source_id": "34410",
+      "lat": 19.148649,
+      "lng": 72.93034520507945,
+      "label": null,
+      "accuracy_m": 45
+    },
+    {
+      "darkstore_id": "BLINKIT-44317",
+      "brand": "Blinkit",
+      "source_id": "44317",
+      "lat": 19.154334186848725,
+      "lng": 72.93854462902301,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-30795",
+      "brand": "Blinkit",
+      "source_id": "30795",
+      "lat": 19.157324310815667,
+      "lng": 72.83533259336798,
+      "label": null,
+      "accuracy_m": 35
+    },
+    {
+      "darkstore_id": "BLINKIT-35850",
+      "brand": "Blinkit",
+      "source_id": "35850",
+      "lat": 19.155337080848,
+      "lng": 73.0790771613271,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-41787",
+      "brand": "Blinkit",
+      "source_id": "41787",
+      "lat": 19.15804773481854,
+      "lng": 73.23313080306286,
+      "label": null,
+      "accuracy_m": 32
+    },
+    {
+      "darkstore_id": "BLINKIT-31287",
+      "brand": "Blinkit",
+      "source_id": "31287",
+      "lat": 19.162427001796623,
+      "lng": 72.9377499749694,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-36519",
+      "brand": "Blinkit",
+      "source_id": "36519",
+      "lat": 19.172986649658643,
+      "lng": 72.87463375156935,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-39978",
+      "brand": "Blinkit",
+      "source_id": "39978",
+      "lat": 19.16586304204096,
+      "lng": 73.0344382118196,
+      "label": null,
+      "accuracy_m": 25
+    },
+    {
+      "darkstore_id": "BLINKIT-37692",
+      "brand": "Blinkit",
+      "source_id": "37692",
+      "lat": 19.19368504743083,
+      "lng": 73.20237822491502,
+      "label": null,
+      "accuracy_m": 32
+    },
+    {
+      "darkstore_id": "BLINKIT-32072",
+      "brand": "Blinkit",
+      "source_id": "32072",
+      "lat": 19.1645649823931,
+      "lng": 73.072028,
+      "label": null,
+      "accuracy_m": 83
+    },
+    {
+      "darkstore_id": "BLINKIT-34116",
+      "brand": "Blinkit",
+      "source_id": "34116",
+      "lat": 19.166437961192955,
+      "lng": 73.115753,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34654",
+      "brand": "Blinkit",
+      "source_id": "34654",
+      "lat": 19.17842126051024,
+      "lng": 72.87397379439797,
+      "label": null,
+      "accuracy_m": 26
+    },
+    {
+      "darkstore_id": "BLINKIT-35682",
+      "brand": "Blinkit",
+      "source_id": "35682",
+      "lat": 19.175676,
+      "lng": 72.83522740281681,
+      "label": null,
+      "accuracy_m": 39
+    },
+    {
+      "darkstore_id": "BLINKIT-37246",
+      "brand": "Blinkit",
+      "source_id": "37246",
+      "lat": 19.175291564678407,
+      "lng": 72.8567978827732,
+      "label": null,
+      "accuracy_m": 37
+    },
+    {
+      "darkstore_id": "BLINKIT-35076",
+      "brand": "Blinkit",
+      "source_id": "35076",
+      "lat": 19.170771220984548,
+      "lng": 72.94324670085363,
+      "label": null,
+      "accuracy_m": 42
+    },
+    {
+      "darkstore_id": "BLINKIT-40439",
+      "brand": "Blinkit",
+      "source_id": "40439",
+      "lat": 19.180751458138698,
+      "lng": 72.99519500314949,
+      "label": null,
+      "accuracy_m": 13
+    },
+    {
+      "darkstore_id": "BLINKIT-38964",
+      "brand": "Blinkit",
+      "source_id": "38964",
+      "lat": 19.192912499820338,
+      "lng": 72.96695171025858,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-38274",
+      "brand": "Blinkit",
+      "source_id": "38274",
+      "lat": 19.180279844771828,
+      "lng": 73.08601806880681,
+      "label": null,
+      "accuracy_m": 5
+    },
+    {
+      "darkstore_id": "BLINKIT-41789",
+      "brand": "Blinkit",
+      "source_id": "41789",
+      "lat": 19.1842393054258,
+      "lng": 72.85809039614286,
+      "label": null,
+      "accuracy_m": 50
+    },
+    {
+      "darkstore_id": "BLINKIT-35020",
+      "brand": "Blinkit",
+      "source_id": "35020",
+      "lat": 19.191470710384475,
+      "lng": 72.9598481287789,
+      "label": null,
+      "accuracy_m": 28
+    },
+    {
+      "darkstore_id": "BLINKIT-43043",
+      "brand": "Blinkit",
+      "source_id": "43043",
+      "lat": 19.188910523535753,
+      "lng": 72.838832,
+      "label": null,
+      "accuracy_m": 32
+    },
+    {
+      "darkstore_id": "BLINKIT-34532",
+      "brand": "Blinkit",
+      "source_id": "34532",
+      "lat": 19.206934045634206,
+      "lng": 73.09824337298738,
+      "label": null,
+      "accuracy_m": 37
+    },
+    {
+      "darkstore_id": "BLINKIT-39455",
+      "brand": "Blinkit",
+      "source_id": "39455",
+      "lat": 19.205420391304347,
+      "lng": 73.16055191352807,
+      "label": null,
+      "accuracy_m": 30
+    },
+    {
+      "darkstore_id": "BLINKIT-36728",
+      "brand": "Blinkit",
+      "source_id": "36728",
+      "lat": 19.19713796227093,
+      "lng": 72.81615476686044,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-43505",
+      "brand": "Blinkit",
+      "source_id": "43505",
+      "lat": 19.204440650017965,
+      "lng": 72.82696864242163,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-34784",
+      "brand": "Blinkit",
+      "source_id": "34784",
+      "lat": 19.21008502623069,
+      "lng": 72.86912745756945,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-45937",
+      "brand": "Blinkit",
+      "source_id": "45937",
+      "lat": 19.19793745921667,
+      "lng": 72.95543,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-42931",
+      "brand": "Blinkit",
+      "source_id": "42931",
+      "lat": 19.202703,
+      "lng": 72.999154,
+      "label": null,
+      "accuracy_m": 26
+    },
+    {
+      "darkstore_id": "BLINKIT-41737",
+      "brand": "Blinkit",
+      "source_id": "41737",
+      "lat": 19.205996587495505,
+      "lng": 73.1171418440407,
+      "label": null,
+      "accuracy_m": 31
+    },
+    {
+      "darkstore_id": "BLINKIT-36858",
+      "brand": "Blinkit",
+      "source_id": "36858",
+      "lat": 19.21329648868128,
+      "lng": 72.8430605217249,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34558",
+      "brand": "Blinkit",
+      "source_id": "34558",
+      "lat": 19.208128799496947,
+      "lng": 72.824257,
+      "label": null,
+      "accuracy_m": 37
+    },
+    {
+      "darkstore_id": "BLINKIT-44301",
+      "brand": "Blinkit",
+      "source_id": "44301",
+      "lat": 19.220033269134028,
+      "lng": 72.83792445300232,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-43435",
+      "brand": "Blinkit",
+      "source_id": "43435",
+      "lat": 19.219840685591087,
+      "lng": 72.87073740476372,
+      "label": null,
+      "accuracy_m": 27
+    },
+    {
+      "darkstore_id": "BLINKIT-39980",
+      "brand": "Blinkit",
+      "source_id": "39980",
+      "lat": 19.219256783327342,
+      "lng": 72.95833623123315,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-34286",
+      "brand": "Blinkit",
+      "source_id": "34286",
+      "lat": 19.223999866331297,
+      "lng": 73.12468543266023,
+      "label": null,
+      "accuracy_m": 39
+    },
+    {
+      "darkstore_id": "BLINKIT-44816",
+      "brand": "Blinkit",
+      "source_id": "44816",
+      "lat": 19.219041188645345,
+      "lng": 73.20020911316074,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-30930",
+      "brand": "Blinkit",
+      "source_id": "30930",
+      "lat": 19.22152841897233,
+      "lng": 72.84639930425688,
+      "label": null,
+      "accuracy_m": 31
+    },
+    {
+      "darkstore_id": "BLINKIT-41529",
+      "brand": "Blinkit",
+      "source_id": "41529",
+      "lat": 19.23719736579231,
+      "lng": 72.99559055354828,
+      "label": null,
+      "accuracy_m": 25
+    },
+    {
+      "darkstore_id": "BLINKIT-36263",
+      "brand": "Blinkit",
+      "source_id": "36263",
+      "lat": 19.23977102730866,
+      "lng": 72.97047596324065,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-37986",
+      "brand": "Blinkit",
+      "source_id": "37986",
+      "lat": 19.22624006108516,
+      "lng": 73.08377742100188,
+      "label": null,
+      "accuracy_m": 31
+    },
+    {
+      "darkstore_id": "BLINKIT-37810",
+      "brand": "Blinkit",
+      "source_id": "37810",
+      "lat": 19.240363912684153,
+      "lng": 73.15855884570763,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-33313",
+      "brand": "Blinkit",
+      "source_id": "33313",
+      "lat": 19.252750532159542,
+      "lng": 72.86512170335014,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-39298",
+      "brand": "Blinkit",
+      "source_id": "39298",
+      "lat": 19.24057950736615,
+      "lng": 72.84594169372737,
+      "label": null,
+      "accuracy_m": 41
+    },
+    {
+      "darkstore_id": "BLINKIT-36598",
+      "brand": "Blinkit",
+      "source_id": "36598",
+      "lat": 19.247986083003955,
+      "lng": 73.13910752697016,
+      "label": null,
+      "accuracy_m": 36
+    },
+    {
+      "darkstore_id": "BLINKIT-35664",
+      "brand": "Blinkit",
+      "source_id": "35664",
+      "lat": 19.25316933848365,
+      "lng": 72.85432659952365,
+      "label": null,
+      "accuracy_m": 42
+    },
+    {
+      "darkstore_id": "BLINKIT-34672",
+      "brand": "Blinkit",
+      "source_id": "34672",
+      "lat": 19.24992983507007,
+      "lng": 72.97438500215982,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-35026",
+      "brand": "Blinkit",
+      "source_id": "35026",
+      "lat": 19.26549307617679,
+      "lng": 72.96530422108869,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-36459",
+      "brand": "Blinkit",
+      "source_id": "36459",
+      "lat": 19.259743884656842,
+      "lng": 73.14264203705831,
+      "label": null,
+      "accuracy_m": 25
+    },
+    {
+      "darkstore_id": "BLINKIT-42999",
+      "brand": "Blinkit",
+      "source_id": "42999",
+      "lat": 19.263891990657566,
+      "lng": 73.12300661613884,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-39566",
+      "brand": "Blinkit",
+      "source_id": "39566",
+      "lat": 19.270391272008624,
+      "lng": 72.8808145173724,
+      "label": null,
+      "accuracy_m": 41
+    },
+    {
+      "darkstore_id": "BLINKIT-37032",
+      "brand": "Blinkit",
+      "source_id": "37032",
+      "lat": 19.275739623427956,
+      "lng": 72.86449311533713,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-35376",
+      "brand": "Blinkit",
+      "source_id": "35376",
+      "lat": 19.279490072583542,
+      "lng": 72.95543,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-39974",
+      "brand": "Blinkit",
+      "source_id": "39974",
+      "lat": 19.274029432267337,
+      "lng": 73.042879,
+      "label": null,
+      "accuracy_m": 3
+    },
+    {
+      "darkstore_id": "BLINKIT-43805",
+      "brand": "Blinkit",
+      "source_id": "43805",
+      "lat": 19.265940140136543,
+      "lng": 72.979102513134,
+      "label": null,
+      "accuracy_m": 36
+    },
+    {
+      "darkstore_id": "BLINKIT-44315",
+      "brand": "Blinkit",
+      "source_id": "44315",
+      "lat": 19.27887922098455,
+      "lng": 72.88512554728486,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-39982",
+      "brand": "Blinkit",
+      "source_id": "39982",
+      "lat": 19.297934800934243,
+      "lng": 73.21972716383961,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-44261",
+      "brand": "Blinkit",
+      "source_id": "44261",
+      "lat": 19.299268793029103,
+      "lng": 72.84343391448024,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-42164",
+      "brand": "Blinkit",
+      "source_id": "42164",
+      "lat": 19.314893824290333,
+      "lng": 72.8587794285179,
+      "label": null,
+      "accuracy_m": 48
+    },
+    {
+      "darkstore_id": "BLINKIT-42937",
+      "brand": "Blinkit",
+      "source_id": "42937",
+      "lat": 19.364865,
+      "lng": 72.80830610044302,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-37682",
+      "brand": "Blinkit",
+      "source_id": "37682",
+      "lat": 19.35980301652893,
+      "lng": 72.85173498170366,
+      "label": null,
+      "accuracy_m": 20
+    },
+    {
+      "darkstore_id": "BLINKIT-34282",
+      "brand": "Blinkit",
+      "source_id": "34282",
+      "lat": 19.387535190801295,
+      "lng": 72.82853286413126,
+      "label": null,
+      "accuracy_m": 38
+    },
+    {
+      "darkstore_id": "BLINKIT-39564",
+      "brand": "Blinkit",
+      "source_id": "39564",
+      "lat": 19.40318617139777,
+      "lng": 72.84729896492351,
+      "label": null,
+      "accuracy_m": 36
+    },
+    {
+      "darkstore_id": "BLINKIT-42304",
+      "brand": "Blinkit",
+      "source_id": "42304",
+      "lat": 19.420389984549047,
+      "lng": 72.81411110582896,
+      "label": null,
+      "accuracy_m": 1
+    },
+    {
+      "darkstore_id": "BLINKIT-34036",
+      "brand": "Blinkit",
+      "source_id": "34036",
+      "lat": 19.447387789435858,
+      "lng": 72.80258472471617,
+      "label": null,
+      "accuracy_m": 35
+    },
+    {
+      "darkstore_id": "BLINKIT-44309",
+      "brand": "Blinkit",
+      "source_id": "44309",
+      "lat": 19.4620236784046,
+      "lng": 72.80330640171053,
+      "label": null,
+      "accuracy_m": 30
+    },
+    {
+      "darkstore_id": "BLINKIT-36046",
+      "brand": "Blinkit",
+      "source_id": "36046",
+      "lat": 19.472104174991017,
+      "lng": 72.80598906377593,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-39372",
+      "brand": "Blinkit",
+      "source_id": "39372",
+      "lat": 19.693110128278835,
+      "lng": 72.7724935789254,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-36257",
+      "brand": "Blinkit",
+      "source_id": "36257",
+      "lat": 19.302008642112828,
+      "lng": 72.86940395331732,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-35018",
+      "brand": "Blinkit",
+      "source_id": "35018",
+      "lat": 19.414238798778296,
+      "lng": 72.82595715863114,
+      "label": null,
+      "accuracy_m": 37
+    },
+    {
+      "darkstore_id": "BLINKIT-36457",
+      "brand": "Blinkit",
+      "source_id": "36457",
+      "lat": 19.211517832554797,
+      "lng": 72.98288331863384,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-39100",
+      "brand": "Blinkit",
+      "source_id": "39100",
+      "lat": 19.445946,
+      "lng": 72.81613147029147,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-31547",
+      "brand": "Blinkit",
+      "source_id": "31547",
+      "lat": 19.102951693855555,
+      "lng": 72.99873095532573,
+      "label": null,
+      "accuracy_m": 46
+    },
+    {
+      "darkstore_id": "BLINKIT-33722",
+      "brand": "Blinkit",
+      "source_id": "33722",
+      "lat": 19.072244607977005,
+      "lng": 72.86719588201208,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-35566",
+      "brand": "Blinkit",
+      "source_id": "35566",
+      "lat": 19.107151298598637,
+      "lng": 72.90169193927336,
+      "label": null,
+      "accuracy_m": 44
+    },
+    {
+      "darkstore_id": "BLINKIT-34778",
+      "brand": "Blinkit",
+      "source_id": "34778",
+      "lat": 19.174476754581388,
+      "lng": 73.23992159903925,
+      "label": null,
+      "accuracy_m": 29
+    },
+    {
+      "darkstore_id": "BLINKIT-36269",
+      "brand": "Blinkit",
+      "source_id": "36269",
+      "lat": 19.15416013905857,
+      "lng": 72.84391488434628,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-38524",
+      "brand": "Blinkit",
+      "source_id": "38524",
+      "lat": 19.154319743442326,
+      "lng": 72.88770543676146,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-34492",
+      "brand": "Blinkit",
+      "source_id": "34492",
+      "lat": 19.19022673625584,
+      "lng": 72.84161531232797,
+      "label": null,
+      "accuracy_m": 80
+    },
+    {
+      "darkstore_id": "BLINKIT-35640",
+      "brand": "Blinkit",
+      "source_id": "35640",
+      "lat": 19.22616819619116,
+      "lng": 72.8601038110284,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-33628",
+      "brand": "Blinkit",
+      "source_id": "33628",
+      "lat": 19.281008218469278,
+      "lng": 72.87692668257054,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-41058",
+      "brand": "Blinkit",
+      "source_id": "41058",
+      "lat": 19.28828004743083,
+      "lng": 72.86463084890174,
+      "label": null,
+      "accuracy_m": 0
+    },
+    {
+      "darkstore_id": "BLINKIT-43053",
+      "brand": "Blinkit",
+      "source_id": "43053",
+      "lat": 19.16272235285663,
+      "lng": 72.8413874600015,
+      "label": null,
+      "accuracy_m": 21
+    },
+    {
+      "darkstore_id": "ZEPTO-973a6df0-7634-4291-be0d-cd48a816516b",
+      "brand": "Zepto",
+      "source_id": "973a6df0-7634-4291-be0d-cd48a816516b",
+      "lat": 19.042160158844943,
+      "lng": 72.84312361106556,
+      "label": "MUM-Mahim",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-c2279e92-0a29-4470-861e-28a8798e031f",
+      "brand": "Zepto",
+      "source_id": "c2279e92-0a29-4470-861e-28a8798e031f",
+      "lat": 18.99228241814113,
+      "lng": 72.84805584890945,
+      "label": "Mum-Parel",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-884a853d-1386-4114-a4eb-d60cc898406f",
+      "brand": "Zepto",
+      "source_id": "884a853d-1386-4114-a4eb-d60cc898406f",
+      "lat": 19.1499223,
+      "lng": 73.0439121,
+      "label": "MUM-Shilphata",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-e92b6e46-2f9f-46b5-99ab-56d2db0a90a6",
+      "brand": "Zepto",
+      "source_id": "e92b6e46-2f9f-46b5-99ab-56d2db0a90a6",
+      "lat": 19.070581,
+      "lng": 73.098137,
+      "label": "MUM-Taloja",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-84e7185d-375b-4386-ad42-ae55139e9e0f",
+      "brand": "Zepto",
+      "source_id": "84e7185d-375b-4386-ad42-ae55139e9e0f",
+      "lat": 19.4209807,
+      "lng": 72.8187571,
+      "label": "MUM-Sainath Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-d50a3a1a-4ab0-4a0e-b87d-e032776daff9",
+      "brand": "Zepto",
+      "source_id": "d50a3a1a-4ab0-4a0e-b87d-e032776daff9",
+      "lat": 19.20472507,
+      "lng": 72.82723531,
+      "label": "MUM-Kandivali West New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-3b579acc-ff7e-4e12-8b96-8e144cff0aa7",
+      "brand": "Zepto",
+      "source_id": "3b579acc-ff7e-4e12-8b96-8e144cff0aa7",
+      "lat": 18.957252469614385,
+      "lng": 72.81948612136898,
+      "label": "MUM-Girgaon",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-edf1aca4-600d-45b6-b7f8-8d83157bb84f",
+      "brand": "Zepto",
+      "source_id": "edf1aca4-600d-45b6-b7f8-8d83157bb84f",
+      "lat": 19.19617470535646,
+      "lng": 72.94593366861521,
+      "label": "MUM-WAGHLE ESTATE",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ea69a325-0bcd-41d5-84cd-fb1863043812",
+      "brand": "Zepto",
+      "source_id": "ea69a325-0bcd-41d5-84cd-fb1863043812",
+      "lat": 19.452023,
+      "lng": 72.803967,
+      "label": "MUM-Yashwant Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-97a25366-1a8e-4834-9d57-a976e76af3dc",
+      "brand": "Zepto",
+      "source_id": "97a25366-1a8e-4834-9d57-a976e76af3dc",
+      "lat": 19.40993,
+      "lng": 72.83361,
+      "label": "MUM-Nalasopara",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-f9e3aef6-a8b9-4bb4-9177-a7ca316dfd71",
+      "brand": "Zepto",
+      "source_id": "f9e3aef6-a8b9-4bb4-9177-a7ca316dfd71",
+      "lat": 19.10068894,
+      "lng": 72.85325786,
+      "label": "MUM-Park Road",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-684a75ae-c944-480c-a64f-76a1a9cfa393",
+      "brand": "Zepto",
+      "source_id": "684a75ae-c944-480c-a64f-76a1a9cfa393",
+      "lat": 19.05860442,
+      "lng": 72.87954559,
+      "label": "MUM-Nehru Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-9ab4aaf2-f0b5-477c-b633-b3a555b0db42",
+      "brand": "Zepto",
+      "source_id": "9ab4aaf2-f0b5-477c-b633-b3a555b0db42",
+      "lat": 19.05033,
+      "lng": 72.9095,
+      "label": "MUM-CHEMBUR NEW",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ab5b8567-c808-4008-8793-b83489a3c6fa",
+      "brand": "Zepto",
+      "source_id": "ab5b8567-c808-4008-8793-b83489a3c6fa",
+      "lat": 19.179661,
+      "lng": 72.865097,
+      "label": "MUM-Goregaon E Network New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-fab4fc54-b957-4a4b-9e1b-eb5642c9e224",
+      "brand": "Zepto",
+      "source_id": "fab4fc54-b957-4a4b-9e1b-eb5642c9e224",
+      "lat": 19.01505491,
+      "lng": 72.83806561,
+      "label": "MUM- Lower Parel Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-960c0c9b-3602-42c5-bea7-b9f8a737e68f",
+      "brand": "Zepto",
+      "source_id": "960c0c9b-3602-42c5-bea7-b9f8a737e68f",
+      "lat": 19.03297391,
+      "lng": 72.87819379,
+      "label": "MUM-Wadala New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-30cbdf99-c43b-4a4f-8754-7399625ce08c",
+      "brand": "Zepto",
+      "source_id": "30cbdf99-c43b-4a4f-8754-7399625ce08c",
+      "lat": 19.6928897,
+      "lng": 72.771077,
+      "label": "MUM-Palghar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2aea52a3-d15a-4e0c-b97d-4670bd600eaf",
+      "brand": "Zepto",
+      "source_id": "2aea52a3-d15a-4e0c-b97d-4670bd600eaf",
+      "lat": 19.021017678180517,
+      "lng": 73.1012720067633,
+      "label": "MUM-Kamothe",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-551d5b20-6c19-465c-aaf8-0624166cbf93",
+      "brand": "Zepto",
+      "source_id": "551d5b20-6c19-465c-aaf8-0624166cbf93",
+      "lat": 19.22356982,
+      "lng": 72.85172035,
+      "label": "MUM-Borivali West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-8988d40f-12d3-42d5-9a8e-243712f8e37f",
+      "brand": "Zepto",
+      "source_id": "8988d40f-12d3-42d5-9a8e-243712f8e37f",
+      "lat": 19.12824417123806,
+      "lng": 72.93787759387904,
+      "label": "MUM-Vikhroli East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-66343bcf-0c12-4c87-b3b8-5e582e518ca7",
+      "brand": "Zepto",
+      "source_id": "66343bcf-0c12-4c87-b3b8-5e582e518ca7",
+      "lat": 19.085756569679944,
+      "lng": 72.99873718935925,
+      "label": "MUM-Vashi New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-c221bd15-b6c3-407e-a195-7f714e91db4c",
+      "brand": "Zepto",
+      "source_id": "c221bd15-b6c3-407e-a195-7f714e91db4c",
+      "lat": 19.01166619373261,
+      "lng": 73.02365402389766,
+      "label": "MUM-Seawoods",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-48018697-39cd-458a-a2dc-b6ac22e6b5c0",
+      "brand": "Zepto",
+      "source_id": "48018697-39cd-458a-a2dc-b6ac22e6b5c0",
+      "lat": 19.067859321020833,
+      "lng": 72.89862229585934,
+      "label": "MUM-Tilak Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-a0cf8634-2b62-4ead-8cd7-5ee6c5d11192",
+      "brand": "Zepto",
+      "source_id": "a0cf8634-2b62-4ead-8cd7-5ee6c5d11192",
+      "lat": 19.086253298553697,
+      "lng": 72.90183329744956,
+      "label": "MUM-GHATKOPAR WEST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-5116a0c5-42bc-487c-ac82-37af432606b0",
+      "brand": "Zepto",
+      "source_id": "5116a0c5-42bc-487c-ac82-37af432606b0",
+      "lat": 19.109309,
+      "lng": 73.009048,
+      "label": "MUM-KOPARKHAIRNE SECTOR 4A",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-52278321-e20a-4a88-b24c-613fafa720e0",
+      "brand": "Zepto",
+      "source_id": "52278321-e20a-4a88-b24c-613fafa720e0",
+      "lat": 19.225634,
+      "lng": 73.165896,
+      "label": "MUM-Ulhas Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2d89c87c-884c-41c3-89bb-12f9dcddc03f",
+      "brand": "Zepto",
+      "source_id": "2d89c87c-884c-41c3-89bb-12f9dcddc03f",
+      "lat": 19.039497699869628,
+      "lng": 73.0677381108301,
+      "label": "MUM-Kharghar New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-b8f93707-6d8d-4c31-8b58-627f09ba83cf",
+      "brand": "Zepto",
+      "source_id": "b8f93707-6d8d-4c31-8b58-627f09ba83cf",
+      "lat": 19.24075,
+      "lng": 72.8359167,
+      "label": "MUM-MHB Colony",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ae984dc5-d33f-49cd-914c-d95d51f9e0ca",
+      "brand": "Zepto",
+      "source_id": "ae984dc5-d33f-49cd-914c-d95d51f9e0ca",
+      "lat": 19.118582,
+      "lng": 72.992032,
+      "label": "MUM-Koparkhairne New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-7e376b5b-070a-4df3-9d78-125c12bb0745",
+      "brand": "Zepto",
+      "source_id": "7e376b5b-070a-4df3-9d78-125c12bb0745",
+      "lat": 19.164090057841918,
+      "lng": 73.11630978163831,
+      "label": "MUM-Palava Phase 2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-f48e88cb-0bbb-4ce1-9ce3-8005cc76c1e6",
+      "brand": "Zepto",
+      "source_id": "f48e88cb-0bbb-4ce1-9ce3-8005cc76c1e6",
+      "lat": 18.992952,
+      "lng": 72.82207664,
+      "label": "MUM-Worli",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-8eec86a7-817c-4719-b317-7e2118611b1e",
+      "brand": "Zepto",
+      "source_id": "8eec86a7-817c-4719-b317-7e2118611b1e",
+      "lat": 19.28087098763743,
+      "lng": 72.87677472690024,
+      "label": "MUM-MIRA ROAD NEW",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-d390ee2b-1c8f-4236-9c8b-b60173fd330a",
+      "brand": "Zepto",
+      "source_id": "d390ee2b-1c8f-4236-9c8b-b60173fd330a",
+      "lat": 19.18963269,
+      "lng": 72.83888913,
+      "label": "MUM-Malad Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-fe7c8d05-02c0-4358-a794-1d5f862d74e8",
+      "brand": "Zepto",
+      "source_id": "fe7c8d05-02c0-4358-a794-1d5f862d74e8",
+      "lat": 19.163821031630718,
+      "lng": 73.07617957680532,
+      "label": "MUM-Palava City",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-178dbe40-5ad9-4ddf-99ec-18192cb71db7",
+      "brand": "Zepto",
+      "source_id": "178dbe40-5ad9-4ddf-99ec-18192cb71db7",
+      "lat": 19.16459082984763,
+      "lng": 72.99547915339458,
+      "label": "MUM-Airoli",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-0b45bb12-e3bd-415b-b298-ee97db10a222",
+      "brand": "Zepto",
+      "source_id": "0b45bb12-e3bd-415b-b298-ee97db10a222",
+      "lat": 19.46566,
+      "lng": 72.80345,
+      "label": "MUM-Virar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-10a970cf-668a-4633-9641-bd1e37fba249",
+      "brand": "Zepto",
+      "source_id": "10a970cf-668a-4633-9641-bd1e37fba249",
+      "lat": 18.96591558271774,
+      "lng": 73.02217593239014,
+      "label": "MUM-Ulwe",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-250d0a67-ee4b-4cdd-ac75-0c5e65c25ee9",
+      "brand": "Zepto",
+      "source_id": "250d0a67-ee4b-4cdd-ac75-0c5e65c25ee9",
+      "lat": 19.11564642,
+      "lng": 72.88302819,
+      "label": "MUM-Marol Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-cc72f206-e146-43c5-a01b-56ddc8d11464",
+      "brand": "Zepto",
+      "source_id": "cc72f206-e146-43c5-a01b-56ddc8d11464",
+      "lat": 19.086709685493346,
+      "lng": 72.8361652951062,
+      "label": "MUM-SANTACRUZ",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-751c003c-bbe4-453d-ae3d-404380528149",
+      "brand": "Zepto",
+      "source_id": "751c003c-bbe4-453d-ae3d-404380528149",
+      "lat": 19.1183474,
+      "lng": 72.9050423,
+      "label": "Powai",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-fdc84bec-ec86-4b5d-b18b-84daca52c609",
+      "brand": "Zepto",
+      "source_id": "fdc84bec-ec86-4b5d-b18b-84daca52c609",
+      "lat": 19.199237313907336,
+      "lng": 73.19936989586273,
+      "label": "MUM-Ambernath",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-b54c01f1-4f46-47d6-a3e7-bd040d3e8548",
+      "brand": "Zepto",
+      "source_id": "b54c01f1-4f46-47d6-a3e7-bd040d3e8548",
+      "lat": 19.208603,
+      "lng": 73.196536,
+      "label": "MUM-New Balaji Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-102af115-4cad-419f-9bd5-567159eefc5c",
+      "brand": "Zepto",
+      "source_id": "102af115-4cad-419f-9bd5-567159eefc5c",
+      "lat": 19.202021856200744,
+      "lng": 73.10257090827216,
+      "label": "MUM-DOMBIVALI (W) Network 1",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-44cc43cf-500a-44a1-967f-36164e30d124",
+      "brand": "Zepto",
+      "source_id": "44cc43cf-500a-44a1-967f-36164e30d124",
+      "lat": 19.222392943715807,
+      "lng": 73.1218402991264,
+      "label": "MUM-Kalyan East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-fec59a85-00e2-4551-a354-869500f18e23",
+      "brand": "Zepto",
+      "source_id": "fec59a85-00e2-4551-a354-869500f18e23",
+      "lat": 19.079023145549385,
+      "lng": 73.0156047372779,
+      "label": "MUM-Vashi Network 2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-9b1181f5-a8d1-4009-ad89-e1a9696a4cfb",
+      "brand": "Zepto",
+      "source_id": "9b1181f5-a8d1-4009-ad89-e1a9696a4cfb",
+      "lat": 19.113939,
+      "lng": 72.89901,
+      "label": "MUM-Chandivali",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-743eb98c-c506-4a2c-b9d4-ee218bb5b202",
+      "brand": "Zepto",
+      "source_id": "743eb98c-c506-4a2c-b9d4-ee218bb5b202",
+      "lat": 18.963986,
+      "lng": 72.840103,
+      "label": "MUM-Parel Network 2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-81822dd8-20a3-4da0-b460-671c9d1f6d27",
+      "brand": "Zepto",
+      "source_id": "81822dd8-20a3-4da0-b460-671c9d1f6d27",
+      "lat": 18.951892658201917,
+      "lng": 72.79484351852422,
+      "label": "MUM-Malabar Hill",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-b099eada-6069-4faf-91fb-8faa600884c3",
+      "brand": "Zepto",
+      "source_id": "b099eada-6069-4faf-91fb-8faa600884c3",
+      "lat": 19.7945851,
+      "lng": 72.753159,
+      "label": "MUM-Boisar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-291264cf-55b8-4ae3-93b2-cb23fd795054",
+      "brand": "Zepto",
+      "source_id": "291264cf-55b8-4ae3-93b2-cb23fd795054",
+      "lat": 18.99893579254381,
+      "lng": 73.11147995473613,
+      "label": "MUM-Panvel New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-5f5e8200-1796-4df9-9da6-3c80b0e3c6ce",
+      "brand": "Zepto",
+      "source_id": "5f5e8200-1796-4df9-9da6-3c80b0e3c6ce",
+      "lat": 19.1614372,
+      "lng": 72.9367809,
+      "label": "MUM-Bhandup New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-4d6a1ca0-2dde-48ae-9524-d0a2bf803f7c",
+      "brand": "Zepto",
+      "source_id": "4d6a1ca0-2dde-48ae-9524-d0a2bf803f7c",
+      "lat": 19.1885767,
+      "lng": 73.0941626,
+      "label": "MUM-Runwal Garden",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-57d17930-01e0-4657-a792-57a1b7edf762",
+      "brand": "Zepto",
+      "source_id": "57d17930-01e0-4657-a792-57a1b7edf762",
+      "lat": 19.155345,
+      "lng": 73.23874,
+      "label": "MUM-Badlapur East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-662012a6-9b5c-4471-8051-f83675b0d84c",
+      "brand": "Zepto",
+      "source_id": "662012a6-9b5c-4471-8051-f83675b0d84c",
+      "lat": 19.1453923,
+      "lng": 72.932539,
+      "label": "Mum-Bhandup network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-cf7f18ae-84f3-429a-a19d-f35f08e97c58",
+      "brand": "Zepto",
+      "source_id": "cf7f18ae-84f3-429a-a19d-f35f08e97c58",
+      "lat": 19.27645289501628,
+      "lng": 72.95811157114244,
+      "label": "MUM-Bhayendarpada",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-52917883-e475-4632-9fa3-9c99ba0f4b78",
+      "brand": "Zepto",
+      "source_id": "52917883-e475-4632-9fa3-9c99ba0f4b78",
+      "lat": 19.034275186412394,
+      "lng": 73.0290366887755,
+      "label": "MUM-Nerul",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-7fda3ccf-78cb-4aa8-a910-b1046fd0baf0",
+      "brand": "Zepto",
+      "source_id": "7fda3ccf-78cb-4aa8-a910-b1046fd0baf0",
+      "lat": 19.209924280617624,
+      "lng": 72.82369506593042,
+      "label": "MUM-Charkop",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-51c21317-e191-44cc-8af2-9a25f9146b8c",
+      "brand": "Zepto",
+      "source_id": "51c21317-e191-44cc-8af2-9a25f9146b8c",
+      "lat": 19.249464668378334,
+      "lng": 72.97454663690698,
+      "label": "MUM-WAGHBIL NEW",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-50cf7835-361c-4c3f-822a-9fc9be0d2d33",
+      "brand": "Zepto",
+      "source_id": "50cf7835-361c-4c3f-822a-9fc9be0d2d33",
+      "lat": 19.165236883355483,
+      "lng": 72.96329865457429,
+      "label": "MUM-Mulund East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2c911eaa-a276-47bc-92d8-447d166f2dfa",
+      "brand": "Zepto",
+      "source_id": "2c911eaa-a276-47bc-92d8-447d166f2dfa",
+      "lat": 19.220213,
+      "lng": 72.986282,
+      "label": "MUM-MAJIWADA",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-13d9641e-8c4f-4bca-b2e9-a1f6ceaa55dd",
+      "brand": "Zepto",
+      "source_id": "13d9641e-8c4f-4bca-b2e9-a1f6ceaa55dd",
+      "lat": 19.110294,
+      "lng": 72.8867926,
+      "label": "MUM-Marol Network-2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-50be453c-91e9-4a62-913c-3d6add84eb57",
+      "brand": "Zepto",
+      "source_id": "50be453c-91e9-4a62-913c-3d6add84eb57",
+      "lat": 19.108816146850586,
+      "lng": 72.88048553466797,
+      "label": "Marol",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-9afa54f1-78a4-4ce7-a632-be8e99531cb0",
+      "brand": "Zepto",
+      "source_id": "9afa54f1-78a4-4ce7-a632-be8e99531cb0",
+      "lat": 19.253856205632722,
+      "lng": 72.86191728375213,
+      "label": "MUM-BORIVALI",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ab94c840-ae17-491f-95b5-b32bf84ca808",
+      "brand": "Zepto",
+      "source_id": "ab94c840-ae17-491f-95b5-b32bf84ca808",
+      "lat": 19.1363314,
+      "lng": 72.8500343,
+      "label": "MUM-Jogeshwari East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2e7ec440-fd1b-441e-90ee-9c8611648bb6",
+      "brand": "Zepto",
+      "source_id": "2e7ec440-fd1b-441e-90ee-9c8611648bb6",
+      "lat": 19.17103330161974,
+      "lng": 72.94283679735065,
+      "label": "MUM-Bhandup Network-2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-3583fadc-1d44-42ff-b09d-68d09b0aec89",
+      "brand": "Zepto",
+      "source_id": "3583fadc-1d44-42ff-b09d-68d09b0aec89",
+      "lat": 19.422692,
+      "lng": 72.807379,
+      "label": "MUM-Nalasopara West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-80b12cfb-d607-43e3-bf17-6b2f8c854e40",
+      "brand": "Zepto",
+      "source_id": "80b12cfb-d607-43e3-bf17-6b2f8c854e40",
+      "lat": 19.25380721444408,
+      "lng": 73.13864694447147,
+      "label": "MUM-Kalyan",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-87980e31-e60f-409d-bc05-e5a0e2bc90d5",
+      "brand": "Zepto",
+      "source_id": "87980e31-e60f-409d-bc05-e5a0e2bc90d5",
+      "lat": 19.116736141706856,
+      "lng": 72.85845223477627,
+      "label": "MUM-Chakala",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ec68621c-2e28-40d5-8fe7-fa38ba0e3692",
+      "brand": "Zepto",
+      "source_id": "ec68621c-2e28-40d5-8fe7-fa38ba0e3692",
+      "lat": 19.25822837,
+      "lng": 73.12955028,
+      "label": "MUM-Veer savarkar marg",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-0dee4754-034b-43ec-bcab-2664340690dd",
+      "brand": "Zepto",
+      "source_id": "0dee4754-034b-43ec-bcab-2664340690dd",
+      "lat": 19.21659162329426,
+      "lng": 72.97574210186052,
+      "label": "MUM-KOTHARI COMPOUND Network 1",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-1b11ac6b-6de6-411b-80bf-a72874a80c51",
+      "brand": "Zepto",
+      "source_id": "1b11ac6b-6de6-411b-80bf-a72874a80c51",
+      "lat": 19.299900811485163,
+      "lng": 72.8552735582004,
+      "label": "MUM-Bhayandar New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-56290154-dc98-4aed-bc38-d4dc13f4bda3",
+      "brand": "Zepto",
+      "source_id": "56290154-dc98-4aed-bc38-d4dc13f4bda3",
+      "lat": 19.052412,
+      "lng": 72.90155,
+      "label": "MUM-Diamond garden",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-9a639073-d72a-4bf1-8bda-bc2840c817ef",
+      "brand": "Zepto",
+      "source_id": "9a639073-d72a-4bf1-8bda-bc2840c817ef",
+      "lat": 19.19841478,
+      "lng": 72.97405999,
+      "label": "MUM-Naupada",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-8c75d846-b50e-44c1-82d2-01bc39ad1ab3",
+      "brand": "Zepto",
+      "source_id": "8c75d846-b50e-44c1-82d2-01bc39ad1ab3",
+      "lat": 19.242898,
+      "lng": 73.154882,
+      "label": "MUM-Shahad",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-01185b5e-b794-4cfb-99c9-625397e548ac",
+      "brand": "Zepto",
+      "source_id": "01185b5e-b794-4cfb-99c9-625397e548ac",
+      "lat": 19.219176,
+      "lng": 72.954332,
+      "label": "MUM-Shivai Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-0d591e22-ea1d-467e-8600-ede8e8b4937a",
+      "brand": "Zepto",
+      "source_id": "0d591e22-ea1d-467e-8600-ede8e8b4937a",
+      "lat": 19.054844,
+      "lng": 72.828225,
+      "label": "MUM-Hill Road Bandra",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-0ef81b30-ea84-46ec-98b0-6f3894d1ca1d",
+      "brand": "Zepto",
+      "source_id": "0ef81b30-ea84-46ec-98b0-6f3894d1ca1d",
+      "lat": 19.0177779,
+      "lng": 73.0452194,
+      "label": "MUM-Belapur New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-238a227d-697c-4fa9-a4f5-4fd064760098",
+      "brand": "Zepto",
+      "source_id": "238a227d-697c-4fa9-a4f5-4fd064760098",
+      "lat": 19.2138889,
+      "lng": 72.8685556,
+      "label": "MUM-Thakur Village",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-f4877d26-05ba-4844-8609-1de598d206a5",
+      "brand": "Zepto",
+      "source_id": "f4877d26-05ba-4844-8609-1de598d206a5",
+      "lat": 19.228714,
+      "lng": 72.9858148,
+      "label": "MUM-Waghbil Network-3",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-a20f91f9-3e2c-48fd-a720-a6bf6685a6fe",
+      "brand": "Zepto",
+      "source_id": "a20f91f9-3e2c-48fd-a720-a6bf6685a6fe",
+      "lat": 19.1723881,
+      "lng": 72.8484384,
+      "label": "MUM-MALAD",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-769200e9-30cc-47a2-81d4-58904ed953cc",
+      "brand": "Zepto",
+      "source_id": "769200e9-30cc-47a2-81d4-58904ed953cc",
+      "lat": 19.10486962,
+      "lng": 72.83888637,
+      "label": "MUM-Vile parle",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2ed65df1-196d-4877-93dd-cc1ae94fe3c7",
+      "brand": "Zepto",
+      "source_id": "2ed65df1-196d-4877-93dd-cc1ae94fe3c7",
+      "lat": 19.270811,
+      "lng": 72.88152621,
+      "label": "MUM-Mahajan Wadi",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-bc2668de-4e8e-4ffb-a2c9-91bf4a5dd846",
+      "brand": "Zepto",
+      "source_id": "bc2668de-4e8e-4ffb-a2c9-91bf4a5dd846",
+      "lat": 19.236701298031644,
+      "lng": 72.96898782704861,
+      "label": "MUM-KOTHARI COMPOUND NEW",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-71ca681c-6ee4-467d-9d0a-8d761ce8400f",
+      "brand": "Zepto",
+      "source_id": "71ca681c-6ee4-467d-9d0a-8d761ce8400f",
+      "lat": 19.0125566,
+      "lng": 72.8498979,
+      "label": "MUM-DADAR EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-460836cf-9dbb-49e3-b460-ef7fecdb7b13",
+      "brand": "Zepto",
+      "source_id": "460836cf-9dbb-49e3-b460-ef7fecdb7b13",
+      "lat": 19.096821,
+      "lng": 72.906784,
+      "label": "MUM-GHATKOPAR (W) NETWORK",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-48328608-7aaf-4857-b869-dae167d5f320",
+      "brand": "Zepto",
+      "source_id": "48328608-7aaf-4857-b869-dae167d5f320",
+      "lat": 19.07314,
+      "lng": 72.8682,
+      "label": "MUM-BKC Main",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-d431e3b5-0ba8-4823-8c4b-c4ea0909dbde",
+      "brand": "Zepto",
+      "source_id": "d431e3b5-0ba8-4823-8c4b-c4ea0909dbde",
+      "lat": 19.2259722,
+      "lng": 73.0838889,
+      "label": "MUM-Dombivali W New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-ebabbe83-2299-49ca-bbd8-edfd8dd03d60",
+      "brand": "Zepto",
+      "source_id": "ebabbe83-2299-49ca-bbd8-edfd8dd03d60",
+      "lat": 19.1756716,
+      "lng": 73.23923059,
+      "label": "MUM-Manjarli",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-a5d48a70-31d9-4c5f-b61f-daae4ab4e3b3",
+      "brand": "Zepto",
+      "source_id": "a5d48a70-31d9-4c5f-b61f-daae4ab4e3b3",
+      "lat": 19.1708709,
+      "lng": 72.8536443,
+      "label": "MUM-GOREGAON EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-b7c3c400-9275-4d75-afa3-62e0a6abfaac",
+      "brand": "Zepto",
+      "source_id": "b7c3c400-9275-4d75-afa3-62e0a6abfaac",
+      "lat": 19.200678347044096,
+      "lng": 73.00029163695812,
+      "label": "MUM-Kalwa",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-84745439-e529-4287-ae44-7b4a516da253",
+      "brand": "Zepto",
+      "source_id": "84745439-e529-4287-ae44-7b4a516da253",
+      "lat": 19.133895875780667,
+      "lng": 72.81392969519334,
+      "label": "MUM-Andheri West Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-a2af220f-8ad2-4869-abc7-62dc2476af8c",
+      "brand": "Zepto",
+      "source_id": "a2af220f-8ad2-4869-abc7-62dc2476af8c",
+      "lat": 18.967708481343923,
+      "lng": 72.81723141807478,
+      "label": "MUM-MUMBAI CENTRAL",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-c688da38-967b-4e15-862f-458ce8ea6821",
+      "brand": "Zepto",
+      "source_id": "c688da38-967b-4e15-862f-458ce8ea6821",
+      "lat": 19.149821533865055,
+      "lng": 72.84506827625304,
+      "label": "MUM-MALAD Network 2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-7333c09a-d46f-4c45-845d-360e2ed38c8e",
+      "brand": "Zepto",
+      "source_id": "7333c09a-d46f-4c45-845d-360e2ed38c8e",
+      "lat": 19.20052625606243,
+      "lng": 72.96042611642082,
+      "label": "MUM-Waghle Estate Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-37b900f0-25c0-448b-825a-74d62c8ceb41",
+      "brand": "Zepto",
+      "source_id": "37b900f0-25c0-448b-825a-74d62c8ceb41",
+      "lat": 19.13490847118454,
+      "lng": 72.83589318597221,
+      "label": "MUM-Andheri West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-d1fefd3d-d2ec-4213-917a-762416c3c23c",
+      "brand": "Zepto",
+      "source_id": "d1fefd3d-d2ec-4213-917a-762416c3c23c",
+      "lat": 19.07086602461259,
+      "lng": 73.07862762294509,
+      "label": "MUM-Kharghar Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-98ee4a78-f196-4bd1-9f00-1c27b126d231",
+      "brand": "Zepto",
+      "source_id": "98ee4a78-f196-4bd1-9f00-1c27b126d231",
+      "lat": 18.912487578476608,
+      "lng": 72.82453234800509,
+      "label": "MUM-Colaba",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-cbf9f315-5b12-45f1-af0e-9d374c17d261",
+      "brand": "Zepto",
+      "source_id": "cbf9f315-5b12-45f1-af0e-9d374c17d261",
+      "lat": 19.070569587288613,
+      "lng": 72.83969841814339,
+      "label": "MUM-Bandra",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-74aa405e-238e-4103-abb3-096bd7e6f553",
+      "brand": "Zepto",
+      "source_id": "74aa405e-238e-4103-abb3-096bd7e6f553",
+      "lat": 19.07071717,
+      "lng": 72.84924269,
+      "label": "MUM-BKC NW New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-39b60f5b-f69b-4664-8c1b-31dbb40c63d8",
+      "brand": "Zepto",
+      "source_id": "39b60f5b-f69b-4664-8c1b-31dbb40c63d8",
+      "lat": 19.14202196,
+      "lng": 72.83592903,
+      "label": "MUM-Andheri West Network 2 New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-8be2198a-76dd-42c7-a351-d1c2b80d459e",
+      "brand": "Zepto",
+      "source_id": "8be2198a-76dd-42c7-a351-d1c2b80d459e",
+      "lat": 19.1348674,
+      "lng": 72.8254786,
+      "label": "MUM-Lokhandwala",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-2050a7de-e13c-4947-bac7-7995d8c6e72d",
+      "brand": "Zepto",
+      "source_id": "2050a7de-e13c-4947-bac7-7995d8c6e72d",
+      "lat": 19.2404431,
+      "lng": 72.8670403,
+      "label": "MUM-Ashok Van",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-500bffb6-dfb4-468f-832f-3f305f575f1f",
+      "brand": "Zepto",
+      "source_id": "500bffb6-dfb4-468f-832f-3f305f575f1f",
+      "lat": 19.19405204107649,
+      "lng": 72.86572139337252,
+      "label": "MUM-KANDIVALI EAST Network",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-5f267ad5-446b-4a8b-86f0-df174ad545dd",
+      "brand": "Zepto",
+      "source_id": "5f267ad5-446b-4a8b-86f0-df174ad545dd",
+      "lat": 19.21321673,
+      "lng": 72.84813124,
+      "label": "MUM-Sai Baba Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-6ad459f8-927e-4a94-8a80-432502af0e8c",
+      "brand": "Zepto",
+      "source_id": "6ad459f8-927e-4a94-8a80-432502af0e8c",
+      "lat": 19.062533861974096,
+      "lng": 72.82817204025781,
+      "label": "MUM-Pali Hill",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-9231fcfd-2b2e-434d-bec7-0de208e0f10d",
+      "brand": "Zepto",
+      "source_id": "9231fcfd-2b2e-434d-bec7-0de208e0f10d",
+      "lat": 19.059000952554257,
+      "lng": 72.89085733059038,
+      "label": "MUM-KURLA EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-38ac846f-6255-4a51-8bad-bf50f3c23827",
+      "brand": "Zepto",
+      "source_id": "38ac846f-6255-4a51-8bad-bf50f3c23827",
+      "lat": 19.1160776,
+      "lng": 72.8918198,
+      "label": "MUM-Tunga Village",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-72655f9e-d9be-4b01-b2ac-62e61d2efd47",
+      "brand": "Zepto",
+      "source_id": "72655f9e-d9be-4b01-b2ac-62e61d2efd47",
+      "lat": 18.999098,
+      "lng": 72.830425,
+      "label": "MUM-LOWER PAREL NEW",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-64f822f2-6e64-484c-9e7c-e1b9319a2e71",
+      "brand": "Zepto",
+      "source_id": "64f822f2-6e64-484c-9e7c-e1b9319a2e71",
+      "lat": 19.12684805,
+      "lng": 72.83241475,
+      "label": "MUM-Four Bungalows",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-6ccfc337-2950-40f6-8bab-c7b5905c0f43",
+      "brand": "Zepto",
+      "source_id": "6ccfc337-2950-40f6-8bab-c7b5905c0f43",
+      "lat": 19.2471048,
+      "lng": 73.1775971,
+      "label": "MUM-Mharal",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-c6df9a09-1e44-4dae-ac93-4f9aab709a3a",
+      "brand": "Zepto",
+      "source_id": "c6df9a09-1e44-4dae-ac93-4f9aab709a3a",
+      "lat": 19.122382,
+      "lng": 72.86289,
+      "label": "MUM-Andheri East New",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-fac79573-63ae-4dd4-a7b5-bd8d8fa61ce2",
+      "brand": "Zepto",
+      "source_id": "fac79573-63ae-4dd4-a7b5-bd8d8fa61ce2",
+      "lat": 18.937693134906407,
+      "lng": 72.83331561285922,
+      "label": "MUM-Fort",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-4a54d5f5-0bd9-4b8f-b08a-120d8e7926d7",
+      "brand": "Zepto",
+      "source_id": "4a54d5f5-0bd9-4b8f-b08a-120d8e7926d7",
+      "lat": 19.08264127945045,
+      "lng": 72.87952775278666,
+      "label": "MUM-Kurla W",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-c8140214-bf94-42c0-8f7f-ea6767170196",
+      "brand": "Zepto",
+      "source_id": "c8140214-bf94-42c0-8f7f-ea6767170196",
+      "lat": 19.249041,
+      "lng": 72.983032,
+      "label": "MUM-Hiranandani Estate",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-e62b31c3-5bd4-49df-84cd-127ec549c830",
+      "brand": "Zepto",
+      "source_id": "e62b31c3-5bd4-49df-84cd-127ec549c830",
+      "lat": 19.015224,
+      "lng": 72.825203,
+      "label": "MUM-Prabhadevi",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-5feee4ae-dfd9-4484-b060-722c7802c642",
+      "brand": "Zepto",
+      "source_id": "5feee4ae-dfd9-4484-b060-722c7802c642",
+      "lat": 19.052389,
+      "lng": 73.075325,
+      "label": "MUM-Central Park",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-dae4ebff-33f8-425f-88c1-aae075ee7a52",
+      "brand": "Zepto",
+      "source_id": "dae4ebff-33f8-425f-88c1-aae075ee7a52",
+      "lat": 18.983898,
+      "lng": 73.029093,
+      "label": "MUM-Sector 20 Ulwe",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "ZEPTO-329deb14-183d-4581-90eb-8c40a5e91fd5",
+      "brand": "Zepto",
+      "source_id": "329deb14-183d-4581-90eb-8c40a5e91fd5",
+      "lat": 19.26571464312632,
+      "lng": 72.9678039974523,
+      "label": "MUM-KASARVADAVALI",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1383130",
+      "brand": "Swiggy Instamart",
+      "source_id": "1383130",
+      "lat": 18.936506,
+      "lng": 72.838211,
+      "label": "Dhobi Talao",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1396282",
+      "brand": "Swiggy Instamart",
+      "source_id": "1396282",
+      "lat": 18.969984,
+      "lng": 72.814278,
+      "label": "TARDEO POLICE STATION",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1396283",
+      "brand": "Swiggy Instamart",
+      "source_id": "1396283",
+      "lat": 18.975889,
+      "lng": 72.838389,
+      "label": "BYCULLA EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403038",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403038",
+      "lat": 18.763176,
+      "lng": 73.410858,
+      "label": "Lonavala",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1400977",
+      "brand": "Swiggy Instamart",
+      "source_id": "1400977",
+      "lat": 18.980835,
+      "lng": 73.113323,
+      "label": "Takka Naka",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402458",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402458",
+      "lat": 18.969516,
+      "lng": 73.023393,
+      "label": "Ulwe",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1398760",
+      "brand": "Swiggy Instamart",
+      "source_id": "1398760",
+      "lat": 19.014972,
+      "lng": 72.844694,
+      "label": "Marathi Patrakar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1381967",
+      "brand": "Swiggy Instamart",
+      "source_id": "1381967",
+      "lat": 19.0361932,
+      "lng": 72.8467828,
+      "label": "Mahim",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403211",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403211",
+      "lat": 18.998722,
+      "lng": 73.111639,
+      "label": "Vadale Lake - MP",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1401265",
+      "brand": "Swiggy Instamart",
+      "source_id": "1401265",
+      "lat": 19.017364,
+      "lng": 73.101226,
+      "label": "Kamothe",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1391897",
+      "brand": "Swiggy Instamart",
+      "source_id": "1391897",
+      "lat": 19.0588409,
+      "lng": 72.8907382,
+      "label": "Postal Colony Chembur",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1084119",
+      "brand": "Swiggy Instamart",
+      "source_id": "1084119",
+      "lat": 19.021601711005093,
+      "lng": 73.02830699134238,
+      "label": "Belapur",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1396295",
+      "brand": "Swiggy Instamart",
+      "source_id": "1396295",
+      "lat": 19.022056,
+      "lng": 72.86825,
+      "label": "SION EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403032",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403032",
+      "lat": 19.015339,
+      "lng": 73.042534,
+      "label": "Sec 11 Belapur",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403216",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403216",
+      "lat": 19.043961,
+      "lng": 73.098068,
+      "label": "RoadPali",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404757",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404757",
+      "lat": 19.039675,
+      "lng": 73.009544,
+      "label": "Nerul - MP",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1381500",
+      "brand": "Swiggy Instamart",
+      "source_id": "1381500",
+      "lat": 19.049923563348713,
+      "lng": 72.91657932289746,
+      "label": "Telecom Factory",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-969383",
+      "brand": "Swiggy Instamart",
+      "source_id": "969383",
+      "lat": 19.056184,
+      "lng": 72.833307,
+      "label": "Bandra West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1082435",
+      "brand": "Swiggy Instamart",
+      "source_id": "1082435",
+      "lat": 19.05184,
+      "lng": 73.081064,
+      "label": "Kharghar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402459",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402459",
+      "lat": 19.071998,
+      "lng": 73.095683,
+      "label": "Taloja Phase 2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404760",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404760",
+      "lat": 19.041431,
+      "lng": 73.071152,
+      "label": "Kharghar - MP",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1381966",
+      "brand": "Swiggy Instamart",
+      "source_id": "1381966",
+      "lat": 19.0662856,
+      "lng": 72.8918191,
+      "label": "INDIRA NAGAR",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1386846",
+      "brand": "Swiggy Instamart",
+      "source_id": "1386846",
+      "lat": 19.069468,
+      "lng": 73.074544,
+      "label": "Taloja Jail Road",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1190780",
+      "brand": "Swiggy Instamart",
+      "source_id": "1190780",
+      "lat": 19.0866481,
+      "lng": 72.8374707,
+      "label": "VILEPARLE",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1335483",
+      "brand": "Swiggy Instamart",
+      "source_id": "1335483",
+      "lat": 19.017979,
+      "lng": 73.012567,
+      "label": "SEAWOODS (NAVI MUMBAI)",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1295147",
+      "brand": "Swiggy Instamart",
+      "source_id": "1295147",
+      "lat": 19.1147357,
+      "lng": 72.8502962,
+      "label": "VILEPARLE EAST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1399809",
+      "brand": "Swiggy Instamart",
+      "source_id": "1399809",
+      "lat": 19.110389,
+      "lng": 72.887194,
+      "label": "Marol",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1397051",
+      "brand": "Swiggy Instamart",
+      "source_id": "1397051",
+      "lat": 19.104799,
+      "lng": 72.838066,
+      "label": "VILE PARLE",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1298955",
+      "brand": "Swiggy Instamart",
+      "source_id": "1298955",
+      "lat": 19.09506265121198,
+      "lng": 72.91765477568399,
+      "label": "RCITY MALL, GHATKOPAR WEST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-810366",
+      "brand": "Swiggy Instamart",
+      "source_id": "810366",
+      "lat": 19.1198744,
+      "lng": 72.861152,
+      "label": "Andheri East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1135720",
+      "brand": "Swiggy Instamart",
+      "source_id": "1135720",
+      "lat": 19.1188,
+      "lng": 72.9052,
+      "label": "POWAI2",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-810367",
+      "brand": "Swiggy Instamart",
+      "source_id": "810367",
+      "lat": 19.122327,
+      "lng": 72.926729,
+      "label": "VIKHROLI",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1385645",
+      "brand": "Swiggy Instamart",
+      "source_id": "1385645",
+      "lat": 19.112493,
+      "lng": 73.007007,
+      "label": "Ghansoli",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403842",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403842",
+      "lat": 19.165392,
+      "lng": 72.846725,
+      "label": "Relief Road",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1390224",
+      "brand": "Swiggy Instamart",
+      "source_id": "1390224",
+      "lat": 19.133278,
+      "lng": 72.813,
+      "label": "Model Colony Mumbai",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1392531",
+      "brand": "Swiggy Instamart",
+      "source_id": "1392531",
+      "lat": 19.000903,
+      "lng": 72.830223,
+      "label": "Lower parel",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1389632",
+      "brand": "Swiggy Instamart",
+      "source_id": "1389632",
+      "lat": 19.165497,
+      "lng": 72.996665,
+      "label": "Gaothan",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402784",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402784",
+      "lat": 19.155699,
+      "lng": 73.074898,
+      "label": "Nilaje Gaon",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1395728",
+      "brand": "Swiggy Instamart",
+      "source_id": "1395728",
+      "lat": 19.163778,
+      "lng": 73.076,
+      "label": "Katai Village",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-788745",
+      "brand": "Swiggy Instamart",
+      "source_id": "788745",
+      "lat": 19.158428,
+      "lng": 72.941495,
+      "label": "Bhandup",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402806",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402806",
+      "lat": 19.139512,
+      "lng": 72.928823,
+      "label": "Container Yard - MP",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1398452",
+      "brand": "Swiggy Instamart",
+      "source_id": "1398452",
+      "lat": 19.137528,
+      "lng": 72.833722,
+      "label": "Andheri West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1386534",
+      "brand": "Swiggy Instamart",
+      "source_id": "1386534",
+      "lat": 19.164153546055275,
+      "lng": 73.11658151956814,
+      "label": "Katai Pipeline Road",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402064",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402064",
+      "lat": 19.178824,
+      "lng": 72.874072,
+      "label": "Goregaon West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1230883",
+      "brand": "Swiggy Instamart",
+      "source_id": "1230883",
+      "lat": 19.173818,
+      "lng": 72.856488,
+      "label": "Oberoi Mall",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1278165",
+      "brand": "Swiggy Instamart",
+      "source_id": "1278165",
+      "lat": 19.170386,
+      "lng": 72.953872,
+      "label": "Mulund West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403692",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403692",
+      "lat": 19.159433,
+      "lng": 73.227699,
+      "label": "Badlapur",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402264",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402264",
+      "lat": 19.184767,
+      "lng": 72.948677,
+      "label": "Apex Mulund",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1401266",
+      "brand": "Swiggy Instamart",
+      "source_id": "1401266",
+      "lat": 19.188412,
+      "lng": 73.094688,
+      "label": "Runwal Garden",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-929911",
+      "brand": "Swiggy Instamart",
+      "source_id": "929911",
+      "lat": 19.1932313,
+      "lng": 72.956769,
+      "label": "YOJIT ESTATES",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1239162",
+      "brand": "Swiggy Instamart",
+      "source_id": "1239162",
+      "lat": 19.17681,
+      "lng": 72.83422,
+      "label": "Inorbit Mall Malad West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1238357",
+      "brand": "Swiggy Instamart",
+      "source_id": "1238357",
+      "lat": 19.207338,
+      "lng": 73.098347,
+      "label": "SAGARLI GAON",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1400231",
+      "brand": "Swiggy Instamart",
+      "source_id": "1400231",
+      "lat": 19.208417,
+      "lng": 72.825028,
+      "label": "Kandivali",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1382439",
+      "brand": "Swiggy Instamart",
+      "source_id": "1382439",
+      "lat": 19.20579,
+      "lng": 72.8741,
+      "label": "Thakur Village",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1388387",
+      "brand": "Swiggy Instamart",
+      "source_id": "1388387",
+      "lat": 19.226485,
+      "lng": 73.133177,
+      "label": "Kalyan East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1400553",
+      "brand": "Swiggy Instamart",
+      "source_id": "1400553",
+      "lat": 19.200708,
+      "lng": 72.999932,
+      "label": "Kalwa",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1237261",
+      "brand": "Swiggy Instamart",
+      "source_id": "1237261",
+      "lat": 19.231257,
+      "lng": 72.860731,
+      "label": "Borivali East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1336659",
+      "brand": "Swiggy Instamart",
+      "source_id": "1336659",
+      "lat": 19.228014620449333,
+      "lng": 72.97569589983753,
+      "label": "Thane West",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1400552",
+      "brand": "Swiggy Instamart",
+      "source_id": "1400552",
+      "lat": 19.225778,
+      "lng": 73.165472,
+      "label": "Uhlasnagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1399706",
+      "brand": "Swiggy Instamart",
+      "source_id": "1399706",
+      "lat": 19.226694,
+      "lng": 73.083389,
+      "label": "Devicha Pada",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1062418",
+      "brand": "Swiggy Instamart",
+      "source_id": "1062418",
+      "lat": 19.251583,
+      "lng": 72.858646,
+      "label": "DAHISAR WEST",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1390223",
+      "brand": "Swiggy Instamart",
+      "source_id": "1390223",
+      "lat": 19.25444,
+      "lng": 73.139913,
+      "label": "Chikan Ghar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404646",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404646",
+      "lat": 19.25011022355175,
+      "lng": 72.97407433867082,
+      "label": "Waghbil Naka",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1396296",
+      "brand": "Swiggy Instamart",
+      "source_id": "1396296",
+      "lat": 19.265951,
+      "lng": 72.965698,
+      "label": "HIRANANDANI MBC PARK",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403034",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403034",
+      "lat": 19.23263431168182,
+      "lng": 72.99378725856553,
+      "label": "Lodha Amara",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1388687",
+      "brand": "Swiggy Instamart",
+      "source_id": "1388687",
+      "lat": 19.300099,
+      "lng": 72.85513,
+      "label": "Bhayander",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1346590",
+      "brand": "Swiggy Instamart",
+      "source_id": "1346590",
+      "lat": 19.285109,
+      "lng": 72.876539,
+      "label": "MIRA HUBTOWN",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404642",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404642",
+      "lat": 19.280079,
+      "lng": 72.877907,
+      "label": "Mira Road - MP",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1314371",
+      "brand": "Swiggy Instamart",
+      "source_id": "1314371",
+      "lat": 19.384573,
+      "lng": 72.830382,
+      "label": "Vasai virar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1388686",
+      "brand": "Swiggy Instamart",
+      "source_id": "1388686",
+      "lat": 19.410025,
+      "lng": 72.830872,
+      "label": "Pragati Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1402063",
+      "brand": "Swiggy Instamart",
+      "source_id": "1402063",
+      "lat": 19.470556,
+      "lng": 72.808861,
+      "label": "Virar East",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403030",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403030",
+      "lat": 19.071075,
+      "lng": 72.864707,
+      "label": "Kalina",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1381643",
+      "brand": "Swiggy Instamart",
+      "source_id": "1381643",
+      "lat": 19.20830328701137,
+      "lng": 72.97739835634864,
+      "label": "Uthalsar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404876",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404876",
+      "lat": 19.424294,
+      "lng": 72.811562,
+      "label": "Virar Carshed",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1387703",
+      "brand": "Swiggy Instamart",
+      "source_id": "1387703",
+      "lat": 19.047268,
+      "lng": 72.90815,
+      "label": "RK Studios",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404907",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404907",
+      "lat": 18.970366,
+      "lng": 73.131569,
+      "label": "Marathon Nexzone",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404877",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404877",
+      "lat": 19.26767,
+      "lng": 72.878021,
+      "label": "AG Nagar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1381561",
+      "brand": "Swiggy Instamart",
+      "source_id": "1381561",
+      "lat": 19.276133871300335,
+      "lng": 72.96023834652637,
+      "label": "Hawaiian Village",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1398759",
+      "brand": "Swiggy Instamart",
+      "source_id": "1398759",
+      "lat": 19.1426207,
+      "lng": 72.9913945,
+      "label": "Millennium Avanish",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1113109",
+      "brand": "Swiggy Instamart",
+      "source_id": "1113109",
+      "lat": 19.0450204,
+      "lng": 72.8680399,
+      "label": "ANTOPEHILL",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404645",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404645",
+      "lat": 19.105726,
+      "lng": 72.851463,
+      "label": "Park Road",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404751",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404751",
+      "lat": 19.184643136684862,
+      "lng": 72.96753174650286,
+      "label": "Naupada",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1403051",
+      "brand": "Swiggy Instamart",
+      "source_id": "1403051",
+      "lat": 19.236029,
+      "lng": 72.837357,
+      "label": "Eksar",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404771",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404771",
+      "lat": 19.218496,
+      "lng": 72.953194,
+      "label": "Bethany Hospital",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1400554",
+      "brand": "Swiggy Instamart",
+      "source_id": "1400554",
+      "lat": 19.20534188565675,
+      "lng": 73.11580543611855,
+      "label": "Elymus",
+      "accuracy_m": null
+    },
+    {
+      "darkstore_id": "SWIGGYINSTAMART-1404681",
+      "brand": "Swiggy Instamart",
+      "source_id": "1404681",
+      "lat": 19.215929,
+      "lng": 72.976555,
+      "label": "Majiwada - MP",
+      "accuracy_m": null
+    }
+  ]
+}

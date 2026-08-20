@@ -9,6 +9,7 @@
  */
 import { qs, escapeHtml, fmtDate, refreshIcons, toast } from "./ui.js";
 import { VINTAGE_BUCKETS, yearsSince, vintageBucketFor } from "./vintage.js";
+import { haversineKm, round2, isLocatable, isCoarseTier } from "./geo.js";
 
 const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -17,9 +18,14 @@ const CENTER_FALLBACK = [19.22, 73.15]; // roughly the Thane–Raigad belt, used
 const CLOSED_COLOR = "var(--text-4)";
 const LOW_CONFIDENCE_COLOR = "var(--warn)";
 
+// Approximate each brand's own colour, for at-a-glance recognition on the
+// map — not a trademark reproduction, just distinguishable markers.
+const DARKSTORE_BRAND_COLORS = { Blinkit: "#f8cb46", Zepto: "#8025fb", "Swiggy Instamart": "#fc8019" };
+
 let map = null;
 let storesById = new Map();
 let proximityByStoreId = new Map();
+let darkstoresData = null; // public/data/darkstores.json, or null if it hasn't been fetched yet
 
 function resolveCssVar(varExpr) {
   // "var(--brand-teal)" -> the computed colour, so Leaflet (which wants a
@@ -133,7 +139,7 @@ function openStoreSheet(store) {
       ? `<span class="chip done"><span class="cdot"></span>Operational</span>`
       : `<span class="chip failed"><span class="cdot"></span>Closed ${store.closed ? fmtDate(store.closed) : ""}</span>`;
   const confChip = `<span class="chip ${store.geo_confidence === "low" ? "queued" : store.geo_confidence === "medium" ? "src-transcript" : "src-ai"}">${escapeHtml(store.geo_confidence)} confidence</span>`;
-  const isCoarseMatch = store.geocode_match_tier === "town" || store.geocode_match_tier === "town_base";
+  const isCoarseMatch = isCoarseTier(store.geocode_match_tier);
   const coarseChip = isCoarseMatch ? `<span class="chip queued">town-centroid pin</span>` : "";
 
   qs("#sheetMeta").innerHTML = `
@@ -208,6 +214,59 @@ function openStoreSheet(store) {
       }</p>
     </div>`;
 
+  // Deliberately a SEPARATE block from the risk score above, not folded
+  // into it — the composite score is reserved for the fund's own
+  // methodology once supplied (see scripts/fetch-darkstores.mjs), and this
+  // is third-party data on a different confidence footing (a March 2026
+  // snapshot, not Patel's own coordinates) that shouldn't quietly change
+  // an existing, already-explained number.
+  let darkstoreBlock = "";
+  if (darkstoresData?.darkstores?.length) {
+    if (!isLocatable(store)) {
+      darkstoreBlock = `
+    <div class="risk-block" data-kind="derived" style="margin-top:14px">
+      <div class="risk-block-head">
+        <span class="kind-pill kind-derived">derived</span>
+        <span class="risk-block-title">Quick-commerce dark stores nearby</span>
+      </div>
+      <p class="risk-sentence"><strong>Distance unavailable.</strong> This store isn't precisely located yet — a distance from a town-centroid pin would be fabricated precision.</p>
+    </div>`;
+    } else {
+      let nearestKm = Infinity;
+      let nearestBrand = null;
+      let within1km = 0;
+      for (const d of darkstoresData.darkstores) {
+        const km = haversineKm(store, d);
+        if (km < nearestKm) {
+          nearestKm = km;
+          nearestBrand = d.brand;
+        }
+        if (km <= 1) within1km++;
+      }
+      darkstoreBlock = `
+    <div class="risk-block" data-kind="derived" style="margin-top:14px">
+      <div class="risk-block-head">
+        <span class="kind-pill kind-derived">derived</span>
+        <span class="risk-block-title">Quick-commerce dark stores nearby</span>
+      </div>
+      <p class="risk-sentence">
+        Not part of the composite score above — a separate signal from third-party data, shown on its own footing.
+      </p>
+      <div class="risk-inputs">
+        <div class="risk-input">
+          <span class="ri-label">Nearest dark store</span>
+          <span class="ri-value">${round2(nearestKm)} km (${escapeHtml(nearestBrand)})</span>
+        </div>
+        <div class="risk-input">
+          <span class="ri-label">Dark stores within 1 km</span>
+          <span class="ri-value">${within1km} <span style="color:var(--text-4);font-weight:400">(of ${darkstoresData.darkstores.length} in the region)</span></span>
+        </div>
+      </div>
+      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. See the map's layer toggle for the full overlay. Not wired into the cannibalisation score above; that's reserved for the fund's own methodology.</p>
+    </div>`;
+    }
+  }
+
   qs("#sheetScroll").innerHTML = `
     <div style="padding: 4px 26px 26px">
       <table class="metric-table">
@@ -228,6 +287,7 @@ function openStoreSheet(store) {
           : ""
       }
       ${riskBlock}
+      ${darkstoreBlock}
     </div>
   `;
   qs("#sheetModal").classList.add("open");
@@ -283,7 +343,7 @@ function initLeafletMap(container, geocodedStores) {
     // back to a town-level centroid (geocode_match_tier) — a coarse match
     // is just as imprecise regardless of what geo_confidence says, since
     // several stores in the same town land on the literal same point.
-    const isCoarseMatch = store.geocode_match_tier === "town" || store.geocode_match_tier === "town_base";
+    const isCoarseMatch = isCoarseTier(store.geocode_match_tier);
     const isLowConfidence = store.geo_confidence === "low";
     const isUncertain = isCoarseMatch || isLowConfidence;
     const bucket = vintageBucketFor(store);
@@ -320,12 +380,54 @@ function initLeafletMap(container, geocodedStores) {
     bounds.push([store.lat, store.lng]);
   }
 
+  // Dark-store overlay added AFTER fitBounds/reset-view are set up from
+  // Patel's own 53 stores only — 352 extra points would otherwise pull the
+  // initial zoom out far past the network itself, and the reset button
+  // should always mean "back to my 53 stores," not "back to whatever's
+  // currently toggled on."
+  if (darkstoresData?.darkstores?.length) addDarkstoreLayers(map);
+
   if (bounds.length) {
     map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
     addResetViewControl(map, bounds);
   } else {
     map.setView(CENTER_FALLBACK, 10);
   }
+}
+
+/**
+ * Quick-commerce dark-store overlay (Blinkit / Zepto / Swiggy Instamart) —
+ * see scripts/fetch-darkstores.mjs for why this exists and its caveats
+ * (third-party data, March 2026 snapshot, not live). Off by default so the
+ * first thing anyone sees is Patel's own 53 stores; a Leaflet layer
+ * control makes each brand a one-click toggle.
+ */
+function addDarkstoreLayers(mapInstance) {
+  const byBrand = new Map();
+  for (const d of darkstoresData.darkstores) {
+    if (!byBrand.has(d.brand)) byBrand.set(d.brand, window.L.layerGroup());
+    const color = DARKSTORE_BRAND_COLORS[d.brand] || "#888";
+    const marker = window.L.circleMarker([d.lat, d.lng], {
+      radius: 4,
+      color: "#fff",
+      weight: 1,
+      fillColor: color,
+      fillOpacity: 0.85,
+    });
+    marker.bindPopup(
+      `<strong>${escapeHtml(d.brand)} dark store</strong>${d.label ? `<br>${escapeHtml(d.label)}` : ""}${
+        d.accuracy_m != null ? `<br><span style="color:var(--text-4)">±${d.accuracy_m}m</span>` : ""
+      }<br><span style="color:var(--text-4);font-size:11px">Third-party data, March 2026 snapshot — not live</span>`
+    );
+    marker.addTo(byBrand.get(d.brand));
+  }
+
+  const overlays = {};
+  for (const [brand, group] of byBrand) {
+    const count = darkstoresData.counts?.[brand]?.in_region ?? "?";
+    overlays[`<span style="color:${DARKSTORE_BRAND_COLORS[brand] || "#888"};font-weight:700">●</span> ${brand} (${count})`] = group;
+  }
+  window.L.control.layers(null, overlays, { collapsed: false, position: "topright" }).addTo(mapInstance);
 }
 
 /**
@@ -359,10 +461,18 @@ export function invalidateMapSize() {
 export async function initMap() {
   const container = qs("#mapContainer");
   try {
-    const [storesData, proximity] = await Promise.all([loadJson("./data/stores.json"), loadJson("./data/proximity.json")]);
+    const [storesData, proximity, darkstores] = await Promise.all([
+      loadJson("./data/stores.json"),
+      loadJson("./data/proximity.json"),
+      // Optional: darkstores.json only exists once someone has run
+      // scripts/fetch-darkstores.mjs. Missing it degrades gracefully —
+      // everything else on this view still works without it.
+      loadJson("./data/darkstores.json").catch(() => null),
+    ]);
     const stores = storesData.stores;
     storesById = new Map(stores.map((s) => [s.store_id, s]));
     proximityByStoreId = new Map((proximity.per_store || []).map((p) => [p.store_id, p]));
+    darkstoresData = darkstores;
 
     renderKpis(stores, proximity);
     renderLegend();

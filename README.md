@@ -66,6 +66,17 @@ the facts already established from the client's files (§9 especially).
   draft — the query is anchored to exclude a "food mart" false-positive
   found and fixed this round). Not yet joined into the map's precomputed
   risk score — the Screener picks it up live, the map doesn't yet.
+- **Quick-commerce dark-store overlay** (`public/data/darkstores.json`,
+  built by `scripts/fetch-darkstores.mjs`): live — 148 Blinkit + 118 Zepto +
+  86 Swiggy Instamart (352 total) in Patel's operating region, from a public
+  third-party source (`github.com/jatin-dot-py/darkstores`), toggleable
+  per-brand on the Network Map (off by default) plus a "nearest dark store"
+  stat on each store's detail sheet. This is the actual reason the fund
+  reviewing this dashboard has held off investing, per a call transcript —
+  the highest-value addition this round. Static March 2026 snapshot, not
+  live; deliberately NOT folded into the existing `overlap_risk` score,
+  which stays reserved for the fund's own scoring methodology once
+  supplied. See PATEL-HANDOFF.md §26.
 - **Getting the remaining store locations right — read this against the
   44/6/3 split above, not as a fourth bucket added to it.** The 18-row
   "Final short list for hand review" in `docs/OFFICIAL-STORES-VALIDATION.md`
