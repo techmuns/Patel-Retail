@@ -71,7 +71,7 @@ function renderRollingVsFixedNote(stores) {
   const in2024Plus = withDates.filter((s) => openedYear(s) >= 2024).length;
   const rollingRecent = withDates.filter((s) => yearsSince(s.opened) < 2).length;
   el.innerHTML = `
-    <div class="flag-card">
+    <div class="flag-card" data-kind="derived">
       <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
       <div>
         <span class="flag-title">Two different "under 2 years" numbers, on purpose</span>
@@ -238,7 +238,7 @@ function renderTownSaturation(stores) {
         <td>${list.length}</td>
         <td class="mono" style="font-size:12px">${withDates[0] ? escapeHtml(withDates[0].opened) : "—"}</td>
         <td class="mono" style="font-size:12px">${withDates[withDates.length - 1] ? escapeHtml(withDates[withDates.length - 1].opened) : "—"}</td>
-        <td><span class="chip" style="color:${t.color};background:${t.bg};border-color:${t.border}"><span class="cdot"></span>${escapeHtml(read.label)}</span></td>
+        <td data-kind="derived"><span class="chip" style="color:${t.color};background:${t.bg};border-color:${t.border}"><span class="cdot"></span>${escapeHtml(read.label)}</span></td>
       </tr>`;
     })
     .join("");
