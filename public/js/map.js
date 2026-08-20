@@ -243,28 +243,32 @@ function openStoreSheet(store) {
         }
         if (km <= 1) within1km++;
       }
-      // Placeholder score, NOT the fund's own methodology (that's still
-      // pending — see PATEL-HANDOFF.md §27). Reuses the identical
-      // overlapRisk() weights already trusted for the store-network score
-      // above (60% proximity / 40% density), just fed dark-store distances
-      // instead of competitor-store distances, so it's internally
-      // consistent rather than an invented third formula. The one judgment
-      // call made here: density counted within 1 km, not the 3 km used for
-      // the store-network score — quick-commerce delivery radii are
-      // themselves ~1-2 km, so 3 km would blur every store in a dense town
-      // into the same saturated reading. Swap out for the real formula the
-      // moment it's supplied.
-      const placeholderScore = overlapRisk(nearestKm, within1km);
+      // Asked the fund directly whether they have their own cannibalisation
+      // formula (weights, thresholds, etc.) — they said no: they just look
+      // at these same metrics (the Excel financials, dark-store proximity,
+      // DMart/peer data) together, without a formula they could hand over.
+      // So there's no real methodology waiting to replace this — this IS
+      // the synthesis, for as long as it stays true. Still labelled
+      // "estimate," not "derived": it's our own numeric combination of the
+      // same proximity+density weights already trusted for the
+      // store-network score above, not something the fund has reviewed or
+      // endorsed as correct. The one judgment call made here: density
+      // counted within 1 km, not the 3 km used for the store-network score
+      // — quick-commerce delivery radii are themselves ~1-2 km, so 3 km
+      // would blur every store in a dense town into the same saturated
+      // reading.
+      const combinedScore = overlapRisk(nearestKm, within1km);
       darkstoreBlock = `
     <div class="risk-block" data-kind="estimate" style="margin-top:14px">
       <div class="risk-block-head">
         <span class="kind-pill kind-estimate">estimate</span>
-        <span class="risk-block-title">Quick-commerce cannibalisation — placeholder score</span>
+        <span class="risk-block-title">Quick-commerce cannibalisation — our combined read</span>
       </div>
       <p class="risk-sentence">
-        Not part of the composite score above, and <strong>not the fund's own methodology</strong> —
-        that formula has been requested and is pending. This is our own stand-in, built from the
-        identical proximity+density weights already used above.
+        Not part of the composite score above. The fund confirmed they don't have a separate
+        formula of their own — they read these same metrics (financials, dark-store proximity,
+        peer data) together without a fixed weighting. This is our own numeric combination of the
+        proximity+density weights already used above; the fund hasn't reviewed or endorsed it.
       </p>
       <div class="risk-inputs">
         <div class="risk-input">
@@ -277,10 +281,10 @@ function openStoreSheet(store) {
         </div>
       </div>
       <div class="risk-score-row">
-        <span>Placeholder score</span>
-        <span class="risk-score-value">${placeholderScore != null ? placeholderScore.toFixed(2) : "Not scored"}</span>
+        <span>Combined score</span>
+        <span class="risk-score-value">${combinedScore != null ? combinedScore.toFixed(2) : "Not scored"}</span>
       </div>
-      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. Score = ${RISK_PROXIMITY_HORIZON_KM} km proximity horizon + density within 1 km saturating at ${RISK_DENSITY_SATURATION} stores, same weights as the store-network score. An internally-consistent placeholder only — do not treat as calibrated or final until the fund's own formula replaces it.</p>
+      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. Score = ${RISK_PROXIMITY_HORIZON_KM} km proximity horizon + density within 1 km saturating at ${RISK_DENSITY_SATURATION} stores, same weights as the store-network score. Our own read, not a validated or client-endorsed number — bring it to the next meeting as a discussion point, not a finding.</p>
     </div>`;
     }
   }
