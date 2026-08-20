@@ -9,7 +9,7 @@
  */
 import { qs, escapeHtml, fmtDate, refreshIcons, toast } from "./ui.js";
 import { VINTAGE_BUCKETS, yearsSince, vintageBucketFor } from "./vintage.js";
-import { haversineKm, round2, isLocatable, isCoarseTier } from "./geo.js";
+import { haversineKm, round2, isLocatable, isCoarseTier, overlapRisk, RISK_PROXIMITY_HORIZON_KM, RISK_DENSITY_SATURATION } from "./geo.js";
 
 const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -243,14 +243,28 @@ function openStoreSheet(store) {
         }
         if (km <= 1) within1km++;
       }
+      // Placeholder score, NOT the fund's own methodology (that's still
+      // pending — see PATEL-HANDOFF.md §27). Reuses the identical
+      // overlapRisk() weights already trusted for the store-network score
+      // above (60% proximity / 40% density), just fed dark-store distances
+      // instead of competitor-store distances, so it's internally
+      // consistent rather than an invented third formula. The one judgment
+      // call made here: density counted within 1 km, not the 3 km used for
+      // the store-network score — quick-commerce delivery radii are
+      // themselves ~1-2 km, so 3 km would blur every store in a dense town
+      // into the same saturated reading. Swap out for the real formula the
+      // moment it's supplied.
+      const placeholderScore = overlapRisk(nearestKm, within1km);
       darkstoreBlock = `
-    <div class="risk-block" data-kind="derived" style="margin-top:14px">
+    <div class="risk-block" data-kind="estimate" style="margin-top:14px">
       <div class="risk-block-head">
-        <span class="kind-pill kind-derived">derived</span>
-        <span class="risk-block-title">Quick-commerce dark stores nearby</span>
+        <span class="kind-pill kind-estimate">estimate</span>
+        <span class="risk-block-title">Quick-commerce cannibalisation — placeholder score</span>
       </div>
       <p class="risk-sentence">
-        Not part of the composite score above — a separate signal from third-party data, shown on its own footing.
+        Not part of the composite score above, and <strong>not the fund's own methodology</strong> —
+        that formula has been requested and is pending. This is our own stand-in, built from the
+        identical proximity+density weights already used above.
       </p>
       <div class="risk-inputs">
         <div class="risk-input">
@@ -262,7 +276,11 @@ function openStoreSheet(store) {
           <span class="ri-value">${within1km} <span style="color:var(--text-4);font-weight:400">(of ${darkstoresData.darkstores.length} in the region)</span></span>
         </div>
       </div>
-      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. See the map's layer toggle for the full overlay. Not wired into the cannibalisation score above; that's reserved for the fund's own methodology.</p>
+      <div class="risk-score-row">
+        <span>Placeholder score</span>
+        <span class="risk-score-value">${placeholderScore != null ? placeholderScore.toFixed(2) : "Not scored"}</span>
+      </div>
+      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. Score = ${RISK_PROXIMITY_HORIZON_KM} km proximity horizon + density within 1 km saturating at ${RISK_DENSITY_SATURATION} stores, same weights as the store-network score. An internally-consistent placeholder only — do not treat as calibrated or final until the fund's own formula replaces it.</p>
     </div>`;
     }
   }
