@@ -61,6 +61,9 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
   const rec = metrics.store_pnl_reconciliation;
   const osia = metrics.osia_hyper_retail;
   const v2 = metrics.v2_retail;
+  const dmart = metrics.dmart;
+  const vishal = metrics.vishal_mega_mart;
+  const spencers = metrics.spencers_retail;
   // Same formula as computePnl() in economics.js — recomputed here rather
   // than imported to keep this file's only dependency on economics.js at
   // zero, but the arithmetic itself must stay identical, not re-derived
@@ -80,16 +83,16 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     },
     {
       name: "Avenue Supermarts (DMart)",
-      revenue: `<span class="cb-na">Not available</span>`,
-      ebitda: `<span class="cb-na">Not available</span>`,
-      stores: `<span class="cb-na">Not available</span>`,
+      revenue: `${fmtCr(dmart.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(dmart.fiscal_year)}</div>`,
+      ebitda: `${fmtPct(dmart.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span>`,
+      stores: cellOrNA(dmart.total_stores, (v) => v.toLocaleString("en-IN")),
       privateLabel: cellOrNA(pl.dmart, (v) => fmtPct(v)),
     },
     {
       name: "Vishal Mega Mart",
-      revenue: `<span class="cb-na">Not available</span>`,
-      ebitda: `<span class="cb-na">Not available</span>`,
-      stores: `<span class="cb-na">Not available</span>`,
+      revenue: `${fmtCr(vishal.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(vishal.fiscal_year)}</div>`,
+      ebitda: `${fmtPct(vishal.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span>`,
+      stores: cellOrNA(vishal.total_stores, (v) => v.toLocaleString("en-IN")),
       privateLabel: cellOrNA(pl.vishal_mega_mart, (v) => fmtPct(v)),
     },
     {
@@ -101,9 +104,9 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     },
     {
       name: "Spencer's Retail",
-      revenue: `<span class="cb-na">Not available</span>`,
-      ebitda: `<span class="cb-na">Not available</span>`,
-      stores: `<span class="cb-na">Not available</span>`,
+      revenue: `${fmtCr(spencers.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(spencers.fiscal_year)}</div>`,
+      ebitda: `${fmtPct(spencers.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">loss-making; FY26 reportedly deeper still</div>`,
+      stores: cellOrNA(spencers.total_stores, (v) => v.toLocaleString("en-IN")),
       privateLabel: `<span class="cb-na">Not available</span>`,
     },
     {

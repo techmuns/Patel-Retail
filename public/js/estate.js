@@ -74,14 +74,13 @@ function renderRollingVsFixedNote(stores) {
     <div class="flag-card" data-kind="derived">
       <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
       <div>
-        <span class="flag-title">Two different "under 2 years" numbers, on purpose</span>
+        <span class="flag-title">Two ways to read "recently opened"</span>
         <p>
           ${in2024Plus} of ${stores.length} stores (${Math.round((in2024Plus / stores.length) * 100)}%) opened in
-          calendar year 2024 or later — a fixed fact that won't change. Read literally as "opened in the
-          trailing 2 years <em>as of today</em>," the number is ${rollingRecent} of ${stores.length}
-          (${Math.round((rollingRecent / stores.length) * 100)}%) — smaller, because some of the 2024 cohort
-          has now aged past the 2-year mark and the rolling window keeps moving while the calendar-year count
-          doesn't. Both are shown rather than picking the one that sounds more dramatic.
+          calendar year 2024 or later. ${rollingRecent} of ${stores.length}
+          (${Math.round((rollingRecent / stores.length) * 100)}%) are under 2 years old as of today — a smaller
+          number, since the rolling window moves forward each day while the calendar-year count doesn't. Both
+          are shown for that reason.
         </p>
       </div>
     </div>

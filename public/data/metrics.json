@@ -141,6 +141,42 @@
     "note": "160 stores / 17.22 lakh sqft is a Dec-2024 figure, stale against FY26 revenue up 63% - left null rather than misstated.",
     "category_flag": "V2 Retail is an apparel-led value retailer, not a grocer — its 15% EBITDA margin reflects a structurally different, higher-margin category mix and isn't comparable to Patel's grocery margins. Useful here as a store-expansion/scale comp, not a margin comp."
   },
+  "dmart": {
+    "name": "Avenue Supermarts Ltd (DMart)",
+    "ticker": "DMART",
+    "fiscal_year": "FY2026 (Mar 2026)",
+    "revenue_cr": 68821,
+    "ebitda_cr": 5189,
+    "ebitda_margin_pct": 0.08,
+    "total_stores": 506,
+    "kind": "reported",
+    "source": "Screener.in/company/DMART/consolidated/ (financials); store count from company store-opening announcements, as of Aug 2026",
+    "note": "Store count (506) is as of Aug 2026, a few months after the Mar 2026 fiscal year-end the financials cover — more recent, not misaligned."
+  },
+  "vishal_mega_mart": {
+    "name": "Vishal Mega Mart Ltd",
+    "ticker": "VMM",
+    "fiscal_year": "FY2026 (Mar 2026)",
+    "revenue_cr": 12906,
+    "ebitda_cr": 1884,
+    "ebitda_margin_pct": 0.15,
+    "total_stores": 795,
+    "kind": "reported",
+    "source": "Screener.in/company/VMM/consolidated/ (financials); store count from FY26 results disclosure, as of Mar 2026",
+    "note": "795 stores across 535 cities, 13.45 mn sq ft retail area, as of the same Mar 2026 period as the financials above."
+  },
+  "spencers_retail": {
+    "name": "Spencer's Retail Ltd",
+    "ticker": "SPENCERS",
+    "fiscal_year": "FY2025 (Mar 2025)",
+    "revenue_cr": 1995,
+    "ebitda_cr": -43,
+    "ebitda_margin_pct": -0.022,
+    "total_stores": 120,
+    "kind": "reported",
+    "source": "Screener.in/company/SPENCERS/consolidated/ (financials, FY2025); store count from spencersretail.com/about-us, as of 2026",
+    "note": "Loss-making — sixth consecutive year of losses as of FY2025, and press coverage of the FY2026 (Mar 2026) results describes losses deepening further, though this dashboard doesn't carry the exact FY2026 figures. Store count (120) is the company's own current 2026 figure, down from 167 (incl. 34 Nature's Basket stores) filed for FY2024 — a real decline in footprint, not a data mismatch."
+  },
   "store_pnl_reconciliation": {
     "revenue_l": 864,
     "gross_margin_pct": 0.165,
@@ -150,12 +186,12 @@
     "peer_model_b2c_ebitda_pct": 0.079,
     "peer_model_b2c_ebitda_kind": "reported",
     "peer_model_source": "Peer_Model.xlsx",
-    "flag_note": "Building store EBITDA from the client's own per-store unit metrics gives ~5.4% of sales, BEFORE any head-office cost. The peer model claims 7.9% EBITDA at company level for the B2C business — company-level margin cannot exceed store-level once overhead is added. That's backwards as given. Not resolved here (likely causes per the handoff: the 45/55 revenue-based EBITDA split may be the wrong allocation — export probably carries more margin — or the unit-economics inputs are conservative). Surfaced as a flag, not silently fixed.",
+    "flag_note": "Building EBITDA from the client's own per-store unit economics gives ~5.4% of sales, before any head-office cost. The peer model claims 7.9% EBITDA at the company level for the same B2C business — a company-level margin should come in lower than store-level once overhead is added, not higher. Two plausible causes: the peer model's B2C/export revenue split may be misallocating margin, or the store-level inputs are conservative. Left open for the client to clarify, not resolved here.",
     "total_company_revenue_cr": 1048,
     "total_company_ebitda_cr": 83,
     "total_company_pat_cr": 39.1,
     "b2c_share_pct": 0.45,
-    "total_company_note": "Peer_Model.xlsx builds Patel's whole B2C column from total-company figures scaled by a stated 45% B2C share (cells E11=1048×45%=₹471.6cr revenue, E17=83×45%=₹37.35cr EBITDA, E19=39.1×45%=₹17.6cr PAT). The 7.9% EBITDA margin above is mathematically identical read at B2C-only or total-company level — 37.35/471.6 = 83/1048 = 7.92% — because the 45% factor cancels out of the ratio. So this isn't a B2C-specific anomaly; it's a company-wide figure that clashes with store-level economics either way.",
+    "total_company_note": "Not a B2C-specific quirk — the peer model derives Patel's entire B2C column by applying one fixed 45% share to total-company revenue, EBITDA and PAT, and that same factor cancels out of the margin ratio. So the 7.9% figure is identical whether read at the B2C or total-company level; the contradiction holds either way.",
     "kind": "derived",
     "note": "store_ebitda_l / store_ebitda_pct are computed at runtime from the reported inputs above (see public/js/economics.js) rather than stored pre-computed, so the arithmetic stays auditable on screen."
   }

@@ -138,7 +138,7 @@ function renderReconciliationFlag(pnl, osia) {
         <span class="flag-title">Store-level EBITDA (${fmtPct(pnl.ebitdaPct)}) is lower than the peer model's company-level claim (${fmtPct(pnl.peer_model_b2c_ebitda_pct)})</span>
         <p>${escapeHtml(pnl.flag_note)}</p>
         ${pnl.total_company_note ? `<p style="color:var(--text-3);font-size:12px;margin-top:8px">${escapeHtml(pnl.total_company_note)}</p>` : ""}
-        <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — flagged for follow-up with the client, per instruction.</p>
+        <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — flagged here for the client to clarify directly.</p>
       </div>
     </div>
     <div class="flag-card" data-kind="reported" style="margin-top:12px">
