@@ -112,13 +112,15 @@ function buildStoreMaster(wb, { stores }) {
 function buildProximity(wb, { stores, proximity }) {
   const byId = new Map(stores.map((s) => [s.store_id, s]));
   const head = ["Store A", "Store A Name", "Store A Town", "Store B", "Store B Name", "Store B Town", "Distance (km)", "Status"];
-  const widths = [10, 24, 18, 10, 24, 18, 14, 46];
-  const ws = wb.addWorksheet("Proximity", { views: [{ showGridLines: false, state: "frozen", ySplit: 2 }] });
+  const widths = [10, 24, 18, 10, 24, 18, 14, 26];
+  const ws = wb.addWorksheet("Proximity", { views: [{ showGridLines: false, state: "frozen", ySplit: 3 }] });
   ws.columns = widths.map((w) => ({ width: w }));
 
+  // Short, per-row status — the full reason is stated ONCE, in the legend row
+  // below the header, not repeated in every one of the ~430 unavailable rows.
   const UNAVAILABLE_STATUS = {
-    town_centroid: "Unavailable — one or both stores resolved only to a town centroid; a distance from that would fabricate precision, not measure it",
-    not_geocoded: "Unavailable — one or both stores have no coordinates at all yet (pending client pins — see docs/PINS-NEEDED.md)",
+    town_centroid: "Unavailable — town centroid",
+    not_geocoded: "Unavailable — not geocoded",
   };
 
   let r = 1;
@@ -128,6 +130,15 @@ function buildProximity(wb, { stores, proximity }) {
     head.length,
     r++
   );
+  const legendRow = ws.getRow(r++);
+  legendRow.getCell(1).value =
+    "\"Real distance\" = both stores precisely geocoded. \"Town centroid\" = one or both resolved only to a town-level fallback, not their own address — a distance from that would fabricate precision, not measure it. \"Not geocoded\" = no coordinates at all yet, pending Patel Retail's own pins (see docs/PINS-NEEDED.md).";
+  legendRow.getCell(1).font = { size: 9, italic: true, color: { argb: MUTE } };
+  legendRow.getCell(1).alignment = { wrapText: true, vertical: "top" };
+  ws.mergeCells(legendRow.number, 1, legendRow.number, head.length);
+  ws.getRow(legendRow.number).height = 28;
+  legendRow.eachCell((c) => (c.border = box()));
+
   const headRowN = r++;
   styleHeaderRow(setRowValues(ws, headRowN, head), head.length);
 
@@ -135,9 +146,7 @@ function buildProximity(wb, { stores, proximity }) {
     const a = byId.get(p.a);
     const b = byId.get(p.b);
     const available = p.km != null;
-    const status = available
-      ? "Real distance — both stores precisely geocoded"
-      : UNAVAILABLE_STATUS[p.unavailable_reason] || "Unavailable — not computed";
+    const status = available ? "Real distance" : UNAVAILABLE_STATUS[p.unavailable_reason] || "Unavailable — not computed";
     const row = setRowValues(ws, r++, [
       p.a, a?.name || "", a?.town || "",
       p.b, b?.name || "", b?.town || "",
@@ -145,8 +154,8 @@ function buildProximity(wb, { stores, proximity }) {
       status,
     ]);
     row.eachCell((c, col) => {
-      c.font = { size: 9.5, color: { argb: col === 7 && !available ? WARN_AMBER : "FF334155" }, italic: col === 8 && !available, bold: col === 7 };
-      c.alignment = { vertical: "top", wrapText: col === 8, indent: 0 };
+      c.font = { size: 9.5, color: { argb: col === 7 && !available ? WARN_AMBER : "FF334155" }, bold: col === 7 };
+      c.alignment = { vertical: "top", indent: 0 };
       c.border = box();
     });
   }
@@ -164,6 +173,7 @@ function inputRow(ws, r, label, value, note) {
   if (note) {
     row.getCell(3).value = note;
     row.getCell(3).font = { size: 9, italic: true, color: { argb: MUTE } };
+    row.getCell(3).alignment = { wrapText: true, vertical: "top" };
   }
   [1, 2, 3].forEach((i) => (row.getCell(i).border = box()));
   return row;
@@ -179,6 +189,7 @@ function formulaRow(ws, r, label, formula, result, fmt, note) {
   if (note) {
     row.getCell(3).value = note;
     row.getCell(3).font = { size: 9, italic: true, color: { argb: MUTE } };
+    row.getCell(3).alignment = { wrapText: true, vertical: "top" };
   }
   [1, 2, 3].forEach((i) => (row.getCell(i).border = box()));
   return row;
