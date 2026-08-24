@@ -7,7 +7,7 @@
  * file is self-contained rather than importing from it, since the two exports
  * share no data shape.
  *
- *   - "Store Master": all 53 stores — coordinates, precision tier, geo_source.
+ *   - "Store Master": every store in stores.json — coordinates, precision tier, geo_source.
  *   - "Proximity": every pair build-proximity.mjs emitted. A null km is shown
  *     as "Unavailable" plus the reason, never as a blank cell — the same rule
  *     the map and screener already enforce on screen (PATEL-HANDOFF.md §15.1).

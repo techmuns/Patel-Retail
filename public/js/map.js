@@ -1,6 +1,7 @@
 /**
- * public/js/map.js — Network Map view: the 53-store Leaflet map, its KPI
- * strip, the town-cluster table, and the store slide-over.
+ * public/js/map.js — Network Map view: the Leaflet map of every store in
+ * stores.json (count varies — see its own `counts` field), its KPI strip,
+ * the town-cluster table, and the store slide-over.
  *
  * Leaflet + OSM tiles per PATEL-HANDOFF.md §7 ("no API key, CDN-loadable,
  * fits the no-build-step rule"), guarded by `typeof window.L` like every
@@ -299,6 +300,17 @@ function openStoreSheet(store) {
         <tr><td>Area</td><td style="text-align:left;font-family:inherit;font-weight:400;color:var(--text-2)">${store.area_sqft.toLocaleString("en-IN")} sq ft <span class="kind-pill kind-estimate" data-kind="estimate">estimate</span></td></tr>
       </table>
       ${
+        store.source_note
+          ? `<div class="flag-card" data-kind="reported" style="margin-top:10px">
+               <span class="flag-ico"><i data-lucide="newspaper" class="i16"></i></span>
+               <div>
+                 <span class="flag-title">Not from the client's own store file</span>
+                 <p>${escapeHtml(store.source_note)}</p>
+               </div>
+             </div>`
+          : ""
+      }
+      ${
         isCoarseMatch
           ? `<p class="risk-caveat" style="margin-top:10px">
                <i data-lucide="map-pin-off" class="i16" style="vertical-align:-3px"></i>
@@ -342,7 +354,7 @@ function renderEmptyMap(container, pendingCount, total) {
   refreshIcons();
 }
 
-function initLeafletMap(container, geocodedStores) {
+function initLeafletMap(container, geocodedStores, totalStoreCount) {
   // scrollWheelZoom is deliberately OFF, permanently — not just disabled
   // until the first click. With it on, a normal mouse-wheel scroll down the
   // page zooms the map out instead whenever the cursor happens to be over
@@ -403,15 +415,15 @@ function initLeafletMap(container, geocodedStores) {
   }
 
   // Dark-store overlay added AFTER fitBounds/reset-view are set up from
-  // Patel's own 53 stores only — 352 extra points would otherwise pull the
+  // Patel's own stores only — 352 extra points would otherwise pull the
   // initial zoom out far past the network itself, and the reset button
-  // should always mean "back to my 53 stores," not "back to whatever's
+  // should always mean "back to my own stores," not "back to whatever's
   // currently toggled on."
   if (darkstoresData?.darkstores?.length) addDarkstoreLayers(map);
 
   if (bounds.length) {
     map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
-    addResetViewControl(map, bounds);
+    addResetViewControl(map, bounds, totalStoreCount);
   } else {
     map.setView(CENTER_FALLBACK, 10);
   }
@@ -421,7 +433,7 @@ function initLeafletMap(container, geocodedStores) {
  * Quick-commerce dark-store overlay (Blinkit / Zepto / Swiggy Instamart) —
  * see scripts/fetch-darkstores.mjs for why this exists and its caveats
  * (third-party data, March 2026 snapshot, not live). Off by default so the
- * first thing anyone sees is Patel's own 53 stores; a Leaflet layer
+ * first thing anyone sees is Patel's own stores; a Leaflet layer
  * control makes each brand a one-click toggle.
  */
 function addDarkstoreLayers(mapInstance) {
@@ -453,16 +465,16 @@ function addDarkstoreLayers(mapInstance) {
 }
 
 /**
- * A one-click way back to "all 53 stores" after zooming/panning around —
+ * A one-click way back to "all own stores" after zooming/panning around —
  * without it, the only way back is a page refresh, which loses whatever
  * else the user was looking at elsewhere on the page.
  */
-function addResetViewControl(mapInstance, bounds) {
+function addResetViewControl(mapInstance, bounds, totalStoreCount) {
   const ResetControl = window.L.Control.extend({
     options: { position: "topleft" },
     onAdd() {
       const el = window.L.DomUtil.create("div", "leaflet-bar map-reset-control");
-      el.innerHTML = `<a href="#" title="Reset to all 53 stores" role="button" aria-label="Reset map view">⤢</a>`;
+      el.innerHTML = `<a href="#" title="Reset to all ${totalStoreCount} stores" role="button" aria-label="Reset map view">⤢</a>`;
       window.L.DomEvent.on(el, "click", (e) => {
         window.L.DomEvent.preventDefault(e);
         window.L.DomEvent.stopPropagation(e);
@@ -496,6 +508,11 @@ export async function initMap() {
     proximityByStoreId = new Map((proximity.per_store || []).map((p) => [p.store_id, p]));
     darkstoresData = darkstores;
 
+    const titleEl = qs("#mapNetworkTitle");
+    if (titleEl) titleEl.textContent = `${stores.length}-Store Network`;
+    const hintCountEl = qs("#mapHintCount");
+    if (hintCountEl) hintCountEl.textContent = `all ${stores.length} stores`;
+
     renderKpis(stores, proximity);
     renderLegend();
     renderClusters(proximity);
@@ -516,7 +533,7 @@ export async function initMap() {
       return;
     }
 
-    initLeafletMap(container, geocodedStores);
+    initLeafletMap(container, geocodedStores, stores.length);
     if (pending > 0) {
       toast("info", "Partially geocoded", `${pending} of ${stores.length} stores aren't geocoded yet — run scripts/geocode.mjs to fill in the rest.`);
     }

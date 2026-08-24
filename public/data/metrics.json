@@ -2,7 +2,7 @@
   "note": "Every number here traces to PATEL-HANDOFF.md §6/§9, itself sourced from the client's Patel_Retail_data_Munshot.xlsx and Peer_Model.xlsx. Nothing in this file was estimated or invented — derived figures (store EBITDA) are computed at runtime in public/js/economics.js from the reported inputs below, not hardcoded, so the arithmetic stays visible.",
   "unit_economics": {
     "sqft_per_store": 5000,
-    "sqft_per_store_note": "The same 5,000 sq ft blended average applied to all 53 stores uniformly — not a per-store measurement (per-store sq ft was not supplied and isn't coming). Anything derived from this figure inherits the estimate label.",
+    "sqft_per_store_note": "The same 5,000 sq ft blended average applied to all 54 stores uniformly — not a per-store measurement (per-store sq ft was not supplied and isn't coming). Anything derived from this figure inherits the estimate label.",
     "revenue_per_sqft_year": 17280,
     "bills_per_day": 300,
     "avg_order_value": 800,

@@ -1,17 +1,17 @@
 {
-  "generated_at": "2026-08-18T08:49:46.249Z",
+  "generated_at": "2026-08-24T10:35:13.271Z",
   "metadata": {
-    "total_stores": 53,
-    "geocoded_count": 50,
-    "locatable_count": 44,
+    "total_stores": 54,
+    "geocoded_count": 51,
+    "locatable_count": 45,
     "coarse_count": 6,
     "pending_geocode_count": 3,
-    "total_possible_pairs": 1378,
-    "pairs_emitted": 1378,
-    "pairs_with_real_distance": 946,
-    "pairs_suppressed_town_centroid": 279,
-    "pairs_suppressed_not_geocoded": 153,
-    "note": "44/53 stores are precisely located; 6 more are geocoded only to a town centroid (distances suppressed, not fabricated) and 3 have no coordinates at all."
+    "total_possible_pairs": 1431,
+    "pairs_emitted": 1431,
+    "pairs_with_real_distance": 990,
+    "pairs_suppressed_town_centroid": 285,
+    "pairs_suppressed_not_geocoded": 156,
+    "note": "45/54 stores are precisely located; 6 more are geocoded only to a town centroid (distances suppressed, not fabricated) and 3 have no coordinates at all."
   },
   "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
   "pairs": [
@@ -380,6 +380,13 @@
       "unavailable_reason": "not_geocoded"
     },
     {
+      "a": "KBG",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "not_geocoded"
+    },
+    {
       "a": "RCM",
       "b": "THE",
       "km": 37.4,
@@ -737,6 +744,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "RCM",
+      "b": "URN",
+      "km": 26.54,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "THE",
       "b": "TGR",
       "km": 15.01,
@@ -1087,6 +1101,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "THE",
+      "b": "URN",
+      "km": 42.75,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "TGR",
       "b": "NSR",
       "km": null,
@@ -1430,6 +1451,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "TGR",
+      "b": "URN",
+      "km": 55.02,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "NSR",
       "b": "NWM",
       "km": null,
@@ -1766,6 +1794,13 @@
       "unavailable_reason": "not_geocoded"
     },
     {
+      "a": "NSR",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "not_geocoded"
+    },
+    {
       "a": "NWM",
       "b": "KUD",
       "km": 42.12,
@@ -2095,6 +2130,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "NWM",
+      "b": "URN",
+      "km": 33.94,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KUD",
       "b": "DNE",
       "km": 37.85,
@@ -2417,6 +2459,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KUD",
+      "b": "URN",
+      "km": 75.96,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "DNE",
       "b": "KYD",
       "km": 8.96,
@@ -2732,6 +2781,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DNE",
+      "b": "URN",
+      "km": 39.32,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KYD",
       "b": "DAG/DOEMIDC",
       "km": 6.17,
@@ -3040,6 +3096,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KYD",
+      "b": "URN",
+      "km": 47.29,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "DAG/DOEMIDC",
       "b": "AVB",
       "km": 28.66,
@@ -3341,6 +3404,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DAG/DOEMIDC",
+      "b": "URN",
+      "km": 41.74,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AVB",
       "b": "KBR",
       "km": 22.25,
@@ -3635,6 +3705,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "AVB",
+      "b": "URN",
+      "km": 68.2,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KBR",
       "b": "DSR",
       "km": 11.72,
@@ -3922,6 +3999,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KBR",
+      "b": "URN",
+      "km": 46.72,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "DSR",
       "b": "NKR",
       "km": 32.27,
@@ -4202,6 +4286,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DSR",
+      "b": "URN",
+      "km": 35,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "NKR",
       "b": "KET",
       "km": 28.35,
@@ -4475,6 +4566,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "NKR",
+      "b": "URN",
+      "km": 42.95,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KET",
       "b": "BBVR",
       "km": 12.21,
@@ -4741,6 +4839,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KET",
+      "b": "URN",
+      "km": 44.12,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BBVR",
       "b": "KMR",
       "km": null,
@@ -5000,6 +5105,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BBVR",
+      "b": "URN",
+      "km": 49.49,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KMR",
       "b": "DOW",
       "km": null,
@@ -5252,6 +5364,13 @@
       "unavailable_reason": "not_geocoded"
     },
     {
+      "a": "KMR",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "not_geocoded"
+    },
+    {
       "a": "DOW",
       "b": "SHD",
       "km": 8.01,
@@ -5497,6 +5616,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DOW",
+      "b": "URN",
+      "km": 41.29,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "SHD",
       "b": "BHAR",
       "km": 11.98,
@@ -5735,6 +5861,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "SHD",
+      "b": "URN",
+      "km": 47.02,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BHAR",
       "b": "Bap",
       "km": 4.63,
@@ -5966,6 +6099,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BHAR",
+      "b": "URN",
+      "km": 50.23,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "Bap",
       "b": "PAD",
       "km": 17.06,
@@ -6190,6 +6330,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "Bap",
+      "b": "URN",
+      "km": 45.84,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "PAD",
       "b": "VGW",
       "km": 33.22,
@@ -6407,6 +6554,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "PAD",
+      "b": "URN",
+      "km": 59.95,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "VGW",
       "b": "VAS",
       "km": null,
@@ -6617,6 +6771,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "VGW",
+      "b": "URN",
+      "km": 44.18,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "VAS",
       "b": "BES",
       "km": null,
@@ -6820,6 +6981,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "VAS",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "BES",
       "b": "BKHE",
       "km": 1.67,
@@ -7016,6 +7184,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BES",
+      "b": "URN",
+      "km": 44.06,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BKHE",
       "b": "BLEB",
       "km": 2.3,
@@ -7205,6 +7380,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BKHE",
+      "b": "URN",
+      "km": 44.29,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BLEB",
       "b": "BLEK",
       "km": 0.93,
@@ -7387,6 +7569,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BLEB",
+      "b": "URN",
+      "km": 45.16,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BLEK",
       "b": "BLWB",
       "km": 1.34,
@@ -7562,6 +7751,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BLEK",
+      "b": "URN",
+      "km": 44.79,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BLWB",
       "b": "BWM",
       "km": 1.17,
@@ -7730,6 +7926,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BLWB",
+      "b": "URN",
+      "km": 45.61,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "BWM",
       "b": "AMSN",
       "km": 6.61,
@@ -7891,6 +8094,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "BWM",
+      "b": "URN",
+      "km": 45.57,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AMSN",
       "b": "AMCH",
       "km": 4.69,
@@ -8045,6 +8255,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "AMSN",
+      "b": "URN",
+      "km": 44.6,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AMCH",
       "b": "AME",
       "km": 4.55,
@@ -8192,6 +8409,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "AMCH",
+      "b": "URN",
+      "km": 45.41,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AME",
       "b": "AML",
       "km": null,
@@ -8332,6 +8556,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "AME",
+      "b": "URN",
+      "km": 45.42,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AML",
       "b": "AMPL",
       "km": null,
@@ -8465,6 +8696,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "AML",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "AMPL",
       "b": "AMW",
       "km": null,
@@ -8591,6 +8829,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "AMPL",
+      "b": "URN",
+      "km": 43.18,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "AMW",
       "b": "DOWSMT",
       "km": null,
@@ -8710,6 +8955,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "AMW",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "DOWSMT",
       "b": "DWK",
       "km": null,
@@ -8822,6 +9074,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "DOWSMT",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "DWK",
       "b": "DOF",
       "km": null,
@@ -8927,6 +9186,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "DWK",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "DOF",
       "b": "DOM",
       "km": 1.53,
@@ -9025,6 +9291,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DOF",
+      "b": "URN",
+      "km": 41.91,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "DOM",
       "b": "KKW",
       "km": 4.96,
@@ -9116,6 +9389,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "DOM",
+      "b": "URN",
+      "km": 40.66,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KKW",
       "b": "KLE",
       "km": 1.08,
@@ -9200,6 +9480,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KKW",
+      "b": "URN",
+      "km": 44.92,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KLE",
       "b": "KLK",
       "km": 2.52,
@@ -9277,6 +9564,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KLE",
+      "b": "URN",
+      "km": 43.99,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KLK",
       "b": "KLT",
       "km": 0.75,
@@ -9347,6 +9641,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KLK",
+      "b": "URN",
+      "km": 46.42,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KLT",
       "b": "KLW",
       "km": 1.57,
@@ -9410,6 +9711,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KLT",
+      "b": "URN",
+      "km": 45.73,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KLW",
       "b": "DOE/DER",
       "km": null,
@@ -9466,6 +9774,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "KLW",
+      "b": "URN",
+      "km": 46.22,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "DOE/DER",
       "b": "MUBD",
       "km": null,
@@ -9515,6 +9830,13 @@
       "unavailable_reason": "town_centroid"
     },
     {
+      "a": "DOE/DER",
+      "b": "URN",
+      "km": null,
+      "precision": null,
+      "unavailable_reason": "town_centroid"
+    },
+    {
       "a": "MUBD",
       "b": "SHAP",
       "km": 22.89,
@@ -9557,6 +9879,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "MUBD",
+      "b": "URN",
+      "km": 63.4,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "SHAP",
       "b": "TTL",
       "km": 21.69,
@@ -9592,6 +9921,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "SHAP",
+      "b": "URN",
+      "km": 76.94,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "TTL",
       "b": "ULN",
       "km": 9.07,
@@ -9620,6 +9956,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "TTL",
+      "b": "URN",
+      "km": 55.28,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "ULN",
       "b": "ULN4",
       "km": 2.34,
@@ -9641,6 +9984,13 @@
       "unavailable_reason": null
     },
     {
+      "a": "ULN",
+      "b": "URN",
+      "km": 46.28,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "ULN4",
       "b": "KHP",
       "km": 49.09,
@@ -9655,9 +10005,30 @@
       "unavailable_reason": null
     },
     {
+      "a": "ULN4",
+      "b": "URN",
+      "km": 44.44,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
       "a": "KHP",
       "b": "PRCAME/PRCAMEN",
       "km": 48.18,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
+      "a": "KHP",
+      "b": "URN",
+      "km": 41.43,
+      "precision": "geocoded",
+      "unavailable_reason": null
+    },
+    {
+      "a": "PRCAME/PRCAMEN",
+      "b": "URN",
+      "km": 45.76,
       "precision": "geocoded",
       "unavailable_reason": null
     }
@@ -9673,7 +10044,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "not_geocoded"
     },
     {
@@ -9690,8 +10061,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9710,8 +10081,8 @@
         "3km": 5,
         "5km": 11
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.86,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9730,8 +10101,8 @@
         "3km": 1,
         "5km": 1
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.36,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9746,7 +10117,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "not_geocoded"
     },
     {
@@ -9763,8 +10134,8 @@
         "3km": 1,
         "5km": 1
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.48,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9783,8 +10154,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9803,8 +10174,8 @@
         "3km": 4,
         "5km": 5
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.82,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9823,8 +10194,8 @@
         "3km": 6,
         "5km": 9
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.93,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9843,8 +10214,8 @@
         "3km": 6,
         "5km": 11
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.86,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9863,8 +10234,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9883,8 +10254,8 @@
         "3km": 0,
         "5km": 3
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.08,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9903,8 +10274,8 @@
         "3km": 1,
         "5km": 1
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.48,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9923,8 +10294,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9943,8 +10314,8 @@
         "3km": 7,
         "5km": 14
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.86,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9963,8 +10334,8 @@
         "3km": 1,
         "5km": 3
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.59,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -9979,7 +10350,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "not_geocoded"
     },
     {
@@ -9996,8 +10367,8 @@
         "3km": 5,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.89,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10016,8 +10387,8 @@
         "3km": 6,
         "5km": 10
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.93,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10036,8 +10407,8 @@
         "3km": 1,
         "5km": 3
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.59,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10056,8 +10427,8 @@
         "3km": 0,
         "5km": 3
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.15,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10076,8 +10447,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10096,8 +10467,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10112,7 +10483,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10129,8 +10500,8 @@
         "3km": 5,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.86,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10149,8 +10520,8 @@
         "3km": 3,
         "5km": 5
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.7,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10169,8 +10540,8 @@
         "3km": 6,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.94,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10189,8 +10560,8 @@
         "3km": 5,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.91,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10209,8 +10580,8 @@
         "3km": 5,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.94,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10229,8 +10600,8 @@
         "3km": 5,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.91,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10249,8 +10620,8 @@
         "3km": 3,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.8,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10269,8 +10640,8 @@
         "3km": 3,
         "5km": 8
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.67,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10289,8 +10660,8 @@
         "3km": 3,
         "5km": 6
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.8,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10305,7 +10676,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10322,8 +10693,8 @@
         "3km": 3,
         "5km": 4
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.72,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10338,7 +10709,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10351,7 +10722,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10364,7 +10735,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10381,8 +10752,8 @@
         "3km": 5,
         "5km": 9
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.89,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10401,8 +10772,8 @@
         "3km": 5,
         "5km": 8
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.84,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10421,8 +10792,8 @@
         "3km": 8,
         "5km": 13
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.87,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10441,8 +10812,8 @@
         "3km": 7,
         "5km": 14
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.87,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10461,8 +10832,8 @@
         "3km": 6,
         "5km": 10
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.91,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10481,8 +10852,8 @@
         "3km": 6,
         "5km": 11
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.91,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10501,8 +10872,8 @@
         "3km": 8,
         "5km": 11
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.85,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10517,7 +10888,7 @@
       "overlap_risk": null,
       "risk_unavailable_reason": null,
       "locatable_others": 0,
-      "total_other_operational": 51,
+      "total_other_operational": 52,
       "unavailable_reason": "town_centroid"
     },
     {
@@ -10534,8 +10905,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10554,8 +10925,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10574,8 +10945,8 @@
         "3km": 1,
         "5km": 1
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.36,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10594,8 +10965,8 @@
         "3km": 6,
         "5km": 11
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.86,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10614,8 +10985,8 @@
         "3km": 5,
         "5km": 10
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0.75,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10634,8 +11005,8 @@
         "3km": 0,
         "5km": 0
       },
-      "locatable_others": 42,
-      "total_other_operational": 51,
+      "locatable_others": 43,
+      "total_other_operational": 52,
       "overlap_risk": 0,
       "risk_unavailable_reason": null,
       "kind": "derived"
@@ -10654,10 +11025,30 @@
         "3km": 4,
         "5km": 7
       },
-      "locatable_others": 43,
-      "total_other_operational": 52,
+      "locatable_others": 44,
+      "total_other_operational": 53,
       "overlap_risk": null,
       "risk_unavailable_reason": "closed"
+    },
+    {
+      "store_id": "URN",
+      "status": "operational",
+      "geocoded": true,
+      "locatable": true,
+      "nearest_own": {
+        "store_id": "RCM",
+        "km": 26.54
+      },
+      "own_within": {
+        "1km": 0,
+        "3km": 0,
+        "5km": 0
+      },
+      "locatable_others": 43,
+      "total_other_operational": 52,
+      "overlap_risk": 0,
+      "risk_unavailable_reason": null,
+      "kind": "derived"
     }
   ],
   "clusters": [
@@ -10884,6 +11275,13 @@
       "stores": 1,
       "store_ids": [
         "THE"
+      ]
+    },
+    {
+      "town": "Uran",
+      "stores": 1,
+      "store_ids": [
+        "URN"
       ]
     },
     {

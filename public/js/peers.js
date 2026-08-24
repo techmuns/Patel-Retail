@@ -272,13 +272,13 @@ function renderPeerCompanyBlock(p) {
   `;
 }
 
-function renderPeerScaleCard(metrics) {
+function renderPeerScaleCard(metrics, operationalCount) {
   const el = qs("#peerScaleCard");
   el.innerHTML = `
     <div class="card-head">
       <div>
         <h3><span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="scale" class="i16"></i></span>Osia Hyper Retail &amp; V2 Retail — the closest scale peers</h3>
-        <div class="sub">Patel's own scale (52 operational stores) — every other peer in the model is 120+ stores</div>
+        <div class="sub">Patel's own scale (${operationalCount} operational stores) — every other peer in the model is 120+ stores</div>
       </div>
     </div>
     <div class="card-body">
@@ -356,7 +356,7 @@ export async function initPeers() {
     renderPeerBugsTable(metrics);
     renderTrentFixCard(metrics);
     renderSpencersFixCard(metrics);
-    renderPeerScaleCard(metrics);
+    renderPeerScaleCard(metrics, operationalCount);
     renderPrivateLabelBlock(metrics);
     renderPeerContradictionsTable(metrics, stores.length);
   } catch (err) {

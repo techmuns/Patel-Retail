@@ -21,6 +21,11 @@ async function loadMetrics() {
   if (!res.ok) throw new Error(`Failed to load metrics.json: ${res.status}`);
   return res.json();
 }
+async function loadStores() {
+  const res = await fetch("./data/stores.json", { cache: "no-store" });
+  if (!res.ok) throw new Error(`Failed to load stores.json: ${res.status}`);
+  return (await res.json()).stores;
+}
 
 function fmtL(value) {
   return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 1 })} L`;
@@ -145,13 +150,13 @@ function renderReconciliationFlag(pnl, osia) {
   refreshIcons();
 }
 
-function renderAreaEstimate(metrics) {
+function renderAreaEstimate(metrics, storeCount) {
   const el = qs("#areaEstimateBlock");
   if (!el) return;
   const ue = metrics.unit_economics;
   el.innerHTML = `
     <div class="compare-box" data-kind="estimate" style="margin-bottom: 12px;">
-      <div class="cb-label">Applied uniformly to all 53 stores</div>
+      <div class="cb-label">Applied uniformly to all ${storeCount} stores</div>
       <div class="cb-value">${ue.sqft_per_store.toLocaleString("en-IN")} sq ft</div>
       <span class="kind-pill kind-estimate">estimate</span>
     </div>
@@ -193,13 +198,13 @@ function renderPeerCompare(metrics) {
 
 export async function initEconomics() {
   try {
-    const metrics = await loadMetrics();
+    const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
     const pnl = computePnl(metrics.store_pnl_reconciliation);
     renderKpis(metrics, pnl.ebitdaPct);
     renderRevSqftCompare(metrics);
     renderPnlTable(pnl);
     renderReconciliationFlag(pnl, metrics.osia_hyper_retail);
-    renderAreaEstimate(metrics);
+    renderAreaEstimate(metrics, stores.length);
     renderPeerCompare(metrics);
   } catch (err) {
     const el = qs("#viewEconomics .content-inner") || qs("#viewEconomics");

@@ -26,7 +26,7 @@ async function loadJson(path) {
   return res.json();
 }
 
-/** ALL 53 stores, not just geocoded ones — "distance to every own store" is a literal promise; unlocatable ones show as such rather than being silently dropped. */
+/** EVERY store, not just geocoded ones — "distance to every own store" is a literal promise; unlocatable ones show as such rather than being silently dropped. */
 async function getStores() {
   if (!storesCache) {
     const data = await loadJson("./data/stores.json");

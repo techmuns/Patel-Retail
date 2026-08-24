@@ -378,8 +378,9 @@ function peerBenchmarkSection(push, model, n) {
   const osia = m.osia_hyper_retail;
   const v2 = m.v2_retail;
   const naOr = (v, fmt) => (v == null ? "Not available" : fmt(v));
+  const operationalCount = model.stores.filter((st) => st.status === "operational").length;
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Osia Hyper Retail &amp; V2 Retail — the closest scale peers (Patel's own scale is 52 operational stores; every other peer in the model is 120+)</div>
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Osia Hyper Retail &amp; V2 Retail — the closest scale peers (Patel's own scale is ${operationalCount} operational stores; every other peer in the model is 120+)</div>
       <table class="rpt-pk">
         <thead><tr><th style="width:22%">Figure</th><th style="width:39%">Osia Hyper Retail (${escapeHtml(osia.fiscal_year)})</th><th style="width:39%">V2 Retail (${escapeHtml(v2.fiscal_year)})</th></tr></thead>
         <tbody>

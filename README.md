@@ -1,7 +1,8 @@
 # Patel Retail Dashboard
 
-A dashboard for Patel Retail Ltd — a 53-store Thane–Raigad value-grocery
-chain — built for an investment firm doing diligence on the company.
+A dashboard for Patel Retail Ltd — a 54-store Thane–Raigad value-grocery
+chain — built for an investment firm doing diligence on the company. (53
+from the client's own store file, plus Uran — see PATEL-HANDOFF.md §29.)
 
 **Start here:** [`PATEL-HANDOFF.md`](./PATEL-HANDOFF.md) — what's in this
 repo, where it came from, the data schemas, the decisions already made, and
@@ -9,8 +10,8 @@ the facts already established from the client's files (§9 especially).
 
 ## Status
 
-- **Network map** (`public/index.html`, `public/js/map.js`): live. 50/53
-  stores have coordinates, and **44/53 are precisely located** (up from 28
+- **Network map** (`public/index.html`, `public/js/map.js`): live. 51/54
+  stores have coordinates, and **45/54 are precisely located** (up from 28
   before this round of work — see the official-stores-website bullet below)
   — the other 6 resolved only to a town centroid and correctly show as an
   uncertainty circle with "Distance unavailable," never a fabricated
@@ -45,7 +46,11 @@ the facts already established from the client's files (§9 especially).
   passes its own sanity check) and one store (`BHAR`) proposed — and
   failing — on two different listings, worth a specific look. **7 never
   resolved to a coordinate** at all and need a link opened by hand; **1**
-  (Uran) reads as a warehouse, not a store, and was never added.
+  (Uran) was flagged here as reading like a warehouse, not a store, and
+  left unadded — since resolved via independent press coverage of an SEBI
+  filing as a genuine 54th store, not a warehouse, and added as `URN` with
+  its own distinct source label. See PATEL-HANDOFF.md §29 for the full
+  account; the figures immediately below are from before that addition.
   **Precisely-located stores: 28/53 → 44/53** — the real number, not
   rounded up. `docs/OFFICIAL-STORES-VALIDATION.md` ends with an 18-row
   final list — every remaining listing with its website address and map
