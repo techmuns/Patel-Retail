@@ -200,7 +200,7 @@ function buildUnitEconomics(wb, { metrics }) {
   const areaRow = r;
   inputRow(ws, r++, "Area per store (sq ft) [estimate]", ue.sqft_per_store, ue.sqft_per_store_note);
   const revSqftRow = r;
-  inputRow(ws, r++, "Revenue per sq ft per year (₹) [reported]", c.store_file, `Peer model states ${c.peer_model} instead — ${(c.gap_pct * 100).toFixed(0)}% gap; store-file value used here, per instruction`);
+  inputRow(ws, r++, "Revenue per sq ft per year (₹) [reported]", c.store_file, `Peer model states ${c.peer_model} instead — ${(c.gap_pct * 100).toFixed(0)}% gap; store-file value used here for every calculation`);
   const marginRow = r;
   inputRow(ws, r++, "Gross margin % [reported, midpoint of 16–17%]", ue.gross_margin_pct, ue.gross_margin_pct_note);
   const rentRow = r;

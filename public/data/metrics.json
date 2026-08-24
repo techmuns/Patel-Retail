@@ -51,7 +51,7 @@
       "peer_model": 22079,
       "gap_pct": 0.278,
       "used_in_this_dashboard": "store_file",
-      "resolution_note": "The two client files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation, per instruction — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
+      "resolution_note": "The two client files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
       "kind": "reported"
     },
     "store_count": { "peer_model": 49, "store_file_operational": 52, "store_file_operational_plus_closed": 53, "note": "The client's own call cited 53." },
