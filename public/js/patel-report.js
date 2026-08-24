@@ -193,7 +193,7 @@ function patelCoverPage(model, logo, total) {
     <div class="rpt-cover-note">This report reproduces figures from Patel Retail Ltd's own files
       (Patel_Retail_data_Munshot.xlsx, Peer_Model.xlsx) plus distances derived from OpenStreetMap-geocoded
       coordinates. Every figure is labelled reported, derived, or estimate and traces to a stated source —
-      nothing here is invented to fill a gap, and where the client's own files disagree, both figures are
+      nothing here is invented to fill a gap, and where Patel Retail's own files disagree, both figures are
       shown side by side rather than averaged or silently picked. Open the live dashboard to cross-verify any
       figure at its source.</div>
     ${footer}
@@ -268,7 +268,7 @@ function storeNetworkSection(push, model, n) {
       ${stores.length - s.operational} closed) across ${s.towns} towns. ${s.locatable} of ${s.total} are precisely
       located; ${s.coarse} resolved only to a town centroid — shown here with distances suppressed rather than
       fabricated, since a town can be several km across (see PATEL-HANDOFF.md §15.1); ${s.pendingGeocode} have no
-      coordinates at all pending the client's own pins (docs/PINS-NEEDED.md).</p></div>`)
+      coordinates at all pending Patel Retail's own pins (docs/PINS-NEEDED.md).</p></div>`)
   );
   const sorted = stores.slice().sort((a, b) => a.town.localeCompare(b.town) || a.store_id.localeCompare(b.store_id));
   chunk(sorted, 22).forEach((group, gi) => push(el(`<div class="rpt-block">${storeTable(group, gi > 0)}</div>`)));
@@ -349,7 +349,7 @@ function peerBenchmarkSection(push, model, n) {
   const m = model.metrics;
   sectionHead(push, n, "Peer Benchmark");
   push(
-    el(`<div class="rpt-block"><p class="rpt-note">All 10 bugs documented in PATEL-HANDOFF.md §10, from the client's
+    el(`<div class="rpt-block"><p class="rpt-note">All 10 bugs documented in PATEL-HANDOFF.md §10, from Patel Retail's
       own Peer_Model.xlsx, with an honest status each — not silently repaired and not silently ignored.</p></div>`)
   );
   push(
@@ -436,7 +436,7 @@ function unitEconomicsSection(push, model, n) {
 
   sectionHead(push, n, "Unit Economics");
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue/sq ft — the two client files disagree by ${(c.gap_pct * 100).toFixed(0)}%</div>
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue/sq ft — Patel Retail's two source files disagree by ${(c.gap_pct * 100).toFixed(0)}%</div>
       <div class="rpt-compare">
         <div class="rpt-cbox used"><div class="cl">Used in this dashboard</div><div class="cv">${fmtINR(c.store_file)}</div><div class="cs">Store file — Patel_Retail_data_Munshot.xlsx</div></div>
         <div class="rpt-cbox"><div class="cl">Peer model (reference only)</div><div class="cv">${fmtINR(c.peer_model)}</div><div class="cs">Peer_Model.xlsx</div></div>
@@ -465,8 +465,8 @@ function unitEconomicsSection(push, model, n) {
         </tbody>
       </table>
       <p class="rpt-note"><b>${fmtPct(pnl.ebitdaPct)} store-level is lower than the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level claim</b> —
-      company-level margin cannot exceed store-level once head-office overhead is added, which is backwards as given. Not resolved here — surfaced as a flag for
-      follow-up with the client. ${pnl.total_company_note ? escapeHtml(pnl.total_company_note) : ""}</p>
+      company-level margin cannot exceed store-level once head-office overhead is added, which is backwards as given. Not resolved here — worth raising with
+      Patel Retail directly. ${pnl.total_company_note ? escapeHtml(pnl.total_company_note) : ""}</p>
     </div>`)
   );
 

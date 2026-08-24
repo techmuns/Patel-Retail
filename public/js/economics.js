@@ -82,7 +82,7 @@ function renderRevSqftCompare(metrics) {
     <div class="flag-card">
       <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
       <div>
-        <span class="flag-title">${(c.gap_pct * 100).toFixed(0)}% gap between the two client files</span>
+        <span class="flag-title">${(c.gap_pct * 100).toFixed(0)}% gap between Patel Retail's two source files</span>
         <p>${escapeHtml(c.resolution_note)}</p>
       </div>
     </div>
@@ -119,7 +119,7 @@ function renderReconciliationFlag(pnl, osia) {
       <div class="compare-box used" data-kind="derived">
         <div class="cb-label">Patel — store build-up</div>
         <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
-        <div class="cb-source">Derived from the client's own reported unit metrics, before head-office cost</div>
+        <div class="cb-source">Derived from Patel Retail's own reported unit metrics, before head-office cost</div>
       </div>
       <div class="compare-box" data-kind="reported">
         <div class="cb-label">Patel — peer model claim</div>
@@ -138,7 +138,7 @@ function renderReconciliationFlag(pnl, osia) {
         <span class="flag-title">Store-level EBITDA (${fmtPct(pnl.ebitdaPct)}) is lower than the peer model's company-level claim (${fmtPct(pnl.peer_model_b2c_ebitda_pct)})</span>
         <p>${escapeHtml(pnl.flag_note)}</p>
         ${pnl.total_company_note ? `<p style="color:var(--text-3);font-size:12px;margin-top:8px">${escapeHtml(pnl.total_company_note)}</p>` : ""}
-        <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — flagged here for the client to clarify directly.</p>
+        <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — worth raising with Patel Retail directly.</p>
       </div>
     </div>
     <div class="flag-card" data-kind="reported" style="margin-top:12px">

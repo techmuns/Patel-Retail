@@ -18,7 +18,7 @@
     "private_label_pct": 0.175,
     "private_label_pct_note": "Store file gives this as a single exact figure (cell L19: 0.175), not a range — no midpoint involved.",
     "kind": "reported",
-    "source": "client file Patel_Retail_data_Munshot.xlsx (Aug 2026), verified cell-by-cell against the primary source"
+    "source": "Patel Retail's own store file, Patel_Retail_data_Munshot.xlsx (Aug 2026), verified cell-by-cell against the primary source"
   },
   "revenue_mix": {
     "food": 0.70,
@@ -51,10 +51,10 @@
       "peer_model": 22079,
       "gap_pct": 0.278,
       "used_in_this_dashboard": "store_file",
-      "resolution_note": "The two client files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
+      "resolution_note": "Patel Retail's two source files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
       "kind": "reported"
     },
-    "store_count": { "peer_model": 49, "store_file_operational": 52, "store_file_operational_plus_closed": 53, "note": "The client's own call cited 53." },
+    "store_count": { "peer_model": 49, "store_file_operational": 52, "store_file_operational_plus_closed": 53, "note": "Patel Retail cited 53 on the call." },
     "avg_store_size_sqft": { "peer_model": 4359, "store_file": 5000 },
     "avg_bill_size": { "peer_model": 907, "store_file": 800 }
   },
@@ -186,7 +186,7 @@
     "peer_model_b2c_ebitda_pct": 0.079,
     "peer_model_b2c_ebitda_kind": "reported",
     "peer_model_source": "Peer_Model.xlsx",
-    "flag_note": "Building EBITDA from the client's own per-store unit economics gives ~5.4% of sales, before any head-office cost. The peer model claims 7.9% EBITDA at the company level for the same B2C business — a company-level margin should come in lower than store-level once overhead is added, not higher. Two plausible causes: the peer model's B2C/export revenue split may be misallocating margin, or the store-level inputs are conservative. Left open for the client to clarify, not resolved here.",
+    "flag_note": "Building EBITDA from Patel Retail's own per-store unit economics gives ~5.4% of sales, before any head-office cost. The peer model claims 7.9% EBITDA at the company level for the same B2C business — a company-level margin should come in lower than store-level once overhead is added, not higher. Two plausible causes: the peer model's B2C/export revenue split may be misallocating margin, or the store-level inputs are conservative. Left open for Patel Retail to clarify, not resolved here.",
     "total_company_revenue_cr": 1048,
     "total_company_ebitda_cr": 83,
     "total_company_pat_cr": 39.1,
