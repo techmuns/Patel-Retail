@@ -477,13 +477,13 @@ function unitEconomicsSection(push, model, n) {
         <thead><tr><th style="width:40%">Metric</th><th style="width:30%">Value used</th><th style="width:30%">Stated range</th></tr></thead>
         <tbody>
           <tr><td>Food</td><td class="mono">${fmtPct(mix.food, 0)}</td><td class="mono">—</td></tr>
-          <tr><td>Non-food</td><td class="mono">${fmtPct(mix.non_food)}</td><td class="mono">20–21%</td></tr>
-          <tr><td>Merchandise</td><td class="mono">${fmtPct(mix.merchandise)}</td><td class="mono">9–10%</td></tr>
-          <tr><td>Gross margin</td><td class="mono">${fmtPct(ue.gross_margin_pct)}</td><td class="mono">16–17%</td></tr>
-          <tr><td>Private label</td><td class="mono">${fmtPct(ue.private_label_pct)}</td><td class="mono">— (exact figure, not a range)</td></tr>
+          <tr><td>Non-food</td><td class="mono">${fmtPct(mix.non_food)}</td><td class="mono">${escapeHtml(mix.non_food_range)}</td></tr>
+          <tr><td>Merchandise</td><td class="mono">${fmtPct(mix.merchandise)}</td><td class="mono">${escapeHtml(mix.merchandise_range)}</td></tr>
+          <tr><td>Gross margin</td><td class="mono">${fmtPct(ue.gross_margin_pct)}</td><td class="mono">${escapeHtml(ue.gross_margin_pct_range)}</td></tr>
+          <tr><td>Private label</td><td class="mono">${fmtPct(ue.private_label_pct)}</td><td class="mono">— exact figure</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note">Where the store file states a range rather than a single figure, the value used throughout this dashboard is the range midpoint — shown here so the reader can see both.</p>
+      <p class="rpt-note">Where the store file states a range rather than a single figure, the value used throughout this dashboard is the range midpoint — shown here so the reader can see both. ${escapeHtml(ue.private_label_pct_note)}</p>
     </div>`)
   );
 

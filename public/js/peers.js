@@ -34,7 +34,10 @@ function fmtCr(value) {
   return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 1 })} cr`;
 }
 function fmtLakh(value) {
-  return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 0 })} L`;
+  // 1 decimal, matching fmtL() in patel-report.js — this value (Trent's
+  // revenue/store) is shown on both screen and PDF and must round the same
+  // way in both places.
+  return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 1 })} L`;
 }
 function fmtPct(value, digits = 1) {
   return `${(value * 100).toFixed(digits)}%`;
