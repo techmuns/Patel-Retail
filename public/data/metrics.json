@@ -19,7 +19,7 @@
     "source": "Patel Retail's own store file, Patel_Retail_data_Munshot.xlsx (Aug 2026), verified cell-by-cell against the primary source"
   },
   "revenue_mix": {
-    "food": 0.70,
+    "food": 0.7,
     "non_food": 0.205,
     "non_food_range": "20–21%",
     "non_food_note": "Store file states this as a range (\"20-21%\", cell L14) — 20.5% is the range midpoint.",
@@ -41,7 +41,7 @@
       "dmart": 0.08,
       "vishal_mega_mart": 0.6074,
       "trent": 0.74,
-      "note": "Patel's private label is ~2x DMart's, but far below Vishal/Trent — 'very high own-brand' doesn't survive peer context.",
+      "note": "Patel's private label share is roughly double DMart's, but well below Vishal Mega Mart and Trent.",
       "kind": "reported"
     }
   },
@@ -51,26 +51,80 @@
       "peer_model": 22079,
       "gap_pct": 0.278,
       "used_in_this_dashboard": "store_file",
-      "resolution_note": "Patel Retail's two source files disagree by ~28% on this single most important unit-economics figure. This dashboard uses the store-file value (₹17,280) for every calculation — the peer-model figure is shown for reference only, never averaged in and never picked silently.",
+      "resolution_note": "The store file and the peer model differ by ~28% on this figure. Every calculation here uses the store-file value of ₹17,280; the peer-model figure is shown for reference only.",
       "kind": "reported"
     },
-    "store_count": { "peer_model": 49, "store_file_operational": 52, "store_file_operational_plus_closed": 53, "note": "Patel Retail cited 53 on the call." },
-    "avg_store_size_sqft": { "peer_model": 4359, "store_file": 5000 },
-    "avg_bill_size": { "peer_model": 907, "store_file": 800 }
+    "store_count": {
+      "peer_model": 49,
+      "store_file_operational": 52,
+      "store_file_operational_plus_closed": 53,
+      "note": "Patel Retail cited 53 on the call."
+    },
+    "avg_store_size_sqft": {
+      "peer_model": 4359,
+      "store_file": 5000
+    },
+    "avg_bill_size": {
+      "peer_model": 907,
+      "store_file": 800
+    }
   },
   "peer_model_bugs": {
     "note": "All 10 documented in PATEL-HANDOFF.md §10, from the client's Peer_Model.xlsx. Status is honest per bug: 'fixed' means this dashboard shows the corrected figure below; 'not_applicable' means the bug doesn't carry over because this dashboard doesn't build that metric at all; 'needs_source_file' means the correct value was never given anywhere in the handoff — only that the current one is wrong — and re-opening the original spreadsheet is the only way to fix it.",
     "items": [
-      { "issue": "Avenue Supermarts mislabelled \"Avenue supermarket (Reliance)\" (cell B2)", "effect": "Wrong company association implied — DMart has no Reliance link", "status": "fixed" },
-      { "issue": "Trent: revenue (₹20,074cr) and area (13mn sq ft) are ALL of Trent (Westside + Zudio + Star Bazaar), while store count (84) is Star Bazaar only", "effect": "Avg store size (154,762 sq ft) and revenue/store (₹239cr) are both impossible for a supermarket format", "status": "partially_fixed" },
-      { "issue": "Spencer's gross profit (cell F15) uses private-label sales × margin, where every other column uses revenue × margin", "effect": "Understated 73% — ₹99.6cr instead of ₹369cr — flows into rows 25 and 31", "status": "fixed" },
-      { "issue": "Cell C28 is a live #VALUE! error because row 32 holds the text \"NA\"", "effect": "Breaks any calculation reading C28", "verified_note": "Confirmed the exact formula: C28 = (C11×10^7)/(C32×10^5) — Trent's revenue divided by its own bill-cut count. C32 was simply never filled in (holds the text \"NA\" instead of a number), so this isn't a formula bug, just a missing input. Still needs the real figure from Trent's own disclosures — not guessed here.", "status": "needs_source_file" },
-      { "issue": "Patel's own cities/states swapped and wrong (rows 7-8: \"1 city, 17 states\")", "effect": "Wildly wrong footprint description for the subject company itself", "status": "fixed" },
-      { "issue": "Vishal's private label sales (cell D13) hardcoded as =78385.79/10 with no stated meaning, rather than a live formula", "effect": "Looked unexplained and unverifiable feeding the peer comparison", "verified_note": "Re-checked directly against Peer_Model.xlsx: 78385.79/10 = ₹7,838.58cr, which equals D11×D14 (₹12,906cr revenue × 60.74% private-label share) to within rounding. The number itself is real and internally consistent — it just should have been the live formula =D11*D14 instead of a pasted-in result, so it silently goes stale if D11 or D14 is ever updated.", "status": "not_applicable" },
-      { "issue": "Patel's same-store sales growth (row 47) hardcoded at 8% with no quarterly backup, while peers average real quarters", "effect": "Overstates confidence in a number with no supporting data", "status": "not_applicable" },
-      { "issue": "Rows 26 and 29 duplicate", "effect": "Data hygiene issue, possible double-count downstream", "verified_note": "Re-checked directly against Peer_Model.xlsx: rows 26 and 29 are byte-for-byte identical — same label (\"EBIDTA per store (Rs lakh)\"), same formula in every column, same values. Nothing else in the model references row 29, so the duplicate is confirmed harmless rather than a live double-count risk.", "status": "confirmed_harmless" },
-      { "issue": "\"EBIDTA\" misspelled throughout", "effect": "Cosmetic, but signals the model wasn't proofread", "status": "fixed" },
-      { "issue": "Patel's private-label % and gross-margin % both hardcoded at 0.17 (identical — a copy-paste error)", "effect": "Silently wrong inputs to every downstream calculation using either figure", "status": "fixed" }
+      {
+        "issue": "Avenue Supermarts mislabelled \"Avenue supermarket (Reliance)\" (cell B2)",
+        "effect": "Wrong company association implied — DMart has no Reliance link",
+        "status": "fixed"
+      },
+      {
+        "issue": "Trent: revenue (₹20,074cr) and area (13mn sq ft) are ALL of Trent (Westside + Zudio + Star Bazaar), while store count (84) is Star Bazaar only",
+        "effect": "Avg store size (154,762 sq ft) and revenue/store (₹239cr) are both impossible for a supermarket format",
+        "status": "partially_fixed"
+      },
+      {
+        "issue": "Spencer's gross profit (cell F15) uses private-label sales × margin, where every other column uses revenue × margin",
+        "effect": "Understated 73% — ₹99.6cr instead of ₹369cr — flows into rows 25 and 31",
+        "status": "fixed"
+      },
+      {
+        "issue": "Cell C28 is a live #VALUE! error because row 32 holds the text \"NA\"",
+        "effect": "Breaks any calculation reading C28",
+        "verified_note": "Confirmed the exact formula: C28 = (C11×10^7)/(C32×10^5) — Trent's revenue divided by its own bill-cut count. C32 was simply never filled in (holds the text \"NA\" instead of a number), so this isn't a formula bug, just a missing input. Still needs the real figure from Trent's own disclosures — not guessed here.",
+        "status": "needs_source_file"
+      },
+      {
+        "issue": "Patel's own cities/states swapped and wrong (rows 7-8: \"1 city, 17 states\")",
+        "effect": "Wildly wrong footprint description for the subject company itself",
+        "status": "fixed"
+      },
+      {
+        "issue": "Vishal's private label sales (cell D13) hardcoded as =78385.79/10 with no stated meaning, rather than a live formula",
+        "effect": "Looked unexplained and unverifiable feeding the peer comparison",
+        "verified_note": "Re-checked directly against Peer_Model.xlsx: 78385.79/10 = ₹7,838.58cr, which equals D11×D14 (₹12,906cr revenue × 60.74% private-label share) to within rounding. The number itself is real and internally consistent — it just should have been the live formula =D11*D14 instead of a pasted-in result, so it silently goes stale if D11 or D14 is ever updated.",
+        "status": "not_applicable"
+      },
+      {
+        "issue": "Patel's same-store sales growth (row 47) hardcoded at 8% with no quarterly backup, while peers average real quarters",
+        "effect": "Overstates confidence in a number with no supporting data",
+        "status": "not_applicable"
+      },
+      {
+        "issue": "Rows 26 and 29 duplicate",
+        "effect": "Data hygiene issue, possible double-count downstream",
+        "verified_note": "Re-checked directly against Peer_Model.xlsx: rows 26 and 29 are byte-for-byte identical — same label (\"EBIDTA per store (Rs lakh)\"), same formula in every column, same values. Nothing else in the model references row 29, so the duplicate is confirmed harmless rather than a live double-count risk.",
+        "status": "confirmed_harmless"
+      },
+      {
+        "issue": "\"EBIDTA\" misspelled throughout",
+        "effect": "Cosmetic, but signals the model wasn't proofread",
+        "status": "fixed"
+      },
+      {
+        "issue": "Patel's private-label % and gross-margin % both hardcoded at 0.17 (identical — a copy-paste error)",
+        "effect": "Silently wrong inputs to every downstream calculation using either figure",
+        "status": "fixed"
+      }
     ]
   },
   "peer_model_corrections": {
@@ -78,24 +132,24 @@
       "store_count": 84,
       "store_count_note": "Row 38 of Peer_Model.xlsx — already Star-Bazaar-specific per the model's own row 39 (\"*only for star bazaar\"), so this figure needs no correction.",
       "wrong_revenue_cr": 20074,
-      "wrong_note": "All of Trent combined (Westside + Zudio + Star Bazaar) — not just the supermarket format being compared against",
+      "wrong_note": "All of Trent combined (Westside + Zudio + Star Bazaar), not the supermarket format alone",
       "corrected_revenue_cr": 3400,
-      "corrected_note": "Star Bazaar only — the model's own row 12 already had this figure; it was simply never used",
+      "corrected_note": "Star Bazaar only — already present in the model but unused",
       "wrong_revenue_per_store_lakh": 23897.62,
       "corrected_revenue_per_store_lakh": 4047.62,
       "corrected_revenue_per_store_cr": 40.48,
-      "revenue_per_store_note": "Store count (84, row 38) is already Star-Bazaar-specific — the model's own row 39 notes \"*only for star bazaar\" — so revenue/store IS correctable: ₹3,400cr ÷ 84 stores = ₹40.48cr (₹4,047.62 lakh) per store, not the impossible ₹238.98cr (₹23,897.62 lakh) the broken model implies from all-of-Trent revenue.",
-      "still_needs_source_file": "Star Bazaar's own store area. The model's 13mn sq ft is still Trent-wide (Westside + Zudio + Star Bazaar combined), not Star-Bazaar-specific, so avg store size and revenue/sq ft still can't be corrected here — that needs the original spreadsheet re-opened, not guessed.",
+      "revenue_per_store_note": "The model's store count (84) already covers Star Bazaar alone, so revenue per store corrects cleanly: ₹3,400cr ÷ 84 = ₹40.48cr per store, against the ₹238.98cr the original implied.",
+      "still_needs_source_file": "Average store size and revenue per sq ft remain uncorrected: the model's 13mn sq ft covers all of Trent, and no Star-Bazaar-only area figure is available.",
       "kind": "derived",
       "source": "PATEL-HANDOFF.md §10"
     },
     "spencers": {
       "wrong_gross_profit_cr": 99.6,
-      "wrong_formula": "private-label sales × margin (cell F15)",
+      "wrong_formula": "private-label sales × margin",
       "corrected_gross_profit_cr": 369,
-      "corrected_formula": "revenue × margin — matching every other column in the model",
+      "corrected_formula": "revenue × margin, consistent with every other column",
       "understated_pct": 0.73,
-      "still_needs_source_file": "rows 25 and 31, which flow from this figure and weren't independently re-derived here",
+      "still_needs_source_file": "Two dependent rows in the original model flow from this figure and have not been re-derived here.",
       "kind": "derived",
       "source": "PATEL-HANDOFF.md §10"
     },
@@ -120,9 +174,10 @@
     "retail_area_mn_sqft": null,
     "private_label_pct": null,
     "kind": "reported",
-    "source": "Screener.in/company/OSIAHYPER/",
-    "note": "Store count unresolved - sources disagree (~35 vs 43). FY25 is the latest filed year, one year behind the other peers.",
-    "period_offset_flag": "FY2025 — one fiscal year behind every other peer in this comparison, which is on FY2026 (or later trailing) numbers. Growth-rate and scale comparisons against Osia should account for that gap, not read it as like-for-like."
+    "source": "Screener.in",
+    "note": "Store count unresolved — sources disagree (~35 vs 43).",
+    "period_offset_flag": "FY2025 figures — one year behind the other peers, who are on FY2026. Growth and scale comparisons against Osia are not like-for-like.",
+    "source_url": "https://www.screener.in/company/OSIAHYPER/"
   },
   "v2_retail": {
     "name": "V2 Retail Ltd",
@@ -137,9 +192,10 @@
     "retail_area_mn_sqft": null,
     "private_label_pct": null,
     "kind": "reported",
-    "source": "Screener.in/company/V2RETAIL/consolidated/",
-    "note": "160 stores / 17.22 lakh sqft is a Dec-2024 figure, stale against FY26 revenue up 63% - left null rather than misstated.",
-    "category_flag": "V2 Retail is an apparel-led value retailer, not a grocer — its 15% EBITDA margin reflects a structurally different, higher-margin category mix and isn't comparable to Patel's grocery margins. Useful here as a store-expansion/scale comp, not a margin comp."
+    "source": "Screener.in",
+    "note": "Store count and retail area left blank: the last disclosed figures are from Dec 2024 and are stale against FY26 revenue.",
+    "category_flag": "Apparel-led, not a grocer. Its 15% EBITDA margin reflects a higher-margin category mix, so it works as a scale comparison but not as a margin comparison.",
+    "source_url": "https://www.screener.in/company/V2RETAIL/consolidated/"
   },
   "dmart": {
     "name": "Avenue Supermarts Ltd (DMart)",
@@ -184,12 +240,12 @@
     "utilities_l": 21,
     "staff_l": 45,
     "peer_model_b2c_ebitda_pct": 0.079,
-    "flag_note": "Building EBITDA from Patel Retail's own per-store unit economics gives ~5.4% of sales, before any head-office cost. The peer model claims 7.9% EBITDA at the company level for the same B2C business — a company-level margin should come in lower than store-level once overhead is added, not higher. Two plausible causes: the peer model's B2C/export revenue split may be misallocating margin, or the store-level inputs are conservative. Left open for Patel Retail to clarify, not resolved here.",
+    "flag_note": "Patel Retail's own per-store unit economics build to ~5.4% EBITDA before head-office cost. The peer model claims 7.9% at company level for the same business — but company-level margin should fall below store-level once overhead is added, not rise above it. Either the peer model's B2C/export split misallocates margin, or the store-level inputs are conservative.",
     "total_company_revenue_cr": 1048,
     "total_company_ebitda_cr": 83,
     "total_company_pat_cr": 39.1,
     "b2c_share_pct": 0.45,
-    "total_company_note": "Not a B2C-specific quirk — the peer model derives Patel's entire B2C column by applying one fixed 45% share to total-company revenue, EBITDA and PAT, and that same factor cancels out of the margin ratio. So the 7.9% figure is identical whether read at the B2C or total-company level; the contradiction holds either way.",
+    "total_company_note": "The gap is not specific to the B2C segment: the peer model applies one fixed 45% share across revenue, EBITDA and PAT alike, so that factor cancels out of the margin and 7.9% reads the same at either level.",
     "kind": "derived",
     "note": "store_ebitda_l / store_ebitda_pct are computed at runtime from the reported inputs above (see public/js/economics.js) rather than stored pre-computed, so the arithmetic stays auditable on screen."
   }

@@ -75,7 +75,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
       name: "Patel Retail",
       highlight: true,
       revenue: `${fmtCr(rec.total_company_revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">total company, 45% B2C</div>`,
-      ebitda: `${fmtPct(storeEbitdaPct)} <span class="kind-pill kind-derived">derived</span> / ${fmtPct(rec.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">store build-up vs peer model — contested, see Store Economics</div>`,
+      ebitda: `${fmtPct(storeEbitdaPct)} <span class="kind-pill kind-derived">derived</span> / ${fmtPct(rec.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">store build-up vs peer model — see Store Economics</div>`,
       stores: `${patelStoreCount} <span class="kind-pill kind-reported">reported</span>`,
       privateLabel: cellOrNA(pl.patel, (v) => fmtPct(v)),
     },
@@ -95,7 +95,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     },
     {
       name: "Trent (Star Bazaar)",
-      revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">corrected from the model's own unused row — see below</div>`,
+      revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">Star Bazaar only — see correction below</div>`,
       ebitda: `<span class="cb-na">Not available</span>`,
       stores: `${trent.store_count} <span class="kind-pill kind-reported">reported</span>`,
       privateLabel: cellOrNA(pl.trent, (v) => fmtPct(v)),
@@ -103,7 +103,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     {
       name: "Spencer's Retail",
       revenue: `${fmtCr(spencers.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(spencers.fiscal_year)}</div>`,
-      ebitda: `${fmtPct(spencers.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">loss-making; FY26 reportedly deeper still</div>`,
+      ebitda: `${fmtPct(spencers.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">loss-making</div>`,
       stores: cellOrNA(spencers.total_stores, (v) => v.toLocaleString("en-IN")),
       privateLabel: `<span class="cb-na">Not available</span>`,
     },
@@ -117,7 +117,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     {
       name: "V2 Retail",
       revenue: `${fmtCr(v2.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(v2.fiscal_year)}</div>`,
-      ebitda: `${fmtPct(v2.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">apparel-led, not a grocery margin comp</div>`,
+      ebitda: `${fmtPct(v2.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">apparel-led — not a grocery margin comparison</div>`,
       stores: cellOrNA(v2.total_stores, (v) => v.toLocaleString("en-IN")),
       privateLabel: cellOrNA(v2.private_label_pct, (v) => fmtPct(v)),
     },
@@ -159,7 +159,7 @@ function renderTrentFixCard(metrics) {
   el.innerHTML = `
     <div class="card-head">
       <div>
-        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Trent revenue — fixed</h3>
+        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Trent revenue — corrected</h3>
       </div>
     </div>
     <div class="card-body">
@@ -204,7 +204,7 @@ function renderSpencersFixCard(metrics) {
   el.innerHTML = `
     <div class="card-head">
       <div>
-        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Spencer's gross profit — fixed</h3>
+        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Spencer's gross profit — corrected</h3>
       </div>
     </div>
     <div class="card-body">
@@ -257,7 +257,12 @@ function renderPeerCompanyBlock(p) {
         <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}</td></tr>
         <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}</td></tr>
       </table>
-      <p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(p.note)} — <span style="color:var(--text-3)">${escapeHtml(p.source)}</span></p>
+      <p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(p.note)}</p>
+      <p style="font-size:11px;color:var(--text-4);margin-top:4px">Source: ${
+        p.source_url
+          ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(p.source)}</a>`
+          : `<span style="color:var(--text-3)">${escapeHtml(p.source)}</span>`
+      }</p>
       ${
         p.period_offset_flag
           ? `<div class="flag-card" style="margin-top:10px"><span class="flag-ico"><i data-lucide="clock" class="i16"></i></span><div><p>${escapeHtml(p.period_offset_flag)}</p></div></div>`
@@ -286,7 +291,7 @@ function renderPeerScaleCard(metrics, operationalCount) {
         ${renderPeerCompanyBlock(metrics.osia_hyper_retail)}
         ${renderPeerCompanyBlock(metrics.v2_retail)}
       </div>
-      <p style="font-size:11.5px;color:var(--text-4);margin-top:4px">Store count, retail area, and private label % are genuinely not disclosed by either company on Screener — shown as "Not available," not estimated.</p>
+      <p style="font-size:11.5px;color:var(--text-4);margin-top:4px">Store count, retail area and private label % are not disclosed by either company.</p>
     </div>
   `;
   refreshIcons();
@@ -319,7 +324,7 @@ function renderPrivateLabelBlock(metrics) {
         )
         .join("")}
       <p style="font-size:12px;color:var(--text-4);margin:8px 0 0">${escapeHtml(pl.note)}</p>
-      <p style="font-size:11px;color:var(--text-4);margin:4px 0 0">Osia Hyper Retail's private label % is ${metrics.osia_hyper_retail.private_label_pct == null ? "not disclosed on Screener" : fmtPct(metrics.osia_hyper_retail.private_label_pct, 1)}; V2 Retail's is ${metrics.v2_retail.private_label_pct == null ? "not disclosed on Screener" : fmtPct(metrics.v2_retail.private_label_pct, 1)} — same gap as above, not filled in.</p>
+      <p style="font-size:11px;color:var(--text-4);margin:4px 0 0">Osia Hyper Retail and V2 Retail do not disclose this figure.</p>
     </div>
   `;
 }

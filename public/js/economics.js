@@ -136,14 +136,14 @@ function renderReconciliationFlag(pnl, osia) {
         <span class="flag-title">Store-level EBITDA (${fmtPct(pnl.ebitdaPct)}) is lower than the peer model's company-level claim (${fmtPct(pnl.peer_model_b2c_ebitda_pct)})</span>
         <p>${escapeHtml(pnl.flag_note)}</p>
         ${pnl.total_company_note ? `<p style="color:var(--text-3);font-size:12px;margin-top:8px">${escapeHtml(pnl.total_company_note)}</p>` : ""}
-        <p style="color:var(--text-4);font-size:11.5px">Not resolved by this dashboard — worth raising with Patel Retail directly.</p>
+        <p style="color:var(--text-4);font-size:11.5px">Open item for Patel Retail to clarify.</p>
       </div>
     </div>
     <div class="flag-card" data-kind="reported" style="margin-top:12px">
       <span class="flag-ico"><i data-lucide="scale" class="i16"></i></span>
       <div>
-        <span class="flag-title">Independent evidence, not a resolution</span>
-        <p>Osia is the closest structural comp Patel has — a regionally-concentrated value grocery chain at roughly Patel's own order of magnitude (₹${osia.revenue_cr.toLocaleString("en-IN")} cr revenue) — and it runs a ${fmtPct(osia.ebitda_margin_pct)} operating margin. A comparable regional grocer earning ${fmtPct(osia.ebitda_margin_pct)} corroborates the ${fmtPct(pnl.ebitdaPct)} store build-up above and makes the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level claim look generous. This doesn't resolve the contradiction — it's evidence for the reader to weigh, not a verdict.</p>
+        <span class="flag-title">Supporting evidence</span>
+        <p>Osia Hyper Retail is Patel's closest structural comparison — a regional value grocery chain at a similar scale (₹${osia.revenue_cr.toLocaleString("en-IN")} cr revenue) — and runs a ${fmtPct(osia.ebitda_margin_pct)} operating margin. That supports the ${fmtPct(pnl.ebitdaPct)} store build-up and suggests the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} is optimistic, without settling the question.</p>
       </div>
     </div>
   `;

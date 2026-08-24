@@ -44,12 +44,12 @@ function renderKpis(stores) {
     <div class="kpi k1">
       <div class="kpi-top"><span class="kpi-label">Opened 2024 or Later</span><span class="kpi-ico"><i data-lucide="calendar-plus"></i></span></div>
       <div class="kpi-value">${in2024Plus}<span class="unit">/ ${stores.length}</span></div>
-      <div class="kpi-delta"><i data-lucide="check" class="i16"></i> ${in2024PlusPct}% of the estate — a fixed calendar-year fact</div>
+      <div class="kpi-delta"><i data-lucide="check" class="i16"></i> ${in2024PlusPct}% of the estate</div>
     </div>
     <div class="kpi k2">
       <div class="kpi-top"><span class="kpi-label">Under 2 Years Old, Today</span><span class="kpi-ico"><i data-lucide="sprout"></i></span></div>
       <div class="kpi-value">${rollingRecentPct}<span class="unit">%</span></div>
-      <div class="kpi-delta"><i data-lucide="info" class="i16"></i> ${rollingRecent} stores — see note below the chart</div>
+      <div class="kpi-delta"><i data-lucide="info" class="i16"></i> ${rollingRecent} stores</div>
     </div>
     <div class="kpi k3">
       <div class="kpi-top"><span class="kpi-label">Oldest Store</span><span class="kpi-ico"><i data-lucide="landmark"></i></span></div>
@@ -77,10 +77,9 @@ function renderRollingVsFixedNote(stores) {
         <span class="flag-title">Two ways to read "recently opened"</span>
         <p>
           ${in2024Plus} of ${stores.length} stores (${Math.round((in2024Plus / stores.length) * 100)}%) opened in
-          calendar year 2024 or later. ${rollingRecent} of ${stores.length}
-          (${Math.round((rollingRecent / stores.length) * 100)}%) are under 2 years old as of today — a smaller
-          number, since the rolling window moves forward each day while the calendar-year count doesn't. Both
-          are shown for that reason.
+          calendar year 2024 or later; ${rollingRecent} (${Math.round((rollingRecent / stores.length) * 100)}%)
+          are under two years old as of today. Both are shown, since the rolling window shifts daily while the
+          calendar-year count does not.
         </p>
       </div>
     </div>
