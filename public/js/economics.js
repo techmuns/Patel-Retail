@@ -14,6 +14,7 @@
  *      resolved here.
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
+import { computePnl } from "./pnl.js";
 
 async function loadMetrics() {
   const res = await fetch("./data/metrics.json", { cache: "no-store" });
@@ -88,14 +89,6 @@ function renderRevSqftCompare(metrics) {
     </div>
   `;
   refreshIcons();
-}
-
-function computePnl(metrics) {
-  const rec = metrics.store_pnl_reconciliation;
-  const grossProfitL = rec.revenue_l * rec.gross_margin_pct;
-  const ebitdaL = grossProfitL - rec.rent_l - rec.utilities_l - rec.staff_l;
-  const ebitdaPct = ebitdaL / rec.revenue_l;
-  return { ...rec, grossProfitL, ebitdaL, ebitdaPct };
 }
 
 function renderPnlTable(pnl) {
@@ -201,7 +194,7 @@ function renderPeerCompare(metrics) {
 export async function initEconomics() {
   try {
     const metrics = await loadMetrics();
-    const pnl = computePnl(metrics);
+    const pnl = computePnl(metrics.store_pnl_reconciliation);
     renderKpis(metrics, pnl.ebitdaPct);
     renderRevSqftCompare(metrics);
     renderPnlTable(pnl);

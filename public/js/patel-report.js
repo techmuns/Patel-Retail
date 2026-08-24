@@ -16,6 +16,7 @@ import { escapeHtml, fmtDate } from "./ui.js";
 import { packBlocksIntoPages, exportReportPdf, injectStyles, loadLogo, logoMark } from "./report.js";
 import { isCoarseTier } from "./geo.js";
 import { yearsSince, VINTAGE_BUCKETS } from "./vintage.js";
+import { computePnl } from "./pnl.js";
 
 /* ------------------------------------------------------------- helpers ---- */
 function el(html) {
@@ -72,17 +73,6 @@ export async function buildPatelReportModel() {
     dateLabel: fmtDate(now.toISOString()),
     dateStamp: now.toISOString().slice(0, 10),
   };
-}
-
-/** Same store-P&L build as economics.js — repeated here (not imported, since
- *  economics.js's version is wired to DOM elements) so the printed figure and
- *  the on-screen figure can never silently drift apart in formula, only in
- *  presentation. */
-function computePnl(rec) {
-  const grossProfitL = rec.revenue_l * rec.gross_margin_pct;
-  const ebitdaL = grossProfitL - rec.rent_l - rec.utilities_l - rec.staff_l;
-  const ebitdaPct = ebitdaL / rec.revenue_l;
-  return { ...rec, grossProfitL, ebitdaL, ebitdaPct };
 }
 
 function computeStats(model) {

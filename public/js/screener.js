@@ -6,9 +6,9 @@
  * overlap-risk formula the store slide-over uses (public/js/geo.js) — this
  * is deliberately not a second, invented metric.
  *
- * "This is what the client currently does by hand" (per instruction) — the
- * whole point is reusing the geocoder and the proximity math that already
- * exist, not building a parallel system.
+ * "This is what Patel Retail's own team currently does by hand" — the whole
+ * point is reusing the geocoder and the proximity math that already exist,
+ * not building a parallel system.
  */
 import { qs, qsa, escapeHtml, refreshIcons, toast } from "./ui.js";
 import { haversineKm, round2, overlapRisk, isLocatable, RISK_DENSITY_SATURATION, RISK_PROXIMITY_HORIZON_KM } from "./geo.js";
@@ -142,7 +142,7 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
       </div>
     </div>
     <div class="card-body">
-      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px" data-kind="derived">
         <span style="width:12px;height:12px;border-radius:50%;background:${toneColor};flex-shrink:0"></span>
         <strong style="font-size:14px">${escapeHtml(read.label)}</strong>
       </div>

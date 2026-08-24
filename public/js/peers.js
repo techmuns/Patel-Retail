@@ -9,6 +9,7 @@
  * cells), that's stated plainly instead of guessed.
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
+import { computePnl } from "./pnl.js";
 
 const STATUS_META = {
   fixed: { label: "Fixed here", tone: "ok" },
@@ -67,13 +68,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
   const dmart = metrics.dmart;
   const vishal = metrics.vishal_mega_mart;
   const spencers = metrics.spencers_retail;
-  // Same formula as computePnl() in economics.js — recomputed here rather
-  // than imported to keep this file's only dependency on economics.js at
-  // zero, but the arithmetic itself must stay identical, not re-derived
-  // independently (see PATEL-HANDOFF.md's note on unifying this).
-  const grossProfitL = rec.revenue_l * rec.gross_margin_pct;
-  const ebitdaL = grossProfitL - rec.rent_l - rec.utilities_l - rec.staff_l;
-  const storeEbitdaPct = ebitdaL / rec.revenue_l;
+  const storeEbitdaPct = computePnl(rec).ebitdaPct;
 
   const rows = [
     {

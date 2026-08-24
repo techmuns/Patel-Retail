@@ -225,6 +225,13 @@ function buildUnitEconomics(wb, { metrics }) {
   r++;
 
   band(ws, r++, "Derived store P&L (formulas — recalculates if an input above changes)", 3);
+  // Same formula shape as computePnl() in pnl.js (which the screen and PDF
+  // both import directly) — not imported here, because this sheet needs its
+  // cached cell values to match what Excel's own ROUND()-per-step formulas
+  // below will compute on open, and pnl.js deliberately does NOT round
+  // between steps (it returns full float precision for the caller to format).
+  // Rounding here at each step, same as the ROUND() calls in the formula
+  // strings, keeps the cached value and the live formula from disagreeing.
   const revenueRow = r;
   formulaRow(ws, r++, "Revenue per store per year (₹ lakh)", `ROUND(B${areaRow}*B${revSqftRow}/100000,2)`, rec.revenue_l, "#,##0.00", "= area × revenue/sq ft");
   const gpRow = r;
