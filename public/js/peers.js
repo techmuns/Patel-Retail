@@ -185,14 +185,6 @@ function renderTrentFixCard(metrics) {
           <div class="cb-value">${fmtLakh(t.corrected_revenue_per_store_lakh)}</div>
         </div>
       </div>
-      <div class="flag-card" data-kind="derived">
-        <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
-        <div><p>${escapeHtml(t.revenue_per_store_note)}</p></div>
-      </div>
-      <div class="flag-card">
-        <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
-        <div><p>${escapeHtml(t.still_needs_source_file)}</p></div>
-      </div>
     </div>
   `;
   refreshIcons();
@@ -224,7 +216,6 @@ function renderSpencersFixCard(metrics) {
         <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
         <div>
           <span class="flag-title">Understated by ${fmtPct(s.understated_pct, 0)}</span>
-          <p>${escapeHtml(s.still_needs_source_file)}</p>
         </div>
       </div>
     </div>
@@ -257,22 +248,11 @@ function renderPeerCompanyBlock(p) {
         <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}</td></tr>
         <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}</td></tr>
       </table>
-      <p style="font-size:11.5px;color:var(--text-4);margin-top:8px">${escapeHtml(p.note)}</p>
-      <p style="font-size:11px;color:var(--text-4);margin-top:4px">Source: ${
+      <p style="font-size:11px;color:var(--text-4);margin-top:8px">Source: ${
         p.source_url
           ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(p.source)}</a>`
           : `<span style="color:var(--text-3)">${escapeHtml(p.source)}</span>`
       }</p>
-      ${
-        p.period_offset_flag
-          ? `<div class="flag-card" style="margin-top:10px"><span class="flag-ico"><i data-lucide="clock" class="i16"></i></span><div><p>${escapeHtml(p.period_offset_flag)}</p></div></div>`
-          : ""
-      }
-      ${
-        p.category_flag
-          ? `<div class="flag-card" style="margin-top:10px"><span class="flag-ico"><i data-lucide="info" class="i16"></i></span><div><p>${escapeHtml(p.category_flag)}</p></div></div>`
-          : ""
-      }
     </div>
   `;
 }
@@ -291,7 +271,6 @@ function renderPeerScaleCard(metrics, operationalCount) {
         ${renderPeerCompanyBlock(metrics.osia_hyper_retail)}
         ${renderPeerCompanyBlock(metrics.v2_retail)}
       </div>
-      <p style="font-size:11.5px;color:var(--text-4);margin-top:4px">Store count, retail area and private label % are not disclosed by either company.</p>
     </div>
   `;
   refreshIcons();
@@ -323,8 +302,6 @@ function renderPrivateLabelBlock(metrics) {
         </div>`
         )
         .join("")}
-      <p style="font-size:12px;color:var(--text-4);margin:8px 0 0">${escapeHtml(pl.note)}</p>
-      <p style="font-size:11px;color:var(--text-4);margin:4px 0 0">Osia Hyper Retail and V2 Retail do not disclose this figure.</p>
     </div>
   `;
 }

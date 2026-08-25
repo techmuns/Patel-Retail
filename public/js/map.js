@@ -127,7 +127,7 @@ function renderLegend() {
   el.innerHTML = `
     ${vintageItems}
     <span class="lg-item"><span class="lg-dot" style="background:${CLOSED_COLOR}"></span>Closed</span>
-    <span class="lg-item"><span class="lg-ring"></span>Low-confidence address (uncertainty radius, not a pin)</span>
+    <span class="lg-item"><span class="lg-ring"></span>Low-confidence address</span>
   `;
 }
 
@@ -159,8 +159,8 @@ function openStoreSheet(store) {
   const UNAVAILABLE_REASON_TEXT = {
     not_geocoded: "This store isn't geocoded yet.",
     town_centroid:
-      "This store is only located to its town centre, not its own address — a distance computed from it would be fabricated precision, not a measurement.",
-    no_locatable_neighbors: "No other Patel stores are precisely geocoded yet to compare against.",
+      "Located to town centre only, not its own address.",
+    no_locatable_neighbors: "No other stores precisely located to compare against.",
   };
   const RISK_UNAVAILABLE_REASON_TEXT = {
     closed: `No risk score — this store is closed${store.closed ? ` (${fmtDate(store.closed)})` : ""}. There's nothing left here for another store to cannibalise, so a score isn't computed.`,
@@ -185,11 +185,6 @@ function openStoreSheet(store) {
         <span class="kind-pill kind-derived">derived</span>
         <span class="risk-block-title">Cannibalisation risk score</span>
       </div>
-      <p class="risk-sentence">
-        One 0–1 number blending how close the nearest <em>other</em> Patel store is (closer&nbsp;=&nbsp;higher)
-        with how many Patel stores sit within 3&nbsp;km (more&nbsp;=&nbsp;higher) — geography only,
-        no sales data went into it. Formula and every input are shown below so it can be checked by hand.
-      </p>
       <div class="risk-inputs">
         <div class="risk-input">
           <span class="ri-label">Nearest own store</span>
@@ -201,7 +196,7 @@ function openStoreSheet(store) {
         </div>
         <div class="risk-input muted">
           <span class="ri-label">Nearest competitor</span>
-          <span class="ri-value">Known (OpenStreetMap) but not joined into this map yet — see Site Screener</span>
+          <span class="ri-value">See Site Screener</span>
         </div>
       </div>
       <div class="risk-score-row">
@@ -211,7 +206,7 @@ function openStoreSheet(store) {
       <p class="risk-caveat">${
         riskUnavailableText
           ? escapeHtml(riskUnavailableText)
-          : "Screening signal, not a validated prediction — there's no store-level sales data to calibrate it against. Only ever computed between two precisely-located stores — never from a town-centroid coordinate."
+          : "Geography-only screening signal — 0–1, no sales data."
       }</p>
     </div>`;
 
@@ -230,7 +225,7 @@ function openStoreSheet(store) {
         <span class="kind-pill kind-derived">derived</span>
         <span class="risk-block-title">Quick-commerce dark stores nearby</span>
       </div>
-      <p class="risk-sentence"><strong>Distance unavailable.</strong> This store isn't precisely located yet — a distance from a town-centroid pin would be fabricated precision.</p>
+      <p class="risk-sentence"><strong>Distance unavailable</strong> — store not precisely located.</p>
     </div>`;
     } else {
       let nearestKm = Infinity;
@@ -265,12 +260,6 @@ function openStoreSheet(store) {
         <span class="kind-pill kind-estimate">estimate</span>
         <span class="risk-block-title">Quick-commerce cannibalisation — our combined read</span>
       </div>
-      <p class="risk-sentence">
-        Not part of the composite score above. The fund confirmed they don't have a separate
-        formula of their own — they read these same metrics (financials, dark-store proximity,
-        peer data) together without a fixed weighting. This is our own numeric combination of the
-        proximity+density weights already used above; the fund hasn't reviewed or endorsed it.
-      </p>
       <div class="risk-inputs">
         <div class="risk-input">
           <span class="ri-label">Nearest dark store</span>
@@ -285,7 +274,7 @@ function openStoreSheet(store) {
         <span>Combined score</span>
         <span class="risk-score-value">${combinedScore != null ? combinedScore.toFixed(2) : "Not scored"}</span>
       </div>
-      <p class="risk-caveat">Blinkit/Zepto/Swiggy Instamart, from a public third-party source — a March 2026 snapshot, not live, and not filtered to Patel's own towns specifically. Score = ${RISK_PROXIMITY_HORIZON_KM} km proximity horizon + density within 1 km saturating at ${RISK_DENSITY_SATURATION} stores, same weights as the store-network score. Our own read, not a validated or client-endorsed number — bring it to the next meeting as a discussion point, not a finding.</p>
+      <p class="risk-caveat">Blinkit / Zepto / Swiggy Instamart · third-party data, March 2026 snapshot.</p>
     </div>`;
     }
   }
@@ -312,12 +301,7 @@ function openStoreSheet(store) {
       }
       ${
         isCoarseMatch
-          ? `<p class="risk-caveat" style="margin-top:10px">
-               <i data-lucide="map-pin-off" class="i16" style="vertical-align:-3px"></i>
-               This pin is a <strong>${escapeHtml(store.town)} town centroid</strong>, not this store's own address —
-               the geocoder couldn't resolve "${escapeHtml(store.locality)}" directly. Shown as an uncertainty circle
-               on the map; distances/risk below inherit that imprecision.
-             </p>`
+          ? `<p class="risk-caveat" style="margin-top:10px">Pin is a ${escapeHtml(store.town)} town centroid, not this store's address.</p>`
           : ""
       }
       ${riskBlock}

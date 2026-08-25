@@ -112,13 +112,13 @@
                       </span>
                       <span id="mapNetworkTitle">Store Network</span>
                     </h3>
-                    <div class="sub">Coloured by vintage · low-confidence addresses shown as an uncertainty circle, not a pin</div>
+                    <div class="sub">Coloured by vintage · dashed circle = low-confidence address</div>
                   </div>
                   <span class="badge analytics">Diligence view</span>
                 </div>
                 <div class="card-body pad0">
                   <div id="mapContainer" class="map-container"></div>
-                  <div class="map-hint">Drag to pan, use +/− or double-click to zoom, click a store for details — the <strong>⤢</strong> button resets to <span id="mapHintCount">all stores</span>. The page scrolls normally even with your cursor over the map.</div>
+                  <div class="map-hint">Click a store for detail · <strong>⤢</strong> resets to <span id="mapHintCount">all stores</span></div>
                   <div class="map-legend" id="mapLegend"></div>
                 </div>
               </div>
@@ -134,7 +134,7 @@
                       </span>
                       Town Clusters
                     </h3>
-                    <div class="sub">Towns with 2+ stores — where cannibalisation is visible without any sales data</div>
+                    <div class="sub">Towns with 2+ stores</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
@@ -172,7 +172,7 @@
                         </span>
                         Revenue per sq ft — Patel Retail's two source files disagree
                       </h3>
-                      <div class="sub">Both figures shown side by side; the store-file value is used throughout</div>
+                      <div class="sub">Store-file value used in all calculations</div>
                     </div>
                   </div>
                   <div class="card-body" id="revSqftCompare"></div>
@@ -188,7 +188,7 @@
                         </span>
                         Store P&amp;L — built from reported unit economics
                       </h3>
-                      <div class="sub">Every input below is <span class="kind-pill kind-reported">reported</span> · the EBITDA line is computed here, not stored pre-baked</div>
+                      <div class="sub">Inputs <span class="kind-pill kind-reported">reported</span> · EBITDA computed live</div>
                     </div>
                   </div>
                   <div class="card-body">
@@ -244,7 +244,7 @@
                       </span>
                       Site Screener
                     </h3>
-                    <div class="sub">Enter a candidate address — distance to every own store, catchment density, and a geography-only go/no-go read. This is what Patel Retail's own team currently does by hand.</div>
+                    <div class="sub">Distance to every store, catchment density, and a geography-only read</div>
                   </div>
                 </div>
                 <div class="card-body">
@@ -310,7 +310,6 @@
           <div id="viewEstate" class="view hidden">
             <section class="kpi-grid fade-up d1" id="estateKpis"></section>
 
-            <section class="fade-up d2" id="rollingVsFixedNote" style="margin-top:0"></section>
 
             <section class="layout-main fade-up d3" style="margin-top:20px">
               <div class="card lift">
@@ -320,7 +319,7 @@
                       <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="bar-chart-3" class="i16"></i></span>
                       Openings by Year
                     </h3>
-                    <div class="sub">Years before 2020 grouped into a single bar</div>
+                    <div class="sub">Pre-2020 grouped</div>
                   </div>
                 </div>
                 <div class="card-body" id="openingsChart"></div>
@@ -362,7 +361,7 @@
                       <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="layers" class="i16"></i></span>
                       Town Saturation Over Time
                     </h3>
-                    <div class="sub">Every town with 2+ stores — how fast each cluster formed, not just how big it is</div>
+                    <div class="sub">Towns with 2+ stores</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
@@ -390,7 +389,7 @@
                       <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="scale" class="i16"></i></span>
                       Peer comparison — Patel Retail vs. its named peer set
                     </h3>
-                    <div class="sub">Every figure sourced or computed live. "Not available" means the company does not disclose it.</div>
+                    <div class="sub">"Not available" = not disclosed by the company</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
@@ -441,7 +440,7 @@
                       <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="table" class="i16"></i></span>
                       Patel's own contested figures — peer model vs. store file
                     </h3>
-                    <div class="sub">Where Patel Retail's two source files disagree about Patel Retail itself</div>
+                    <div class="sub">Peer model vs. store file</div>
                   </div>
                 </div>
                 <div class="card-body pad0">
@@ -465,7 +464,7 @@
                       <span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="wrench" class="i16"></i></span>
                       Peer Model Data Quality Review
                     </h3>
-                    <div class="sub">Errors identified in Patel Retail's peer benchmarking model, verified against source and corrected where possible.</div>
+                    <div class="sub">Errors found in the peer model, verified and corrected where possible</div>
                   </div>
                 </div>
                 <div class="card-body pad0">

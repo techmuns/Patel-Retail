@@ -88,8 +88,7 @@ function renderRevSqftCompare(metrics) {
     <div class="flag-card">
       <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
       <div>
-        <span class="flag-title">${(c.gap_pct * 100).toFixed(0)}% gap between Patel Retail's two source files</span>
-        <p>${escapeHtml(c.resolution_note)}</p>
+        <span class="flag-title">${(c.gap_pct * 100).toFixed(0)}% gap — store-file value used throughout</span>
       </div>
     </div>
   `;
@@ -117,12 +116,12 @@ function renderReconciliationFlag(pnl, osia) {
       <div class="compare-box used" data-kind="derived">
         <div class="cb-label">Patel — store build-up</div>
         <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
-        <div class="cb-source">Derived from Patel Retail's own reported unit metrics, before head-office cost</div>
+        <div class="cb-source">Store build-up, pre head-office</div>
       </div>
       <div class="compare-box" data-kind="reported">
         <div class="cb-label">Patel — peer model claim</div>
         <div class="cb-value">${fmtPct(pnl.peer_model_b2c_ebitda_pct)}</div>
-        <div class="cb-source">Peer_Model.xlsx, company level</div>
+        <div class="cb-source">Peer_Model.xlsx — company level</div>
       </div>
       <div class="compare-box" data-kind="reported">
         <div class="cb-label">Osia Hyper Retail — comp</div>
@@ -133,17 +132,7 @@ function renderReconciliationFlag(pnl, osia) {
     <div class="flag-card" data-kind="derived">
       <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
       <div>
-        <span class="flag-title">Store-level EBITDA (${fmtPct(pnl.ebitdaPct)}) is lower than the peer model's company-level claim (${fmtPct(pnl.peer_model_b2c_ebitda_pct)})</span>
-        <p>${escapeHtml(pnl.flag_note)}</p>
-        ${pnl.total_company_note ? `<p style="color:var(--text-3);font-size:12px;margin-top:8px">${escapeHtml(pnl.total_company_note)}</p>` : ""}
-        <p style="color:var(--text-4);font-size:11.5px">Open item for Patel Retail to clarify.</p>
-      </div>
-    </div>
-    <div class="flag-card" data-kind="reported" style="margin-top:12px">
-      <span class="flag-ico"><i data-lucide="scale" class="i16"></i></span>
-      <div>
-        <span class="flag-title">Supporting evidence</span>
-        <p>Osia Hyper Retail is Patel's closest structural comparison — a regional value grocery chain at a similar scale (₹${osia.revenue_cr.toLocaleString("en-IN")} cr revenue) — and runs a ${fmtPct(osia.ebitda_margin_pct)} operating margin. That supports the ${fmtPct(pnl.ebitdaPct)} store build-up and suggests the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} is optimistic, without settling the question.</p>
+        <span class="flag-title">Store-level ${fmtPct(pnl.ebitdaPct)} vs peer-model ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} — open item with Patel Retail</span>
       </div>
     </div>
   `;
@@ -160,7 +149,7 @@ function renderAreaEstimate(metrics, storeCount) {
       <div class="cb-value">${ue.sqft_per_store.toLocaleString("en-IN")} sq ft</div>
       <span class="kind-pill kind-estimate">estimate</span>
     </div>
-    <p style="font-size:13px;color:var(--text-2);line-height:1.6;margin:0">${escapeHtml(ue.sqft_per_store_note)}</p>
+    <p style="font-size:12px;color:var(--text-4);margin:0">Blended average, not a per-store measurement.</p>
   `;
 }
 
@@ -191,7 +180,6 @@ function renderPeerCompare(metrics) {
         </div>`
         )
         .join("")}
-      <p style="font-size:12px;color:var(--text-4);margin:8px 0 0">${escapeHtml(pl.note)}</p>
     </div>
   `;
 }

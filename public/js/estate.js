@@ -65,28 +65,6 @@ function renderKpis(stores) {
   refreshIcons();
 }
 
-function renderRollingVsFixedNote(stores) {
-  const el = qs("#rollingVsFixedNote");
-  const withDates = stores.filter((s) => s.opened);
-  const in2024Plus = withDates.filter((s) => openedYear(s) >= 2024).length;
-  const rollingRecent = withDates.filter((s) => yearsSince(s.opened) < 2).length;
-  el.innerHTML = `
-    <div class="flag-card" data-kind="derived">
-      <span class="flag-ico"><i data-lucide="info" class="i16"></i></span>
-      <div>
-        <span class="flag-title">Two ways to read "recently opened"</span>
-        <p>
-          ${in2024Plus} of ${stores.length} stores (${Math.round((in2024Plus / stores.length) * 100)}%) opened in
-          calendar year 2024 or later; ${rollingRecent} (${Math.round((rollingRecent / stores.length) * 100)}%)
-          are under two years old as of today. Both are shown, since the rolling window shifts daily while the
-          calendar-year count does not.
-        </p>
-      </div>
-    </div>
-  `;
-  refreshIcons();
-}
-
 function renderOpeningsChart(stores) {
   const el = qs("#openingsChart");
   const withDates = stores.filter((s) => s.opened);
@@ -247,7 +225,6 @@ export async function initEstate() {
   try {
     const stores = await loadStores();
     renderKpis(stores);
-    renderRollingVsFixedNote(stores);
     renderOpeningsChart(stores);
     renderCumulativeChart(stores);
     renderAgeDistribution(stores);

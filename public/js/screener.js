@@ -129,7 +129,7 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
 
   const unavailableNote =
     risk == null
-      ? `<p class="risk-sentence"><strong>Distance unavailable.</strong> None of Patel's ${totalOperational} operational stores are precisely located yet (${locatableCount} locatable right now) — nothing to compare this site against.</p>`
+      ? `<p class="risk-sentence"><strong>Distance unavailable</strong> — no stores precisely located to compare against.</p>`
       : "";
 
   el.innerHTML = `
@@ -153,12 +153,7 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
         </div>
         ${
           unavailableNote ||
-          `<p class="risk-sentence">
-          One 0–1 number blending how close the nearest own store is (closer&nbsp;=&nbsp;higher, reaches 0 at ${RISK_PROXIMITY_HORIZON_KM}&nbsp;km)
-          with how many own stores sit within 3&nbsp;km (more&nbsp;=&nbsp;higher, saturates at ${RISK_DENSITY_SATURATION}) —
-          geography only. This is a screening signal for a candidate site, computed with the identical components used
-          for existing stores, not a separate metric.
-        </p>
+          `
         <div class="risk-inputs">
           <div class="risk-input"><span class="ri-label">Nearest own store</span><span class="ri-value">${nearest.km} km (${escapeHtml(nearest.store.store_id)})</span></div>
           <div class="risk-input"><span class="ri-label">Own stores within 3 km</span><span class="ri-value">${within["3km"]} <span style="color:var(--text-4);font-weight:400">(of ${locatableCount} of ${totalOperational} locatable)</span></span></div>
@@ -168,7 +163,7 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
           <span>Composite score</span>
           <span class="risk-score-value">${risk.toFixed(2)}</span>
         </div>
-        <p class="risk-caveat">Not a go/no-go decision by itself — a screening signal built only from Patel's own store geography, to be read alongside everything else the client already knows about a site. Only ever computed between two precisely-located points — never from a town-centroid coordinate.</p>`
+        <p class="risk-caveat">Geography-only screening signal, not a decision.</p>`
         }
       </div>
     </div>
