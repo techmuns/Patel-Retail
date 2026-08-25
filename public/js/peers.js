@@ -12,11 +12,11 @@ import { qs, escapeHtml, refreshIcons } from "./ui.js";
 import { computePnl } from "./pnl.js";
 
 const STATUS_META = {
-  fixed: { label: "Fixed here", tone: "ok" },
-  partially_fixed: { label: "Partially fixed", tone: "warn" },
+  fixed: { label: "Corrected", tone: "ok" },
+  partially_fixed: { label: "Partly corrected", tone: "warn" },
   needs_source_file: { label: "Needs source file", tone: "err" },
-  not_applicable: { label: "Not applicable here", tone: "muted" },
-  confirmed_harmless: { label: "Confirmed harmless", tone: "ok" },
+  not_applicable: { label: "No impact here", tone: "muted" },
+  confirmed_harmless: { label: "Verified harmless", tone: "ok" },
 };
 
 async function loadMetrics() {
@@ -109,6 +109,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     },
     {
       name: "Osia Hyper Retail",
+      nameSuffix: osia.status_flag ? ` <span class="chip failed" style="padding:2px 7px;font-size:10px">${escapeHtml(osia.status_flag)}</span>` : "",
       revenue: `${fmtCr(osia.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(osia.fiscal_year)}</div>`,
       ebitda: `${fmtPct(osia.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span>`,
       stores: cellOrNA(osia.total_stores, (v) => v.toLocaleString("en-IN")),
@@ -127,7 +128,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     .map(
       (r) => `
     <tr${r.highlight ? ' style="background:var(--surface-hover)"' : ""}>
-      <td style="font-weight:${r.highlight ? 700 : 500}">${escapeHtml(r.name)}</td>
+      <td style="font-weight:${r.highlight ? 700 : 500}">${escapeHtml(r.name)}${r.nameSuffix || ""}</td>
       <td>${r.revenue}</td>
       <td>${r.ebitda}</td>
       <td>${r.stores}</td>
@@ -148,7 +149,7 @@ function renderPeerBugsTable(metrics) {
       <td style="max-width:280px;color:var(--text-3);font-size:12.5px">${escapeHtml(item.effect)}</td>
       <td><span class="chip ${meta.tone === "ok" ? "done" : meta.tone === "warn" ? "queued" : meta.tone === "err" ? "failed" : "src-none"}"><span class="cdot"></span>${escapeHtml(meta.label)}</span></td>
     </tr>
-    ${item.verified_note ? `<tr><td colspan="3" style="color:var(--text-4);font-size:11.5px;padding-top:0"><strong style="color:var(--text-3)">Verified against primary source:</strong> ${escapeHtml(item.verified_note)}</td></tr>` : ""}`;
+`;
     })
     .join("");
 }
@@ -237,7 +238,9 @@ function renderPeerCompanyBlock(p) {
   const growthPct = (p.revenue_cr - p.revenue_prev_year_cr) / p.revenue_prev_year_cr;
   return `
     <div class="compare-box" data-kind="reported" style="text-align:left">
-      <div class="cb-label">${escapeHtml(p.name)} <span style="font-weight:400;text-transform:none;color:var(--text-4)">(${escapeHtml(p.ticker)})</span></div>
+      <div class="cb-label">${escapeHtml(p.name)} <span style="font-weight:400;text-transform:none;color:var(--text-4)">(${escapeHtml(p.ticker)})</span>${
+        p.status_flag ? ` <span class="chip failed" style="padding:2px 7px;font-size:10px;text-transform:none">${escapeHtml(p.status_flag)}</span>` : ""
+      }</div>
       <div style="font-size:11px;color:var(--text-4);margin-top:2px">${escapeHtml(p.fiscal_year)}</div>
       <table class="metric-table" style="margin-top:10px">
         <tr><td>Revenue</td><td class="mono">${fmtCr(p.revenue_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>

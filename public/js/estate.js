@@ -188,8 +188,8 @@ const SATURATION_TONES = {
 };
 
 function saturationRead(recentCount, total) {
-  if (recentCount === 0) return { label: "Established — no recent additions", tone: "muted" };
-  if (recentCount / total > 0.5) return { label: "Fast-forming — most of it opened in the last 2 years", tone: "warn" };
+  if (recentCount === 0) return { label: "Established", tone: "muted" };
+  if (recentCount / total > 0.5) return { label: "Fast-forming", tone: "warn" };
   return { label: "Still growing", tone: "busy" };
 }
 

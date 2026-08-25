@@ -85,12 +85,6 @@ function renderRevSqftCompare(metrics) {
         <div class="cb-source">Peer_Model.xlsx</div>
       </div>
     </div>
-    <div class="flag-card">
-      <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
-      <div>
-        <span class="flag-title">${(c.gap_pct * 100).toFixed(0)}% gap — store-file value used throughout</span>
-      </div>
-    </div>
   `;
   refreshIcons();
 }
@@ -124,15 +118,9 @@ function renderReconciliationFlag(pnl, osia) {
         <div class="cb-source">Peer_Model.xlsx — company level</div>
       </div>
       <div class="compare-box" data-kind="reported">
-        <div class="cb-label">Osia Hyper Retail — comp</div>
+        <div class="cb-label">Osia Hyper Retail — comp${osia.status_flag ? ` <span class="chip failed" style="padding:2px 6px;font-size:9.5px;text-transform:none">${escapeHtml(osia.status_flag)}</span>` : ""}</div>
         <div class="cb-value">${fmtPct(osia.ebitda_margin_pct)}</div>
         <div class="cb-source">${escapeHtml(osia.source)}, ${escapeHtml(osia.fiscal_year)}</div>
-      </div>
-    </div>
-    <div class="flag-card" data-kind="derived">
-      <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
-      <div>
-        <span class="flag-title">Store-level ${fmtPct(pnl.ebitdaPct)} vs peer-model ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} — open item with Patel Retail</span>
       </div>
     </div>
   `;
