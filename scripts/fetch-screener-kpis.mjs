@@ -46,13 +46,13 @@ const BASE = "https://www.screener.in";
 // Patel first, then the peer set the dashboard actually shows. Consolidated
 // where the company reports it; Screener redirects when it doesn't exist.
 const DEFAULT_TICKERS = [
-  { ticker: "PATELRMART", label: "Patel Retail Ltd", consolidated: true, subject: true },
+  { ticker: "PATELRMART", label: "Patel Retail Ltd", consolidated: false, subject: true },
   { ticker: "DMART", label: "Avenue Supermarts Ltd", consolidated: true },
   { ticker: "VMM", label: "Vishal Mega Mart Ltd", consolidated: true },
   { ticker: "TRENT", label: "Trent Ltd", consolidated: true },
   { ticker: "SPENCERS", label: "Spencer's Retail Ltd", consolidated: true },
   { ticker: "OSIAHYPER", label: "Osia Hyper Retail Ltd", consolidated: false },
-  { ticker: "V2RETAIL", label: "V2 Retail Ltd", consolidated: true },
+  { ticker: "V2RETAIL", label: "V2 Retail Ltd", consolidated: false },
 ];
 
 function tickersFromEnv() {
@@ -82,8 +82,12 @@ async function extractCompany(page) {
       // where there is exactly one.
       const numbers = [...(valueEl?.querySelectorAll(".number") || [])].map((n) => clean(n.textContent)).filter(Boolean);
       const parsed = numbers.length === 1 ? Number(numbers[0].replace(/,/g, "")) : null;
+      // Screener renders the unit even when it has no figure (Spencer's ROE
+      // reads "%" on its own). A bare unit is not a value — record null so the
+      // UI shows "not reported" rather than a stray percent sign.
+      const hasDigit = /\d/.test(display);
       ratios[name] = {
-        display: display || null,
+        display: hasDigit ? display : null,
         numbers,
         value: Number.isFinite(parsed) ? parsed : null,
       };
@@ -125,12 +129,44 @@ async function extractCompany(page) {
   });
 }
 
+/**
+ * Which plan the logged-in account is actually on, asked of Screener rather
+ * than inferred from which environment variable held the password. The env-var
+ * name told us nothing: run 2 logged in with a paid account stored under
+ * SCREENER_EMAIL and dutifully labelled the output "free".
+ * Returns "premium" | "free" | "unknown" plus the evidence behind it, so a
+ * wrong guess is visible in the file instead of being asserted silently.
+ */
+async function detectTier(page) {
+  const ACTIVE = ["your subscription", "subscription is active", "valid till", "valid until", "renews on", "cancel subscription", "you are subscribed", "manage subscription"];
+  const INACTIVE = ["subscribe now", "start free trial", "choose a plan", "upgrade to premium", "get premium"];
+  try {
+    await page.goto(`${BASE}/premium/`, { waitUntil: "domcontentloaded", timeout: 45000 });
+    const text = await page.evaluate(() => (document.body.innerText || "").replace(/\s+/g, " ").trim());
+    const t = text.toLowerCase();
+    const active = ACTIVE.filter((s) => t.includes(s));
+    const inactive = INACTIVE.filter((s) => t.includes(s));
+    let tier = "unknown";
+    if (active.length && !inactive.length) tier = "premium";
+    else if (inactive.length && !active.length) tier = "free";
+    return { tier, matched_active: active, matched_inactive: inactive, page_sample: text.slice(0, 400) };
+  } catch (err) {
+    return { tier: "unknown", error: err.message };
+  }
+}
+
 async function main() {
   const tickers = tickersFromEnv();
   console.log(`[screener] fetching ${tickers.length} company page(s)...`);
 
   const { browser, context, page } = await launchAndLogin();
-  console.log(`[screener] logged in on the ${activeTier || "unknown"} tier.`);
+  const credentialEnv = activeTier === "premium" ? "SCREENER_PREMIUM_EMAIL" : "SCREENER_EMAIL";
+  const tierInfo = await detectTier(page);
+  console.log(`[screener] credentials came from ${credentialEnv}; Screener reports the account is on the ${tierInfo.tier} plan.`);
+  if (tierInfo.matched_active?.length || tierInfo.matched_inactive?.length) {
+    console.log(`[screener] tier evidence — active:[${(tierInfo.matched_active || []).join("|")}] inactive:[${(tierInfo.matched_inactive || []).join("|")}]`);
+  }
+  if (tierInfo.tier === "unknown") console.log(`[screener] tier page sample: ${tierInfo.page_sample || tierInfo.error || "(none)"}`);
 
   const companies = [];
   const failures = [];
@@ -197,7 +233,10 @@ async function main() {
 
   const output = {
     source: "Screener.in company pages (logged in)",
-    account_tier: activeTier || null,
+    account_tier: tierInfo.tier,
+    account_tier_source: "Read off screener.in/premium/ for the logged-in account, not inferred from the credential variable name.",
+    account_tier_evidence: tierInfo,
+    credential_env: credentialEnv,
     kind: "reported",
     note:
       "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
