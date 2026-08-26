@@ -1,10 +1,10 @@
 # Official website store list — proposed matches, unreviewed
 
-Scraped from https://patelrpl.in/stores/ on 2026-08-24 (53 listings, 11 resolved, 35 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
+Scraped from https://patelrpl.in/stores/ on 2026-08-26 (53 listings, 11 resolved, 35 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
 
 ## Three discrepancies to reconcile, not paper over
 
-1. **Store count.** The site presents 53 listings, all as currently-open stores. `stores.json` has 52 operational + 1 closed = 53. If every site listing matches an existing store below with nothing left over, the counts simply describe the estate two different ways (52 active + the site not listing the closed one, or similar) — but if a listing below shows up as **unmatched**, that's a candidate for a store on the site that isn't in our file at all, and needs the client's confirmation, not a silent add.
+1. **Store count.** The site presents 53 listings, all as currently-open stores. `stores.json` has 53 operational + 1 closed = 54. If every site listing matches an existing store below with nothing left over, the counts simply describe the estate two different ways (52 active + the site not listing the closed one, or similar) — but if a listing below shows up as **unmatched**, that's a candidate for a store on the site that isn't in our file at all, and needs the client's confirmation, not a silent add.
 2. **Uran.** Listing #1: "SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702" — a survey-number/gala-number address, not a locality-style store address like every other listing, and Uran is a port town in Raigad nowhere near any town in `stores.json`. Its own resolved coordinate (18.871596, 72.941254) checks out as genuinely being in Uran, well outside the box every other store falls in. Very likely a warehouse or processing unit, not a retail store. **Flagged below as unmatched, not auto-added.**
 3. **Shilphata / Khopoli.** The site has one listing, "Shilphata, Khopoli" (#35). `stores.json` has these as two separate stores: Shilphata (`DOE/DER`) and Khapoli (`KHP`) — different towns, not adjacent. Its resolved coordinate (18.7989122, 73.3273613) is 48.32 km from DOE/DER's existing (coarse, town-centroid) coordinate — far too far to be the same place — and well south, in the area `stores.json` itself names for Khapoli (Raigad), not Shilphata (Thane). That's evidence, from an admittedly low-confidence business-name-search resolution (see below) — not proof, and not applied here. Either the site conflated two stores into one card, or this card is genuinely one of the two and coincidentally mentions the other town in passing. **Do not auto-merge or auto-split — flagged below for a human read.**
 
@@ -12,7 +12,7 @@ Scraped from https://patelrpl.in/stores/ on 2026-08-24 (53 listings, 11 resolved
 
 | # | Official listing | Coordinate | Proposed store | Match basis |
 |---|---|---|---|---|
-| 1 | SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702 | 18.871596, 72.941254 | _no candidate found_ | — |
+| 1 | SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702 | 18.871596, 72.941254 | **URN** — Uran | locality_token_overlap (matched "uran" (name), "uran") |
 | 2 | KBG,Patel mart bapgav near kohinoor developer | _no_link_ | **KBG** — KBG - Patel Mart | code_prefix (store code "kbg") |
 | 3 | RCM -MOHOPADAPLOT 34/B/6 , GANESH NAGAR NEW REESBESIDE APURVA HOTEL RASAYNI,MOHOPADA | 18.89719, 73.192043 | **RCM** — RCM | code_prefix (store code "rcm") |
 | 4 | THE,Patel R Mart Govind Heights,Opposite Chamunda Garden,Old 90 Fit Road Thakurli (E) | 19.2234296, 73.1053095 | **THE** — THE - Patel R Mart | code_prefix (store code "the") |
@@ -72,9 +72,7 @@ _None — every store in stores.json has at least one proposed match above._
 
 ## Site listings with no proposed match at all
 
-| # | Official listing | Coordinate |
-|---|---|---|
-| 1 | SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702 | 18.871596, 72.941254 |
+_None — every listing got at least one proposed candidate (which is not the same as a CORRECT match — review the table above)._
 
 ## A real limitation, not a hypothetical one
 

@@ -1,0 +1,5171 @@
+{
+  "source": "Screener.in company pages (logged in)",
+  "account_tier": "free",
+  "kind": "reported",
+  "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
+  "fetched_at": "2026-08-26T09:59:39.519Z",
+  "counts": {
+    "requested": 7,
+    "fetched": 6,
+    "failed": 1
+  },
+  "failures": [
+    {
+      "ticker": "OSIAHYPER",
+      "url": "https://www.screener.in/company/OSIAHYPER/",
+      "error": "page.waitForSelector: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('#top-ratios') to be visible\n"
+    }
+  ],
+  "companies": [
+    {
+      "ticker": "PATELRMART",
+      "label": "Patel Retail Ltd",
+      "subject": true,
+      "url": "https://www.screener.in/company/PATELRMART/consolidated/",
+      "name": "Patel Retail Ltd",
+      "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
+      "ratios": {
+        "Market Cap": "₹ Cr.",
+        "Current Price": "₹",
+        "High / Low": "₹ /",
+        "Stock P/E": null,
+        "Book Value": "₹",
+        "Dividend Yield": "%",
+        "ROCE": "%",
+        "ROE": "%",
+        "Face Value": "₹"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            ""
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": []
+            },
+            {
+              "label": "Expenses",
+              "values": []
+            },
+            {
+              "label": "Operating Profit",
+              "values": []
+            },
+            {
+              "label": "OPM %",
+              "values": []
+            },
+            {
+              "label": "Other Income",
+              "values": []
+            },
+            {
+              "label": "Interest",
+              "values": []
+            },
+            {
+              "label": "Depreciation",
+              "values": []
+            },
+            {
+              "label": "Profit before tax",
+              "values": []
+            },
+            {
+              "label": "Tax %",
+              "values": []
+            },
+            {
+              "label": "Net Profit",
+              "values": []
+            },
+            {
+              "label": "EPS in Rs",
+              "values": []
+            },
+            {
+              "label": "Raw PDF",
+              "values": []
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            ""
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": []
+            },
+            {
+              "label": "Expenses",
+              "values": []
+            },
+            {
+              "label": "Operating Profit",
+              "values": []
+            },
+            {
+              "label": "OPM %",
+              "values": []
+            },
+            {
+              "label": "Other Income",
+              "values": []
+            },
+            {
+              "label": "Interest",
+              "values": []
+            },
+            {
+              "label": "Depreciation",
+              "values": []
+            },
+            {
+              "label": "Profit before tax",
+              "values": []
+            },
+            {
+              "label": "Tax %",
+              "values": []
+            },
+            {
+              "label": "Net Profit",
+              "values": []
+            },
+            {
+              "label": "EPS in Rs",
+              "values": []
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": []
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            ""
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": []
+            },
+            {
+              "label": "Reserves",
+              "values": []
+            },
+            {
+              "label": "Borrowings",
+              "values": []
+            },
+            {
+              "label": "Other Liabilities",
+              "values": []
+            },
+            {
+              "label": "Total Liabilities",
+              "values": []
+            },
+            {
+              "label": "Fixed Assets",
+              "values": []
+            },
+            {
+              "label": "CWIP",
+              "values": []
+            },
+            {
+              "label": "Investments",
+              "values": []
+            },
+            {
+              "label": "Other Assets",
+              "values": []
+            },
+            {
+              "label": "Total Assets",
+              "values": []
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            ""
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": []
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": []
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": []
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": []
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": []
+            },
+            {
+              "label": "CFO/OP",
+              "values": []
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            ""
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": []
+            },
+            {
+              "label": "Inventory Days",
+              "values": []
+            },
+            {
+              "label": "Days Payable",
+              "values": []
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": []
+            },
+            {
+              "label": "Working Capital Days",
+              "values": []
+            },
+            {
+              "label": "ROCE %",
+              "values": []
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "70.00%",
+                "70.00%",
+                "70.00%",
+                "70.00%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "3.84%",
+                "2.83%",
+                "1.59%",
+                "1.48%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "1.77%",
+                "1.78%",
+                "2.84%",
+                "2.99%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "24.40%",
+                "25.40%",
+                "25.57%",
+                "25.54%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "52,871",
+                "42,197",
+                "40,102",
+                "37,293"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:06.660Z"
+    },
+    {
+      "ticker": "DMART",
+      "label": "Avenue Supermarts Ltd",
+      "subject": false,
+      "url": "https://www.screener.in/company/DMART/consolidated/",
+      "name": "Avenue Supermarts Ltd",
+      "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
+      "ratios": {
+        "Market Cap": "₹ 2,49,093 Cr.",
+        "Current Price": "₹ 3,819",
+        "High / Low": "₹ 4,950 / 3,529",
+        "Stock P/E": "81.5",
+        "Book Value": "₹ 375",
+        "Dividend Yield": "0.00 %",
+        "ROCE": "17.2 %",
+        "ROE": "12.9 %",
+        "Face Value": "₹ 10.0"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            "",
+            "Jun 2023",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "11,865",
+                "12,624",
+                "13,572",
+                "12,727",
+                "14,069",
+                "14,444",
+                "15,973",
+                "14,872",
+                "16,360",
+                "16,676",
+                "18,101",
+                "17,684",
+                "18,795"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "10,830",
+                "11,619",
+                "12,453",
+                "11,783",
+                "12,848",
+                "13,351",
+                "14,755",
+                "13,917",
+                "15,061",
+                "15,463",
+                "16,638",
+                "16,473",
+                "17,295"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "1,035",
+                "1,005",
+                "1,120",
+                "944",
+                "1,221",
+                "1,094",
+                "1,217",
+                "955",
+                "1,299",
+                "1,214",
+                "1,463",
+                "1,211",
+                "1,499"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "9%",
+                "8%",
+                "8%",
+                "7%",
+                "9%",
+                "8%",
+                "8%",
+                "6%",
+                "8%",
+                "7%",
+                "8%",
+                "7%",
+                "8%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "39",
+                "37",
+                "33",
+                "38",
+                "42",
+                "34",
+                "24",
+                "25",
+                "19",
+                "20",
+                "17",
+                "18",
+                "26"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "15",
+                "16",
+                "15",
+                "13",
+                "16",
+                "16",
+                "18",
+                "19",
+                "29",
+                "35",
+                "37",
+                "41",
+                "54"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "162",
+                "174",
+                "189",
+                "205",
+                "193",
+                "208",
+                "228",
+                "241",
+                "232",
+                "253",
+                "268",
+                "284",
+                "288"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "897",
+                "852",
+                "949",
+                "763",
+                "1,054",
+                "903",
+                "995",
+                "720",
+                "1,057",
+                "945",
+                "1,175",
+                "904",
+                "1,183"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "27%",
+                "27%",
+                "27%",
+                "26%",
+                "27%",
+                "27%",
+                "27%",
+                "24%",
+                "27%",
+                "28%",
+                "27%",
+                "27%",
+                "27%"
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "659",
+                "623",
+                "690",
+                "563",
+                "774",
+                "659",
+                "724",
+                "551",
+                "773",
+                "685",
+                "856",
+                "656",
+                "860"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "10.12",
+                "9.58",
+                "10.61",
+                "8.66",
+                "11.89",
+                "10.14",
+                "11.12",
+                "8.47",
+                "11.88",
+                "10.53",
+                "13.15",
+                "10.07",
+                "13.19"
+              ]
+            },
+            {
+              "label": "Raw PDF",
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "6,439",
+                "8,584",
+                "11,898",
+                "15,033",
+                "20,005",
+                "24,870",
+                "24,143",
+                "30,976",
+                "42,840",
+                "50,789",
+                "59,358",
+                "68,821",
+                "71,256"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "5,983",
+                "7,919",
+                "10,929",
+                "13,680",
+                "18,371",
+                "22,742",
+                "22,398",
+                "28,474",
+                "39,201",
+                "46,683",
+                "54,864",
+                "63,632",
+                "65,869"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "456",
+                "664",
+                "969",
+                "1,353",
+                "1,633",
+                "2,128",
+                "1,745",
+                "2,502",
+                "3,639",
+                "4,106",
+                "4,495",
+                "5,189",
+                "5,387"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "7%",
+                "8%",
+                "8%",
+                "9%",
+                "8%",
+                "9%",
+                "7%",
+                "8%",
+                "8%",
+                "8%",
+                "8%",
+                "8%",
+                "8%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "20",
+                "17",
+                "28",
+                "88",
+                "48",
+                "60",
+                "194",
+                "114",
+                "128",
+                "145",
+                "117",
+                "72",
+                "80"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "72",
+                "91",
+                "122",
+                "60",
+                "47",
+                "69",
+                "42",
+                "54",
+                "67",
+                "58",
+                "69",
+                "142",
+                "167"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "82",
+                "98",
+                "128",
+                "159",
+                "212",
+                "374",
+                "414",
+                "498",
+                "639",
+                "731",
+                "870",
+                "1,037",
+                "1,093"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "323",
+                "492",
+                "747",
+                "1,222",
+                "1,422",
+                "1,745",
+                "1,483",
+                "2,064",
+                "3,060",
+                "3,461",
+                "3,673",
+                "4,082",
+                "4,207"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "34%",
+                "35%",
+                "36%",
+                "34%",
+                "37%",
+                "25%",
+                "26%",
+                "28%",
+                "22%",
+                "27%",
+                "26%",
+                "27%",
+                ""
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "212",
+                "320",
+                "479",
+                "806",
+                "902",
+                "1,301",
+                "1,099",
+                "1,492",
+                "2,378",
+                "2,536",
+                "2,707",
+                "2,970",
+                "3,057"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "3.77",
+                "5.70",
+                "7.67",
+                "12.92",
+                "14.46",
+                "20.09",
+                "16.97",
+                "23.04",
+                "36.69",
+                "38.97",
+                "41.61",
+                "45.56",
+                "46.94"
+              ]
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": [
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                ""
+              ]
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": [
+                "562",
+                "562",
+                "624",
+                "624",
+                "624",
+                "648",
+                "648",
+                "648",
+                "648",
+                "651",
+                "651",
+                "652"
+              ]
+            },
+            {
+              "label": "Reserves",
+              "values": [
+                "638",
+                "959",
+                "3,218",
+                "4,045",
+                "4,963",
+                "10,432",
+                "11,536",
+                "13,030",
+                "15,430",
+                "18,047",
+                "20,777",
+                "23,812"
+              ]
+            },
+            {
+              "label": "Borrowings",
+              "values": [
+                "904",
+                "1,192",
+                "1,497",
+                "439",
+                "700",
+                "333",
+                "393",
+                "647",
+                "643",
+                "592",
+                "820",
+                "2,425"
+              ]
+            },
+            {
+              "label": "Other Liabilities",
+              "values": [
+                "251",
+                "389",
+                "480",
+                "540",
+                "718",
+                "663",
+                "1,079",
+                "1,146",
+                "1,383",
+                "1,882",
+                "2,065",
+                "2,629"
+              ]
+            },
+            {
+              "label": "Total Liabilities",
+              "values": [
+                "2,355",
+                "3,102",
+                "5,819",
+                "5,648",
+                "7,006",
+                "12,076",
+                "13,655",
+                "15,471",
+                "18,105",
+                "21,172",
+                "24,313",
+                "29,518"
+              ]
+            },
+            {
+              "label": "Fixed Assets",
+              "values": [
+                "1,528",
+                "2,094",
+                "2,578",
+                "3,400",
+                "4,400",
+                "5,948",
+                "7,009",
+                "9,260",
+                "11,340",
+                "13,415",
+                "16,206",
+                "20,090"
+              ]
+            },
+            {
+              "label": "CWIP",
+              "values": [
+                "98",
+                "82",
+                "153",
+                "147",
+                "377",
+                "364",
+                "1,020",
+                "1,129",
+                "829",
+                "935",
+                "1,099",
+                "1,300"
+              ]
+            },
+            {
+              "label": "Investments",
+              "values": [
+                "15",
+                "29",
+                "26",
+                "68",
+                "17",
+                "15",
+                "3",
+                "6",
+                "202",
+                "107",
+                "3",
+                "4"
+              ]
+            },
+            {
+              "label": "Other Assets",
+              "values": [
+                "713",
+                "897",
+                "3,063",
+                "2,033",
+                "2,212",
+                "5,749",
+                "5,624",
+                "5,076",
+                "5,733",
+                "6,716",
+                "7,004",
+                "8,123"
+              ]
+            },
+            {
+              "label": "Total Assets",
+              "values": [
+                "2,355",
+                "3,102",
+                "5,819",
+                "5,648",
+                "7,006",
+                "12,076",
+                "13,655",
+                "15,471",
+                "18,105",
+                "21,172",
+                "24,313",
+                "29,518"
+              ]
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": [
+                "222",
+                "433",
+                "455",
+                "730",
+                "807",
+                "1,280",
+                "1,375",
+                "1,372",
+                "2,630",
+                "2,746",
+                "2,463",
+                "3,467"
+              ]
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": [
+                "-474",
+                "-633",
+                "-2,482",
+                "464",
+                "-958",
+                "-4,657",
+                "-1,110",
+                "-1,289",
+                "-2,313",
+                "-2,468",
+                "-2,185",
+                "-4,207"
+              ]
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": [
+                "234",
+                "196",
+                "2,025",
+                "-1,159",
+                "209",
+                "3,357",
+                "-180",
+                "-179",
+                "-205",
+                "-148",
+                "-259",
+                "288"
+              ]
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": [
+                "-17",
+                "-3",
+                "-1",
+                "34",
+                "57",
+                "-19",
+                "86",
+                "-96",
+                "112",
+                "130",
+                "18",
+                "-452"
+              ]
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": [
+                "-255",
+                "435",
+                "-180",
+                "-179",
+                "-602",
+                "-426",
+                "-652",
+                "-1,017",
+                "424",
+                "24",
+                "-954",
+                "-646"
+              ]
+            },
+            {
+              "label": "CFO/OP",
+              "values": [
+                "71%",
+                "90%",
+                "74%",
+                "84%",
+                "80%",
+                "83%",
+                "94%",
+                "77%",
+                "92%",
+                "85%",
+                "76%",
+                "87%"
+              ]
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": [
+                "0",
+                "0",
+                "1",
+                "1",
+                "1",
+                "0",
+                "1",
+                "1",
+                "1",
+                "1",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "label": "Inventory Days",
+              "values": [
+                "36",
+                "34",
+                "34",
+                "34",
+                "35",
+                "34",
+                "40",
+                "38",
+                "33",
+                "33",
+                "36",
+                "37"
+              ]
+            },
+            {
+              "label": "Days Payable",
+              "values": [
+                "8",
+                "10",
+                "9",
+                "9",
+                "10",
+                "8",
+                "10",
+                "8",
+                "8",
+                "8",
+                "8",
+                "8"
+              ]
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": [
+                "28",
+                "24",
+                "26",
+                "25",
+                "26",
+                "26",
+                "30",
+                "31",
+                "26",
+                "26",
+                "30",
+                "29"
+              ]
+            },
+            {
+              "label": "Working Capital Days",
+              "values": [
+                "22",
+                "6",
+                "4",
+                "16",
+                "11",
+                "22",
+                "23",
+                "23",
+                "20",
+                "25",
+                "23",
+                "18"
+              ]
+            },
+            {
+              "label": "ROCE %",
+              "values": [
+                "21%",
+                "24%",
+                "21%",
+                "24%",
+                "26%",
+                "20%",
+                "13%",
+                "16%",
+                "20%",
+                "19%",
+                "18%",
+                "17%"
+              ]
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "74.64%",
+                "74.64%",
+                "74.64%",
+                "74.64%",
+                "74.64%",
+                "74.64%",
+                "74.64%",
+                "74.65%",
+                "74.65%",
+                "74.65%",
+                "74.51%",
+                "74.48%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "7.67%",
+                "7.96%",
+                "8.26%",
+                "9.22%",
+                "9.95%",
+                "8.96%",
+                "8.18%",
+                "8.25%",
+                "8.73%",
+                "8.71%",
+                "9.00%",
+                "9.22%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "8.25%",
+                "8.45%",
+                "8.51%",
+                "7.95%",
+                "7.43%",
+                "8.07%",
+                "9.08%",
+                "9.22%",
+                "9.02%",
+                "8.83%",
+                "8.77%",
+                "8.67%"
+              ]
+            },
+            {
+              "label": "Government",
+              "values": [
+                "0.04%",
+                "0.06%",
+                "0.06%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%",
+                "0.07%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "9.41%",
+                "8.87%",
+                "8.50%",
+                "8.09%",
+                "7.91%",
+                "8.24%",
+                "8.04%",
+                "7.79%",
+                "7.53%",
+                "7.75%",
+                "7.64%",
+                "7.55%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "8,15,562",
+                "7,40,037",
+                "6,84,326",
+                "6,19,843",
+                "5,90,252",
+                "7,09,582",
+                "6,71,850",
+                "6,18,996",
+                "5,85,510",
+                "5,99,296",
+                "5,73,764",
+                "5,42,175"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:07.241Z"
+    },
+    {
+      "ticker": "VMM",
+      "label": "Vishal Mega Mart Ltd",
+      "subject": false,
+      "url": "https://www.screener.in/company/VMM/consolidated/",
+      "name": "Vishal Mega Mart Ltd",
+      "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
+      "ratios": {
+        "Market Cap": "₹ 51,627 Cr.",
+        "Current Price": "₹ 110",
+        "High / Low": "₹ 155 / 98.7",
+        "Stock P/E": "57.9",
+        "Book Value": "₹ 15.9",
+        "Dividend Yield": "0.00 %",
+        "ROCE": "14.8 %",
+        "ROE": "12.2 %",
+        "Face Value": "₹ 10.0"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            "",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "2,624",
+                "2,069",
+                "2,596",
+                "2,436",
+                "3,136",
+                "2,548",
+                "3,140",
+                "2,981",
+                "3,670",
+                "3,114",
+                "3,727"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "2,197",
+                "1,818",
+                "2,231",
+                "2,134",
+                "2,631",
+                "2,191",
+                "2,681",
+                "2,587",
+                "3,065",
+                "2,689",
+                "3,182"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "427",
+                "251",
+                "366",
+                "302",
+                "505",
+                "357",
+                "459",
+                "395",
+                "605",
+                "425",
+                "545"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "16%",
+                "12%",
+                "14%",
+                "12%",
+                "16%",
+                "14%",
+                "15%",
+                "13%",
+                "16%",
+                "14%",
+                "15%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "10",
+                "7",
+                "8",
+                "13",
+                "19",
+                "19",
+                "17",
+                "20",
+                "25",
+                "25",
+                "33"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "33",
+                "36",
+                "34",
+                "34",
+                "31",
+                "49",
+                "41",
+                "41",
+                "43",
+                "46",
+                "46"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "132",
+                "136",
+                "138",
+                "141",
+                "141",
+                "171",
+                "159",
+                "169",
+                "168",
+                "178",
+                "185"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "272",
+                "85",
+                "201",
+                "141",
+                "352",
+                "156",
+                "276",
+                "204",
+                "419",
+                "225",
+                "346"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "25%",
+                "28%",
+                "25%",
+                "26%",
+                "25%",
+                "26%",
+                "25%",
+                "25%",
+                "25%",
+                "25%",
+                "25%"
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "205",
+                "61",
+                "150",
+                "104",
+                "263",
+                "115",
+                "206",
+                "152",
+                "313",
+                "168",
+                "259"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "0.46",
+                "0.14",
+                "0.33",
+                "0.23",
+                "0.58",
+                "0.25",
+                "0.44",
+                "0.33",
+                "0.67",
+                "0.36",
+                "0.55"
+              ]
+            },
+            {
+              "label": "Raw PDF",
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            "",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "5,292",
+                "4,452",
+                "5,589",
+                "7,586",
+                "8,912",
+                "10,716",
+                "12,906",
+                "13,493"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "4,635",
+                "3,827",
+                "4,763",
+                "6,542",
+                "7,635",
+                "9,153",
+                "11,023",
+                "11,524"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "657",
+                "625",
+                "826",
+                "1,044",
+                "1,276",
+                "1,564",
+                "1,884",
+                "1,969"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "12%",
+                "14%",
+                "15%",
+                "14%",
+                "14%",
+                "15%",
+                "15%",
+                "15%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "20",
+                "116",
+                "62",
+                "33",
+                "32",
+                "56",
+                "86",
+                "102"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "236",
+                "232",
+                "213",
+                "185",
+                "170",
+                "180",
+                "171",
+                "177"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "340",
+                "346",
+                "406",
+                "461",
+                "517",
+                "590",
+                "673",
+                "700"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "101",
+                "163",
+                "270",
+                "431",
+                "621",
+                "849",
+                "1,125",
+                "1,195"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "55%",
+                "27%",
+                "25%",
+                "25%",
+                "26%",
+                "26%",
+                "25%",
+                ""
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "45",
+                "119",
+                "203",
+                "321",
+                "462",
+                "632",
+                "839",
+                "892"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "0.10",
+                "0.26",
+                "0.45",
+                "0.71",
+                "1.02",
+                "1.37",
+                "1.80",
+                "1.91"
+              ]
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": [
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                ""
+              ]
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            "",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": [
+                "4,366",
+                "4,484",
+                "4,503",
+                "4,507",
+                "4,509",
+                "4,597",
+                "4,673"
+              ]
+            },
+            {
+              "label": "Reserves",
+              "values": [
+                "-143",
+                "105",
+                "322",
+                "650",
+                "1,113",
+                "1,804",
+                "2,740"
+              ]
+            },
+            {
+              "label": "Borrowings",
+              "values": [
+                "793",
+                "770",
+                "1,790",
+                "1,462",
+                "1,483",
+                "1,729",
+                "1,988"
+              ]
+            },
+            {
+              "label": "Other Liabilities",
+              "values": [
+                "2,377",
+                "2,547",
+                "1,603",
+                "1,671",
+                "1,401",
+                "1,862",
+                "2,048"
+              ]
+            },
+            {
+              "label": "Total Liabilities",
+              "values": [
+                "7,392",
+                "7,905",
+                "8,218",
+                "8,289",
+                "8,506",
+                "9,993",
+                "11,449"
+              ]
+            },
+            {
+              "label": "Fixed Assets",
+              "values": [
+                "5,736",
+                "4,643",
+                "5,802",
+                "5,893",
+                "6,183",
+                "6,535",
+                "6,882"
+              ]
+            },
+            {
+              "label": "CWIP",
+              "values": [
+                "20",
+                "11",
+                "11",
+                "69",
+                "38",
+                "14",
+                "34"
+              ]
+            },
+            {
+              "label": "Investments",
+              "values": [
+                "87",
+                "547",
+                "417",
+                "35",
+                "0",
+                "387",
+                "1,119"
+              ]
+            },
+            {
+              "label": "Other Assets",
+              "values": [
+                "1,549",
+                "2,704",
+                "1,988",
+                "2,293",
+                "2,284",
+                "3,057",
+                "3,415"
+              ]
+            },
+            {
+              "label": "Total Assets",
+              "values": [
+                "7,392",
+                "7,905",
+                "8,218",
+                "8,289",
+                "8,506",
+                "9,993",
+                "11,449"
+              ]
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            "",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": [
+                "557",
+                "1,054",
+                "657",
+                "636",
+                "830",
+                "1,399",
+                "1,621"
+              ]
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": [
+                "-149",
+                "-695",
+                "27",
+                "177",
+                "-130",
+                "-610",
+                "-988"
+              ]
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": [
+                "-429",
+                "-276",
+                "-710",
+                "-865",
+                "-658",
+                "-479",
+                "-500"
+              ]
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": [
+                "-22",
+                "84",
+                "-26",
+                "-52",
+                "41",
+                "310",
+                "133"
+              ]
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": [
+                "387",
+                "950",
+                "500",
+                "417",
+                "583",
+                "1,138",
+                "1,299"
+              ]
+            },
+            {
+              "label": "CFO/OP",
+              "values": [
+                "94%",
+                "172%",
+                "88%",
+                "73%",
+                "77%",
+                "105%",
+                "103%"
+              ]
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            "",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": [
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "2",
+                "1"
+              ]
+            },
+            {
+              "label": "Inventory Days",
+              "values": [
+                "106",
+                "110",
+                "111",
+                "98",
+                "83",
+                "88",
+                "80"
+              ]
+            },
+            {
+              "label": "Days Payable",
+              "values": [
+                "102",
+                "144",
+                "133",
+                "99",
+                "69",
+                "70",
+                "64"
+              ]
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": [
+                "4",
+                "-34",
+                "-22",
+                "-0",
+                "15",
+                "20",
+                "17"
+              ]
+            },
+            {
+              "label": "Working Capital Days",
+              "values": [
+                "-17",
+                "-38",
+                "-40",
+                "-16",
+                "1",
+                "-3",
+                "27"
+              ]
+            },
+            {
+              "label": "ROCE %",
+              "values": [
+                "",
+                "8%",
+                "8%",
+                "9%",
+                "11%",
+                "13%",
+                "15%"
+              ]
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "76.02%",
+                "74.55%",
+                "54.22%",
+                "54.11%",
+                "54.09%",
+                "40.12%",
+                "40.09%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "6.58%",
+                "7.03%",
+                "12.85%",
+                "15.40%",
+                "15.52%",
+                "22.01%",
+                "20.43%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "9.90%",
+                "12.22%",
+                "27.31%",
+                "25.42%",
+                "25.47%",
+                "32.74%",
+                "34.80%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "7.51%",
+                "6.20%",
+                "5.61%",
+                "5.08%",
+                "4.92%",
+                "5.13%",
+                "4.68%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "9,33,227",
+                "7,39,867",
+                "6,62,906",
+                "6,74,200",
+                "6,52,352",
+                "6,41,309",
+                "6,25,567"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:07.658Z"
+    },
+    {
+      "ticker": "TRENT",
+      "label": "Trent Ltd",
+      "subject": false,
+      "url": "https://www.screener.in/company/TRENT/consolidated/",
+      "name": "Trent Ltd",
+      "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
+      "ratios": {
+        "Market Cap": "₹ 1,55,437 Cr.",
+        "Current Price": "₹ 2,915",
+        "High / Low": "₹ 3,783 / 2,184",
+        "Stock P/E": "85.0",
+        "Book Value": "₹ 131",
+        "Dividend Yield": "0.14 %",
+        "ROCE": "28.3 %",
+        "ROE": "27.7 %",
+        "Face Value": "₹ 1.00"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            "",
+            "Jun 2023",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "2,628",
+                "2,982",
+                "3,467",
+                "3,298",
+                "4,104",
+                "4,157",
+                "4,657",
+                "4,217",
+                "4,883",
+                "4,818",
+                "5,345",
+                "5,028",
+                "5,755"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "2,261",
+                "2,526",
+                "2,838",
+                "2,828",
+                "3,491",
+                "3,511",
+                "3,809",
+                "3,566",
+                "4,036",
+                "4,002",
+                "4,264",
+                "4,117",
+                "4,636"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "367",
+                "457",
+                "629",
+                "470",
+                "613",
+                "646",
+                "847",
+                "651",
+                "848",
+                "816",
+                "1,081",
+                "911",
+                "1,119"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "14%",
+                "15%",
+                "18%",
+                "14%",
+                "15%",
+                "16%",
+                "18%",
+                "15%",
+                "17%",
+                "17%",
+                "20%",
+                "18%",
+                "19%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "79",
+                "105",
+                "110",
+                "695",
+                "101",
+                "51",
+                "80",
+                "74",
+                "50",
+                "28",
+                "5",
+                "28",
+                "30"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "92",
+                "95",
+                "99",
+                "33",
+                "32",
+                "33",
+                "37",
+                "38",
+                "40",
+                "42",
+                "43",
+                "44",
+                "47"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "141",
+                "152",
+                "165",
+                "213",
+                "181",
+                "197",
+                "245",
+                "272",
+                "293",
+                "325",
+                "367",
+                "377",
+                "410"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "212",
+                "314",
+                "475",
+                "919",
+                "501",
+                "467",
+                "646",
+                "416",
+                "565",
+                "477",
+                "676",
+                "519",
+                "692"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "21%",
+                "27%",
+                "22%",
+                "23%",
+                "22%",
+                "28%",
+                "23%",
+                "25%",
+                "25%",
+                "22%",
+                "25%",
+                "20%",
+                "25%"
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "167",
+                "228",
+                "371",
+                "712",
+                "391",
+                "335",
+                "497",
+                "312",
+                "425",
+                "373",
+                "510",
+                "413",
+                "518"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "3.25",
+                "4.40",
+                "7.02",
+                "13.21",
+                "7.36",
+                "6.35",
+                "9.33",
+                "5.97",
+                "8.06",
+                "7.07",
+                "9.62",
+                "7.51",
+                "9.73"
+              ]
+            },
+            {
+              "label": "Raw PDF",
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "2,284",
+                "1,686",
+                "1,812",
+                "2,157",
+                "2,630",
+                "3,486",
+                "2,593",
+                "4,498",
+                "8,242",
+                "12,375",
+                "17,135",
+                "20,074",
+                "20,945"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "2,196",
+                "1,596",
+                "1,679",
+                "1,949",
+                "2,390",
+                "2,957",
+                "2,479",
+                "3,903",
+                "7,128",
+                "10,404",
+                "14,315",
+                "16,329",
+                "17,018"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "88",
+                "90",
+                "134",
+                "208",
+                "241",
+                "529",
+                "114",
+                "595",
+                "1,114",
+                "1,971",
+                "2,820",
+                "3,745",
+                "3,928"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "3.8%",
+                "5%",
+                "7%",
+                "10%",
+                "9%",
+                "15%",
+                "4.4%",
+                "13%",
+                "14%",
+                "16%",
+                "16%",
+                "19%",
+                "19%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "208",
+                "86",
+                "81",
+                "27",
+                "30",
+                "147",
+                "199",
+                "152",
+                "341",
+                "989",
+                "305",
+                "85",
+                "90"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "22",
+                "48",
+                "46",
+                "44",
+                "51",
+                "263",
+                "261",
+                "325",
+                "409",
+                "368",
+                "200",
+                "233",
+                "175"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "75",
+                "39",
+                "41",
+                "46",
+                "52",
+                "247",
+                "257",
+                "311",
+                "494",
+                "671",
+                "895",
+                "1,361",
+                "1,478"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "200",
+                "90",
+                "128",
+                "147",
+                "168",
+                "165",
+                "-205",
+                "111",
+                "552",
+                "1,921",
+                "2,030",
+                "2,236",
+                "2,364"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "35%",
+                "39%",
+                "34%",
+                "41%",
+                "44%",
+                "36%",
+                "-12%",
+                "69%",
+                "29%",
+                "23%",
+                "24%",
+                "23%",
+                ""
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "129",
+                "55",
+                "85",
+                "87",
+                "95",
+                "106",
+                "-181",
+                "35",
+                "394",
+                "1,477",
+                "1,534",
+                "1,721",
+                "1,815"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "2.60",
+                "1.11",
+                "1.70",
+                "1.74",
+                "1.95",
+                "2.30",
+                "-2.74",
+                "1.98",
+                "8.34",
+                "27.88",
+                "29.01",
+                "32.25",
+                "33.93"
+              ]
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": [
+                "26%",
+                "54%",
+                "39%",
+                "44%",
+                "45%",
+                "29%",
+                "-15%",
+                "57%",
+                "18%",
+                "8%",
+                "11%",
+                "8%",
+                ""
+              ]
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": [
+                "33",
+                "33",
+                "33",
+                "33",
+                "33",
+                "36",
+                "36",
+                "36",
+                "36",
+                "36",
+                "36",
+                "36"
+              ]
+            },
+            {
+              "label": "Reserves",
+              "values": [
+                "1,389",
+                "1,431",
+                "1,514",
+                "1,562",
+                "1,613",
+                "2,352",
+                "2,277",
+                "2,328",
+                "2,560",
+                "4,032",
+                "5,426",
+                "6,949"
+              ]
+            },
+            {
+              "label": "Borrowings",
+              "values": [
+                "267",
+                "400",
+                "392",
+                "391",
+                "494",
+                "300",
+                "2,964",
+                "4,725",
+                "4,464",
+                "1,753",
+                "2,237",
+                "2,561"
+              ]
+            },
+            {
+              "label": "Other Liabilities",
+              "values": [
+                "518",
+                "292",
+                "283",
+                "349",
+                "418",
+                "2,819",
+                "447",
+                "637",
+                "1,022",
+                "1,341",
+                "1,721",
+                "2,183"
+              ]
+            },
+            {
+              "label": "Total Liabilities",
+              "values": [
+                "2,207",
+                "2,157",
+                "2,222",
+                "2,336",
+                "2,559",
+                "5,507",
+                "5,724",
+                "7,726",
+                "8,082",
+                "7,162",
+                "9,420",
+                "11,729"
+              ]
+            },
+            {
+              "label": "Fixed Assets",
+              "values": [
+                "668",
+                "477",
+                "549",
+                "613",
+                "662",
+                "2,738",
+                "3,054",
+                "4,687",
+                "4,527",
+                "2,450",
+                "3,895",
+                "5,519"
+              ]
+            },
+            {
+              "label": "CWIP",
+              "values": [
+                "92",
+                "55",
+                "5",
+                "10",
+                "87",
+                "23",
+                "108",
+                "105",
+                "102",
+                "224",
+                "180",
+                "254"
+              ]
+            },
+            {
+              "label": "Investments",
+              "values": [
+                "740",
+                "1,067",
+                "1,080",
+                "1,023",
+                "883",
+                "1,515",
+                "1,487",
+                "1,284",
+                "1,110",
+                "1,416",
+                "1,480",
+                "1,385"
+              ]
+            },
+            {
+              "label": "Other Assets",
+              "values": [
+                "706",
+                "558",
+                "588",
+                "691",
+                "927",
+                "1,230",
+                "1,075",
+                "1,651",
+                "2,343",
+                "3,072",
+                "3,865",
+                "4,571"
+              ]
+            },
+            {
+              "label": "Total Assets",
+              "values": [
+                "2,207",
+                "2,157",
+                "2,222",
+                "2,336",
+                "2,559",
+                "5,507",
+                "5,724",
+                "7,726",
+                "8,082",
+                "7,162",
+                "9,420",
+                "11,729"
+              ]
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": [
+                "-10",
+                "109",
+                "102",
+                "77",
+                "21",
+                "361",
+                "285",
+                "58",
+                "595",
+                "1,349",
+                "1,661",
+                "2,668"
+              ]
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": [
+                "-306",
+                "-98",
+                "-44",
+                "-4",
+                "-37",
+                "-809",
+                "18",
+                "56",
+                "-103",
+                "-508",
+                "-923",
+                "-1,577"
+              ]
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": [
+                "310",
+                "-13",
+                "-51",
+                "-74",
+                "37",
+                "452",
+                "-283",
+                "-108",
+                "-491",
+                "-629",
+                "-694",
+                "-1,148"
+              ]
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": [
+                "-6",
+                "-2",
+                "7",
+                "-1",
+                "21",
+                "5",
+                "20",
+                "6",
+                "1",
+                "211",
+                "44",
+                "-57"
+              ]
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": [
+                "-166",
+                "-21",
+                "34",
+                "-30",
+                "-174",
+                "247",
+                "194",
+                "-152",
+                "371",
+                "955",
+                "799",
+                "931"
+              ]
+            },
+            {
+              "label": "CFO/OP",
+              "values": [
+                "4%",
+                "144%",
+                "105%",
+                "61%",
+                "41%",
+                "84%",
+                "251%",
+                "23%",
+                "71%",
+                "84%",
+                "76%",
+                "86%"
+              ]
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            "",
+            "Mar 2015",
+            "Mar 2016",
+            "Mar 2017",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": [
+                "3",
+                "3",
+                "1",
+                "3",
+                "2",
+                "2",
+                "3",
+                "1",
+                "2",
+                "2",
+                "1",
+                "1"
+              ]
+            },
+            {
+              "label": "Inventory Days",
+              "values": [
+                "91",
+                "128",
+                "126",
+                "122",
+                "138",
+                "118",
+                "102",
+                "128",
+                "105",
+                "83",
+                "77",
+                "74"
+              ]
+            },
+            {
+              "label": "Days Payable",
+              "values": [
+                "61",
+                "76",
+                "70",
+                "74",
+                "68",
+                "58",
+                "65",
+                "56",
+                "51",
+                "41",
+                "35",
+                "39"
+              ]
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": [
+                "33",
+                "55",
+                "58",
+                "51",
+                "72",
+                "62",
+                "40",
+                "74",
+                "55",
+                "45",
+                "43",
+                "36"
+              ]
+            },
+            {
+              "label": "Working Capital Days",
+              "values": [
+                "-15",
+                "-25",
+                "36",
+                "41",
+                "24",
+                "39",
+                "-14",
+                "42",
+                "29",
+                "16",
+                "15",
+                "-2"
+              ]
+            },
+            {
+              "label": "ROCE %",
+              "values": [
+                "4%",
+                "7%",
+                "9%",
+                "10%",
+                "11%",
+                "17%",
+                "1%",
+                "7%",
+                "12%",
+                "24%",
+                "31%",
+                "28%"
+              ]
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%",
+                "37.01%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "26.17%",
+                "25.91%",
+                "26.81%",
+                "27.87%",
+                "26.62%",
+                "21.68%",
+                "19.65%",
+                "18.39%",
+                "16.81%",
+                "15.62%",
+                "15.59%",
+                "15.14%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "14.89%",
+                "14.82%",
+                "13.89%",
+                "13.18%",
+                "13.39%",
+                "15.25%",
+                "17.20%",
+                "18.42%",
+                "19.84%",
+                "21.37%",
+                "22.19%",
+                "23.07%"
+              ]
+            },
+            {
+              "label": "Government",
+              "values": [
+                "0.00%",
+                "0.00%",
+                "0.00%",
+                "0.00%",
+                "0.00%",
+                "0.04%",
+                "0.04%",
+                "0.12%",
+                "0.13%",
+                "0.13%",
+                "0.17%",
+                "0.19%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "21.92%",
+                "22.26%",
+                "22.29%",
+                "21.95%",
+                "22.98%",
+                "26.01%",
+                "26.08%",
+                "26.06%",
+                "26.18%",
+                "25.87%",
+                "25.03%",
+                "24.57%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "1,49,010",
+                "1,75,241",
+                "2,15,715",
+                "2,46,571",
+                "2,81,635",
+                "3,46,036",
+                "4,05,274",
+                "4,21,038",
+                "4,88,273",
+                "5,07,525",
+                "5,12,623",
+                "5,20,340"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:08.079Z"
+    },
+    {
+      "ticker": "SPENCERS",
+      "label": "Spencer's Retail Ltd",
+      "subject": false,
+      "url": "https://www.screener.in/company/SPENCERS/consolidated/",
+      "name": "Spencers Retail Ltd",
+      "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
+      "ratios": {
+        "Market Cap": "₹ 270 Cr.",
+        "Current Price": "₹ 30.0",
+        "High / Low": "₹ 64.0 / 24.3",
+        "Stock P/E": null,
+        "Book Value": "₹ -101",
+        "Dividend Yield": "0.00 %",
+        "ROCE": "-9.34 %",
+        "ROE": "%",
+        "Face Value": "₹ 5.00"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            "",
+            "Jun 2023",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "570",
+                "574",
+                "654",
+                "547",
+                "548",
+                "518",
+                "517",
+                "412",
+                "416",
+                "445",
+                "503",
+                "436",
+                "469"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "575",
+                "581",
+                "642",
+                "559",
+                "547",
+                "563",
+                "505",
+                "423",
+                "423",
+                "449",
+                "496",
+                "443",
+                "462"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "-5",
+                "-7",
+                "12",
+                "-12",
+                "1",
+                "-45",
+                "12",
+                "-11",
+                "-7",
+                "-4",
+                "7",
+                "-7",
+                "8"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "-0.8%",
+                "-1.2%",
+                "1.8%",
+                "-2.2%",
+                "0.2%",
+                "-9%",
+                "2.3%",
+                "-2.8%",
+                "-1.6%",
+                "-0.8%",
+                "1.3%",
+                "-1.6%",
+                "1.6%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "12",
+                "3",
+                "6",
+                "4",
+                "28",
+                "61",
+                "3",
+                "11",
+                "11",
+                "4",
+                "1",
+                "9",
+                "2"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "34",
+                "36",
+                "38",
+                "41",
+                "43",
+                "40",
+                "41",
+                "41",
+                "40",
+                "41",
+                "43",
+                "45",
+                "46"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "38",
+                "31",
+                "32",
+                "32",
+                "30",
+                "64",
+                "22",
+                "27",
+                "26",
+                "23",
+                "23",
+                "23",
+                "23"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "-64",
+                "-70",
+                "-51",
+                "-81",
+                "-44",
+                "-87",
+                "-47",
+                "-68",
+                "-62",
+                "-64",
+                "-58",
+                "-66",
+                "-60"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%"
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "-64",
+                "-70",
+                "-51",
+                "-81",
+                "-43",
+                "-87",
+                "-47",
+                "-68",
+                "-62",
+                "-64",
+                "-58",
+                "-66",
+                "-60"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "-7.12",
+                "-7.78",
+                "-5.68",
+                "-8.95",
+                "-4.82",
+                "-9.67",
+                "-5.25",
+                "-7.59",
+                "-6.84",
+                "-7.08",
+                "-6.47",
+                "-7.28",
+                "-6.71"
+              ]
+            },
+            {
+              "label": "Raw PDF",
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            "",
+            "Mar 2018 13m",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "1,149",
+                "2,187",
+                "2,645",
+                "2,428",
+                "2,300",
+                "2,453",
+                "2,345",
+                "1,995",
+                "1,800",
+                "1,854"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "1,153",
+                "2,178",
+                "2,587",
+                "2,420",
+                "2,275",
+                "2,448",
+                "2,354",
+                "2,038",
+                "1,810",
+                "1,850"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "-4",
+                "9",
+                "57",
+                "8",
+                "25",
+                "4",
+                "-9",
+                "-43",
+                "-10",
+                "4"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "-0.4%",
+                "0.4%",
+                "2.2%",
+                "0.3%",
+                "1.1%",
+                "0.2%",
+                "-0.4%",
+                "-2.2%",
+                "-0.5%",
+                "0.2%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "9",
+                "28",
+                "32",
+                "53",
+                "76",
+                "32",
+                "23",
+                "104",
+                "25",
+                "16"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "4",
+                "7",
+                "82",
+                "91",
+                "97",
+                "115",
+                "148",
+                "164",
+                "169",
+                "175"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "15",
+                "25",
+                "138",
+                "134",
+                "126",
+                "132",
+                "132",
+                "143",
+                "96",
+                "93"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "-14",
+                "4",
+                "-131",
+                "-164",
+                "-122",
+                "-211",
+                "-267",
+                "-247",
+                "-250",
+                "-248"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "0%",
+                "43%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                ""
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "-14",
+                "2",
+                "-131",
+                "-164",
+                "-121",
+                "-210",
+                "-266",
+                "-246",
+                "-249",
+                "-248"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "",
+                "0.27",
+                "-14.51",
+                "-18.18",
+                "-13.48",
+                "-23.34",
+                "-29.53",
+                "-27.33",
+                "-27.66",
+                "-27.54"
+              ]
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": [
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                ""
+              ]
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            "",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": [
+                "0.00",
+                "40",
+                "40",
+                "45",
+                "45",
+                "45",
+                "45",
+                "45",
+                "45"
+              ]
+            },
+            {
+              "label": "Reserves",
+              "values": [
+                "507",
+                "508",
+                "234",
+                "141",
+                "17",
+                "-196",
+                "-461",
+                "-707",
+                "-958"
+              ]
+            },
+            {
+              "label": "Borrowings",
+              "values": [
+                "1",
+                "0",
+                "849",
+                "944",
+                "1,069",
+                "1,341",
+                "1,622",
+                "1,571",
+                "1,919"
+              ]
+            },
+            {
+              "label": "Other Liabilities",
+              "values": [
+                "373",
+                "365",
+                "471",
+                "429",
+                "435",
+                "439",
+                "490",
+                "400",
+                "390"
+              ]
+            },
+            {
+              "label": "Total Liabilities",
+              "values": [
+                "881",
+                "914",
+                "1,594",
+                "1,559",
+                "1,565",
+                "1,629",
+                "1,696",
+                "1,310",
+                "1,396"
+              ]
+            },
+            {
+              "label": "Fixed Assets",
+              "values": [
+                "239",
+                "263",
+                "1,055",
+                "1,053",
+                "1,049",
+                "1,132",
+                "1,211",
+                "953",
+                "971"
+              ]
+            },
+            {
+              "label": "CWIP",
+              "values": [
+                "0",
+                "1",
+                "10",
+                "3",
+                "8",
+                "2",
+                "1",
+                "0",
+                "0"
+              ]
+            },
+            {
+              "label": "Investments",
+              "values": [
+                "7",
+                "23",
+                "24",
+                "35",
+                "94",
+                "94",
+                "56",
+                "43",
+                "36"
+              ]
+            },
+            {
+              "label": "Other Assets",
+              "values": [
+                "635",
+                "627",
+                "505",
+                "468",
+                "415",
+                "401",
+                "428",
+                "314",
+                "389"
+              ]
+            },
+            {
+              "label": "Total Assets",
+              "values": [
+                "881",
+                "914",
+                "1,594",
+                "1,559",
+                "1,565",
+                "1,629",
+                "1,696",
+                "1,310",
+                "1,396"
+              ]
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            "",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": [
+                "-48",
+                "-13",
+                "114",
+                "-2",
+                "55",
+                "27",
+                "35",
+                "37",
+                "-60"
+              ]
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": [
+                "-189",
+                "22",
+                "-7",
+                "-18",
+                "-40",
+                "-26",
+                "11",
+                "-20",
+                "-8"
+              ]
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": [
+                "38",
+                "-0",
+                "-54",
+                "-3",
+                "-54",
+                "-5",
+                "-28",
+                "-27",
+                "92"
+              ]
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": [
+                "-199",
+                "9",
+                "53",
+                "-24",
+                "-40",
+                "-4",
+                "18",
+                "-10",
+                "24"
+              ]
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": [
+                "-55",
+                "-58",
+                "71",
+                "-25",
+                "31",
+                "1",
+                "3",
+                "21",
+                "-69"
+              ]
+            },
+            {
+              "label": "CFO/OP",
+              "values": [
+                "1,079%",
+                "-107%",
+                "212%",
+                "23%",
+                "219%",
+                "271%",
+                "-364%",
+                "-83%",
+                "633%"
+              ]
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            "",
+            "Mar 2018",
+            "Mar 2019",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": [
+                "12",
+                "7",
+                "9",
+                "4",
+                "4",
+                "3",
+                "4",
+                "3",
+                "5"
+              ]
+            },
+            {
+              "label": "Inventory Days",
+              "values": [
+                "109",
+                "57",
+                "44",
+                "51",
+                "52",
+                "49",
+                "52",
+                "39",
+                "47"
+              ]
+            },
+            {
+              "label": "Days Payable",
+              "values": [
+                "123",
+                "66",
+                "66",
+                "63",
+                "67",
+                "64",
+                "75",
+                "72",
+                "76"
+              ]
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": [
+                "-2",
+                "-1",
+                "-13",
+                "-8",
+                "-10",
+                "-12",
+                "-19",
+                "-30",
+                "-24"
+              ]
+            },
+            {
+              "label": "Working Capital Days",
+              "values": [
+                "-1",
+                "-2",
+                "-40",
+                "-50",
+                "-63",
+                "-79",
+                "-99",
+                "-137",
+                "-192"
+              ]
+            },
+            {
+              "label": "ROCE %",
+              "values": [
+                "",
+                "2%",
+                "-6%",
+                "-7%",
+                "-2%",
+                "-8%",
+                "-10%",
+                "-10%",
+                "-9%"
+              ]
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%",
+                "58.81%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "8.45%",
+                "8.84%",
+                "9.38%",
+                "8.32%",
+                "8.31%",
+                "8.54%",
+                "8.74%",
+                "7.56%",
+                "7.36%",
+                "6.50%",
+                "6.55%",
+                "6.50%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "2.37%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%",
+                "1.99%"
+              ]
+            },
+            {
+              "label": "Government",
+              "values": [
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%",
+                "0.01%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "30.21%",
+                "30.20%",
+                "29.65%",
+                "30.72%",
+                "30.73%",
+                "30.48%",
+                "30.29%",
+                "31.47%",
+                "31.67%",
+                "32.54%",
+                "32.48%",
+                "32.54%"
+              ]
+            },
+            {
+              "label": "Others",
+              "values": [
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%",
+                "0.13%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "57,358",
+                "51,018",
+                "49,190",
+                "49,192",
+                "51,367",
+                "50,829",
+                "50,376",
+                "50,376",
+                "49,994",
+                "49,221",
+                "48,360",
+                "47,972"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:08.491Z"
+    },
+    {
+      "ticker": "V2RETAIL",
+      "label": "V2 Retail Ltd",
+      "subject": false,
+      "url": "https://www.screener.in/company/V2RETAIL/consolidated/",
+      "name": "V2 Retail Ltd",
+      "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
+      "ratios": {
+        "Market Cap": "₹ 8,022 Cr.",
+        "Current Price": "₹ 220",
+        "High / Low": "₹ 259 / 157",
+        "Stock P/E": "50.6",
+        "Book Value": "₹ 24.8",
+        "Dividend Yield": "0.00 %",
+        "ROCE": "19.3 %",
+        "ROE": "22.9 %",
+        "Face Value": "₹ 1.00"
+      },
+      "sections": {
+        "quarterly_results": {
+          "columns": [
+            "",
+            "Jun 2023",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "264",
+                "231",
+                "374",
+                "296",
+                "415",
+                "380",
+                "591",
+                "499",
+                "632",
+                "709",
+                "929",
+                "797",
+                "997"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "228",
+                "211",
+                "313",
+                "265",
+                "360",
+                "347",
+                "479",
+                "441",
+                "545",
+                "623",
+                "755",
+                "688",
+                "858"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "36",
+                "20",
+                "61",
+                "31",
+                "55",
+                "33",
+                "111",
+                "58",
+                "87",
+                "85",
+                "174",
+                "109",
+                "139"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "14%",
+                "9%",
+                "16%",
+                "11%",
+                "13%",
+                "9%",
+                "19%",
+                "12%",
+                "14%",
+                "12%",
+                "19%",
+                "14%",
+                "14%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "1",
+                "2",
+                "3",
+                "1",
+                "1",
+                "3",
+                "1",
+                "2",
+                "1",
+                "1",
+                "32",
+                "4",
+                "1"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "10",
+                "12",
+                "12",
+                "13",
+                "14",
+                "15",
+                "18",
+                "21",
+                "23",
+                "28",
+                "22",
+                "24",
+                "25"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "18",
+                "18",
+                "21",
+                "19",
+                "21",
+                "23",
+                "26",
+                "28",
+                "32",
+                "38",
+                "46",
+                "67",
+                "64"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "8",
+                "-8",
+                "31",
+                "0",
+                "22",
+                "-2",
+                "69",
+                "10",
+                "33",
+                "21",
+                "138",
+                "22",
+                "52"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "26%",
+                "-33%",
+                "25%",
+                "-7,100%",
+                "25%",
+                "-20%",
+                "25%",
+                "38%",
+                "26%",
+                "18%",
+                "26%",
+                "22%",
+                "19%"
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "6",
+                "-6",
+                "24",
+                "4",
+                "16",
+                "-2",
+                "51",
+                "6",
+                "25",
+                "17",
+                "103",
+                "18",
+                "42"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "0.18",
+                "-0.16",
+                "0.68",
+                "0.10",
+                "0.47",
+                "-0.06",
+                "1.48",
+                "0.19",
+                "0.71",
+                "0.50",
+                "2.82",
+                "0.48",
+                "1.15"
+              ]
+            },
+            {
+              "label": "Raw PDF",
+              "values": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ]
+            }
+          ]
+        },
+        "profit_loss": {
+          "columns": [
+            "",
+            "Mar 2010",
+            "Mar 2012",
+            "Mar 2013",
+            "Mar 2014",
+            "Mar 2015",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026",
+            "TTM"
+          ],
+          "rows": [
+            {
+              "label": "Sales",
+              "values": [
+                "1,105",
+                "42",
+                "109",
+                "229",
+                "287",
+                "701",
+                "538",
+                "629",
+                "839",
+                "1,165",
+                "1,884",
+                "3,067",
+                "3,432"
+              ]
+            },
+            {
+              "label": "Expenses",
+              "values": [
+                "1,565",
+                "52",
+                "108",
+                "223",
+                "258",
+                "624",
+                "488",
+                "562",
+                "753",
+                "1,016",
+                "1,624",
+                "2,595",
+                "2,924"
+              ]
+            },
+            {
+              "label": "Operating Profit",
+              "values": [
+                "-460",
+                "-9",
+                "1",
+                "5",
+                "28",
+                "77",
+                "50",
+                "67",
+                "85",
+                "149",
+                "260",
+                "472",
+                "508"
+              ]
+            },
+            {
+              "label": "OPM %",
+              "values": [
+                "-42%",
+                "-21%",
+                "0.9%",
+                "2.2%",
+                "10%",
+                "11%",
+                "9%",
+                "11%",
+                "10%",
+                "13%",
+                "14%",
+                "15%",
+                "15%"
+              ]
+            },
+            {
+              "label": "Other Income",
+              "values": [
+                "-41",
+                "1",
+                "1",
+                "2",
+                "2",
+                "15",
+                "23",
+                "16",
+                "7",
+                "7",
+                "6",
+                "25",
+                "38"
+              ]
+            },
+            {
+              "label": "Interest",
+              "values": [
+                "91",
+                "8",
+                "7",
+                "9",
+                "10",
+                "33",
+                "33",
+                "39",
+                "42",
+                "49",
+                "70",
+                "100",
+                "99"
+              ]
+            },
+            {
+              "label": "Depreciation",
+              "values": [
+                "47",
+                "3",
+                "2",
+                "3",
+                "2",
+                "51",
+                "56",
+                "59",
+                "67",
+                "77",
+                "99",
+                "182",
+                "214"
+              ]
+            },
+            {
+              "label": "Profit before tax",
+              "values": [
+                "-639",
+                "-19",
+                "-7",
+                "-5",
+                "18",
+                "9",
+                "-15",
+                "-15",
+                "-17",
+                "31",
+                "98",
+                "215",
+                "233"
+              ]
+            },
+            {
+              "label": "Tax %",
+              "values": [
+                "-35%",
+                "81%",
+                "-26%",
+                "-18%",
+                "47%",
+                "-1%",
+                "-16%",
+                "-21%",
+                "-24%",
+                "11%",
+                "27%",
+                "24%",
+                ""
+              ]
+            },
+            {
+              "label": "Net Profit",
+              "values": [
+                "-415",
+                "-35",
+                "-5",
+                "-4",
+                "10",
+                "9",
+                "-13",
+                "-12",
+                "-13",
+                "28",
+                "72",
+                "162",
+                "179"
+              ]
+            },
+            {
+              "label": "EPS in Rs",
+              "values": [
+                "-18.54",
+                "-1.55",
+                "-0.24",
+                "-0.19",
+                "0.41",
+                "0.26",
+                "-0.38",
+                "-0.34",
+                "-0.37",
+                "0.80",
+                "2.08",
+                "4.44",
+                "4.95"
+              ]
+            },
+            {
+              "label": "Dividend Payout %",
+              "values": [
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                ""
+              ]
+            }
+          ]
+        },
+        "balance_sheet": {
+          "columns": [
+            "",
+            "Mar 2010",
+            "Mar 2012",
+            "Mar 2013",
+            "Mar 2014",
+            "Mar 2015",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Equity Capital",
+              "values": [
+                "22",
+                "22",
+                "22",
+                "22",
+                "24",
+                "34",
+                "34",
+                "34",
+                "34",
+                "35",
+                "35",
+                "36"
+              ]
+            },
+            {
+              "label": "Reserves",
+              "values": [
+                "-255",
+                "252",
+                "247",
+                "240",
+                "251",
+                "245",
+                "235",
+                "224",
+                "213",
+                "240",
+                "312",
+                "866"
+              ]
+            },
+            {
+              "label": "Borrowings",
+              "values": [
+                "766",
+                "57",
+                "71",
+                "84",
+                "69",
+                "326",
+                "396",
+                "398",
+                "424",
+                "525",
+                "871",
+                "995"
+              ]
+            },
+            {
+              "label": "Other Liabilities",
+              "values": [
+                "245",
+                "11",
+                "28",
+                "39",
+                "61",
+                "115",
+                "148",
+                "136",
+                "123",
+                "227",
+                "381",
+                "525"
+              ]
+            },
+            {
+              "label": "Total Liabilities",
+              "values": [
+                "778",
+                "343",
+                "368",
+                "385",
+                "405",
+                "721",
+                "813",
+                "792",
+                "793",
+                "1,027",
+                "1,599",
+                "2,422"
+              ]
+            },
+            {
+              "label": "Fixed Assets",
+              "values": [
+                "222",
+                "7",
+                "9",
+                "14",
+                "18",
+                "339",
+                "395",
+                "394",
+                "408",
+                "480",
+                "863",
+                "968"
+              ]
+            },
+            {
+              "label": "CWIP",
+              "values": [
+                "0",
+                "0",
+                "1",
+                "0",
+                "1",
+                "4",
+                "5",
+                "0",
+                "0",
+                "0",
+                "4",
+                "36"
+              ]
+            },
+            {
+              "label": "Investments",
+              "values": [
+                "0",
+                "33",
+                "32",
+                "31",
+                "30",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            },
+            {
+              "label": "Other Assets",
+              "values": [
+                "557",
+                "303",
+                "326",
+                "340",
+                "355",
+                "378",
+                "414",
+                "398",
+                "385",
+                "547",
+                "732",
+                "1,418"
+              ]
+            },
+            {
+              "label": "Total Assets",
+              "values": [
+                "778",
+                "343",
+                "368",
+                "385",
+                "405",
+                "721",
+                "813",
+                "792",
+                "793",
+                "1,027",
+                "1,599",
+                "2,422"
+              ]
+            }
+          ]
+        },
+        "cash_flow": {
+          "columns": [
+            "",
+            "Mar 2010",
+            "Mar 2012",
+            "Mar 2013",
+            "Mar 2014",
+            "Mar 2015",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Cash from Operating Activity",
+              "values": [
+                "57",
+                "-38",
+                "-12",
+                "12",
+                "35",
+                "74",
+                "3",
+                "59",
+                "86",
+                "93",
+                "201",
+                "-103"
+              ]
+            },
+            {
+              "label": "Cash from Investing Activity",
+              "values": [
+                "5",
+                "-1",
+                "-4",
+                "-7",
+                "-6",
+                "7",
+                "-20",
+                "-16",
+                "-12",
+                "-39",
+                "-130",
+                "-219"
+              ]
+            },
+            {
+              "label": "Cash from Financing Activity",
+              "values": [
+                "-66",
+                "6",
+                "8",
+                "-4",
+                "-30",
+                "-28",
+                "-22",
+                "-58",
+                "-76",
+                "-50",
+                "-71",
+                "319"
+              ]
+            },
+            {
+              "label": "Net Cash Flow",
+              "values": [
+                "-4",
+                "-33",
+                "-8",
+                "0",
+                "-1",
+                "52",
+                "-39",
+                "-15",
+                "-2",
+                "5",
+                "-0",
+                "-3"
+              ]
+            },
+            {
+              "label": "Free Cash Flow",
+              "values": [
+                "62",
+                "-35",
+                "-16",
+                "5",
+                "29",
+                "63",
+                "-24",
+                "43",
+                "73",
+                "56",
+                "201",
+                "-103"
+              ]
+            },
+            {
+              "label": "CFO/OP",
+              "values": [
+                "-12%",
+                "424%",
+                "-1,155%",
+                "219%",
+                "123%",
+                "96%",
+                "7%",
+                "86%",
+                "100%",
+                "63%",
+                "87%",
+                "-11%"
+              ]
+            }
+          ]
+        },
+        "ratios": {
+          "columns": [
+            "",
+            "Mar 2010",
+            "Mar 2012",
+            "Mar 2013",
+            "Mar 2014",
+            "Mar 2015",
+            "Mar 2020",
+            "Mar 2021",
+            "Mar 2022",
+            "Mar 2023",
+            "Mar 2024",
+            "Mar 2025",
+            "Mar 2026"
+          ],
+          "rows": [
+            {
+              "label": "Debtor Days",
+              "values": [
+                "1",
+                "4",
+                "0",
+                "0",
+                "0",
+                "0",
+                "0",
+                "1",
+                "0",
+                "0",
+                "0",
+                "0"
+              ]
+            },
+            {
+              "label": "Inventory Days",
+              "values": [
+                "64",
+                "187",
+                "207",
+                "118",
+                "141",
+                "156",
+                "308",
+                "264",
+                "184",
+                "199",
+                "159",
+                "195"
+              ]
+            },
+            {
+              "label": "Days Payable",
+              "values": [
+                "52",
+                "91",
+                "114",
+                "60",
+                "63",
+                "75",
+                "134",
+                "108",
+                "70",
+                "92",
+                "92",
+                "79"
+              ]
+            },
+            {
+              "label": "Cash Conversion Cycle",
+              "values": [
+                "13",
+                "100",
+                "93",
+                "58",
+                "79",
+                "81",
+                "174",
+                "156",
+                "114",
+                "107",
+                "66",
+                "116"
+              ]
+            },
+            {
+              "label": "Working Capital Days",
+              "values": [
+                "13",
+                "-265",
+                "-59",
+                "-32",
+                "-27",
+                "40",
+                "72",
+                "70",
+                "51",
+                "42",
+                "19",
+                "48"
+              ]
+            },
+            {
+              "label": "ROCE %",
+              "values": [
+                "-68%",
+                "",
+                "0%",
+                "1%",
+                "8%",
+                "",
+                "3%",
+                "4%",
+                "4%",
+                "11%",
+                "17%",
+                "19%"
+              ]
+            }
+          ]
+        },
+        "shareholding": {
+          "columns": [
+            "",
+            "Sep 2023",
+            "Dec 2023",
+            "Mar 2024",
+            "Jun 2024",
+            "Sep 2024",
+            "Dec 2024",
+            "Mar 2025",
+            "Jun 2025",
+            "Sep 2025",
+            "Dec 2025",
+            "Mar 2026",
+            "Jun 2026"
+          ],
+          "rows": [
+            {
+              "label": "Promoters",
+              "values": [
+                "54.26%",
+                "54.28%",
+                "54.28%",
+                "54.30%",
+                "54.30%",
+                "54.30%",
+                "54.24%",
+                "54.22%",
+                "54.22%",
+                "51.43%",
+                "51.43%",
+                "51.43%"
+              ]
+            },
+            {
+              "label": "FIIs",
+              "values": [
+                "6.36%",
+                "6.36%",
+                "6.57%",
+                "6.69%",
+                "0.80%",
+                "0.91%",
+                "1.31%",
+                "1.90%",
+                "2.10%",
+                "3.01%",
+                "2.62%",
+                "3.11%"
+              ]
+            },
+            {
+              "label": "DIIs",
+              "values": [
+                "0.37%",
+                "0.37%",
+                "0.36%",
+                "0.43%",
+                "4.34%",
+                "5.98%",
+                "6.70%",
+                "7.35%",
+                "7.12%",
+                "9.12%",
+                "9.28%",
+                "10.65%"
+              ]
+            },
+            {
+              "label": "Public",
+              "values": [
+                "39.01%",
+                "38.99%",
+                "38.80%",
+                "38.60%",
+                "40.57%",
+                "38.82%",
+                "37.75%",
+                "36.53%",
+                "36.56%",
+                "36.45%",
+                "36.67%",
+                "34.82%"
+              ]
+            },
+            {
+              "label": "No. of Shareholders",
+              "values": [
+                "17,324",
+                "16,166",
+                "16,244",
+                "16,862",
+                "24,101",
+                "26,877",
+                "35,125",
+                "37,446",
+                "39,938",
+                "42,869",
+                "45,025",
+                "52,967"
+              ]
+            }
+          ]
+        }
+      },
+      "fetched_at": "2026-08-26T09:59:39.492Z"
+    }
+  ]
+}
