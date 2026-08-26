@@ -22,7 +22,10 @@ function openedYear(store) {
 }
 
 function fmtYearsAgo(yrs) {
-  if (yrs < 1) return `${Math.round(yrs * 12)} months`;
+  if (yrs < 1) {
+    const months = Math.max(1, Math.round(yrs * 12));
+    return `${months} ${months === 1 ? "month" : "months"}`;
+  }
   return `${yrs.toFixed(1)} yrs`;
 }
 
@@ -98,20 +101,42 @@ function renderOpeningsChart(stores) {
   const bars = [{ label: `< ${PRE_BUCKET_YEAR}`, count: preBucketCount }, ...years.map((y) => ({ label: String(y), count: byYear.get(y) }))];
   const max = Math.max(...bars.map((b) => b.count));
 
+  // Gridlines on a rounded scale, so a bar can be read against an axis rather
+  // than only against the number printed on top of it.
+  const step = max > 40 ? 20 : max > 20 ? 10 : 5;
+  const scaleMax = Math.ceil(max / step) * step;
+  const gridValues = [];
+  for (let v = 0; v <= scaleMax; v += step) gridValues.push(v);
+  const GUTTER = 30;
+  const PLOT_H = 190;
+
   el.innerHTML = `
-    <div style="display:flex; align-items:flex-end; gap:10px; height:180px; padding:10px 4px 0">
-      ${bars
-        .map(
-          (b) => `
-        <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
-          <div style="font-size:12px; font-weight:700; color:var(--text-1); margin-bottom:4px">${b.count}</div>
-          <div style="width:100%; max-width:44px; height:${Math.max((b.count / max) * 100, 3)}%; border-radius:6px 6px 0 0; background:var(--grad-primary)"></div>
-        </div>`
-        )
-        .join("")}
-    </div>
-    <div style="display:flex; gap:10px; padding:8px 4px 0; border-top:1px solid var(--hairline); margin-top:8px">
-      ${bars.map((b) => `<div style="flex:1; text-align:center; font-size:11px; color:var(--text-3)">${escapeHtml(b.label)}</div>`).join("")}
+    <div style="padding-left:${GUTTER}px">
+      <div style="position:relative; height:${PLOT_H}px">
+        ${gridValues
+          .map(
+            (v) => `
+          <div style="position:absolute; left:-${GUTTER}px; right:0; top:${((scaleMax - v) / scaleMax) * 100}%; height:0; display:flex; align-items:center; gap:6px; pointer-events:none">
+            <span style="width:${GUTTER - 8}px; text-align:right; font-size:10.5px; color:var(--text-4); line-height:1; transform:translateY(-0.5px)">${v}</span>
+            <span style="flex:1; height:1px; background:var(--hairline)"></span>
+          </div>`
+          )
+          .join("")}
+        <div style="position:relative; display:flex; align-items:flex-end; gap:10px; height:100%">
+          ${bars
+            .map(
+              (b) => `
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
+              <div style="font-size:12px; font-weight:700; color:var(--text-1); margin-bottom:4px">${b.count}</div>
+              <div style="width:100%; max-width:44px; height:${Math.max((b.count / scaleMax) * 100, 1.5)}%; border-radius:6px 6px 0 0; background:var(--grad-primary)"></div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; padding:6px 0 0; border-top:1px solid var(--hairline); margin-top:6px">
+        ${bars.map((b) => `<div style="flex:1; text-align:center; font-size:11px; color:var(--text-3)">${escapeHtml(b.label)}</div>`).join("")}
+      </div>
     </div>
   `;
 }
@@ -144,29 +169,69 @@ function renderCumulativeChart(stores) {
     return { year: y, count: cumulative };
   });
 
+  // Chart geometry. The SVG is stretched to the container width with
+  // preserveAspectRatio="none", which distorts anything with a shape — the
+  // dots rendered as ellipses and the stroke thinned out. So the SVG now
+  // carries only the line, the area and horizontal gridlines (none of which
+  // read as distorted), the stroke opts out of scaling, and every label is
+  // real HTML positioned over it.
   const W = 720;
-  const H = 160;
-  const PAD = 24;
+  const H = 200;
+  const GUTTER = 46; // room for the y-axis labels, in CSS pixels
+
   const maxCount = points[points.length - 1].count;
   const minYear = points[0].year;
   const maxYear = points[points.length - 1].year;
-  const x = (year) => PAD + ((year - minYear) / (maxYear - minYear || 1)) * (W - 2 * PAD);
-  const y = (count) => H - PAD - (count / maxCount) * (H - 2 * PAD);
+  // Round the top of the scale up to a clean number so the gridlines land on
+  // whole stores rather than on 13.25.
+  const step = maxCount > 40 ? 20 : maxCount > 20 ? 10 : 5;
+  const scaleMax = Math.ceil(maxCount / step) * step;
+
+  const x = (year) => ((year - minYear) / (maxYear - minYear || 1)) * W;
+  const y = (count) => H - (count / scaleMax) * H;
 
   const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${x(p.year).toFixed(1)} ${y(p.count).toFixed(1)}`).join(" ");
-  const areaD = `${pathD} L ${x(maxYear).toFixed(1)} ${H - PAD} L ${x(minYear).toFixed(1)} ${H - PAD} Z`;
+  const areaD = `${pathD} L ${W} ${H} L 0 ${H} Z`;
+
+  const gridValues = [];
+  for (let v = 0; v <= scaleMax; v += step) gridValues.push(v);
+
+  // Year ticks: first, last, and evenly spaced years in between — two labels
+  // across 36 years said nothing about when the estate actually grew.
+  const tickCount = 6;
+  const tickYears = [];
+  for (let i = 0; i < tickCount; i++) {
+    const yr = Math.round(minYear + ((maxYear - minYear) * i) / (tickCount - 1));
+    if (!tickYears.includes(yr)) tickYears.push(yr);
+  }
 
   el.innerHTML = `
-    <svg viewBox="0 0 ${W} ${H}" style="width:100%; height:${H}px" preserveAspectRatio="none">
-      <path d="${areaD}" fill="var(--brand-indigo)" opacity="0.08"></path>
-      <path d="${pathD}" fill="none" stroke="var(--brand-indigo)" stroke-width="2.5" stroke-linejoin="round"></path>
-      ${points
-        .map((p) => `<circle cx="${x(p.year).toFixed(1)}" cy="${y(p.count).toFixed(1)}" r="3" fill="var(--brand-indigo)"></circle>`)
-        .join("")}
-    </svg>
-    <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-3); padding:0 ${PAD - 4}px">
-      <span>${minYear}${points[0].count > 0 ? ` (${points[0].count})` : ""}</span>
-      <span>${maxYear} (${maxCount} stores)</span>
+    <div style="position:relative; padding-left:${GUTTER}px">
+      <div style="position:relative; height:${H}px">
+        ${gridValues
+          .map(
+            (v) => `
+          <div style="position:absolute; left:-${GUTTER}px; right:0; top:${((scaleMax - v) / scaleMax) * 100}%; height:0; display:flex; align-items:center; gap:6px; pointer-events:none">
+            <span style="width:${GUTTER - 10}px; text-align:right; font-size:10.5px; color:var(--text-4); line-height:1; transform:translateY(-0.5px)">${v}</span>
+            <span style="flex:1; height:1px; background:var(--hairline)"></span>
+          </div>`
+          )
+          .join("")}
+        <svg viewBox="0 0 ${W} ${H}" style="width:100%; height:${H}px; display:block; position:relative" preserveAspectRatio="none" aria-hidden="true">
+          <path d="${areaD}" fill="var(--brand-indigo)" opacity="0.1"></path>
+          <path d="${pathD}" fill="none" stroke="var(--brand-indigo)" stroke-width="2.5"
+                stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+        </svg>
+      </div>
+      <div style="position:relative; height:18px; margin-top:6px; border-top:1px solid var(--hairline); padding-top:6px">
+        ${tickYears
+          .map((yr) => {
+            const pct = ((yr - minYear) / (maxYear - minYear || 1)) * 100;
+            const align = pct <= 0 ? "left:0; transform:none" : pct >= 100 ? "right:0; transform:none" : `left:${pct}%; transform:translateX(-50%)`;
+            return `<span style="position:absolute; ${align}; font-size:11px; color:var(--text-3); white-space:nowrap">${yr}</span>`;
+          })
+          .join("")}
+      </div>
     </div>
   `;
 }

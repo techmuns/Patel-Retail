@@ -2614,3 +2614,11 @@ tr.fresh {
 .ts-mode:disabled { opacity: .45; cursor: default; }
 .ts-mode:disabled:hover { background: transparent; }
 @media (max-width: 560px) { .intake { flex-wrap: wrap; } .intake-stats { width: 100%; } }
+
+/* Estate & Vintage pairs two charts rather than a main column and a sidebar,
+   so they should end level. .layout-main aligns to start by design (a short
+   sidebar shouldn't stretch beside a long table), which left a ragged gap
+   under the shorter of the two chart cards. */
+.layout-main--even { align-items: stretch; }
+.layout-main--even > .stack > .card,
+.layout-main--even > .card { height: 100%; }
