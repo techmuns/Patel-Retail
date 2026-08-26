@@ -256,6 +256,48 @@
                 </div>
               </div>
             </section>
+
+            <!-- Every figure the Store Economics screen uses, traced to where
+                 it actually came from. Rendered by economics.js. -->
+            <section class="fade-up d4" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-primary)"><i data-lucide="file-search" class="i16"></i></span>
+                      Source of every figure
+                    </h3>
+                    <div class="sub" id="sourceTableStamp"></div>
+                  </div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table source-trace-table">
+                      <thead>
+                        <tr><th>Figure</th><th>Value</th><th>Basis</th><th>Source</th></tr>
+                      </thead>
+                      <tbody id="sourceTraceBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- The filed company P&L against the per-store build-up. -->
+            <section class="fade-up d4" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="git-compare" class="i16"></i></span>
+                      Store build-up vs. filed company P&amp;L
+                    </h3>
+                    <div class="sub" id="filedReconcileStamp"></div>
+                  </div>
+                </div>
+                <div class="card-body" id="filedReconcileBlock"></div>
+              </div>
+            </section>
           </div>
           <!-- /viewEconomics -->
 

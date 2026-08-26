@@ -2622,3 +2622,12 @@ tr.fresh {
 .layout-main--even { align-items: stretch; }
 .layout-main--even > .stack > .card,
 .layout-main--even > .card { height: 100%; }
+
+/* Source-of-every-figure table (Store Economics) — four columns, two of them
+   prose-length. The :not(.sector-table) widths above are tuned for the
+   overview feed and would squeeze the source column to nothing. */
+.feed-table.source-trace-table { table-layout: auto; }
+.feed-table.source-trace-table th,
+.feed-table.source-trace-table td { width: auto; }
+.feed-table.source-trace-table td:nth-child(3),
+.feed-table.source-trace-table td:nth-child(4) { max-width: 340px; }

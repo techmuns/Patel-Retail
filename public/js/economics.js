@@ -15,6 +15,7 @@
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
 import { computePnl } from "./pnl.js";
+import { latestReportedYear, toNumber } from "./screener-kpis.js";
 
 async function loadMetrics() {
   const res = await fetch("./data/metrics.json", { cache: "no-store" });
@@ -102,6 +103,162 @@ function renderPnlTable(pnl) {
   `;
 }
 
+/** Patel's own Screener record, or null if the scheduled fetch hasn't run. */
+async function loadPatelFiled() {
+  try {
+    const res = await fetch("./data/screener-kpis.json", { cache: "no-store" });
+    if (!res.ok) return null;
+    const data = await res.json();
+    const patel = data.companies.find((c) => c.subject) || null;
+    return patel ? { patel, fetched_at: data.fetched_at } : null;
+  } catch {
+    return null;
+  }
+}
+
+const KIND_PILL = (k) => `<span class="kind-pill kind-${k}">${k}</span>`;
+const LINK = (href, text) =>
+  `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(text)}</a>`;
+
+/**
+ * Every figure this screen uses, traced to where it actually came from.
+ * Three distinct origins, and they are NOT interchangeable:
+ *   - the company's own exchange filings, read live off Screener,
+ *   - the store file the fund supplied (Patel_Retail_data_Munshot.xlsx),
+ *   - the peer model the fund supplied (Peer_Model.xlsx), shown for reference.
+ * Store-level unit economics are not in any filing — no listed retailer
+ * discloses per-store rent or headcount — so those rows say "store file"
+ * rather than implying a filing that does not exist.
+ */
+function renderSourceTrace(metrics, stores, filed) {
+  const body = qs("#sourceTraceBody");
+  if (!body) return;
+  const ue = metrics.unit_economics;
+  const rec = metrics.store_pnl_reconciliation;
+  const live = filed ? latestReportedYear(filed.patel.sections.profit_loss) : null;
+  const SCREENER = filed?.patel?.url || "https://www.screener.in/company/PATELRMART/";
+  const STORE_FILE = "Patel_Retail_data_Munshot.xlsx";
+  const PEER_FILE = "Peer_Model.xlsx";
+
+  const rows = [];
+
+  if (live) {
+    const basis = `Screener ${live.period} P&L (${escapeHtml(filed.patel.basis || "standalone")})`;
+    rows.push(
+      { figure: "Company revenue", value: `₹${toNumber(live.sales)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) },
+      { figure: "Operating profit", value: `₹${toNumber(live.operatingProfit)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) },
+      { figure: "Net profit", value: `₹${toNumber(live.netProfit)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) }
+    );
+  }
+
+  rows.push(
+    { figure: "Store count", value: `${stores.length}`, kind: "reported", basis: "Company store list + Reg 30 filings", source: `${LINK("https://patelrpl.in/", "patelrpl.in")} + BSE announcements (scrip 544487)` },
+    { figure: "Revenue / sq ft / yr", value: fmtINR(ue.revenue_per_sqft_year), kind: "reported", basis: "Fund-supplied store file", source: `${escapeHtml(STORE_FILE)} — peer model says ${fmtINR(metrics.cross_file_contradictions.revenue_per_sqft_year.peer_model)}, not used` },
+    { figure: "Area / store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate", basis: "One blended average applied to all stores", source: `${escapeHtml(STORE_FILE)} — no per-store area exists in any filing` },
+    { figure: "Gross margin", value: fmtPct(ue.gross_margin_pct), kind: "reported", basis: `Range ${escapeHtml(ue.gross_margin_pct_range)}, midpoint used`, source: escapeHtml(STORE_FILE) },
+    { figure: "Rent / sq ft / month", value: fmtINR(ue.rent_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
+    { figure: "Utilities / sq ft / month", value: fmtINR(ue.utility_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
+    { figure: "Staff / store", value: `${ue.employees_per_store} @ ${fmtINR(ue.avg_salary_month)}/mo`, kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
+    { figure: "Bills / day · avg order", value: `${ue.bills_per_day} · ${fmtINR(ue.avg_order_value)}`, kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
+    { figure: "Private label %", value: fmtPct(ue.private_label_pct), kind: "reported", basis: "Single figure, not a range", source: escapeHtml(STORE_FILE) },
+    { figure: "B2C share of revenue", value: fmtPct(rec.b2c_share_pct), kind: "reported", basis: "Applied uniformly to revenue, EBITDA and PAT", source: escapeHtml(PEER_FILE) },
+    { figure: "Store EBITDA", value: fmtPct(computePnl(rec).ebitdaPct), kind: "derived", basis: "Computed live from the store-file inputs above", source: "public/js/pnl.js — no stored figure" }
+  );
+
+  body.innerHTML = rows
+    .map(
+      (r) => `
+    <tr>
+      <td style="font-weight:500">${escapeHtml(r.figure)}</td>
+      <td class="mono" style="white-space:nowrap">${r.value} ${KIND_PILL(r.kind)}</td>
+      <td style="color:var(--text-3);font-size:12.5px">${r.basis}</td>
+      <td style="color:var(--text-4);font-size:12px">${r.source}</td>
+    </tr>`
+    )
+    .join("");
+
+  const stamp = qs("#sourceTableStamp");
+  if (stamp) {
+    stamp.textContent = filed
+      ? `Filings refreshed ${new Date(filed.fetched_at).toLocaleString("en-IN", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}`
+      : "Filing figures unavailable — scheduled fetch has not run";
+  }
+}
+
+/**
+ * The store build-up set against the company's own filed P&L.
+ *
+ * This is where the 7.9% in the fund's peer model comes from: it is not an
+ * assumption at all, it is Patel's reported EBITDA including other income
+ * (operating profit + other income ÷ sales). Naming that removes a
+ * "contradiction" that was really a definitional difference — and leaves the
+ * genuine question, which is that the store build-up lands BELOW the filed
+ * company margin when head-office cost should push it the other way.
+ */
+function renderFiledReconcile(metrics, filed, pnl) {
+  const el = qs("#filedReconcileBlock");
+  if (!el) return;
+  const stamp = qs("#filedReconcileStamp");
+
+  if (!filed) {
+    el.innerHTML = `<div class="cb-na">Filing figures unavailable — the scheduled Screener fetch has not run.</div>`;
+    return;
+  }
+  const live = latestReportedYear(filed.patel.sections.profit_loss);
+  const sales = toNumber(live.sales);
+  const op = toNumber(live.operatingProfit);
+  const otherIncome = toNumber(
+    filed.patel.sections.profit_loss.rows.find((r) => r.label === "Other Income")?.values[
+      filed.patel.sections.profit_loss.columns.slice(1).indexOf(live.period)
+    ]
+  );
+  if (sales == null || op == null) {
+    el.innerHTML = `<div class="cb-na">Filed P&L incomplete for ${escapeHtml(live.period)}.</div>`;
+    return;
+  }
+  const opMargin = op / sales;
+  const ebitdaInclOther = otherIncome == null ? null : op + otherIncome;
+  const ebitdaMargin = ebitdaInclOther == null ? null : ebitdaInclOther / sales;
+
+  if (stamp) stamp.textContent = `${live.period} · ${filed.patel.basis || "standalone"} · Screener`;
+
+  el.innerHTML = `
+    <div class="compare-row cols-3">
+      <div class="compare-box used" data-kind="derived">
+        <div class="cb-label">Store build-up</div>
+        <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
+        <div class="cb-source">Per store, before head-office cost</div>
+      </div>
+      <div class="compare-box" data-kind="reported">
+        <div class="cb-label">Filed operating margin</div>
+        <div class="cb-value">${fmtPct(opMargin)}</div>
+        <div class="cb-source">₹${op.toLocaleString("en-IN")} cr ÷ ₹${sales.toLocaleString("en-IN")} cr</div>
+      </div>
+      ${
+        ebitdaMargin == null
+          ? ""
+          : `<div class="compare-box" data-kind="reported">
+        <div class="cb-label">Filed EBITDA incl. other income</div>
+        <div class="cb-value">${fmtPct(ebitdaMargin)}</div>
+        <div class="cb-source">(₹${op.toLocaleString("en-IN")} cr + ₹${otherIncome.toLocaleString("en-IN")} cr) ÷ ₹${sales.toLocaleString("en-IN")} cr</div>
+      </div>`
+      }
+    </div>
+    <table class="metric-table" style="margin-top:14px">
+      <tr><td>Peer model's company-level claim</td><td class="mono">${fmtPct(metrics.store_pnl_reconciliation.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span></td></tr>
+      ${
+        ebitdaMargin == null
+          ? ""
+          : `<tr><td>Same figure, from the filed P&L</td><td class="mono">${fmtPct(ebitdaMargin)} <span class="kind-pill kind-derived">derived</span></td></tr>`
+      }
+      <tr><td>Store build-up vs. filed operating margin</td><td class="mono">${(
+        (pnl.ebitdaPct - opMargin) * 100
+      ).toFixed(1)} pts <span class="kind-pill kind-derived">derived</span></td></tr>
+    </table>
+  `;
+  refreshIcons();
+}
+
 function renderReconciliationFlag(pnl, osia) {
   const el = qs("#reconciliationFlagCard");
   if (!el) return;
@@ -182,6 +339,10 @@ export async function initEconomics() {
     renderReconciliationFlag(pnl, metrics.osia_hyper_retail);
     renderAreaEstimate(metrics, stores.length);
     renderPeerCompare(metrics);
+    // Last: a missing screener-kpis.json must not blank the screen above it.
+    const filed = await loadPatelFiled();
+    renderSourceTrace(metrics, stores, filed);
+    renderFiledReconcile(metrics, filed, pnl);
   } catch (err) {
     const el = qs("#viewEconomics .content-inner") || qs("#viewEconomics");
     if (el) {

@@ -250,7 +250,7 @@
     "utilities_l": 21,
     "staff_l": 45,
     "peer_model_b2c_ebitda_pct": 0.079,
-    "flag_note": "Patel Retail's own per-store unit economics build to ~5.4% EBITDA before head-office cost. The peer model claims 7.9% at company level for the same business — but company-level margin should fall below store-level once overhead is added, not rise above it. Either the peer model's B2C/export split misallocates margin, or the store-level inputs are conservative.",
+    "flag_note": "Patel Retail's own per-store unit economics build to ~5.4% EBITDA before head-office cost. The peer model's 7.9% is not an assumption: it reconciles exactly to the filed FY2026 P&L (operating profit Rs 72 cr + other income Rs 11 cr, over sales Rs 1,048 cr = 7.92%). The filed operating margin excluding other income is 6.9%. The store build-up therefore sits 1.5 points BELOW the filed company operating margin, when head-office cost should push it the other way. Two candidate explanations remain, and this dashboard does not choose between them: the store-file cost inputs are conservative, or the 55% non-store (B2B/export) business carries a higher margin than the stores and lifts the blend. Resolving it needs a segment split the company does not publish.",
     "total_company_revenue_cr": 1048,
     "total_company_ebitda_cr": 83,
     "total_company_pat_cr": 39.1,
