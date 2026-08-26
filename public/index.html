@@ -64,14 +64,14 @@
           <button class="vtab" data-view="economics">
             <i data-lucide="calculator" class="i16"></i><span>Store Economics</span>
           </button>
-          <button class="vtab" data-view="screener">
-            <i data-lucide="search-check" class="i16"></i><span>Site Screener</span>
-          </button>
           <button class="vtab" data-view="estate">
             <i data-lucide="trending-up" class="i16"></i><span>Estate &amp; Vintage</span>
           </button>
           <button class="vtab" data-view="peers">
             <i data-lucide="scale" class="i16"></i><span>Peer Benchmark</span>
+          </button>
+          <button class="vtab" data-view="screener">
+            <i data-lucide="search-check" class="i16"></i><span>Site Screener</span>
           </button>
         </div>
 
@@ -120,6 +120,33 @@
                   <div id="mapContainer" class="map-container"></div>
                   <div class="map-hint">Click a store for detail · <strong>⤢</strong> resets to <span id="mapHintCount">all stores</span></div>
                   <div class="map-legend" id="mapLegend"></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="fade-up d3" style="margin-top: 20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-warm)">
+                        <i data-lucide="rss" class="i16"></i>
+                      </span>
+                      Company filings — live from BSE
+                    </h3>
+                    <div class="sub" id="announcementsSub">Regulation 30 disclosures · store openings flagged automatically</div>
+                  </div>
+                  <span class="badge analytics" id="announcementsFetched"></span>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table">
+                      <thead>
+                        <tr><th>Date</th><th>Filing</th><th>Type</th></tr>
+                      </thead>
+                      <tbody id="announcementsTableBody" data-kind="reported"></tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </section>

@@ -1,0 +1,945 @@
+{
+  "company": "Patel Retail Ltd",
+  "bse_scrip_code": "544487",
+  "nse_symbol": "PATELRMART",
+  "source": "BSE corporate announcements (api.bseindia.com) — SEBI LODR Regulation 30 filings",
+  "kind": "reported",
+  "note": "Patel Retail's own exchange filings, fetched live — not a file anyone had to send. New-store filings are flagged as candidates for review, never auto-added to stores.json: a filing headline is not a resolved coordinate, and a wrong pin is worse than a missing one.",
+  "fetched_at": "2026-08-26T09:15:24.682Z",
+  "window": {
+    "from": "20250722",
+    "to": "20260826"
+  },
+  "pdf_body_scanning": true,
+  "counts": {
+    "total": 97,
+    "new_store_candidates": 5
+  },
+  "announcements": [
+    {
+      "id": "8de93de8-3fdf-4ede-895e-3bcef66a4910",
+      "date": "2026-08-24",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Q1 FY27 Earnings Conference Call Recording.",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a687247f-a438-4bd4-a5f6-c43bccbf9549.pdf"
+    },
+    {
+      "id": "07f5a935-7f64-42bd-a86d-3590564124d6",
+      "date": "2026-08-24",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Investor Presentation.",
+      "category": "Company Update",
+      "kind": "investor_presentation",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2cfac331-a0ce-4e63-a7e2-7b9fdeca2ddf.pdf"
+    },
+    {
+      "id": "0a91846a-228e-4cc7-8ca1-b6aeec74a279",
+      "date": "2026-08-18",
+      "headline": "Intimation Of 'Q1 FY27' Earnings Conference Call'.",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/47f05fdf-31a5-43a6-8207-a82d5586d1c3.pdf"
+    },
+    {
+      "id": "c28b2f7b-98a8-4d6a-9cbb-2c553f415374",
+      "date": "2026-08-13",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b23178af-ce8f-4f59-820d-1595376c1c8e.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "3635f1af-61b2-48fb-be26-a6cea6174a9e",
+      "date": "2026-08-12",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "new_store",
+      "new_store_candidate": true,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d9ec523f-9c61-453d-b1c3-9704b7de27eb.pdf",
+      "body_scanned": true,
+      "detected_in": "attachment_body",
+      "store_location": null,
+      "store_number": 52
+    },
+    {
+      "id": "ebcfe4c3-9737-4d88-ac6a-4e520592476d",
+      "date": "2026-08-12",
+      "headline": "Outcome Of The Board Meeting Of Patel Retail Limited Held On Wednesday, August 12, 2026.",
+      "category": "Company Update",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/ad6be7a6-194f-4044-bd6f-8388542ecff5.pdf"
+    },
+    {
+      "id": "2c8a8425-07aa-43cb-b735-2a381e11099f",
+      "date": "2026-08-12",
+      "headline": "Monitoring Agency Report For The Quarter Ended On June30, 2026.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/886c5772-4892-4faa-9ee7-f35be5f6da8c.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "b7dc44b2-55fb-43ef-a21f-372b27c02179",
+      "date": "2026-08-12",
+      "headline": "Statement Of Deviation For The Quarter Ended On June 30, 2026.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/45a1c57d-68bd-4eef-9378-54019aba97d7.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "286c5b35-1929-4f26-b057-acff3984a32e",
+      "date": "2026-08-12",
+      "headline": "Outcome Of The Board Meeting Of Patel Retail Limited Held On Wednesday, August 12, 2026.",
+      "category": "Company Update",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a9867859-0c1c-4a65-95b4-79918b74e224.pdf"
+    },
+    {
+      "id": "709eb876-0303-47f0-bb64-0a4159e7e9e0",
+      "date": "2026-08-12",
+      "headline": "Board Meeting Outcome for Outcome Of Board Meeting",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4a312628-63f8-4aef-b321-7b69a556246b.pdf"
+    },
+    {
+      "id": "8160d1b2-07e7-4c3f-84ed-6a2e5bfe93f4",
+      "date": "2026-08-06",
+      "headline": "Board Meeting Intimation for Intimation Of Board Meeting",
+      "category": "Board Meeting",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9f7b961d-bb90-4fd2-be30-01a57287755e.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "1382c6af-cd88-49e0-aec0-a545e1c98066",
+      "date": "2026-08-04",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "new_store",
+      "new_store_candidate": true,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b6f15a45-0258-43e4-8942-c0e31dd72af3.pdf",
+      "body_scanned": true,
+      "detected_in": "attachment_body",
+      "store_location": null,
+      "store_number": null
+    },
+    {
+      "id": "4001828f-6eca-4fbe-9257-aeca7083f6ec",
+      "date": "2026-08-04",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Intimation Regarding Expansion Of Distribution Network For \"Indian Chaska\" Brand Products.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/96ba5374-b755-492f-bc06-3844d78d3116.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "37653cac-5647-4308-8d27-0a25b21c10ac",
+      "date": "2026-07-27",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "new_store",
+      "new_store_candidate": true,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b4b2c636-011b-4343-a2e2-5a588b074796.pdf",
+      "body_scanned": true,
+      "detected_in": "attachment_body",
+      "store_location": "Uran",
+      "store_number": 53
+    },
+    {
+      "id": "84f37c81-886a-444f-8bd6-db0e0ed2fb06",
+      "date": "2026-07-25",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of Patel''s R Mart Store No.53",
+      "category": "Company Update",
+      "kind": "new_store",
+      "new_store_candidate": true,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d364a55-7b28-4067-8c79-001f8981b1d0.pdf",
+      "body_scanned": true,
+      "detected_in": "attachment_body",
+      "store_location": null,
+      "store_number": null
+    },
+    {
+      "id": "e145d88b-1b69-4e1f-9d50-b299b745def2",
+      "date": "2026-07-23",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Product Launch",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/80a7f8bb-5e4a-4c21-b11b-86ceb8cbb411.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "38d65c51-adb2-4f1b-8614-22f124afbcc0",
+      "date": "2026-07-10",
+      "headline": "Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/796fabb5-a2ce-49d4-8128-23a9d34140b8.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "93353568-ed0b-4744-a391-4e9bcc65d4eb",
+      "date": "2026-06-30",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Outcome Of Investor Meet.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/61d3515c-3834-451f-a075-0b0b58d5e109.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "23a06fc3-2eda-4a43-9058-89627d2d205b",
+      "date": "2026-06-24",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9a7cb026-248a-4105-8c30-ce35ccdb3dd8.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "7e645ac5-4a71-4a6f-8178-ea93020930ac",
+      "date": "2026-06-22",
+      "headline": "Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/943b80da-904b-4d46-997d-80b9fca87f5e.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "5203c0fe-2156-4aa7-b6df-93de03395a07",
+      "date": "2026-06-11",
+      "headline": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6e20f9e2-172e-4721-ab82-03ae80e43847.pdf"
+    },
+    {
+      "id": "68234e5c-3ad1-481e-b7cd-e7fa4b640e14",
+      "date": "2026-06-08",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4011403d-f254-45f6-aa4a-d3e58575aa68.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "27e8b6f0-402f-4274-9405-0c2021694f48",
+      "date": "2026-06-06",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/dfa30532-4224-447c-8ce4-d0b9387ebcd2.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "483ad3e7-f046-4771-a11c-a566937af0d0",
+      "date": "2026-06-06",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of 52 Patel R Mart Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6f401cf9-0268-47b4-92f7-1d6dfa7c6320.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "538bc9d4-09d2-4f9c-ba4c-679ad2d56ce8",
+      "date": "2026-06-02",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/18ec8d62-648c-4ed8-be2b-dd00681bda01.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "1307f9d1-f8be-44a3-8493-1a327558c4d8",
+      "date": "2026-06-02",
+      "headline": "Announcement under Regulation 30 (LODR)-Investor Presentation",
+      "category": "Company Update",
+      "kind": "investor_presentation",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a9d29039-dc7a-4724-bbcd-5430d1bb067b.pdf"
+    },
+    {
+      "id": "3c699b76-c978-451c-bb71-adebd5647e05",
+      "date": "2026-05-29",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Statement Of Deviation(S) Or Variation(S) Under Reg. 32",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/57205153-4d07-4f7b-99f7-e2a9f546425d.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "e10393a1-60e1-4a28-89f0-0df92edd5a95",
+      "date": "2026-05-26",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/aced13e2-0492-4536-ae66-ded1a853213d.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "6fe9a182-f531-46ab-9bb6-d71f49ae4efd",
+      "date": "2026-05-26",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/63db8a82-ea0c-423f-8c8f-ccefe0f2ccb0.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "53cfead1-4d05-48f8-85b7-da61bc588100",
+      "date": "2026-05-25",
+      "headline": "Patel Retail Limited Has Submitted To The Exchange, The Financial Results For The Period Ended March 31, 2026",
+      "category": "Company Update",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3f567dd2-aa7d-4784-addb-31e7b3461987.pdf"
+    },
+    {
+      "id": "9312f170-b138-4ab2-949b-03a371dae69b",
+      "date": "2026-05-25",
+      "headline": "Board Meeting Outcome for Patel Retail Limited Has Submitted To The Exchange, The Financial Results For The Period Ended March 31, 2026.",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d481899b-2ae5-433b-a35c-5595a3ebcd1d.pdf"
+    },
+    {
+      "id": "e3b27409-90ee-4fee-a86e-44b750df69b6",
+      "date": "2026-05-19",
+      "headline": "Board Meeting Intimation for To Consider And Approve The Audited Financial Results Along With The Audited Report Of The Company For The 4Th Quarter And The Financial Year Ended On Tuesday, March 31, 2026.",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/89705322-9132-4b6f-9a83-5dbab4e0777a.pdf"
+    },
+    {
+      "id": "95fce89b-38fb-4ddc-b860-cf27b9ff7e7f",
+      "date": "2026-05-15",
+      "headline": "Monitoring Agency Report For The 4Th Quarter & Financial Year Ended On Tuesday, March31, 2026",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/cd6b91c7-ab18-49de-b578-a769d811bd43.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "4db9caf0-448d-4180-8d55-0c400c3e9af2",
+      "date": "2026-04-24",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/785f7d11-15e0-4bfb-ad14-1eb26059678c.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "5aa75baa-d7a3-42e1-8eb2-ca98be481ce4",
+      "date": "2026-04-24",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of 51 Patel''s R Mart Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2f9b4963-4fe9-4205-9899-f066d8e51828.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "54843bb1-8b12-4667-a4e1-3163ba4627e6",
+      "date": "2026-04-13",
+      "headline": "PATELRMART : Patel Retail Limited Has Informed The Exchange Regarding ''Non Applicability Of SEBI Circular (SEBI/HO/DDHS/CIR/P/2018/144) Dated 26 November 2018. ''.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1381401f-6a51-4869-86a3-90d5af8cc861.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "9c98b925-f1bb-4d6e-a341-34f1a13ce166",
+      "date": "2026-04-08",
+      "headline": "Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/756c41a6-8bf6-4081-a98e-f140a57f66dd.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "5f6a3401-9c30-4070-b474-52b788ae2087",
+      "date": "2026-03-23",
+      "headline": "Patel Retail Limited Has Informed The Exchange Regarding The Trading Window Closure Pursuant To SEBI (Prohibition Of Insider Trading) Regulations, 2015.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/7079cab1-4903-4eff-8851-31d3ad11b6e8.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "5452a102-7778-49dd-aa21-b7618fc5ef3d",
+      "date": "2026-03-21",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6efef92b-1506-4f4d-85c3-4f53915905fa.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "28c8066f-bbc5-4a84-a496-78105d8a5ed6",
+      "date": "2026-03-21",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Has Informed The Exchange About Opening Of 50Th  Patel R Mart Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3a48c5de-6831-48fc-9595-7beaafd9ab10.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "a114c57b-18e8-47be-ab42-abc4b16a0417",
+      "date": "2026-03-19",
+      "headline": "Outcome Of Investors' Meeting Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e955a670-898d-4bb4-8b62-a91ed0decba6.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "92a9dfda-8fee-48f1-9c25-959761304de8",
+      "date": "2026-03-13",
+      "headline": "Intimation Of Schedule Of Analysts'/Institutional Investors' Meet.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/d6be16fd-0400-48d4-bac0-77a80da328ba.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "dae23fc6-8586-4697-8d8b-da8496bc47b7",
+      "date": "2026-03-13",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Outcome Of Postal Ballot And Scrutinizer''s Report.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3644413d-3fa4-4986-b5c9-0122f56837b8.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "b2040c8e-0401-46ae-b85a-bd3d5752daf9",
+      "date": "2026-02-27",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/39e3abf7-6389-468f-8bbf-c6f313b3ac49.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "c2ce0a38-bb16-4167-9d32-282f9c70948b",
+      "date": "2026-02-23",
+      "headline": "Intimation Of Cancellation Of - Schedule Of Analysts'/Institutional Investors' Meeting",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e350468f-1d99-4b8d-b5a7-e267a42004a6.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "e0273bdc-97ec-439b-959a-5cdee63e7f10",
+      "date": "2026-02-18",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9523aa01-69be-4816-83bb-21ef47393952.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "018a0c7f-929c-40d7-8b3b-a74463d29b4b",
+      "date": "2026-02-11",
+      "headline": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1e9f9698-a125-4952-ab66-1a400112dcf6.pdf"
+    },
+    {
+      "id": "70c80bab-6009-410a-a84b-0a54fd4d4264",
+      "date": "2026-02-10",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e7f3d76c-9481-431c-b0be-29598454570b.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "7a23ad51-2960-4d82-bbe2-70d79b63a3bc",
+      "date": "2026-02-10",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b358debf-f5a3-4f3d-b914-df2168e0c91a.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "c89d8917-80fb-4456-b975-3bb1139ded72",
+      "date": "2026-02-09",
+      "headline": "Investor Presentation",
+      "category": "Company Update",
+      "kind": "investor_presentation",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/03a67899-ac99-4b34-bece-1ebfde1bc462.pdf"
+    },
+    {
+      "id": "ba116983-4fd4-4d73-b9a1-c615d318290c",
+      "date": "2026-02-09",
+      "headline": "Shareholder Meeting / Postal Ballot-Notice of Postal Ballot",
+      "category": "AGM/EGM",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37686b01-0231-4acd-8166-9fe92fe2d0b8.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "c428c519-4b37-4c1e-9610-7dc7092860c7",
+      "date": "2026-02-03",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9872e7df-b5e3-412e-82e8-21130a91543e.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "ce591ba4-65e8-4211-9ee7-8145768b2ac8",
+      "date": "2026-02-02",
+      "headline": "Monitoring Agency Report For The 3Rd Quarter & 9 (Nine) Months  Ended On Wednesday, December 31 2025",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c3ddccc8-3def-41d4-b28e-586f565875e0.pdf",
+      "body_scan_error": "HTTP 404"
+    },
+    {
+      "id": "67ec8db4-d01a-4478-8388-33765316dfd9",
+      "date": "2026-02-02",
+      "headline": "Press Release -Financial Results For The 3Rd Quarter & 9 (Nine) Months  Ended On Wednesday, December 31 2025",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c5aacb36-7f17-4844-a09d-d757fa3be243.pdf"
+    },
+    {
+      "id": "55840e5b-fac6-43d8-a6bb-32492e98c0ca",
+      "date": "2026-02-02",
+      "headline": "Statement Of Deviation For The 3Rd Quarter & 9 (Nine) Months  Ended On Wednesday, December 31 2025",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5ad11e3d-0cb7-44bf-aff2-ad5b52abe2af.pdf"
+    },
+    {
+      "id": "7c9f164e-1179-42bf-a033-75f6fef3ba30",
+      "date": "2026-02-02",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Earnings Conference Call Of Q3FY26.",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/061e4ed4-86fb-4aae-864f-80ae0e49853d.pdf"
+    },
+    {
+      "id": "3fe6596e-0c52-48b5-a113-3b6dd1dcb6e6",
+      "date": "2026-02-02",
+      "headline": "Outcome Of The Board Meeting Of Patel Retail Limited Held On Monday, February 02, 2026",
+      "category": "Company Update",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/74f30fad-73f8-4dcd-92de-e66d3fa7608e.pdf"
+    },
+    {
+      "id": "5eb90876-02fd-459d-a851-8379f34762e2",
+      "date": "2026-02-02",
+      "headline": "Board Meeting Outcome for Patel Retail  Limited Has Apprise The Outcome Of The Board Meeting Of Patel Retail Limited Held On Monday, February 02, 2026.",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3171dabd-5b78-40d3-83af-fe57688db4a3.pdf"
+    },
+    {
+      "id": "e0549217-b3cc-4227-9805-8d3b824db3ee",
+      "date": "2026-01-28",
+      "headline": "Board Meeting Intimation for  To Consider And Approve The Financial Results For The Period Ended December 31, 2025.",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5452c196-094f-4c05-9bf2-680a6a8da52f.pdf"
+    },
+    {
+      "id": "936c3359-15c8-472a-8be7-0d2727b7b843",
+      "date": "2026-01-21",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release (Revised)",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/6e66ed29-8e6c-42e5-88f5-73e24c3cb882.pdf"
+    },
+    {
+      "id": "dfa1fc97-3d23-497c-8dcc-430102978e4e",
+      "date": "2026-01-21",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of 49Th PATEL'S R MART Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5115ad0c-057d-4656-9afa-ab18b0f9eae1.pdf"
+    },
+    {
+      "id": "f1ac377a-1b89-4f34-8bb0-4e37f5b3c120",
+      "date": "2026-01-20",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/240e0467-f1a4-45d7-819e-720aa988804a.pdf"
+    },
+    {
+      "id": "b7681def-88d4-4e8f-ab8a-ee03140f0315",
+      "date": "2026-01-20",
+      "headline": "Announcement under Regulation 30 (LODR)-Award_of_Order_Receipt_of_Order",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/57664a50-86cf-4df0-a934-35621876506c.pdf"
+    },
+    {
+      "id": "886696b2-7ed4-449e-b984-a92e6dd70ceb",
+      "date": "2026-01-07",
+      "headline": "Regulation 74 (5) Securities And Exchange Board Of India (Depositories And Participants) Regulations, 2018.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4071c737-6d13-42d9-bfac-cc49fbd24fb5.pdf"
+    },
+    {
+      "id": "65cd8151-765c-423e-8c44-3548f4b59cec",
+      "date": "2025-12-23",
+      "headline": "Outcome Of Board Meeting- Intimation Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/308c329e-9041-4e9e-8410-98a42040a43d.pdf"
+    },
+    {
+      "id": "f90b458c-b494-4d5e-9378-36ea01bc8484",
+      "date": "2025-12-22",
+      "headline": "Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/93bf62d4-c0b0-4c3c-837d-aca03a82503b.pdf"
+    },
+    {
+      "id": "32f1c06d-bbad-4f5b-b6d2-cfb88ba1aa7e",
+      "date": "2025-12-20",
+      "headline": "Outcome Of Investors' Meeting Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4da9872b-1ba8-45d8-9910-03e8703e2332.pdf"
+    },
+    {
+      "id": "2e2484f4-6876-45e7-a87f-9e7e82492b27",
+      "date": "2025-12-15",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4bd44555-6659-411a-b262-18518c34c4d8.pdf"
+    },
+    {
+      "id": "c998b6e6-72b0-4060-a80b-5a1145d03e82",
+      "date": "2025-12-09",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/5a8f0f1b-6156-4a6e-bd05-d71b6f99c4a4.pdf"
+    },
+    {
+      "id": "fbd5ebb7-b896-46cc-b356-70221190c7ab",
+      "date": "2025-12-01",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c571e501-2383-423d-bcda-9e055122c325.pdf"
+    },
+    {
+      "id": "359883c3-c3ef-4a95-a295-509999af578d",
+      "date": "2025-12-01",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of 48Th PATEL'S R MART Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/92326281-6119-4270-9cb1-c7c21b2e26de.pdf"
+    },
+    {
+      "id": "d2387073-e235-4a46-b487-15c8cf3fd833",
+      "date": "2025-11-24",
+      "headline": "Clarification On Volume Movement",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/72299536-1cf3-4d71-b78f-7c5d6b83bc2c.pdf"
+    },
+    {
+      "id": "a297ac99-0630-4225-ae3e-f6d2692bbad3",
+      "date": "2025-11-24",
+      "headline": "Clarification sought from Patel Retail Ltd",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": null
+    },
+    {
+      "id": "b86e0520-df55-4f6e-8115-e9889ea3ceab",
+      "date": "2025-11-21",
+      "headline": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/80835b5b-a196-4327-9007-896c47df894b.pdf"
+    },
+    {
+      "id": "c9d161e3-72af-4686-ad10-0fd59240395c",
+      "date": "2025-11-19",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Outcome",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f5f5c15d-8711-4f96-9f95-66454b805f22.pdf"
+    },
+    {
+      "id": "2bba389d-9f99-4d4a-910b-350973cba040",
+      "date": "2025-11-18",
+      "headline": "Investor Presentation Of Patel Retail Limited",
+      "category": "Company Update",
+      "kind": "investor_presentation",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/2d055381-1be8-44c0-9887-ea2e852966cb.pdf"
+    },
+    {
+      "id": "811afb86-2e8e-4290-ab01-7edf4624a62c",
+      "date": "2025-11-15",
+      "headline": "Announcement under Regulation 30 (LODR)-Analyst / Investor Meet - Intimation",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/1b6ff582-c295-4605-b3ad-307b2393c338.pdf"
+    },
+    {
+      "id": "ca169855-937a-426c-86c2-b74181d6f1ef",
+      "date": "2025-11-14",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9a2f1ad2-181b-460c-a39e-f196dac5bb0c.pdf"
+    },
+    {
+      "id": "841d83c7-e38d-4491-ad4e-1a0f70ef8595",
+      "date": "2025-11-13",
+      "headline": "Press Release -Financial Results For The Second Quarter And Half Year Ended Tuesday, September 30,2025.",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/20153844-a0b9-44ca-8f51-734382dbb61b.pdf"
+    },
+    {
+      "id": "dfe05cb6-6310-4675-a1f5-6c1262b0ea2c",
+      "date": "2025-11-13",
+      "headline": "Monitoring Agency Report For The 2Nd Quarter & Half Year Ended On Tuesday, September 30, 2025.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/652d7b5d-3df8-4201-ad79-a63919aca6ec.pdf"
+    },
+    {
+      "id": "20aa999a-52b1-46c7-a087-3870e10537ca",
+      "date": "2025-11-13",
+      "headline": "Board Meeting Outcome for Outcome Of The Board Meeting Of Patel Retail Limited Held On Thursday, November 13, 2025.",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c8b1cbbc-b8ff-4450-8dab-d0dad7200f96.pdf"
+    },
+    {
+      "id": "5a04ac4d-a07a-445e-8aa1-d39dcf1ff870",
+      "date": "2025-11-07",
+      "headline": "Board Meeting Intimation for Pursuant To Regulation 29 Read With Regulation 33 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015.",
+      "category": "Board Meeting",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/399dd85a-73e0-4705-8440-60487f762b7b.pdf"
+    },
+    {
+      "id": "da453d32-268c-460e-991f-03a82efe2488",
+      "date": "2025-10-13",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/082a6964-3923-445e-91f5-7c8b86d9ef8e.pdf"
+    },
+    {
+      "id": "38e601d4-b9f3-454f-abf6-ed22a45bd19b",
+      "date": "2025-10-13",
+      "headline": "Patel Retail Limited Has Informed The Exchange Regarding Opening Of 47Th PATEL'S R MART Store.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/58b5df98-7440-4d27-b1be-59d2c49664f8.pdf"
+    },
+    {
+      "id": "2c8db5f1-b24b-49f6-9eb3-63f86c1189ef",
+      "date": "2025-10-09",
+      "headline": "Compliances-Certificate under Reg. 74 (5) of SEBI (DP) Regulations, 2018",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/290602fe-78d1-4025-96fd-05b9e5f3459e.pdf"
+    },
+    {
+      "id": "a71f8826-125a-4cca-8cd5-a029d3d45a87",
+      "date": "2025-10-06",
+      "headline": "Intimation Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/36e1a02c-b683-486a-b8c1-1464adfbf3ab.pdf"
+    },
+    {
+      "id": "313bd0db-8ac4-47eb-874e-6937ab591eb1",
+      "date": "2025-10-03",
+      "headline": "Disclosure Under Regulation 30 Of SEBI (Listing Obligations And Disclosure Requirements) Regulations, 2015",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/3e7484ce-1ad3-4792-8a6f-678eeaf4ffda.pdf"
+    },
+    {
+      "id": "9e3b9772-fedc-4426-a8a6-8f95b8cdb896",
+      "date": "2025-09-29",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/932e0165-201b-48f7-b5c5-5a5c34f1f6ec.pdf"
+    },
+    {
+      "id": "d6632df4-cae3-4fc8-af09-4f78c580b44a",
+      "date": "2025-09-29",
+      "headline": "Patel Retail Limited Has Informed The Exchange About ''Store Opening Intimation''",
+      "category": "Company Update",
+      "kind": "new_store",
+      "new_store_candidate": true,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/76711b0c-f4fa-4c4e-a5ba-166b4b751a70.pdf"
+    },
+    {
+      "id": "9bcda151-0306-4dc1-97e5-a20e14e1549b",
+      "date": "2025-09-25",
+      "headline": "PATELRMART : Patel Retail Limited Has Informed The Exchange Regarding ''''''Intimation For Change Of Corporate Identification Number (CIN) And Updation On Master Data Of Patel Retail Limited ('The Company') On MCA Website.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/165bb8a0-11a7-49fa-bfeb-59600dd86d14.pdf"
+    },
+    {
+      "id": "69ccd440-0125-4799-ab0c-b9622de5e2aa",
+      "date": "2025-09-24",
+      "headline": "Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/53faab37-d732-4eb9-93f7-7fcfc7006e71.pdf"
+    },
+    {
+      "id": "ed454feb-9eb7-4b49-9ae1-e0d2d7b0428f",
+      "date": "2025-09-16",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0276c9ca-23e7-42a2-86e1-a09c8763337e.pdf"
+    },
+    {
+      "id": "a1fd6c36-e2d7-436f-90bc-b52082259fb2",
+      "date": "2025-09-15",
+      "headline": "Board Meeting Outcome for Outcome Of The Board Meeting Held On Monday, September15, 2025",
+      "category": "Board Meeting",
+      "kind": "results",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/77bd58e0-006e-4d93-ac00-c7efea6fe935.pdf"
+    },
+    {
+      "id": "bda2259b-2a4e-4028-b5d2-956a3a757254",
+      "date": "2025-09-12",
+      "headline": "Announcement under Regulation 30 (LODR)-Press Release / Media Release",
+      "category": "Company Update",
+      "kind": "press_release",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/e80d25aa-df43-4d2c-b404-ea96a7379b12.pdf"
+    },
+    {
+      "id": "0d48ca57-de8d-45cd-8126-1de3498b12b7",
+      "date": "2025-09-09",
+      "headline": "Board Meeting Intimation for To Consider & Approve The Unaudited Financial Result With Limited Review Report Of The Company Patel Retail Limited For The 1St Quarter Ended On June 30, 2025",
+      "category": "Board Meeting",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/a0708f20-3b29-4979-8545-345ecc243d6f.pdf"
+    },
+    {
+      "id": "3b94cafe-814f-4b22-af0d-629add26845d",
+      "date": "2025-08-29",
+      "headline": "Closure of Trading Window",
+      "category": "Insider Trading / SAST",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f29b2791-1062-40a6-aec2-6dac3bf5d91d.pdf"
+    },
+    {
+      "id": "7c2b5c86-c663-432a-92ae-ed61e8c3bb93",
+      "date": "2025-08-26",
+      "headline": "Listing of Equity Shares of Patel Retail Ltd",
+      "category": "New Listing",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": null
+    }
+  ]
+}

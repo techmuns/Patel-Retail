@@ -5,7 +5,7 @@
  * each view's module on first show.
  */
 import { qs, qsa, refreshIcons, toast } from "./ui.js";
-import { initMap, invalidateMapSize } from "./map.js";
+import { initMap, invalidateMapSize, openStoreById } from "./map.js";
 import { initEconomics } from "./economics.js";
 import { initScreener } from "./screener.js";
 import { initEstate } from "./estate.js";
@@ -38,7 +38,7 @@ function showView(view) {
   const entry = VIEW_INITIALIZERS[view];
   if (entry && !entry.started) {
     entry.started = true;
-    entry.init();
+    entry.ready = Promise.resolve(entry.init());
   } else if (view === "map") {
     // Leaflet needs this after its container was `display:none` — otherwise
     // the tiles render half-grey until the next manual resize.
@@ -49,6 +49,23 @@ function showView(view) {
   if (footStatus) {
     footStatus.textContent = FOOT_STATUS_LABEL[view] || view;
   }
+  return VIEW_INITIALIZERS[view]?.ready ?? Promise.resolve();
+}
+
+/**
+ * Cross-view navigation. Any view can ask for a specific store to be opened
+ * on the map without importing map.js itself (which would couple the views
+ * to each other); it dispatches `patel:open-store` and this is the single
+ * place that knows how to service it. Awaits the map's own init first, so
+ * this works even on a cold load where the map tab was never opened.
+ */
+function wireCrossViewNavigation() {
+  document.addEventListener("patel:open-store", async (e) => {
+    const storeId = e.detail?.storeId;
+    if (!storeId) return;
+    await showView("map");
+    openStoreById(storeId);
+  });
 }
 
 function wireTabs() {
@@ -106,6 +123,7 @@ function wireExports() {
 function init() {
   refreshIcons();
   wireTabs();
+  wireCrossViewNavigation();
   wireHighlightToggle();
   wireExports();
   showView("map"); // default tab, already active in the markup

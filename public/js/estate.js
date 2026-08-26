@@ -56,13 +56,32 @@ function renderKpis(stores) {
       <div class="kpi-value" style="font-size:20px">${escapeHtml(oldest.name)}</div>
       <div class="kpi-delta">${escapeHtml(oldest.opened)} · ${fmtYearsAgo(yearsSince(oldest.opened))} ago</div>
     </div>
-    <div class="kpi k4">
+    <div class="kpi k4 kpi-clickable" data-store-id="${escapeHtml(newest.store_id)}" role="button" tabindex="0" title="Show ${escapeHtml(newest.name)} on the network map">
       <div class="kpi-top"><span class="kpi-label">Newest Store</span><span class="kpi-ico"><i data-lucide="sparkles"></i></span></div>
       <div class="kpi-value" style="font-size:20px">${escapeHtml(newest.name)}</div>
-      <div class="kpi-delta">${escapeHtml(newest.opened)} · ${fmtYearsAgo(yearsSince(newest.opened))} ago</div>
+      <div class="kpi-delta">${escapeHtml(newest.opened)} · ${fmtYearsAgo(yearsSince(newest.opened))} ago <span class="kpi-cta">View on map →</span></div>
     </div>
   `;
+  wireStoreLinks(el);
   refreshIcons();
+}
+
+/**
+ * Any KPI marked .kpi-clickable[data-store-id] opens that store on the
+ * Network Map. Uses the `patel:open-store` event app.js listens for rather
+ * than importing map.js here, so the two views stay decoupled.
+ */
+function wireStoreLinks(root) {
+  root.querySelectorAll(".kpi-clickable[data-store-id]").forEach((el) => {
+    const go = () => document.dispatchEvent(new CustomEvent("patel:open-store", { detail: { storeId: el.dataset.storeId } }));
+    el.addEventListener("click", go);
+    el.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        go();
+      }
+    });
+  });
 }
 
 function renderOpeningsChart(stores) {

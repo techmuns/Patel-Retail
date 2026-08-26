@@ -1,0 +1,87 @@
+name: Refresh dashboard data
+
+# Keeps the dashboard off stale data without anyone remembering to run
+# anything. Each script writes a JSON file under public/data/; if any of them
+# changed, the workflow commits the result, which is what triggers the
+# Cloudflare deploy. Nothing here invents data — every script fetches from a
+# named public source and is individually runnable by hand.
+on:
+  schedule:
+    # 02:30 UTC daily = 08:00 IST, after Indian exchange filings have settled.
+    - cron: "30 2 * * *"
+  workflow_dispatch:
+    inputs:
+      skip_darkstores:
+        description: "Skip the quick-commerce dark-store refresh (upstream is a static snapshot; rarely changes)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      # pdfjs-dist lets fetch-announcements.mjs read filing PDFs, which is how
+      # a generic "Press Release / Media Release" headline gets recognised as a
+      # store opening. Without it the script still runs, headline-only.
+      - name: Install optional PDF reader
+        run: npm install --no-save pdfjs-dist@4.2.67
+
+      # Patel Retail's own exchange filings — new-store announcements included.
+      - name: Fetch BSE announcements
+        run: node scripts/fetch-announcements.mjs
+        continue-on-error: true
+
+      # Patel Retail's own website store list.
+      - name: Fetch official store list
+        run: node scripts/fetch-official-stores.mjs
+        continue-on-error: true
+
+      # Competitor (DMart) locations from OpenStreetMap.
+      - name: Fetch competitor locations
+        run: node scripts/fetch-dmart-overpass.mjs
+        continue-on-error: true
+
+      - name: Fetch quick-commerce dark stores
+        if: ${{ github.event_name == 'schedule' || inputs.skip_darkstores == false }}
+        run: node scripts/fetch-darkstores.mjs
+        continue-on-error: true
+
+      # Distances are derived from stores.json, so this runs last and always —
+      # it keeps proximity.json in step with whatever the fetches changed.
+      - name: Rebuild proximity
+        run: node scripts/build-proximity.mjs
+
+      - name: Show what changed
+        run: git --no-pager diff --stat -- public/data docs || true
+
+      - name: Commit refreshed data
+        run: |
+          git config user.name "patel-retail-diligence-bot"
+          git config user.email "actions@github.com"
+          # Only data/doc outputs — never source, never node_modules.
+          git add public/data docs 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No data changes; nothing to commit."
+            exit 0
+          fi
+          git commit -m "chore(data): scheduled refresh from live sources
+
+          Automated run of the fetch scripts. Sources: BSE corporate
+          announcements, patelrpl.in store list, OpenStreetMap (Overpass),
+          and the quick-commerce dark-store snapshot. Proximity rebuilt from
+          whatever changed."
+          git push

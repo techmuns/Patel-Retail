@@ -18,6 +18,10 @@ const CENTER_FALLBACK = [19.22, 73.15]; // roughly the Thane–Raigad belt, used
 
 const CLOSED_COLOR = "var(--text-4)";
 const LOW_CONFIDENCE_COLOR = "var(--warn)";
+// Announced-but-not-open stores (from BSE/press announcements — see
+// scripts/fetch-announcements.mjs). Deliberately a distinct colour from every
+// vintage bucket so an upcoming store can never be mistaken for a trading one.
+const UPCOMING_COLOR = "var(--ok)";
 
 // Approximate each brand's own colour, for at-a-glance recognition on the
 // map — not a trademark reproduction, just distinguishable markers.
@@ -27,6 +31,7 @@ let map = null;
 let storesById = new Map();
 let proximityByStoreId = new Map();
 let darkstoresData = null; // public/data/darkstores.json, or null if it hasn't been fetched yet
+let announcementsData = null; // public/data/announcements.json — live BSE filings
 
 function resolveCssVar(varExpr) {
   // "var(--brand-teal)" -> the computed colour, so Leaflet (which wants a
@@ -48,6 +53,7 @@ function renderKpis(stores, proximity) {
 
   const operational = stores.filter((s) => s.status === "operational");
   const closed = stores.filter((s) => s.status === "closed");
+  const upcoming = stores.filter((s) => s.status === "upcoming");
   const towns = new Set(stores.map((s) => s.town));
   const districts = new Map();
   for (const s of stores) districts.set(s.district, (districts.get(s.district) || 0) + 1);
@@ -77,7 +83,9 @@ function renderKpis(stores, proximity) {
     <div class="kpi k1">
       <div class="kpi-top"><span class="kpi-label">Total Stores</span><span class="kpi-ico"><i data-lucide="building-2"></i></span></div>
       <div class="kpi-value">${stores.length}</div>
-      <div class="kpi-delta"><i data-lucide="check" class="i16"></i> ${operational.length} operational · ${closed.length} closed</div>
+      <div class="kpi-delta"><i data-lucide="check" class="i16"></i> ${operational.length} operational · ${closed.length} closed${
+        upcoming.length ? ` · <span style="color:var(--ok);font-weight:600">${upcoming.length} upcoming</span>` : ""
+      }</div>
     </div>
     <div class="kpi k2">
       <div class="kpi-top"><span class="kpi-label">Towns Covered</span><span class="kpi-ico"><i data-lucide="map-pin"></i></span></div>
@@ -126,9 +134,72 @@ function renderLegend() {
   ).join("");
   el.innerHTML = `
     ${vintageItems}
+    <span class="lg-item"><span class="lg-dot lg-upcoming"></span>Upcoming / under construction</span>
     <span class="lg-item"><span class="lg-dot" style="background:${CLOSED_COLOR}"></span>Closed</span>
     <span class="lg-item"><span class="lg-ring"></span>Low-confidence address</span>
   `;
+}
+
+const ANNOUNCEMENT_KIND_META = {
+  new_store: { label: "Store opening", tone: "done" },
+  press_release: { label: "Press release", tone: "src-ai" },
+  investor_presentation: { label: "Investor deck", tone: "src-transcript" },
+  earnings_call: { label: "Earnings call", tone: "src-transcript" },
+  results: { label: "Results", tone: "src-ai" },
+  other: { label: "Filing", tone: "src-none" },
+};
+
+/**
+ * The live filings feed. This is the one part of the dashboard that isn't
+ * downstream of a file somebody sent — it comes straight from Patel Retail's
+ * own Regulation 30 disclosures, refreshed on a schedule (see
+ * .github/workflows/refresh-data.yml). Store-opening filings are pulled to
+ * the top because they are the ones that change the map.
+ */
+function renderAnnouncements() {
+  const body = qs("#announcementsTableBody");
+  if (!body) return;
+  const section = body.closest("section");
+  const list = announcementsData?.announcements || [];
+  if (!list.length) {
+    if (section) section.style.display = "none";
+    return;
+  }
+
+  const stamp = qs("#announcementsFetched");
+  if (stamp && announcementsData.fetched_at) {
+    stamp.textContent = `Updated ${fmtDate(announcementsData.fetched_at)}`;
+  }
+  const sub = qs("#announcementsSub");
+  if (sub && announcementsData.counts) {
+    const n = announcementsData.counts.new_store_candidates;
+    sub.textContent = `${announcementsData.counts.total} filings · ${n} store opening${n === 1 ? "" : "s"} detected automatically`;
+  }
+
+  // Store openings first, then newest-first within each group.
+  const sorted = list.slice().sort((a, b) => {
+    if (a.new_store_candidate !== b.new_store_candidate) return a.new_store_candidate ? -1 : 1;
+    return a.date < b.date ? 1 : -1;
+  });
+
+  body.innerHTML = sorted
+    .slice(0, 25)
+    .map((a) => {
+      const meta = ANNOUNCEMENT_KIND_META[a.kind] || ANNOUNCEMENT_KIND_META.other;
+      const title = a.attachment_url
+        ? `<a href="${escapeHtml(a.attachment_url)}" target="_blank" rel="noopener" style="color:inherit">${escapeHtml(a.headline)}</a>`
+        : escapeHtml(a.headline);
+      const detail = a.store_location
+        ? `<div style="font-size:11px;color:var(--ok);font-weight:600">${escapeHtml(a.store_location)}${a.store_number ? ` · store #${a.store_number}` : ""}</div>`
+        : "";
+      return `
+    <tr${a.new_store_candidate ? ' style="background:rgba(16,185,129,.06)"' : ""}>
+      <td class="mono" style="font-size:12px;white-space:nowrap">${escapeHtml(a.date)}</td>
+      <td>${title}${detail}</td>
+      <td><span class="chip ${meta.tone}"><span class="cdot"></span>${meta.label}</span></td>
+    </tr>`;
+    })
+    .join("");
 }
 
 function openStoreSheet(store) {
@@ -138,6 +209,8 @@ function openStoreSheet(store) {
   const statusChip =
     store.status === "operational"
       ? `<span class="chip done"><span class="cdot"></span>Operational</span>`
+      : store.status === "upcoming"
+      ? `<span class="chip done" style="background:rgba(16,185,129,.14);color:var(--ok)"><span class="cdot"></span>Upcoming${store.announced_opening ? ` · ${escapeHtml(store.announced_opening)}` : ""}</span>`
       : `<span class="chip failed"><span class="cdot"></span>Closed ${store.closed ? fmtDate(store.closed) : ""}</span>`;
   const confChip = `<span class="chip ${store.geo_confidence === "low" ? "queued" : store.geo_confidence === "medium" ? "src-transcript" : "src-ai"}">${escapeHtml(store.geo_confidence)} confidence</span>`;
   const isCoarseMatch = isCoarseTier(store.geocode_match_tier);
@@ -356,6 +429,7 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
   const bounds = [];
   for (const store of geocodedStores) {
     const isClosed = store.status === "closed";
+    const isUpcoming = store.status === "upcoming";
     // Two independent reasons a pin isn't trustworthy: the client's own
     // address-quality read (geo_confidence), or the geocoder having fallen
     // back to a town-level centroid (geocode_match_tier) — a coarse match
@@ -365,10 +439,24 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
     const isLowConfidence = store.geo_confidence === "low";
     const isUncertain = isCoarseMatch || isLowConfidence;
     const bucket = vintageBucketFor(store);
-    const color = isClosed ? resolveCssVar(CLOSED_COLOR) : isUncertain ? resolveCssVar(LOW_CONFIDENCE_COLOR) : resolveCssVar(bucket.color);
+    const color = isUpcoming
+      ? resolveCssVar(UPCOMING_COLOR)
+      : isClosed
+      ? resolveCssVar(CLOSED_COLOR)
+      : isUncertain
+      ? resolveCssVar(LOW_CONFIDENCE_COLOR)
+      : resolveCssVar(bucket.color);
 
     let layer;
-    if (isUncertain) {
+    if (isUpcoming) {
+      layer = window.L.circleMarker([store.lat, store.lng], {
+        radius: 8,
+        color,
+        weight: 3,
+        fillColor: "#fff",
+        fillOpacity: 0.95,
+      });
+    } else if (isUncertain) {
       // Uncertainty circle, not a precise pin. A town-centroid fallback can
       // be off by the width of the whole town, so it gets a bigger radius
       // than a merely low-confidence address (~street-level uncertainty).
@@ -391,7 +479,9 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
     }
 
     layer.bindPopup(
-      `<strong>${escapeHtml(store.name)}</strong><br>${escapeHtml(store.locality)}<br>${escapeHtml(store.town)}${isClosed ? "<br><em>Closed</em>" : ""}`
+      `<strong>${escapeHtml(store.name)}</strong><br>${escapeHtml(store.locality)}<br>${escapeHtml(store.town)}${
+        isClosed ? "<br><em>Closed</em>" : isUpcoming ? "<br><em>Announced — not yet open</em>" : ""
+      }`
     );
     layer.on("click", () => openStoreSheet(store));
     layer.addTo(map);
@@ -471,6 +561,22 @@ function addResetViewControl(mapInstance, bounds, totalStoreCount) {
   new ResetControl().addTo(mapInstance);
 }
 
+/**
+ * Open a specific store's slide-over by id — the entry point other views use
+ * (via app.js's `patel:open-store` event) to deep-link into the map, e.g. the
+ * Estate & Vintage "Newest Store" card. Silently no-ops on an unknown id
+ * rather than throwing, since the caller may be working from stale data.
+ */
+export function openStoreById(storeId) {
+  const store = storesById.get(storeId);
+  if (!store) return false;
+  if (map && store.lat != null && store.lng != null) {
+    map.setView([store.lat, store.lng], Math.max(map.getZoom(), 14), { animate: true });
+  }
+  openStoreSheet(store);
+  return true;
+}
+
 /** Called when the map tab becomes visible after being hidden — Leaflet needs this or the tiles render half-grey. */
 export function invalidateMapSize() {
   if (map) map.invalidateSize();
@@ -479,18 +585,21 @@ export function invalidateMapSize() {
 export async function initMap() {
   const container = qs("#mapContainer");
   try {
-    const [storesData, proximity, darkstores] = await Promise.all([
+    const [storesData, proximity, darkstores, announcements] = await Promise.all([
       loadJson("./data/stores.json"),
       loadJson("./data/proximity.json"),
       // Optional: darkstores.json only exists once someone has run
       // scripts/fetch-darkstores.mjs. Missing it degrades gracefully —
       // everything else on this view still works without it.
       loadJson("./data/darkstores.json").catch(() => null),
+      // Optional too: only exists once scripts/fetch-announcements.mjs has run.
+      loadJson("./data/announcements.json").catch(() => null),
     ]);
     const stores = storesData.stores;
     storesById = new Map(stores.map((s) => [s.store_id, s]));
     proximityByStoreId = new Map((proximity.per_store || []).map((p) => [p.store_id, p]));
     darkstoresData = darkstores;
+    announcementsData = announcements;
 
     const titleEl = qs("#mapNetworkTitle");
     if (titleEl) titleEl.textContent = `${stores.length}-Store Network`;
@@ -500,6 +609,7 @@ export async function initMap() {
     renderKpis(stores, proximity);
     renderLegend();
     renderClusters(proximity);
+    renderAnnouncements();
     wireSheetClose();
 
     const geocodedStores = stores.filter((s) => s.lat != null && s.lng != null);

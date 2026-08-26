@@ -362,3 +362,47 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---- Clickable KPI (Estate "Newest Store" -> Network Map) ---- */
+.kpi.kpi-clickable { cursor: pointer; transition: transform .12s ease, box-shadow .12s ease; }
+.kpi.kpi-clickable:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1); }
+.kpi.kpi-clickable:focus-visible { outline: 2px solid var(--brand-indigo); outline-offset: 2px; }
+.kpi-cta { color: var(--brand-indigo); font-weight: 600; white-space: nowrap; }
+
+/* ---- KPI grid: guarantee real separation between cards ----
+   Grid items default to min-width:auto, so a long label (a store name in the
+   Estate view) could push a card wider than its track and visually close the
+   gap against its neighbour. min-width:0 lets the card shrink to its track. */
+.kpi-grid { gap: 20px; }
+.kpi-grid > .kpi { min-width: 0; }
+.kpi-label { min-width: 0; overflow-wrap: anywhere; }
+
+/* ---- Upcoming / under-construction store marker ---- */
+.lg-dot.lg-upcoming {
+  background: var(--ok, #10b981);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.22);
+}
+
+/* ---- Header crowding at laptop widths ----
+   Five tabs plus the estimate toggle plus two labelled export buttons no
+   longer fit on a 1440px laptop, so the tab strip (the flexible element)
+   was clipping "Peer Benchmark" and "Site Screener" mid-word. Give the tabs
+   the room by dropping the *labels* on the controls that already carry a
+   title tooltip and a self-explanatory icon — nothing becomes unreachable,
+   it just stops competing with navigation for width. */
+@media (max-width: 1780px) {
+  .topbar .export-actions .btn span { display: none; }
+  .topbar .export-actions .btn { padding-left: 10px; padding-right: 10px; }
+  .topbar .highlight-toggle span { display: none; }
+}
+@media (max-width: 1400px) {
+  .topbar .vtab { padding: 7px 10px; font-size: 12.5px; }
+}
+/* Below this the five labels genuinely cannot fit beside the brand block;
+   fall back to icon-only tabs (each keeps its title tooltip) rather than
+   clipping a label mid-word. Overrides styles.css's 860px breakpoint, which
+   was written for the donor's two tabs. */
+@media (max-width: 1320px) {
+  .topbar .viewtabs .vtab span { display: none; }
+  .topbar .vtab { padding: 7px 12px; }
+}
