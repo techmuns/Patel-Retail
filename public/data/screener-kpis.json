@@ -13,11 +13,12 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-08-26T10:13:23.066Z",
+  "fetched_at": "2026-08-26T10:25:19.757Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
-    "failed": 0
+    "failed": 0,
+    "basis_fallbacks": 0
   },
   "failures": [],
   "companies": [
@@ -26,6 +27,9 @@
       "label": "Patel Retail Ltd",
       "subject": true,
       "url": "https://www.screener.in/company/PATELRMART/",
+      "basis": "standalone",
+      "basis_requested": "standalone",
+      "basis_fallback": false,
       "name": "Patel Retail Ltd",
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
@@ -813,13 +817,16 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:12:49.732Z"
+      "fetched_at": "2026-08-26T10:24:46.511Z"
     },
     {
       "ticker": "DMART",
       "label": "Avenue Supermarts Ltd",
       "subject": false,
       "url": "https://www.screener.in/company/DMART/consolidated/",
+      "basis": "consolidated",
+      "basis_requested": "consolidated",
+      "basis_fallback": false,
       "name": "Avenue Supermarts Ltd",
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
@@ -1914,13 +1921,16 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:12:50.210Z"
+      "fetched_at": "2026-08-26T10:24:47.066Z"
     },
     {
       "ticker": "VMM",
       "label": "Vishal Mega Mart Ltd",
       "subject": false,
       "url": "https://www.screener.in/company/VMM/consolidated/",
+      "basis": "consolidated",
+      "basis_requested": "consolidated",
+      "basis_fallback": false,
       "name": "Vishal Mega Mart Ltd",
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
@@ -2752,13 +2762,16 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:12:50.658Z"
+      "fetched_at": "2026-08-26T10:24:47.522Z"
     },
     {
       "ticker": "TRENT",
       "label": "Trent Ltd",
       "subject": false,
       "url": "https://www.screener.in/company/TRENT/consolidated/",
+      "basis": "consolidated",
+      "basis_requested": "consolidated",
+      "basis_fallback": false,
       "name": "Trent Ltd",
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
@@ -3853,13 +3866,16 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:12:51.116Z"
+      "fetched_at": "2026-08-26T10:24:47.985Z"
     },
     {
       "ticker": "SPENCERS",
       "label": "Spencer's Retail Ltd",
       "subject": false,
-      "url": "https://www.screener.in/company/SPENCERS/",
+      "url": "https://www.screener.in/company/SPENCERS/consolidated/",
+      "basis": "consolidated",
+      "basis_requested": "consolidated",
+      "basis_fallback": false,
       "name": "Spencers Retail Ltd",
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
@@ -3891,11 +3907,11 @@
           "value": null
         },
         "Book Value": {
-          "display": "₹ -47.6",
+          "display": "₹ -101",
           "numbers": [
-            "-47.6"
+            "-101"
           ],
-          "value": -47.6
+          "value": -101
         },
         "Dividend Yield": {
           "display": "0.00 %",
@@ -3905,11 +3921,11 @@
           "value": 0
         },
         "ROCE": {
-          "display": "-0.86 %",
+          "display": "-9.34 %",
           "numbers": [
-            "-0.86"
+            "-9.34"
           ],
-          "value": -0.86
+          "value": -9.34
         },
         "ROE": {
           "display": null,
@@ -3946,199 +3962,199 @@
             {
               "label": "Sales",
               "values": [
-                "503",
-                "499",
                 "570",
-                "477",
-                "476",
-                "443",
-                "431",
-                "351",
-                "346",
-                "376",
-                "421",
-                "379",
-                "408"
+                "574",
+                "654",
+                "547",
+                "548",
+                "518",
+                "517",
+                "412",
+                "416",
+                "445",
+                "503",
+                "436",
+                "469"
               ]
             },
             {
               "label": "Expenses",
               "values": [
-                "509",
-                "507",
-                "564",
-                "488",
-                "471",
-                "485",
-                "416",
-                "350",
-                "340",
-                "367",
-                "406",
-                "374",
-                "391"
+                "575",
+                "581",
+                "642",
+                "559",
+                "547",
+                "563",
+                "505",
+                "423",
+                "423",
+                "449",
+                "496",
+                "443",
+                "462"
               ]
             },
             {
               "label": "Operating Profit",
               "values": [
-                "-6",
-                "-8",
-                "6",
-                "-11",
-                "4",
-                "-42",
-                "15",
+                "-5",
+                "-7",
+                "12",
+                "-12",
                 "1",
+                "-45",
+                "12",
+                "-11",
+                "-7",
+                "-4",
                 "7",
-                "10",
-                "15",
-                "5",
-                "17"
+                "-7",
+                "8"
               ]
             },
             {
               "label": "OPM %",
               "values": [
-                "-1.1%",
-                "-1.6%",
-                "1.0%",
-                "-2.3%",
-                "0.9%",
-                "-9%",
-                "3.5%",
+                "-0.8%",
+                "-1.2%",
+                "1.8%",
+                "-2.2%",
                 "0.2%",
-                "1.9%",
-                "2.5%",
-                "3.5%",
+                "-9%",
+                "2.3%",
+                "-2.8%",
+                "-1.6%",
+                "-0.8%",
                 "1.3%",
-                "4.1%"
+                "-1.6%",
+                "1.6%"
               ]
             },
             {
               "label": "Other Income",
               "values": [
-                "7",
+                "12",
                 "3",
                 "6",
+                "4",
+                "28",
+                "61",
                 "3",
-                "3",
-                "60",
-                "2",
-                "9",
-                "8",
-                "3",
+                "11",
+                "11",
+                "4",
                 "1",
                 "9",
-                "1"
+                "2"
               ]
             },
             {
               "label": "Interest",
               "values": [
-                "26",
-                "29",
-                "31",
-                "33",
-                "35",
-                "33",
-                "33",
-                "31",
-                "31",
-                "32",
-                "35",
-                "35",
-                "37"
+                "34",
+                "36",
+                "38",
+                "41",
+                "43",
+                "40",
+                "41",
+                "41",
+                "40",
+                "41",
+                "43",
+                "45",
+                "46"
               ]
             },
             {
               "label": "Depreciation",
               "values": [
+                "38",
+                "31",
+                "32",
+                "32",
+                "30",
+                "64",
+                "22",
+                "27",
                 "26",
                 "23",
-                "22",
-                "21",
-                "20",
-                "55",
-                "14",
-                "17",
-                "14",
-                "14",
-                "14",
-                "14",
-                "15"
+                "23",
+                "23",
+                "23"
               ]
             },
             {
               "label": "Profit before tax",
               "values": [
-                "-52",
-                "-57",
-                "-41",
-                "-63",
-                "-48",
-                "-69",
-                "-29",
-                "-38",
-                "-31",
-                "-34",
-                "-33",
-                "-36",
-                "-34"
+                "-64",
+                "-70",
+                "-51",
+                "-81",
+                "-44",
+                "-87",
+                "-47",
+                "-68",
+                "-62",
+                "-64",
+                "-58",
+                "-66",
+                "-60"
               ]
             },
             {
               "label": "Tax %",
               "values": [
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%"
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%"
               ]
             },
             {
               "label": "Net Profit",
               "values": [
-                "-52",
-                "-57",
-                "-41",
-                "-63",
-                "-48",
-                "-69",
-                "-29",
-                "-38",
-                "-31",
-                "-34",
-                "-33",
-                "-36",
-                "-34"
+                "-64",
+                "-70",
+                "-51",
+                "-81",
+                "-43",
+                "-87",
+                "-47",
+                "-68",
+                "-62",
+                "-64",
+                "-58",
+                "-66",
+                "-60"
               ]
             },
             {
               "label": "EPS in Rs",
               "values": [
-                "-5.74",
-                "-6.28",
-                "-4.55",
-                "-6.94",
-                "-5.34",
-                "-7.69",
-                "-3.23",
-                "-4.24",
-                "-3.46",
-                "-3.74",
-                "-3.69",
-                "-3.94",
-                "-3.78"
+                "-7.12",
+                "-7.78",
+                "-5.68",
+                "-8.95",
+                "-4.82",
+                "-9.67",
+                "-5.25",
+                "-7.59",
+                "-6.84",
+                "-7.08",
+                "-6.47",
+                "-7.28",
+                "-6.71"
               ]
             },
             {
@@ -4164,7 +4180,7 @@
         "profit_loss": {
           "columns": [
             "",
-            "Mar 2018",
+            "Mar 2018 13m",
             "Mar 2019",
             "Mar 2020",
             "Mar 2021",
@@ -4181,59 +4197,59 @@
               "values": [
                 "1,149",
                 "2,187",
-                "2,373",
-                "2,069",
-                "2,000",
-                "2,180",
-                "2,049",
-                "1,701",
-                "1,523",
-                "1,584"
+                "2,645",
+                "2,428",
+                "2,300",
+                "2,453",
+                "2,345",
+                "1,995",
+                "1,800",
+                "1,854"
               ]
             },
             {
               "label": "Expenses",
               "values": [
-                "1,148",
-                "2,173",
-                "2,294",
-                "2,069",
-                "1,981",
-                "2,175",
-                "2,065",
-                "1,723",
-                "1,486",
-                "1,538"
+                "1,153",
+                "2,178",
+                "2,587",
+                "2,420",
+                "2,275",
+                "2,448",
+                "2,354",
+                "2,038",
+                "1,810",
+                "1,850"
               ]
             },
             {
               "label": "Operating Profit",
               "values": [
-                "0",
-                "14",
-                "79",
-                "-0",
-                "18",
-                "5",
-                "-16",
-                "-22",
-                "37",
-                "46"
+                "-4",
+                "9",
+                "57",
+                "8",
+                "25",
+                "4",
+                "-9",
+                "-43",
+                "-10",
+                "4"
               ]
             },
             {
               "label": "OPM %",
               "values": [
-                "0.0%",
-                "0.6%",
-                "3.3%",
-                "-0.0%",
-                "0.9%",
+                "-0.4%",
+                "0.4%",
+                "2.2%",
+                "0.3%",
+                "1.1%",
                 "0.2%",
-                "-0.8%",
-                "-1.3%",
-                "2.4%",
-                "2.9%"
+                "-0.4%",
+                "-2.2%",
+                "-0.5%",
+                "0.2%"
               ]
             },
             {
@@ -4241,14 +4257,14 @@
               "values": [
                 "9",
                 "28",
-                "30",
-                "47",
-                "67",
-                "29",
-                "16",
-                "75",
-                "19",
-                "13"
+                "32",
+                "53",
+                "76",
+                "32",
+                "23",
+                "104",
+                "25",
+                "16"
               ]
             },
             {
@@ -4256,14 +4272,14 @@
               "values": [
                 "4",
                 "7",
-                "61",
-                "69",
-                "76",
+                "82",
                 "91",
-                "119",
-                "132",
-                "134",
-                "140"
+                "97",
+                "115",
+                "148",
+                "164",
+                "169",
+                "175"
               ]
             },
             {
@@ -4271,74 +4287,74 @@
               "values": [
                 "15",
                 "25",
-                "105",
-                "106",
-                "94",
-                "97",
-                "93",
-                "106",
-                "56",
-                "56"
+                "138",
+                "134",
+                "126",
+                "132",
+                "132",
+                "143",
+                "96",
+                "93"
               ]
             },
             {
               "label": "Profit before tax",
               "values": [
-                "-9",
-                "10",
-                "-57",
-                "-128",
-                "-85",
-                "-153",
-                "-212",
-                "-185",
-                "-134",
-                "-136"
+                "-14",
+                "4",
+                "-131",
+                "-164",
+                "-122",
+                "-211",
+                "-267",
+                "-247",
+                "-250",
+                "-248"
               ]
             },
             {
               "label": "Tax %",
               "values": [
                 "0%",
-                "18%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
+                "43%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
                 ""
               ]
             },
             {
               "label": "Net Profit",
               "values": [
-                "-9",
-                "8",
-                "-57",
-                "-128",
-                "-85",
-                "-153",
-                "-212",
-                "-185",
-                "-134",
-                "-136"
+                "-14",
+                "2",
+                "-131",
+                "-164",
+                "-121",
+                "-210",
+                "-266",
+                "-246",
+                "-249",
+                "-248"
               ]
             },
             {
               "label": "EPS in Rs",
               "values": [
                 "",
-                "0.88",
-                "-6.33",
-                "-14.19",
-                "-9.38",
-                "-17.00",
-                "-23.50",
-                "-20.50",
-                "-14.82",
-                "-15.15"
+                "0.27",
+                "-14.51",
+                "-18.18",
+                "-13.48",
+                "-23.34",
+                "-29.53",
+                "-27.33",
+                "-27.66",
+                "-27.54"
               ]
             },
             {
@@ -4375,7 +4391,7 @@
             {
               "label": "Equity Capital",
               "values": [
-                "40",
+                "0.00",
                 "40",
                 "40",
                 "45",
@@ -4389,15 +4405,15 @@
             {
               "label": "Reserves",
               "values": [
-                "550",
-                "557",
-                "355",
-                "299",
-                "212",
-                "57",
-                "-154",
-                "-338",
-                "-474"
+                "507",
+                "508",
+                "234",
+                "141",
+                "17",
+                "-196",
+                "-461",
+                "-707",
+                "-958"
               ]
             },
             {
@@ -4405,55 +4421,55 @@
               "values": [
                 "1",
                 "0",
-                "644",
-                "765",
-                "878",
-                "1,088",
-                "1,342",
-                "1,236",
-                "1,551"
+                "849",
+                "944",
+                "1,069",
+                "1,341",
+                "1,622",
+                "1,571",
+                "1,919"
               ]
             },
             {
               "label": "Other Liabilities",
               "values": [
-                "331",
+                "373",
                 "365",
-                "379",
-                "341",
-                "362",
-                "363",
-                "413",
-                "332",
-                "312"
+                "471",
+                "429",
+                "435",
+                "439",
+                "490",
+                "400",
+                "390"
               ]
             },
             {
               "label": "Total Liabilities",
               "values": [
-                "921",
-                "962",
-                "1,418",
-                "1,451",
-                "1,497",
-                "1,553",
-                "1,646",
-                "1,274",
-                "1,434"
+                "881",
+                "914",
+                "1,594",
+                "1,559",
+                "1,565",
+                "1,629",
+                "1,696",
+                "1,310",
+                "1,396"
               ]
             },
             {
               "label": "Fixed Assets",
               "values": [
-                "234",
-                "259",
-                "659",
-                "687",
-                "660",
-                "723",
-                "774",
-                "527",
-                "592"
+                "239",
+                "263",
+                "1,055",
+                "1,053",
+                "1,049",
+                "1,132",
+                "1,211",
+                "953",
+                "971"
               ]
             },
             {
@@ -4461,9 +4477,9 @@
               "values": [
                 "0",
                 "1",
-                "9",
-                "2",
-                "6",
+                "10",
+                "3",
+                "8",
                 "2",
                 "1",
                 "0",
@@ -4473,43 +4489,43 @@
             {
               "label": "Investments",
               "values": [
-                "55",
-                "77",
-                "316",
-                "353",
-                "478",
-                "492",
-                "522",
-                "521",
-                "528"
+                "7",
+                "23",
+                "24",
+                "35",
+                "94",
+                "94",
+                "56",
+                "43",
+                "36"
               ]
             },
             {
               "label": "Other Assets",
               "values": [
-                "632",
-                "625",
-                "434",
-                "409",
-                "353",
-                "336",
-                "349",
-                "225",
-                "313"
+                "635",
+                "627",
+                "505",
+                "468",
+                "415",
+                "401",
+                "428",
+                "314",
+                "389"
               ]
             },
             {
               "label": "Total Assets",
               "values": [
-                "921",
-                "962",
-                "1,418",
-                "1,451",
-                "1,497",
-                "1,553",
-                "1,646",
-                "1,274",
-                "1,434"
+                "881",
+                "914",
+                "1,594",
+                "1,559",
+                "1,565",
+                "1,629",
+                "1,696",
+                "1,310",
+                "1,396"
               ]
             }
           ]
@@ -4531,85 +4547,85 @@
             {
               "label": "Cash from Operating Activity",
               "values": [
-                "-43",
-                "-8",
-                "107",
+                "-48",
+                "-13",
+                "114",
                 "-2",
-                "63",
-                "29",
-                "39",
-                "25",
-                "-40"
+                "55",
+                "27",
+                "35",
+                "37",
+                "-60"
               ]
             },
             {
               "label": "Cash from Investing Activity",
               "values": [
-                "-236",
-                "16",
-                "-64",
-                "-47",
-                "-98",
-                "-35",
+                "-189",
+                "22",
+                "-7",
+                "-18",
                 "-40",
-                "2",
-                "-6"
+                "-26",
+                "11",
+                "-20",
+                "-8"
               ]
             },
             {
               "label": "Cash from Financing Activity",
               "values": [
-                "82",
+                "38",
                 "-0",
-                "-11",
-                "42",
-                "-4",
-                "4",
-                "18",
-                "-42",
-                "77"
+                "-54",
+                "-3",
+                "-54",
+                "-5",
+                "-28",
+                "-27",
+                "92"
               ]
             },
             {
               "label": "Net Cash Flow",
               "values": [
-                "-197",
+                "-199",
                 "9",
-                "32",
-                "-7",
-                "-39",
-                "-2",
-                "17",
-                "-15",
-                "31"
+                "53",
+                "-24",
+                "-40",
+                "-4",
+                "18",
+                "-10",
+                "24"
               ]
             },
             {
               "label": "Free Cash Flow",
               "values": [
-                "-49",
-                "-52",
-                "69",
-                "-24",
-                "47",
-                "9",
-                "24",
-                "24",
-                "-42"
+                "-55",
+                "-58",
+                "71",
+                "-25",
+                "31",
+                "1",
+                "3",
+                "21",
+                "-69"
               ]
             },
             {
               "label": "CFO/OP",
               "values": [
-                "-9,313%",
-                "-17%",
-                "143%",
-                "-3,825%",
-                "337%",
-                "301%",
-                "-233%",
-                "-109%",
-                "-112%"
+                "1,079%",
+                "-107%",
+                "212%",
+                "23%",
+                "219%",
+                "271%",
+                "-364%",
+                "-83%",
+                "633%"
               ]
             }
           ]
@@ -4632,13 +4648,13 @@
               "label": "Debtor Days",
               "values": [
                 "12",
-                "8",
+                "7",
                 "9",
-                "6",
-                "5",
+                "4",
+                "4",
                 "3",
                 "4",
-                "5",
+                "3",
                 "5"
               ]
             },
@@ -4647,41 +4663,41 @@
               "values": [
                 "109",
                 "57",
-                "45",
+                "44",
+                "51",
                 "52",
-                "52",
-                "47",
                 "49",
-                "36",
-                "45"
+                "52",
+                "39",
+                "47"
               ]
             },
             {
               "label": "Days Payable",
               "values": [
-                "122",
+                "123",
                 "66",
-                "60",
-                "60",
                 "66",
-                "62",
+                "63",
+                "67",
+                "64",
                 "75",
-                "70",
-                "75"
+                "72",
+                "76"
               ]
             },
             {
               "label": "Cash Conversion Cycle",
               "values": [
+                "-2",
                 "-1",
-                "-1",
-                "-6",
-                "-3",
+                "-13",
+                "-8",
                 "-10",
-                "-11",
-                "-22",
-                "-28",
-                "-25"
+                "-12",
+                "-19",
+                "-30",
+                "-24"
               ]
             },
             {
@@ -4689,27 +4705,27 @@
               "values": [
                 "-1",
                 "-2",
-                "-31",
-                "-45",
-                "-62",
-                "-75",
+                "-40",
+                "-50",
+                "-63",
+                "-79",
                 "-99",
-                "-133",
-                "-167"
+                "-137",
+                "-192"
               ]
             },
             {
               "label": "ROCE %",
               "values": [
                 "",
-                "3%",
-                "-0%",
+                "2%",
                 "-6%",
-                "-1%",
-                "-5%",
-                "-8%",
                 "-7%",
-                "-1%"
+                "-2%",
+                "-8%",
+                "-10%",
+                "-10%",
+                "-9%"
               ]
             }
           ]
@@ -4853,29 +4869,32 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:13:22.131Z"
+      "fetched_at": "2026-08-26T10:25:18.893Z"
     },
     {
       "ticker": "OSIAHYPER",
       "label": "Osia Hyper Retail Ltd",
       "subject": false,
       "url": "https://www.screener.in/company/OSIAHYPER/",
+      "basis": "standalone",
+      "basis_requested": "standalone",
+      "basis_fallback": false,
       "name": "Osia Hyper Retail Ltd",
       "about": "Incorporated in 2014, Osia Hyper Retail Ltd is in the retail business through supermarket chain.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 48.0 Cr.",
+          "display": "₹ 47.8 Cr.",
           "numbers": [
-            "48.0"
+            "47.8"
           ],
-          "value": 48
+          "value": 47.8
         },
         "Current Price": {
-          "display": "₹ 2.71",
+          "display": "₹ 2.70",
           "numbers": [
-            "2.71"
+            "2.70"
           ],
-          "value": 2.71
+          "value": 2.7
         },
         "High / Low": {
           "display": "₹ 33.1 / 2.40",
@@ -4886,11 +4905,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "2.67",
+          "display": "2.66",
           "numbers": [
-            "2.67"
+            "2.66"
           ],
-          "value": 2.67
+          "value": 2.66
         },
         "Book Value": {
           "display": "₹ 24.4",
@@ -5931,13 +5950,16 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:13:22.573Z"
+      "fetched_at": "2026-08-26T10:25:19.301Z"
     },
     {
       "ticker": "V2RETAIL",
       "label": "V2 Retail Ltd",
       "subject": false,
       "url": "https://www.screener.in/company/V2RETAIL/",
+      "basis": "standalone",
+      "basis_requested": "standalone",
+      "basis_fallback": false,
       "name": "V2 Retail Ltd",
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
@@ -7015,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:13:23.034Z"
+      "fetched_at": "2026-08-26T10:25:19.726Z"
     }
   ]
 }
