@@ -74,8 +74,19 @@ async function extractCompany(page) {
     const ratios = {};
     document.querySelectorAll("#top-ratios li").forEach((li) => {
       const name = clean(li.querySelector(".name")?.textContent);
-      const value = clean(li.querySelector(".value")?.textContent);
-      if (name) ratios[name] = value || null;
+      if (!name) return;
+      const valueEl = li.querySelector(".value");
+      const display = clean(valueEl?.textContent);
+      // Screener wraps each figure in its own .number span; join them so
+      // "High / Low" (two numbers) survives, and expose a parsed single value
+      // where there is exactly one.
+      const numbers = [...(valueEl?.querySelectorAll(".number") || [])].map((n) => clean(n.textContent)).filter(Boolean);
+      const parsed = numbers.length === 1 ? Number(numbers[0].replace(/,/g, "")) : null;
+      ratios[name] = {
+        display: display || null,
+        numbers,
+        value: Number.isFinite(parsed) ? parsed : null,
+      };
     });
 
     // Each financial section is a <section id="..."> holding one data table.
@@ -125,10 +136,22 @@ async function main() {
   const failures = [];
   try {
     for (const t of tickers) {
-      const url = `${BASE}/company/${t.ticker}/${t.consolidated ? "consolidated/" : ""}`;
+      const primary = `${BASE}/company/${t.ticker}/${t.consolidated ? "consolidated/" : ""}`;
+      const alternate = `${BASE}/company/${t.ticker}/${t.consolidated ? "" : "consolidated/"}`;
+      let url = primary;
       try {
         await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
         await page.waitForSelector("#top-ratios", { timeout: 30000 });
+        // The ratio strip renders its shell first and fills the figures in
+        // afterwards; waiting only for the container captured "₹ Cr." with no
+        // digits. Wait for an actual number to land before reading.
+        await page.waitForFunction(
+          () => {
+            const n = document.querySelector("#top-ratios .number");
+            return n && n.textContent.trim().length > 0;
+          },
+          { timeout: 30000 }
+        );
         const data = await extractCompany(page);
         companies.push({
           ticker: t.ticker,
@@ -140,9 +163,28 @@ async function main() {
         });
         const nSections = Object.values(data.sections).filter(Boolean).length;
         console.log(`  ✓ ${t.ticker}: ${Object.keys(data.ratios).length} ratios, ${nSections}/6 tables`);
-      } catch (err) {
-        failures.push({ ticker: t.ticker, url, error: err.message });
-        console.log(`  ✗ ${t.ticker}: ${err.message}`);
+      } catch (firstErr) {
+        // Not every company publishes a consolidated statement (and vice
+        // versa); the other path usually exists. Try it before recording a
+        // failure, rather than dropping the company over a URL shape.
+        try {
+          url = alternate;
+          await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+          await page.waitForSelector("#top-ratios", { timeout: 30000 });
+          await page.waitForFunction(
+            () => {
+              const n = document.querySelector("#top-ratios .number");
+              return n && n.textContent.trim().length > 0;
+            },
+            { timeout: 30000 }
+          );
+          const data = await extractCompany(page);
+          companies.push({ ticker: t.ticker, label: t.label, subject: Boolean(t.subject), url, ...data, fetched_at: new Date().toISOString() });
+          console.log(`  ✓ ${t.ticker}: via fallback URL (${t.consolidated ? "standalone" : "consolidated"})`);
+        } catch (secondErr) {
+          failures.push({ ticker: t.ticker, tried: [primary, alternate], error: `${firstErr.message} | fallback: ${secondErr.message}` });
+          console.log(`  ✗ ${t.ticker}: ${firstErr.message}`);
+        }
       }
     }
   } finally {

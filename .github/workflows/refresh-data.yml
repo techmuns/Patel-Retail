@@ -67,8 +67,12 @@ jobs:
       - name: Check Screener credentials
         id: screener_creds
         run: |
-          if [ -n "${{ secrets.SCREENER_PREMIUM_EMAIL }}" ] || [ -n "${{ secrets.SCREENER_EMAIL }}" ]; then
+          if [ -n "${{ secrets.SCREENER_PREMIUM_EMAIL }}" ]; then
             echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Using the PAID Screener account (SCREENER_PREMIUM_EMAIL)."
+          elif [ -n "${{ secrets.SCREENER_EMAIL }}" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+            echo "::warning::Only SCREENER_EMAIL is set, so this run uses the FREE tier. For the paid account the secrets must be named SCREENER_PREMIUM_EMAIL and SCREENER_PREMIUM_PASSWORD."
           else
             echo "available=false" >> "$GITHUB_OUTPUT"
             echo "::notice::Screener credentials not set — skipping the KPI refresh. Add SCREENER_PREMIUM_EMAIL / SCREENER_PREMIUM_PASSWORD to repository secrets to enable it."
