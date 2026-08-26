@@ -60,6 +60,36 @@ jobs:
         run: node scripts/fetch-darkstores.mjs
         continue-on-error: true
 
+      # Paid Screener KPIs for Patel + every peer on the benchmark screen.
+      # Skipped (not failed) when the secrets aren't configured, so the rest of
+      # the refresh still runs. Secrets are never echoed — the script logs only
+      # which account tier it logged in on.
+      - name: Check Screener credentials
+        id: screener_creds
+        run: |
+          if [ -n "${{ secrets.SCREENER_PREMIUM_EMAIL }}" ] || [ -n "${{ secrets.SCREENER_EMAIL }}" ]; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "available=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Screener credentials not set — skipping the KPI refresh. Add SCREENER_PREMIUM_EMAIL / SCREENER_PREMIUM_PASSWORD to repository secrets to enable it."
+          fi
+
+      - name: Install Playwright (Screener scrape only)
+        if: steps.screener_creds.outputs.available == 'true'
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+
+      - name: Fetch Screener KPIs
+        if: steps.screener_creds.outputs.available == 'true'
+        env:
+          SCREENER_PREMIUM_EMAIL: ${{ secrets.SCREENER_PREMIUM_EMAIL }}
+          SCREENER_PREMIUM_PASSWORD: ${{ secrets.SCREENER_PREMIUM_PASSWORD }}
+          SCREENER_EMAIL: ${{ secrets.SCREENER_EMAIL }}
+          SCREENER_PASSWORD: ${{ secrets.SCREENER_PASSWORD }}
+        run: node scripts/fetch-screener-kpis.mjs
+        continue-on-error: true
+
       # Distances are derived from stores.json, so this runs last and always —
       # it keeps proximity.json in step with whatever the fetches changed.
       - name: Rebuild proximity
