@@ -225,14 +225,23 @@
   "spencers_retail": {
     "name": "Spencer's Retail Ltd",
     "ticker": "SPENCERS",
-    "fiscal_year": "FY2025 (Mar 2025)",
-    "revenue_cr": 1995,
-    "ebitda_cr": -43,
-    "ebitda_margin_pct": -0.022,
+    "fiscal_year": "FY2026 (Mar 2026)",
+    "revenue_cr": 1800,
+    "ebitda_cr": -10,
+    "ebitda_margin_pct": -0.005,
+    "pat_cr": -249,
+    "prior_year": {
+      "fiscal_year": "FY2025 (Mar 2025)",
+      "revenue_cr": 1995,
+      "ebitda_cr": -43,
+      "ebitda_margin_pct": -0.022,
+      "pat_cr": -246
+    },
     "total_stores": 120,
     "kind": "reported",
-    "source": "Screener.in/company/SPENCERS/consolidated/ (financials, FY2025); store count from spencersretail.com/about-us, as of 2026",
-    "note": "Loss-making — sixth consecutive year of losses as of FY2025, and press coverage of the FY2026 (Mar 2026) results describes losses deepening further, though this dashboard doesn't carry the exact FY2026 figures. Store count (120) is the company's own current 2026 figure, down from 167 (incl. 34 Nature's Basket stores) filed for FY2024 — a real decline in footprint, not a data mismatch."
+    "source": "Screener.in/company/SPENCERS/consolidated/ (financials, FY2026); store count from spencersretail.com/about-us, as of 2026",
+    "source_url": "https://www.screener.in/company/SPENCERS/consolidated/",
+    "note": "Loss-making — seventh consecutive year of losses (FY2020 through FY2026). Revenue fell again in FY2026 (₹1,800 cr, from ₹1,995 cr), but the operating loss narrowed sharply to ₹10 cr from ₹43 cr; net loss stayed flat at ₹249 cr, so the improvement is at the operating line only and is not reaching the bottom line. Store count (120) is the company's own current 2026 figure, down from 167 (incl. 34 Nature's Basket stores) filed for FY2024 — a real decline in footprint, not a data mismatch."
   },
   "store_pnl_reconciliation": {
     "revenue_l": 864,

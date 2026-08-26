@@ -37,7 +37,7 @@
 import { writeFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
-import { launchAndLogin, activeTier } from "../screener-test/scrape-screener.mjs";
+import { launchAndLogin, activeTier, activeCredentialEnv, detectAccountTier } from "../screener-test/scrape-screener.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const OUT_PATH = path.join(__dirname, "..", "public", "data", "screener-kpis.json");
@@ -129,99 +129,94 @@ async function extractCompany(page) {
   });
 }
 
-/**
- * Which plan the logged-in account is actually on, asked of Screener rather
- * than inferred from which environment variable held the password. The env-var
- * name told us nothing: run 2 logged in with a paid account stored under
- * SCREENER_EMAIL and dutifully labelled the output "free".
- * Returns "premium" | "free" | "unknown" plus the evidence behind it, so a
- * wrong guess is visible in the file instead of being asserted silently.
- */
-async function detectTier(page) {
-  const ACTIVE = ["your subscription", "subscription is active", "valid till", "valid until", "renews on", "cancel subscription", "you are subscribed", "manage subscription"];
-  const INACTIVE = ["subscribe now", "start free trial", "choose a plan", "upgrade to premium", "get premium"];
-  try {
-    await page.goto(`${BASE}/premium/`, { waitUntil: "domcontentloaded", timeout: 45000 });
-    const text = await page.evaluate(() => (document.body.innerText || "").replace(/\s+/g, " ").trim());
-    const t = text.toLowerCase();
-    const active = ACTIVE.filter((s) => t.includes(s));
-    const inactive = INACTIVE.filter((s) => t.includes(s));
-    let tier = "unknown";
-    if (active.length && !inactive.length) tier = "premium";
-    else if (inactive.length && !active.length) tier = "free";
-    return { tier, matched_active: active, matched_inactive: inactive, page_sample: text.slice(0, 400) };
-  } catch (err) {
-    return { tier: "unknown", error: err.message };
-  }
-}
-
 async function main() {
   const tickers = tickersFromEnv();
   console.log(`[screener] fetching ${tickers.length} company page(s)...`);
 
   const { browser, context, page } = await launchAndLogin();
-  const credentialEnv = activeTier === "premium" ? "SCREENER_PREMIUM_EMAIL" : "SCREENER_EMAIL";
-  const tierInfo = await detectTier(page);
-  console.log(`[screener] credentials came from ${credentialEnv}; Screener reports the account is on the ${tierInfo.tier} plan.`);
-  if (tierInfo.matched_active?.length || tierInfo.matched_inactive?.length) {
-    console.log(`[screener] tier evidence — active:[${(tierInfo.matched_active || []).join("|")}] inactive:[${(tierInfo.matched_inactive || []).join("|")}]`);
-  }
-  if (tierInfo.tier === "unknown") console.log(`[screener] tier page sample: ${tierInfo.page_sample || tierInfo.error || "(none)"}`);
+  // launchAndLogin() already asked Screener which plan this account is on;
+  // re-read the page only to capture the evidence for the output file.
+  const tierInfo = await detectAccountTier(page);
+  console.log(`[screener] credentials from ${activeCredentialEnv}; plan: ${activeTier}.`);
 
   const companies = [];
   const failures = [];
+
+  /** Load one company page and wait until its figures have actually rendered. */
+  async function readPage(url) {
+    await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+    await page.waitForSelector("#top-ratios", { timeout: 30000 });
+    // The ratio strip renders its shell first and fills the figures in
+    // afterwards; waiting only for the container captured "₹ Cr." with no
+    // digits. Wait for an actual number to land before reading.
+    await page.waitForFunction(
+      () => {
+        const n = document.querySelector("#top-ratios .number");
+        return n && n.textContent.trim().length > 0;
+      },
+      { timeout: 30000 }
+    );
+    return extractCompany(page);
+  }
+
   try {
     for (const t of tickers) {
+      const wanted = t.consolidated ? "consolidated" : "standalone";
+      const other = t.consolidated ? "standalone" : "consolidated";
       const primary = `${BASE}/company/${t.ticker}/${t.consolidated ? "consolidated/" : ""}`;
       const alternate = `${BASE}/company/${t.ticker}/${t.consolidated ? "" : "consolidated/"}`;
-      let url = primary;
-      try {
-        await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-        await page.waitForSelector("#top-ratios", { timeout: 30000 });
-        // The ratio strip renders its shell first and fills the figures in
-        // afterwards; waiting only for the container captured "₹ Cr." with no
-        // digits. Wait for an actual number to land before reading.
-        await page.waitForFunction(
-          () => {
-            const n = document.querySelector("#top-ratios .number");
-            return n && n.textContent.trim().length > 0;
-          },
-          { timeout: 30000 }
-        );
-        const data = await extractCompany(page);
-        companies.push({
-          ticker: t.ticker,
-          label: t.label,
-          subject: Boolean(t.subject),
-          url,
-          ...data,
-          fetched_at: new Date().toISOString(),
-        });
-        const nSections = Object.values(data.sections).filter(Boolean).length;
-        console.log(`  ✓ ${t.ticker}: ${Object.keys(data.ratios).length} ratios, ${nSections}/6 tables`);
-      } catch (firstErr) {
-        // Not every company publishes a consolidated statement (and vice
-        // versa); the other path usually exists. Try it before recording a
-        // failure, rather than dropping the company over a URL shape.
+
+      // Consolidated and standalone are DIFFERENT NUMBERS, not two routes to
+      // the same one — Spencer's FY2026 revenue is ₹1,800 cr consolidated and
+      // ₹1,523 cr standalone. A transient timeout once silently swapped the
+      // basis mid-refresh and still reported success, which is how a
+      // substituted figure reaches a client unnoticed. So: retry the basis we
+      // actually want before considering the other one at all, and when the
+      // other one is used, record that fact rather than burying it.
+      let record = null;
+      let lastErr = null;
+      for (let attempt = 1; attempt <= 2 && !record; attempt++) {
         try {
-          url = alternate;
-          await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
-          await page.waitForSelector("#top-ratios", { timeout: 30000 });
-          await page.waitForFunction(
-            () => {
-              const n = document.querySelector("#top-ratios .number");
-              return n && n.textContent.trim().length > 0;
-            },
-            { timeout: 30000 }
-          );
-          const data = await extractCompany(page);
-          companies.push({ ticker: t.ticker, label: t.label, subject: Boolean(t.subject), url, ...data, fetched_at: new Date().toISOString() });
-          console.log(`  ✓ ${t.ticker}: via fallback URL (${t.consolidated ? "standalone" : "consolidated"})`);
-        } catch (secondErr) {
-          failures.push({ ticker: t.ticker, tried: [primary, alternate], error: `${firstErr.message} | fallback: ${secondErr.message}` });
-          console.log(`  ✗ ${t.ticker}: ${firstErr.message}`);
+          const data = await readPage(primary);
+          record = { url: primary, basis: wanted, basis_fallback: false, data };
+          const nSections = Object.values(data.sections).filter(Boolean).length;
+          const retried = attempt > 1 ? " (on retry)" : "";
+          console.log(`  ✓ ${t.ticker}: ${Object.keys(data.ratios).length} ratios, ${nSections}/6 tables${retried}`);
+        } catch (err) {
+          lastErr = err;
+          if (attempt === 1) console.log(`  … ${t.ticker}: ${wanted} page did not render — retrying the same basis`);
         }
       }
+
+      if (!record) {
+        // Not every company publishes on both bases, so the other path is
+        // worth trying — but it is a different figure and is labelled as such.
+        try {
+          const data = await readPage(alternate);
+          record = { url: alternate, basis: other, basis_fallback: true, data };
+          console.log(`  ! ${t.ticker}: ${wanted} unavailable after 2 attempts — using ${other} figures instead (DIFFERENT BASIS, flagged in the output)`);
+        } catch (secondErr) {
+          failures.push({
+            ticker: t.ticker,
+            tried: [primary, alternate],
+            error: `${lastErr?.message} | fallback: ${secondErr.message}`,
+          });
+          console.log(`  ✗ ${t.ticker}: ${lastErr?.message}`);
+          continue;
+        }
+      }
+
+      companies.push({
+        ticker: t.ticker,
+        label: t.label,
+        subject: Boolean(t.subject),
+        url: record.url,
+        basis: record.basis,
+        basis_requested: wanted,
+        basis_fallback: record.basis_fallback,
+        ...record.data,
+        fetched_at: new Date().toISOString(),
+      });
     }
   } finally {
     await browser.close();
@@ -233,15 +228,20 @@ async function main() {
 
   const output = {
     source: "Screener.in company pages (logged in)",
-    account_tier: tierInfo.tier,
+    account_tier: activeTier,
     account_tier_source: "Read off screener.in/premium/ for the logged-in account, not inferred from the credential variable name.",
     account_tier_evidence: tierInfo,
-    credential_env: credentialEnv,
+    credential_env: activeCredentialEnv,
     kind: "reported",
     note:
       "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
     fetched_at: new Date().toISOString(),
-    counts: { requested: tickers.length, fetched: companies.length, failed: failures.length },
+    counts: {
+      requested: tickers.length,
+      fetched: companies.length,
+      failed: failures.length,
+      basis_fallbacks: companies.filter((c) => c.basis_fallback).length,
+    },
     failures,
     companies,
   };

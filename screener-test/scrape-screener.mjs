@@ -59,8 +59,49 @@ async function saveShot(page, name) {
    Browser + login
    ========================================================================== */
 /** Which Screener account the current session is on: "premium" or "free".
- *  Read by the rate-limit path so a quota message names the account that hit it. */
+ *  Read by the rate-limit path so a quota message names the account that hit it.
+ *  Set from what Screener says about the logged-in account, NOT from which
+ *  environment variable held the password — a paid account stored under
+ *  SCREENER_EMAIL is still a paid account. */
 export let activeTier = null;
+
+/** Which environment variable the working credentials came from. Separate from
+ *  activeTier, because the two genuinely are separate facts. */
+export let activeCredentialEnv = null;
+
+const TIER_ACTIVE_PHRASES = [
+  "you're a premium member",
+  "you are a premium member",
+  "valid until",
+  "valid till",
+  "cancel subscription",
+  "manage subscription",
+  "renews on",
+];
+const TIER_INACTIVE_PHRASES = ["subscribe now", "start free trial", "choose a plan", "upgrade to premium"];
+
+/**
+ * Ask Screener which plan the logged-in account is on, rather than inferring it
+ * from the credential variable name. Returns { tier, matched_active,
+ * matched_inactive, page_sample } with tier one of "premium" | "free" |
+ * "unknown". Never throws — an unreadable page yields "unknown", which callers
+ * treat as "don't know", not as "free".
+ */
+export async function detectAccountTier(page) {
+  try {
+    await page.goto(`${BASE}/premium/`, { waitUntil: "domcontentloaded", timeout: 45000 });
+    const text = await page.evaluate(() => (document.body.innerText || "").replace(/\s+/g, " ").trim());
+    const t = text.toLowerCase();
+    const active = TIER_ACTIVE_PHRASES.filter((x) => t.includes(x));
+    const inactive = TIER_INACTIVE_PHRASES.filter((x) => t.includes(x));
+    let tier = "unknown";
+    if (active.length && !inactive.length) tier = "premium";
+    else if (inactive.length && !active.length) tier = "free";
+    return { tier, matched_active: active, matched_inactive: inactive, page_sample: text.slice(0, 400) };
+  } catch (err) {
+    return { tier: "unknown", matched_active: [], matched_inactive: [], error: err.message };
+  }
+}
 
 export async function launchAndLogin() {
   // Prefer the PAID/premium account (no free-tier AI-summary quota), then fall back
@@ -87,29 +128,37 @@ export async function launchAndLogin() {
       viewport: { width: 1440, height: 1200 },
     });
     const page = await context.newPage();
-    log(`logging in… (${tier} account)`);
+    log(`logging in… (credentials from ${tier === "premium" ? "SCREENER_PREMIUM_EMAIL" : "SCREENER_EMAIL"})`);
     const loggedIn = await attemptScreenerLogin(page, email, password);
     if (loggedIn) {
-      activeTier = tier;
-      log(`login OK (${tier} account)`);
-      // A silent downgrade to the free account looks exactly like a paid plan
+      activeCredentialEnv = tier === "premium" ? "SCREENER_PREMIUM_EMAIL" : "SCREENER_EMAIL";
+      log(`login OK (credentials from ${activeCredentialEnv})`);
+
+      // Which variable held the password says nothing about which plan the
+      // account is on. Ask Screener. A paid account stored under SCREENER_EMAIL
+      // was previously reported as "free", and this path then applied
+      // free-tier concall limits to a plan that has none.
+      const detected = await detectAccountTier(page);
+      activeTier = detected.tier === "unknown" ? tier : detected.tier;
+      if (detected.tier === "unknown") {
+        log(
+          `NOTE: could not read the plan off ${BASE}/premium/ — assuming "${tier}" from the credential ` +
+            `variable name. If concall notes hit a quota unexpectedly, this is the first thing to check.`
+        );
+      } else {
+        log(`Screener reports this account is on the ${detected.tier} plan.`);
+      }
+
+      // A silent downgrade to a free account looks exactly like a paid plan
       // that stopped working: the free tier caps concall notes, so the run then
       // fails on "limit exceeded" while the paid plan sits unused. Say it loudly.
-      if (tier === "free" && (process.env.SCREENER_PREMIUM_EMAIL || process.env.SCREENER_PREMIUM_PASSWORD)) {
-        log(
-          "WARNING: running on the FREE account even though premium credentials are set — " +
-            "the premium login did not succeed. Free-tier concall-note limits apply to this run."
-        );
-      } else if (tier === "free") {
-        log(
-          "NOTE: running on the FREE account (no SCREENER_PREMIUM_EMAIL/SCREENER_PREMIUM_PASSWORD set). " +
-            "Free-tier concall-note limits apply."
-        );
+      if (activeTier === "free") {
+        log("NOTE: this account is on the FREE plan — free-tier concall-note limits apply to this run.");
       }
       return { browser, context, page };
     }
     const more = i < creds.length - 1;
-    log(`login FAILED (${tier} account)${more ? " — falling back to the next credentials" : ""}`);
+    log(`login FAILED (credentials from ${tier === "premium" ? "SCREENER_PREMIUM_EMAIL" : "SCREENER_EMAIL"})${more ? " — falling back to the next credentials" : ""}`);
     await context.close().catch(() => {});
   }
 

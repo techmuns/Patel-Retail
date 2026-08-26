@@ -432,6 +432,36 @@
               </div>
             </section>
 
+            <!-- Screener's own figures for the same peer set, refreshed on a
+                 schedule rather than typed in. Rendered by screener-kpis.js. -->
+            <section class="fade-up d1" style="margin-top:20px">
+              <div class="card lift">
+                <div class="card-head">
+                  <div>
+                    <h3>
+                      <span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="activity" class="i16"></i></span>
+                      Live financials &amp; market data
+                    </h3>
+                    <div class="sub" id="screenerStamp"></div>
+                  </div>
+                  <div id="screenerDriftChip"></div>
+                </div>
+                <div class="card-body pad0">
+                  <div class="table-scroll">
+                    <table class="feed-table screener-kpi-table" id="screenerKpiTable">
+                      <thead>
+                        <tr>
+                          <th>Company</th><th>Period</th><th>Revenue</th><th>Operating profit</th>
+                          <th>OPM</th><th>Net profit</th><th>Market cap</th><th>P/E</th><th>ROCE</th><th>ROE</th>
+                        </tr>
+                      </thead>
+                      <tbody id="screenerKpiBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
             <section class="layout-main fade-up d2" style="margin-top:20px">
               <div class="stack">
                 <div class="card lift" id="trentFixCard"></div>

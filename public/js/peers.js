@@ -10,6 +10,7 @@
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
 import { computePnl } from "./pnl.js";
+import { renderScreenerKpis } from "./screener-kpis.js";
 
 const STATUS_META = {
   fixed: { label: "Corrected", tone: "ok" },
@@ -344,6 +345,9 @@ export async function initPeers() {
     renderPeerScaleCard(metrics, operationalCount);
     renderPrivateLabelBlock(metrics);
     renderPeerContradictionsTable(metrics, stores.length);
+    // Last, and awaited separately: a Screener fetch failure must not blank
+    // the peer screen that was already rendered above it.
+    await renderScreenerKpis(metrics);
   } catch (err) {
     if (container) {
       container.innerHTML = `<div class="empty"><div class="empty-ico"><i data-lucide="alert-triangle"></i></div><h4>Couldn't load peer data</h4><p>${escapeHtml(err.message)}</p></div>`;

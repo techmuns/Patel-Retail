@@ -406,3 +406,13 @@
   .topbar .viewtabs .vtab span { display: none; }
   .topbar .vtab { padding: 7px 12px; }
 }
+
+/* Second line in a live-financials cell: the dashboard's own figure, shown
+   beneath Screener's when the two disagree. Both stay visible — the
+   disagreement is the point. */
+.drift-alt {
+  font-size: 10.5px;
+  color: var(--text-4);
+  margin-top: 2px;
+  white-space: nowrap;
+}
