@@ -333,24 +333,9 @@ function estateSection(push, model, n) {
 }
 
 /* ---- Section 3: Peer Benchmark ---------------------------------------------- */
-const BUG_STATUS_LABEL = { fixed: "Fixed here", partially_fixed: "Partially fixed", needs_source_file: "Needs source file", not_applicable: "Not applicable here", confirmed_harmless: "Confirmed harmless" };
-const BUG_STATUS_HEX = { fixed: "#10b981", partially_fixed: "#f59e0b", needs_source_file: "#f43f5e", not_applicable: "#94a3b8", confirmed_harmless: "#10b981" };
 function peerBenchmarkSection(push, model, n) {
   const m = model.metrics;
   sectionHead(push, n, "Peer Benchmark");
-  push(
-    el(`<div class="rpt-block"><p class="rpt-note">All 10 bugs documented in PATEL-HANDOFF.md §10, from Patel Retail's
-      own Peer_Model.xlsx, with an honest status each — not silently repaired and not silently ignored.</p></div>`)
-  );
-  push(
-    el(`<div class="rpt-block"><table class="rpt-pk">
-      <thead><tr><th style="width:66%">Issue</th><th style="width:34%">Status</th></tr></thead>
-      <tbody>${m.peer_model_bugs.items
-        .map((it) => `<tr><td>${escapeHtml(it.issue)}</td><td>${badge(BUG_STATUS_LABEL[it.status] || it.status, BUG_STATUS_HEX[it.status] || "#94a3b8")}</td></tr>`)
-        .join("")}</tbody>
-    </table></div>`)
-  );
-
   const t = m.peer_model_corrections.trent;
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Trent — revenue and revenue/store, corrected</div>
@@ -402,18 +387,12 @@ function peerBenchmarkSection(push, model, n) {
 
   const c = m.cross_file_contradictions;
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Patel's own contested figures — shown side by side, not averaged</div>
-      <table class="rpt-pk">
-        <thead><tr><th style="width:34%">Metric</th><th style="width:33%">Peer model</th><th style="width:33%">Store file</th></tr></thead>
-        <tbody>
-          <tr><td>Store count</td><td class="mono">${c.store_count.peer_model}</td><td class="mono">${c.store_count.store_file_operational} (+${c.store_count.store_file_operational_plus_closed - c.store_count.store_file_operational} closed) = ${c.store_count.store_file_operational_plus_closed}</td></tr>
-          <tr><td>Avg store size</td><td class="mono">${c.avg_store_size_sqft.peer_model.toLocaleString("en-IN")} sq ft</td><td class="mono">${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft</td></tr>
-          <tr><td>Revenue/sq ft/yr</td><td class="mono">${fmtINR(c.revenue_per_sqft_year.peer_model)}</td><td class="mono">${fmtINR(c.revenue_per_sqft_year.store_file)}</td></tr>
-          <tr><td>Avg bill size</td><td class="mono">₹${c.avg_bill_size.peer_model}</td><td class="mono">₹${c.avg_bill_size.store_file}</td></tr>
-          <tr><td>Footprint</td><td>${escapeHtml(m.peer_model_corrections.patel_footprint.wrong)}</td><td>${escapeHtml(m.peer_model_corrections.patel_footprint.corrected)}</td></tr>
-        </tbody>
-      </table>
-    </div>`)
+    el(`<div class="rpt-block"><p class="rpt-note">Where the two supplied files disagree, this report uses the store
+      file throughout: store count ${c.store_count.store_file_operational_plus_closed} (peer model ${c.store_count.peer_model}),
+      avg store size ${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft (peer model ${c.avg_store_size_sqft.peer_model.toLocaleString("en-IN")}),
+      revenue/sq ft ${fmtINR(c.revenue_per_sqft_year.store_file)} (peer model ${fmtINR(c.revenue_per_sqft_year.peer_model)}),
+      avg bill \u20b9${c.avg_bill_size.store_file} (peer model \u20b9${c.avg_bill_size.peer_model}).
+      Full source-file audit: docs/PEER-MODEL-AUDIT.md.</p></div>`)
   );
 }
 

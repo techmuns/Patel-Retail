@@ -1,8 +1,12 @@
 /**
- * public/js/peers.js — Peer Benchmark view. Rebuilds the client's broken
- * peer model per PATEL-HANDOFF.md §10 (all 10 documented bugs), surfacing
- * the two fixes that actually matter (Trent's revenue/area mismatch,
- * Spencer's gross-profit formula bug) prominently. Everything shown is
+ * public/js/peers.js — Peer Benchmark view.
+ *
+ * The fund's Peer_Model.xlsx has 10 documented defects (PATEL-HANDOFF.md §10,
+ * full audit in docs/PEER-MODEL-AUDIT.md). Only the two that move a number
+ * appear on this screen — Trent's revenue/area mismatch and Spencer's
+ * gross-profit formula bug. Checking someone's spreadsheet is backend work;
+ * the screen carries the corrected figures, not the list of what was wrong
+ * with the file they came from. Everything shown is
  * either a number given directly in the handoff or computed live from
  * stores.json — nothing here is estimated to fill a gap. Where the correct
  * number genuinely isn't available (Osia/V2 financials, a few bug-affected
@@ -12,13 +16,6 @@ import { qs, escapeHtml, refreshIcons } from "./ui.js";
 import { computePnl } from "./pnl.js";
 import { renderScreenerKpis } from "./screener-kpis.js";
 
-const STATUS_META = {
-  fixed: { label: "Corrected", tone: "ok" },
-  partially_fixed: { label: "Partly corrected", tone: "warn" },
-  needs_source_file: { label: "Needs source file", tone: "err" },
-  not_applicable: { label: "No impact here", tone: "muted" },
-  confirmed_harmless: { label: "Verified harmless", tone: "ok" },
-};
 
 async function loadMetrics() {
   const res = await fetch("./data/metrics.json", { cache: "no-store" });
@@ -136,22 +133,6 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
       <td>${r.privateLabel}</td>
     </tr>`
     )
-    .join("");
-}
-
-function renderPeerBugsTable(metrics) {
-  const body = qs("#peerBugsTableBody");
-  body.innerHTML = metrics.peer_model_bugs.items
-    .map((item) => {
-      const meta = STATUS_META[item.status] || STATUS_META.needs_source_file;
-      return `
-    <tr>
-      <td style="max-width:340px">${escapeHtml(item.issue)}</td>
-      <td style="max-width:280px;color:var(--text-3);font-size:12.5px">${escapeHtml(item.effect)}</td>
-      <td><span class="chip ${meta.tone === "ok" ? "done" : meta.tone === "warn" ? "queued" : meta.tone === "err" ? "failed" : "src-none"}"><span class="cdot"></span>${escapeHtml(meta.label)}</span></td>
-    </tr>
-`;
-    })
     .join("");
 }
 
@@ -310,41 +291,16 @@ function renderPrivateLabelBlock(metrics) {
   `;
 }
 
-function renderPeerContradictionsTable(metrics, storeCount) {
-  const body = qs("#peerContradictionsTableBody");
-  const c = metrics.cross_file_contradictions;
-  const rows = [
-    { metric: "Store count", peer: c.store_count.peer_model, store: `${c.store_count.store_file_operational} (+${c.store_count.store_file_operational_plus_closed - c.store_count.store_file_operational} closed) = ${c.store_count.store_file_operational_plus_closed}`, note: c.store_count.note },
-    { metric: "Avg store size", peer: `${c.avg_store_size_sqft.peer_model.toLocaleString("en-IN")} sq ft`, store: `${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft` },
-    { metric: "Revenue / sq ft / yr", peer: `₹${c.revenue_per_sqft_year.peer_model.toLocaleString("en-IN")}`, store: `₹${c.revenue_per_sqft_year.store_file.toLocaleString("en-IN")}`, note: `${(c.revenue_per_sqft_year.gap_pct * 100).toFixed(0)}% gap — store-file value used in this dashboard throughout` },
-    { metric: "Avg bill size", peer: `₹${c.avg_bill_size.peer_model}`, store: `₹${c.avg_bill_size.store_file}` },
-    { metric: "Footprint", peer: escapeHtml(metrics.peer_model_corrections.patel_footprint.wrong), store: escapeHtml(metrics.peer_model_corrections.patel_footprint.corrected), note: `Verified live against stores.json — ${storeCount} stores` },
-  ];
-  body.innerHTML = rows
-    .map(
-      (r) => `
-    <tr>
-      <td>${escapeHtml(r.metric)}</td>
-      <td class="mono">${r.peer}</td>
-      <td class="mono">${r.store}</td>
-    </tr>
-    ${r.note ? `<tr><td colspan="3" style="color:var(--text-4);font-size:11.5px;padding-top:0">${escapeHtml(r.note)}</td></tr>` : ""}`
-    )
-    .join("");
-}
-
 export async function initPeers() {
   const container = qs("#viewPeers");
   try {
     const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
     const operationalCount = stores.filter((s) => s.status === "operational").length;
     renderGenuinePeerTable(metrics, operationalCount);
-    renderPeerBugsTable(metrics);
     renderTrentFixCard(metrics);
     renderSpencersFixCard(metrics);
     renderPeerScaleCard(metrics, operationalCount);
     renderPrivateLabelBlock(metrics);
-    renderPeerContradictionsTable(metrics, stores.length);
     // Last, and awaited separately: a Screener fetch failure must not blank
     // the peer screen that was already rendered above it.
     await renderScreenerKpis(metrics);

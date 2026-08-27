@@ -139,6 +139,7 @@ function renderSourceTrace(metrics, stores, filed) {
   const SCREENER = filed?.patel?.url || "https://www.screener.in/company/PATELRMART/";
   const STORE_FILE = "Patel_Retail_data_Munshot.xlsx";
   const PEER_FILE = "Peer_Model.xlsx";
+  const cfc = metrics.cross_file_contradictions;
 
   const rows = [];
 
@@ -152,14 +153,14 @@ function renderSourceTrace(metrics, stores, filed) {
   }
 
   rows.push(
-    { figure: "Store count", value: `${stores.length}`, kind: "reported", basis: "Company store list + Reg 30 filings", source: `${LINK("https://patelrpl.in/", "patelrpl.in")} + BSE announcements (scrip 544487)` },
+    { figure: "Store count", value: `${stores.length}`, kind: "reported", basis: "Company store list + Reg 30 filings", source: `${LINK("https://patelrpl.in/", "patelrpl.in")} + BSE announcements (scrip 544487) — ${escapeHtml(PEER_FILE)} says ${cfc.store_count.peer_model}, not used` },
     { figure: "Revenue / sq ft / yr", value: fmtINR(ue.revenue_per_sqft_year), kind: "reported", basis: "Fund-supplied store file", source: `${escapeHtml(STORE_FILE)} — peer model says ${fmtINR(metrics.cross_file_contradictions.revenue_per_sqft_year.peer_model)}, not used` },
-    { figure: "Area / store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate", basis: "One blended average applied to all stores", source: `${escapeHtml(STORE_FILE)} — no per-store area exists in any filing` },
+    { figure: "Area / store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate", basis: "One blended average applied to all stores", source: `${escapeHtml(STORE_FILE)} — no per-store area in any filing; ${escapeHtml(PEER_FILE)} says ${cfc.avg_store_size_sqft.peer_model.toLocaleString("en-IN")} sq ft, not used` },
     { figure: "Gross margin", value: fmtPct(ue.gross_margin_pct), kind: "reported", basis: `Range ${escapeHtml(ue.gross_margin_pct_range)}, midpoint used`, source: escapeHtml(STORE_FILE) },
     { figure: "Rent / sq ft / month", value: fmtINR(ue.rent_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
     { figure: "Utilities / sq ft / month", value: fmtINR(ue.utility_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
     { figure: "Staff / store", value: `${ue.employees_per_store} @ ${fmtINR(ue.avg_salary_month)}/mo`, kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
-    { figure: "Bills / day · avg order", value: `${ue.bills_per_day} · ${fmtINR(ue.avg_order_value)}`, kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
+    { figure: "Bills / day · avg order", value: `${ue.bills_per_day} · ${fmtINR(ue.avg_order_value)}`, kind: "reported", basis: "Not disclosed in any filing", source: `${escapeHtml(STORE_FILE)} — ${escapeHtml(PEER_FILE)} says ${fmtINR(cfc.avg_bill_size.peer_model)} avg bill, not used` },
     { figure: "Private label %", value: fmtPct(ue.private_label_pct), kind: "reported", basis: "Single figure, not a range", source: escapeHtml(STORE_FILE) },
     { figure: "B2C share of revenue", value: fmtPct(rec.b2c_share_pct), kind: "reported", basis: "Applied uniformly to revenue, EBITDA and PAT", source: escapeHtml(PEER_FILE) },
     { figure: "Store EBITDA", value: fmtPct(computePnl(rec).ebitdaPct), kind: "derived", basis: "Computed live from the store-file inputs above", source: "public/js/pnl.js — no stored figure" }
