@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-08-26T10:25:19.757Z",
+  "fetched_at": "2026-08-27T13:00:02.008Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -34,18 +34,18 @@
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 775 Cr.",
+          "display": "₹ 781 Cr.",
           "numbers": [
-            "775"
+            "781"
           ],
-          "value": 775
+          "value": 781
         },
         "Current Price": {
-          "display": "₹ 232",
+          "display": "₹ 234",
           "numbers": [
-            "232"
+            "234"
           ],
-          "value": 232
+          "value": 234
         },
         "High / Low": {
           "display": "₹ 284 / 149",
@@ -56,11 +56,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "18.6",
+          "display": "18.8",
           "numbers": [
-            "18.6"
+            "18.8"
           ],
-          "value": 18.6
+          "value": 18.8
         },
         "Book Value": {
           "display": "₹ 109",
@@ -817,7 +817,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:24:46.511Z"
+      "fetched_at": "2026-08-27T12:59:28.937Z"
     },
     {
       "ticker": "DMART",
@@ -831,18 +831,18 @@
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 2,49,288 Cr.",
+          "display": "₹ 2,51,267 Cr.",
           "numbers": [
-            "2,49,288"
+            "2,51,267"
           ],
-          "value": 249288
+          "value": 251267
         },
         "Current Price": {
-          "display": "₹ 3,822",
+          "display": "₹ 3,847",
           "numbers": [
-            "3,822"
+            "3,847"
           ],
-          "value": 3822
+          "value": 3847
         },
         "High / Low": {
           "display": "₹ 4,950 / 3,529",
@@ -853,11 +853,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "81.5",
+          "display": "82.2",
           "numbers": [
-            "81.5"
+            "82.2"
           ],
-          "value": 81.5
+          "value": 82.2
         },
         "Book Value": {
           "display": "₹ 375",
@@ -1921,7 +1921,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:24:47.066Z"
+      "fetched_at": "2026-08-27T12:59:29.418Z"
     },
     {
       "ticker": "VMM",
@@ -1935,18 +1935,18 @@
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 51,299 Cr.",
+          "display": "₹ 50,651 Cr.",
           "numbers": [
-            "51,299"
+            "50,651"
           ],
-          "value": 51299
+          "value": 50651
         },
         "Current Price": {
-          "display": "₹ 110",
+          "display": "₹ 108",
           "numbers": [
-            "110"
+            "108"
           ],
-          "value": 110
+          "value": 108
         },
         "High / Low": {
           "display": "₹ 155 / 98.7",
@@ -1957,11 +1957,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "57.5",
+          "display": "56.8",
           "numbers": [
-            "57.5"
+            "56.8"
           ],
-          "value": 57.5
+          "value": 56.8
         },
         "Book Value": {
           "display": "₹ 15.9",
@@ -2762,7 +2762,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:24:47.522Z"
+      "fetched_at": "2026-08-27T12:59:29.826Z"
     },
     {
       "ticker": "TRENT",
@@ -2776,18 +2776,18 @@
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 1,55,171 Cr.",
+          "display": "₹ 1,53,209 Cr.",
           "numbers": [
-            "1,55,171"
+            "1,53,209"
           ],
-          "value": 155171
+          "value": 153209
         },
         "Current Price": {
-          "display": "₹ 2,910",
+          "display": "₹ 2,875",
           "numbers": [
-            "2,910"
+            "2,875"
           ],
-          "value": 2910
+          "value": 2875
         },
         "High / Low": {
           "display": "₹ 3,783 / 2,184",
@@ -2798,11 +2798,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "84.8",
+          "display": "83.8",
           "numbers": [
-            "84.8"
+            "83.8"
           ],
-          "value": 84.8
+          "value": 83.8
         },
         "Book Value": {
           "display": "₹ 131",
@@ -3866,7 +3866,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:24:47.985Z"
+      "fetched_at": "2026-08-27T12:59:30.234Z"
     },
     {
       "ticker": "SPENCERS",
@@ -3880,18 +3880,18 @@
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 270 Cr.",
+          "display": "₹ 268 Cr.",
           "numbers": [
-            "270"
+            "268"
           ],
-          "value": 270
+          "value": 268
         },
         "Current Price": {
-          "display": "₹ 30.0",
+          "display": "₹ 29.7",
           "numbers": [
-            "30.0"
+            "29.7"
           ],
-          "value": 30
+          "value": 29.7
         },
         "High / Low": {
           "display": "₹ 64.0 / 24.3",
@@ -4869,7 +4869,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:25:18.893Z"
+      "fetched_at": "2026-08-27T13:00:01.099Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -4883,18 +4883,18 @@
       "about": "Incorporated in 2014, Osia Hyper Retail Ltd is in the retail business through supermarket chain.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 47.8 Cr.",
+          "display": "₹ 46.2 Cr.",
           "numbers": [
-            "47.8"
+            "46.2"
           ],
-          "value": 47.8
+          "value": 46.2
         },
         "Current Price": {
-          "display": "₹ 2.70",
+          "display": "₹ 2.61",
           "numbers": [
-            "2.70"
+            "2.61"
           ],
-          "value": 2.7
+          "value": 2.61
         },
         "High / Low": {
           "display": "₹ 33.1 / 2.40",
@@ -4905,11 +4905,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "2.66",
+          "display": "2.57",
           "numbers": [
-            "2.66"
+            "2.57"
           ],
-          "value": 2.66
+          "value": 2.57
         },
         "Book Value": {
           "display": "₹ 24.4",
@@ -5950,7 +5950,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:25:19.301Z"
+      "fetched_at": "2026-08-27T13:00:01.539Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -5964,18 +5964,18 @@
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 8,035 Cr.",
+          "display": "₹ 8,117 Cr.",
           "numbers": [
-            "8,035"
+            "8,117"
           ],
-          "value": 8035
+          "value": 8117
         },
         "Current Price": {
-          "display": "₹ 220",
+          "display": "₹ 222",
           "numbers": [
-            "220"
+            "222"
           ],
-          "value": 220
+          "value": 222
         },
         "High / Low": {
           "display": "₹ 259 / 157",
@@ -5986,11 +5986,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "49.0",
+          "display": "49.6",
           "numbers": [
-            "49.0"
+            "49.6"
           ],
-          "value": 49
+          "value": 49.6
         },
         "Book Value": {
           "display": "₹ 24.8",
@@ -7037,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-08-26T10:25:19.726Z"
+      "fetched_at": "2026-08-27T13:00:01.968Z"
     }
   ]
 }

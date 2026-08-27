@@ -5,17 +5,26 @@
   "source": "BSE corporate announcements (api.bseindia.com) — SEBI LODR Regulation 30 filings",
   "kind": "reported",
   "note": "Patel Retail's own exchange filings, fetched live — not a file anyone had to send. New-store filings are flagged as candidates for review, never auto-added to stores.json: a filing headline is not a resolved coordinate, and a wrong pin is worse than a missing one.",
-  "fetched_at": "2026-08-26T10:22:37.703Z",
+  "fetched_at": "2026-08-27T12:58:29.196Z",
   "window": {
-    "from": "20250722",
-    "to": "20260826"
+    "from": "20250723",
+    "to": "20260827"
   },
   "pdf_body_scanning": true,
   "counts": {
-    "total": 97,
-    "new_store_candidates": 5
+    "total": 98,
+    "new_store_candidates": 4
   },
   "announcements": [
+    {
+      "id": "f01dfebc-6731-44be-936a-5f47a0088613",
+      "date": "2026-08-27",
+      "headline": "Announcement under Regulation 30 (LODR)-Earnings Call Transcript",
+      "category": "Company Update",
+      "kind": "earnings_call",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/0406c2ad-b08d-4dce-bcf3-6bad45d35b10.pdf"
+    },
     {
       "id": "8de93de8-3fdf-4ede-895e-3bcef66a4910",
       "date": "2026-08-24",
@@ -164,13 +173,10 @@
       "date": "2026-07-25",
       "headline": "Patel Retail Limited Has Informed The Exchange About Opening Of Patel''s R Mart Store No.53",
       "category": "Company Update",
-      "kind": "new_store",
-      "new_store_candidate": true,
+      "kind": "other",
+      "new_store_candidate": false,
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/4d364a55-7b28-4067-8c79-001f8981b1d0.pdf",
-      "body_scanned": true,
-      "detected_in": "attachment_body",
-      "store_location": null,
-      "store_number": null
+      "body_scan_error": "HTTP 404"
     },
     {
       "id": "e145d88b-1b69-4e1f-9d50-b299b745def2",
