@@ -5,10 +5,10 @@
   "source": "BSE corporate announcements (api.bseindia.com) — SEBI LODR Regulation 30 filings",
   "kind": "reported",
   "note": "Patel Retail's own exchange filings, fetched live — not a file anyone had to send. New-store filings are flagged as candidates for review, never auto-added to stores.json: a filing headline is not a resolved coordinate, and a wrong pin is worse than a missing one.",
-  "fetched_at": "2026-08-28T14:29:47.168Z",
+  "fetched_at": "2026-08-29T09:16:07.765Z",
   "window": {
-    "from": "20250724",
-    "to": "20260828"
+    "from": "20250725",
+    "to": "20260829"
   },
   "pdf_body_scanning": true,
   "counts": {
@@ -199,7 +199,7 @@
       "kind": "other",
       "new_store_candidate": false,
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/796fabb5-a2ce-49d4-8128-23a9d34140b8.pdf",
-      "body_scanned": true
+      "body_scan_error": "HTTP 404"
     },
     {
       "id": "93353568-ed0b-4744-a391-4e9bcc65d4eb",
@@ -219,7 +219,7 @@
       "kind": "other",
       "new_store_candidate": false,
       "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9a7cb026-248a-4105-8c30-ce35ccdb3dd8.pdf",
-      "body_scanned": true
+      "body_scan_error": "HTTP 404"
     },
     {
       "id": "7e645ac5-4a71-4a6f-8178-ea93020930ac",
