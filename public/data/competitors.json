@@ -3,7 +3,7 @@
   "source_url": "https://overpass-api.de/api/interpreter",
   "query": "[out:json][timeout:60];\nnode[\"shop\"=\"supermarket\"][\"name\"~\"^[Dd][- ]?[Mm]art\"]\n  (18.6,72.7,19.8,73.6);\nout;",
   "caveat": "OpenStreetMap coverage is community-maintained and likely incomplete — absence of a DMart here does not mean one doesn't exist; treat this as a lower bound, not an authoritative count, and cross-check against Avenue Supermarts' own annual report store count for Maharashtra the next time this is touched. The name-match pattern is anchored (^[Dd][- ]?[Mm]art) specifically to exclude substring false positives like a 'food mart' matching an earlier, unanchored version of this query; every entry still carries brand_tag_confirms_dmart as a second, independent confirmation signal.",
-  "scraped_at": "2026-08-29T09:17:09.245Z",
+  "scraped_at": "2026-08-30T08:29:15.091Z",
   "banner": "DMart",
   "stores": [
     {
