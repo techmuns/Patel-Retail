@@ -222,34 +222,32 @@ function buildUnitEconomics(wb, { metrics, rev }) {
   const ws = wb.addWorksheet("Unit Economics", { views: [{ showGridLines: false }] });
   ws.columns = [{ width: 40 }, { width: 18 }, { width: 60 }];
   let r = 1;
-  headerBand(ws, "MUNSHOT  ·  Unit Economics — Patel Retail Ltd (blue = reported input, black = live formula)", 3, r++);
+  headerBand(ws, "MUNSHOT  ·  Unit Economics — Patel Retail Ltd", 3, r++);
 
-  band(ws, r++, "Reported inputs — company store data", 3);
+  band(ws, r++, "Inputs", 3);
   const areaRow = r;
-  inputRow(ws, r++, "Area per store (sq ft) [estimate]", ue.sqft_per_store, ue.sqft_per_store_note);
+  inputRow(ws, r++, "Area per store (sq ft)", ue.sqft_per_store, "Estimate — one blended average for all stores");
   const revSqftRow = r;
   inputRow(
     ws,
     r++,
-    `Revenue per sq ft per year (₹) [${rev?.live ? "derived" : "reported"}]`,
+    "Revenue per sq ft per year (₹)",
     revPerSqft,
-    rev?.live
-      ? `Derived from the filed P&L: revenue ₹${rev.salesCr.toLocaleString("en-IN")} cr (${rev.period}) × ${(rev.retailSharePct * 100).toFixed(0)}% retail share ÷ ${rev.operationalStores} operational stores ÷ area per store`
-      : "Company store data"
+    rev?.live ? `Derived — see Derivation block below` : "Company store data"
   );
   const marginRow = r;
-  inputRow(ws, r++, "Gross margin % [reported, midpoint of 16–17%]", ue.gross_margin_pct, ue.gross_margin_pct_note);
+  inputRow(ws, r++, "Gross margin %", ue.gross_margin_pct, `Midpoint of ${ue.gross_margin_pct_range}`);
   const rentRow = r;
-  inputRow(ws, r++, "Rent per sq ft per month (₹) [reported]", ue.rent_per_sqft_month);
+  inputRow(ws, r++, "Rent per sq ft per month (₹)", ue.rent_per_sqft_month, "Company store data");
   const utilRow = r;
-  inputRow(ws, r++, "Utility per sq ft per month (₹) [reported]", ue.utility_per_sqft_month);
+  inputRow(ws, r++, "Utility per sq ft per month (₹)", ue.utility_per_sqft_month, "Company store data");
   const empRow = r;
-  inputRow(ws, r++, "Employees per store [reported]", ue.employees_per_store);
+  inputRow(ws, r++, "Employees per store", ue.employees_per_store, "Company store data");
   const salRow = r;
-  inputRow(ws, r++, "Avg salary per month (₹) [reported]", ue.avg_salary_month);
+  inputRow(ws, r++, "Avg salary per month (₹)", ue.avg_salary_month, "Company store data");
   r++;
 
-  band(ws, r++, "Derived store P&L (formulas — recalculates if an input above changes)", 3);
+  band(ws, r++, "Store P&L — live formulas over the inputs above", 3);
   // Same formula shape as computePnl() in pnl.js (which the screen and PDF
   // both import directly) — not imported here, because this sheet needs its
   // cached cell values to match what Excel's own ROUND()-per-step formulas
@@ -276,27 +274,34 @@ function buildUnitEconomics(wb, { metrics, rev }) {
   formulaRow(ws, r++, "Store EBITDA margin %", `ROUND(B${ebitdaLRow}/B${revenueRow},4)`, ebitdaPct, "0.0%");
   r++;
 
-  band(ws, r++, "Reconciliation flag — store-level vs peer-model company-level EBITDA", 3);
-  inputRow(ws, r++, "Company-level EBITDA % as filed [reported]", rec.peer_model_b2c_ebitda_pct, "Exchange filing via Screener");
-  const flagRow = ws.getRow(r++);
-  flagRow.getCell(1).value = rec.flag_note;
-  flagRow.getCell(1).font = { size: 10, color: { argb: "FF334155" } };
-  flagRow.getCell(1).alignment = { wrapText: true, vertical: "top" };
-  ws.mergeCells(flagRow.number, 1, flagRow.number, 3);
-  ws.getRow(flagRow.number).height = 90;
-  flagRow.eachCell((c) => (c.border = box()));
-  if (rec.total_company_note) {
-    const tcRow = ws.getRow(r++);
-    tcRow.getCell(1).value = `Total company: revenue ₹${rec.total_company_revenue_cr} cr, EBITDA ₹${rec.total_company_ebitda_cr} cr, PAT ₹${rec.total_company_pat_cr} cr, B2C share ${(rec.b2c_share_pct * 100).toFixed(0)}%. ${rec.total_company_note}`;
-    tcRow.getCell(1).font = { size: 9.5, italic: true, color: { argb: MUTE } };
-    tcRow.getCell(1).alignment = { wrapText: true, vertical: "top" };
-    ws.mergeCells(tcRow.number, 1, tcRow.number, 3);
-    ws.getRow(tcRow.number).height = 60;
-    tcRow.eachCell((c) => (c.border = box()));
+  // The revenue-per-sq-ft input is derived, so show the arithmetic as rows
+  // rather than as a paragraph wrapped inside one cell.
+  if (rev?.live) {
+    band(ws, r++, `Derivation of revenue per sq ft — from the filed P&L, ${rev.period}`, 3);
+    inputRow(ws, r++, "Company revenue (₹ cr)", rev.salesCr, "Filed");
+    inputRow(ws, r++, "Retail share of revenue", rev.retailSharePct, "Company-stated");
+    inputRow(ws, r++, "Retail revenue (₹ cr)", Math.round(rev.retailCr), "= revenue × retail share");
+    inputRow(ws, r++, "Operational stores", rev.operationalStores, "Live store list");
+    inputRow(ws, r++, "Revenue per store (₹ lakh)", Math.round(revenueL * 100) / 100, "= retail revenue ÷ stores");
+    ws.getRow(r - 1).getCell(2).numFmt = "#,##0.00";
+    inputRow(ws, r++, "Revenue per sq ft (₹)", revPerSqft, "= revenue per store ÷ area");
+    r++;
   }
+
+  band(ws, r++, "Store build-up vs company level", 3);
+  inputRow(ws, r++, "Store EBITDA margin % (before head-office)", ebitdaPct, "From the P&L above");
+  ws.getRow(r - 1).getCell(2).numFmt = "0.0%";
+  inputRow(ws, r++, "Company EBITDA margin % (as filed)", rec.peer_model_b2c_ebitda_pct, "Exchange filing via Screener");
+  ws.getRow(r - 1).getCell(2).numFmt = "0.0%";
+  inputRow(ws, r++, "Gap (store − company), pts", Math.round((ebitdaPct - rec.peer_model_b2c_ebitda_pct) * 1000) / 10, "Head-office cost should push this the other way");
+  inputRow(ws, r++, "Company revenue (₹ cr)", rec.total_company_revenue_cr, "Filed");
+  inputRow(ws, r++, "Company EBITDA (₹ cr)", rec.total_company_ebitda_cr, "Filed");
+  inputRow(ws, r++, "Company PAT (₹ cr)", rec.total_company_pat_cr, "Filed");
+  inputRow(ws, r++, "Retail share of revenue", rec.b2c_share_pct, "Applied to revenue, EBITDA and PAT alike");
+  ws.getRow(r - 1).getCell(2).numFmt = "0%";
   r++;
 
-  band(ws, r++, "Revenue mix & margin (reported — ranges shown as a note where the source gives a range, not a single figure)", 3);
+  band(ws, r++, "Revenue mix & margin", 3);
   inputRow(ws, r++, "Food %", mix.food);
   inputRow(ws, r++, "Non-food %", mix.non_food, mix.non_food_note);
   inputRow(ws, r++, "Merchandise %", mix.merchandise, mix.merchandise_note);

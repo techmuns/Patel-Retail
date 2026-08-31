@@ -226,8 +226,9 @@ function patelBodyBlocks(model) {
   return blocks;
 }
 
+/** Every section opens a page of its own. */
 function sectionHead(push, n, title) {
-  push(el(`<div class="rpt-block rpt-keep"><div class="rpt-sec-h"><span class="rpt-sec-n">${n}</span>${escapeHtml(title)}</div></div>`));
+  push(el(`<div class="rpt-block rpt-keep rpt-break"><div class="rpt-sec-h"><span class="rpt-sec-n">${n}</span>${escapeHtml(title)}</div></div>`));
 }
 
 /* ---- Section 1: Store Network — Precision Status --------------------------- */
@@ -263,11 +264,18 @@ function storeNetworkSection(push, model, n) {
   const s = computeStats(model);
   sectionHead(push, n, "Store Network — Precision Status");
   push(
-    el(`<div class="rpt-block"><p class="rpt-note">${stores.length} stores total (${s.operational} operational,
-      ${stores.length - s.operational} closed) across ${s.towns} towns. ${s.locatable} of ${s.total} are precisely
-      located; ${s.coarse} resolved only to a town centroid — shown here with distances suppressed rather than
-      fabricated, since a town can be several km across (see PATEL-HANDOFF.md §15.1); ${s.pendingGeocode} have no
-      coordinates at all pending Patel Retail's own pins (docs/PINS-NEEDED.md).</p></div>`)
+    el(`<div class="rpt-block"><table class="rpt-pk">
+      <thead><tr><th style="width:60%">Network</th><th style="width:20%">Stores</th><th style="width:20%">Share</th></tr></thead>
+      <tbody>
+        <tr><td>Total</td><td class="mono" style="text-align:right">${stores.length}</td><td class="mono" style="text-align:right">100%</td></tr>
+        <tr><td>Operational</td><td class="mono" style="text-align:right">${s.operational}</td><td class="mono" style="text-align:right">${Math.round((s.operational / stores.length) * 100)}%</td></tr>
+        <tr><td>Closed</td><td class="mono" style="text-align:right">${stores.length - s.operational}</td><td class="mono" style="text-align:right">${Math.round(((stores.length - s.operational) / stores.length) * 100)}%</td></tr>
+        <tr><td>Towns covered</td><td class="mono" style="text-align:right">${s.towns}</td><td class="mono" style="text-align:right">&mdash;</td></tr>
+        <tr><td>Precisely located</td><td class="mono" style="text-align:right">${s.locatable}</td><td class="mono" style="text-align:right">${Math.round((s.locatable / s.total) * 100)}%</td></tr>
+        <tr><td>Town centroid only &mdash; distances suppressed</td><td class="mono" style="text-align:right">${s.coarse}</td><td class="mono" style="text-align:right">${Math.round((s.coarse / s.total) * 100)}%</td></tr>
+        <tr><td>No coordinates &mdash; map pin needed</td><td class="mono" style="text-align:right">${s.pendingGeocode}</td><td class="mono" style="text-align:right">${Math.round((s.pendingGeocode / s.total) * 100)}%</td></tr>
+      </tbody>
+    </table></div>`)
   );
   const sorted = stores.slice().sort((a, b) => a.town.localeCompare(b.town) || a.store_id.localeCompare(b.store_id));
   chunk(sorted, 22).forEach((group, gi) => push(el(`<div class="rpt-block">${storeTable(group, gi > 0)}</div>`)));
@@ -289,15 +297,15 @@ function estateSection(push, model, n) {
 
   sectionHead(push, n, "Estate & Vintage");
   push(
-    el(`<div class="rpt-block"><p class="rpt-note">Oldest store: <b>${escapeHtml(oldest.name)}</b>
-      (${escapeHtml(oldest.opened)}). Newest: <b>${escapeHtml(newest.name)}</b> (${escapeHtml(newest.opened)}).
-      Two different "under 2 years" figures, both real: <b>${in2024Plus} of ${stores.length}</b>
-      (${Math.round((in2024Plus / stores.length) * 100)}%) opened in calendar year 2024 or later — a fixed fact
-      that won't change — while <b>${rollingRecent} of ${stores.length}</b>
-      (${Math.round((rollingRecent / stores.length) * 100)}%) opened in the trailing 2 years as of
-      ${escapeHtml(model.dateLabel)} — smaller, and shrinking, because the 2024 cohort keeps aging past the
-      2-year mark while the calendar-year count doesn't move. Both shown rather than picking whichever sounds
-      more dramatic.</p></div>`)
+    el(`<div class="rpt-block"><table class="rpt-pk">
+      <thead><tr><th style="width:50%">Vintage</th><th style="width:28%">Value</th><th style="width:22%">Share</th></tr></thead>
+      <tbody>
+        <tr><td>Oldest store</td><td>${escapeHtml(oldest.name)}</td><td class="mono">${escapeHtml(oldest.opened)}</td></tr>
+        <tr><td>Newest store</td><td>${escapeHtml(newest.name)}</td><td class="mono">${escapeHtml(newest.opened)}</td></tr>
+        <tr><td>Opened 2024 or later (calendar)</td><td class="mono" style="text-align:right">${in2024Plus} of ${stores.length}</td><td class="mono" style="text-align:right">${Math.round((in2024Plus / stores.length) * 100)}%</td></tr>
+        <tr><td>Under 2 years old (rolling, as at ${escapeHtml(model.dateLabel)})</td><td class="mono" style="text-align:right">${rollingRecent} of ${stores.length}</td><td class="mono" style="text-align:right">${Math.round((rollingRecent / stores.length) * 100)}%</td></tr>
+      </tbody>
+    </table></div>`)
   );
 
   const ageRows = VINTAGE_BUCKETS.map((bucket, i) => {
@@ -345,36 +353,49 @@ function estateSection(push, model, n) {
 function peerBenchmarkSection(push, model, n) {
   const m = model.metrics;
   sectionHead(push, n, "Peer Benchmark");
-  const t = m.peer_model_corrections.trent;
-  push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Trent — revenue and revenue/store, corrected</div>
-      <table class="rpt-pk">
-        <thead><tr><th style="width:34%">Figure</th><th style="width:33%">Old model (wrong)</th><th style="width:33%">Corrected</th></tr></thead>
-        <tbody>
-          <tr><td>Revenue</td><td class="mono">${fmtCr(t.wrong_revenue_cr)}</td><td class="mono">${fmtCr(t.corrected_revenue_cr)}</td></tr>
-          <tr><td>Revenue/store</td><td class="mono">${fmtL(t.wrong_revenue_per_store_lakh)}</td><td class="mono">${fmtL(t.corrected_revenue_per_store_lakh)}</td></tr>
-        </tbody>
-      </table>
-      <p class="rpt-note">${escapeHtml(t.still_needs_source_file)}</p>
-    </div>`)
-  );
-
-  const sp = m.peer_model_corrections.spencers;
-  push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Spencer's — gross profit, corrected (understated ${fmtPct(sp.understated_pct, 0)})</div>
-      <table class="rpt-pk">
-        <thead><tr><th style="width:34%">Figure</th><th style="width:33%">Old model (wrong)</th><th style="width:33%">Corrected</th></tr></thead>
-        <tbody><tr><td>Gross profit</td><td class="mono">${fmtCr(sp.wrong_gross_profit_cr)}</td><td class="mono">${fmtCr(sp.corrected_gross_profit_cr)}</td></tr></tbody>
-      </table>
-    </div>`)
-  );
 
   const osia = m.osia_hyper_retail;
   const v2 = m.v2_retail;
   const naOr = (v, fmt) => (v == null ? "Not disclosed" : fmt(v));
+  const dashOr = (v, fmt) => (v == null ? "\u2014" : fmt(v));
+  const shortPeriod = (p) => String(p || "").replace(/\s*\([^)]*\)/, "");
   const operationalCount = model.stores.filter((st) => st.status === "operational").length;
+
+  // Whole peer set on one table rather than a page of prose about it.
+  const peers = [
+    { name: "Patel Retail", period: m.store_pnl_reconciliation.fiscal_year || "FY2026", rev: m.store_pnl_reconciliation.total_company_revenue_cr, ebitdaPct: m.store_pnl_reconciliation.peer_model_b2c_ebitda_pct, stores: operationalCount, pl: m.peer_comparison.private_label_pct.patel },
+    { name: "Avenue Supermarts (DMart)", period: m.dmart.fiscal_year, rev: m.dmart.revenue_cr, ebitdaPct: m.dmart.ebitda_margin_pct, stores: m.dmart.total_stores, pl: m.peer_comparison.private_label_pct.dmart },
+    { name: "Vishal Mega Mart", period: m.vishal_mega_mart.fiscal_year, rev: m.vishal_mega_mart.revenue_cr, ebitdaPct: m.vishal_mega_mart.ebitda_margin_pct, stores: m.vishal_mega_mart.total_stores, pl: m.peer_comparison.private_label_pct.vishal_mega_mart },
+    { name: "Trent (Star Bazaar)", period: "FY2026", rev: m.peer_model_corrections.trent.corrected_revenue_cr, ebitdaPct: null, stores: m.peer_model_corrections.trent.store_count, pl: m.peer_comparison.private_label_pct.trent },
+    { name: "Spencer's Retail", period: m.spencers_retail.fiscal_year, rev: m.spencers_retail.revenue_cr, ebitdaPct: m.spencers_retail.ebitda_margin_pct, stores: m.spencers_retail.total_stores, pl: null },
+    { name: "Osia Hyper Retail", period: osia.fiscal_year, rev: osia.revenue_cr, ebitdaPct: osia.ebitda_margin_pct, stores: osia.total_stores, pl: osia.private_label_pct },
+    { name: "V2 Retail", period: v2.fiscal_year, rev: v2.revenue_cr, ebitdaPct: v2.ebitda_margin_pct, stores: v2.total_stores, pl: v2.private_label_pct },
+  ];
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Osia Hyper Retail &amp; V2 Retail — the closest scale peers (Patel's own scale is ${operationalCount} operational stores; every other peer in the model is 120+)</div>
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Peer set ${kindBadge("reported")}</div>
+      <table class="rpt-pk">
+        <thead><tr>
+          <th style="width:30%">Company</th><th style="width:13%">Period</th><th style="width:17%">Revenue</th>
+          <th style="width:13%">EBITDA %</th><th style="width:12%">Stores</th><th style="width:15%">Private label</th>
+        </tr></thead>
+        <tbody>${peers
+          .map(
+            (p) => `<tr>
+            <td>${escapeHtml(p.name)}</td>
+            <td class="mono">${escapeHtml(shortPeriod(p.period))}</td>
+            <td class="mono" style="text-align:right">${fmtCr(p.rev)}</td>
+            <td class="mono" style="text-align:right">${dashOr(p.ebitdaPct, (v) => fmtPct(v))}</td>
+            <td class="mono" style="text-align:right">${dashOr(p.stores, (v) => v.toLocaleString("en-IN"))}</td>
+            <td class="mono" style="text-align:right">${dashOr(p.pl, (v) => fmtPct(v))}</td>
+          </tr>`
+          )
+          .join("")}</tbody>
+      </table>
+    </div>`)
+  );
+
+  push(
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Closest scale peers &mdash; Patel operates ${operationalCount} stores; every other peer is 120+ ${kindBadge("reported")}</div>
       <table class="rpt-pk">
         <thead><tr><th style="width:22%">Figure</th><th style="width:39%">Osia Hyper Retail (${escapeHtml(osia.fiscal_year)})</th><th style="width:39%">V2 Retail (${escapeHtml(v2.fiscal_year)})</th></tr></thead>
         <tbody>
@@ -383,24 +404,13 @@ function peerBenchmarkSection(push, model, n) {
           <tr><td>EBITDA (margin)</td><td class="mono">${fmtCr(osia.ebitda_cr)} (${fmtPct(osia.ebitda_margin_pct)})</td><td class="mono">${fmtCr(v2.ebitda_cr)} (${fmtPct(v2.ebitda_margin_pct)})</td></tr>
           <tr><td>PAT</td><td class="mono">${fmtCr(osia.pat_cr)}</td><td class="mono">${fmtCr(v2.pat_cr)}</td></tr>
           <tr><td>Total stores</td><td class="mono">${naOr(osia.total_stores, (v) => v.toLocaleString("en-IN"))}</td><td class="mono">${naOr(v2.total_stores, (v) => v.toLocaleString("en-IN"))}</td></tr>
-          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft${osia.retail_area_store_basis ? ` (${osia.retail_area_store_basis} of ${osia.total_stores} stores)` : ""}`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
+          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft${osia.retail_area_store_basis ? ` (${osia.retail_area_store_basis} of ${osia.total_stores})` : ""}`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
           <tr><td>Private label %</td><td class="mono">${naOr(osia.private_label_pct, (v) => fmtPct(v))}</td><td class="mono">${naOr(v2.private_label_pct, (v) => `${fmtPct(v)}${v2.private_label_as_of ? ` (${escapeHtml(v2.private_label_as_of)})` : ""}`)}</td></tr>
+          <tr><td>Status</td><td>${escapeHtml(osia.status_flag || "\u2014")}</td><td>Apparel-led, not a grocer</td></tr>
+          <tr><td>Comparability</td><td>One year behind &mdash; not like-for-like</td><td>Scale comparison, not margin</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note">${escapeHtml(osia.name)}: ${escapeHtml(osia.note)} — ${escapeHtml(osia.source)}</p>
-      <p class="rpt-note">${escapeHtml(osia.period_offset_flag)}</p>
-      <p class="rpt-note">${escapeHtml(v2.name)}: ${escapeHtml(v2.note)} — ${escapeHtml(v2.source)}</p>
-      <p class="rpt-note">${escapeHtml(v2.category_flag)}</p>
     </div>`)
-  );
-
-  const c = m.cross_file_contradictions;
-  push(
-    el(`<div class="rpt-block"><p class="rpt-note">Where the two supplied files disagree, this report uses the store
-      company store data throughout: store count ${c.store_count.store_file_operational_plus_closed}, avg store size
-      ${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft, revenue/sq ft ${fmtINR(c.revenue_per_sqft_year.store_file)},
-      avg bill \u20b9${c.avg_bill_size.store_file}. Alternate figures from the supplied model are recorded in the source audit,
-      not used here.</p></div>`)
   );
 }
 
@@ -414,19 +424,17 @@ function unitEconomicsSection(push, model, n) {
 
   sectionHead(push, n, "Unit Economics");
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue/sq ft — Patel Retail's two source files disagree by ${(c.gap_pct * 100).toFixed(0)}%</div>
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue per sq ft per year ${kindBadge("derived")}</div>
       <div class="rpt-compare">
         <div class="rpt-cbox used"><div class="cl">Used in this report</div><div class="cv">${fmtINR(c.store_file)}</div><div class="cs">Company store data</div></div>
         <div class="rpt-cbox"><div class="cl">Alternate figure (not used)</div><div class="cv">${fmtINR(c.peer_model)}</div><div class="cs">Supplied model</div></div>
       </div>
-      <p class="rpt-note">${escapeHtml(c.resolution_note)}</p>
     </div>`)
   );
 
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Area per store ${kindBadge("estimate")}</div>
       <div class="rpt-cbox used" style="max-width:260px"><div class="cl">Applied uniformly to all ${model.stores.length} stores</div><div class="cv">${ue.sqft_per_store.toLocaleString("en-IN")} sq ft</div></div>
-      <p class="rpt-note">${escapeHtml(ue.sqft_per_store_note)} The store P&amp;L below is built on this figure — every line in it inherits the estimate label.</p>
     </div>`)
   );
 
@@ -442,9 +450,26 @@ function unitEconomicsSection(push, model, n) {
           <tr style="font-weight:700"><td>Store EBITDA (before head-office cost) ${kindBadge("derived")}</td><td class="mono" style="text-align:right">${fmtL(pnl.ebitdaL)} · ${fmtPct(pnl.ebitdaPct)}</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note"><b>${fmtPct(pnl.ebitdaPct)} store-level is lower than the ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level margin as filed</b> —
-      company-level margin cannot exceed store-level once head-office overhead is added, which is backwards as given. Not resolved here — worth raising with
-      Patel Retail directly. ${pnl.total_company_note ? escapeHtml(pnl.total_company_note) : ""}</p>
+    </div>`)
+  );
+
+  const filedOpMarginPct = pnl.total_company_ebitda_cr && pnl.total_company_revenue_cr
+    ? pnl.total_company_ebitda_cr / pnl.total_company_revenue_cr
+    : null;
+  push(
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Store build-up vs company level ${kindBadge("derived")}</div>
+      <table class="rpt-pk">
+        <thead><tr><th style="width:56%">Measure</th><th style="width:22%">Value</th><th style="width:22%">Basis</th></tr></thead>
+        <tbody>
+          <tr><td>Store EBITDA margin, before head-office cost</td><td class="mono" style="text-align:right">${fmtPct(pnl.ebitdaPct)}</td><td>Per store</td></tr>
+          <tr><td>Company EBITDA margin, as filed</td><td class="mono" style="text-align:right">${fmtPct(pnl.peer_model_b2c_ebitda_pct)}</td><td>Company</td></tr>
+          <tr><td>Gap</td><td class="mono" style="text-align:right">${((pnl.ebitdaPct - pnl.peer_model_b2c_ebitda_pct) * 100).toFixed(1)} pts</td><td>Store &minus; company</td></tr>
+          <tr><td>Company revenue</td><td class="mono" style="text-align:right">${fmtCr(pnl.total_company_revenue_cr)}</td><td>Filed</td></tr>
+          <tr><td>Company EBITDA</td><td class="mono" style="text-align:right">${fmtCr(pnl.total_company_ebitda_cr)}</td><td>Filed</td></tr>
+          <tr><td>Company PAT</td><td class="mono" style="text-align:right">${fmtCr(pnl.total_company_pat_cr)}</td><td>Filed</td></tr>
+          <tr><td>Retail share of revenue</td><td class="mono" style="text-align:right">${fmtPct(pnl.b2c_share_pct, 0)}</td><td>Company-stated</td></tr>
+        </tbody>
+      </table>
     </div>`)
   );
 
@@ -461,7 +486,6 @@ function unitEconomicsSection(push, model, n) {
           <tr><td>Private label</td><td class="mono">${fmtPct(ue.private_label_pct)}</td><td class="mono">— exact figure</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note">Where the company states a range rather than a single figure, the value used throughout this dashboard is the range midpoint — shown here so the reader can see both. ${escapeHtml(ue.private_label_pct_note)}</p>
     </div>`)
   );
 
@@ -477,7 +501,6 @@ function unitEconomicsSection(push, model, n) {
           <tr><td>Trent</td><td class="mono">${fmtPct(pl.trent)}</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note">${escapeHtml(pl.note)}</p>
     </div>`)
   );
 }

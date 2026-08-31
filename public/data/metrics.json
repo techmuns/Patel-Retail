@@ -22,10 +22,10 @@
     "food": 0.7,
     "non_food": 0.205,
     "non_food_range": "20–21%",
-    "non_food_note": "Store file states this as a range (\"20-21%\", cell L14) — 20.5% is the range midpoint.",
+    "non_food_note": "Midpoint of the stated 20–21% range.",
     "merchandise": 0.095,
     "merchandise_range": "9–10%",
-    "merchandise_note": "Store file states this as a range (\"9-10%\", cell L15) — 9.5% is the range midpoint.",
+    "merchandise_note": "Midpoint of the stated 9–10% range.",
     "kind": "reported"
   },
   "own_brand": {

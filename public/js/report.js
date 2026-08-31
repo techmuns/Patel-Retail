@@ -262,6 +262,14 @@ export async function exportReportPdf(model, { onStage, composePagesFn = compose
  *  elements, one inner array per page's worth of content — genuinely generic
  *  over what those elements contain, so a differently-shaped report model
  *  can reuse this exact algorithm instead of reimplementing it. */
+/**
+ * Pack measured blocks into pages.
+ *
+ * Two opt-in classes control placement:
+ *   .rpt-keep   — keep this block with the one after it (a heading and its
+ *                 first table should not be split across a page boundary).
+ *   .rpt-break  — start a new page before this block.
+ */
 export function packBlocksIntoPages(root, rawBlocks) {
   const meas = document.createElement("div");
   meas.style.cssText = `position:absolute;left:0;top:0;width:${CONTENT_W}px;visibility:hidden;`;
@@ -276,13 +284,16 @@ export function packBlocksIntoPages(root, rawBlocks) {
   const blocks = [];
   for (const b of rawBlocks) {
     const h = measure(b.el);
+    const brk = b.el.classList?.contains("rpt-break");
     if (h <= CONTENT_H) {
-      blocks.push({ el: b.el, h, keep: b.el.classList?.contains("rpt-keep") });
+      blocks.push({ el: b.el, h, keep: b.el.classList?.contains("rpt-keep"), brk });
       continue;
     }
-    for (const part of splitToFit(b.el, measure)) {
-      blocks.push({ el: part, h: measure(part), keep: part.classList?.contains("rpt-keep") });
-    }
+    // Only the first piece of a split block carries the break; the remainder
+    // is a continuation and must not push itself onto yet another page.
+    splitToFit(b.el, measure).forEach((part, i) => {
+      blocks.push({ el: part, h: measure(part), keep: part.classList?.contains("rpt-keep"), brk: brk && i === 0 });
+    });
   }
   root.removeChild(meas);
 
@@ -293,7 +304,14 @@ export function packBlocksIntoPages(root, rawBlocks) {
     const b = blocks[i];
     let need = b.h;
     if (b.keep && blocks[i + 1]) need += blocks[i + 1].h + BLOCK_GAP;
-    if (cur.length && runH + need > CONTENT_H) {
+    // A block marked .rpt-break starts its own page — used so every report
+    // section begins at the top of a page rather than wherever the previous
+    // section happened to run out.
+    if (b.brk && cur.length) {
+      pagesBlocks.push(cur);
+      cur = [];
+      runH = 0;
+    } else if (cur.length && runH + need > CONTENT_H) {
       pagesBlocks.push(cur);
       cur = [];
       runH = 0;
