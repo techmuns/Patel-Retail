@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T08:52:19.165Z",
+  "generated_at": "2026-08-31T08:52:34.479Z",
   "metadata": {
     "total_stores": 54,
     "geocoded_count": 51,
@@ -13,7 +13,7 @@
     "pairs_suppressed_not_geocoded": 156,
     "note": "45/54 stores are precisely located; 6 more are geocoded only to a town centroid (distances suppressed, not fabricated) and 3 have no coordinates at all."
   },
-  "overlap_risk_method": "overlap_risk = 1 − exp(−Σ exp(−d/1.5)) over every other located operational own store, d in km. Distance-decay (retail gravity): a neighbour's overlap falls smoothly with distance and is never cut off at a fixed radius, and the whole network contributes rather than only those inside one ring. Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
+  "overlap_risk_method": "overlap_risk = min(1, Σ exp(−d/1.5 km) / 4) over every other located operational own store, d in km. Distance-decay (retail gravity): a neighbour's pull falls smoothly with distance and is never cut off at a fixed radius, and the whole network contributes rather than only those inside one ring. A score of 1.00 means overlap equal to 4 stores at zero distance. Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
   "pairs": [
     {
       "a": "KBG",

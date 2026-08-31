@@ -52,6 +52,7 @@ import {
   overlapRisk,
   isLocatable,
   CATCHMENT_DECAY_KM,
+  OVERLAP_REFERENCE,
 } from "../public/js/geo.js"; // single source of truth — also imported client-side by map.js/screener.js
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -69,9 +70,10 @@ const RADII_KM = [1, 3, 5];
 // store it could be compared against, is only a town centroid) — a missing
 // score, not a guessed one.
 const RISK_METHOD_NOTE =
-  `overlap_risk = 1 − exp(−Σ exp(−d/${CATCHMENT_DECAY_KM})) over every other located operational own store, ` +
-  `d in km. Distance-decay (retail gravity): a neighbour's overlap falls smoothly with distance and is never ` +
-  `cut off at a fixed radius, and the whole network contributes rather than only those inside one ring. ` +
+  `overlap_risk = min(1, Σ exp(−d/${CATCHMENT_DECAY_KM} km) / ${OVERLAP_REFERENCE}) over every other located ` +
+  `operational own store, d in km. Distance-decay (retail gravity): a neighbour's pull falls smoothly with ` +
+  `distance and is never cut off at a fixed radius, and the whole network contributes rather than only those ` +
+  `inside one ring. A score of 1.00 means overlap equal to ${OVERLAP_REFERENCE} stores at zero distance. ` +
   `Geography-only heuristic (no sales data exists to calibrate against) — a relative screening ` +
   `signal, not a measurement. kind: "derived". null when either input is unavailable — ` +
   `NEVER computed from a town-centroid coordinate.`;
