@@ -982,7 +982,7 @@
     {
       "store_id": "DOE/DER",
       "name": "Shilphata",
-      "locality": "Shilphata (Kalyan-Dombivali) /Rajaji Path, Dombivali €",
+      "locality": "Shilphata (Kalyan-Dombivali) /Rajaji Path, Dombivali",
       "town": "Shilphata",
       "district": "Thane",
       "state": "Maharashtra",
@@ -993,7 +993,7 @@
       "lng": 73.0467879,
       "geo_confidence": "high",
       "geo_source": "nominatim",
-      "geocode_query": "Shilphata (Kalyan-Dombivali) /Rajaji Path, Dombivali €, Shilphata, Thane, Maharashtra, India",
+      "geocode_query": "Shilphata (Kalyan-Dombivali) /Rajaji Path, Dombivali, Shilphata, Thane, Maharashtra, India",
       "area_sqft": 5000,
       "area_kind": "estimate",
       "geocode_match_tier": "town",
@@ -1169,7 +1169,7 @@
       "geocode_match_tier": "client",
       "gmaps_link": null,
       "address_official": "SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702",
-      "source_note": "Not from the client's own store file (Patel_Retail_data_Munshot.xlsx), unlike this dashboard's other 52 stores. Added from Patel Retail's own official website (patelrpl.in/stores/, listing checked 24 Aug 2026) and independently corroborated by press coverage (The Tribune, Loktej, ScanX, The Business Guardian) of a SEBI Regulation 30 disclosure describing this as the company's 53rd store, opened 27 Jul 2026 at Karanja Road, Uran, Raigad. Not confirmed directly to this diligence review by Patel Retail — worth asking them to verify independently."
+      "source_note": "Company website (patelrpl.in/stores/, checked 24 Aug 2026) and a SEBI Regulation 30 disclosure dated 27 Jul 2026 describing the company's 53rd store at Karanja Road, Uran, Raigad."
     }
   ]
 }

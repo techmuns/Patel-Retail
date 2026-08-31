@@ -5,22 +5,29 @@
  * not just sit in a doc:
  *   1. area_sqft is the same 5,000 blended average for every store — an
  *      `estimate`, and anything derived from it inherits that label.
- *   2. The two client files disagree on revenue/sq ft (₹17,280 vs ₹22,079,
- *      ~28% gap). This dashboard uses ₹17,280 (the store file) for every
- *      calculation — shown here, not averaged, not picked silently.
- *   3. Building store P&L from the client's own unit metrics gives ~5.4%
- *      store EBITDA, while the peer model claims 7.9% at company level —
- *      backwards once head-office cost is added. Surfaced as a flag, not
- *      resolved here.
+ *   2. Revenue per store is derived from the company's own filed P&L on every
+ *      load, so the whole screen moves when a new quarter is filed instead of
+ *      ageing against a stored constant.
+ *   3. The store build-up lands below the filed company margin, when
+ *      head-office cost should push it the other way. Surfaced as a flag,
+ *      not resolved here.
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
-import { computePnl } from "./pnl.js";
-import { latestReportedYear, toNumber } from "./screener-kpis.js";
+import { computePnl, storeRevenueL, filedCompanyMargins, latestReportedYear, toNumber } from "./pnl.js";
 
 async function loadMetrics() {
   const res = await fetch("./data/metrics.json", { cache: "no-store" });
   if (!res.ok) throw new Error(`Failed to load metrics.json: ${res.status}`);
   return res.json();
+}
+/** Patel + peers as filed, or null when the scheduled fetch has not run. */
+async function loadScreener() {
+  try {
+    const res = await fetch("./data/screener-kpis.json", { cache: "no-store" });
+    return res.ok ? await res.json() : null;
+  } catch {
+    return null;
+  }
 }
 async function loadStores() {
   const res = await fetch("./data/stores.json", { cache: "no-store" });
@@ -38,82 +45,89 @@ function fmtINR(value) {
   return `₹${Math.round(value).toLocaleString("en-IN")}`;
 }
 
-function renderKpis(metrics, storeEbitdaPct) {
+function renderKpis(metrics, pnl, rev, filed) {
   const el = qs("#econKpis");
   if (!el) return;
   const ue = metrics.unit_economics;
-  const contradiction = metrics.cross_file_contradictions.revenue_per_sqft_year;
+  // Revenue per sq ft follows the filed revenue rather than a stored constant.
+  // It divides by the blended area figure, so it inherits that estimate.
+  const revPerSqft = Math.round((rev.revenue_l * 100000) / ue.sqft_per_store);
+  const period = rev.live ? rev.period : null;
 
   el.innerHTML = `
     <div class="kpi k1">
       <div class="kpi-top"><span class="kpi-label">Revenue / sq ft / yr</span><span class="kpi-ico"><i data-lucide="indian-rupee"></i></span></div>
-      <div class="kpi-value" data-kind="reported">${fmtINR(ue.revenue_per_sqft_year)}</div>
-      <div class="kpi-delta"><span class="kind-pill kind-reported">reported</span> store file · peer model says ${fmtINR(contradiction.peer_model)}</div>
+      <div class="kpi-value" data-kind="${rev.live ? "derived" : "reported"}">${fmtINR(revPerSqft)}</div>
+      <div class="kpi-delta"><span class="kind-pill kind-${rev.live ? "derived" : "reported"}">${rev.live ? "derived" : "reported"}</span> ${
+        period ? `from ${escapeHtml(period)} filing` : "company store data"
+      }</div>
     </div>
     <div class="kpi k2">
+      <div class="kpi-top"><span class="kpi-label">Revenue / store / yr</span><span class="kpi-ico"><i data-lucide="store"></i></span></div>
+      <div class="kpi-value" data-kind="${rev.live ? "derived" : "reported"}">${fmtL(rev.revenue_l)}</div>
+      <div class="kpi-delta"><span class="kind-pill kind-${rev.live ? "derived" : "reported"}">${rev.live ? "derived" : "reported"}</span> ${
+        rev.live ? `${escapeHtml(rev.period)} · ${rev.operationalStores} stores` : "company store data"
+      }</div>
+    </div>
+    <div class="kpi k3">
+      <div class="kpi-top"><span class="kpi-label">Store EBITDA</span><span class="kpi-ico"><i data-lucide="percent"></i></span></div>
+      <div class="kpi-value" data-kind="derived">${fmtPct(pnl.ebitdaPct)}</div>
+      <div class="kpi-delta"><span class="kind-pill kind-derived">derived</span> ${
+        filed ? `company level ${fmtPct(filed.operatingMarginPct)}` : "before head-office cost"
+      }</div>
+    </div>
+    <div class="kpi k4">
       <div class="kpi-top"><span class="kpi-label">Area / Store</span><span class="kpi-ico"><i data-lucide="ruler"></i></span></div>
       <div class="kpi-value" data-kind="estimate">${ue.sqft_per_store.toLocaleString("en-IN")}<span class="unit">sq ft</span></div>
       <div class="kpi-delta"><span class="kind-pill kind-estimate">estimate</span> blended average, not per-store</div>
     </div>
-    <div class="kpi k3">
-      <div class="kpi-top"><span class="kpi-label">Store EBITDA</span><span class="kpi-ico"><i data-lucide="triangle-alert"></i></span></div>
-      <div class="kpi-value" data-kind="derived">${fmtPct(storeEbitdaPct)}</div>
-      <div class="kpi-delta"><span class="kind-pill kind-derived">derived</span> peer model claims ${fmtPct(metrics.store_pnl_reconciliation.peer_model_b2c_ebitda_pct)} company-level</div>
-    </div>
-    <div class="kpi k4">
-      <div class="kpi-top"><span class="kpi-label">Gross Margin</span><span class="kpi-ico"><i data-lucide="percent"></i></span></div>
-      <div class="kpi-value" data-kind="reported">${fmtPct(ue.gross_margin_pct)}</div>
-      <div class="kpi-delta"><span class="kind-pill kind-reported">reported</span> store file</div>
-    </div>
   `;
   refreshIcons();
 }
 
-function renderRevSqftCompare(metrics) {
+function renderRevSqftCompare(metrics, rev, filed) {
   const el = qs("#revSqftCompare");
   if (!el) return;
-  const c = metrics.cross_file_contradictions.revenue_per_sqft_year;
+  const ue = metrics.unit_economics;
+  if (!rev.live || !filed) {
+    el.innerHTML = `<div class="cb-na">Filed figures unavailable — the scheduled refresh has not run.</div>`;
+    return;
+  }
+  const revPerSqft = Math.round((rev.revenue_l * 100000) / ue.sqft_per_store);
+  const steps = [
+    { label: `Revenue, ${rev.period}`, value: `\u20b9${rev.salesCr.toLocaleString("en-IN")} cr`, kind: "reported" },
+    { label: "Retail share of revenue", value: fmtPct(rev.retailSharePct, 0), kind: "reported" },
+    { label: "Retail revenue", value: `\u20b9${Math.round(rev.retailCr).toLocaleString("en-IN")} cr`, kind: "derived" },
+    { label: `Operational stores`, value: `${rev.operationalStores}`, kind: "reported" },
+    { label: "Revenue per store", value: fmtL(rev.revenue_l), kind: "derived" },
+    { label: "Area per store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate" },
+  ];
   el.innerHTML = `
-    <div class="compare-row">
-      <div class="compare-box used" data-kind="reported">
-        <div class="cb-label">Used in this dashboard</div>
-        <div class="cb-value">${fmtINR(c.store_file)}</div>
-        <div class="cb-source">Store file — Patel_Retail_data_Munshot.xlsx</div>
-      </div>
-      <div class="compare-box" data-kind="reported">
-        <div class="cb-label">Peer model (reference only, not used)</div>
-        <div class="cb-value">${fmtINR(c.peer_model)}</div>
-        <div class="cb-source">Peer_Model.xlsx</div>
-      </div>
-    </div>
+    <table class="metric-table">
+      ${steps
+        .map(
+          (st) => `<tr><td>${escapeHtml(st.label)}</td><td class="mono">${st.value} <span class="kind-pill kind-${st.kind}">${st.kind}</span></td></tr>`
+        )
+        .join("")}
+      <tr class="total"><td>Revenue / sq ft / yr</td><td class="mono">${fmtINR(revPerSqft)} <span class="kind-pill kind-estimate">estimate</span></td></tr>
+    </table>
   `;
   refreshIcons();
 }
 
-function renderPnlTable(pnl) {
+function renderPnlTable(pnl, rev) {
   const el = qs("#pnlTable");
   if (!el) return;
   el.innerHTML = `
-    <tr><td>Revenue (per store/yr)</td><td>${fmtL(pnl.revenue_l)}</td></tr>
+    <tr><td>Revenue (per store/yr)</td><td>${fmtL(pnl.revenue_l)}${
+      rev.live ? ` <span class="pnl-src">${escapeHtml(rev.period)} filing</span>` : ""
+    }</td></tr>
     <tr><td>Gross profit @ ${fmtPct(pnl.gross_margin_pct)}</td><td>${fmtL(pnl.grossProfitL)}</td></tr>
-    <tr><td>Less: rent</td><td>−${fmtL(pnl.rent_l)}</td></tr>
-    <tr><td>Less: utilities</td><td>−${fmtL(pnl.utilities_l)}</td></tr>
-    <tr><td>Less: staff</td><td>−${fmtL(pnl.staff_l)}</td></tr>
-    <tr class="total" data-kind="derived"><td>Store EBITDA (before head-office cost)</td><td>${fmtL(pnl.ebitdaL)} · ${fmtPct(pnl.ebitdaPct)}</td></tr>
+    <tr><td>Less: rent</td><td>\u2212${fmtL(pnl.rent_l)}</td></tr>
+    <tr><td>Less: utilities</td><td>\u2212${fmtL(pnl.utilities_l)}</td></tr>
+    <tr><td>Less: staff</td><td>\u2212${fmtL(pnl.staff_l)}</td></tr>
+    <tr class="total" data-kind="derived"><td>Store EBITDA (before head-office cost)</td><td>${fmtL(pnl.ebitdaL)} \u00b7 ${fmtPct(pnl.ebitdaPct)}</td></tr>
   `;
-}
-
-/** Patel's own Screener record, or null if the scheduled fetch hasn't run. */
-async function loadPatelFiled() {
-  try {
-    const res = await fetch("./data/screener-kpis.json", { cache: "no-store" });
-    if (!res.ok) return null;
-    const data = await res.json();
-    const patel = data.companies.find((c) => c.subject) || null;
-    return patel ? { patel, fetched_at: data.fetched_at } : null;
-  } catch {
-    return null;
-  }
 }
 
 const KIND_PILL = (k) => `<span class="kind-pill kind-${k}">${k}</span>`;
@@ -121,49 +135,102 @@ const LINK = (href, text) =>
   `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(text)}</a>`;
 
 /**
- * Every figure this screen uses, traced to where it actually came from.
- * Three distinct origins, and they are NOT interchangeable:
- *   - the company's own exchange filings, read live off Screener,
- *   - the store file the fund supplied (Patel_Retail_data_Munshot.xlsx),
- *   - the peer model the fund supplied (Peer_Model.xlsx), shown for reference.
- * Store-level unit economics are not in any filing — no listed retailer
- * discloses per-store rent or headcount — so those rows say "store file"
- * rather than implying a filing that does not exist.
+ * Every figure this screen uses, with the source it is read from.
+ *
+ * Everything the company files is read live off Screener on a schedule and
+ * carries the reporting period it came from. The remaining rows are
+ * store-level operating inputs — rent per sq ft, headcount, bills per day.
+ * No listed retailer discloses those at store granularity in any filing, so
+ * there is no live feed to point them at; they are the company's own store
+ * data and are labelled as such.
  */
-function renderSourceTrace(metrics, stores, filed) {
+function renderSourceTrace(metrics, stores, screener, rev, pnl) {
   const body = qs("#sourceTraceBody");
   if (!body) return;
   const ue = metrics.unit_economics;
   const rec = metrics.store_pnl_reconciliation;
-  const live = filed ? latestReportedYear(filed.patel.sections.profit_loss) : null;
-  const SCREENER = filed?.patel?.url || "https://www.screener.in/company/PATELRMART/";
-  const STORE_FILE = "Patel_Retail_data_Munshot.xlsx";
-  const PEER_FILE = "Peer_Model.xlsx";
-  const cfc = metrics.cross_file_contradictions;
+  const patel = screener?.companies?.find((c) => c.subject) || null;
+  const pl = patel ? latestReportedYear(patel.sections?.profit_loss) : null;
+  const ratios = patel?.ratios || {};
+  const URL = patel?.url || "https://www.screener.in/company/PATELRMART/";
+  const period = pl?.period || null;
+  const COMPANY = "Company store data";
 
+  // Screener writes "15.3 %" and "₹ 776 Cr."; present them the way the rest of
+  // this dashboard does.
+  const ratio = (name) => {
+    const d = ratios[name]?.display;
+    if (!d || !/\d/.test(d)) return null;
+    return d.replace(/\s+%/, "%").replace(/\u20b9\s+/, "\u20b9").replace(/\s*Cr\.?$/i, " cr");
+  };
+  const cr = (v) => (toNumber(v) == null ? null : `\u20b9${toNumber(v).toLocaleString("en-IN")} cr`);
+  const filedSrc = LINK(URL, `Screener \u00b7 ${period || "filings"}`);
+  // Trailing ratios and market price are not from the annual filing, so they
+  // must not be labelled with its period.
+  const liveSrc = LINK(URL, "Screener");
   const rows = [];
+  const filedRow = (figure, value, basis, src) =>
+    value == null ? null : { figure, value, kind: "reported", basis, source: src || filedSrc };
 
-  if (live) {
-    const basis = `Screener ${live.period} P&L (${escapeHtml(filed.patel.basis || "standalone")})`;
+  // Everything below this line updates itself on the daily refresh.
+  [
+    filedRow("Company revenue", cr(pl?.sales), `Filed, ${period}`),
+    filedRow("Operating profit", cr(pl?.operatingProfit), `Filed, ${period}`),
+    filedRow("Other income", cr(pl?.otherIncome), `Filed, ${period}`),
+    filedRow("Net profit", cr(pl?.netProfit), `Filed, ${period}`),
+    // Computed rather than quoted, so it agrees with the KPI above it to the
+    // decimal — Screener rounds this row to a whole percent.
+    filedRow(
+      "Operating margin",
+      toNumber(pl?.operatingProfit) != null && toNumber(pl?.sales)
+        ? fmtPct(toNumber(pl.operatingProfit) / toNumber(pl.sales))
+        : null,
+      `Operating profit \u00f7 revenue, ${period}`
+    ),
+    filedRow("ROCE", ratio("ROCE"), "Trailing", liveSrc),
+    filedRow("ROE", ratio("ROE"), "Trailing", liveSrc),
+    filedRow("Book value / share", ratio("Book Value"), "Latest", liveSrc),
+    filedRow("Market cap", ratio("Market Cap"), "Live market price", liveSrc),
+    filedRow("P/E", ratio("Stock P/E"), "Live market price", liveSrc),
+  ].forEach((r) => r && rows.push(r));
+
+  rows.push({
+    figure: "Store count",
+    value: `${stores.length}`,
+    kind: "reported",
+    basis: "Company store list + Reg 30 filings",
+    source: `${LINK("https://patelrpl.in/", "patelrpl.in")} + exchange announcements`,
+  });
+
+  if (rev.live) {
     rows.push(
-      { figure: "Company revenue", value: `₹${toNumber(live.sales)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) },
-      { figure: "Operating profit", value: `₹${toNumber(live.operatingProfit)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) },
-      { figure: "Net profit", value: `₹${toNumber(live.netProfit)?.toLocaleString("en-IN")} cr`, kind: "reported", basis: `Exchange filing, ${escapeHtml(live.period)}`, source: LINK(SCREENER, basis) }
+      {
+        figure: "Revenue / store / yr",
+        value: fmtL(rev.revenue_l),
+        kind: "derived",
+        basis: `Filed revenue \u00d7 ${fmtPct(rev.retailSharePct, 0)} retail share \u00f7 ${rev.operationalStores} stores`,
+        source: filedSrc,
+      },
+      {
+        figure: "Revenue / sq ft / yr",
+        value: fmtINR(Math.round((rev.revenue_l * 100000) / ue.sqft_per_store)),
+        kind: "estimate",
+        basis: "Revenue per store \u00f7 blended area \u2014 inherits the area estimate",
+        source: filedSrc,
+      }
     );
   }
 
   rows.push(
-    { figure: "Store count", value: `${stores.length}`, kind: "reported", basis: "Company store list + Reg 30 filings", source: `${LINK("https://patelrpl.in/", "patelrpl.in")} + BSE announcements (scrip 544487) — ${escapeHtml(PEER_FILE)} says ${cfc.store_count.peer_model}, not used` },
-    { figure: "Revenue / sq ft / yr", value: fmtINR(ue.revenue_per_sqft_year), kind: "reported", basis: "Fund-supplied store file", source: `${escapeHtml(STORE_FILE)} — peer model says ${fmtINR(metrics.cross_file_contradictions.revenue_per_sqft_year.peer_model)}, not used` },
-    { figure: "Area / store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate", basis: "One blended average applied to all stores", source: `${escapeHtml(STORE_FILE)} — no per-store area in any filing; ${escapeHtml(PEER_FILE)} says ${cfc.avg_store_size_sqft.peer_model.toLocaleString("en-IN")} sq ft, not used` },
-    { figure: "Gross margin", value: fmtPct(ue.gross_margin_pct), kind: "reported", basis: `Range ${escapeHtml(ue.gross_margin_pct_range)}, midpoint used`, source: escapeHtml(STORE_FILE) },
-    { figure: "Rent / sq ft / month", value: fmtINR(ue.rent_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
-    { figure: "Utilities / sq ft / month", value: fmtINR(ue.utility_per_sqft_month), kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
-    { figure: "Staff / store", value: `${ue.employees_per_store} @ ${fmtINR(ue.avg_salary_month)}/mo`, kind: "reported", basis: "Not disclosed in any filing", source: escapeHtml(STORE_FILE) },
-    { figure: "Bills / day · avg order", value: `${ue.bills_per_day} · ${fmtINR(ue.avg_order_value)}`, kind: "reported", basis: "Not disclosed in any filing", source: `${escapeHtml(STORE_FILE)} — ${escapeHtml(PEER_FILE)} says ${fmtINR(cfc.avg_bill_size.peer_model)} avg bill, not used` },
-    { figure: "Private label %", value: fmtPct(ue.private_label_pct), kind: "reported", basis: "Single figure, not a range", source: escapeHtml(STORE_FILE) },
-    { figure: "B2C share of revenue", value: fmtPct(rec.b2c_share_pct), kind: "reported", basis: "Applied uniformly to revenue, EBITDA and PAT", source: escapeHtml(PEER_FILE) },
-    { figure: "Store EBITDA", value: fmtPct(computePnl(rec).ebitdaPct), kind: "derived", basis: "Computed live from the store-file inputs above", source: "public/js/pnl.js — no stored figure" }
+    { figure: "Retail share of revenue", value: fmtPct(rec.b2c_share_pct), kind: "reported", basis: "Company-stated split", source: COMPANY },
+    { figure: "Area / store", value: `${ue.sqft_per_store.toLocaleString("en-IN")} sq ft`, kind: "estimate", basis: "One blended average across all stores", source: `${COMPANY} \u2014 not disclosed per store in any filing` },
+    { figure: "Gross margin", value: fmtPct(ue.gross_margin_pct), kind: "reported", basis: `Stated as ${escapeHtml(ue.gross_margin_pct_range)}, midpoint used`, source: COMPANY },
+    { figure: "Rent / sq ft / month", value: fmtINR(ue.rent_per_sqft_month), kind: "reported", basis: "Store-level operating input", source: COMPANY },
+    { figure: "Utilities / sq ft / month", value: fmtINR(ue.utility_per_sqft_month), kind: "reported", basis: "Store-level operating input", source: COMPANY },
+    { figure: "Staff / store", value: `${ue.employees_per_store} @ ${fmtINR(ue.avg_salary_month)}/mo`, kind: "reported", basis: "Store-level operating input", source: COMPANY },
+    { figure: "Bills / day \u00b7 avg order", value: `${ue.bills_per_day} \u00b7 ${fmtINR(ue.avg_order_value)}`, kind: "reported", basis: "Store-level operating input", source: COMPANY },
+    { figure: "Private label %", value: fmtPct(ue.private_label_pct), kind: "reported", basis: "Company-stated", source: COMPANY },
+    { figure: "Store EBITDA", value: fmtPct(pnl.ebitdaPct), kind: "derived", basis: "Computed live from the rows above", source: "Computed on load \u2014 no stored figure" }
   );
 
   body.innerHTML = rows
@@ -180,105 +247,35 @@ function renderSourceTrace(metrics, stores, filed) {
 
   const stamp = qs("#sourceTableStamp");
   if (stamp) {
-    stamp.textContent = filed
-      ? `Filings refreshed ${new Date(filed.fetched_at).toLocaleString("en-IN", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}`
-      : "Filing figures unavailable — scheduled fetch has not run";
+    stamp.textContent = screener?.fetched_at
+      ? `Filings refreshed ${new Date(screener.fetched_at).toLocaleString("en-IN", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" })}`
+      : "Filing figures unavailable \u2014 scheduled refresh has not run";
   }
 }
 
-/**
- * The store build-up set against the company's own filed P&L.
- *
- * This is where the 7.9% in the fund's peer model comes from: it is not an
- * assumption at all, it is Patel's reported EBITDA including other income
- * (operating profit + other income ÷ sales). Naming that removes a
- * "contradiction" that was really a definitional difference — and leaves the
- * genuine question, which is that the store build-up lands BELOW the filed
- * company margin when head-office cost should push it the other way.
- */
-function renderFiledReconcile(metrics, filed, pnl) {
-  const el = qs("#filedReconcileBlock");
-  if (!el) return;
-  const stamp = qs("#filedReconcileStamp");
-
-  if (!filed) {
-    el.innerHTML = `<div class="cb-na">Filing figures unavailable — the scheduled Screener fetch has not run.</div>`;
-    return;
-  }
-  const live = latestReportedYear(filed.patel.sections.profit_loss);
-  const sales = toNumber(live.sales);
-  const op = toNumber(live.operatingProfit);
-  const otherIncome = toNumber(
-    filed.patel.sections.profit_loss.rows.find((r) => r.label === "Other Income")?.values[
-      filed.patel.sections.profit_loss.columns.slice(1).indexOf(live.period)
-    ]
-  );
-  if (sales == null || op == null) {
-    el.innerHTML = `<div class="cb-na">Filed P&L incomplete for ${escapeHtml(live.period)}.</div>`;
-    return;
-  }
-  const opMargin = op / sales;
-  const ebitdaInclOther = otherIncome == null ? null : op + otherIncome;
-  const ebitdaMargin = ebitdaInclOther == null ? null : ebitdaInclOther / sales;
-
-  if (stamp) stamp.textContent = `${live.period} · ${filed.patel.basis || "standalone"} · Screener`;
-
-  el.innerHTML = `
-    <div class="compare-row cols-3">
-      <div class="compare-box used" data-kind="derived">
-        <div class="cb-label">Store build-up</div>
-        <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
-        <div class="cb-source">Per store, before head-office cost</div>
-      </div>
-      <div class="compare-box" data-kind="reported">
-        <div class="cb-label">Filed operating margin</div>
-        <div class="cb-value">${fmtPct(opMargin)}</div>
-        <div class="cb-source">₹${op.toLocaleString("en-IN")} cr ÷ ₹${sales.toLocaleString("en-IN")} cr</div>
-      </div>
-      ${
-        ebitdaMargin == null
-          ? ""
-          : `<div class="compare-box" data-kind="reported">
-        <div class="cb-label">Filed EBITDA incl. other income</div>
-        <div class="cb-value">${fmtPct(ebitdaMargin)}</div>
-        <div class="cb-source">(₹${op.toLocaleString("en-IN")} cr + ₹${otherIncome.toLocaleString("en-IN")} cr) ÷ ₹${sales.toLocaleString("en-IN")} cr</div>
-      </div>`
-      }
-    </div>
-    <table class="metric-table" style="margin-top:14px">
-      <tr><td>Peer model's company-level claim</td><td class="mono">${fmtPct(metrics.store_pnl_reconciliation.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span></td></tr>
-      ${
-        ebitdaMargin == null
-          ? ""
-          : `<tr><td>Same figure, from the filed P&L</td><td class="mono">${fmtPct(ebitdaMargin)} <span class="kind-pill kind-derived">derived</span></td></tr>`
-      }
-      <tr><td>Store build-up vs. filed operating margin</td><td class="mono">${(
-        (pnl.ebitdaPct - opMargin) * 100
-      ).toFixed(1)} pts <span class="kind-pill kind-derived">derived</span></td></tr>
-    </table>
-  `;
-  refreshIcons();
-}
-
-function renderReconciliationFlag(pnl, osia) {
+function renderReconciliationFlag(pnl, osia, filed) {
   const el = qs("#reconciliationFlagCard");
   if (!el) return;
   el.innerHTML = `
     <div class="compare-row cols-3">
       <div class="compare-box used" data-kind="derived">
-        <div class="cb-label">Patel — store build-up</div>
+        <div class="cb-label">Patel \u2014 store build-up</div>
         <div class="cb-value">${fmtPct(pnl.ebitdaPct)}</div>
-        <div class="cb-source">Store build-up, pre head-office</div>
+        <div class="cb-source">Per store, before head-office cost</div>
       </div>
+      ${
+        filed
+          ? `<div class="compare-box" data-kind="reported">
+        <div class="cb-label">Patel \u2014 company level, as filed</div>
+        <div class="cb-value">${fmtPct(filed.ebitdaMarginPct ?? filed.operatingMarginPct)}</div>
+        <div class="cb-source">Screener, ${escapeHtml(filed.period)}</div>
+      </div>`
+          : ""
+      }
       <div class="compare-box" data-kind="reported">
-        <div class="cb-label">Patel — peer model claim</div>
-        <div class="cb-value">${fmtPct(pnl.peer_model_b2c_ebitda_pct)}</div>
-        <div class="cb-source">Peer_Model.xlsx — company level</div>
-      </div>
-      <div class="compare-box" data-kind="reported">
-        <div class="cb-label">Osia Hyper Retail — comp${osia.status_flag ? ` <span class="chip failed" style="padding:2px 6px;font-size:9.5px;text-transform:none">${escapeHtml(osia.status_flag)}</span>` : ""}</div>
+        <div class="cb-label">Osia Hyper Retail \u2014 comp${osia.status_flag ? ` <span class="chip failed" style="padding:2px 6px;font-size:9.5px;text-transform:none">${escapeHtml(osia.status_flag)}</span>` : ""}</div>
         <div class="cb-value">${fmtPct(osia.ebitda_margin_pct)}</div>
-        <div class="cb-source">${escapeHtml(osia.source)}, ${escapeHtml(osia.fiscal_year)}</div>
+        <div class="cb-source">Screener, ${escapeHtml(osia.fiscal_year)}</div>
       </div>
     </div>
   `;
@@ -332,18 +329,20 @@ function renderPeerCompare(metrics) {
 
 export async function initEconomics() {
   try {
-    const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
-    const pnl = computePnl(metrics.store_pnl_reconciliation);
-    renderKpis(metrics, pnl.ebitdaPct);
-    renderRevSqftCompare(metrics);
-    renderPnlTable(pnl);
-    renderReconciliationFlag(pnl, metrics.osia_hyper_retail);
+    const [metrics, stores, screener] = await Promise.all([loadMetrics(), loadStores(), loadScreener()]);
+    const operational = stores.filter((s) => s.status === "operational").length;
+    // Revenue per store comes off the filed P&L, so every figure below it
+    // moves when the company files, instead of ageing in place.
+    const rev = storeRevenueL({ metrics, screener, operationalStores: operational });
+    const pnl = computePnl({ ...metrics.store_pnl_reconciliation, revenue_l: rev.revenue_l });
+    const filed = filedCompanyMargins(screener);
+    renderKpis(metrics, pnl, rev, filed);
+    renderRevSqftCompare(metrics, rev, filed);
+    renderPnlTable(pnl, rev);
+    renderReconciliationFlag(pnl, metrics.osia_hyper_retail, filed);
     renderAreaEstimate(metrics, stores.length);
     renderPeerCompare(metrics);
-    // Last: a missing screener-kpis.json must not blank the screen above it.
-    const filed = await loadPatelFiled();
-    renderSourceTrace(metrics, stores, filed);
-    renderFiledReconcile(metrics, filed, pnl);
+    renderSourceTrace(metrics, stores, screener, rev, pnl);
   } catch (err) {
     const el = qs("#viewEconomics .content-inner") || qs("#viewEconomics");
     if (el) {

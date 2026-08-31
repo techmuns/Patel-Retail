@@ -1,12 +1,12 @@
 /**
  * public/js/peers.js — Peer Benchmark view.
  *
- * The fund's Peer_Model.xlsx has 10 documented defects (PATEL-HANDOFF.md §10,
- * full audit in docs/PEER-MODEL-AUDIT.md). Only the two that move a number
- * appear on this screen — Trent's revenue/area mismatch and Spencer's
- * gross-profit formula bug. Checking someone's spreadsheet is backend work;
- * the screen carries the corrected figures, not the list of what was wrong
- * with the file they came from. Everything shown is
+ * The supplied peer model has 10 documented defects (full audit in
+ * docs/PEER-MODEL-AUDIT.md, deliberately not on screen). Only the two that
+ * move a number appear here — Trent's revenue/area mismatch and Spencer's
+ * gross-profit formula bug. Checking a source spreadsheet is backend work;
+ * the screen carries the corrected figures, never the name of the file they
+ * were corrected from. Everything shown is
  * either a number given directly in the handoff or computed live from
  * stores.json — nothing here is estimated to fill a gap. Where the correct
  * number genuinely isn't available (Osia/V2 financials, a few bug-affected
@@ -73,7 +73,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
       name: "Patel Retail",
       highlight: true,
       revenue: `${fmtCr(rec.total_company_revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">total company, 45% B2C</div>`,
-      ebitda: `${fmtPct(storeEbitdaPct)} <span class="kind-pill kind-derived">derived</span> / ${fmtPct(rec.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">store build-up vs peer model — see Store Economics</div>`,
+      ebitda: `${fmtPct(storeEbitdaPct)} <span class="kind-pill kind-derived">derived</span> / ${fmtPct(rec.peer_model_b2c_ebitda_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">store build-up vs company level — see Store Economics</div>`,
       stores: `${patelStoreCount} <span class="kind-pill kind-reported">reported</span>`,
       privateLabel: cellOrNA(pl.patel, (v) => fmtPct(v)),
     },

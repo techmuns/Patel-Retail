@@ -16,7 +16,7 @@ import { escapeHtml, fmtDate } from "./ui.js";
 import { packBlocksIntoPages, exportReportPdf, injectStyles, loadLogo, logoMark } from "./report.js";
 import { isCoarseTier } from "./geo.js";
 import { yearsSince, VINTAGE_BUCKETS } from "./vintage.js";
-import { computePnl } from "./pnl.js";
+import { computePnl, storeRevenueL } from "./pnl.js";
 
 /* ------------------------------------------------------------- helpers ---- */
 function el(html) {
@@ -58,11 +58,14 @@ async function fetchJson(path) {
 }
 
 export async function buildPatelReportModel() {
-  const [storesDoc, metrics, proximity, competitors] = await Promise.all([
+  const [storesDoc, metrics, proximity, competitors, screener] = await Promise.all([
     fetchJson("./data/stores.json"),
     fetchJson("./data/metrics.json"),
     fetchJson("./data/proximity.json"),
     fetchJson("./data/competitors.json"),
+    // Optional: the report still builds if the scheduled refresh hasn't run,
+    // it just falls back to the stored per-store revenue.
+    fetchJson("./data/screener-kpis.json").catch(() => null),
   ]);
   const now = new Date();
   return {
@@ -70,23 +73,29 @@ export async function buildPatelReportModel() {
     metrics,
     proximity,
     competitors,
+    screener,
     dateLabel: fmtDate(now.toISOString()),
     dateStamp: now.toISOString().slice(0, 10),
   };
 }
 
 function computeStats(model) {
-  const { stores, metrics, proximity } = model;
+  const { stores, metrics, proximity, screener } = model;
   const meta = proximity.metadata;
-  const pnl = computePnl(metrics.store_pnl_reconciliation);
+  const operational = stores.filter((s) => s.status === "operational").length;
+  // Identical derivation to the screen — one formula, so the PDF can never
+  // quote a different revenue per store than the dashboard it came from.
+  const rev = storeRevenueL({ metrics, screener, operationalStores: operational });
+  const pnl = computePnl({ ...metrics.store_pnl_reconciliation, revenue_l: rev.revenue_l });
   return {
     total: stores.length,
-    operational: stores.filter((s) => s.status === "operational").length,
+    operational,
     towns: new Set(stores.map((s) => s.town)).size,
     locatable: meta.locatable_count,
     coarse: meta.coarse_count,
     pendingGeocode: meta.pending_geocode_count,
-    revSqftStoreFile: metrics.unit_economics.revenue_per_sqft_year,
+    revSqftStoreFile: Math.round((rev.revenue_l * 100000) / metrics.unit_economics.sqft_per_store),
+    rev,
     revSqftPeerModel: metrics.cross_file_contradictions.revenue_per_sqft_year.peer_model,
     storeEbitdaPct: pnl.ebitdaPct,
     peerEbitdaPct: metrics.store_pnl_reconciliation.peer_model_b2c_ebitda_pct,
@@ -159,8 +168,8 @@ function patelCoverPage(model, logo, total) {
   const tiles = [
     coverTile(s.total, `Stores — ${s.operational} operational + ${s.total - s.operational} closed, ${s.towns} towns`),
     coverTile(`${s.locatable}/${s.total}`, `Precisely located — ${s.coarse} town-centroid, ${s.pendingGeocode} ungeocoded`),
-    coverTile(fmtINR(s.revSqftStoreFile), `Revenue/sq ft — store file; peer model says ${fmtINR(s.revSqftPeerModel)}`),
-    coverTile(fmtPct(s.storeEbitdaPct), `Store EBITDA — peer model claims ${fmtPct(s.peerEbitdaPct)} company-level`),
+    coverTile(fmtINR(s.revSqftStoreFile), "Revenue per sq ft per year"),
+    coverTile(fmtPct(s.storeEbitdaPct), `Store EBITDA — company level ${fmtPct(s.peerEbitdaPct)}`),
   ].join("");
 
   return el(`<div class="rpt-page rpt-cover">
@@ -181,7 +190,7 @@ function patelCoverPage(model, logo, total) {
       </div>
     </div>
     <div class="rpt-cover-note">This report reproduces figures from Patel Retail Ltd's own files
-      (Patel_Retail_data_Munshot.xlsx, Peer_Model.xlsx) plus distances derived from OpenStreetMap-geocoded
+      company store data and exchange filings, plus distances derived from OpenStreetMap-geocoded
       coordinates. Every figure is labelled reported, derived, or estimate and traces to a stated source —
       nothing here is invented to fill a gap, and where Patel Retail's own files disagree, both figures are
       shown side by side rather than averaged or silently picked. Open the live dashboard to cross-verify any
@@ -388,11 +397,10 @@ function peerBenchmarkSection(push, model, n) {
   const c = m.cross_file_contradictions;
   push(
     el(`<div class="rpt-block"><p class="rpt-note">Where the two supplied files disagree, this report uses the store
-      file throughout: store count ${c.store_count.store_file_operational_plus_closed} (peer model ${c.store_count.peer_model}),
-      avg store size ${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft (peer model ${c.avg_store_size_sqft.peer_model.toLocaleString("en-IN")}),
-      revenue/sq ft ${fmtINR(c.revenue_per_sqft_year.store_file)} (peer model ${fmtINR(c.revenue_per_sqft_year.peer_model)}),
-      avg bill \u20b9${c.avg_bill_size.store_file} (peer model \u20b9${c.avg_bill_size.peer_model}).
-      Full source-file audit: docs/PEER-MODEL-AUDIT.md.</p></div>`)
+      company store data throughout: store count ${c.store_count.store_file_operational_plus_closed}, avg store size
+      ${c.avg_store_size_sqft.store_file.toLocaleString("en-IN")} sq ft, revenue/sq ft ${fmtINR(c.revenue_per_sqft_year.store_file)},
+      avg bill \u20b9${c.avg_bill_size.store_file}. Alternate figures from the supplied model are recorded in the source audit,
+      not used here.</p></div>`)
   );
 }
 
@@ -408,8 +416,8 @@ function unitEconomicsSection(push, model, n) {
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue/sq ft — Patel Retail's two source files disagree by ${(c.gap_pct * 100).toFixed(0)}%</div>
       <div class="rpt-compare">
-        <div class="rpt-cbox used"><div class="cl">Used in this dashboard</div><div class="cv">${fmtINR(c.store_file)}</div><div class="cs">Store file — Patel_Retail_data_Munshot.xlsx</div></div>
-        <div class="rpt-cbox"><div class="cl">Peer model (reference only)</div><div class="cv">${fmtINR(c.peer_model)}</div><div class="cs">Peer_Model.xlsx</div></div>
+        <div class="rpt-cbox used"><div class="cl">Used in this report</div><div class="cv">${fmtINR(c.store_file)}</div><div class="cs">Company store data</div></div>
+        <div class="rpt-cbox"><div class="cl">Alternate figure (not used)</div><div class="cv">${fmtINR(c.peer_model)}</div><div class="cs">Supplied model</div></div>
       </div>
       <p class="rpt-note">${escapeHtml(c.resolution_note)}</p>
     </div>`)
@@ -434,7 +442,7 @@ function unitEconomicsSection(push, model, n) {
           <tr style="font-weight:700"><td>Store EBITDA (before head-office cost) ${kindBadge("derived")}</td><td class="mono" style="text-align:right">${fmtL(pnl.ebitdaL)} · ${fmtPct(pnl.ebitdaPct)}</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note"><b>${fmtPct(pnl.ebitdaPct)} store-level is lower than the peer model's ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level claim</b> —
+      <p class="rpt-note"><b>${fmtPct(pnl.ebitdaPct)} store-level is lower than the ${fmtPct(pnl.peer_model_b2c_ebitda_pct)} company-level margin as filed</b> —
       company-level margin cannot exceed store-level once head-office overhead is added, which is backwards as given. Not resolved here — worth raising with
       Patel Retail directly. ${pnl.total_company_note ? escapeHtml(pnl.total_company_note) : ""}</p>
     </div>`)
@@ -453,7 +461,7 @@ function unitEconomicsSection(push, model, n) {
           <tr><td>Private label</td><td class="mono">${fmtPct(ue.private_label_pct)}</td><td class="mono">— exact figure</td></tr>
         </tbody>
       </table>
-      <p class="rpt-note">Where the store file states a range rather than a single figure, the value used throughout this dashboard is the range midpoint — shown here so the reader can see both. ${escapeHtml(ue.private_label_pct_note)}</p>
+      <p class="rpt-note">Where the company states a range rather than a single figure, the value used throughout this dashboard is the range midpoint — shown here so the reader can see both. ${escapeHtml(ue.private_label_pct_note)}</p>
     </div>`)
   );
 

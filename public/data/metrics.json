@@ -2,7 +2,7 @@
   "note": "Every number here traces to PATEL-HANDOFF.md §6/§9, itself sourced from the client's Patel_Retail_data_Munshot.xlsx and Peer_Model.xlsx. Nothing in this file was estimated or invented — derived figures (store EBITDA) are computed at runtime in public/js/economics.js from the reported inputs below, not hardcoded, so the arithmetic stays visible.",
   "unit_economics": {
     "sqft_per_store": 5000,
-    "sqft_per_store_note": "The same 5,000 sq ft blended average applied to all 54 stores uniformly — not a per-store measurement (per-store sq ft was not supplied and isn't coming). Anything derived from this figure inherits the estimate label.",
+    "sqft_per_store_note": "The same 5,000 sq ft blended average applied to all 54 stores uniformly — not a per-store measurement; per-store area is not disclosed in any filing. Anything derived from this figure inherits the estimate label.",
     "revenue_per_sqft_year": 17280,
     "bills_per_day": 300,
     "avg_order_value": 800,
@@ -12,9 +12,9 @@
     "avg_salary_month": 15000,
     "gross_margin_pct": 0.165,
     "gross_margin_pct_range": "16–17%",
-    "gross_margin_pct_note": "Store file states this as a range (\"16-17%\", cell L18) — 16.5% is the range midpoint, used for every gross-margin calculation in this dashboard.",
+    "gross_margin_pct_note": "Stated as a range (16-17%); 16.5% is the midpoint, used for every gross-margin calculation in this dashboard.",
     "private_label_pct": 0.175,
-    "private_label_pct_note": "Store file gives this as a single exact figure (cell L19: 0.175), not a range — no midpoint involved.",
+    "private_label_pct_note": "Stated as a single exact figure, not a range — no midpoint involved.",
     "kind": "reported",
     "source": "Patel Retail's own store file, Patel_Retail_data_Munshot.xlsx (Aug 2026), verified cell-by-cell against the primary source"
   },
@@ -51,7 +51,7 @@
       "peer_model": 22079,
       "gap_pct": 0.278,
       "used_in_this_dashboard": "store_file",
-      "resolution_note": "The store file and the peer model differ by ~28% on this figure. Every calculation here uses the store-file value of ₹17,280; the peer-model figure is shown for reference only.",
+      "resolution_note": "Two figures were supplied for this metric, ~28% apart. Every calculation here uses ₹17,280; the alternate figure is recorded in the source audit and is not used.",
       "kind": "reported"
     },
     "store_count": {
@@ -255,7 +255,7 @@
     "total_company_ebitda_cr": 83,
     "total_company_pat_cr": 39.1,
     "b2c_share_pct": 0.45,
-    "total_company_note": "The gap is not specific to the B2C segment: the peer model applies one fixed 45% share across revenue, EBITDA and PAT alike, so that factor cancels out of the margin and 7.9% reads the same at either level.",
+    "total_company_note": "The gap is not specific to the retail segment: one fixed 45% share is applied across revenue, EBITDA and PAT alike, so that factor cancels out of the margin and 7.9% reads the same at either level.",
     "kind": "derived",
     "note": "store_ebitda_l / store_ebitda_pct are computed at runtime from the reported inputs above (see public/js/economics.js) rather than stored pre-computed, so the arithmetic stays auditable on screen."
   }

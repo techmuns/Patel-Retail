@@ -16,6 +16,7 @@
  *     EBITDA) recalculates in Excel if a reader edits an input — not a frozen
  *     snapshot — plus the 5.4%-vs-7.9% reconciliation flag as a note.
  */
+import { storeRevenueL } from "./pnl.js";
 
 const V = "FF7C3AED"; // violet — same brand token as export-xlsx.js
 const INK = "FF0F172A";
@@ -42,12 +43,22 @@ async function fetchJson(path) {
 }
 
 export async function buildPatelXlsxModel() {
-  const [storesDoc, metrics, proximity] = await Promise.all([
+  const [storesDoc, metrics, proximity, screener] = await Promise.all([
     fetchJson("./data/stores.json"),
     fetchJson("./data/metrics.json"),
     fetchJson("./data/proximity.json"),
+    fetchJson("./data/screener-kpis.json").catch(() => null),
   ]);
-  return { stores: storesDoc.stores, metrics, proximity };
+  const stores = storesDoc.stores;
+  // The workbook's Unit Economics sheet writes real formulas over these
+  // inputs, so the revenue it starts from must be the same one the screen
+  // shows — derived from the filing, not the stored constant.
+  const rev = storeRevenueL({
+    metrics,
+    screener,
+    operationalStores: stores.filter((s) => s.status === "operational").length,
+  });
+  return { stores, metrics, proximity, screener, rev };
 }
 
 export async function exportPatelXlsx() {
@@ -195,10 +206,16 @@ function formulaRow(ws, r, label, formula, result, fmt, note) {
   return row;
 }
 
-function buildUnitEconomics(wb, { metrics }) {
+function buildUnitEconomics(wb, { metrics, rev }) {
   const ue = metrics.unit_economics;
-  const c = metrics.cross_file_contradictions.revenue_per_sqft_year;
   const rec = metrics.store_pnl_reconciliation;
+  // Revenue per sq ft is the sheet's INPUT cell and revenue per store the
+  // formula over it, which is the inverse of how the screen derives them —
+  // so feed the input the value implied by the filed revenue. Same number
+  // either way round, and the workbook stays self-consistent when someone
+  // edits the area cell.
+  const revenueL = rev?.revenue_l ?? rec.revenue_l;
+  const revPerSqft = Math.round((revenueL * 100000) / ue.sqft_per_store);
   const mix = metrics.revenue_mix;
   const pl = metrics.peer_comparison.private_label_pct;
 
@@ -207,11 +224,19 @@ function buildUnitEconomics(wb, { metrics }) {
   let r = 1;
   headerBand(ws, "MUNSHOT  ·  Unit Economics — Patel Retail Ltd (blue = reported input, black = live formula)", 3, r++);
 
-  band(ws, r++, "Reported inputs (Patel_Retail_data_Munshot.xlsx)", 3);
+  band(ws, r++, "Reported inputs — company store data", 3);
   const areaRow = r;
   inputRow(ws, r++, "Area per store (sq ft) [estimate]", ue.sqft_per_store, ue.sqft_per_store_note);
   const revSqftRow = r;
-  inputRow(ws, r++, "Revenue per sq ft per year (₹) [reported]", c.store_file, `Peer model states ${c.peer_model} instead — ${(c.gap_pct * 100).toFixed(0)}% gap; store-file value used here for every calculation`);
+  inputRow(
+    ws,
+    r++,
+    `Revenue per sq ft per year (₹) [${rev?.live ? "derived" : "reported"}]`,
+    revPerSqft,
+    rev?.live
+      ? `Derived from the filed P&L: revenue ₹${rev.salesCr.toLocaleString("en-IN")} cr (${rev.period}) × ${(rev.retailSharePct * 100).toFixed(0)}% retail share ÷ ${rev.operationalStores} operational stores ÷ area per store`
+      : "Company store data"
+  );
   const marginRow = r;
   inputRow(ws, r++, "Gross margin % [reported, midpoint of 16–17%]", ue.gross_margin_pct, ue.gross_margin_pct_note);
   const rentRow = r;
@@ -233,9 +258,9 @@ function buildUnitEconomics(wb, { metrics }) {
   // Rounding here at each step, same as the ROUND() calls in the formula
   // strings, keeps the cached value and the live formula from disagreeing.
   const revenueRow = r;
-  formulaRow(ws, r++, "Revenue per store per year (₹ lakh)", `ROUND(B${areaRow}*B${revSqftRow}/100000,2)`, rec.revenue_l, "#,##0.00", "= area × revenue/sq ft");
+  formulaRow(ws, r++, "Revenue per store per year (₹ lakh)", `ROUND(B${areaRow}*B${revSqftRow}/100000,2)`, Math.round(revenueL * 100) / 100, "#,##0.00", "= area × revenue/sq ft");
   const gpRow = r;
-  const grossProfitL = Math.round(rec.revenue_l * ue.gross_margin_pct * 100) / 100;
+  const grossProfitL = Math.round(revenueL * ue.gross_margin_pct * 100) / 100;
   formulaRow(ws, r++, "Gross profit (₹ lakh)", `ROUND(B${revenueRow}*B${marginRow},2)`, grossProfitL, "#,##0.00", "= revenue × gross margin %");
   const rentLRow = r;
   formulaRow(ws, r++, "Less: rent (₹ lakh/yr)", `ROUND(B${rentRow}*B${areaRow}*12/100000,2)`, rec.rent_l, "#,##0.00", "= rent/sq ft/month × area × 12");
@@ -244,7 +269,7 @@ function buildUnitEconomics(wb, { metrics }) {
   const staffLRow = r;
   formulaRow(ws, r++, "Less: staff (₹ lakh/yr)", `ROUND(B${empRow}*B${salRow}*12/100000,2)`, rec.staff_l, "#,##0.00", "= employees × avg salary × 12");
   const ebitdaL = Math.round((grossProfitL - rec.rent_l - rec.utilities_l - rec.staff_l) * 100) / 100;
-  const ebitdaPct = Math.round((ebitdaL / rec.revenue_l) * 10000) / 10000;
+  const ebitdaPct = Math.round((ebitdaL / revenueL) * 10000) / 10000;
   const ebitdaLRow = r;
   formulaRow(ws, r++, "Store EBITDA (₹ lakh/yr, before head-office cost)", `ROUND(B${gpRow}-B${rentLRow}-B${utilLRow}-B${staffLRow},2)`, ebitdaL, "#,##0.00");
   ws.getRow(r - 1).getCell(2).font = { size: 10.5, bold: true, color: { argb: INK } };
@@ -252,7 +277,7 @@ function buildUnitEconomics(wb, { metrics }) {
   r++;
 
   band(ws, r++, "Reconciliation flag — store-level vs peer-model company-level EBITDA", 3);
-  inputRow(ws, r++, "Peer model B2C EBITDA % (company-level) [reported]", rec.peer_model_b2c_ebitda_pct, "Peer_Model.xlsx — cell E18");
+  inputRow(ws, r++, "Company-level EBITDA % as filed [reported]", rec.peer_model_b2c_ebitda_pct, "Exchange filing via Screener");
   const flagRow = ws.getRow(r++);
   flagRow.getCell(1).value = rec.flag_note;
   flagRow.getCell(1).font = { size: 10, color: { argb: "FF334155" } };

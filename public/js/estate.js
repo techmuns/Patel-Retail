@@ -160,13 +160,15 @@ function renderCumulativeChart(stores) {
   const byYear = new Map();
   for (const s of withDates) {
     const y = openedYear(s);
-    byYear.set(y, (byYear.get(y) || 0) + 1);
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(s);
   }
   const years = [...byYear.keys()].sort((a, b) => a - b);
   let cumulative = 0;
   const points = years.map((y) => {
-    cumulative += byYear.get(y);
-    return { year: y, count: cumulative };
+    const opened = byYear.get(y);
+    cumulative += opened.length;
+    return { year: y, count: cumulative, opened };
   });
 
   // Chart geometry. The SVG is stretched to the container width with
@@ -223,6 +225,16 @@ function renderCumulativeChart(stores) {
                 stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
         </svg>
       </div>
+      <div class="cume-hits">
+        ${points
+          .map((pt, i) => {
+            const pct = ((pt.year - minYear) / (maxYear - minYear || 1)) * 100;
+            const topPct = ((scaleMax - pt.count) / scaleMax) * 100;
+            return `<button type="button" class="cume-hit" data-year="${pt.year}" aria-label="${pt.year}: ${pt.count} stores"
+              style="left:${pct}%"><span class="cume-dot" style="top:${topPct}%"></span></button>`;
+          })
+          .join("")}
+      </div>
       <div style="position:relative; height:18px; margin-top:6px; border-top:1px solid var(--hairline); padding-top:6px">
         ${tickYears
           .map((yr) => {
@@ -232,8 +244,84 @@ function renderCumulativeChart(stores) {
           })
           .join("")}
       </div>
+      <div id="cumulativeDetail" class="cume-detail" hidden></div>
     </div>
   `;
+  wireCumulativeChart(el, points);
+}
+
+/**
+ * Hover or focus a year to see its running total; click it to list the stores
+ * that opened that year, each one a link through to the map. The chart was
+ * previously a picture of a number nobody could interrogate — the interesting
+ * question standing in front of it is always "which stores were those?".
+ */
+function wireCumulativeChart(root, points) {
+  const detail = root.querySelector("#cumulativeDetail");
+  if (!detail) return;
+  const byYear = new Map(points.map((p) => [p.year, p]));
+  let pinned = null;
+  // What the panel is currently showing. Without this, moving the pointer off
+  // a pinned year re-rendered the same content, detaching the store buttons
+  // mid-gesture — the panel flickered and a click could land on a node that
+  // had just been replaced.
+  let shown = null;
+
+  const show = (year) => {
+    if (shown === year) return;
+    const pt = byYear.get(year);
+    if (!pt) return;
+    shown = year;
+    const n = pt.opened.length;
+    detail.hidden = false;
+    detail.innerHTML = `
+      <div class="cume-detail-head">
+        <span class="cume-detail-year">${pt.year}</span>
+        <span class="cume-detail-meta">${n} opened \u00b7 ${pt.count} total</span>
+      </div>
+      <div class="cume-detail-list">
+        ${pt.opened
+          .map(
+            (st) =>
+              `<button type="button" class="cume-store" data-store-id="${escapeHtml(st.store_id)}">${escapeHtml(st.name)}<span>${escapeHtml(st.locality || st.town)}</span></button>`
+          )
+          .join("")}
+      </div>`;
+  };
+  const clear = () => {
+    if (pinned == null) {
+      detail.hidden = true;
+      shown = null;
+    } else {
+      show(pinned);
+    }
+  };
+
+  root.querySelectorAll(".cume-hit").forEach((hit) => {
+    const year = Number(hit.dataset.year);
+    hit.addEventListener("mouseenter", () => show(year));
+    hit.addEventListener("focus", () => show(year));
+    hit.addEventListener("mouseleave", clear);
+    hit.addEventListener("blur", clear);
+    hit.addEventListener("click", () => {
+      pinned = pinned === year ? null : year;
+      root.querySelectorAll(".cume-hit").forEach((h) => h.classList.toggle("is-pinned", Number(h.dataset.year) === pinned));
+      if (pinned == null) {
+        detail.hidden = true;
+        shown = null;
+      } else {
+        show(pinned);
+      }
+    });
+  });
+
+  // Same cross-view event the Newest Store card uses, so the map stays the
+  // one place that knows how to open a store.
+  detail.addEventListener("click", (e) => {
+    const btn = e.target.closest(".cume-store");
+    if (!btn) return;
+    document.dispatchEvent(new CustomEvent("patel:open-store", { detail: { storeId: btn.dataset.storeId } }));
+  });
 }
 
 function renderAgeDistribution(stores) {

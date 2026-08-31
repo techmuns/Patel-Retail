@@ -156,6 +156,50 @@ const ANNOUNCEMENT_KIND_META = {
  * .github/workflows/refresh-data.yml). Store-opening filings are pulled to
  * the top because they are the ones that change the map.
  */
+/**
+ * Exchange filing headlines carry a lot of statutory boilerplate that is
+ * identical on every row. Strip it so the table shows what each filing
+ * actually says; fall back to the original whenever stripping would leave
+ * nothing meaningful behind.
+ */
+const HEADLINE_FILLER = new Set(["of", "the", "for", "on", "a", "an", "and"]);
+/** Word set of a phrase, ignoring case, punctuation and filler words. */
+function headlineWords(part) {
+  return new Set(
+    part
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w && !HEADLINE_FILLER.has(w))
+  );
+}
+function sameWords(a, b) {
+  if (a.size !== b.size || !a.size) return false;
+  for (const w of a) if (!b.has(w)) return false;
+  return true;
+}
+
+function tidyHeadline(raw) {
+  let t = (raw || "").trim();
+  t = t.replace(/^Announcement under Regulation\s*30\s*\(LODR\)\s*[-–—:]?\s*/i, "");
+  t = t.replace(/^Patel Retail Limited Has Informed The Exchange About\s*/i, "");
+  t = t.replace(/^Intimation Of\s*/i, "");
+  // The exchange quotes fragments of its own headlines, which leaves stray
+  // unbalanced apostrophes once the prefix is gone.
+  t = t.replace(/['"\u2018\u2019\u201c\u201d]/g, "");
+  t = t.replace(/\s+/g, " ").replace(/\.$/, "").trim();
+
+  // "Board Meeting Outcome for Outcome Of Board Meeting" — the exchange often
+  // states the same thing twice either side of "for". Keep one.
+  const halves = t.split(/\s+for\s+/i);
+  if (halves.length === 2 && sameWords(headlineWords(halves[0]), headlineWords(halves[1]))) {
+    t = halves[0].trim();
+  }
+
+  if (!t) return raw;
+  return t.charAt(0).toUpperCase() + t.slice(1);
+}
+
 function renderAnnouncements() {
   const body = qs("#announcementsTableBody");
   if (!body) return;
@@ -176,19 +220,22 @@ function renderAnnouncements() {
     sub.textContent = `${announcementsData.counts.total} filings · ${n} store opening${n === 1 ? "" : "s"} detected automatically`;
   }
 
-  // Store openings first, then newest-first within each group.
-  const sorted = list.slice().sort((a, b) => {
-    if (a.new_store_candidate !== b.new_store_candidate) return a.new_store_candidate ? -1 : 1;
-    return a.date < b.date ? 1 : -1;
-  });
+  // Strictly newest first. Grouping store openings to the top put a filing
+  // from 2025 above one from last week, which reads as an unsorted table.
+  const sorted = list.slice().sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 
   body.innerHTML = sorted
     .slice(0, 25)
     .map((a) => {
       const meta = ANNOUNCEMENT_KIND_META[a.kind] || ANNOUNCEMENT_KIND_META.other;
+      // Exchange headlines are boilerplate-heavy: every press release arrives
+      // as "Announcement under Regulation 30 (LODR)-Press Release / Media
+      // Release". Stripping the wrapper leaves the part that differs, and the
+      // type chip already says what kind of filing it is.
+      const headline = tidyHeadline(a.headline);
       const title = a.attachment_url
-        ? `<a href="${escapeHtml(a.attachment_url)}" target="_blank" rel="noopener" style="color:inherit">${escapeHtml(a.headline)}</a>`
-        : escapeHtml(a.headline);
+        ? `<a href="${escapeHtml(a.attachment_url)}" target="_blank" rel="noopener" style="color:inherit">${escapeHtml(headline)}</a>`
+        : escapeHtml(headline);
       const detail = a.store_location
         ? `<div style="font-size:11px;color:var(--ok);font-weight:600">${escapeHtml(a.store_location)}${a.store_number ? ` · store #${a.store_number}` : ""}</div>`
         : "";
@@ -366,7 +413,7 @@ function openStoreSheet(store) {
           ? `<div class="flag-card" data-kind="reported" style="margin-top:10px">
                <span class="flag-ico"><i data-lucide="newspaper" class="i16"></i></span>
                <div>
-                 <span class="flag-title">Not from the client's own store file</span>
+                 <span class="flag-title">Source</span>
                  <p>${escapeHtml(store.source_note)}</p>
                </div>
              </div>`
@@ -430,7 +477,7 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
   for (const store of geocodedStores) {
     const isClosed = store.status === "closed";
     const isUpcoming = store.status === "upcoming";
-    // Two independent reasons a pin isn't trustworthy: the client's own
+    // Two independent reasons a pin isn't trustworthy: the source
     // address-quality read (geo_confidence), or the geocoder having fallen
     // back to a town-level centroid (geocode_match_tier) — a coarse match
     // is just as imprecise regardless of what geo_confidence says, since

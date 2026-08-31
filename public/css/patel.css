@@ -416,3 +416,71 @@
   margin-top: 2px;
   white-space: nowrap;
 }
+
+/* Which filing a P&L line was read from, set beside the figure rather than in
+   a footnote — the revenue line moves every quarter and the reader should see
+   which quarter they are looking at. */
+.pnl-src {
+  font-size: 10.5px;
+  color: var(--text-4);
+  font-weight: 400;
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+/* ---- Cumulative store chart: interactive layer ---------------------------
+   The line itself is an SVG stretched with preserveAspectRatio:none, so the
+   hit targets and dots are HTML positioned over it — a circle inside that SVG
+   would render as an ellipse. */
+.cume-hits { position: absolute; inset: 0 0 auto 0; height: 200px; pointer-events: none; }
+.cume-hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 26px;
+  margin-left: -13px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  border-radius: 4px;
+}
+.cume-hit:hover, .cume-hit:focus-visible, .cume-hit.is-pinned { background: color-mix(in srgb, var(--brand-indigo) 7%, transparent); }
+.cume-hit:focus-visible { outline: 2px solid var(--brand-indigo); outline-offset: -2px; }
+.cume-dot {
+  position: absolute;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background: var(--brand-indigo);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.cume-hit:hover .cume-dot,
+.cume-hit:focus-visible .cume-dot,
+.cume-hit.is-pinned .cume-dot { opacity: 1; }
+
+.cume-detail { margin-top: 12px; border-top: 1px solid var(--hairline); padding-top: 10px; }
+.cume-detail-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.cume-detail-year { font-size: 15px; font-weight: 700; color: var(--text-1); }
+.cume-detail-meta { font-size: 11.5px; color: var(--text-4); }
+.cume-detail-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.cume-store {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  text-align: left;
+  padding: 5px 10px;
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  background: var(--surface);
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-2);
+  cursor: pointer;
+}
+.cume-store span { font-size: 10.5px; color: var(--text-4); }
+.cume-store:hover { border-color: var(--brand-indigo); color: var(--text-1); }
