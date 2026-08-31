@@ -287,9 +287,9 @@ function openStoreSheet(store) {
   const totalOtherOperational = prox?.total_other_operational;
 
   const UNAVAILABLE_REASON_TEXT = {
-    not_geocoded: "This store isn't geocoded yet.",
+    not_geocoded: "No address match in OpenStreetMap — a map pin would fix this.",
     town_centroid:
-      "Located to town centre only, not its own address.",
+      "Town centre only, not this store's address — every store in the town shares that point, so a distance from it would be invented.",
     no_locatable_neighbors: "No other stores precisely located to compare against.",
   };
   const RISK_UNAVAILABLE_REASON_TEXT = {

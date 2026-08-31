@@ -101,14 +101,15 @@ function renderTable(ranked) {
   const body = qs("#screenerTableBody");
   body.innerHTML = ranked
     .map((r) => {
-      const why =
-        r.store.geocode_match_tier === "town" || r.store.geocode_match_tier === "town_base"
-          ? "Only geocoded to its town centre, not its own address"
-          : "Not geocoded yet";
+      const coarse = r.store.geocode_match_tier === "town" || r.store.geocode_match_tier === "town_base";
+      const label = coarse ? "Town-level only" : "No coordinates";
+      const why = coarse
+        ? "Geocoded to the town centre, not this store's address — every store in the town lands on the same point, so a distance from it would be invented"
+        : "No address match in OpenStreetMap, so there is no point to measure from";
       const distanceCell =
         r.km != null
           ? `<td class="mono">${r.km} km</td>`
-          : `<td class="mono"><span class="no-data" title="${escapeHtml(why)}">Unavailable</span></td>`;
+          : `<td class="mono"><span class="no-data" title="${escapeHtml(why)}">${label}</span></td>`;
       return `
     <tr${r.km == null ? ' class="row-nodata"' : ""}>
       <td>${escapeHtml(r.store.name)} <span class="mono cell-code">${escapeHtml(r.store.store_id)}</span>${r.store.status === "closed" ? ' <span class="chip failed" style="padding:2px 7px;font-size:10px">closed</span>' : ""}</td>

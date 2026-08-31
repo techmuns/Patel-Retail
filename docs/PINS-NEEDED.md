@@ -96,3 +96,41 @@ One Patel store per town — still needed, just not part of a cluster.
 Four stores (`KBG`, `NSR`, `KMR`, `KHP`) had zero geocoding results at every
 automated fallback tier — these are the ones a client pin will help with
 most, since there's currently no fallback location for them at all.
+
+## Second geocoding pass — what was tried, and why nine still need a pin
+
+`scripts/geocode-retry.mjs` re-queried the nine unlocated stores with
+transliteration variants the main ladder never generates (OSM writes
+"Dombivli" where the store file writes "Dombivali"; likewise Laxmi Nagar /
+Luxminagar, Nilje / Nileje, Bapgaon / Bapgav). It resolved **none** of them.
+
+Direct probing confirms why: the localities are simply not in OpenStreetMap.
+These all return zero results, in any spelling:
+
+| Store | Locality queried | OSM result |
+|---|---|---|
+| `KBG` | Bapgaon / Kohinoor City, Bhiwandi | none |
+| `NSR` | Nilje, Nilje Station Road | none |
+| `AML` | Laxmi Nagar, Ambernath East | none |
+| `DOWSMT` | Samrat Chowk, Dombivli | none |
+| `DWK` | Kumbharkhanpada, Dombivli | none |
+| `DOE/DER` | Shilphata / Rajaji Path | town centroid only |
+| `VAS` | Bhere Maidan, Vasind | station node, not the store |
+| `AMW` | Station Road, Ambernath West | station node, not the store |
+| `KMR` | Khoni MIDC | village centroid only |
+
+The three that do return *something* return a landmark 0.5–4 km from where the
+store actually is. The cannibalisation score decays over 1.5 km, so an error
+that size is as large as the signal — using those anchors would make the map
+look more complete while making the score less trustworthy. They stay
+suppressed.
+
+One hazard the retry script now guards against: loose matching is actively
+dangerous here. "Samrat Chowk, Maharashtra" resolves to a junction in Wakad,
+**Pune** — correctly typed, plausible-looking, and 92 km from the estate. The
+script rejects any match more than 80 km from the network's centre of gravity.
+
+**A Google Maps pin per store resolves all nine exactly**, and takes about ten
+minutes. Nine pins would take precise coverage from 45/54 to 54/54, which also
+sharpens every neighbouring store's cannibalisation score — those nine
+currently contribute nothing to anyone's overlap.
