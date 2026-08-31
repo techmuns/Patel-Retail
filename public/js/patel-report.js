@@ -371,7 +371,7 @@ function peerBenchmarkSection(push, model, n) {
 
   const osia = m.osia_hyper_retail;
   const v2 = m.v2_retail;
-  const naOr = (v, fmt) => (v == null ? "Not available" : fmt(v));
+  const naOr = (v, fmt) => (v == null ? "Not disclosed" : fmt(v));
   const operationalCount = model.stores.filter((st) => st.status === "operational").length;
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Osia Hyper Retail &amp; V2 Retail — the closest scale peers (Patel's own scale is ${operationalCount} operational stores; every other peer in the model is 120+)</div>
@@ -383,8 +383,8 @@ function peerBenchmarkSection(push, model, n) {
           <tr><td>EBITDA (margin)</td><td class="mono">${fmtCr(osia.ebitda_cr)} (${fmtPct(osia.ebitda_margin_pct)})</td><td class="mono">${fmtCr(v2.ebitda_cr)} (${fmtPct(v2.ebitda_margin_pct)})</td></tr>
           <tr><td>PAT</td><td class="mono">${fmtCr(osia.pat_cr)}</td><td class="mono">${fmtCr(v2.pat_cr)}</td></tr>
           <tr><td>Total stores</td><td class="mono">${naOr(osia.total_stores, (v) => v.toLocaleString("en-IN"))}</td><td class="mono">${naOr(v2.total_stores, (v) => v.toLocaleString("en-IN"))}</td></tr>
-          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
-          <tr><td>Private label %</td><td class="mono">${naOr(osia.private_label_pct, (v) => fmtPct(v))}</td><td class="mono">${naOr(v2.private_label_pct, (v) => fmtPct(v))}</td></tr>
+          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft${osia.retail_area_store_basis ? ` (${osia.retail_area_store_basis} of ${osia.total_stores} stores)` : ""}`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
+          <tr><td>Private label %</td><td class="mono">${naOr(osia.private_label_pct, (v) => fmtPct(v))}</td><td class="mono">${naOr(v2.private_label_pct, (v) => `${fmtPct(v)}${v2.private_label_as_of ? ` (${escapeHtml(v2.private_label_as_of)})` : ""}`)}</td></tr>
         </tbody>
       </table>
       <p class="rpt-note">${escapeHtml(osia.name)}: ${escapeHtml(osia.note)} — ${escapeHtml(osia.source)}</p>

@@ -170,15 +170,19 @@
     "ebitda_cr": 72,
     "ebitda_margin_pct": 0.05,
     "pat_cr": 20,
-    "total_stores": 35,
-    "retail_area_mn_sqft": null,
+    "total_stores": 43,
+    "retail_area_mn_sqft": 0.711,
     "private_label_pct": null,
     "kind": "reported",
-    "source": "Screener.in",
-    "note": "~35 stores (Screener). Admitted to Corporate Insolvency Resolution Process by NCLT Ahmedabad, Apr 2026; creditor meetings ongoing through Aug 2026.",
+    "source": "Screener.in (financials); company annual report FY2024-25 and osiahypermart.com (store count and area)",
+    "note": "43 stores across Gujarat, Maharashtra, Uttarakhand and Uttar Pradesh plus one distribution centre at Rakhial, Ahmedabad (annual report FY2024-25). Admitted to Corporate Insolvency Resolution Process by NCLT Ahmedabad, Apr 2026; creditor meetings ongoing through Aug 2026.",
     "period_offset_flag": "FY2025 figures — one year behind the other peers, who are on FY2026. Growth and scale comparisons against Osia are not like-for-like.",
     "source_url": "https://www.screener.in/company/OSIAHYPER/",
-    "status_flag": "In insolvency (CIRP)"
+    "status_flag": "In insolvency (CIRP)",
+    "total_stores_as_of": "Annual report FY2024-25 (signed Sept 2025)",
+    "retail_area_store_basis": 29,
+    "retail_area_note": "The company publishes 7.11 lakh sq ft across 'over 29 stores' on its own website, undated. The count has since reached 43, so this understates the current footprint — it is shown against the 29 stores it covers rather than against the 43 above. Osia's FY2024-25 annual report discloses no retail-area figure at all.",
+    "private_label_note": "Not disclosed. Osia's FY2024-25 annual report mentions private labels only as an industry trend, not as a share of its own revenue."
   },
   "v2_retail": {
     "name": "V2 Retail Ltd",
@@ -191,12 +195,15 @@
     "pat_cr": 162,
     "total_stores": 325,
     "retail_area_mn_sqft": 3.54,
-    "private_label_pct": null,
+    "private_label_pct": 0.8,
     "kind": "reported",
-    "source": "Screener.in",
+    "source": "Screener.in (financials); company earnings calls (store count, area, private label)",
     "note": "325 stores / 35.35 lakh sq ft as of 31 Mar 2026 — same period as the financials above.",
     "category_flag": "Apparel-led, not a grocer. Its 15% EBITDA margin reflects a higher-margin category mix, so it works as a scale comparison but not as a margin comparison.",
-    "source_url": "https://www.screener.in/company/V2RETAIL/consolidated/"
+    "source_url": "https://www.screener.in/company/V2RETAIL/consolidated/",
+    "private_label_note": "Management on the Q1 FY2025 earnings call (31 Jul 2024): \"Our private label contribution is almost 80% and going forward the target is to make it 100% private label business... one year back that percentage used to be 60%.\" No updated figure has been given since, including on the Q1 FY2027 call.",
+    "private_label_as_of": "Q1 FY2025, Jul 2024",
+    "latest_footprint_note": "More recent than the figures above: 381 stores covering approximately 40.7 lakh sq ft as at 30 June 2026, per the Q1 FY2027 earnings call; the company has since passed 400 stores. The 325-store figure is kept here because it matches the FY2026 financials shown alongside it."
   },
   "dmart": {
     "name": "Avenue Supermarts Ltd (DMart)",

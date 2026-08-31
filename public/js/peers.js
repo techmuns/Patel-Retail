@@ -43,7 +43,7 @@ function fmtPct(value, digits = 1) {
 }
 
 function cellOrNA(value, fmt, kind = "reported") {
-  if (value == null) return `<span class="cb-na">Not available</span>`;
+  if (value == null) return `<span class="cb-na">Not disclosed</span>`;
   return `${fmt(value)} <span class="kind-pill kind-${kind}">${kind}</span>`;
 }
 
@@ -94,7 +94,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     {
       name: "Trent (Star Bazaar)",
       revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">Star Bazaar only — see correction below</div>`,
-      ebitda: `<span class="cb-na">Not available</span>`,
+      ebitda: `<span class="cb-na">Not disclosed</span>`,
       stores: `${trent.store_count} <span class="kind-pill kind-reported">reported</span>`,
       privateLabel: cellOrNA(pl.trent, (v) => fmtPct(v)),
     },
@@ -103,7 +103,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
       revenue: `${fmtCr(spencers.revenue_cr)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">${escapeHtml(spencers.fiscal_year)}</div>`,
       ebitda: `${fmtPct(spencers.ebitda_margin_pct)} <span class="kind-pill kind-reported">reported</span><div style="font-size:10.5px;color:var(--text-4)">loss-making</div>`,
       stores: cellOrNA(spencers.total_stores, (v) => v.toLocaleString("en-IN")),
-      privateLabel: `<span class="cb-na">Not available</span>`,
+      privateLabel: `<span class="cb-na">Not disclosed</span>`,
     },
     {
       name: "Osia Hyper Retail",
@@ -195,25 +195,19 @@ function renderSpencersFixCard(metrics) {
           <div class="cb-source">${escapeHtml(s.corrected_formula)}</div>
         </div>
       </div>
-      <div class="flag-card">
-        <span class="flag-ico"><i data-lucide="triangle-alert" class="i16"></i></span>
-        <div>
-          <span class="flag-title">Understated by ${fmtPct(s.understated_pct, 0)}</span>
-        </div>
-      </div>
     </div>
   `;
   refreshIcons();
 }
 
 function fmtCrOrNA(value) {
-  return value == null ? `<span class="cb-na">Not available</span>` : fmtCr(value);
+  return value == null ? `<span class="cb-na">Not disclosed</span>` : fmtCr(value);
 }
 function fmtNumOrNA(value, unit = "") {
-  return value == null ? `<span class="cb-na">Not available</span>` : `${value.toLocaleString("en-IN")}${unit}`;
+  return value == null ? `<span class="cb-na">Not disclosed</span>` : `${value.toLocaleString("en-IN")}${unit}`;
 }
 function fmtPctOrNA(value, digits = 1) {
-  return value == null ? `<span class="cb-na">Not available</span>` : fmtPct(value, digits);
+  return value == null ? `<span class="cb-na">Not disclosed</span>` : fmtPct(value, digits);
 }
 
 function renderPeerCompanyBlock(p) {
@@ -230,8 +224,16 @@ function renderPeerCompanyBlock(p) {
         <tr><td>EBITDA</td><td class="mono">${fmtCr(p.ebitda_cr)} (${fmtPct(p.ebitda_margin_pct, 1)} margin) <span class="kind-pill kind-reported">reported</span></td></tr>
         <tr><td>PAT</td><td class="mono">${fmtCr(p.pat_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>
         <tr><td>Total stores</td><td class="mono">${fmtNumOrNA(p.total_stores)}</td></tr>
-        <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}</td></tr>
-        <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}</td></tr>
+        <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}${
+          p.retail_area_store_basis
+            ? `<div style="font-size:10px;color:var(--text-4);font-family:var(--font-sans, inherit)">covers ${p.retail_area_store_basis} of the ${p.total_stores} stores</div>`
+            : ""
+        }</td></tr>
+        <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}${
+          p.private_label_as_of
+            ? `<div style="font-size:10px;color:var(--text-4);font-family:var(--font-sans, inherit)">${escapeHtml(p.private_label_as_of)}</div>`
+            : ""
+        }</td></tr>
       </table>
       <p style="font-size:11px;color:var(--text-4);margin-top:8px">Source: ${
         p.source_url
