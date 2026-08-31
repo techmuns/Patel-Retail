@@ -466,7 +466,7 @@
 .cume-detail { margin-top: 12px; border-top: 1px solid var(--hairline); padding-top: 10px; }
 .cume-detail-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
 .cume-detail-year { font-size: 15px; font-weight: 700; color: var(--text-1); }
-.cume-detail-meta { font-size: 11.5px; color: var(--text-4); }
+.cume-detail-meta { font-size: 12px; color: var(--text-3); }
 .cume-detail-list { display: flex; flex-wrap: wrap; gap: 6px; }
 .cume-store {
   display: flex;
@@ -478,9 +478,37 @@
   border-radius: 8px;
   background: var(--surface);
   font: inherit;
-  font-size: 12px;
-  color: var(--text-2);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-1);
   cursor: pointer;
 }
-.cume-store span { font-size: 10.5px; color: var(--text-4); }
+.cume-store span { font-size: 11px; color: var(--text-3); }
 .cume-store:hover { border-color: var(--brand-indigo); color: var(--text-1); }
+
+/* Openings-by-year bars are buttons so a year can be interrogated the same way
+   as a point on the cumulative line. */
+.bar-hit {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px 6px 0 0;
+}
+.bar-fill {
+  width: 100%;
+  max-width: 44px;
+  border-radius: 6px 6px 0 0;
+  background: var(--grad-primary);
+  transition: filter 0.12s ease;
+}
+.bar-hit:hover .bar-fill,
+.bar-hit:focus-visible .bar-fill,
+.bar-hit.is-pinned .bar-fill { filter: saturate(1.35) brightness(0.92); }
+.bar-hit:focus-visible { outline: 2px solid var(--brand-indigo); outline-offset: 2px; }

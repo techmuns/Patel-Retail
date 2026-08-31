@@ -91,14 +91,19 @@ function renderOpeningsChart(stores) {
   const el = qs("#openingsChart");
   const withDates = stores.filter((s) => s.opened);
 
-  const preBucketCount = withDates.filter((s) => openedYear(s) < PRE_BUCKET_YEAR).length;
+  const preBucket = withDates.filter((s) => openedYear(s) < PRE_BUCKET_YEAR);
   const byYear = new Map();
   for (const s of withDates) {
     const y = openedYear(s);
-    if (y >= PRE_BUCKET_YEAR) byYear.set(y, (byYear.get(y) || 0) + 1);
+    if (y < PRE_BUCKET_YEAR) continue;
+    if (!byYear.has(y)) byYear.set(y, []);
+    byYear.get(y).push(s);
   }
   const years = [...byYear.keys()].sort((a, b) => a - b);
-  const bars = [{ label: `< ${PRE_BUCKET_YEAR}`, count: preBucketCount }, ...years.map((y) => ({ label: String(y), count: byYear.get(y) }))];
+  const bars = [
+    { label: `< ${PRE_BUCKET_YEAR}`, count: preBucket.length, stores: preBucket },
+    ...years.map((y) => ({ label: String(y), count: byYear.get(y).length, stores: byYear.get(y) })),
+  ];
   const max = Math.max(...bars.map((b) => b.count));
 
   // Gridlines on a rounded scale, so a bar can be read against an axis rather
@@ -125,20 +130,64 @@ function renderOpeningsChart(stores) {
         <div style="position:relative; display:flex; align-items:flex-end; gap:10px; height:100%">
           ${bars
             .map(
-              (b) => `
-            <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
+              (b, i) => `
+            <button type="button" class="bar-hit" data-bar="${i}" aria-label="${escapeHtml(b.label)}: ${b.count} opened">
               <div style="font-size:12px; font-weight:700; color:var(--text-1); margin-bottom:4px">${b.count}</div>
-              <div style="width:100%; max-width:44px; height:${Math.max((b.count / scaleMax) * 100, 1.5)}%; border-radius:6px 6px 0 0; background:var(--grad-primary)"></div>
-            </div>`
+              <div class="bar-fill" style="height:${Math.max((b.count / scaleMax) * 100, 1.5)}%"></div>
+            </button>`
             )
             .join("")}
         </div>
       </div>
       <div style="display:flex; gap:10px; padding:6px 0 0; border-top:1px solid var(--hairline); margin-top:6px">
-        ${bars.map((b) => `<div style="flex:1; text-align:center; font-size:11px; color:var(--text-3)">${escapeHtml(b.label)}</div>`).join("")}
+        ${bars.map((b) => `<div style="flex:1; text-align:center; font-size:11.5px; color:var(--text-2); font-weight:500">${escapeHtml(b.label)}</div>`).join("")}
       </div>
+      <div id="openingsDetail" class="cume-detail" hidden></div>
     </div>
   `;
+  wireOpeningsChart(el, bars);
+}
+
+/**
+ * Same interaction as the cumulative chart: hover a bar for its stores, click
+ * to pin, click a store to open it on the map.
+ */
+function wireOpeningsChart(root, bars) {
+  const detail = root.querySelector("#openingsDetail");
+  if (!detail) return;
+  let pinned = null;
+  let shown = null;
+
+  const show = (i) => {
+    if (shown === i) return;
+    const b = bars[i];
+    if (!b) return;
+    shown = i;
+    renderStorePanel(detail, b.label, `${b.count} opened`, b.stores);
+  };
+  const clear = () => {
+    if (pinned == null) {
+      detail.hidden = true;
+      shown = null;
+    } else {
+      show(pinned);
+    }
+  };
+
+  root.querySelectorAll(".bar-hit").forEach((hit) => {
+    const i = Number(hit.dataset.bar);
+    hit.addEventListener("mouseenter", () => show(i));
+    hit.addEventListener("focus", () => show(i));
+    hit.addEventListener("mouseleave", clear);
+    hit.addEventListener("blur", clear);
+    hit.addEventListener("click", () => {
+      pinned = pinned === i ? null : i;
+      root.querySelectorAll(".bar-hit").forEach((h) => h.classList.toggle("is-pinned", Number(h.dataset.bar) === pinned));
+      clear();
+    });
+  });
+
+  wireStorePanelLinks(detail);
 }
 
 function renderCumulativeChart(stores) {
@@ -251,6 +300,36 @@ function renderCumulativeChart(stores) {
 }
 
 /**
+ * The store-chip panel both charts share: a heading, a count, and one chip per
+ * store that opens it on the network map.
+ */
+function renderStorePanel(detail, title, meta, stores) {
+  detail.hidden = false;
+  detail.innerHTML = `
+    <div class="cume-detail-head">
+      <span class="cume-detail-year">${escapeHtml(title)}</span>
+      <span class="cume-detail-meta">${escapeHtml(meta)}</span>
+    </div>
+    <div class="cume-detail-list">
+      ${stores
+        .map(
+          (st) =>
+            `<button type="button" class="cume-store" data-store-id="${escapeHtml(st.store_id)}">${escapeHtml(st.name)}<span>${escapeHtml(st.locality || st.town)}</span></button>`
+        )
+        .join("")}
+    </div>`;
+}
+
+/** Chips in a panel navigate to the map, via the same event the KPIs use. */
+function wireStorePanelLinks(detail) {
+  detail.addEventListener("click", (e) => {
+    const btn = e.target.closest(".cume-store");
+    if (!btn) return;
+    document.dispatchEvent(new CustomEvent("patel:open-store", { detail: { storeId: btn.dataset.storeId } }));
+  });
+}
+
+/**
  * Hover or focus a year to see its running total; click it to list the stores
  * that opened that year, each one a link through to the map. The chart was
  * previously a picture of a number nobody could interrogate — the interesting
@@ -272,21 +351,7 @@ function wireCumulativeChart(root, points) {
     const pt = byYear.get(year);
     if (!pt) return;
     shown = year;
-    const n = pt.opened.length;
-    detail.hidden = false;
-    detail.innerHTML = `
-      <div class="cume-detail-head">
-        <span class="cume-detail-year">${pt.year}</span>
-        <span class="cume-detail-meta">${n} opened \u00b7 ${pt.count} total</span>
-      </div>
-      <div class="cume-detail-list">
-        ${pt.opened
-          .map(
-            (st) =>
-              `<button type="button" class="cume-store" data-store-id="${escapeHtml(st.store_id)}">${escapeHtml(st.name)}<span>${escapeHtml(st.locality || st.town)}</span></button>`
-          )
-          .join("")}
-      </div>`;
+    renderStorePanel(detail, String(pt.year), `${pt.opened.length} opened \u00b7 ${pt.count} total`, pt.opened);
   };
   const clear = () => {
     if (pinned == null) {
@@ -315,13 +380,7 @@ function wireCumulativeChart(root, points) {
     });
   });
 
-  // Same cross-view event the Newest Store card uses, so the map stays the
-  // one place that knows how to open a store.
-  detail.addEventListener("click", (e) => {
-    const btn = e.target.closest(".cume-store");
-    if (!btn) return;
-    document.dispatchEvent(new CustomEvent("patel:open-store", { detail: { storeId: btn.dataset.storeId } }));
-  });
+  wireStorePanelLinks(detail);
 }
 
 function renderAgeDistribution(stores) {

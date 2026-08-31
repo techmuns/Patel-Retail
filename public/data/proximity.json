@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-31T08:50:36.223Z",
+  "generated_at": "2026-08-31T08:52:19.165Z",
   "metadata": {
     "total_stores": 54,
     "geocoded_count": 51,
@@ -13,7 +13,7 @@
     "pairs_suppressed_not_geocoded": 156,
     "note": "45/54 stores are precisely located; 6 more are geocoded only to a town centroid (distances suppressed, not fabricated) and 3 have no coordinates at all."
   },
-  "overlap_risk_method": "overlap_risk = 0.6×clamp(1 − nearest_own_km/5, 0, 1) + 0.4×clamp(own_within[\"3km\"]/4, 0, 1). Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
+  "overlap_risk_method": "overlap_risk = 1 − exp(−Σ exp(−d/1.5)) over every other located operational own store, d in km. Distance-decay (retail gravity): a neighbour's overlap falls smoothly with distance and is never cut off at a fixed radius, and the whole network contributes rather than only those inside one ring. Geography-only heuristic (no sales data exists to calibrate against) — a relative screening signal, not a measurement. kind: \"derived\". null when either input is unavailable — NEVER computed from a town-centroid coordinate.",
   "pairs": [
     {
       "a": "KBG",
@@ -10083,7 +10083,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.86,
+      "overlap_risk": 0.56,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10103,7 +10103,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.36,
+      "overlap_risk": 0.04,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10136,7 +10136,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.48,
+      "overlap_risk": 0.08,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10176,7 +10176,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.82,
+      "overlap_risk": 0.3,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10196,7 +10196,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.93,
+      "overlap_risk": 0.58,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10216,7 +10216,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.86,
+      "overlap_risk": 0.55,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10256,7 +10256,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.08,
+      "overlap_risk": 0.09,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10276,7 +10276,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.48,
+      "overlap_risk": 0.09,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10316,7 +10316,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.86,
+      "overlap_risk": 0.6,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10336,7 +10336,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.59,
+      "overlap_risk": 0.17,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10369,7 +10369,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.89,
+      "overlap_risk": 0.45,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10389,7 +10389,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.93,
+      "overlap_risk": 0.6,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10409,7 +10409,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.59,
+      "overlap_risk": 0.16,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10429,7 +10429,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.15,
+      "overlap_risk": 0.05,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10502,7 +10502,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.86,
+      "overlap_risk": 0.47,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10522,7 +10522,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.7,
+      "overlap_risk": 0.26,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10542,7 +10542,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.94,
+      "overlap_risk": 0.65,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10562,7 +10562,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.91,
+      "overlap_risk": 0.59,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10582,7 +10582,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.94,
+      "overlap_risk": 0.57,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10602,7 +10602,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.91,
+      "overlap_risk": 0.56,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10622,7 +10622,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.8,
+      "overlap_risk": 0.38,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10642,7 +10642,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.67,
+      "overlap_risk": 0.27,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10662,7 +10662,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.8,
+      "overlap_risk": 0.33,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10695,7 +10695,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.72,
+      "overlap_risk": 0.24,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10754,7 +10754,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.89,
+      "overlap_risk": 0.55,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10774,7 +10774,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.84,
+      "overlap_risk": 0.5,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10794,7 +10794,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.87,
+      "overlap_risk": 0.75,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10814,7 +10814,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.87,
+      "overlap_risk": 0.65,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10834,7 +10834,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.91,
+      "overlap_risk": 0.6,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10854,7 +10854,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.91,
+      "overlap_risk": 0.61,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10874,7 +10874,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.85,
+      "overlap_risk": 0.72,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10947,7 +10947,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.36,
+      "overlap_risk": 0.04,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10967,7 +10967,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.86,
+      "overlap_risk": 0.51,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },
@@ -10987,7 +10987,7 @@
       },
       "locatable_others": 43,
       "total_other_operational": 52,
-      "overlap_risk": 0.75,
+      "overlap_risk": 0.37,
       "risk_unavailable_reason": null,
       "kind": "derived"
     },

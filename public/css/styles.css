@@ -903,7 +903,23 @@ button {
 .feed-table td {
   padding: 14px 18px;
   vertical-align: middle;
-  color: var(--text-2);
+  color: var(--text-1);
+}
+/* Secondary detail inside a cell — a store code, a locality, a caption line —
+   stays muted, but at --text-3 rather than the --text-4 hint colour, which
+   was too light to read against white at this size. */
+.feed-table td .cell-sub,
+.feed-table td .cell-code {
+  color: var(--text-3);
+  font-size: 11px;
+}
+/* A row whose value is genuinely missing should still be readable. It used to
+   be ghosted to 55% opacity on top of the hint colour, which made the store
+   name in that row almost invisible. */
+.feed-table tr.row-nodata td { color: var(--text-2); }
+.feed-table td .no-data {
+  color: var(--text-3);
+  font-style: normal;
 }
 .cell-co {
   display: flex;

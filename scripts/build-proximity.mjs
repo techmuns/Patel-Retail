@@ -51,10 +51,7 @@ import {
   round2,
   overlapRisk,
   isLocatable,
-  RISK_PROXIMITY_WEIGHT,
-  RISK_DENSITY_WEIGHT,
-  RISK_PROXIMITY_HORIZON_KM,
-  RISK_DENSITY_SATURATION,
+  CATCHMENT_DECAY_KM,
 } from "../public/js/geo.js"; // single source of truth — also imported client-side by map.js/screener.js
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -72,8 +69,9 @@ const RADII_KM = [1, 3, 5];
 // store it could be compared against, is only a town centroid) — a missing
 // score, not a guessed one.
 const RISK_METHOD_NOTE =
-  `overlap_risk = ${RISK_PROXIMITY_WEIGHT}×clamp(1 − nearest_own_km/${RISK_PROXIMITY_HORIZON_KM}, 0, 1) ` +
-  `+ ${RISK_DENSITY_WEIGHT}×clamp(own_within[\"3km\"]/${RISK_DENSITY_SATURATION}, 0, 1). ` +
+  `overlap_risk = 1 − exp(−Σ exp(−d/${CATCHMENT_DECAY_KM})) over every other located operational own store, ` +
+  `d in km. Distance-decay (retail gravity): a neighbour's overlap falls smoothly with distance and is never ` +
+  `cut off at a fixed radius, and the whole network contributes rather than only those inside one ring. ` +
   `Geography-only heuristic (no sales data exists to calibrate against) — a relative screening ` +
   `signal, not a measurement. kind: "derived". null when either input is unavailable — ` +
   `NEVER computed from a town-centroid coordinate.`;
@@ -167,8 +165,10 @@ async function main() {
 
     let nearest = null;
     const within = { "1km": 0, "3km": 0, "5km": 0 };
+    const distances = [];
     for (const other of others) {
       const km = haversineKm(store, other);
+      distances.push(km);
       if (!nearest || km < nearest.km) nearest = { store_id: other.store_id, km: round2(km) };
       for (const r of RADII_KM) {
         if (km <= r) within[`${r}km`] += 1;
@@ -177,7 +177,7 @@ async function main() {
 
     const overlap_risk =
       store.status === "operational"
-        ? overlapRisk(nearest.km, within["3km"])
+        ? overlapRisk(distances)
         : null; // don't score risk for the closed store itself — nothing to protect there anymore
 
     return {

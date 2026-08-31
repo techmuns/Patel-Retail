@@ -11,7 +11,7 @@
  * not building a parallel system.
  */
 import { qs, qsa, escapeHtml, refreshIcons, toast } from "./ui.js";
-import { haversineKm, round2, overlapRisk, isLocatable, RISK_DENSITY_SATURATION, RISK_PROXIMITY_HORIZON_KM } from "./geo.js";
+import { haversineKm, round2, overlapRisk, isLocatable, CATCHMENT_DECAY_KM, OVERLAP_REFERENCE } from "./geo.js";
 
 const NOMINATIM_URL = "https://nominatim.openstreetmap.org/search";
 // Same bounding box as scripts/geocode.mjs — Thane–Raigad–Palghar belt.
@@ -101,13 +101,17 @@ function renderTable(ranked) {
   const body = qs("#screenerTableBody");
   body.innerHTML = ranked
     .map((r) => {
+      const why =
+        r.store.geocode_match_tier === "town" || r.store.geocode_match_tier === "town_base"
+          ? "Only geocoded to its town centre, not its own address"
+          : "Not geocoded yet";
       const distanceCell =
         r.km != null
           ? `<td class="mono">${r.km} km</td>`
-          : `<td class="mono" style="color:var(--text-4)" title="${escapeHtml(r.store.geocode_match_tier === "town" || r.store.geocode_match_tier === "town_base" ? "Only geocoded to its town centre, not its own address" : "Not geocoded yet")}">Unavailable</td>`;
+          : `<td class="mono"><span class="no-data" title="${escapeHtml(why)}">Unavailable</span></td>`;
       return `
-    <tr${r.km == null ? ' style="opacity:0.55"' : ""}>
-      <td>${escapeHtml(r.store.name)} <span class="mono" style="color:var(--text-4); font-size:11px">${escapeHtml(r.store.store_id)}</span>${r.store.status === "closed" ? ' <span class="chip failed" style="padding:2px 7px;font-size:10px">closed</span>' : ""}</td>
+    <tr${r.km == null ? ' class="row-nodata"' : ""}>
+      <td>${escapeHtml(r.store.name)} <span class="mono cell-code">${escapeHtml(r.store.store_id)}</span>${r.store.status === "closed" ? ' <span class="chip failed" style="padding:2px 7px;font-size:10px">closed</span>' : ""}</td>
       <td>${escapeHtml(r.store.town)}</td>
       ${distanceCell}
     </tr>`;
@@ -215,7 +219,10 @@ async function runScreen(address) {
       if (r.km <= 5) within["5km"]++;
     }
     const nearest = operationalLocatable[0] || null;
-    const risk = nearest ? overlapRisk(nearest.km, within["3km"]) : null;
+    // Every located store contributes, decayed by distance — same call shape
+    // as build-proximity.mjs, so a screened site is scored on the identical
+    // scale as the existing network.
+    const risk = nearest ? overlapRisk(operationalLocatable.map((r) => r.km)) : null;
 
     let nearestCompetitor = null;
     if (competitors.stores?.length) {

@@ -1,16 +1,15 @@
 /**
  * public/js/peers.js — Peer Benchmark view.
  *
- * The supplied peer model has 10 documented defects (full audit in
- * docs/PEER-MODEL-AUDIT.md, deliberately not on screen). Only the two that
- * move a number appear here — Trent's revenue/area mismatch and Spencer's
- * gross-profit formula bug. Checking a source spreadsheet is backend work;
- * the screen carries the corrected figures, never the name of the file they
- * were corrected from. Everything shown is
- * either a number given directly in the handoff or computed live from
- * stores.json — nothing here is estimated to fill a gap. Where the correct
- * number genuinely isn't available (Osia/V2 financials, a few bug-affected
- * cells), that's stated plainly instead of guessed.
+ * Checking a source spreadsheet is backend work. This screen carries the
+ * corrected figures only — never the file they came from, and no longer the
+ * before/after of what was wrong with them (that is docs/PEER-MODEL-AUDIT.md,
+ * which records all 10 defects including the two that move a number, Trent's
+ * revenue/area mismatch and Spencer's gross-profit formula).
+ *
+ * Everything shown is either a reported figure, a live Screener reading, or
+ * computed from stores.json. Nothing is estimated to fill a gap: where a
+ * company does not publish something, the cell says so.
  */
 import { qs, escapeHtml, refreshIcons } from "./ui.js";
 import { computePnl } from "./pnl.js";
@@ -93,7 +92,7 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     },
     {
       name: "Trent (Star Bazaar)",
-      revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">Star Bazaar only — see correction below</div>`,
+      revenue: `${fmtCr(trent.corrected_revenue_cr)} <span class="kind-pill kind-derived">derived</span><div style="font-size:10.5px;color:var(--text-4)">Star Bazaar format only, not all of Trent</div>`,
       ebitda: `<span class="cb-na">Not disclosed</span>`,
       stores: `${trent.store_count} <span class="kind-pill kind-reported">reported</span>`,
       privateLabel: cellOrNA(pl.trent, (v) => fmtPct(v)),
@@ -134,70 +133,6 @@ function renderGenuinePeerTable(metrics, patelStoreCount) {
     </tr>`
     )
     .join("");
-}
-
-function renderTrentFixCard(metrics) {
-  const t = metrics.peer_model_corrections.trent;
-  const el = qs("#trentFixCard");
-  el.innerHTML = `
-    <div class="card-head">
-      <div>
-        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Trent revenue — corrected</h3>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="compare-row">
-        <div class="compare-box" data-kind="reported">
-          <div class="cb-label">Old model (wrong)</div>
-          <div class="cb-value">${fmtCr(t.wrong_revenue_cr)}</div>
-          <div class="cb-source">${escapeHtml(t.wrong_note)}</div>
-        </div>
-        <div class="compare-box used" data-kind="reported">
-          <div class="cb-label">Corrected</div>
-          <div class="cb-value">${fmtCr(t.corrected_revenue_cr)}</div>
-          <div class="cb-source">${escapeHtml(t.corrected_note)}</div>
-        </div>
-      </div>
-      <div class="compare-row">
-        <div class="compare-box" data-kind="derived">
-          <div class="cb-label">Revenue/store (old, wrong)</div>
-          <div class="cb-value">${fmtLakh(t.wrong_revenue_per_store_lakh)}</div>
-        </div>
-        <div class="compare-box used" data-kind="derived">
-          <div class="cb-label">Revenue/store (corrected)</div>
-          <div class="cb-value">${fmtLakh(t.corrected_revenue_per_store_lakh)}</div>
-        </div>
-      </div>
-    </div>
-  `;
-  refreshIcons();
-}
-
-function renderSpencersFixCard(metrics) {
-  const s = metrics.peer_model_corrections.spencers;
-  const el = qs("#spencersFixCard");
-  el.innerHTML = `
-    <div class="card-head">
-      <div>
-        <h3><span class="card-ico" style="background: var(--grad-warm)"><i data-lucide="triangle-alert" class="i16"></i></span>Spencer's gross profit — corrected</h3>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="compare-row">
-        <div class="compare-box" data-kind="reported">
-          <div class="cb-label">Old model (wrong)</div>
-          <div class="cb-value">${fmtCr(s.wrong_gross_profit_cr)}</div>
-          <div class="cb-source">${escapeHtml(s.wrong_formula)}</div>
-        </div>
-        <div class="compare-box used" data-kind="reported">
-          <div class="cb-label">Corrected</div>
-          <div class="cb-value">${fmtCr(s.corrected_gross_profit_cr)}</div>
-          <div class="cb-source">${escapeHtml(s.corrected_formula)}</div>
-        </div>
-      </div>
-    </div>
-  `;
-  refreshIcons();
 }
 
 function fmtCrOrNA(value) {
@@ -299,8 +234,6 @@ export async function initPeers() {
     const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
     const operationalCount = stores.filter((s) => s.status === "operational").length;
     renderGenuinePeerTable(metrics, operationalCount);
-    renderTrentFixCard(metrics);
-    renderSpencersFixCard(metrics);
     renderPeerScaleCard(metrics, operationalCount);
     renderPrivateLabelBlock(metrics);
     // Last, and awaited separately: a Screener fetch failure must not blank

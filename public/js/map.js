@@ -10,7 +10,7 @@
  */
 import { qs, escapeHtml, fmtDate, refreshIcons, toast } from "./ui.js";
 import { VINTAGE_BUCKETS, yearsSince, vintageBucketFor } from "./vintage.js";
-import { haversineKm, round2, isLocatable, isCoarseTier, overlapRisk, RISK_PROXIMITY_HORIZON_KM, RISK_DENSITY_SATURATION } from "./geo.js";
+import { haversineKm, round2, isLocatable, isCoarseTier, overlapRisk, CATCHMENT_DECAY_KM, OVERLAP_REFERENCE } from "./geo.js";
 
 const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const OSM_ATTRIBUTION = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
@@ -184,6 +184,16 @@ function tidyHeadline(raw) {
   t = t.replace(/^Announcement under Regulation\s*30\s*\(LODR\)\s*[-–—:]?\s*/i, "");
   t = t.replace(/^Patel Retail Limited Has Informed The Exchange About\s*/i, "");
   t = t.replace(/^Intimation Of\s*/i, "");
+  // The exchange restates the company name and the meeting date inside the
+  // headline, both of which the row's own Date column and context already
+  // give. "Outcome Of The Board Meeting Of Patel Retail Limited Held On
+  // Wednesday, August 12, 2026" is one row's worth of wrapping around two
+  // useful words.
+  t = t.replace(/\s*of\s+Patel Retail Limited\b/i, "");
+  t = t.replace(/\s+held on\s+[A-Za-z]+day,?\s*[A-Za-z]+\s*\d{1,2},?\s*\d{4}.*$/i, "");
+  t = t.replace(/\s+for the (quarter|year|half[- ]year) ended (on\s*)?/i, " — ");
+  t = t.replace(/^The\s+/i, "");
+  t = t.replace(/\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*(\d)/gi, (m, mon, d) => `${mon}${m.slice(mon.length, m.length - d.length)} ${d}`);
   // The exchange quotes fragments of its own headlines, which leaves stray
   // unbalanced apostrophes once the prefix is gone.
   t = t.replace(/['"\u2018\u2019\u201c\u201d]/g, "");
@@ -368,12 +378,14 @@ function openStoreSheet(store) {
       // "estimate," not "derived": it's our own numeric combination of the
       // same proximity+density weights already trusted for the
       // store-network score above, not something the fund has reviewed or
-      // endorsed as correct. The one judgment call made here: density
-      // counted within 1 km, not the 3 km used for the store-network score
-      // — quick-commerce delivery radii are themselves ~1-2 km, so 3 km
-      // would blur every store in a dense town into the same saturated
-      // reading.
-      const combinedScore = overlapRisk(nearestKm, within1km);
+      // endorsed as correct. Quick-commerce delivery radii are ~1-2 km, so
+      // the catchment decay is halved against the store-network score: a dark
+      // store 1.5 km away competes far less than a supermarket at 1.5 km.
+      const combinedScore = overlapRisk(
+        darkstoresData.darkstores
+          .map((d) => haversineKm(store, d))
+          .map((km) => km * 2)
+      );
       darkstoreBlock = `
     <div class="risk-block" data-kind="estimate" style="margin-top:14px">
       <div class="risk-block-head">
