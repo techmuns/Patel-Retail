@@ -132,7 +132,7 @@ function renderPnlTable(pnl, rev) {
 
 const KIND_PILL = (k) => `<span class="kind-pill kind-${k}">${k}</span>`;
 const LINK = (href, text) =>
-  `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(text)}</a>`;
+  `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="color:var(--brand-indigo)">${escapeHtml(text)}</a>`;
 
 /**
  * Every figure this screen uses, with the source it is read from.
@@ -239,8 +239,8 @@ function renderSourceTrace(metrics, stores, screener, rev, pnl) {
     <tr>
       <td style="font-weight:500">${escapeHtml(r.figure)}</td>
       <td class="mono" style="white-space:nowrap">${r.value} ${KIND_PILL(r.kind)}</td>
-      <td style="color:var(--text-3);font-size:12.5px">${r.basis}</td>
-      <td style="color:var(--text-4);font-size:12px">${r.source}</td>
+      <td style="color:var(--text-2);font-size:12.5px">${r.basis}</td>
+      <td style="color:var(--text-2);font-size:12.5px">${r.source}</td>
     </tr>`
     )
     .join("");

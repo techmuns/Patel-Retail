@@ -36,7 +36,8 @@ function fmtPct(v, d = 1) {
   return v == null ? "—" : `${(v * 100).toFixed(d)}%`;
 }
 function fmtCr(v) {
-  return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 1 })} cr`;
+  // Sign outside the currency symbol: "-₹10 cr", not "₹-10 cr".
+  return `${v < 0 ? "-" : ""}₹${Math.abs(v).toLocaleString("en-IN", { maximumFractionDigits: 1 })} cr`;
 }
 function fmtL(v) {
   return `₹${v.toLocaleString("en-IN", { maximumFractionDigits: 1 })} L`;
@@ -355,7 +356,10 @@ function peerBenchmarkSection(push, model, n) {
   sectionHead(push, n, "Peer Benchmark");
 
   const osia = m.osia_hyper_retail;
-  const v2 = m.v2_retail;
+  // Spencer's replaces V2 Retail here for the same reason as on screen: V2
+  // sells clothes, so its margin was never a benchmark Patel could be read
+  // against. Spencer's is an actual grocer at a comparable size.
+  const sp = { ...m.spencers_retail, revenue_prev_year_cr: m.spencers_retail.prior_year?.revenue_cr ?? null };
   const naOr = (v, fmt) => (v == null ? "Not disclosed" : fmt(v));
   const dashOr = (v, fmt) => (v == null ? "\u2014" : fmt(v));
   const shortPeriod = (p) => String(p || "").replace(/\s*\([^)]*\)/, "");
@@ -369,7 +373,7 @@ function peerBenchmarkSection(push, model, n) {
     { name: "Trent (Star Bazaar)", period: "FY2026", rev: m.peer_model_corrections.trent.corrected_revenue_cr, ebitdaPct: null, stores: m.peer_model_corrections.trent.store_count, pl: m.peer_comparison.private_label_pct.trent },
     { name: "Spencer's Retail", period: m.spencers_retail.fiscal_year, rev: m.spencers_retail.revenue_cr, ebitdaPct: m.spencers_retail.ebitda_margin_pct, stores: m.spencers_retail.total_stores, pl: null },
     { name: "Osia Hyper Retail", period: osia.fiscal_year, rev: osia.revenue_cr, ebitdaPct: osia.ebitda_margin_pct, stores: osia.total_stores, pl: osia.private_label_pct },
-    { name: "V2 Retail", period: v2.fiscal_year, rev: v2.revenue_cr, ebitdaPct: v2.ebitda_margin_pct, stores: v2.total_stores, pl: v2.private_label_pct },
+    { name: "V2 Retail", period: m.v2_retail.fiscal_year, rev: m.v2_retail.revenue_cr, ebitdaPct: m.v2_retail.ebitda_margin_pct, stores: m.v2_retail.total_stores, pl: m.v2_retail.private_label_pct },
   ];
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Peer set ${kindBadge("reported")}</div>
@@ -394,20 +398,23 @@ function peerBenchmarkSection(push, model, n) {
     </div>`)
   );
 
+  const growth = (c) => (c.revenue_prev_year_cr ? fmtPct((c.revenue_cr - c.revenue_prev_year_cr) / c.revenue_prev_year_cr) : "Not disclosed");
   push(
-    el(`<div class="rpt-block"><div class="rpt-sub-label">Closest scale peers &mdash; Patel operates ${operationalCount} stores; every other peer is 120+ ${kindBadge("reported")}</div>
+    el(`<div class="rpt-block"><div class="rpt-sub-label">Patel vs. the two listed grocers closest to its size ${kindBadge("reported")}</div>
       <table class="rpt-pk">
-        <thead><tr><th style="width:22%">Figure</th><th style="width:39%">Osia Hyper Retail (${escapeHtml(osia.fiscal_year)})</th><th style="width:39%">V2 Retail (${escapeHtml(v2.fiscal_year)})</th></tr></thead>
+        <thead><tr>
+          <th style="width:25%">Figure</th>
+          <th style="width:25%">Patel Retail (FY2026)</th>
+          <th style="width:25%">Osia Hyper Retail (${escapeHtml(osia.fiscal_year)})</th>
+          <th style="width:25%">Spencer's Retail (${escapeHtml(sp.fiscal_year)})</th>
+        </tr></thead>
         <tbody>
-          <tr><td>Revenue</td><td class="mono">${fmtCr(osia.revenue_cr)}</td><td class="mono">${fmtCr(v2.revenue_cr)}</td></tr>
-          <tr><td>Revenue growth YoY</td><td class="mono">${fmtPct((osia.revenue_cr - osia.revenue_prev_year_cr) / osia.revenue_prev_year_cr)}</td><td class="mono">${fmtPct((v2.revenue_cr - v2.revenue_prev_year_cr) / v2.revenue_prev_year_cr)}</td></tr>
-          <tr><td>EBITDA (margin)</td><td class="mono">${fmtCr(osia.ebitda_cr)} (${fmtPct(osia.ebitda_margin_pct)})</td><td class="mono">${fmtCr(v2.ebitda_cr)} (${fmtPct(v2.ebitda_margin_pct)})</td></tr>
-          <tr><td>PAT</td><td class="mono">${fmtCr(osia.pat_cr)}</td><td class="mono">${fmtCr(v2.pat_cr)}</td></tr>
-          <tr><td>Total stores</td><td class="mono">${naOr(osia.total_stores, (v) => v.toLocaleString("en-IN"))}</td><td class="mono">${naOr(v2.total_stores, (v) => v.toLocaleString("en-IN"))}</td></tr>
-          <tr><td>Retail area</td><td class="mono">${naOr(osia.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft${osia.retail_area_store_basis ? ` (${osia.retail_area_store_basis} of ${osia.total_stores})` : ""}`)}</td><td class="mono">${naOr(v2.retail_area_mn_sqft, (v) => `${v.toLocaleString("en-IN")} mn sqft`)}</td></tr>
-          <tr><td>Private label %</td><td class="mono">${naOr(osia.private_label_pct, (v) => fmtPct(v))}</td><td class="mono">${naOr(v2.private_label_pct, (v) => `${fmtPct(v)}${v2.private_label_as_of ? ` (${escapeHtml(v2.private_label_as_of)})` : ""}`)}</td></tr>
-          <tr><td>Status</td><td>${escapeHtml(osia.status_flag || "\u2014")}</td><td>Apparel-led, not a grocer</td></tr>
-          <tr><td>Comparability</td><td>One year behind &mdash; not like-for-like</td><td>Scale comparison, not margin</td></tr>
+          <tr><td>Revenue</td><td class="mono">${fmtCr(m.store_pnl_reconciliation.total_company_revenue_cr)}</td><td class="mono">${fmtCr(osia.revenue_cr)}</td><td class="mono">${fmtCr(sp.revenue_cr)}</td></tr>
+          <tr><td>Revenue growth YoY</td><td class="mono">${fmtPct(0.276)}</td><td class="mono">${growth(osia)}</td><td class="mono">${growth(sp)}</td></tr>
+          <tr><td>EBITDA (margin)</td><td class="mono">${fmtCr(m.store_pnl_reconciliation.total_company_ebitda_cr)} (${fmtPct(m.store_pnl_reconciliation.peer_model_b2c_ebitda_pct)})</td><td class="mono">${fmtCr(osia.ebitda_cr)} (${fmtPct(osia.ebitda_margin_pct)})</td><td class="mono">${fmtCr(sp.ebitda_cr)} (${fmtPct(sp.ebitda_margin_pct)})</td></tr>
+          <tr><td>PAT</td><td class="mono">${fmtCr(m.store_pnl_reconciliation.total_company_pat_cr)}</td><td class="mono">${fmtCr(osia.pat_cr)}</td><td class="mono">${fmtCr(sp.pat_cr)}</td></tr>
+          <tr><td>Total stores</td><td class="mono">${operationalCount}</td><td class="mono">${naOr(osia.total_stores, (v) => v.toLocaleString("en-IN"))}</td><td class="mono">${naOr(sp.total_stores, (v) => v.toLocaleString("en-IN"))}</td></tr>
+          <tr><td>Status</td><td>Growing, profitable</td><td>${escapeHtml(osia.status_flag || "\u2014")}</td><td>Shrinking, loss-making</td></tr>
         </tbody>
       </table>
     </div>`)

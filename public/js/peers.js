@@ -29,7 +29,8 @@ async function loadStores() {
 }
 
 function fmtCr(value) {
-  return `₹${value.toLocaleString("en-IN", { maximumFractionDigits: 1 })} cr`;
+  const n = Math.abs(value).toLocaleString("en-IN", { maximumFractionDigits: 1 });
+  return `${value < 0 ? "-" : ""}₹${n} cr`;
 }
 function fmtLakh(value) {
   // 1 decimal, matching fmtL() in patel-report.js — this value (Trent's
@@ -146,52 +147,89 @@ function fmtPctOrNA(value, digits = 1) {
 }
 
 function renderPeerCompanyBlock(p) {
-  const growthPct = (p.revenue_cr - p.revenue_prev_year_cr) / p.revenue_prev_year_cr;
+  const growthPct = p.revenue_prev_year_cr ? (p.revenue_cr - p.revenue_prev_year_cr) / p.revenue_prev_year_cr : null;
   return `
-    <div class="compare-box" data-kind="reported" style="text-align:left">
+    <div class="compare-box${p.subject ? " used" : ""}" data-kind="reported" style="text-align:left">
       <div class="cb-label">${escapeHtml(p.name)} <span style="font-weight:400;text-transform:none;color:var(--text-4)">(${escapeHtml(p.ticker)})</span>${
         p.status_flag ? ` <span class="chip failed" style="padding:2px 7px;font-size:10px;text-transform:none">${escapeHtml(p.status_flag)}</span>` : ""
       }</div>
-      <div style="font-size:11px;color:var(--text-4);margin-top:2px">${escapeHtml(p.fiscal_year)}</div>
+      <div style="font-size:11.5px;color:var(--text-2);margin-top:2px">${escapeHtml(p.fiscal_year)}</div>
       <table class="metric-table" style="margin-top:10px">
         <tr><td>Revenue</td><td class="mono">${fmtCr(p.revenue_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>
-        <tr><td>Revenue growth YoY</td><td class="mono">${fmtPct(growthPct, 1)} <span class="kind-pill kind-derived">derived</span></td></tr>
+        <tr><td>Revenue growth YoY</td><td class="mono">${growthPct == null ? `<span class="cb-na">Not disclosed</span>` : `${fmtPct(growthPct, 1)} <span class="kind-pill kind-derived">derived</span>`}</td></tr>
         <tr><td>EBITDA</td><td class="mono">${fmtCr(p.ebitda_cr)} (${fmtPct(p.ebitda_margin_pct, 1)} margin) <span class="kind-pill kind-reported">reported</span></td></tr>
         <tr><td>PAT</td><td class="mono">${fmtCr(p.pat_cr)} <span class="kind-pill kind-reported">reported</span></td></tr>
         <tr><td>Total stores</td><td class="mono">${fmtNumOrNA(p.total_stores)}</td></tr>
         <tr><td>Retail area</td><td class="mono">${fmtNumOrNA(p.retail_area_mn_sqft, " mn sqft")}${
+          p.retail_area_kind ? ` <span class="kind-pill kind-${p.retail_area_kind}">${p.retail_area_kind}</span>` : ""
+        }${
           p.retail_area_store_basis
-            ? `<div style="font-size:10px;color:var(--text-4);font-family:var(--font-sans, inherit)">covers ${p.retail_area_store_basis} of the ${p.total_stores} stores</div>`
+            ? `<div style="font-size:10.5px;color:var(--text-3);font-family:var(--font-sans, inherit)">covers ${p.retail_area_store_basis} of the ${p.total_stores} stores</div>`
             : ""
         }</td></tr>
         <tr><td>Private label %</td><td class="mono">${fmtPctOrNA(p.private_label_pct)}${
           p.private_label_as_of
-            ? `<div style="font-size:10px;color:var(--text-4);font-family:var(--font-sans, inherit)">${escapeHtml(p.private_label_as_of)}</div>`
+            ? `<div style="font-size:10.5px;color:var(--text-3);font-family:var(--font-sans, inherit)">${escapeHtml(p.private_label_as_of)}</div>`
             : ""
         }</td></tr>
       </table>
-      <p style="font-size:11px;color:var(--text-4);margin-top:8px">Source: ${
+      <p style="font-size:11.5px;color:var(--text-2);margin-top:8px">Source: ${
         p.source_url
-          ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noopener" style="color:var(--text-3)">${escapeHtml(p.source)}</a>`
-          : `<span style="color:var(--text-3)">${escapeHtml(p.source)}</span>`
+          ? `<a href="${escapeHtml(p.source_url)}" target="_blank" rel="noopener" style="color:var(--text-2)">${escapeHtml(p.source)}</a>`
+          : `<span style="color:var(--text-2)">${escapeHtml(p.source)}</span>`
       }</p>
     </div>
   `;
 }
 
-function renderPeerScaleCard(metrics, operationalCount) {
+/**
+ * Patel against the two listed grocers closest to its size.
+ *
+ * V2 Retail used to hold the second slot. It was dropped: it sells clothes,
+ * where margins are structurally fatter, so its 15% was never a benchmark
+ * Patel could be measured against — it only ever showed what a larger store
+ * count looks like. Spencer's is an actual grocer at 120 stores, which makes
+ * it a real comparison, and putting Patel in the card rather than in the
+ * caption lets the reader make it directly.
+ */
+function renderPeerScaleCard(metrics, operationalCount, patelLive) {
   const el = qs("#peerScaleCard");
+  const rec = metrics.store_pnl_reconciliation;
+  const sp = metrics.spencers_retail;
+
+  const patel = {
+    name: "Patel Retail",
+    ticker: "PATELRMART",
+    fiscal_year: patelLive?.period ? `FY2026 (${patelLive.period})` : "FY2026",
+    revenue_cr: rec.total_company_revenue_cr,
+    revenue_prev_year_cr: patelLive?.prevSalesCr ?? null,
+    ebitda_cr: rec.total_company_ebitda_cr,
+    ebitda_margin_pct: rec.total_company_ebitda_cr / rec.total_company_revenue_cr,
+    pat_cr: rec.total_company_pat_cr,
+    total_stores: operationalCount,
+    retail_area_mn_sqft: Math.round((operationalCount * metrics.unit_economics.sqft_per_store) / 1e5) / 10,
+    retail_area_kind: "estimate",
+    private_label_pct: metrics.peer_comparison.private_label_pct.patel,
+    source: "Exchange filings via Screener",
+    source_url: "https://www.screener.in/company/PATELRMART/",
+    subject: true,
+  };
+  // Spencer's carries its prior year nested, so growth can be shown the same
+  // way as the others.
+  const spencers = { ...sp, revenue_prev_year_cr: sp.prior_year?.revenue_cr ?? null, ticker: "SPENCERS" };
+
   el.innerHTML = `
     <div class="card-head">
       <div>
-        <h3><span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="scale" class="i16"></i></span>Osia Hyper Retail &amp; V2 Retail — the closest scale peers</h3>
-        <div class="sub">Patel's own scale (${operationalCount} operational stores) — every other peer in the model is 120+ stores</div>
+        <h3><span class="card-ico" style="background: var(--grad-cool)"><i data-lucide="scale" class="i16"></i></span>Patel vs. the two listed grocers closest to its size</h3>
+        <div class="sub">DMart runs 506 stores and Vishal 795 — too large for a like-for-like read</div>
       </div>
     </div>
     <div class="card-body">
-      <div class="compare-row">
+      <div class="compare-row cols-3">
+        ${renderPeerCompanyBlock(patel)}
         ${renderPeerCompanyBlock(metrics.osia_hyper_retail)}
-        ${renderPeerCompanyBlock(metrics.v2_retail)}
+        ${renderPeerCompanyBlock(spencers)}
       </div>
     </div>
   `;
@@ -259,13 +297,30 @@ function renderPrivateLabelBlock(metrics) {
   `;
 }
 
+/** Patel's own latest and prior filed year, for the growth line. */
+async function loadPatelLive() {
+  try {
+    const res = await fetch("./data/screener-kpis.json", { cache: "no-store" });
+    if (!res.ok) return null;
+    const pl = (await res.json()).companies?.find((c) => c.subject)?.sections?.profit_loss;
+    const cols = pl?.columns?.slice(1) || [];
+    const sales = pl?.rows?.find((r) => r.label === "Sales")?.values || [];
+    const last = /^TTM$/i.test(cols[cols.length - 1] || "") ? cols.length - 2 : cols.length - 1;
+    if (last < 1) return null;
+    const num = (v) => Number(String(v).replace(/,/g, ""));
+    return { period: cols[last], prevSalesCr: num(sales[last - 1]) };
+  } catch {
+    return null;
+  }
+}
+
 export async function initPeers() {
   const container = qs("#viewPeers");
   try {
-    const [metrics, stores] = await Promise.all([loadMetrics(), loadStores()]);
+    const [metrics, stores, patelLive] = await Promise.all([loadMetrics(), loadStores(), loadPatelLive()]);
     const operationalCount = stores.filter((s) => s.status === "operational").length;
     renderGenuinePeerTable(metrics, operationalCount);
-    renderPeerScaleCard(metrics, operationalCount);
+    renderPeerScaleCard(metrics, operationalCount, patelLive);
     renderPrivateLabelBlock(metrics);
     // Last, and awaited separately: a Screener fetch failure must not blank
     // the peer screen that was already rendered above it.
