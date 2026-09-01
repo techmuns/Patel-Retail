@@ -2,7 +2,7 @@
   "source_repo": "https://github.com/jatin-dot-py/darkstores",
   "source_writeup": "https://jatin-dot-py.medium.com/how-i-scraped-most-dark-stores-in-india-blinkit-zepto-swiggy-instamart-ad939ff17af9",
   "note": "Third-party public data, not from Patel Retail or this dashboard's own pipeline. Static snapshot from mid-March 2026 (see scraped_at_upstream per brand below) — NOT live, does not self-update. No explicit license on the source repo; used here as attributed, cited research data for internal diligence, not represented as authoritative or exhaustive. Region-filtered to the same Thane–Raigad–Palghar box as every other script in this project — not filtered to Patel's own towns specifically, so some points may be outside Patel's actual catchment. NOT wired into the existing overlap_risk score — that's reserved for the fund's own methodology once supplied.",
-  "fetched_at": "2026-08-31T08:49:31.765Z",
+  "fetched_at": "2026-09-01T07:56:47.670Z",
   "scraped_at_upstream": {
     "Blinkit": "2026-03-15–17",
     "Zepto": "2026-03-14–15",

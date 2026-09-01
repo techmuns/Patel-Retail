@@ -5,17 +5,47 @@
   "source": "BSE corporate announcements (api.bseindia.com) — SEBI LODR Regulation 30 filings",
   "kind": "reported",
   "note": "Patel Retail's own exchange filings, fetched live — not a file anyone had to send. New-store filings are flagged as candidates for review, never auto-added to stores.json: a filing headline is not a resolved coordinate, and a wrong pin is worse than a missing one.",
-  "fetched_at": "2026-08-31T08:48:29.467Z",
+  "fetched_at": "2026-09-01T07:55:43.727Z",
   "window": {
-    "from": "20250727",
-    "to": "20260831"
+    "from": "20250728",
+    "to": "20260901"
   },
   "pdf_body_scanning": true,
   "counts": {
-    "total": 98,
+    "total": 101,
     "new_store_candidates": 5
   },
   "announcements": [
+    {
+      "id": "77bc87bf-73d6-4481-8c3e-fd7616ba65bf",
+      "date": "2026-09-01",
+      "headline": "PATELRMART : Patel Retail Limited Has Informed The Exchange About Communication Of Web-Link And Exact Path Of Annual Report For FY 2025-26.",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/f0f8e962-0f87-435f-afd3-deceff213b05.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "aae01c9e-d051-4526-8dbe-95dde013c792",
+      "date": "2026-09-01",
+      "headline": "Announcement under Regulation 30 (LODR)-Newspaper Publication",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/b8064155-de3c-4ddd-b7cf-c90055c9439c.pdf",
+      "body_scanned": true
+    },
+    {
+      "id": "9fd37218-e2b6-480e-9b52-e444a8e644c8",
+      "date": "2026-08-31",
+      "headline": "Patel Retail Limited Has Informed The Exchange About Notice Of The 19Th Annual General Meeting And Annual Report For The Financial Year 2025-26",
+      "category": "Company Update",
+      "kind": "other",
+      "new_store_candidate": false,
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/51ac96b6-4504-4e45-8eea-c5b045502a01.pdf",
+      "body_scanned": true
+    },
     {
       "id": "f01dfebc-6731-44be-936a-5f47a0088613",
       "date": "2026-08-27",
@@ -531,8 +561,7 @@
       "category": "AGM/EGM",
       "kind": "other",
       "new_store_candidate": false,
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37686b01-0231-4acd-8166-9fe92fe2d0b8.pdf",
-      "body_scan_error": "HTTP 404"
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/37686b01-0231-4acd-8166-9fe92fe2d0b8.pdf"
     },
     {
       "id": "c428c519-4b37-4c1e-9610-7dc7092860c7",
@@ -541,8 +570,7 @@
       "category": "Company Update",
       "kind": "other",
       "new_store_candidate": false,
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9872e7df-b5e3-412e-82e8-21130a91543e.pdf",
-      "body_scan_error": "HTTP 404"
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/9872e7df-b5e3-412e-82e8-21130a91543e.pdf"
     },
     {
       "id": "ce591ba4-65e8-4211-9ee7-8145768b2ac8",
@@ -551,8 +579,7 @@
       "category": "Company Update",
       "kind": "other",
       "new_store_candidate": false,
-      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c3ddccc8-3def-41d4-b28e-586f565875e0.pdf",
-      "body_scan_error": "HTTP 404"
+      "attachment_url": "https://www.bseindia.com/xml-data/corpfiling/AttachLive/c3ddccc8-3def-41d4-b28e-586f565875e0.pdf"
     },
     {
       "id": "67ec8db4-d01a-4478-8388-33765316dfd9",
