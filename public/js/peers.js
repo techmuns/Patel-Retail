@@ -198,29 +198,60 @@ function renderPeerScaleCard(metrics, operationalCount) {
   refreshIcons();
 }
 
+/**
+ * Own-brand share, grouped by format.
+ *
+ * Grouping is the whole point. Apparel retailers design and make nearly
+ * everything they sell, so 60-75% own-brand is ordinary for them; a grocer
+ * cannot make its own Maggi or Amul, so grocery own-brand runs far lower
+ * everywhere. Ranking all four on one undifferentiated bar chart invited the
+ * reading that Patel is far behind Trent, when Trent is not a target Patel
+ * could reach or should want to. The only like-for-like comparison on this
+ * screen is Patel against DMart.
+ */
 function renderPrivateLabelBlock(metrics) {
   const el = qs("#peerPrivateLabelBlock");
   const pl = metrics.peer_comparison.private_label_pct;
-  const rows = [
-    { label: "Patel Retail", value: pl.patel, highlight: true },
-    { label: "DMart", value: pl.dmart },
-    { label: "Vishal Mega Mart", value: pl.vishal_mega_mart },
-    { label: "Trent", value: pl.trent },
+  const groups = [
+    {
+      format: "Grocery — comparable",
+      rows: [
+        { label: "Patel Retail", value: pl.patel, highlight: true },
+        { label: "DMart", value: pl.dmart },
+      ],
+    },
+    {
+      format: "Apparel-led — different economics",
+      rows: [
+        { label: "Vishal Mega Mart", value: pl.vishal_mega_mart },
+        { label: "Trent", value: pl.trent },
+      ],
+    },
   ];
-  const max = Math.max(...rows.map((r) => r.value));
+  // One scale across both groups so the bars stay honest against each other,
+  // even though only the first group is a fair comparison.
+  const max = Math.max(...groups.flatMap((g) => g.rows.map((r) => r.value)));
   el.innerHTML = `
     <div data-kind="reported">
-      ${rows
+      ${groups
         .map(
-          (r) => `
-        <div style="margin-bottom:12px">
-          <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px">
-            <span style="color:${r.highlight ? "var(--text-1)" : "var(--text-3)"};font-weight:${r.highlight ? 700 : 500}">${escapeHtml(r.label)}</span>
-            <span class="mono">${fmtPct(r.value, 1)}</span>
-          </div>
-          <div style="height:8px;border-radius:99px;background:var(--hairline)">
-            <div style="height:100%;width:${(r.value / max) * 100}%;border-radius:99px;background:${r.highlight ? "var(--grad-primary)" : "var(--text-4)"}"></div>
-          </div>
+          (g, gi) => `
+        <div style="${gi ? "margin-top:18px;padding-top:16px;border-top:1px solid var(--hairline)" : ""}">
+          <div style="font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text-4);margin-bottom:10px">${escapeHtml(g.format)}</div>
+          ${g.rows
+            .map(
+              (r) => `
+            <div style="margin-bottom:12px">
+              <div style="display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px">
+                <span style="color:${r.highlight ? "var(--text-1)" : "var(--text-2)"};font-weight:${r.highlight ? 700 : 500}">${escapeHtml(r.label)}</span>
+                <span class="mono">${fmtPct(r.value, 1)}</span>
+              </div>
+              <div style="height:8px;border-radius:99px;background:var(--hairline)">
+                <div style="height:100%;width:${(r.value / max) * 100}%;border-radius:99px;background:${r.highlight ? "var(--grad-primary)" : "var(--text-4)"}"></div>
+              </div>
+            </div>`
+            )
+            .join("")}
         </div>`
         )
         .join("")}
