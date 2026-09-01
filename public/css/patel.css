@@ -393,7 +393,13 @@
 @media (max-width: 1780px) {
   .topbar .export-actions .btn span { display: none; }
   .topbar .export-actions .btn { padding-left: 10px; padding-right: 10px; }
-  .topbar .highlight-toggle span { display: none; }
+  /* Shorten rather than hide: a naked checkbox next to a flag icon tells the
+     reader nothing, and this control changes what the whole page looks like. */
+  .topbar .highlight-toggle span { font-size: 0; }
+  .topbar .highlight-toggle span::after {
+    content: "Estimates";
+    font-size: 12.5px;
+  }
 }
 @media (max-width: 1400px) {
   .topbar .vtab { padding: 7px 10px; font-size: 12.5px; }
