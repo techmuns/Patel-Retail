@@ -270,7 +270,7 @@ export async function exportReportPdf(model, { onStage, composePagesFn = compose
  *                 first table should not be split across a page boundary).
  *   .rpt-break  — start a new page before this block.
  */
-export function packBlocksIntoPages(root, rawBlocks) {
+export function packBlocksIntoPages(root, rawBlocks, opts = {}) {
   const meas = document.createElement("div");
   meas.style.cssText = `position:absolute;left:0;top:0;width:${CONTENT_W}px;visibility:hidden;`;
   root.appendChild(meas);
@@ -281,45 +281,86 @@ export function packBlocksIntoPages(root, rawBlocks) {
     return h;
   };
 
-  const blocks = [];
-  for (const b of rawBlocks) {
-    const h = measure(b.el);
-    const brk = b.el.classList?.contains("rpt-break");
-    if (h <= CONTENT_H) {
-      blocks.push({ el: b.el, h, keep: b.el.classList?.contains("rpt-keep"), brk });
-      continue;
+  // Opt-in running heading: when a section spills past a page end, the next
+  // page opens with "<section> continued" so a reader landing on it still
+  // knows what the table is about. Built here, inside the packer, so its
+  // height is charged against the page budget like any other block — added
+  // afterwards it would silently overflow the page it was meant to label.
+  const contHead = typeof opts.continuationHeader === "function" ? opts.continuationHeader : null;
+  const contHeightCache = new Map();
+  const contHeight = (sec) => {
+    if (!contHead || !sec) return 0;
+    if (!contHeightCache.has(sec)) {
+      const node = contHead(sec);
+      contHeightCache.set(sec, node ? measure(node) + BLOCK_GAP : 0);
     }
-    // Only the first piece of a split block carries the break; the remainder
-    // is a continuation and must not push itself onto yet another page.
-    splitToFit(b.el, measure).forEach((part, i) => {
-      blocks.push({ el: part, h: measure(part), keep: part.classList?.contains("rpt-keep"), brk: brk && i === 0 });
-    });
-  }
-  root.removeChild(meas);
+    return contHeightCache.get(sec);
+  };
 
   const pagesBlocks = [];
   let cur = [];
   let runH = 0;
-  for (let i = 0; i < blocks.length; i++) {
-    const b = blocks[i];
-    let need = b.h;
-    if (b.keep && blocks[i + 1]) need += blocks[i + 1].h + BLOCK_GAP;
+  const avail = () => CONTENT_H - runH;
+  const place = (el, h) => {
+    cur.push(el);
+    runH += h + BLOCK_GAP;
+  };
+  /** Close the current page and open a fresh one, labelling it when `sec`
+   *  is a section already under way rather than one just beginning. */
+  const openPage = (sec, isSectionStart) => {
+    if (cur.length) pagesBlocks.push(cur);
+    cur = [];
+    runH = 0;
+    if (!contHead || !sec || isSectionStart) return;
+    const node = contHead(sec);
+    if (node) place(node, measure(node));
+  };
+
+  // Below this much space left, a part would hold a header and nothing useful,
+  // so start a fresh page instead of splitting into the scraps.
+  const MIN_SPLIT_H = 140;
+
+  for (let i = 0; i < rawBlocks.length; i++) {
+    const el = rawBlocks[i].el;
+    const sec = el.getAttribute?.("data-rpt-section") || null;
+    const brk = el.classList?.contains("rpt-break");
+    const h = measure(el);
+
     // A block marked .rpt-break starts its own page — used so every report
     // section begins at the top of a page rather than wherever the previous
     // section happened to run out.
-    if (b.brk && cur.length) {
-      pagesBlocks.push(cur);
-      cur = [];
-      runH = 0;
-    } else if (cur.length && runH + need > CONTENT_H) {
-      pagesBlocks.push(cur);
-      cur = [];
-      runH = 0;
+    if (brk && cur.length) openPage(sec, true);
+
+    // Keep-with-next: a lone heading at the foot of a page helps nobody.
+    let need = h;
+    if (el.classList?.contains("rpt-keep") && rawBlocks[i + 1]) need += measure(rawBlocks[i + 1].el) + BLOCK_GAP;
+
+    if (need <= avail()) {
+      place(el, h);
+      continue;
     }
-    cur.push(b.el);
-    runH += b.h + BLOCK_GAP;
+
+    // Too tall for what is left. If a fresh page would hold it whole, move it
+    // there rather than splitting a block that never needed splitting.
+    const freshAvail = CONTENT_H - contHeight(sec);
+    if (h <= freshAvail) {
+      openPage(sec, false);
+      place(el, h);
+      continue;
+    }
+
+    // Genuinely taller than a page, so it has to be split. Fill what is left
+    // of THIS page first — sizing every part to a full empty page is what
+    // used to strand a quarter of a page above a long table.
+    const first = avail() >= MIN_SPLIT_H && cur.length ? avail() : 0;
+    const parts = splitToFit(el, measure, (idx) => (idx === 0 && first ? first : freshAvail));
+    parts.forEach((part, idx) => {
+      if (idx > 0 || !first) openPage(sec, brk && idx === 0);
+      place(part, measure(part));
+    });
   }
   if (cur.length) pagesBlocks.push(cur);
+  root.removeChild(meas);
   return pagesBlocks;
 }
 
@@ -392,10 +433,54 @@ const chunk = (arr, n) => {
 /* ---- Oversized-block splitting: a safety net so a block taller than a page is
    never silently clipped by .rpt-page's overflow:hidden (lists split by item,
    text by word — all by MEASURED height). ------------------------------------ */
-function splitToFit(el, measure) {
+/** `limitFor(partIndex)` gives the height each successive part may occupy, so
+ *  the first part can be sized to whatever is left on the current page while
+ *  later parts get a full one. */
+function splitToFit(el, measure, limitFor = () => CONTENT_H) {
+  const tbody = el.querySelector("table tbody");
+  if (tbody && tbody.children.length) return splitTable(el, measure, limitFor);
   const ul = el.querySelector("ul");
-  if (ul && ul.children.length) return splitList(el, measure);
-  return splitText(el, measure);
+  if (ul && ul.children.length) return splitList(el, measure, limitFor);
+  return splitText(el, measure, limitFor);
+}
+function shellWithEmptyBody(el) {
+  const clone = el.cloneNode(true);
+  const tbody = clone.querySelector("table tbody");
+  if (tbody) tbody.innerHTML = "";
+  return clone;
+}
+/** Split a long table by MEASURED rows, repeating the <thead> on every part so
+ *  a continuation still shows its column headers. Row-by-row rather than a
+ *  fixed row count, so each page fills to the real limit instead of to a
+ *  guess — a guessed count is what leaves half-empty pages behind. */
+function splitTable(el, measure, limitFor) {
+  const rows = [...el.querySelector("table tbody").children].map((tr) => tr.outerHTML);
+  const parts = [];
+  let i = 0, guard = 0;
+  while (i < rows.length && guard++ < 4000) {
+    const limit = limitFor(parts.length);
+    const clone = shellWithEmptyBody(el);
+    const tbody = clone.querySelector("table tbody");
+    let added = 0;
+    while (i < rows.length) {
+      tbody.insertAdjacentHTML("beforeend", rows[i]);
+      if (added > 0 && measure(clone) > limit) {
+        tbody.removeChild(tbody.lastElementChild);
+        break;
+      }
+      added++;
+      i++;
+    }
+    // A row taller than the space allowed still has to go somewhere — keep it
+    // and let it overflow slightly rather than dropping it, and never loop
+    // without consuming one.
+    if (added === 0) {
+      tbody.insertAdjacentHTML("beforeend", rows[i]);
+      i++;
+    }
+    parts.push(clone);
+  }
+  return parts;
 }
 function shellWithEmptyList(el) {
   const clone = el.cloneNode(true);
@@ -403,17 +488,18 @@ function shellWithEmptyList(el) {
   if (ul) ul.innerHTML = "";
   return clone;
 }
-function splitList(el, measure) {
+function splitList(el, measure, limitFor) {
   const items = [...el.querySelector("ul").children].map((li) => li.outerHTML);
   const parts = [];
   let i = 0, guard = 0;
   while (i < items.length && guard++ < 4000) {
+    const limit = limitFor(parts.length);
     const clone = shellWithEmptyList(el);
     const ul = clone.querySelector("ul");
     let added = 0;
     while (i < items.length) {
       ul.insertAdjacentHTML("beforeend", items[i]);
-      if (added > 0 && measure(clone) > CONTENT_H) {
+      if (added > 0 && measure(clone) > limit) {
         ul.removeChild(ul.lastElementChild);
         break;
       }
@@ -421,7 +507,7 @@ function splitList(el, measure) {
       i++;
     }
     if (added === 0) {
-      splitLongItem(el, items[i], measure).forEach((p) => parts.push(p));
+      splitLongItem(el, items[i], measure, limitFor, parts.length).forEach((p) => parts.push(p));
       i++;
       continue;
     }
@@ -429,7 +515,7 @@ function splitList(el, measure) {
   }
   return parts;
 }
-function splitLongItem(el, liHtml, measure) {
+function splitLongItem(el, liHtml, measure, limitFor, offset) {
   const tmp = document.createElement("div");
   tmp.innerHTML = liHtml;
   const words = (tmp.textContent || "").split(/\s+/).filter(Boolean);
@@ -441,10 +527,11 @@ function splitLongItem(el, liHtml, measure) {
     },
     (c, t) => (c.querySelector("li").textContent = t),
     words,
-    measure
+    measure,
+    (n) => limitFor(offset + n)
   );
 }
-function splitText(el, measure) {
+function splitText(el, measure, limitFor) {
   const sel = "p, .rpt-card-body, .rpt-risk-note";
   const target = el.querySelector(sel) || el;
   const words = (target.textContent || "").split(/\s+/).filter(Boolean);
@@ -453,19 +540,21 @@ function splitText(el, measure) {
     () => el.cloneNode(true),
     (c, t) => ((c.querySelector(sel) || c).textContent = t),
     words,
-    measure
+    measure,
+    limitFor
   );
 }
-function fillByWords(makeEmpty, setText, words, measure) {
+function fillByWords(makeEmpty, setText, words, measure, limitFor = () => CONTENT_H) {
   const parts = [];
   let i = 0, guard = 0;
   while (i < words.length && guard++ < 8000) {
+    const limit = limitFor(parts.length);
     const clone = makeEmpty();
     let text = "", added = 0;
     while (i < words.length) {
       const next = text ? text + " " + words[i] : words[i];
       setText(clone, next);
-      if (added > 0 && measure(clone) > CONTENT_H) {
+      if (added > 0 && measure(clone) > limit) {
         setText(clone, text);
         break;
       }

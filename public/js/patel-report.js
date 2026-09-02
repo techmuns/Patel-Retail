@@ -24,11 +24,6 @@ function el(html) {
   t.innerHTML = html.trim();
   return t.content.firstElementChild;
 }
-function chunk(arr, n) {
-  const out = [];
-  for (let i = 0; i < arr.length; i += n) out.push(arr.slice(i, i + n));
-  return out;
-}
 function fmtINR(v) {
   return `₹${Math.round(v).toLocaleString("en-IN")}`;
 }
@@ -127,7 +122,10 @@ export async function renderPatelReportPreviewInto(mountEl) {
 }
 
 function composePatelPages(model, logo, root) {
-  const pagesBlocks = packBlocksIntoPages(root, patelBodyBlocks(model));
+  const pagesBlocks = packBlocksIntoPages(root, patelBodyBlocks(model), {
+    continuationHeader: (label) =>
+      el(`<div class="rpt-block rpt-sec-cont">${escapeHtml(label)}<span>continued</span></div>`),
+  });
   const totalPages = pagesBlocks.length + 2; // cover + body pages + closing page
   const pageEls = [patelCoverPage(model, logo, totalPages)];
   pagesBlocks.forEach((bl, i) => pageEls.push(patelBodyPage(model, logo, bl, i + 2, totalPages)));
@@ -218,7 +216,17 @@ function patelThankYouPage(model, logo, total) {
 /* ---------------------------------------------------------------- body ---- */
 function patelBodyBlocks(model) {
   const blocks = [];
-  const push = (node) => blocks.push({ el: node });
+  let section = null;
+  const push = (node) => {
+    // Stamp the owning section on every block. The packer reads this to repeat
+    // "<section> continued" whenever a section runs past the end of a page.
+    if (section) node.setAttribute("data-rpt-section", section);
+    blocks.push({ el: node });
+  };
+  push.openSection = (n, title) => {
+    section = `${n}. ${title}`;
+    push(el(`<div class="rpt-block rpt-keep rpt-break"><div class="rpt-sec-h"><span class="rpt-sec-n">${n}</span>${escapeHtml(title)}</div></div>`));
+  };
   let n = 1;
   storeNetworkSection(push, model, n++);
   estateSection(push, model, n++);
@@ -227,9 +235,10 @@ function patelBodyBlocks(model) {
   return blocks;
 }
 
-/** Every section opens a page of its own. */
+/** Every section opens a page of its own, and names itself again on any page
+ *  it continues onto. */
 function sectionHead(push, n, title) {
-  push(el(`<div class="rpt-block rpt-keep rpt-break"><div class="rpt-sec-h"><span class="rpt-sec-n">${n}</span>${escapeHtml(title)}</div></div>`));
+  push.openSection(n, title);
 }
 
 /* ---- Section 1: Store Network — Precision Status --------------------------- */
@@ -238,7 +247,7 @@ function precisionTier(store) {
   if (isCoarseTier(store.geocode_match_tier)) return { label: "Town centroid", key: "coarse" };
   return { label: "Precise", key: "precise" };
 }
-function storeTable(rows, cont) {
+function storeTable(rows) {
   return `<table class="rpt-pk">
     <thead><tr>
       <th style="width:8%">ID</th><th style="width:20%">Name</th><th style="width:17%">Town</th>
@@ -258,7 +267,7 @@ function storeTable(rows, cont) {
         </tr>`;
       })
       .join("")}</tbody>
-  </table>${cont ? `<div class="rpt-cont">continued</div>` : ""}`;
+  </table>`;
 }
 function storeNetworkSection(push, model, n) {
   const { stores } = model;
@@ -279,7 +288,7 @@ function storeNetworkSection(push, model, n) {
     </table></div>`)
   );
   const sorted = stores.slice().sort((a, b) => a.town.localeCompare(b.town) || a.store_id.localeCompare(b.store_id));
-  chunk(sorted, 22).forEach((group, gi) => push(el(`<div class="rpt-block">${storeTable(group, gi > 0)}</div>`)));
+  push(el(`<div class="rpt-block">${storeTable(sorted)}</div>`));
 }
 
 /* ---- Section 2: Estate & Vintage -------------------------------------------- */
@@ -338,15 +347,13 @@ function estateSection(push, model, n) {
     const recentCount = list.filter((s) => s.opened && yearsSince(s.opened) < 2).length;
     return { town, count: list.length, first: dated[0]?.opened || "—", last: dated[dated.length - 1]?.opened || "—", read: saturationRead(recentCount, list.length) };
   });
-  chunk(satRows, 20).forEach((group, gi) =>
-    push(
-      el(`<div class="rpt-block"><table class="rpt-pk">
+  push(
+    el(`<div class="rpt-block"><table class="rpt-pk">
         <thead><tr><th style="width:26%">Town</th><th style="width:12%">Stores</th><th style="width:16%">First opened</th><th style="width:16%">Most recent</th><th style="width:30%">Read</th></tr></thead>
-        <tbody>${group
-          .map((r) => `<tr><td>${escapeHtml(r.town)}</td><td class="mono">${r.count}</td><td class="mono">${escapeHtml(r.first)}</td><td class="mono">${escapeHtml(r.last)}</td><td>${escapeHtml(r.read)}</td></tr>`)
-          .join("")}</tbody>
-      </table>${gi > 0 ? `<div class="rpt-cont">continued</div>` : ""}</div>`)
-    )
+      <tbody>${satRows
+        .map((r) => `<tr><td>${escapeHtml(r.town)}</td><td class="mono">${r.count}</td><td class="mono">${escapeHtml(r.first)}</td><td class="mono">${escapeHtml(r.last)}</td><td>${escapeHtml(r.read)}</td></tr>`)
+        .join("")}</tbody>
+    </table></div>`)
   );
 }
 
@@ -519,6 +526,12 @@ function injectPatelReportStyles() {
   if (patelStylesInjected) return;
   patelStylesInjected = true;
   const css = `
+  /* Running heading on any page a section continues onto, so a reader landing
+     mid-table still knows which section they are in. Quieter than the section
+     head itself — it repeats information rather than introducing it. */
+  .dk-report .rpt-sec-cont { display: flex; align-items: baseline; gap: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; color: #64748b; padding-bottom: 6px; border-bottom: 1px solid #e6e8f0; margin-bottom: 10px; }
+  .dk-report .rpt-sec-cont span { font-size: 9px; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; }
+
   .dk-report .rpt-pk { width: 100%; border-collapse: collapse; font-size: 10.5px; table-layout: fixed; }
   .dk-report .rpt-pk th { text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; padding: 6px 8px; border-bottom: 1.5px solid #e6e8f0; background: #fafbfe; }
   .dk-report .rpt-pk td { padding: 6px 8px; border-bottom: 1px solid #eef1f6; vertical-align: top; color: #334155; overflow-wrap: anywhere; }
