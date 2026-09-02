@@ -598,37 +598,42 @@ function addDarkstoreLayers(mapInstance) {
 }
 
 /**
- * A one-click way back to "all own stores" after zooming/panning around —
- * without it, the only way back is a page refresh, which loses whatever
- * else the user was looking at elsewhere on the page.
- */
-/**
  * Frame the network without framing the sea.
  *
- * The estate runs north-south inland of Mumbai, so fitting its bounding box to
- * a wide viewport leaves the left third of the map as open water — true, and
- * useless. Padding the west edge in tightly and pushing the minimum zoom up
- * keeps the towns filling the frame; Leaflet still shows every store because
- * the bounds themselves are unchanged.
+ * The estate is 82 km tall and 47 km wide — portrait — while the map panel is
+ * landscape, so fitBounds is constrained by HEIGHT and the spare width it
+ * leaves over sits on the Arabian Sea, west of the westernmost store. Raising
+ * the zoom cannot fix that (it would drop stores out of frame); the slack has
+ * to be spent in a better direction, so shift the centre east into it.
+ *
+ * The 0.35 factor is measured, not guessed: at a 980px panel it leaves 14 km
+ * west of the westernmost store, which puts the frame edge at 72.81E — the
+ * shoreline at this latitude — so the map shows towns and creeks rather than
+ * open sea, while every store stays comfortably inside the frame. Smaller
+ * factors all still frame open water (0.25 leaves ~9 km of sea, 0 leaves 35).
  */
 function fitNetwork(mapInstance, bounds) {
   mapInstance.fitBounds(bounds, { padding: [24, 24], maxZoom: 14 });
 
-  // The estate is 82 km tall and 47 km wide — portrait — while the map panel
-  // is landscape. fitBounds is therefore constrained by HEIGHT, and the spare
-  // width it leaves over sits over the Arabian Sea to the west. Raising the
-  // zoom cannot fix that; the slack has to be spent in a better direction.
-  // Shift the centre east into it: every store stays in frame (the shift is
-  // well under the half-slack that would clip the westernmost one), and the
-  // frame fills with the towns the network actually sits in.
+  // `bounds` is a plain array of [lat, lng] pairs. fitBounds accepts one, but
+  // it has none of LatLngBounds' accessors, so read the span off the array
+  // itself — calling getEast() on it is what broke the map once already.
+  const lngs = bounds.map((pt) => pt[1]).filter((v) => Number.isFinite(v));
+  if (!lngs.length) return;
+  const storeSpan = Math.max(...lngs) - Math.min(...lngs);
   const visible = mapInstance.getBounds();
-  const slack = visible.getEast() - visible.getWest() - (bounds.getEast() - bounds.getWest());
+  const slack = visible.getEast() - visible.getWest() - storeSpan;
   if (slack > 0.02) {
     const centre = mapInstance.getCenter();
     mapInstance.setView([centre.lat, centre.lng + slack * 0.35], mapInstance.getZoom(), { animate: false });
   }
 }
 
+/**
+ * A one-click way back to "all own stores" after zooming/panning around —
+ * without it, the only way back is a page refresh, which loses whatever
+ * else the user was looking at elsewhere on the page.
+ */
 function addResetViewControl(mapInstance, bounds, totalStoreCount) {
   const ResetControl = window.L.Control.extend({
     options: { position: "topleft" },
