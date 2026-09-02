@@ -51,13 +51,26 @@
 .map-card .card-body {
   padding: 0;
 }
+/* The dashboard shell caps content at 1440px, which is a sensible reading
+   width for tables and cards but wastes the sides on a map — a map earns
+   every pixel it is given. Let the Network Map view alone span the shell's
+   full padding box; every other view keeps the measured column. */
+.content-inner:has(#viewMap:not(.hidden)) {
+  max-width: none;
+}
+
 .map-container {
   height: min(82vh, 760px);
   width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
   border-radius: 0 0 var(--r-lg) var(--r-lg);
   background: var(--bg-base);
+}
+/* The estate is portrait (82 km tall, 47 km across) and the fit is limited by
+   height, so on a wide screen extra width alone just adds hinterland east of
+   the network. Give the map more height there too: the fit zooms in with it,
+   and the towns take back some of that space. */
+@media (min-width: 1500px) {
+  .map-container { height: min(82vh, 880px); }
 }
 /* Leaflet's own CSS sets a lower z-index baseline that clashes with the
    glassy header/sheet stack — keep the map's stacking local to its card. */

@@ -481,7 +481,11 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
   // reintroduce the exact same trap on the very next scroll past the map.
   // The +/− buttons and double-click zoom are enabled by default and are
   // enough to navigate; nothing here needs the wheel.
-  map = window.L.map(container, { scrollWheelZoom: false });
+  // zoomSnap: 0 lets fitBounds use a fractional zoom. With Leaflet's default
+  // integer snapping the estate's fit rounds DOWN to whole zoom 10 and throws
+  // away the leftover height, so the network renders as a small cluster no
+  // matter how large the panel is. Fractional zoom spends that height.
+  map = window.L.map(container, { scrollWheelZoom: false, zoomSnap: 0, zoomDelta: 0.5 });
 
   window.L.tileLayer(OSM_TILE_URL, { attribution: OSM_ATTRIBUTION, maxZoom: 19 }).addTo(map);
 
@@ -606,12 +610,16 @@ function addDarkstoreLayers(mapInstance) {
  * the zoom cannot fix that (it would drop stores out of frame); the slack has
  * to be spent in a better direction, so shift the centre east into it.
  *
- * The 0.35 factor is measured, not guessed: at a 980px panel it leaves 14 km
- * west of the westernmost store, which puts the frame edge at 72.81E — the
- * shoreline at this latitude — so the map shows towns and creeks rather than
- * open sea, while every store stays comfortably inside the frame. Smaller
- * factors all still frame open water (0.25 leaves ~9 km of sea, 0 leaves 35).
+ * The shift targets a FIXED margin west of the westernmost store rather than a
+ * fraction of the slack, because the panel is full-bleed and its width varies:
+ * a fraction keeps the sea out at one width and lets it back in at another,
+ * whereas anchoring the west edge holds the same framing at every width and
+ * spends any extra width on inland towns instead. Every store stays in frame —
+ * shifting east only ever adds room on the eastern side.
  */
+const WEST_MARGIN_KM = 12; // clears the coastline (~72.81E) at Patel's latitude
+const KM_PER_LNG_DEG = 105.1; // at ~19.2N, good enough for framing
+
 function fitNetwork(mapInstance, bounds) {
   mapInstance.fitBounds(bounds, { padding: [24, 24], maxZoom: 14 });
 
@@ -620,13 +628,15 @@ function fitNetwork(mapInstance, bounds) {
   // itself — calling getEast() on it is what broke the map once already.
   const lngs = bounds.map((pt) => pt[1]).filter((v) => Number.isFinite(v));
   if (!lngs.length) return;
-  const storeSpan = Math.max(...lngs) - Math.min(...lngs);
   const visible = mapInstance.getBounds();
-  const slack = visible.getEast() - visible.getWest() - storeSpan;
-  if (slack > 0.02) {
-    const centre = mapInstance.getCenter();
-    mapInstance.setView([centre.lat, centre.lng + slack * 0.35], mapInstance.getZoom(), { animate: false });
-  }
+  const wantWest = Math.min(...lngs) - WEST_MARGIN_KM / KM_PER_LNG_DEG;
+  const shift = wantWest - visible.getWest();
+  if (shift <= 0) return; // portrait panel: no spare width to reclaim
+
+  // Never shift so far that the westernmost store leaves the frame.
+  const safe = Math.min(shift, (visible.getEast() - visible.getWest()) / 2);
+  const centre = mapInstance.getCenter();
+  mapInstance.setView([centre.lat, centre.lng + safe], mapInstance.getZoom(), { animate: false });
 }
 
 /**
