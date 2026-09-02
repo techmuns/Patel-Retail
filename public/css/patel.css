@@ -52,7 +52,7 @@
   padding: 0;
 }
 .map-container {
-  height: min(70vh, 640px);
+  height: min(82vh, 760px);
   width: 100%;
   border-radius: 0 0 var(--r-lg) var(--r-lg);
   background: var(--bg-base);
@@ -443,8 +443,8 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 26px;
-  margin-left: -13px;
+  width: 40px;
+  margin-left: -20px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -452,7 +452,26 @@
   pointer-events: auto;
   border-radius: 4px;
 }
-.cume-hit:hover, .cume-hit:focus-visible, .cume-hit.is-pinned { background: color-mix(in srgb, var(--brand-indigo) 7%, transparent); }
+.cume-hit:hover, .cume-hit:focus-visible, .cume-hit.is-pinned { background: color-mix(in srgb, var(--brand-indigo) 10%, transparent); }
+/* A year label under the hovered point, so the reader is never guessing which
+   year the panel below is describing. */
+.cume-hit::after {
+  content: attr(data-year);
+  position: absolute;
+  bottom: -19px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-indigo);
+  background: var(--surface);
+  padding: 0 4px;
+  border-radius: 3px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .12s ease;
+}
+.cume-hit:hover::after, .cume-hit:focus-visible::after, .cume-hit.is-pinned::after { opacity: 1; }
 .cume-hit:focus-visible { outline: 2px solid var(--brand-indigo); outline-offset: -2px; }
 .cume-dot {
   position: absolute;

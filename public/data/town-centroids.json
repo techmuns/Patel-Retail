@@ -1,0 +1,205 @@
+{
+  "note": "One approximate centre per town. Used ONLY to give a town-to-town distance where a store has no address-level coordinate, so the proximity matrix can say roughly how far apart two places are instead of nothing at all. Never used for the cannibalisation score, which stays on measured distances only. Where a town contains at least one precisely located store, the centre is the mean of those stores rather than a gazetteer point.",
+  "kind": "estimate",
+  "generated_at": "2026-09-02T07:56:39.627Z",
+  "counts": {
+    "total": 32,
+    "from_stores": 27,
+    "geocoded": 5,
+    "failed": 0
+  },
+  "towns": {
+    "Bhiwandi-Kalyan belt": {
+      "lat": 19.302556,
+      "lng": 73.058807,
+      "source": "OpenStreetMap: Bhiwandi, Bhiwandi Subdistrict, Thane, Maharashtra, 421302, India",
+      "query": "Bhiwandi, Thane, Maharashtra, India"
+    },
+    "Rasayani": {
+      "lat": 18.89719,
+      "lng": 73.192043,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Thakurli / Dombivali": {
+      "lat": 19.22343,
+      "lng": 73.10531,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Titwala": {
+      "lat": 19.289443,
+      "lng": 73.223623,
+      "source": "mean of precisely located stores in this town",
+      "basis": 2
+    },
+    "Nilje / Diva": {
+      "lat": 19.188756,
+      "lng": 73.041417,
+      "source": "OpenStreetMap: Diva Junction, Diva Manpada Road, Diva, Dombivali, Thane Subdistrict, Thane, Maharashtra, 400612, India",
+      "query": "Diva, Thane, Maharashtra, India"
+    },
+    "Mumbra (Kausa)": {
+      "lat": 19.165154,
+      "lng": 73.029694,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Kudus (Wada)": {
+      "lat": 19.538248,
+      "lng": 73.099039,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Dombivali East": {
+      "lat": 19.209647,
+      "lng": 73.094704,
+      "source": "mean of precisely located stores in this town",
+      "basis": 4
+    },
+    "Kalyan West": {
+      "lat": 19.24285,
+      "lng": 73.136661,
+      "source": "mean of precisely located stores in this town",
+      "basis": 5
+    },
+    "Bhiwandi": {
+      "lat": 19.360141,
+      "lng": 73.069242,
+      "source": "mean of precisely located stores in this town",
+      "basis": 3
+    },
+    "Kalyan-Bhiwandi Rd": {
+      "lat": 19.269843,
+      "lng": 73.082832,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Diva / Dombivali": {
+      "lat": 19.170362,
+      "lng": 73.045918,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Neral": {
+      "lat": 19.029033,
+      "lng": 73.314159,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Kalyan East": {
+      "lat": 19.224347,
+      "lng": 73.13193,
+      "source": "mean of precisely located stores in this town",
+      "basis": 2
+    },
+    "Khoni (MIDC)": {
+      "lat": 19.315396,
+      "lng": 73.055755,
+      "source": "OpenStreetMap: Khoni, Bhiwandi Subdistrict, Thane, Maharashtra, 421302, India",
+      "query": "Khoni, Thane, Maharashtra, India"
+    },
+    "Dombivali West": {
+      "lat": 19.217382,
+      "lng": 73.084504,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Shahad": {
+      "lat": 19.242615,
+      "lng": 73.155927,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Bhiwandi (Anjur)": {
+      "lat": 19.272819,
+      "lng": 73.041284,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Padgha": {
+      "lat": 19.364953,
+      "lng": 73.171297,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Vangani": {
+      "lat": 19.08913,
+      "lng": 73.292885,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Vasind": {
+      "lat": 19.406509,
+      "lng": 73.267468,
+      "source": "OpenStreetMap: Vasind, Bhatsa Road, Vasind, Shahapur Subdistrict, Thane, Maharashtra, 421604, India",
+      "query": "Vasind, Thane, Maharashtra, India"
+    },
+    "Badlapur East": {
+      "lat": 19.158003,
+      "lng": 73.237711,
+      "source": "mean of precisely located stores in this town",
+      "basis": 4
+    },
+    "Badlapur West": {
+      "lat": 19.169651,
+      "lng": 73.238974,
+      "source": "mean of precisely located stores in this town",
+      "basis": 2
+    },
+    "Ambernath East": {
+      "lat": 19.200357,
+      "lng": 73.18096,
+      "source": "mean of precisely located stores in this town",
+      "basis": 3
+    },
+    "Ambernath West": {
+      "lat": 19.18354,
+      "lng": 73.219994,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Shilphata": {
+      "lat": 19.143039,
+      "lng": 73.046788,
+      "source": "OpenStreetMap: Shilphata, Shill Phata, Shill Gaon, Thane, Thane Subdistrict, Thane, Maharashtra, 410701, India",
+      "query": "Shilphata, Thane, Maharashtra, India"
+    },
+    "Murbad": {
+      "lat": 19.257911,
+      "lng": 73.384973,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Shahapur": {
+      "lat": 19.457398,
+      "lng": 73.331105,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Ulhasnagar": {
+      "lat": 19.222455,
+      "lng": 73.16134,
+      "source": "mean of precisely located stores in this town",
+      "basis": 2
+    },
+    "Khapoli": {
+      "lat": 18.798912,
+      "lng": 73.327361,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Ambernath": {
+      "lat": 19.211357,
+      "lng": 73.186925,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    },
+    "Uran": {
+      "lat": 18.871596,
+      "lng": 72.941254,
+      "source": "mean of precisely located stores in this town",
+      "basis": 1
+    }
+  }
+}

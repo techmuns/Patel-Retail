@@ -555,7 +555,7 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
   if (darkstoresData?.darkstores?.length) addDarkstoreLayers(map);
 
   if (bounds.length) {
-    map.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
+    fitNetwork(map, bounds);
     addResetViewControl(map, bounds, totalStoreCount);
   } else {
     map.setView(CENTER_FALLBACK, 10);
@@ -602,6 +602,33 @@ function addDarkstoreLayers(mapInstance) {
  * without it, the only way back is a page refresh, which loses whatever
  * else the user was looking at elsewhere on the page.
  */
+/**
+ * Frame the network without framing the sea.
+ *
+ * The estate runs north-south inland of Mumbai, so fitting its bounding box to
+ * a wide viewport leaves the left third of the map as open water — true, and
+ * useless. Padding the west edge in tightly and pushing the minimum zoom up
+ * keeps the towns filling the frame; Leaflet still shows every store because
+ * the bounds themselves are unchanged.
+ */
+function fitNetwork(mapInstance, bounds) {
+  mapInstance.fitBounds(bounds, { padding: [24, 24], maxZoom: 14 });
+
+  // The estate is 82 km tall and 47 km wide — portrait — while the map panel
+  // is landscape. fitBounds is therefore constrained by HEIGHT, and the spare
+  // width it leaves over sits over the Arabian Sea to the west. Raising the
+  // zoom cannot fix that; the slack has to be spent in a better direction.
+  // Shift the centre east into it: every store stays in frame (the shift is
+  // well under the half-slack that would clip the westernmost one), and the
+  // frame fills with the towns the network actually sits in.
+  const visible = mapInstance.getBounds();
+  const slack = visible.getEast() - visible.getWest() - (bounds.getEast() - bounds.getWest());
+  if (slack > 0.02) {
+    const centre = mapInstance.getCenter();
+    mapInstance.setView([centre.lat, centre.lng + slack * 0.35], mapInstance.getZoom(), { animate: false });
+  }
+}
+
 function addResetViewControl(mapInstance, bounds, totalStoreCount) {
   const ResetControl = window.L.Control.extend({
     options: { position: "topleft" },
@@ -611,7 +638,7 @@ function addResetViewControl(mapInstance, bounds, totalStoreCount) {
       window.L.DomEvent.on(el, "click", (e) => {
         window.L.DomEvent.preventDefault(e);
         window.L.DomEvent.stopPropagation(e);
-        mapInstance.fitBounds(bounds, { padding: [30, 30], maxZoom: 14 });
+        fitNetwork(mapInstance, bounds);
       });
       window.L.DomEvent.disableClickPropagation(el);
       return el;

@@ -57,6 +57,7 @@ import {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const STORES_PATH = path.join(__dirname, "..", "public", "data", "stores.json");
+const TOWNS_PATH = path.join(__dirname, "..", "public", "data", "town-centroids.json");
 const OUT_PATH = path.join(__dirname, "..", "public", "data", "proximity.json");
 
 const RADII_KM = [1, 3, 5];
@@ -95,6 +96,21 @@ async function main() {
   // touching a store with no coordinates at all. km is null, with a stated
   // unavailable_reason, whenever either side isn't locatable — never a
   // missing row. ----
+  // Town centres, used only where a store has no address-level coordinate.
+  // A town-to-town figure answers "roughly how far apart?" — which is far more
+  // useful than a blank cell — but it is never allowed to pass as a measured
+  // distance, so it rides in its own field with its own precision label.
+  let townCentres = {};
+  try {
+    townCentres = JSON.parse(await readFile(TOWNS_PATH, "utf8")).towns || {};
+  } catch {
+    console.warn("[proximity] town-centroids.json missing — approximate distances will be omitted. Run scripts/geocode-towns.mjs.");
+  }
+  const centreFor = (store) => {
+    const c = townCentres[store.town];
+    return c ? { lat: c.lat, lng: c.lng } : null;
+  };
+
   const pairs = [];
   for (let i = 0; i < stores.length; i++) {
     for (let j = i + 1; j < stores.length; j++) {
@@ -102,11 +118,24 @@ async function main() {
       const b = stores[j];
       const bothLocatable = isLocatable(a) && isLocatable(b);
       const bothGeocoded = a.lat != null && a.lng != null && b.lat != null && b.lng != null;
+      // Where a store is not precisely located, stand its town in for it. If
+      // both stand in the same town the answer is "same town", not a number.
+      let approxKm = null;
+      if (!bothLocatable) {
+        const pa = isLocatable(a) ? a : centreFor(a);
+        const pb = isLocatable(b) ? b : centreFor(b);
+        if (pa && pb) {
+          const d = haversineKm(pa, pb);
+          approxKm = d < 0.05 ? 0 : round2(d);
+        }
+      }
       pairs.push({
         a: a.store_id,
         b: b.store_id,
         km: bothLocatable ? round2(haversineKm(a, b)) : null,
         precision: bothLocatable ? "geocoded" : null,
+        approx_km: approxKm,
+        approx_basis: approxKm == null ? null : a.town === b.town ? "same_town" : "town_to_town",
         unavailable_reason: bothLocatable ? null : bothGeocoded ? "town_centroid" : "not_geocoded",
       });
     }
@@ -114,6 +143,8 @@ async function main() {
   const pairsWithRealDistance = pairs.filter((p) => p.km != null).length;
   const pairsSuppressedTownCentroid = pairs.filter((p) => p.unavailable_reason === "town_centroid").length;
   const pairsSuppressedNotGeocoded = pairs.filter((p) => p.unavailable_reason === "not_geocoded").length;
+  const pairsWithApprox = pairs.filter((p) => p.km == null && p.approx_km != null).length;
+  const pairsWithNothing = pairs.filter((p) => p.km == null && p.approx_km == null).length;
 
   // ---- per_store: nearest OPERATIONAL, LOCATABLE own store + within-radius
   // counts + risk. A store that is itself only a town centroid can't
@@ -220,6 +251,8 @@ async function main() {
       total_possible_pairs: nCk2(stores.length),
       pairs_emitted: pairs.length, // now always equals total_possible_pairs — every pair gets a row
       pairs_with_real_distance: pairsWithRealDistance,
+      pairs_with_approx_distance: pairsWithApprox,
+      pairs_with_no_distance: pairsWithNothing,
       pairs_suppressed_town_centroid: pairsSuppressedTownCentroid,
       pairs_suppressed_not_geocoded: pairsSuppressedNotGeocoded,
       note:
@@ -227,6 +260,10 @@ async function main() {
           ? "No stores are geocoded yet — run scripts/geocode.mjs (Nominatim by default, no key needed), then re-run this script. Town clusters below don't need geocoding and are already real."
           : `${locatable.length}/${stores.length} stores are precisely located; ${geocoded.length - locatable.length} more are geocoded only to a town centroid (distances suppressed, not fabricated) and ${stores.length - geocoded.length} have no coordinates at all.`,
     },
+    approx_distance_method:
+      "Where a store has no address-level coordinate, its town centre stands in and the pair carries approx_km with " +
+      "approx_basis 'town_to_town' (or 'same_town'). Approximate by construction — a town is several km across — and " +
+      "deliberately never used for overlap_risk, which stays on measured distances only.",
     overlap_risk_method: RISK_METHOD_NOTE,
     pairs,
     per_store,
@@ -236,8 +273,8 @@ async function main() {
   await writeFile(OUT_PATH, JSON.stringify(output, null, 2) + "\n", "utf8");
   console.log(
     `Wrote ${OUT_PATH} — ${pairs.length}/${nCk2(stores.length)} pairs emitted (every pair, none missing); ` +
-      `${pairsWithRealDistance} have a real distance, ${pairsSuppressedTownCentroid} suppressed as town-centroid, ` +
-      `${pairsSuppressedNotGeocoded} suppressed as not-geocoded; ${locatable.length}/${stores.length} stores precisely located, ${clusters.length} towns.`
+      `${pairsWithRealDistance} measured, ${pairsWithApprox} approximate (town-to-town), ${pairsWithNothing} with no distance at all; ` +
+      `${locatable.length}/${stores.length} stores precisely located, ${clusters.length} towns.`
   );
 }
 

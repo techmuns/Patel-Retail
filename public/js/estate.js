@@ -165,19 +165,35 @@ function wireOpeningsChart(root, bars) {
     shown = i;
     renderStorePanel(detail, b.label, `${b.count} opened`, b.stores);
   };
-  const clear = () => {
-    if (pinned == null) {
-      detail.hidden = true;
-      shown = null;
-    } else {
-      show(pinned);
-    }
+  let holdTimer = null;
+  const cancelHold = () => {
+    if (holdTimer) clearTimeout(holdTimer);
+    holdTimer = null;
   };
+  const clear = () => {
+    cancelHold();
+    holdTimer = setTimeout(() => {
+      if (pinned == null) {
+        detail.hidden = true;
+        shown = null;
+      } else {
+        show(pinned);
+      }
+    }, 400);
+  };
+  detail.addEventListener("mouseenter", cancelHold);
+  detail.addEventListener("mouseleave", clear);
 
   root.querySelectorAll(".bar-hit").forEach((hit) => {
     const i = Number(hit.dataset.bar);
-    hit.addEventListener("mouseenter", () => show(i));
-    hit.addEventListener("focus", () => show(i));
+    hit.addEventListener("mouseenter", () => {
+      cancelHold();
+      show(i);
+    });
+    hit.addEventListener("focus", () => {
+      cancelHold();
+      show(i);
+    });
     hit.addEventListener("mouseleave", clear);
     hit.addEventListener("blur", clear);
     hit.addEventListener("click", () => {
@@ -249,7 +265,7 @@ function renderCumulativeChart(stores) {
 
   // Year ticks: first, last, and evenly spaced years in between — two labels
   // across 36 years said nothing about when the estate actually grew.
-  const tickCount = 6;
+  const tickCount = 10;
   const tickYears = [];
   for (let i = 0; i < tickCount; i++) {
     const yr = Math.round(minYear + ((maxYear - minYear) * i) / (tickCount - 1));
@@ -353,19 +369,38 @@ function wireCumulativeChart(root, points) {
     shown = year;
     renderStorePanel(detail, String(pt.year), `${pt.opened.length} opened \u00b7 ${pt.count} total`, pt.opened);
   };
-  const clear = () => {
-    if (pinned == null) {
-      detail.hidden = true;
-      shown = null;
-    } else {
-      show(pinned);
-    }
+  // Leaving a 26px target used to blank the panel immediately, so the moment
+  // you moved towards what you were reading, it disappeared. Hold it briefly,
+  // and cancel the hold if the pointer lands on the panel itself.
+  let holdTimer = null;
+  const cancelHold = () => {
+    if (holdTimer) clearTimeout(holdTimer);
+    holdTimer = null;
   };
+  const clear = () => {
+    cancelHold();
+    holdTimer = setTimeout(() => {
+      if (pinned == null) {
+        detail.hidden = true;
+        shown = null;
+      } else {
+        show(pinned);
+      }
+    }, 400);
+  };
+  detail.addEventListener("mouseenter", cancelHold);
+  detail.addEventListener("mouseleave", clear);
 
   root.querySelectorAll(".cume-hit").forEach((hit) => {
     const year = Number(hit.dataset.year);
-    hit.addEventListener("mouseenter", () => show(year));
-    hit.addEventListener("focus", () => show(year));
+    hit.addEventListener("mouseenter", () => {
+      cancelHold();
+      show(year);
+    });
+    hit.addEventListener("focus", () => {
+      cancelHold();
+      show(year);
+    });
     hit.addEventListener("mouseleave", clear);
     hit.addEventListener("blur", clear);
     hit.addEventListener("click", () => {

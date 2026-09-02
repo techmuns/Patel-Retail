@@ -260,10 +260,50 @@ function renderInitialEmpty() {
   refreshIcons();
 }
 
+/**
+ * Fill the town picker from the store file. Typing a full address from memory
+ * is the slowest part of using this screen, and most of the time the question
+ * is about somewhere Patel already trades — so offer those towns directly,
+ * with the store count so the busiest ones are obvious.
+ */
+async function populateTowns() {
+  const select = qs("#screenerTown");
+  if (!select) return;
+  let stores;
+  try {
+    stores = await getStores();
+  } catch {
+    select.disabled = true;
+    return;
+  }
+  const byTown = new Map();
+  for (const st of stores) {
+    if (!byTown.has(st.town)) byTown.set(st.town, { count: 0, district: st.district, state: st.state });
+    byTown.get(st.town).count += 1;
+  }
+  const towns = [...byTown.entries()].sort((a, b) => b[1].count - a[1].count || a[0].localeCompare(b[0]));
+  select.insertAdjacentHTML(
+    "beforeend",
+    towns
+      .map(
+        ([town, info]) =>
+          `<option value="${escapeHtml(`${town}, ${info.district}, ${info.state}, India`)}">${escapeHtml(town)} — ${info.count} store${info.count === 1 ? "" : "s"}</option>`
+      )
+      .join("")
+  );
+  select.addEventListener("change", () => {
+    if (!select.value) return;
+    const input = qs("#screenerAddress");
+    if (input) input.value = select.value;
+    runScreen(select.value);
+  });
+}
+
 export async function initScreener() {
   renderInitialEmpty();
   const form = qs("#screenerForm");
   if (!form) return;
+  populateTowns();
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const address = qs("#screenerAddress").value.trim();

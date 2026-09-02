@@ -122,28 +122,30 @@ function buildStoreMaster(wb, { stores }) {
 /* ------------------------------------------------------ sheet 2: proximity - */
 function buildProximity(wb, { stores, proximity }) {
   const byId = new Map(stores.map((s) => [s.store_id, s]));
-  const head = ["Store A", "Store A Name", "Store A Town", "Store B", "Store B Name", "Store B Town", "Distance (km)", "Status"];
-  const widths = [10, 24, 18, 10, 24, 18, 14, 26];
+  const head = ["Store A", "Store A Name", "Store A Town", "Store B", "Store B Name", "Store B Town", "Distance (km)", "Basis"];
+  const widths = [10, 24, 18, 10, 24, 18, 14, 28];
   const ws = wb.addWorksheet("Proximity", { views: [{ showGridLines: false, state: "frozen", ySplit: 3 }] });
   ws.columns = widths.map((w) => ({ width: w }));
 
-  // Short, per-row status — the full reason is stated ONCE, in the legend row
-  // below the header, not repeated in every one of the ~430 unavailable rows.
-  const UNAVAILABLE_STATUS = {
-    town_centroid: "Unavailable — town centroid",
-    not_geocoded: "Unavailable — not geocoded",
+  // Every pair now carries a figure. Where both stores are precisely located
+  // it is measured; where one is not, its town centre stands in and the row
+  // says so. The distinction is the whole point, so it rides in its own
+  // column rather than being explained once in a footnote.
+  const BASIS = {
+    town_to_town: "Approximate — town to town",
+    same_town: "Approximate — same town",
   };
 
   let r = 1;
   headerBand(
     ws,
-    `MUNSHOT  ·  Store-Pair Proximity — ${proximity.metadata.pairs_with_real_distance} of ${proximity.metadata.total_possible_pairs} possible pairs have a real distance (${proximity.metadata.pairs_suppressed_town_centroid} town-centroid, ${proximity.metadata.pairs_suppressed_not_geocoded} not yet geocoded — every pair is a row, none omitted)`,
+    `MUNSHOT  ·  Store-Pair Proximity — ${proximity.metadata.pairs_emitted} pairs: ${proximity.metadata.pairs_with_real_distance} measured, ${proximity.metadata.pairs_with_approx_distance ?? 0} approximate`,
     head.length,
     r++
   );
   const legendRow = ws.getRow(r++);
   legendRow.getCell(1).value =
-    "\"Real distance\" = both stores precisely geocoded. \"Town centroid\" = one or both resolved only to a town-level fallback, not their own address — a distance from that would fabricate precision, not measure it. \"Not geocoded\" = no coordinates at all yet, pending Patel Retail's own pins (see docs/PINS-NEEDED.md).";
+    "Measured = both stores precisely located, distance between the two points. Approximate = one or both known only to their town, so the town centre stands in — a town is several km across, so read these as \u00b1 a few km, and note they are deliberately excluded from the cannibalisation score.";
   legendRow.getCell(1).font = { size: 9, italic: true, color: { argb: MUTE } };
   legendRow.getCell(1).alignment = { wrapText: true, vertical: "top" };
   ws.mergeCells(legendRow.number, 1, legendRow.number, head.length);
@@ -156,16 +158,17 @@ function buildProximity(wb, { stores, proximity }) {
   for (const p of proximity.pairs) {
     const a = byId.get(p.a);
     const b = byId.get(p.b);
-    const available = p.km != null;
-    const status = available ? "Real distance" : UNAVAILABLE_STATUS[p.unavailable_reason] || "Unavailable — not computed";
+    const measured = p.km != null;
+    const value = measured ? p.km : p.approx_km;
+    const basis = measured ? "Measured" : BASIS[p.approx_basis] || "No distance available";
     const row = setRowValues(ws, r++, [
       p.a, a?.name || "", a?.town || "",
       p.b, b?.name || "", b?.town || "",
-      available ? p.km : "Unavailable",
-      status,
+      value == null ? "Not available" : value,
+      basis,
     ]);
     row.eachCell((c, col) => {
-      c.font = { size: 9.5, color: { argb: col === 7 && !available ? WARN_AMBER : "FF334155" }, bold: col === 7 };
+      c.font = { size: 9.5, color: { argb: col === 7 && !measured ? WARN_AMBER : "FF334155" }, bold: col === 7 };
       c.alignment = { vertical: "top", indent: 0 };
       c.border = box();
     });
