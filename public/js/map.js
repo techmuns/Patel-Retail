@@ -616,8 +616,15 @@ function addDarkstoreLayers(mapInstance) {
  * whereas anchoring the west edge holds the same framing at every width and
  * spends any extra width on inland towns instead. Every store stays in frame —
  * shifting east only ever adds room on the eastern side.
+ *
+ * The margin is set by the dark-store overlay, not by taste. Blinkit, Zepto
+ * and Swiggy reach into Mumbai, 20 km west of Patel's westernmost store, so a
+ * tighter margin silently cuts the competition off the left edge — the exact
+ * comparison the overlay exists to make. 25 km clears all 352 of them with a
+ * little air, and the strip of sea that comes with it is the cost of showing
+ * them: the water is where Mumbai's quick-commerce estate stops.
  */
-const WEST_MARGIN_KM = 12; // clears the coastline (~72.81E) at Patel's latitude
+const WEST_MARGIN_KM = 25;
 const KM_PER_LNG_DEG = 105.1; // at ~19.2N, good enough for framing
 
 function fitNetwork(mapInstance, bounds) {
