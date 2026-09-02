@@ -19,6 +19,7 @@ const REGION_VIEWBOX = { minLon: 72.7, minLat: 18.6, maxLon: 73.6, maxLat: 19.8 
 
 let storesCache = null;
 let competitorsCache = null; // null until public/data/competitors.json exists
+let townCentroidsCache = null; // public/data/town-centroids.json — one verified centre per town
 
 async function loadJson(path) {
   const res = await fetch(path, { cache: "no-store" });
@@ -36,6 +37,21 @@ async function getStores() {
 }
 
 /** null if the file doesn't exist yet (scripts/fetch-dmart-overpass.mjs hasn't run) — a fetch 404 is expected, not an error. */
+/** One verified centre per town, built by scripts/geocode-towns.mjs. The town
+ *  picker uses these directly instead of geocoding a name we already resolved
+ *  once — instant, works offline, and cannot fail on a colloquial area name
+ *  like "Badlapur East" that OSM has never heard of. */
+async function getTownCentroids() {
+  if (townCentroidsCache) return townCentroidsCache;
+  try {
+    const data = await loadJson("./data/town-centroids.json");
+    townCentroidsCache = data.towns || {};
+  } catch {
+    townCentroidsCache = {};
+  }
+  return townCentroidsCache;
+}
+
 async function getCompetitors() {
   if (competitorsCache !== null) return competitorsCache;
   try {
@@ -48,7 +64,12 @@ async function getCompetitors() {
 
 async function geocodeAddress(address) {
   const url = new URL(NOMINATIM_URL);
-  url.searchParams.set("q", `${address}, Maharashtra, India`);
+  // Only append the region when the address doesn't already name it. Nominatim
+  // returns NOTHING for "Kalyan West, Thane, Maharashtra, India, Maharashtra,
+  // India" — a doubled suffix reads as a contradiction, not a repetition — so
+  // anyone typing their own "…, Maharashtra" got a dead lookup.
+  const hasRegion = /\bmaharashtra\b/i.test(address);
+  url.searchParams.set("q", hasRegion ? address : `${address}, Maharashtra, India`);
   url.searchParams.set("format", "jsonv2");
   url.searchParams.set("limit", "1");
   url.searchParams.set("countrycodes", "in");
@@ -176,7 +197,10 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
   refreshIcons();
 }
 
-async function runScreen(address) {
+/** `query` is either an address to look up, or an already-resolved
+ *  { lat, lng, formatted_address } — the town picker passes the latter, since
+ *  a town we already hold a verified centre for has nothing to look up. */
+async function runScreen(query) {
   const submitBtn = qs("#screenerSubmit");
   submitBtn.disabled = true;
   const originalHtml = submitBtn.innerHTML;
@@ -184,7 +208,7 @@ async function runScreen(address) {
   refreshIcons();
 
   try {
-    const candidate = await geocodeAddress(address);
+    const candidate = typeof query === "string" ? await geocodeAddress(query) : query;
     if (!candidate) {
       toast("err", "Couldn't locate that address", "Try adding a landmark, town, or being more specific.");
       return;
@@ -282,20 +306,36 @@ async function populateTowns() {
     byTown.get(st.town).count += 1;
   }
   const towns = [...byTown.entries()].sort((a, b) => b[1].count - a[1].count || a[0].localeCompare(b[0]));
+  // The option's value is the TOWN NAME. It used to be a full geocoding query,
+  // which the address lookup then appended its own region onto — producing a
+  // doubled "…, Maharashtra, India, Maharashtra, India" that Nominatim returns
+  // nothing for. The value is now a key we resolve ourselves.
   select.insertAdjacentHTML(
     "beforeend",
     towns
       .map(
         ([town, info]) =>
-          `<option value="${escapeHtml(`${town}, ${info.district}, ${info.state}, India`)}">${escapeHtml(town)} — ${info.count} store${info.count === 1 ? "" : "s"}</option>`
+          `<option value="${escapeHtml(town)}">${escapeHtml(town)} — ${info.count} store${info.count === 1 ? "" : "s"}</option>`
       )
       .join("")
   );
-  select.addEventListener("change", () => {
-    if (!select.value) return;
+
+  const centroids = await getTownCentroids();
+  select.addEventListener("change", async () => {
+    const town = select.value;
+    if (!town) return;
     const input = qs("#screenerAddress");
-    if (input) input.value = select.value;
-    runScreen(select.value);
+    if (input) input.value = town;
+
+    const centre = centroids[town];
+    if (centre && Number.isFinite(centre.lat) && Number.isFinite(centre.lng)) {
+      runScreen({ lat: centre.lat, lng: centre.lng, formatted_address: town });
+      return;
+    }
+    // No stored centre for this town — fall back to looking the name up, with
+    // the district for disambiguation.
+    const info = byTown.get(town);
+    runScreen(`${town}, ${info.district}, ${info.state}`);
   });
 }
 
