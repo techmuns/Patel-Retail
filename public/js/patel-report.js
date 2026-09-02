@@ -39,8 +39,19 @@ function fmtL(v) {
 }
 const KIND_HEX = { reported: "#10b981", derived: "#6366f1", estimate: "#f59e0b" };
 const TIER_HEX = { precise: "#10b981", coarse: "#f59e0b", missing: "#f43f5e" };
+
+// Verbatim from the dashboard's --grad-primary / --grad-warm / --grad-cool.
+const SECTION_GRADIENTS = [
+  "linear-gradient(135deg,#7c3aed 0%,#6366f1 38%,#3b82f6 72%,#06b6d4 100%)",
+  "linear-gradient(135deg,#ec4899,#f59e0b)",
+  "linear-gradient(135deg,#6366f1,#14b8a6)",
+];
 function badge(label, hex) {
-  return `<span class="rpt-badge" style="color:${hex};background:${hex}1f">${escapeHtml(label)}</span>`;
+  // The dashboard's chip recipe exactly: full-strength colour on a 12% tint of
+  // itself (1f), inside a 24% border (3d). The border is drawn as an inset
+  // shadow rather than a real border so it costs no height — a real 1px border
+  // on 54 badge rows was enough to push two rows onto a page of their own.
+  return `<span class="rpt-badge" style="color:${hex};background:${hex}1f;box-shadow:inset 0 0 0 1px ${hex}3d">${escapeHtml(label)}</span>`;
 }
 function kindBadge(kind) {
   return badge(kind, KIND_HEX[kind] || "#94a3b8");
@@ -179,7 +190,7 @@ function patelCoverPage(model, logo, total) {
       </div>
     </div>
     <div class="rpt-cover-mid">
-      <div class="rpt-cover-eyebrow">Store Network &amp; Unit Economics</div>
+      <div class="rpt-cover-eyebrow">Store Network &amp; Diligence</div>
       <h1 class="rpt-cover-co">Patel Retail Ltd</h1>
       <div class="rpt-cover-date">${escapeHtml(model.dateLabel)}</div>
       <div class="rpt-cover-pills">${pills}</div>
@@ -188,12 +199,12 @@ function patelCoverPage(model, logo, total) {
         <div class="rpt-cover-figs">${tiles}</div>
       </div>
     </div>
-    <div class="rpt-cover-note">This report reproduces figures from Patel Retail Ltd's own files
-      company store data and exchange filings, plus distances derived from OpenStreetMap-geocoded
-      coordinates. Every figure is labelled reported, derived, or estimate and traces to a stated source —
-      nothing here is invented to fill a gap, and where Patel Retail's own files disagree, both figures are
-      shown side by side rather than averaged or silently picked. Open the live dashboard to cross-verify any
-      figure at its source.</div>
+    <div class="rpt-cover-note">This report reproduces figures from Patel Retail Ltd's own company store
+      data and its exchange filings, plus distances derived from OpenStreetMap-geocoded coordinates. Every
+      figure is labelled reported, derived, or estimate and traces to a stated source — nothing here is
+      invented to fill a gap, and where the sources disagree, both figures are shown side by side rather
+      than averaged or silently picked. Open the live dashboard to cross-verify any figure at its
+      source.</div>
     ${footer}
   </div>`);
 }
@@ -217,6 +228,11 @@ function patelThankYouPage(model, logo, total) {
 function patelBodyBlocks(model) {
   const blocks = [];
   let section = null;
+  // Section titles and order are the dashboard's own tab labels, in tab order,
+  // so a client with the PDF beside the screen finds the same sections under
+  // the same names. Site Screener has no section: it is a live tool for
+  // testing a candidate address, with no fixed content to print.
+
   const push = (node) => {
     // Stamp the owning section on every block. The packer reads this to repeat
     // "<section> continued" whenever a section runs past the end of a page.
@@ -225,13 +241,20 @@ function patelBodyBlocks(model) {
   };
   push.openSection = (n, title) => {
     section = `${n}. ${title}`;
-    push(el(`<div class="rpt-block rpt-keep rpt-break"><div class="rpt-sec-h"><span class="rpt-sec-n">${n}</span>${escapeHtml(title)}</div></div>`));
+    // The dashboard cycles its card icons through three gradients; the section
+    // numbers here follow the same cycle so the two read as one product.
+    const grad = SECTION_GRADIENTS[(n - 1) % SECTION_GRADIENTS.length];
+    push(
+      el(
+        `<div class="rpt-block rpt-keep rpt-break"><div class="rpt-sec-h"><span class="rpt-sec-n" style="background:${grad}">${n}</span>${escapeHtml(title)}</div></div>`
+      )
+    );
   };
   let n = 1;
   storeNetworkSection(push, model, n++);
+  unitEconomicsSection(push, model, n++);
   estateSection(push, model, n++);
   peerBenchmarkSection(push, model, n++);
-  unitEconomicsSection(push, model, n++);
   return blocks;
 }
 
@@ -272,7 +295,7 @@ function storeTable(rows) {
 function storeNetworkSection(push, model, n) {
   const { stores } = model;
   const s = computeStats(model);
-  sectionHead(push, n, "Store Network — Precision Status");
+  sectionHead(push, n, "Network Map");
   push(
     el(`<div class="rpt-block"><table class="rpt-pk">
       <thead><tr><th style="width:60%">Network</th><th style="width:20%">Stores</th><th style="width:20%">Share</th></tr></thead>
@@ -436,7 +459,7 @@ function unitEconomicsSection(push, model, n) {
   const s = computeStats(model);
   const pnl = s.pnl;
 
-  sectionHead(push, n, "Unit Economics");
+  sectionHead(push, n, "Store Economics");
   push(
     el(`<div class="rpt-block"><div class="rpt-sub-label">Revenue per sq ft per year ${kindBadge("derived")}</div>
       <div class="rpt-compare">
@@ -529,19 +552,19 @@ function injectPatelReportStyles() {
   /* Running heading on any page a section continues onto, so a reader landing
      mid-table still knows which section they are in. Quieter than the section
      head itself — it repeats information rather than introducing it. */
-  .dk-report .rpt-sec-cont { display: flex; align-items: baseline; gap: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; color: #64748b; padding-bottom: 6px; border-bottom: 1px solid #e6e8f0; margin-bottom: 10px; }
+  .dk-report .rpt-sec-cont { display: flex; align-items: baseline; gap: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; color: #64748b; padding-bottom: 6px; border-bottom: 1px solid #e2e3e5; margin-bottom: 10px; }
   .dk-report .rpt-sec-cont span { font-size: 9px; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; }
 
   .dk-report .rpt-pk { width: 100%; border-collapse: collapse; font-size: 10.5px; table-layout: fixed; }
-  .dk-report .rpt-pk th { text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; padding: 6px 8px; border-bottom: 1.5px solid #e6e8f0; background: #fafbfe; }
-  .dk-report .rpt-pk td { padding: 6px 8px; border-bottom: 1px solid #eef1f6; vertical-align: top; color: #334155; overflow-wrap: anywhere; }
-  .dk-report .rpt-pk tbody tr:nth-child(even) { background: #fafbfe; }
+  .dk-report .rpt-pk th { text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; padding: 6px 8px; border-bottom: 1.5px solid #e2e3e5; background: #f5f6fc; }
+  .dk-report .rpt-pk td { padding: 6px 8px; border-bottom: 1px solid #ececee; vertical-align: top; color: #475569; overflow-wrap: anywhere; }
+  .dk-report .rpt-pk tbody tr:nth-child(even) { background: #f5f6fc; }
   .dk-report .rpt-pk td.mono { font-family: 'JetBrains Mono', monospace; }
   .dk-report .rpt-badge { display: inline-block; font-size: 8.5px; font-weight: 700; letter-spacing: .3px; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
   .dk-report .rpt-note { font-size: 10.5px; line-height: 1.55; color: #64748b; margin: 6px 0 0; }
   .dk-report .rpt-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
-  .dk-report .rpt-cbox { border: 1px solid #e6e8f0; border-radius: 8px; padding: 9px 11px; }
-  .dk-report .rpt-cbox.used { border-color: #a7f3d0; background: #f0fdf9; }
+  .dk-report .rpt-cbox { border: 1px solid #e2e3e5; border-radius: 8px; padding: 9px 11px; }
+  .dk-report .rpt-cbox.used { border-color: rgba(16,185,129,.24); background: rgba(16,185,129,.12); }
   .dk-report .rpt-cbox .cl { font-size: 8.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; }
   .dk-report .rpt-cbox .cv { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 2px; }
   .dk-report .rpt-cbox .cs { font-size: 9px; color: #94a3b8; margin-top: 2px; }
