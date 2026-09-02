@@ -473,7 +473,10 @@
 .cume-hit::after {
   content: attr(data-year);
   position: absolute;
-  bottom: -19px;
+  /* Sits on the axis-tick baseline: 6px margin + 1px rule + 6px padding below
+     the plot. Anything else and the hovered year floats above the axis it is
+     meant to be reading from. */
+  top: calc(100% + 13px);
   left: 50%;
   transform: translateX(-50%);
   font-size: 11px;
@@ -487,6 +490,10 @@
   transition: opacity .12s ease;
 }
 .cume-hit:hover::after, .cume-hit:focus-visible::after, .cume-hit.is-pinned::after { opacity: 1; }
+/* The axis tick the hovered label is standing in for — see maskTick() in
+   estate.js. Hidden rather than removed so the axis doesn't reflow. */
+.cume-tick { transition: opacity 0.12s ease; }
+.cume-tick.is-masked { opacity: 0; }
 .cume-hit:focus-visible { outline: 2px solid var(--brand-indigo); outline-offset: -2px; }
 .cume-dot {
   position: absolute;

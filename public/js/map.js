@@ -25,7 +25,20 @@ const UPCOMING_COLOR = "var(--ok)";
 
 // Approximate each brand's own colour, for at-a-glance recognition on the
 // map — not a trademark reproduction, just distinguishable markers.
-const DARKSTORE_BRAND_COLORS = { Blinkit: "#f8cb46", Zepto: "#8025fb", "Swiggy Instamart": "#fc8019" };
+const DARKSTORE_BRAND_COLORS = { Blinkit: "#f0b400", Zepto: "#8025fb", "Swiggy Instamart": "#fc8019" };
+
+/** Darken a hex colour towards black. Used for dark-store marker outlines:
+ *  yellow is intrinsically light, so Blinkit's dot sat at 1.3:1 against a pale
+ *  basemap and simply vanished. Darkening the yellow far enough to fix that
+ *  turns it olive and stops reading as Blinkit, so the contrast comes from a
+ *  ring in the brand's own hue instead — 4.9:1 against the map, with the fill
+ *  left recognisably yellow. */
+function darken(hex, factor = 0.55) {
+  const h = hex.replace("#", "");
+  if (h.length !== 6) return hex;
+  const ch = (i) => Math.round(parseInt(h.slice(i, i + 2), 16) * factor);
+  return `#${[0, 2, 4].map((i) => ch(i).toString(16).padStart(2, "0")).join("")}`;
+}
 
 let map = null;
 let storesById = new Map();
@@ -580,10 +593,13 @@ function addDarkstoreLayers(mapInstance) {
     const color = DARKSTORE_BRAND_COLORS[d.brand] || "#888";
     const marker = window.L.circleMarker([d.lat, d.lng], {
       radius: 4,
-      color: "#fff",
-      weight: 1,
+      // A white ring is 1.15:1 against the basemap — it separates overlapping
+      // dots but adds nothing against the map itself. The brand colour darkened
+      // does both.
+      color: darken(color),
+      weight: 1.2,
       fillColor: color,
-      fillOpacity: 0.85,
+      fillOpacity: 0.9,
     });
     marker.bindPopup(
       `<strong>${escapeHtml(d.brand)} dark store</strong>${d.label ? `<br>${escapeHtml(d.label)}` : ""}${
@@ -596,7 +612,11 @@ function addDarkstoreLayers(mapInstance) {
   const overlays = {};
   for (const [brand, group] of byBrand) {
     const count = darkstoresData.counts?.[brand]?.in_region ?? "?";
-    overlays[`<span style="color:${DARKSTORE_BRAND_COLORS[brand] || "#888"};font-weight:700">●</span> ${brand} (${count})`] = group;
+    // The legend bullet is a glyph on a white panel with no ring to lean on,
+    // so it takes the darkened shade directly — Blinkit's own yellow reads at
+    // 1.9:1 there, which is not a visible dot.
+    const swatch = darken(DARKSTORE_BRAND_COLORS[brand] || "#888", 0.78);
+    overlays[`<span style="color:${swatch};font-weight:700">●</span> ${brand} (${count})`] = group;
   }
   window.L.control.layers(null, overlays, { collapsed: false, position: "topright" }).addTo(mapInstance);
 }

@@ -176,6 +176,7 @@ function wireOpeningsChart(root, bars) {
       if (pinned == null) {
         detail.hidden = true;
         shown = null;
+        maskTick(null);
       } else {
         show(pinned);
       }
@@ -305,7 +306,7 @@ function renderCumulativeChart(stores) {
           .map((yr) => {
             const pct = ((yr - minYear) / (maxYear - minYear || 1)) * 100;
             const align = pct <= 0 ? "left:0; transform:none" : pct >= 100 ? "right:0; transform:none" : `left:${pct}%; transform:translateX(-50%)`;
-            return `<span style="position:absolute; ${align}; font-size:11px; color:var(--text-3); white-space:nowrap">${yr}</span>`;
+            return `<span class="cume-tick" data-tick-year="${yr}" style="position:absolute; ${align}; font-size:11px; color:var(--text-3); white-space:nowrap">${yr}</span>`;
           })
           .join("")}
       </div>
@@ -362,7 +363,29 @@ function wireCumulativeChart(root, points) {
   // had just been replaced.
   let shown = null;
 
+  // The hovered year is drawn on the tick baseline, so it collides with any
+  // tick sitting under it — its own year's tick, and equally the tick of a
+  // NEIGHBOURING year, since 21 years share the axis with only 10 ticks. So
+  // mask by geometry rather than by matching the year: hide whichever ticks
+  // the label would actually touch.
+  const ticks = [...root.querySelectorAll(".cume-tick")];
+  const LABEL_HALF_PX = 22; // 4 digits at 11px plus the label's own padding
+  const maskTick = (year) => {
+    const hit = year == null ? null : root.querySelector(`.cume-hit[data-year="${year}"]`);
+    if (!hit) {
+      ticks.forEach((t) => t.classList.remove("is-masked"));
+      return;
+    }
+    const hb = hit.getBoundingClientRect();
+    const cx = hb.left + hb.width / 2;
+    ticks.forEach((t) => {
+      const tb = t.getBoundingClientRect();
+      t.classList.toggle("is-masked", tb.right > cx - LABEL_HALF_PX && tb.left < cx + LABEL_HALF_PX);
+    });
+  };
+
   const show = (year) => {
+    maskTick(year);
     if (shown === year) return;
     const pt = byYear.get(year);
     if (!pt) return;
@@ -383,6 +406,7 @@ function wireCumulativeChart(root, points) {
       if (pinned == null) {
         detail.hidden = true;
         shown = null;
+        maskTick(null);
       } else {
         show(pinned);
       }
@@ -409,6 +433,7 @@ function wireCumulativeChart(root, points) {
       if (pinned == null) {
         detail.hidden = true;
         shown = null;
+        maskTick(null);
       } else {
         show(pinned);
       }
