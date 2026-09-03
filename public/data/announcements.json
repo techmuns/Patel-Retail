@@ -5,10 +5,10 @@
   "source": "BSE corporate announcements (api.bseindia.com) — SEBI LODR Regulation 30 filings",
   "kind": "reported",
   "note": "Patel Retail's own exchange filings, fetched live — not a file anyone had to send. New-store filings are flagged as candidates for review, never auto-added to stores.json: a filing headline is not a resolved coordinate, and a wrong pin is worse than a missing one.",
-  "fetched_at": "2026-09-02T07:15:13.629Z",
+  "fetched_at": "2026-09-03T07:18:38.671Z",
   "window": {
-    "from": "20250729",
-    "to": "20260902"
+    "from": "20250730",
+    "to": "20260903"
   },
   "pdf_body_scanning": true,
   "counts": {
