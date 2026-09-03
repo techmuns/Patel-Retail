@@ -54,7 +54,7 @@ function badge(label, hex) {
   return `<span class="rpt-badge" style="color:${hex};background:${hex}1f;box-shadow:inset 0 0 0 1px ${hex}3d">${escapeHtml(label)}</span>`;
 }
 function kindBadge(kind) {
-  return badge(kind, KIND_HEX[kind] || "#94a3b8");
+  return badge(kind, KIND_HEX[kind] || "#6b7789");
 }
 
 /* ------------------------------------------------------------------ data -- */
@@ -286,7 +286,7 @@ function storeTable(rows) {
           <td>${escapeHtml(s.district)}</td>
           <td style="white-space:nowrap">${s.status === "operational" ? "Operational" : "Closed"}</td>
           <td>${badge(tier.label, TIER_HEX[tier.key])}</td>
-          <td style="font-size:9px;color:#94a3b8;word-break:keep-all;overflow-wrap:normal">${escapeHtml(s.geo_source || "—")}</td>
+          <td style="font-size:9px;color:#6b7789;word-break:keep-all;overflow-wrap:normal">${escapeHtml(s.geo_source || "—")}</td>
         </tr>`;
       })
       .join("")}</tbody>
@@ -553,10 +553,10 @@ function injectPatelReportStyles() {
      mid-table still knows which section they are in. Quieter than the section
      head itself — it repeats information rather than introducing it. */
   .dk-report .rpt-sec-cont { display: flex; align-items: baseline; gap: 8px; font-family: 'Space Grotesk', sans-serif; font-size: 11.5px; font-weight: 600; color: #64748b; padding-bottom: 6px; border-bottom: 1px solid #e2e3e5; margin-bottom: 10px; }
-  .dk-report .rpt-sec-cont span { font-size: 9px; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; }
+  .dk-report .rpt-sec-cont span { font-size: 9px; font-weight: 500; letter-spacing: .4px; text-transform: uppercase; color: #6b7789; }
 
   .dk-report .rpt-pk { width: 100%; border-collapse: collapse; font-size: 10.5px; table-layout: fixed; }
-  .dk-report .rpt-pk th { text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; padding: 6px 8px; border-bottom: 1.5px solid #e2e3e5; background: #f5f6fc; }
+  .dk-report .rpt-pk th { text-align: left; font-size: 9px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #6b7789; padding: 6px 8px; border-bottom: 1.5px solid #e2e3e5; background: #f5f6fc; }
   .dk-report .rpt-pk td { padding: 6px 8px; border-bottom: 1px solid #ececee; vertical-align: top; color: #475569; overflow-wrap: anywhere; }
   .dk-report .rpt-pk tbody tr:nth-child(even) { background: #f5f6fc; }
   .dk-report .rpt-pk td.mono { font-family: 'JetBrains Mono', monospace; }
@@ -565,9 +565,9 @@ function injectPatelReportStyles() {
   .dk-report .rpt-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0; }
   .dk-report .rpt-cbox { border: 1px solid #e2e3e5; border-radius: 8px; padding: 9px 11px; }
   .dk-report .rpt-cbox.used { border-color: rgba(16,185,129,.24); background: rgba(16,185,129,.12); }
-  .dk-report .rpt-cbox .cl { font-size: 8.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #94a3b8; }
+  .dk-report .rpt-cbox .cl { font-size: 8.5px; font-weight: 700; letter-spacing: .4px; text-transform: uppercase; color: #6b7789; }
   .dk-report .rpt-cbox .cv { font-family: 'Space Grotesk', sans-serif; font-size: 16px; font-weight: 700; color: #0f172a; margin-top: 2px; }
-  .dk-report .rpt-cbox .cs { font-size: 9px; color: #94a3b8; margin-top: 2px; }
+  .dk-report .rpt-cbox .cs { font-size: 9px; color: #6b7789; margin-top: 2px; }
   `;
   const style = document.createElement("style");
   style.id = "dk-patel-report-styles";

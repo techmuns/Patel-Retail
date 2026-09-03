@@ -182,7 +182,7 @@ function renderRiskCard(risk, nearest, within, locatableCount, totalOperational)
           `
         <div class="risk-inputs">
           <div class="risk-input"><span class="ri-label">Nearest own store</span><span class="ri-value">${nearest.km} km (${escapeHtml(nearest.store.store_id)})</span></div>
-          <div class="risk-input"><span class="ri-label">Own stores within 3 km</span><span class="ri-value">${within["3km"]} <span style="color:var(--text-4);font-weight:400">(of ${locatableCount} of ${totalOperational} locatable)</span></span></div>
+          <div class="risk-input"><span class="ri-label">Own stores within 3 km</span><span class="ri-value">${within["3km"]} <span style="color:var(--text-3);font-weight:400">(of ${locatableCount} of ${totalOperational} locatable)</span></span></div>
           <div class="risk-input muted"><span class="ri-label">Nearest competitor</span><span class="ri-value">Shown above (KPI) — not a factor in this composite</span></div>
         </div>
         <div class="risk-score-row">

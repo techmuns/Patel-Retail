@@ -51,7 +51,12 @@
   --text-1: #0f172a; /* primary   */
   --text-2: #475569; /* secondary */
   --text-3: #64748b; /* muted     */
-  --text-4: #94a3b8; /* hint      */
+  /* Was #94a3b8, which is 2.56:1 on white — below the point where text is
+     readable, and this tier carries real content: source attributions, "of N
+     locatable" qualifiers, alternate figures, P&L period notes. At #6b7789 it
+     clears 4.5:1. It now sits close to --text-3 in colour, so the step down to
+     a hint is carried by size and weight rather than by fading it out. */
+  --text-4: #6b7789; /* hint      */
 
   /* ---- Status ---- */
   --ok: var(--brand-emerald);
