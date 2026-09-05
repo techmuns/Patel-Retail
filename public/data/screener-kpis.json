@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-09-04T07:23:15.350Z",
+  "fetched_at": "2026-09-05T07:05:12.408Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -34,18 +34,18 @@
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 726 Cr.",
+          "display": "₹ 729 Cr.",
           "numbers": [
-            "726"
+            "729"
           ],
-          "value": 726
+          "value": 729
         },
         "Current Price": {
-          "display": "₹ 217",
+          "display": "₹ 218",
           "numbers": [
-            "217"
+            "218"
           ],
-          "value": 217
+          "value": 218
         },
         "High / Low": {
           "display": "₹ 270 / 149",
@@ -56,11 +56,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "17.4",
+          "display": "17.5",
           "numbers": [
-            "17.4"
+            "17.5"
           ],
-          "value": 17.4
+          "value": 17.5
         },
         "Book Value": {
           "display": "₹ 109",
@@ -817,7 +817,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:22:42.188Z"
+      "fetched_at": "2026-09-05T07:04:39.146Z"
     },
     {
       "ticker": "DMART",
@@ -831,33 +831,33 @@
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 2,46,448 Cr.",
+          "display": "₹ 2,45,897 Cr.",
           "numbers": [
-            "2,46,448"
+            "2,45,897"
           ],
-          "value": 246448
+          "value": 245897
         },
         "Current Price": {
-          "display": "₹ 3,778",
+          "display": "₹ 3,770",
           "numbers": [
-            "3,778"
+            "3,770"
           ],
-          "value": 3778
+          "value": 3770
         },
         "High / Low": {
-          "display": "₹ 4,898 / 3,529",
+          "display": "₹ 4,818 / 3,529",
           "numbers": [
-            "4,898",
+            "4,818",
             "3,529"
           ],
           "value": null
         },
         "Stock P/E": {
-          "display": "80.6",
+          "display": "80.4",
           "numbers": [
-            "80.6"
+            "80.4"
           ],
-          "value": 80.6
+          "value": 80.4
         },
         "Book Value": {
           "display": "₹ 375",
@@ -1351,18 +1351,18 @@
             {
               "label": "Dividend Payout %",
               "values": [
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
-                "-0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
+                "0%",
                 ""
               ]
             }
@@ -1921,7 +1921,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:22:42.687Z"
+      "fetched_at": "2026-09-05T07:04:39.662Z"
     },
     {
       "ticker": "VMM",
@@ -1935,18 +1935,18 @@
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 50,081 Cr.",
+          "display": "₹ 49,725 Cr.",
           "numbers": [
-            "50,081"
+            "49,725"
           ],
-          "value": 50081
+          "value": 49725
         },
         "Current Price": {
-          "display": "₹ 107",
+          "display": "₹ 106",
           "numbers": [
-            "107"
+            "106"
           ],
-          "value": 107
+          "value": 106
         },
         "High / Low": {
           "display": "₹ 155 / 98.7",
@@ -1957,11 +1957,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "56.1",
+          "display": "55.8",
           "numbers": [
-            "56.1"
+            "55.8"
           ],
-          "value": 56.1
+          "value": 55.8
         },
         "Book Value": {
           "display": "₹ 15.9",
@@ -2762,7 +2762,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:22:43.096Z"
+      "fetched_at": "2026-09-05T07:04:40.105Z"
     },
     {
       "ticker": "TRENT",
@@ -2776,33 +2776,33 @@
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 1,51,731 Cr.",
+          "display": "₹ 1,52,131 Cr.",
           "numbers": [
-            "1,51,731"
+            "1,52,131"
           ],
-          "value": 151731
+          "value": 152131
         },
         "Current Price": {
-          "display": "₹ 2,846",
+          "display": "₹ 2,853",
           "numbers": [
-            "2,846"
+            "2,853"
           ],
-          "value": 2846
+          "value": 2853
         },
         "High / Low": {
-          "display": "₹ 3,745 / 2,184",
+          "display": "₹ 3,705 / 2,184",
           "numbers": [
-            "3,745",
+            "3,705",
             "2,184"
           ],
           "value": null
         },
         "Stock P/E": {
-          "display": "83.0",
+          "display": "83.2",
           "numbers": [
-            "83.0"
+            "83.2"
           ],
-          "value": 83
+          "value": 83.2
         },
         "Book Value": {
           "display": "₹ 131",
@@ -3866,7 +3866,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:22:43.533Z"
+      "fetched_at": "2026-09-05T07:04:40.557Z"
     },
     {
       "ticker": "SPENCERS",
@@ -3880,23 +3880,23 @@
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 262 Cr.",
+          "display": "₹ 257 Cr.",
           "numbers": [
-            "262"
+            "257"
           ],
-          "value": 262
+          "value": 257
         },
         "Current Price": {
-          "display": "₹ 29.0",
+          "display": "₹ 28.5",
           "numbers": [
-            "29.0"
+            "28.5"
           ],
-          "value": 29
+          "value": 28.5
         },
         "High / Low": {
-          "display": "₹ 63.0 / 24.3",
+          "display": "₹ 61.4 / 24.3",
           "numbers": [
-            "63.0",
+            "61.4",
             "24.3"
           ],
           "value": null
@@ -4869,7 +4869,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:23:14.439Z"
+      "fetched_at": "2026-09-05T07:05:11.497Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -4883,18 +4883,18 @@
       "about": "Incorporated in 2014, Osia Hyper Retail Ltd is in the retail business through supermarket chain.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 43.2 Cr.",
+          "display": "₹ 43.7 Cr.",
           "numbers": [
-            "43.2"
+            "43.7"
           ],
-          "value": 43.2
+          "value": 43.7
         },
         "Current Price": {
-          "display": "₹ 2.44",
+          "display": "₹ 2.47",
           "numbers": [
-            "2.44"
+            "2.47"
           ],
-          "value": 2.44
+          "value": 2.47
         },
         "High / Low": {
           "display": "₹ 33.1 / 2.38",
@@ -4905,11 +4905,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "2.40",
+          "display": "2.43",
           "numbers": [
-            "2.40"
+            "2.43"
           ],
-          "value": 2.4
+          "value": 2.43
         },
         "Book Value": {
           "display": "₹ 24.4",
@@ -5950,7 +5950,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:23:14.891Z"
+      "fetched_at": "2026-09-05T07:05:11.941Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -5964,18 +5964,18 @@
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 7,832 Cr.",
+          "display": "₹ 7,894 Cr.",
           "numbers": [
-            "7,832"
+            "7,894"
           ],
-          "value": 7832
+          "value": 7894
         },
         "Current Price": {
-          "display": "₹ 215",
+          "display": "₹ 216",
           "numbers": [
-            "215"
+            "216"
           ],
-          "value": 215
+          "value": 216
         },
         "High / Low": {
           "display": "₹ 259 / 157",
@@ -5986,11 +5986,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "47.8",
+          "display": "48.2",
           "numbers": [
-            "47.8"
+            "48.2"
           ],
-          "value": 47.8
+          "value": 48.2
         },
         "Book Value": {
           "display": "₹ 24.8",
@@ -7037,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-04T07:23:15.323Z"
+      "fetched_at": "2026-09-05T07:05:12.372Z"
     }
   ]
 }
