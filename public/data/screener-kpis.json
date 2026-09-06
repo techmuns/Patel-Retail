@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-09-05T07:05:12.408Z",
+  "fetched_at": "2026-09-06T07:16:08.388Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -817,7 +817,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:04:39.146Z"
+      "fetched_at": "2026-09-06T07:15:34.961Z"
     },
     {
       "ticker": "DMART",
@@ -1921,7 +1921,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:04:39.662Z"
+      "fetched_at": "2026-09-06T07:15:35.513Z"
     },
     {
       "ticker": "VMM",
@@ -2762,7 +2762,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:04:40.105Z"
+      "fetched_at": "2026-09-06T07:15:35.969Z"
     },
     {
       "ticker": "TRENT",
@@ -3866,7 +3866,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:04:40.557Z"
+      "fetched_at": "2026-09-06T07:15:36.450Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4869,7 +4869,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:05:11.497Z"
+      "fetched_at": "2026-09-06T07:16:07.448Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -5950,7 +5950,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:05:11.941Z"
+      "fetched_at": "2026-09-06T07:16:07.894Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -7037,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-09-05T07:05:12.372Z"
+      "fetched_at": "2026-09-06T07:16:08.359Z"
     }
   ]
 }
