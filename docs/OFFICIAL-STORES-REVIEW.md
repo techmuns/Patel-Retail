@@ -1,6 +1,6 @@
 # Official website store list — proposed matches, unreviewed
 
-Scraped from https://patelrpl.in/stores/ on 2026-09-11 (53 listings, 11 resolved, 35 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
+Scraped from https://patelrpl.in/stores/ on 2026-09-12 (53 listings, 11 resolved, 34 low-confidence, 8 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
 
 ## Three discrepancies to reconcile, not paper over
 
@@ -37,13 +37,13 @@ Scraped from https://patelrpl.in/stores/ on 2026-09-11 (53 listings, 11 resolved
 | 23 | Kalyan Naka, Bhiwandi | 19.2540187, 73.0393798 ⚠️ low-confidence | **BHAR** — Kalyan Naka | locality_token_overlap (matched "kalyan" (name), "naka" (name), "kalyan", "naka", "bhiwandi") |
 | 24 | Lalchakki Road, Ulhasnagar | 19.2120338, 73.1627263 ⚠️ low-confidence | **ULN4** — Lalchakki Road | locality_token_overlap (matched "lalchakki" (name), "lalchakki", "ulhasnagar") |
 | 25 | Neharu Chowk, Ulhasnagar | 19.2328767, 73.1599533 ⚠️ low-confidence | **ULN** — Neharu Chowk | locality_token_overlap (matched "neharu" (name), "chowk" (name), "neharu", "chowk", "ulhasnagar") |
-| 26 | Ganesh Mandir Road, Titwala | 19.2973684, 73.2128216 ⚠️ low-confidence | **TTL** — Ganesh Mandir Rd | locality_token_overlap (matched "ganesh" (name), "mandir" (name), "ganesh", "mandir", "titwala") |
+| 26 | Ganesh Mandir Road, Titwala | _short_link_resolve_failed_ — fetch failed | **TTL** — Ganesh Mandir Rd | locality_token_overlap (matched "ganesh" (name), "mandir" (name), "ganesh", "mandir", "titwala") |
 | 27 | Station Road, Shahad | 19.2426153, 73.1559273 | **SHD** — Station Rd Shahad | locality_token_overlap (matched "shahad" (name), "shahad") |
 | 28 | Cherpoli, Shahapur | 19.4573979, 73.3311053 ⚠️ low-confidence | **SHAP** — Cherpoli | locality_token_overlap (matched "cherpoli" (name), "cherpoli", "shahapur") |
 | 29 | Sonarpada, Murbad | 19.2579114, 73.3849734 ⚠️ low-confidence | **MUBD** — Sonarpada | locality_token_overlap (matched "sonarpada" (name), "sonarpada", "murbad") |
 | 30 | Rambuag, Kalyan West | 19.2423646, 73.1401159 ⚠️ low-confidence | **KLW** — Rambaug | locality_token_overlap (matched "rambaug" (name), "rambaug", "kalyan") |
 | 31 | Tilak Chowk, Kalyan West | 19.244229, 73.1252991 ⚠️ low-confidence | **KLT** — Tilak Chowk | locality_token_overlap (matched "tilak" (name), "chowk" (name), "tilak", "chowk", "kalyan") |
-| 32 | Khadakpada, Kalyan West | _unresolved_ | **KLK** — Khadakpada | locality_token_overlap (matched "khadakpada" (name), "khadakpada", "kalyan") |
+| 32 | Khadakpada, Kalyan West | _short_link_resolve_failed_ — fetch failed | **KLK** — Khadakpada | locality_token_overlap (matched "khadakpada" (name), "khadakpada", "kalyan") |
 | 33 | Netivili, Kalyan East | 19.2266181, 73.1259124 ⚠️ low-confidence | **KLE** — Netivili | locality_token_overlap (matched "netivili" (name), "netivili", "kalyan") |
 | 34 | Kolivili, Kalyan West | 19.2319087, 73.1345379 ⚠️ low-confidence | **KKW** — Kolivili | locality_token_overlap (matched "kolivili" (name), "kolivili", "kalyan") |
 | 35 | Shilphata, Khopoli | 18.7989122, 73.3273613 ⚠️ low-confidence | **DOE/DER** (Shilphata) / **KHP** (Khapoli) — TIED, pick one | locality_token_overlap_tied (matched "shilphata" (name), "shilphata" — tied with 1 other store(s), not resolved automatically) |
