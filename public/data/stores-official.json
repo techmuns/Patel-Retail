@@ -1,11 +1,11 @@
 {
-  "fetched_at": "2026-09-12T07:17:48.690Z",
+  "fetched_at": "2026-09-13T07:36:08.666Z",
   "source": "https://patelrpl.in/stores/",
   "note": "Raw scrape of the client's own website — NOT yet matched to public/data/stores.json's store codes. See docs/OFFICIAL-STORES-REVIEW.md for proposed matches; nothing here has been applied to stores.json.",
   "total_listings": 53,
   "resolved": 11,
-  "resolved_low_confidence": 34,
-  "unresolved": 8,
+  "resolved_low_confidence": 35,
+  "unresolved": 7,
   "listings": [
     {
       "index": 1,
@@ -281,9 +281,12 @@
       "label": "Ganesh Mandir Road, Titwala",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/exSYRN7Ai5e6SqZD8",
-      "status": "short_link_resolve_failed",
-      "note": "fetch failed",
-      "original": "https://maps.app.goo.gl/exSYRN7Ai5e6SqZD8"
+      "status": "resolved_low_confidence",
+      "lat": 19.2973684,
+      "lng": 73.2128216,
+      "via": "!3d!4d",
+      "resolved_url": "https://www.google.com/maps/place/Patel+R+Mart/@19.2973684,73.1767727,14z/data=!4m7!3m6!1s0x3be7911c30e17991:0x5b16bfed3f449651!8m2!3d19.2973684!4d73.2128216!15sCg5QYXRlbCdzIFIgTWFydFoQIg5wYXRlbCdzIHIgbWFydJIBDWdyb2Nlcnlfc3RvcmWaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTjRPWFYyVWt4M0VBReABAA!16s%2Fg%2F11cjk1fsr9?entry=tts",
+      "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
       "index": 27,
@@ -349,9 +352,9 @@
       "label": "Khadakpada, Kalyan West",
       "detail_url": null,
       "directions_href": "https://g.co/kgs/Wv79XuL",
-      "status": "short_link_resolve_failed",
-      "note": "fetch failed",
-      "original": "https://g.co/kgs/Wv79XuL"
+      "status": "unresolved",
+      "original": "https://g.co/kgs/Wv79XuL",
+      "resolved_url": "https://www.google.com/search?sca_esv=598058618&cs=0&output=search&q=Patel+R+Mart&ludocid=17638212290555657032&lsig=AB86z5UsXTWE5aEus3uq2hIxcUqt&kgs=3d0050c676acaa87&shndl=-1&shem=lsp&source=sh/x/kp/local/m1/1"
     },
     {
       "index": 33,
