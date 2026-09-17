@@ -72,6 +72,19 @@
 @media (min-width: 1500px) {
   .map-container { height: min(82vh, 880px); }
 }
+/* The OSM credit is a licence condition of using their tiles, so it stays —
+   but it can be quiet. Leaflet's own prefix (its link plus a flag) is removed
+   in map.js, since that part is not required by anyone. */
+.map-container .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 10px;
+  padding: 1px 6px;
+  color: var(--text-4);
+}
+.map-container .leaflet-control-attribution a {
+  color: var(--text-3);
+}
+
 /* Leaflet's own CSS sets a lower z-index baseline that clashes with the
    glassy header/sheet stack — keep the map's stacking local to its card. */
 .map-container.leaflet-container {

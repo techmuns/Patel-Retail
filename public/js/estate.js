@@ -176,7 +176,6 @@ function wireOpeningsChart(root, bars) {
       if (pinned == null) {
         detail.hidden = true;
         shown = null;
-        maskTick(null);
       } else {
         show(pinned);
       }
@@ -229,13 +228,21 @@ function renderCumulativeChart(stores) {
     if (!byYear.has(y)) byYear.set(y, []);
     byYear.get(y).push(s);
   }
-  const years = [...byYear.keys()].sort((a, b) => a - b);
+  // EVERY calendar year in the span, not only the years that saw an opening.
+  // Plotting just the 21 years with openings drew a straight line from 1990 to
+  // 2004, which reads as steady growth when the estate in fact sat at one store
+  // for fourteen years — and it left the quiet years with nothing to hover,
+  // so clicking 2002 did nothing at all.
+  const openYears = [...byYear.keys()].sort((a, b) => a - b);
+  const firstYear = openYears[0];
+  const lastYear = openYears[openYears.length - 1];
   let cumulative = 0;
-  const points = years.map((y) => {
-    const opened = byYear.get(y);
+  const points = [];
+  for (let y = firstYear; y <= lastYear; y++) {
+    const opened = byYear.get(y) || [];
     cumulative += opened.length;
-    return { year: y, count: cumulative, opened };
-  });
+    points.push({ year: y, count: cumulative, opened });
+  }
 
   // Chart geometry. The SVG is stretched to the container width with
   // preserveAspectRatio="none", which distorts anything with a shape — the
@@ -390,7 +397,10 @@ function wireCumulativeChart(root, points) {
     const pt = byYear.get(year);
     if (!pt) return;
     shown = year;
-    renderStorePanel(detail, String(pt.year), `${pt.opened.length} opened \u00b7 ${pt.count} total`, pt.opened);
+    const meta = pt.opened.length
+      ? `${pt.opened.length} opened \u00b7 ${pt.count} ${pt.count === 1 ? "store" : "stores"} by year end`
+      : `No openings \u00b7 ${pt.count} ${pt.count === 1 ? "store" : "stores"} by year end`;
+    renderStorePanel(detail, String(pt.year), meta, pt.opened);
   };
   // Leaving a 26px target used to blank the panel immediately, so the moment
   // you moved towards what you were reading, it disappeared. Hold it briefly,

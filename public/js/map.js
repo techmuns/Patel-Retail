@@ -499,6 +499,12 @@ function initLeafletMap(container, geocodedStores, totalStoreCount) {
   // away the leftover height, so the network renders as a small cluster no
   // matter how large the panel is. Fractional zoom spends that height.
   map = window.L.map(container, { scrollWheelZoom: false, zoomSnap: 0, zoomDelta: 0.5 });
+  // Drop Leaflet's own prefix — the "Leaflet" link and the Ukrainian flag it
+  // ships by default. Both are Leaflet's, not a licence condition, so they go.
+  // The "© OpenStreetMap contributors" credit below STAYS: OSM's map data is
+  // ODbL-licensed and attribution is a condition of using the tiles, so it is
+  // only made quieter, never removed.
+  map.attributionControl.setPrefix(false);
 
   window.L.tileLayer(OSM_TILE_URL, { attribution: OSM_ATTRIBUTION, maxZoom: 19 }).addTo(map);
 
