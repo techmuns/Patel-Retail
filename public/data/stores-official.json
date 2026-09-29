@@ -1,14 +1,21 @@
 {
-  "fetched_at": "2026-09-28T08:52:57.676Z",
+  "fetched_at": "2026-09-29T08:51:41.876Z",
   "source": "https://patelrpl.in/stores/",
   "note": "Raw scrape of the client's own website — NOT yet matched to public/data/stores.json's store codes. See docs/OFFICIAL-STORES-REVIEW.md for proposed matches; nothing here has been applied to stores.json.",
-  "total_listings": 53,
+  "total_listings": 54,
   "resolved": 11,
   "resolved_low_confidence": 35,
-  "unresolved": 7,
+  "unresolved": 8,
   "listings": [
     {
       "index": 1,
+      "label": "BGKE,Shree Malangad Road,Opp.Gayatri School,Dwarli Gao,Kalyan East 421501",
+      "detail_url": null,
+      "directions_href": null,
+      "status": "no_link"
+    },
+    {
+      "index": 2,
       "label": "SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/HS8zKkpLaGdg34j18",
@@ -19,14 +26,14 @@
       "resolved_url": "https://www.google.com/maps/search/18.871596,+72.941254?entry=tts&g_ep=EgoyMDI2MDUyNi4wIPu8ASoASAFQAw%3D%3D&skid=3f372231-c6e5-4d5a-be7d-2d59f4f33da3"
     },
     {
-      "index": 2,
+      "index": 3,
       "label": "KBG,Patel mart bapgav near kohinoor developer",
       "detail_url": null,
       "directions_href": null,
       "status": "no_link"
     },
     {
-      "index": 3,
+      "index": 4,
       "label": "RCM -MOHOPADAPLOT 34/B/6 , GANESH NAGAR NEW REESBESIDE APURVA HOTEL RASAYNI,MOHOPADA",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/place/18%C2%B053'49.9%22N+73%C2%B011'31.4%22E/@18.89719,73.192043,685m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d18.89719!4d73.192043?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
@@ -37,7 +44,7 @@
       "resolved_url": "https://www.google.com/maps/place/18%C2%B053'49.9%22N+73%C2%B011'31.4%22E/@18.89719,73.192043,685m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d18.89719!4d73.192043?entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     {
-      "index": 4,
+      "index": 5,
       "label": "THE,Patel R Mart Govind Heights,Opposite Chamunda Garden,Old 90 Fit Road Thakurli (E)",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/place/19%C2%B013'24.4%22N+73%C2%B006'19.1%22E/@19.2234296,73.1027346,684m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d19.2234296!4d73.1053095?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D",
@@ -48,7 +55,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B013'24.4%22N+73%C2%B006'19.1%22E/@19.2234296,73.1027346,684m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d19.2234296!4d73.1053095?hl=en&entry=ttu&g_ep=EgoyMDI2MDQyMi4wIKXMDSoASAFQAw%3D%3D"
     },
     {
-      "index": 5,
+      "index": 6,
       "label": "TGR,Sangam Marble, Titwala - Goveli Rd, Near Icon Lawn, Kalyan Sub-District, 421605, MH, IN",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/dir/19.169385,73.189713/sangam+marble,+Titwala+-+Goveli+Rd,+near+icon+lawn,+east,+Titwala,+kalyan,+Maharashtra+421605/@19.230192,73.121009,21880m/data=!3m2!1e3!4b1!4m13!1m2!2m1!1ssangam+marble!4m9!1m1!4e1!1m5!1m1!1s0x3be791c976a21a79:0x4c127f95e94f681b!2m2!1d73.228598!2d19.291643!3e9?hl=en&entry=ttu&g_ep=EgoyMDI2MDIwOS4wIKXMDSoASAFQAw%3D%3D",
@@ -60,7 +67,7 @@
       "note": "Origin segment of a /dir/ (directions) URL — in the Thane–Raigad box, but a directions link's origin isn't guaranteed to be the store's own pin. Flagged low-confidence, not treated as equal to a direct place match."
     },
     {
-      "index": 6,
+      "index": 7,
       "label": "NILEJE GOAN SERVY NO 33/1/BNR CHANDRES HIMALAYA CHS BUILDING NILEJE STATION ROAD",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/place/19%C2%B009'19.8%22N+73%C2%B004'30.6%22E/@19.155487,73.075157,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.155487!4d73.075157?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D",
@@ -71,7 +78,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B009'19.8%22N+73%C2%B004'30.6%22E/@19.155487,73.075157,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.155487!4d73.075157?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"
     },
     {
-      "index": 7,
+      "index": 8,
       "label": "KUD,Kudus",
       "detail_url": null,
       "directions_href": "http://google.com/maps/search/19.538248,+73.099039?entry=tts&g_ep=EgoyMDI1MDgyNC4wIPu8ASoASAFQAw%3D%3D&skid=1768d63f-ff3d-464e-ae7c-0366019b235e",
@@ -82,7 +89,7 @@
       "resolved_url": "http://google.com/maps/search/19.538248,+73.099039?entry=tts&g_ep=EgoyMDI1MDgyNC4wIPu8ASoASAFQAw%3D%3D&skid=1768d63f-ff3d-464e-ae7c-0366019b235e"
     },
     {
-      "index": 8,
+      "index": 9,
       "label": "KYD,Kalyan,West",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/place/19%C2%B014'49.0%22N+73%C2%B009'10.0%22E/@19.2469425,73.15021,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.2469425!4d73.1527849?hl=en&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D",
@@ -93,7 +100,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B014'49.0%22N+73%C2%B009'10.0%22E/@19.2469425,73.15021,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.2469425!4d73.1527849?hl=en&entry=ttu&g_ep=EgoyMDI1MDkyNC4wIKXMDSoASAFQAw%3D%3D"
     },
     {
-      "index": 9,
+      "index": 10,
       "label": "Ambadi Naka,Ambadi",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/place/19%C2%B028'11.9%22N+73%C2%B005'01.9%22E/@19.4699681,73.0812724,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.4699681!4d73.0838473?hl=en&entry=ttu&g_ep=EgoyMDI1MDkxNS4wIKXMDSoASAFQAw%3D%3D",
@@ -104,7 +111,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B028'11.9%22N+73%C2%B005'01.9%22E/@19.4699681,73.0812724,17z/data=!3m1!4b1!4m4!3m3!8m2!3d19.4699681!4d73.0838473?hl=en&entry=ttu&g_ep=EgoyMDI1MDkxNS4wIKXMDSoASAFQAw%3D%3D"
     },
     {
-      "index": 10,
+      "index": 11,
       "label": "DAG - DOMBIVLI (E)",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/YsTFhaGiLzoepxpf6",
@@ -115,7 +122,7 @@
       "resolved_url": "https://www.google.com/maps/search/19.213063,+73.106209?entry=tts&g_ep=EgoyMDI1MDYxNi4wIPu8ASoASAFQAw%3D%3D&skid=c4f180dd-3626-4797-b813-5397e80a1b83"
     },
     {
-      "index": 11,
+      "index": 12,
       "label": "Nandivali, Dombivili East",
       "detail_url": null,
       "directions_href": "https://www.google.com/maps/dir/'19.29489,72.8638323'/Patel's+R+Mart,+Dharmadhikari+Hall,+Near,+Gaondevi+Mandir+Road,+Nandivali+East,+Dombivli+East,+Dombivli,+Maharashtra+421201/@19.1565381,72.9674073,46231m/data=!3m2!1e3!4b1!4m22!1m8!3m7!1s0x3be7bf472a0974af:0xd92ba38c5c776156!2sPatel's+R+Mart!8m2!3d19.1996124!4d73.0851615!15sClRQYXRlbCdzIFIgTWFydCBOZWFyIERoYXJtYWRoaWthcmkgSGFsbCAsR2FvbmRldmkgbWFuZGlyIFJvYWQgLE5ldGl2YWxpIERvbWJpdmxpIEVhc3RaVCJScGF0ZWwncyByIG1hcnQgbmVhciBkaGFybWFkaGlrYXJpIGhhbGwgZ2FvbmRldmkgbWFuZGlyIHJvYWQgbmV0aXZhbGkgZG9tYml2bGkgZWFzdJIBC3N1cGVybWFya2V0qgGPARABKhIiDnBhdGVsJ3MgciBtYXJ0KAAyHxABIhvc3PJUr7UPXJGzdVRsZEW8fQs6IlOH7aLpQdEyVhACIlJwYXRlbCdzIHIgbWFydCBuZWFyIGRoYXJtYWRoaWthcmkgaGFsbCBnYW9uZGV2aSBtYW5kaXIgcm9hZCBuZXRpdmFsaSBkb21iaXZsaSBlYXN04AEA!16s%2Fg%2F11xkg3qmn8!4m12!1m5!1m1!1s0x3be7b11eb3739e33:0x881dd0d92870f0ed!2m2!1d72.8638537!2d19.2949167!1m5!1m1!1s0x3be7bf472a0974af:0xd92ba38c5c776156!2m2!1d73.0851615!2d19.1996124?entry=ttu&g_ep=EgoyMDI1MDYyNi4wIKXMDSoASAFQAw%3D%3D",
@@ -124,7 +131,7 @@
       "note": "Directions URL with a quoted/placeholder origin and no reliable single destination coordinate — not guessed at."
     },
     {
-      "index": 12,
+      "index": 13,
       "label": "Kausa Talav Road, Mumbra",
       "detail_url": null,
       "directions_href": "http://528M+983%20Nice%20world,%20Kausa,%20Mumbra,%20Thane,%20Maharashtra%20400612",
@@ -133,7 +140,7 @@
       "note": "Google Plus Code (e.g. 528M+983) — this script does not decode Open Location Codes."
     },
     {
-      "index": 13,
+      "index": 14,
       "label": "Kalyan Bhiwandi Road",
       "detail_url": null,
       "directions_href": "https://maps.apple.com/place?ll=19.265150,73.086365&q=My%20Location&t=m",
@@ -144,7 +151,7 @@
       "resolved_url": "https://maps.apple.com/place?ll=19.265150,73.086365&q=My%20Location&t=m"
     },
     {
-      "index": 14,
+      "index": 15,
       "label": "Vijay Nagar Kalyan (East)",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/JF3UdGD5Y89GCcvX8",
@@ -156,7 +163,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 15,
+      "index": 16,
       "label": "Nisarag Hotel, Khoni MIDC",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/4iavrvBUwFTS9YiU8",
@@ -168,7 +175,7 @@
       "note": "Resolved via a business-NAME search for \"PATEL R MART\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 16,
+      "index": 17,
       "label": "Opp Neral Police Station, Neral (East)",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/3ZQtyTm28c7bxeNX6",
@@ -180,7 +187,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 17,
+      "index": 18,
       "label": "Sudama Regency, Diva (East)",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/aKWC7uEdxBSiLk6Q8",
@@ -192,7 +199,7 @@
       "note": "Resolved via a business-NAME search for \"PATEL R MART\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 18,
+      "index": 19,
       "label": "Adarsh park road Bhiwandi",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/Jyh3oZuxxmVSjWFE8",
@@ -204,14 +211,14 @@
       "note": "Resolved via a business-NAME search for \"Patel's R mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 19,
+      "index": 20,
       "label": "Vangani East",
       "detail_url": null,
       "directions_href": null,
       "status": "no_link"
     },
     {
-      "index": 20,
+      "index": 21,
       "label": "Padgha, Bhiwandi",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/TDuMJGhQG2RitXL96",
@@ -223,7 +230,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 21,
+      "index": 22,
       "label": "Bhere Maidan, Vasind",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/Y6FboGYfiS6iEe4HA?g_st=iw",
@@ -232,7 +239,7 @@
       "note": "Google Plus Code (e.g. 528M+983) — this script does not decode Open Location Codes."
     },
     {
-      "index": 22,
+      "index": 23,
       "label": "Anjurphata Metro Station, Bhiwandi",
       "detail_url": null,
       "directions_href": "https://g.co/kgs/Bs7tiyb",
@@ -241,7 +248,7 @@
       "resolved_url": "https://www.google.com/search?sca_esv=d498be0520164435&rlz=1C1SQJL_enIN1122IN1122&cs=0&sxsrf=ADLYWIJs3aG5LfVOUdcGi9cgUPx_tlGiuA:1730804953879&kgmid=/g/11ldx1zr5l&q=PATEL+R+MART&shndl=30&shem=uaasic&source=sh/x/loc/uni/m1/1&kgs=5fcdb2be8fabdc2f"
     },
     {
-      "index": 23,
+      "index": 24,
       "label": "Kalyan Naka, Bhiwandi",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/JGnrLkH6DfG1a5Wa6",
@@ -253,7 +260,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 24,
+      "index": 25,
       "label": "Lalchakki Road, Ulhasnagar",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/5DprK5iAaYr3WsWa7",
@@ -265,7 +272,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 25,
+      "index": 26,
       "label": "Neharu Chowk, Ulhasnagar",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/b8mbEd6Co2S3SAsn7",
@@ -277,7 +284,7 @@
       "note": "Resolved via a business-NAME search for \"PATEL'S R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 26,
+      "index": 27,
       "label": "Ganesh Mandir Road, Titwala",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/exSYRN7Ai5e6SqZD8",
@@ -289,7 +296,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 27,
+      "index": 28,
       "label": "Station Road, Shahad",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/uizNWxJMGyvLgR4j8",
@@ -300,7 +307,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B014'33.4%22N+73%C2%B009'21.3%22E/@19.2426153,73.1533524,684m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d19.2426153!4d73.1559273?q=19.2426153,73.1559273&z=17&entry=tts&g_ep=EgoyMDI0MTAxNC4wIPu8ASoASAFQAw%3D%3D"
     },
     {
-      "index": 28,
+      "index": 29,
       "label": "Cherpoli, Shahapur",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/cNg6WjYoXQRREJ1PA",
@@ -312,7 +319,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 29,
+      "index": 30,
       "label": "Sonarpada, Murbad",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/8hNyh4KxwZQEdGx89",
@@ -324,7 +331,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 30,
+      "index": 31,
       "label": "Rambuag, Kalyan West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/JWo2Gt3vj4DMEMtTA",
@@ -336,7 +343,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 31,
+      "index": 32,
       "label": "Tilak Chowk, Kalyan West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/QZUWBpm2ZrSgejTN9",
@@ -348,7 +355,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 32,
+      "index": 33,
       "label": "Khadakpada, Kalyan West",
       "detail_url": null,
       "directions_href": "https://g.co/kgs/Wv79XuL",
@@ -357,7 +364,7 @@
       "resolved_url": "https://www.google.com/search?sca_esv=598058618&cs=0&output=search&q=Patel+R+Mart&ludocid=17638212290555657032&lsig=AB86z5UsXTWE5aEus3uq2hIxcUqt&kgs=3d0050c676acaa87&shndl=-1&shem=lsp&source=sh/x/kp/local/m1/1"
     },
     {
-      "index": 33,
+      "index": 34,
       "label": "Netivili, Kalyan East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/s2vfEKythL97KoYZ6",
@@ -369,7 +376,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 34,
+      "index": 35,
       "label": "Kolivili, Kalyan West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/9oFyXn6owC16Jziq7",
@@ -381,7 +388,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 35,
+      "index": 36,
       "label": "Shilphata, Khopoli",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/5DdNefXmxSH6yRj56",
@@ -393,7 +400,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 36,
+      "index": 37,
       "label": "Kumbharkhan Pada, Dombivali West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/J4xuffCiN1RGmG977",
@@ -405,7 +412,7 @@
       "note": "Resolved via a business-NAME search for \"Patels R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 37,
+      "index": 38,
       "label": "Samrat Chowk, Dombivali West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/qiDp8ShSR9efkfL18",
@@ -417,7 +424,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 38,
+      "index": 39,
       "label": "Kopar Road, Dombivali West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/ZNgWy3LSzV19zZcY9",
@@ -428,7 +435,7 @@
       "resolved_url": "https://www.google.com/maps/place/19%C2%B012'59.6%22N+73%C2%B004'60.0%22E/@19.2165573,73.0807562,684m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d19.2165573!4d73.0833311?entry=tts&g_ep=EgoyMDI0MTAxNC4wIPu8ASoASAFQAw%3D%3D"
     },
     {
-      "index": 39,
+      "index": 40,
       "label": "Manpada Road, Dombivali East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/nrGFs4zvERy5kRBf8",
@@ -440,7 +447,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 40,
+      "index": 41,
       "label": "Phadke Road, Dombivili East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/Zcmmy61xfH2jHvSf6",
@@ -452,7 +459,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 41,
+      "index": 42,
       "label": "Rajaji Path, Dombivali East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/Qh1phjdAqcfrz4Jd7",
@@ -464,7 +471,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 42,
+      "index": 43,
       "label": "Manjarli, Badlapur West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/9ARskcdmpNarDtuZ7",
@@ -476,7 +483,7 @@
       "note": "Resolved via a business-NAME search for \"PATEL R MART\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 43,
+      "index": 44,
       "label": "Sanewadi, Badlapur West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/yiFM9GpEfdGP4YPN7",
@@ -488,7 +495,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 44,
+      "index": 45,
       "label": "Katrap, Badlapur East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/4J1RyaFHb7NZWRqQ6",
@@ -500,7 +507,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 45,
+      "index": 46,
       "label": "Gandhi Chowk, Badlapur East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/CFQEopBMv6QDhxrN8",
@@ -512,7 +519,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's Low Price\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 46,
+      "index": 47,
       "label": "Kharvai Naka, Badlapur East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/wwzQqpwyB4vc4JgQ6",
@@ -524,7 +531,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 47,
+      "index": 48,
       "label": "Shirgaon, Badlapur East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/ydU8Aa9SgBXt73N87",
@@ -536,7 +543,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 48,
+      "index": 49,
       "label": "Station Road, Ambernath West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/ubm5DmnybXHfutVt7",
@@ -548,7 +555,7 @@
       "note": "Resolved via a business-NAME search for \"Patel’s R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 49,
+      "index": 50,
       "label": "Palegaon, Ambernath East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/WM5WoDbBRD2aVDGZ6",
@@ -560,7 +567,7 @@
       "note": "Resolved via a business-NAME search for \"Patel R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 50,
+      "index": 51,
       "label": "Luxminagar, Ambernath East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/J4itbQvksJRviySS6",
@@ -572,7 +579,7 @@
       "note": "Resolved via a business-NAME search for \"Patel\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 51,
+      "index": 52,
       "label": "Chh.Shiwaji Chowk, Ambernath East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/NTgGCufDNHyLYbUZ9",
@@ -584,7 +591,7 @@
       "note": "Resolved via a business-NAME search for \"Patel’s R mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 52,
+      "index": 53,
       "label": "Chokhloli, Ambernath West",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/ysPZJWgqTCn7REKu5",
@@ -596,7 +603,7 @@
       "note": "Resolved via a business-NAME search for \"Patel's R Mart\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
-      "index": 53,
+      "index": 54,
       "label": "Shivganga Nagar, Ambernath East",
       "detail_url": null,
       "directions_href": "https://maps.app.goo.gl/7byxV5Rv9jzAk2he8",
