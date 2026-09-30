@@ -1,6 +1,6 @@
 # Official website store list — proposed matches, unreviewed
 
-Scraped from https://patelrpl.in/stores/ on 2026-09-29 (54 listings, 11 resolved, 35 low-confidence, 8 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
+Scraped from https://patelrpl.in/stores/ on 2026-09-30 (54 listings, 11 resolved, 36 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
 
 ## Three discrepancies to reconcile, not paper over
 
@@ -12,7 +12,7 @@ Scraped from https://patelrpl.in/stores/ on 2026-09-29 (54 listings, 11 resolved
 
 | # | Official listing | Coordinate | Proposed store | Match basis |
 |---|---|---|---|---|
-| 1 | BGKE,Shree Malangad Road,Opp.Gayatri School,Dwarli Gao,Kalyan East 421501 | _no_link_ | **BHAR** (Kalyan Naka) / **BES** (Shirgaon) / **AMPL** (Palegaon) — TIED, pick one | locality_token_overlap_tied (matched "kalyan" (name), "kalyan" — tied with 2 other store(s), not resolved automatically) |
+| 1 | BGKE,Shree Malangad Road,Opp.Gayatri School,Dwarli Gao,Kalyan East 421501 | 19.2067961, 73.13473 ⚠️ low-confidence | **BHAR** (Kalyan Naka) / **BES** (Shirgaon) / **AMPL** (Palegaon) — TIED, pick one | locality_token_overlap_tied (matched "kalyan" (name), "kalyan" — tied with 2 other store(s), not resolved automatically) |
 | 2 | SURVEY NO 58/1/A HISSA NO 4684GALA NO.1,2,3,4 URAN,PIN CODE:-400702 | 18.871596, 72.941254 | **URN** — Uran | locality_token_overlap (matched "uran" (name), "uran") |
 | 3 | KBG,Patel mart bapgav near kohinoor developer | _no_link_ | **KBG** — KBG - Patel Mart | code_prefix (store code "kbg") |
 | 4 | RCM -MOHOPADAPLOT 34/B/6 , GANESH NAGAR NEW REESBESIDE APURVA HOTEL RASAYNI,MOHOPADA | 18.89719, 73.192043 | **RCM** — RCM | code_prefix (store code "rcm") |

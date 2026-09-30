@@ -1,18 +1,23 @@
 {
-  "fetched_at": "2026-09-29T08:51:41.876Z",
+  "fetched_at": "2026-09-30T08:52:28.753Z",
   "source": "https://patelrpl.in/stores/",
   "note": "Raw scrape of the client's own website — NOT yet matched to public/data/stores.json's store codes. See docs/OFFICIAL-STORES-REVIEW.md for proposed matches; nothing here has been applied to stores.json.",
   "total_listings": 54,
   "resolved": 11,
-  "resolved_low_confidence": 35,
-  "unresolved": 8,
+  "resolved_low_confidence": 36,
+  "unresolved": 7,
   "listings": [
     {
       "index": 1,
       "label": "BGKE,Shree Malangad Road,Opp.Gayatri School,Dwarli Gao,Kalyan East 421501",
       "detail_url": null,
-      "directions_href": null,
-      "status": "no_link"
+      "directions_href": "https://maps.app.goo.gl/5uXSvraX7kUiUk4P7",
+      "status": "resolved_low_confidence",
+      "lat": 19.2067961,
+      "lng": 73.13473,
+      "via": "!3d!4d",
+      "resolved_url": "https://www.google.com/maps/place/644M%2BPRG/data=!4m7!3m6!1s0x3be795ab539798a1:0x8fd030967cc576b9!8m2!3d19.2067961!4d73.13473!16s%2Fg%2F11w7q20lxf!19sChIJoZiXU6uV5zsRuXbFfJYw0I8?entry=tts&g_ep=EgoyMDI2MDkyNy4xIPu8ASoASAFQAw%3D%3D&skid=e8e7d9dc-0f05-4e6e-99fa-4aa972c993b8",
+      "note": "Resolved via a business-NAME search for \"644M+PRG\", not a coordinate — Patel's own brand repeats at nearly every one of its 53 locations, so Google matching this generic name to a SPECIFIC nearby branch is a real risk of picking the wrong one, not necessarily this listing's own store. Flagged low-confidence rather than treated as equal to a coordinate-based match."
     },
     {
       "index": 2,
