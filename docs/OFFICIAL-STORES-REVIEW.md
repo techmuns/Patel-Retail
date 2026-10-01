@@ -1,6 +1,6 @@
 # Official website store list — proposed matches, unreviewed
 
-Scraped from https://patelrpl.in/stores/ on 2026-09-30 (54 listings, 11 resolved, 36 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
+Scraped from https://patelrpl.in/stores/ on 2026-10-01 (54 listings, 11 resolved, 36 low-confidence, 7 unresolved). Nothing below has been applied to `public/data/stores.json` — every match is a proposal for a human to confirm or reject.
 
 ## Three discrepancies to reconcile, not paper over
 
