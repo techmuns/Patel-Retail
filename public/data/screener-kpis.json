@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-10-02T08:51:44.566Z",
+  "fetched_at": "2026-10-03T08:28:17.526Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -817,7 +817,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:11.178Z"
+      "fetched_at": "2026-10-03T08:27:44.399Z"
     },
     {
       "ticker": "DMART",
@@ -1921,7 +1921,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:11.730Z"
+      "fetched_at": "2026-10-03T08:27:44.906Z"
     },
     {
       "ticker": "VMM",
@@ -2762,7 +2762,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:12.159Z"
+      "fetched_at": "2026-10-03T08:27:45.310Z"
     },
     {
       "ticker": "TRENT",
@@ -3866,7 +3866,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:12.627Z"
+      "fetched_at": "2026-10-03T08:27:45.774Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4869,7 +4869,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:43.600Z"
+      "fetched_at": "2026-10-03T08:28:16.669Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -4897,9 +4897,9 @@
           "value": 2.2
         },
         "High / Low": {
-          "display": "₹ 24.6 / 2.11",
+          "display": "₹ 24.4 / 2.11",
           "numbers": [
-            "24.6",
+            "24.4",
             "2.11"
           ],
           "value": null
@@ -5950,7 +5950,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:44.035Z"
+      "fetched_at": "2026-10-03T08:28:17.100Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -7037,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-02T08:51:44.535Z"
+      "fetched_at": "2026-10-03T08:28:17.491Z"
     }
   ]
 }
