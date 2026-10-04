@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-10-03T08:28:17.526Z",
+  "fetched_at": "2026-10-04T08:40:44.690Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -442,13 +442,13 @@
             {
               "label": "Dividend Payout %",
               "values": [
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
                 ""
               ]
             }
@@ -529,7 +529,7 @@
             {
               "label": "Fixed Assets",
               "values": [
-                "0",
+                "-0",
                 "27",
                 "38",
                 "59",
@@ -541,12 +541,12 @@
             {
               "label": "CWIP",
               "values": [
-                "0",
+                "-0",
                 "26",
                 "27",
                 "2",
                 "4",
-                "0",
+                "-0",
                 "1"
               ]
             },
@@ -557,9 +557,9 @@
                 "0",
                 "0",
                 "0",
-                "0",
-                "0",
-                "0"
+                "-0",
+                "-0",
+                "-0"
               ]
             },
             {
@@ -817,7 +817,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:27:44.399Z"
+      "fetched_at": "2026-10-04T08:40:11.300Z"
     },
     {
       "ticker": "DMART",
@@ -1921,7 +1921,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:27:44.906Z"
+      "fetched_at": "2026-10-04T08:40:11.825Z"
     },
     {
       "ticker": "VMM",
@@ -2762,7 +2762,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:27:45.310Z"
+      "fetched_at": "2026-10-04T08:40:12.280Z"
     },
     {
       "ticker": "TRENT",
@@ -3866,7 +3866,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:27:45.774Z"
+      "fetched_at": "2026-10-04T08:40:12.771Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4869,7 +4869,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:28:16.669Z"
+      "fetched_at": "2026-10-04T08:40:43.741Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -5950,7 +5950,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:28:17.100Z"
+      "fetched_at": "2026-10-04T08:40:44.190Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -7037,7 +7037,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-03T08:28:17.491Z"
+      "fetched_at": "2026-10-04T08:40:44.651Z"
     }
   ]
 }
