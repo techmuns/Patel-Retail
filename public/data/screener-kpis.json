@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-10-24T07:32:24.831Z",
+  "fetched_at": "2026-10-25T07:46:09.297Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -96,139 +96,6 @@
             "10.0"
           ],
           "value": 10
-        },
-        "Asset Turnover": {
-          "display": "2.09",
-          "numbers": [
-            "2.09"
-          ],
-          "value": 2.09
-        },
-        "EVEBITDA": {
-          "display": "10.2",
-          "numbers": [
-            "10.2"
-          ],
-          "value": 10.2
-        },
-        "Price to Sales": {
-          "display": "0.64",
-          "numbers": [
-            "0.64"
-          ],
-          "value": 0.64
-        },
-        "Debt to equity": {
-          "display": "0.45",
-          "numbers": [
-            "0.45"
-          ],
-          "value": 0.45
-        },
-        "Price to book value": {
-          "display": "2.06",
-          "numbers": [
-            "2.06"
-          ],
-          "value": 2.06
-        },
-        "High price all time": {
-          "display": "₹ 305",
-          "numbers": [
-            "305"
-          ],
-          "value": 305
-        },
-        "Free Cash Flow": {
-          "display": "₹ -101 Cr.",
-          "numbers": [
-            "-101"
-          ],
-          "value": -101
-        },
-        "Mar Cap to CF": {
-          "display": "-8.99",
-          "numbers": [
-            "-8.99"
-          ],
-          "value": -8.99
-        },
-        "CMP / FCF": {
-          "display": "-31.2",
-          "numbers": [
-            "-31.2"
-          ],
-          "value": -31.2
-        },
-        "PEG Ratio": {
-          "display": "0.54",
-          "numbers": [
-            "0.54"
-          ],
-          "value": 0.54
-        },
-        "Debt": {
-          "display": "₹ 163 Cr.",
-          "numbers": [
-            "163"
-          ],
-          "value": 163
-        },
-        "ROIC": {
-          "display": "13.2 %",
-          "numbers": [
-            "13.2"
-          ],
-          "value": 13.2
-        },
-        "Enterprise Value": {
-          "display": "₹ 890 Cr.",
-          "numbers": [
-            "890"
-          ],
-          "value": 890
-        },
-        "Market Cap to Sales": {
-          "display": "0.64",
-          "numbers": [
-            "0.64"
-          ],
-          "value": 0.64
-        },
-        "EPS": {
-          "display": "₹ 12.5",
-          "numbers": [
-            "12.5"
-          ],
-          "value": 12.5
-        },
-        "EV TO CFO": {
-          "display": "-10.7",
-          "numbers": [
-            "-10.7"
-          ],
-          "value": -10.7
-        },
-        "52w Index": {
-          "display": "64.6 %",
-          "numbers": [
-            "64.6"
-          ],
-          "value": 64.6
-        },
-        "Return on assets": {
-          "display": "7.78 %",
-          "numbers": [
-            "7.78"
-          ],
-          "value": 7.78
-        },
-        "Cash Equivalents": {
-          "display": "₹ 24.1 Cr.",
-          "numbers": [
-            "24.1"
-          ],
-          "value": 24.1
         }
       },
       "sections": {
@@ -956,7 +823,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:22.052Z"
+      "fetched_at": "2026-10-25T07:46:06.396Z"
     },
     {
       "ticker": "DMART",
@@ -2071,7 +1938,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:22.676Z"
+      "fetched_at": "2026-10-25T07:46:06.916Z"
     },
     {
       "ticker": "VMM",
@@ -2942,7 +2809,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:23.102Z"
+      "fetched_at": "2026-10-25T07:46:07.402Z"
     },
     {
       "ticker": "TRENT",
@@ -4046,7 +3913,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:23.553Z"
+      "fetched_at": "2026-10-25T07:46:07.888Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4495,7 +4362,7 @@
             {
               "label": "Tax %",
               "values": [
-                "0%",
+                "-0%",
                 "43%",
                 "-0%",
                 "-0%",
@@ -4540,15 +4407,15 @@
             {
               "label": "Dividend Payout %",
               "values": [
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
                 ""
               ]
             }
@@ -4571,7 +4438,7 @@
             {
               "label": "Equity Capital",
               "values": [
-                "0.00",
+                "-0.00",
                 "40",
                 "40",
                 "45",
@@ -4600,7 +4467,7 @@
               "label": "Borrowings",
               "values": [
                 "1",
-                "0",
+                "-0",
                 "849",
                 "944",
                 "1,069",
@@ -4662,8 +4529,8 @@
                 "8",
                 "2",
                 "1",
-                "0",
-                "0"
+                "-0",
+                "-0"
               ]
             },
             {
@@ -5049,7 +4916,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:23.947Z"
+      "fetched_at": "2026-10-25T07:46:08.334Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -6130,7 +5997,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:24.350Z"
+      "fetched_at": "2026-10-25T07:46:08.763Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -6664,18 +6531,18 @@
             {
               "label": "Dividend Payout %",
               "values": [
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
                 ""
               ]
             }
@@ -6738,7 +6605,7 @@
                 "69",
                 "98",
                 "9",
-                "0",
+                "-0",
                 "11",
                 "311",
                 "388",
@@ -6810,7 +6677,7 @@
                 "4",
                 "4",
                 "5",
-                "0",
+                "-0",
                 "0",
                 "0",
                 "4",
@@ -6822,9 +6689,9 @@
               "values": [
                 "30",
                 "25",
-                "0",
+                "-0",
                 "90",
-                "0",
+                "-0",
                 "15",
                 "15",
                 "15",
@@ -7013,16 +6880,16 @@
               "values": [
                 "0",
                 "0",
-                "0",
-                "0",
-                "0",
+                "-0",
+                "-0",
+                "-0",
                 "7",
                 "0",
                 "1",
                 "0",
                 "0",
                 "0",
-                "0"
+                "-0"
               ]
             },
             {
@@ -7217,7 +7084,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-24T07:32:24.798Z"
+      "fetched_at": "2026-10-25T07:46:09.260Z"
     }
   ]
 }
