@@ -13,7 +13,7 @@
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-10-27T08:17:25.347Z",
+  "fetched_at": "2026-10-28T08:54:13.014Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -34,18 +34,18 @@
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 797 Cr.",
+          "display": "₹ 775 Cr.",
           "numbers": [
-            "797"
+            "775"
           ],
-          "value": 797
+          "value": 775
         },
         "Current Price": {
-          "display": "₹ 239",
+          "display": "₹ 232",
           "numbers": [
-            "239"
+            "232"
           ],
-          "value": 239
+          "value": 232
         },
         "High / Low": {
           "display": "₹ 266 / 149",
@@ -56,11 +56,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "19.1",
+          "display": "18.6",
           "numbers": [
-            "19.1"
+            "18.6"
           ],
-          "value": 19.1
+          "value": 18.6
         },
         "Book Value": {
           "display": "₹ 109",
@@ -823,7 +823,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:22.523Z"
+      "fetched_at": "2026-10-28T08:54:10.480Z"
     },
     {
       "ticker": "DMART",
@@ -837,18 +837,18 @@
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 2,07,421 Cr.",
+          "display": "₹ 2,03,726 Cr.",
           "numbers": [
-            "2,07,421"
+            "2,03,726"
           ],
-          "value": 207421
+          "value": 203726
         },
         "Current Price": {
-          "display": "₹ 3,180",
+          "display": "₹ 3,123",
           "numbers": [
-            "3,180"
+            "3,123"
           ],
-          "value": 3180
+          "value": 3123
         },
         "High / Low": {
           "display": "₹ 4,644 / 3,102",
@@ -859,11 +859,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "66.6",
+          "display": "65.4",
           "numbers": [
-            "66.6"
+            "65.4"
           ],
-          "value": 66.6
+          "value": 65.4
         },
         "Book Value": {
           "display": "₹ 400",
@@ -1938,7 +1938,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:23.032Z"
+      "fetched_at": "2026-10-28T08:54:10.961Z"
     },
     {
       "ticker": "VMM",
@@ -1952,33 +1952,33 @@
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 41,226 Cr.",
+          "display": "₹ 41,039 Cr.",
           "numbers": [
-            "41,226"
+            "41,039"
           ],
-          "value": 41226
+          "value": 41039
         },
         "Current Price": {
-          "display": "₹ 88.0",
+          "display": "₹ 87.6",
           "numbers": [
-            "88.0"
+            "87.6"
           ],
-          "value": 88
+          "value": 87.6
         },
         "High / Low": {
-          "display": "₹ 149 / 84.6",
+          "display": "₹ 148 / 84.6",
           "numbers": [
-            "149",
+            "148",
             "84.6"
           ],
           "value": null
         },
         "Stock P/E": {
-          "display": "45.9",
+          "display": "45.6",
           "numbers": [
-            "45.9"
+            "45.6"
           ],
-          "value": 45.9
+          "value": 45.6
         },
         "Book Value": {
           "display": "₹ 16.8",
@@ -2809,7 +2809,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:23.464Z"
+      "fetched_at": "2026-10-28T08:54:11.338Z"
     },
     {
       "ticker": "TRENT",
@@ -2823,18 +2823,18 @@
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 1,49,465 Cr.",
+          "display": "₹ 1,53,744 Cr.",
           "numbers": [
-            "1,49,465"
+            "1,53,744"
           ],
-          "value": 149465
+          "value": 153744
         },
         "Current Price": {
-          "display": "₹ 2,803",
+          "display": "₹ 2,883",
           "numbers": [
-            "2,803"
+            "2,883"
           ],
-          "value": 2803
+          "value": 2883
         },
         "High / Low": {
           "display": "₹ 3,400 / 2,184",
@@ -2845,11 +2845,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "81.8",
+          "display": "84.1",
           "numbers": [
-            "81.8"
+            "84.1"
           ],
-          "value": 81.8
+          "value": 84.1
         },
         "Book Value": {
           "display": "₹ 131",
@@ -2859,11 +2859,11 @@
           "value": 131
         },
         "Dividend Yield": {
-          "display": "0.15 %",
+          "display": "0.14 %",
           "numbers": [
-            "0.15"
+            "0.14"
           ],
-          "value": 0.15
+          "value": 0.14
         },
         "ROCE": {
           "display": "28.3 %",
@@ -3913,7 +3913,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:23.958Z"
+      "fetched_at": "2026-10-28T08:54:11.791Z"
     },
     {
       "ticker": "SPENCERS",
@@ -3927,23 +3927,23 @@
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 162 Cr.",
+          "display": "₹ 178 Cr.",
           "numbers": [
-            "162"
+            "178"
           ],
-          "value": 162
+          "value": 178
         },
         "Current Price": {
-          "display": "₹ 18.0",
+          "display": "₹ 19.7",
           "numbers": [
-            "18.0"
+            "19.7"
           ],
-          "value": 18
+          "value": 19.7
         },
         "High / Low": {
-          "display": "₹ 54.2 / 14.5",
+          "display": "₹ 53.6 / 14.5",
           "numbers": [
-            "54.2",
+            "53.6",
             "14.5"
           ],
           "value": null
@@ -4916,7 +4916,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:24.398Z"
+      "fetched_at": "2026-10-28T08:54:12.197Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -4930,18 +4930,18 @@
       "about": "Incorporated in 2014, Osia Hyper Retail Ltd is in the retail business through supermarket chain.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 27.6 Cr.",
+          "display": "₹ 28.3 Cr.",
           "numbers": [
-            "27.6"
+            "28.3"
           ],
-          "value": 27.6
+          "value": 28.3
         },
         "Current Price": {
-          "display": "₹ 1.56",
+          "display": "₹ 1.60",
           "numbers": [
-            "1.56"
+            "1.60"
           ],
-          "value": 1.56
+          "value": 1.6
         },
         "High / Low": {
           "display": "₹ 21.9 / 1.38",
@@ -4952,11 +4952,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "1.54",
+          "display": "1.57",
           "numbers": [
-            "1.54"
+            "1.57"
           ],
-          "value": 1.54
+          "value": 1.57
         },
         "Book Value": {
           "display": "₹ 24.4",
@@ -5288,7 +5288,7 @@
             {
               "label": "Operating Profit",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "2",
                 "4",
@@ -5306,7 +5306,7 @@
             {
               "label": "OPM %",
               "values": [
-                "0.0%",
+                "-0.0%",
                 "1.8%",
                 "4.0%",
                 "3.7%",
@@ -5324,7 +5324,7 @@
             {
               "label": "Other Income",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "0",
                 "0",
@@ -5342,7 +5342,7 @@
             {
               "label": "Interest",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "1",
                 "2",
@@ -5360,7 +5360,7 @@
             {
               "label": "Depreciation",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "1",
                 "1",
@@ -5378,7 +5378,7 @@
             {
               "label": "Profit before tax",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "1",
                 "1",
@@ -5414,7 +5414,7 @@
             {
               "label": "Net Profit",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "0",
                 "1",
@@ -5432,7 +5432,7 @@
             {
               "label": "EPS in Rs",
               "values": [
-                "0.00",
+                "-0.00",
                 "0.02",
                 "0.07",
                 "0.15",
@@ -5451,17 +5451,17 @@
               "label": "Dividend Payout %",
               "values": [
                 "",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
-                "0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
+                "-0%",
                 ""
               ]
             }
@@ -5506,7 +5506,7 @@
             {
               "label": "Reserves",
               "values": [
-                "0",
+                "-0",
                 "0",
                 "0",
                 "4",
@@ -5542,7 +5542,7 @@
             {
               "label": "Other Liabilities",
               "values": [
-                "0",
+                "-0",
                 "3",
                 "12",
                 "24",
@@ -5578,7 +5578,7 @@
             {
               "label": "Fixed Assets",
               "values": [
-                "0",
+                "-0",
                 "1",
                 "6",
                 "8",
@@ -5596,37 +5596,37 @@
             {
               "label": "CWIP",
               "values": [
-                "0",
-                "0",
-                "0",
+                "-0",
+                "-0",
+                "-0",
                 "7",
                 "2",
                 "0",
                 "0",
                 "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0"
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0"
               ]
             },
             {
               "label": "Investments",
               "values": [
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0",
-                "0"
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0",
+                "-0"
               ]
             },
             {
@@ -5687,8 +5687,8 @@
             {
               "label": "Cash from Operating Activity",
               "values": [
-                "0",
-                "0",
+                "-0",
+                "-0",
                 "-3",
                 "2",
                 "3",
@@ -5704,8 +5704,8 @@
             {
               "label": "Cash from Investing Activity",
               "values": [
-                "0",
-                "0",
+                "-0",
+                "-0",
                 "-6",
                 "-10",
                 "-9",
@@ -5721,8 +5721,8 @@
             {
               "label": "Cash from Financing Activity",
               "values": [
-                "0",
-                "0",
+                "-0",
+                "-0",
                 "11",
                 "8",
                 "7",
@@ -5738,8 +5738,8 @@
             {
               "label": "Net Cash Flow",
               "values": [
-                "0",
-                "0",
+                "-0",
+                "-0",
                 "1",
                 "0",
                 "1",
@@ -5755,8 +5755,8 @@
             {
               "label": "Free Cash Flow",
               "values": [
-                "0",
-                "0",
+                "-0",
+                "-0",
                 "-9",
                 "-8",
                 "-4",
@@ -5773,7 +5773,7 @@
               "label": "CFO/EBITDA Share of operating profit converting into cash: CFO (before tax) / Operating Profit",
               "values": [
                 "",
-                "0%",
+                "-0%",
                 "-132%",
                 "63%",
                 "50%",
@@ -5808,7 +5808,7 @@
             {
               "label": "Debtor Days",
               "values": [
-                "0",
+                "-0",
                 "2",
                 "1",
                 "2",
@@ -5825,7 +5825,7 @@
             {
               "label": "Inventory Days",
               "values": [
-                "0",
+                "-0",
                 "83",
                 "154",
                 "144",
@@ -5859,7 +5859,7 @@
             {
               "label": "Cash Conversion Cycle",
               "values": [
-                "0",
+                "-0",
                 "15",
                 "57",
                 "44",
@@ -5997,7 +5997,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:24.828Z"
+      "fetched_at": "2026-10-28T08:54:12.568Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -6011,18 +6011,18 @@
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 5,834 Cr.",
+          "display": "₹ 5,688 Cr.",
           "numbers": [
-            "5,834"
+            "5,688"
           ],
-          "value": 5834
+          "value": 5688
         },
         "Current Price": {
-          "display": "₹ 160",
+          "display": "₹ 156",
           "numbers": [
-            "160"
+            "156"
           ],
-          "value": 160
+          "value": 156
         },
         "High / Low": {
           "display": "₹ 259 / 149",
@@ -6033,11 +6033,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "35.6",
+          "display": "34.8",
           "numbers": [
-            "35.6"
+            "34.8"
           ],
-          "value": 35.6
+          "value": 34.8
         },
         "Book Value": {
           "display": "₹ 24.8",
@@ -7084,7 +7084,7 @@
           ]
         }
       },
-      "fetched_at": "2026-10-27T08:17:25.308Z"
+      "fetched_at": "2026-10-28T08:54:12.979Z"
     }
   ]
 }
