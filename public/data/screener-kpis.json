@@ -8,12 +8,12 @@
       "valid until"
     ],
     "matched_inactive": [],
-    "page_sample": "FEED SCREENS TOOLS ADMIN Welcome! You’re a Premium Member 🏆 Your subscription will expire in 41 days. Renew now to get a special discount. RENEW NOW Payment Details Plan Renew Active Investor Amount Paid INR 4,499.00 – View Receipt Payment Date Dec. 17, 2025, 10:50 a.m. Valid Until 17 December 2026 Payment history (2) Check out these exclusive features Segment Results Access detailed, product-lev"
+    "page_sample": "FEED SCREENS TOOLS ADMIN Welcome! You’re a Premium Member 🏆 Your subscription will expire in 40 days. Renew now to get a special discount. RENEW NOW Payment Details Plan Renew Active Investor Amount Paid INR 4,499.00 – View Receipt Payment Date Dec. 17, 2025, 10:50 a.m. Valid Until 17 December 2026 Payment history (2) Check out these exclusive features Segment Results Access detailed, product-lev"
   },
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-11-06T09:41:15.089Z",
+  "fetched_at": "2026-11-07T09:03:00.600Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -34,11 +34,11 @@
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 840 Cr.",
+          "display": "₹ 839 Cr.",
           "numbers": [
-            "840"
+            "839"
           ],
-          "value": 840
+          "value": 839
         },
         "Current Price": {
           "display": "₹ 251",
@@ -875,7 +875,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:11.388Z"
+      "fetched_at": "2026-11-07T09:02:57.624Z"
     },
     {
       "ticker": "DMART",
@@ -889,11 +889,11 @@
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 2,23,426 Cr.",
+          "display": "₹ 2,23,416 Cr.",
           "numbers": [
-            "2,23,426"
+            "2,23,416"
           ],
-          "value": 223426
+          "value": 223416
         },
         "Current Price": {
           "display": "₹ 3,425",
@@ -911,11 +911,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "71.6",
+          "display": "71.7",
           "numbers": [
-            "71.6"
+            "71.7"
           ],
-          "value": 71.6
+          "value": 71.7
         },
         "Book Value": {
           "display": "₹ 400",
@@ -2026,7 +2026,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:12.019Z"
+      "fetched_at": "2026-11-07T09:02:58.126Z"
     },
     {
       "ticker": "VMM",
@@ -2040,18 +2040,18 @@
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 43,658 Cr.",
+          "display": "₹ 44,037 Cr.",
           "numbers": [
-            "43,658"
+            "44,037"
           ],
-          "value": 43658
+          "value": 44037
         },
         "Current Price": {
-          "display": "₹ 93.2",
+          "display": "₹ 94.0",
           "numbers": [
-            "93.2"
+            "94.0"
           ],
-          "value": 93.2
+          "value": 94
         },
         "High / Low": {
           "display": "₹ 144 / 84.2",
@@ -2062,11 +2062,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "48.6",
+          "display": "49.1",
           "numbers": [
-            "48.6"
+            "49.1"
           ],
-          "value": 48.6
+          "value": 49.1
         },
         "Book Value": {
           "display": "₹ 16.8",
@@ -2927,7 +2927,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:12.617Z"
+      "fetched_at": "2026-11-07T09:02:58.617Z"
     },
     {
       "ticker": "TRENT",
@@ -2941,18 +2941,18 @@
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 1,63,220 Cr.",
+          "display": "₹ 1,64,182 Cr.",
           "numbers": [
-            "1,63,220"
+            "1,64,182"
           ],
-          "value": 163220
+          "value": 164182
         },
         "Current Price": {
-          "display": "₹ 3,061",
+          "display": "₹ 3,079",
           "numbers": [
-            "3,061"
+            "3,079"
           ],
-          "value": 3061
+          "value": 3079
         },
         "High / Low": {
           "display": "₹ 3,400 / 2,184",
@@ -2963,11 +2963,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "85.3",
+          "display": "85.7",
           "numbers": [
-            "85.3"
+            "85.7"
           ],
-          "value": 85.3
+          "value": 85.7
         },
         "Book Value": {
           "display": "₹ 146",
@@ -4078,7 +4078,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:13.208Z"
+      "fetched_at": "2026-11-07T09:02:59.126Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4092,23 +4092,23 @@
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 172 Cr.",
+          "display": "₹ 173 Cr.",
           "numbers": [
-            "172"
+            "173"
           ],
-          "value": 172
+          "value": 173
         },
         "Current Price": {
-          "display": "₹ 19.0",
+          "display": "₹ 19.2",
           "numbers": [
-            "19.0"
+            "19.2"
           ],
-          "value": 19
+          "value": 19.2
         },
         "High / Low": {
-          "display": "₹ 48.6 / 14.5",
+          "display": "₹ 48.5 / 14.5",
           "numbers": [
-            "48.6",
+            "48.5",
             "14.5"
           ],
           "value": null
@@ -4119,11 +4119,11 @@
           "value": null
         },
         "Book Value": {
-          "display": "₹ -101",
+          "display": "₹ -115",
           "numbers": [
-            "-101"
+            "-115"
           ],
-          "value": -101
+          "value": -115
         },
         "Dividend Yield": {
           "display": "0.00 %",
@@ -4156,7 +4156,6 @@
         "quarterly_results": {
           "columns": [
             "",
-            "Jun 2023",
             "Sep 2023",
             "Dec 2023",
             "Mar 2024",
@@ -4168,13 +4167,13 @@
             "Sep 2025",
             "Dec 2025",
             "Mar 2026",
-            "Jun 2026"
+            "Jun 2026",
+            "Sep 2026"
           ],
           "rows": [
             {
               "label": "Sales",
               "values": [
-                "570",
                 "574",
                 "654",
                 "547",
@@ -4186,13 +4185,13 @@
                 "445",
                 "503",
                 "436",
-                "469"
+                "469",
+                "462"
               ]
             },
             {
               "label": "YoY Sales growth",
               "values": [
-                "-8%",
                 "-12%",
                 "+2%",
                 "+1%",
@@ -4204,13 +4203,13 @@
                 "-14%",
                 "-3%",
                 "+6%",
-                "+13%"
+                "+13%",
+                "+4%"
               ]
             },
             {
               "label": "Expenses",
               "values": [
-                "575",
                 "581",
                 "642",
                 "559",
@@ -4222,13 +4221,13 @@
                 "449",
                 "496",
                 "443",
-                "462"
+                "462",
+                "458"
               ]
             },
             {
               "label": "Operating Profit",
               "values": [
-                "-5",
                 "-7",
                 "12",
                 "-12",
@@ -4240,13 +4239,13 @@
                 "-4",
                 "7",
                 "-7",
-                "8"
+                "8",
+                "4"
               ]
             },
             {
               "label": "OPM %",
               "values": [
-                "-0.8%",
                 "-1.2%",
                 "1.8%",
                 "-2.2%",
@@ -4258,13 +4257,13 @@
                 "-0.8%",
                 "1.3%",
                 "-1.6%",
-                "1.6%"
+                "1.6%",
+                "0.8%"
               ]
             },
             {
               "label": "Other Income",
               "values": [
-                "12",
                 "3",
                 "6",
                 "4",
@@ -4276,13 +4275,13 @@
                 "4",
                 "1",
                 "9",
+                "2",
                 "2"
               ]
             },
             {
               "label": "Interest",
               "values": [
-                "34",
                 "36",
                 "38",
                 "41",
@@ -4294,13 +4293,13 @@
                 "41",
                 "43",
                 "45",
-                "46"
+                "46",
+                "48"
               ]
             },
             {
               "label": "Depreciation",
               "values": [
-                "38",
                 "31",
                 "32",
                 "32",
@@ -4312,13 +4311,13 @@
                 "23",
                 "23",
                 "23",
-                "23"
+                "23",
+                "24"
               ]
             },
             {
               "label": "Profit before tax",
               "values": [
-                "-64",
                 "-70",
                 "-51",
                 "-81",
@@ -4330,7 +4329,8 @@
                 "-64",
                 "-58",
                 "-66",
-                "-60"
+                "-60",
+                "-66"
               ]
             },
             {
@@ -4354,7 +4354,6 @@
             {
               "label": "Net Profit",
               "values": [
-                "-64",
                 "-70",
                 "-51",
                 "-81",
@@ -4366,13 +4365,13 @@
                 "-64",
                 "-58",
                 "-66",
-                "-60"
+                "-60",
+                "-66"
               ]
             },
             {
               "label": "EPS in Rs",
               "values": [
-                "-7.12",
                 "-7.78",
                 "-5.68",
                 "-8.95",
@@ -4384,7 +4383,8 @@
                 "-7.08",
                 "-6.47",
                 "-7.28",
-                "-6.71"
+                "-6.71",
+                "-7.35"
               ]
             },
             {
@@ -4434,7 +4434,7 @@
                 "2,345",
                 "1,995",
                 "1,800",
-                "1,854"
+                "1,870"
               ]
             },
             {
@@ -4449,7 +4449,7 @@
                 "-4%",
                 "-15%",
                 "-10%",
-                "-0%"
+                "+4%"
               ]
             },
             {
@@ -4464,7 +4464,7 @@
                 "2,354",
                 "2,038",
                 "1,810",
-                "1,850"
+                "1,860"
               ]
             },
             {
@@ -4479,7 +4479,7 @@
                 "-9",
                 "-43",
                 "-10",
-                "4"
+                "11"
               ]
             },
             {
@@ -4494,7 +4494,7 @@
                 "-0.4%",
                 "-2.2%",
                 "-0.5%",
-                "0.2%"
+                "0.6%"
               ]
             },
             {
@@ -4509,7 +4509,7 @@
                 "23",
                 "104",
                 "25",
-                "16"
+                "14"
               ]
             },
             {
@@ -4524,7 +4524,7 @@
                 "148",
                 "164",
                 "169",
-                "175"
+                "183"
               ]
             },
             {
@@ -4554,7 +4554,7 @@
                 "-267",
                 "-247",
                 "-250",
-                "-248"
+                "-251"
               ]
             },
             {
@@ -4584,7 +4584,7 @@
                 "-266",
                 "-246",
                 "-249",
-                "-248"
+                "-251"
               ]
             },
             {
@@ -4599,7 +4599,7 @@
                 "-29.53",
                 "-27.33",
                 "-27.66",
-                "-27.54"
+                "-27.81"
               ]
             },
             {
@@ -4630,7 +4630,8 @@
             "Mar 2023",
             "Mar 2024",
             "Mar 2025",
-            "Mar 2026"
+            "Mar 2026",
+            "Sep 2026"
           ],
           "rows": [
             {
@@ -4639,6 +4640,7 @@
                 "0.00",
                 "40",
                 "40",
+                "45",
                 "45",
                 "45",
                 "45",
@@ -4658,7 +4660,8 @@
                 "-196",
                 "-461",
                 "-707",
-                "-958"
+                "-958",
+                "-1,086"
               ]
             },
             {
@@ -4672,7 +4675,8 @@
                 "1,341",
                 "1,622",
                 "1,571",
-                "1,919"
+                "1,919",
+                "2,053"
               ]
             },
             {
@@ -4686,7 +4690,8 @@
                 "439",
                 "490",
                 "400",
-                "390"
+                "390",
+                "361"
               ]
             },
             {
@@ -4700,7 +4705,8 @@
                 "1,629",
                 "1,696",
                 "1,310",
-                "1,396"
+                "1,396",
+                "1,374"
               ]
             },
             {
@@ -4714,7 +4720,8 @@
                 "1,132",
                 "1,211",
                 "953",
-                "971"
+                "971",
+                "890"
               ]
             },
             {
@@ -4727,6 +4734,7 @@
                 "8",
                 "2",
                 "1",
+                "0",
                 "0",
                 "0"
               ]
@@ -4742,6 +4750,7 @@
                 "94",
                 "56",
                 "43",
+                "36",
                 "36"
               ]
             },
@@ -4756,7 +4765,8 @@
                 "401",
                 "428",
                 "314",
-                "389"
+                "389",
+                "447"
               ]
             },
             {
@@ -4770,7 +4780,8 @@
                 "1,629",
                 "1,696",
                 "1,310",
-                "1,396"
+                "1,396",
+                "1,374"
               ]
             }
           ]
@@ -5114,7 +5125,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:13.912Z"
+      "fetched_at": "2026-11-07T09:02:59.595Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -6231,7 +6242,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:14.497Z"
+      "fetched_at": "2026-11-07T09:03:00.072Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -6245,18 +6256,18 @@
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 6,314 Cr.",
+          "display": "₹ 6,326 Cr.",
           "numbers": [
-            "6,314"
+            "6,326"
           ],
-          "value": 6314
+          "value": 6326
         },
         "Current Price": {
-          "display": "₹ 173",
+          "display": "₹ 174",
           "numbers": [
-            "173"
+            "174"
           ],
-          "value": 173
+          "value": 174
         },
         "High / Low": {
           "display": "₹ 259 / 145",
@@ -6267,11 +6278,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "38.5",
+          "display": "38.6",
           "numbers": [
-            "38.5"
+            "38.6"
           ],
-          "value": 38.5
+          "value": 38.6
         },
         "Book Value": {
           "display": "₹ 26.4",
@@ -7365,7 +7376,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-06T09:41:15.036Z"
+      "fetched_at": "2026-11-07T09:03:00.554Z"
     }
   ]
 }
