@@ -3,7 +3,7 @@
   "source_url": "https://overpass-api.de/api/interpreter",
   "query": "[out:json][timeout:60];\nnode[\"shop\"=\"supermarket\"][\"name\"~\"^[Dd][- ]?[Mm]art\"]\n  (18.6,72.7,19.8,73.6);\nout;",
   "caveat": "OpenStreetMap coverage is community-maintained and likely incomplete — absence of a DMart here does not mean one doesn't exist; treat this as a lower bound, not an authoritative count, and cross-check against Avenue Supermarts' own annual report store count for Maharashtra the next time this is touched. The name-match pattern is anchored (^[Dd][- ]?[Mm]art) specifically to exclude substring false positives like a 'food mart' matching an earlier, unanchored version of this query; every entry still carries brand_tag_confirms_dmart as a second, independent confirmation signal.",
-  "scraped_at": "2026-11-03T09:53:01.514Z",
+  "scraped_at": "2026-11-08T09:21:23.748Z",
   "banner": "DMart",
   "stores": [
     {
@@ -220,6 +220,30 @@
       "osm_id": 13375392095,
       "osm_type": "node",
       "brand_tag_confirms_dmart": true,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-019",
+      "banner": "DMart",
+      "name": "Dmart",
+      "branch": null,
+      "lat": 19.405666,
+      "lng": 72.8247439,
+      "osm_id": 14353798701,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
+      "address": null
+    },
+    {
+      "competitor_id": "DMART-020",
+      "banner": "DMart",
+      "name": "Dmart",
+      "branch": null,
+      "lat": 19.4056698,
+      "lng": 72.8247471,
+      "osm_id": 14353800901,
+      "osm_type": "node",
+      "brand_tag_confirms_dmart": false,
       "address": null
     }
   ]
