@@ -8,12 +8,12 @@
       "valid until"
     ],
     "matched_inactive": [],
-    "page_sample": "FEED SCREENS TOOLS ADMIN Welcome! You’re a Premium Member 🏆 Your subscription will expire in 27 days. Renew now to get a special discount. RENEW NOW Payment Details Plan Renew Active Investor Amount Paid INR 4,499.00 – View Receipt Payment Date Dec. 17, 2025, 10:50 a.m. Valid Until 17 December 2026 Payment history (2) Check out these exclusive features Segment Results Access detailed, product-lev"
+    "page_sample": "FEED SCREENS TOOLS ADMIN Welcome! You’re a Premium Member 🏆 Your subscription will expire in 26 days. Renew now to get a special discount. RENEW NOW Payment Details Plan Renew Active Investor Amount Paid INR 4,499.00 – View Receipt Payment Date Dec. 17, 2025, 10:50 a.m. Valid Until 17 December 2026 Payment history (2) Check out these exclusive features Segment Results Access detailed, product-lev"
   },
   "credential_env": "SCREENER_EMAIL",
   "kind": "reported",
   "note": "Read directly off each company's Screener page on a schedule — not typed in by hand. Values are exactly as Screener presents them (₹ crore unless the row says otherwise); nothing here is recomputed or interpreted.",
-  "fetched_at": "2026-11-20T10:18:19.365Z",
+  "fetched_at": "2026-11-21T10:03:19.474Z",
   "counts": {
     "requested": 7,
     "fetched": 7,
@@ -34,18 +34,18 @@
       "about": "Incorporated in 2008, Patel Retail Ltd is in the retail and non-retail business.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 755 Cr.",
+          "display": "₹ 757 Cr.",
           "numbers": [
-            "755"
+            "757"
           ],
-          "value": 755
+          "value": 757
         },
         "Current Price": {
-          "display": "₹ 226",
+          "display": "₹ 227",
           "numbers": [
-            "226"
+            "227"
           ],
-          "value": 226
+          "value": 227
         },
         "High / Low": {
           "display": "₹ 266 / 149",
@@ -56,11 +56,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "18.2",
+          "display": "18.3",
           "numbers": [
-            "18.2"
+            "18.3"
           ],
-          "value": 18.2
+          "value": 18.3
         },
         "Book Value": {
           "display": "₹ 115",
@@ -96,6 +96,139 @@
             "10.0"
           ],
           "value": 10
+        },
+        "Asset Turnover": {
+          "display": "2.09",
+          "numbers": [
+            "2.09"
+          ],
+          "value": 2.09
+        },
+        "EVEBITDA": {
+          "display": "10.0",
+          "numbers": [
+            "10.0"
+          ],
+          "value": 10
+        },
+        "Price to Sales": {
+          "display": "0.60",
+          "numbers": [
+            "0.60"
+          ],
+          "value": 0.6
+        },
+        "Debt to equity": {
+          "display": "0.36",
+          "numbers": [
+            "0.36"
+          ],
+          "value": 0.36
+        },
+        "Price to book value": {
+          "display": "1.98",
+          "numbers": [
+            "1.98"
+          ],
+          "value": 1.98
+        },
+        "High price all time": {
+          "display": "₹ 305",
+          "numbers": [
+            "305"
+          ],
+          "value": 305
+        },
+        "Free Cash Flow": {
+          "display": "₹ -101 Cr.",
+          "numbers": [
+            "-101"
+          ],
+          "value": -101
+        },
+        "Mar Cap to CF": {
+          "display": "-9.07",
+          "numbers": [
+            "-9.07"
+          ],
+          "value": -9.07
+        },
+        "CMP / FCF": {
+          "display": "-31.5",
+          "numbers": [
+            "-31.5"
+          ],
+          "value": -31.5
+        },
+        "PEG Ratio": {
+          "display": "0.55",
+          "numbers": [
+            "0.55"
+          ],
+          "value": 0.55
+        },
+        "Debt": {
+          "display": "₹ 139 Cr.",
+          "numbers": [
+            "139"
+          ],
+          "value": 139
+        },
+        "ROIC": {
+          "display": "13.2 %",
+          "numbers": [
+            "13.2"
+          ],
+          "value": 13.2
+        },
+        "Enterprise Value": {
+          "display": "₹ 884 Cr.",
+          "numbers": [
+            "884"
+          ],
+          "value": 884
+        },
+        "Market Cap to Sales": {
+          "display": "0.60",
+          "numbers": [
+            "0.60"
+          ],
+          "value": 0.6
+        },
+        "EPS": {
+          "display": "₹ 12.4",
+          "numbers": [
+            "12.4"
+          ],
+          "value": 12.4
+        },
+        "EV TO CFO": {
+          "display": "-10.6",
+          "numbers": [
+            "-10.6"
+          ],
+          "value": -10.6
+        },
+        "52w Index": {
+          "display": "66.2 %",
+          "numbers": [
+            "66.2"
+          ],
+          "value": 66.2
+        },
+        "Return on assets": {
+          "display": "7.78 %",
+          "numbers": [
+            "7.78"
+          ],
+          "value": 7.78
+        },
+        "Cash Equivalents": {
+          "display": "₹ 12.2 Cr.",
+          "numbers": [
+            "12.2"
+          ],
+          "value": 12.2
         }
       },
       "sections": {
@@ -875,7 +1008,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:16.174Z"
+      "fetched_at": "2026-11-21T10:03:15.891Z"
     },
     {
       "ticker": "DMART",
@@ -889,18 +1022,18 @@
       "about": "Avenue Supermarts Limited (DMart) is a national supermarket chain, with a focus on value-retailing. We offer a wide range of products with a focus on the Foods, Non-Foods (FMCG) and General Merchandise & Apparel product categories.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 2,27,787 Cr.",
+          "display": "₹ 2,27,656 Cr.",
           "numbers": [
-            "2,27,787"
+            "2,27,656"
           ],
-          "value": 227787
+          "value": 227656
         },
         "Current Price": {
-          "display": "₹ 3,492",
+          "display": "₹ 3,490",
           "numbers": [
-            "3,492"
+            "3,490"
           ],
-          "value": 3492
+          "value": 3490
         },
         "High / Low": {
           "display": "₹ 4,644 / 3,102",
@@ -911,11 +1044,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "73.1",
+          "display": "73.0",
           "numbers": [
-            "73.1"
+            "73.0"
           ],
-          "value": 73.1
+          "value": 73
         },
         "Book Value": {
           "display": "₹ 400",
@@ -2026,7 +2159,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:16.725Z"
+      "fetched_at": "2026-11-21T10:03:16.540Z"
     },
     {
       "ticker": "VMM",
@@ -2040,11 +2173,11 @@
       "about": "Incorporated In 2001, Vishal Mega Mart is a hypermarket chain that sells a wide range of products like apparel, groceries, electronics, and home essentials.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 43,100 Cr.",
+          "display": "₹ 43,091 Cr.",
           "numbers": [
-            "43,100"
+            "43,091"
           ],
-          "value": 43100
+          "value": 43091
         },
         "Current Price": {
           "display": "₹ 92.0",
@@ -2927,7 +3060,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:17.384Z"
+      "fetched_at": "2026-11-21T10:03:17.297Z"
     },
     {
       "ticker": "TRENT",
@@ -2941,18 +3074,18 @@
       "about": "Trent Ltd is engaged in retailing of apparels, footwear, accessories, toys, games, food, grocery & non food products through various of its retail formats/ concepts.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 1,73,420 Cr.",
+          "display": "₹ 1,73,626 Cr.",
           "numbers": [
-            "1,73,420"
+            "1,73,626"
           ],
-          "value": 173420
+          "value": 173626
         },
         "Current Price": {
-          "display": "₹ 3,252",
+          "display": "₹ 3,256",
           "numbers": [
-            "3,252"
+            "3,256"
           ],
-          "value": 3252
+          "value": 3256
         },
         "High / Low": {
           "display": "₹ 3,400 / 2,184",
@@ -2963,11 +3096,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "90.5",
+          "display": "90.6",
           "numbers": [
-            "90.5"
+            "90.6"
           ],
-          "value": 90.5
+          "value": 90.6
         },
         "Book Value": {
           "display": "₹ 146",
@@ -4078,7 +4211,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:17.819Z"
+      "fetched_at": "2026-11-21T10:03:17.943Z"
     },
     {
       "ticker": "SPENCERS",
@@ -4092,18 +4225,18 @@
       "about": "Incorporated in 2017, Spencer’s Retail Ltd develops, conducts, and promotes organized retail. It operates departmental and neighborhood stores under various formats across the country[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 194 Cr.",
+          "display": "₹ 195 Cr.",
           "numbers": [
-            "194"
+            "195"
           ],
-          "value": 194
+          "value": 195
         },
         "Current Price": {
-          "display": "₹ 21.5",
+          "display": "₹ 21.6",
           "numbers": [
-            "21.5"
+            "21.6"
           ],
-          "value": 21.5
+          "value": 21.6
         },
         "High / Low": {
           "display": "₹ 48.0 / 14.5",
@@ -5125,7 +5258,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:18.360Z"
+      "fetched_at": "2026-11-21T10:03:18.487Z"
     },
     {
       "ticker": "OSIAHYPER",
@@ -5153,9 +5286,9 @@
           "value": 1.75
         },
         "High / Low": {
-          "display": "₹ 20.0 / 1.38",
+          "display": "₹ 19.9 / 1.38",
           "numbers": [
-            "20.0",
+            "19.9",
             "1.38"
           ],
           "value": null
@@ -6242,7 +6375,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:18.792Z"
+      "fetched_at": "2026-11-21T10:03:18.892Z"
     },
     {
       "ticker": "V2RETAIL",
@@ -6256,18 +6389,18 @@
       "about": "Company primarily operates in Tier-II and Tier-III cities, with a chain of “V2 Retail” stores offering apparel and general merchandise, catering to the entire family.[1]",
       "ratios": {
         "Market Cap": {
-          "display": "₹ 5,852 Cr.",
+          "display": "₹ 5,909 Cr.",
           "numbers": [
-            "5,852"
+            "5,909"
           ],
-          "value": 5852
+          "value": 5909
         },
         "Current Price": {
-          "display": "₹ 160",
+          "display": "₹ 162",
           "numbers": [
-            "160"
+            "162"
           ],
-          "value": 160
+          "value": 162
         },
         "High / Low": {
           "display": "₹ 259 / 123",
@@ -6278,11 +6411,11 @@
           "value": null
         },
         "Stock P/E": {
-          "display": "35.6",
+          "display": "36.0",
           "numbers": [
-            "35.6"
+            "36.0"
           ],
-          "value": 35.6
+          "value": 36
         },
         "Book Value": {
           "display": "₹ 26.4",
@@ -7376,7 +7509,7 @@
           ]
         }
       },
-      "fetched_at": "2026-11-20T10:18:19.325Z"
+      "fetched_at": "2026-11-21T10:03:19.441Z"
     }
   ]
 }
